@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.edapt.cope.history.migrator;singleton:=true
+Bundle-Version: 0.3.0
+Require-Bundle: org.eclipse.emf.edapt.cope.migration
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Vendor: %providerName

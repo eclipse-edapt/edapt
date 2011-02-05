@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ASCII"?>
+<node:Node xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:node="node" name="EString_92589">
+  <parent href="split.xmi#//@children.0/@children.1/@children.2/@children.0/@children.0/@children.1/@children.1"/>
+  <children name="EString_96185">
+    <super href="split.xmi#//@children.0/@children.1/@children.0/@children.0/@children.1/@children.0/@children.0/@children.1/@children.0"/>
+    <sub href="split.xmi#//@children.0/@children.1/@children.1/@children.1/@children.1/@children.1/@children.0/@children.0"/>
+    <target href="split.xmi#//@children.0"/>
+    <target href="split.xmi#//@children.0/@children.1/@children.0/@children.1/@children.0/@children.0/@children.2/@children.0/@children.0"/>
+    <target href="split.xmi#//@children.0/@children.1/@children.0/@children.2/@children.2/@children.0"/>
+    <next href="split.xmi#//@children.1/@children.0/@children.0/@children.1"/>
+  </children>
+  <children name="EString_64076">
+    <super href="split.xmi#//@children.1/@children.0/@children.1/@children.0/@children.2/@children.1/@children.2/@children.0"/>
+    <source href="split.xmi#//@children.0/@children.1/@children.0"/>
+    <source href="split.xmi#//@children.0/@children.1/@children.1/@children.7"/>
+    <source href="split.xmi#//@children.5/@children.0/@children.0/@children.0/@children.0/@children.0"/>
+    <target href="split.xmi#//@children.0/@children.1/@children.2/@children.0/@children.0/@children.1/@children.2"/>
+    <next href="split.xmi#//@children.1/@children.0/@children.1/@children.2/@children.2"/>
+  </children>
+  <super href="split.xmi#//@children.1/@children.0/@children.1/@children.0/@children.0/@children.0/@children.0"/>
+  <source href="split.xmi#//@children.0/@children.0/@children.0/@children.3/@children.1/@children.0"/>
+  <source href="split.xmi#//@children.0/@children.1/@children.2/@children.1/@children.2/@children.0"/>
+  <target href="split.xmi#//@children.0/@children.0/@children.2/@children.2/@children.0/@children.0/@children.2"/>
+  <target href="split.xmi#//@children.3/@children.0/@children.0/@children.0/@children.1/@children.0"/>
+  <prev href="split.xmi#//@children.4/@children.0/@children.2/@children.1"/>
+</node:Node>

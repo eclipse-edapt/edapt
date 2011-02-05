@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.cs.tum.edu/cope/migration/test" name="GMF Generator Metamodel" history="gmfgen.history">
+  <cases name="GMF Generator Model" model="gmfgen_r0.xmi" expectedModel="gmfgen_r1.xmi" expectedDifferences="5"/>
+</test:TestSuiteDefinition>

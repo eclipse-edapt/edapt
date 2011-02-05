@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.152.ecore" right="gmfgen_1.153.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/applicationClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/applicationPackageName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/getPerspectiveQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/getActionBarAdvisorQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/getWorkbenchWindowAdvisorQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/workbenchAdvisorClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/getApplicationQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/getWorkbenchAdvisorQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/perspectiveClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/actionBarAdvisorClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+          <rightElement href="gmfgen_1.153.ecore#//GenApplication/workbenchWindowAdvisorClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.152.ecore#//GenApplication"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.152.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

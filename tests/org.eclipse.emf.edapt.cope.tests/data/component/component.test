@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.cs.tum.edu/cope/migration/test" name="Component Metamodel" history="component.history">
+  <cases name="Component Model" model="component_r0.xmi" expectedModel="component_r1.xmi"/>
+</test:TestSuiteDefinition>

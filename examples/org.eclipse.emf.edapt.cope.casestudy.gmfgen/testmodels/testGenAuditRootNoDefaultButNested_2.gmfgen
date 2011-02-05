@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2006/GenModel"
+    xsi:schemaLocation="http://www.eclipse.org/gmf/2006/GenModel ../../../plugin/org.eclipse.gmf.codegen/models/gmfgen_2007.ecore">
+  <gmfgen:GenAuditContainer
+      audits="/1/@rules.0">
+    <root
+        href="#/1"/>
+  </gmfgen:GenAuditContainer>
+  <gmfgen:GenAuditRoot>
+    <categories
+        href="#/0"/>
+    <categories
+        path="/0"
+        audits="/1/@rules.1"/>
+    <categories
+        id="second"
+        name="second"
+        path="/0 /1/@categories.1"
+        audits="/1/@rules.2"/>
+    <rules
+        name="rule1:root"
+        id="rule1:root"
+        category="/0"/>
+    <rules
+        name="rule1:first"
+        id="rule1:first"
+        category="/1/@categories.1"/>
+    <rules
+        name="rule1:second"
+        id="rule1:second"
+        category="/1/@categories.2"/>
+  </gmfgen:GenAuditRoot>
+</xmi:XMI>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.192.ecore" right="gmfgen_1.193.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Inches"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/INCHES"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Inches"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/INCHES"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//RulerUnits/Inches"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Centimeters"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/CENTIMETERS"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Centimeters"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/CENTIMETERS"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//RulerUnits/Centimeters"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Pixels"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/PIXELS"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//RulerUnits/Pixels"/>
+            <rightElement href="gmfgen_1.193.ecore#//RulerUnits/PIXELS"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//RulerUnits/Pixels"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.192.ecore#//RulerUnits"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Manual"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/MANUAL"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Manual"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/MANUAL"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//Routing/Manual"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Rectilinear"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/RECTILINEAR"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Rectilinear"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/RECTILINEAR"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//Routing/Rectilinear"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Tree"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/TREE"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral/literal"/>
+            <leftElement href="gmfgen_1.192.ecore#//Routing/Tree"/>
+            <rightElement href="gmfgen_1.193.ecore#//Routing/TREE"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.192.ecore#//Routing/Tree"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.192.ecore#//Routing"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.192.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

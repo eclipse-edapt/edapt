@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.208.ecore" right="gmfgen_1.209.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenEditorGenerator/audits"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenEditorGenerator/audits"/>
+            <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot"/>
+            <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenEditorGenerator/audits"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenEditorGenerator/audits"/>
+            <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+              <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+              <rightElement href="gmfgen_1.209.ecore#//GenEditorGenerator/audits/@eGenericType"/>
+              <leftElement href="gmfgen_1.208.ecore#//GenEditorGenerator/audits/@eGenericType"/>
+              <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot"/>
+              <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.208.ecore#//GenEditorGenerator/audits/@eGenericType"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenEditorGenerator/audits"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.208.ecore#//GenEditorGenerator"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer"/>
+          <leftRemovedTarget href="gmfgen_1.208.ecore#//GenRuleContainerBase"/>
+          <rightRemovedTarget href="gmfgen_1.209.ecore#//GenRuleContainerBase"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateAttribute">
+              <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+              <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/lowerBound"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+            <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/audits"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/audits"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:MoveModelElement">
+              <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+              <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/audits/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+              <leftTarget href="gmfgen_1.208.ecore#//GenAuditContainer/parentContainer"/>
+              <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer/audits"/>
+            </subDiffElements>
+            <subDiffElements xsi:type="diff:DiffGroup">
+              <subDiffElements xsi:type="diff:UpdateAttribute">
+                <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+                <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/audits/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+                <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+              </subDiffElements>
+              <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/audits/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/audits/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/audits"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/lowerBound"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/containment"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/eType"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot"/>
+            <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+            <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot/categories"/>
+            <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+              <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+              <rightElement href="gmfgen_1.209.ecore#//GenAuditContainer/root/@eGenericType"/>
+              <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers/@eGenericType"/>
+              <leftTarget href="gmfgen_1.209.ecore#//GenAuditRoot"/>
+              <rightTarget href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers/@eGenericType"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer/childContainers"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/getAllRulesToTargetContextMap"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/getAllTargetedModelPackages"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/hasDiagramElementRule"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/getAllAuditContainers"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/getAllAuditRules"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditContainer"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditContainer/getPath"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.208.ecore#//GenAuditContainer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:DiffGroup">
+              <subDiffElements xsi:type="diff:UpdateAttribute">
+                <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+                <leftElement href="gmfgen_1.208.ecore#//GenAuditRule/id/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+                <rightElement href="gmfgen_1.209.ecore#//GenAuditRule/id/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+              </subDiffElements>
+              <leftParent href="gmfgen_1.208.ecore#//GenAuditRule/id/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.208.ecore#//GenAuditRule/id/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditRule/id"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditRule/container"/>
+            <rightElement href="gmfgen_1.209.ecore#//GenAuditRule/category"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfgen_1.209.ecore#//GenAuditRule/category"/>
+            <leftElement href="gmfgen_1.208.ecore#//GenAuditRule/container/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditRule/container"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.209.ecore#//GenAuditRule"/>
+          <leftElement href="gmfgen_1.208.ecore#//GenAuditRule/getContextSelectorLocalClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditRule"/>
+          <rightElement href="gmfgen_1.209.ecore#//GenAuditRule/root"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.208.ecore#//GenAuditRule"/>
+          <rightElement href="gmfgen_1.209.ecore#//GenAuditRule/contextSelectorLocalClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.208.ecore#//GenAuditRule"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.208.ecore#/"/>
+        <rightElement href="gmfgen_1.209.ecore#//GenAuditRoot"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.208.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

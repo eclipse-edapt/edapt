@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.205.ecore" right="gmfgen_1.206.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.205.ecore#//GenCommonBase"/>
+          <rightElement href="gmfgen_1.206.ecore#//GenCommonBase/sansDomain"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.205.ecore#//GenCommonBase"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.205.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

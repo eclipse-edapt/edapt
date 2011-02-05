@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+    Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        BMW Car IT - Initial API and implementation
+        Technische Universitaet Muenchen - Major refactoring and extension
+ -->
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/emf/edapt/cope/history/0.3" 
+       class = "org.eclipse.emf.edapt.cope.history.HistoryPackage"
+       genModel = "model/history.genmodel" /> 
+  </extension>
+  <extension
+        point="org.eclipse.emf.ecore.content_parser">
+     <parser
+           class="org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl"
+           contentTypeIdentifier="org.eclipse.emf.edapt.cope.history">
+     </parser>
+  </extension>
+  <extension
+        point="org.eclipse.emf.ecore.extension_parser">
+     <parser
+           class="org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl"
+           type="history">
+     </parser>
+  </extension>
+  <extension
+        point="org.eclipse.core.contenttype.contentTypes">
+     <content-type
+           base-type="org.eclipse.emf.ecore.xmi"
+           file-extensions="history"
+           id="org.eclipse.emf.edapt.cope.history"
+           name="History Content Type"
+           priority="normal">
+        <describer
+              class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
+           <parameter
+                 name="namespace"
+                 value="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+           </parameter>
+           <parameter
+                 name="kind"
+                 value="xmi">
+           </parameter>
+        </describer>
+     </content-type>
+  </extension>    
+</plugin>

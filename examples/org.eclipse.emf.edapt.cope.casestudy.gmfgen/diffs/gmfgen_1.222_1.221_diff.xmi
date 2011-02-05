@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.221.ecore" right="gmfgen_1.222.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:DiffGroup">
+              <subDiffElements xsi:type="diff:UpdateAttribute">
+                <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+                <leftElement href="gmfgen_1.221.ecore#//FeatureLabelModelFacet/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+                <rightElement href="gmfgen_1.222.ecore#//FeatureLabelModelFacet/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+              </subDiffElements>
+              <leftParent href="gmfgen_1.221.ecore#//FeatureLabelModelFacet/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.221.ecore#//FeatureLabelModelFacet/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.221.ecore#//FeatureLabelModelFacet/editPattern"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.221.ecore#//FeatureLabelModelFacet"/>
+          <rightElement href="gmfgen_1.222.ecore#//FeatureLabelModelFacet/editorPattern"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.221.ecore#//FeatureLabelModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/getAbstractParserQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/getStructuralFeatureParserQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/structuralFeatureParserClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/abstractParserClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/structuralFeaturesParserClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.222.ecore#//ProviderClassNames"/>
+          <leftElement href="gmfgen_1.221.ecore#//ProviderClassNames/getStructuralFeaturesParserQualifiedClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.221.ecore#//ProviderClassNames"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.221.ecore#//PackageNames"/>
+          <rightElement href="gmfgen_1.222.ecore#//PackageNames/parsersPackageName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.221.ecore#//PackageNames"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.221.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

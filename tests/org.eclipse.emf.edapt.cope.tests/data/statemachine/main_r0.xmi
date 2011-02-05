@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:statemachine="http://statemachine/r0">
+  <root xsi:type="statemachine:CompositeState" name="ROOT">
+    <state href="linked_r0.xmi#/0"/>
+    <state href="linked_r0.xmi#/1"/>
+  </root>
+</statemachine:StateMachine>

@@ -1,0 +1,1 @@
+inlineSuperClass(history.InitializerChange)

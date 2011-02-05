@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.215.ecore" right="gmfgen_1.216.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:MoveModelElement">
+            <rightElement href="gmfgen_1.216.ecore#//GenLink/getCreateCommandQualifiedClassName"/>
+            <leftElement href="gmfgen_1.215.ecore#//TypeLinkModelFacet/getCreateCommandQualifiedClassName"/>
+            <leftTarget href="gmfgen_1.215.ecore#//GenLink"/>
+            <rightTarget href="gmfgen_1.216.ecore#//TypeLinkModelFacet"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.215.ecore#//TypeLinkModelFacet/getCreateCommandQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:MoveModelElement">
+            <rightElement href="gmfgen_1.216.ecore#//GenLink/createCommandClassName"/>
+            <leftElement href="gmfgen_1.215.ecore#//TypeLinkModelFacet/createCommandClassName"/>
+            <leftTarget href="gmfgen_1.215.ecore#//GenLink"/>
+            <rightTarget href="gmfgen_1.216.ecore#//TypeLinkModelFacet"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.215.ecore#//TypeLinkModelFacet/createCommandClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.215.ecore#//TypeLinkModelFacet"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.215.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

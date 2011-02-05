@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/tooldef/tooldef_1.4.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/tooldef/tooldef_1.5.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="tooldef_1.4.ecore#//ItemBase"/>
+          <rightElement href="tooldef_1.5.ecore#//ItemBase"/>
+        </subDiffElements>
+        <leftParent href="tooldef_1.4.ecore#//ItemBase"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="tooldef_1.4.ecore#//ContributionItem"/>
+          <rightElement href="tooldef_1.5.ecore#//ContributionItem"/>
+        </subDiffElements>
+        <leftParent href="tooldef_1.4.ecore#//ContributionItem"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="tooldef_1.4.ecore#//Image"/>
+          <rightElement href="tooldef_1.5.ecore#//Image"/>
+        </subDiffElements>
+        <leftParent href="tooldef_1.4.ecore#//Image"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="tooldef_1.4.ecore#//StyleSelector"/>
+          <rightElement href="tooldef_1.5.ecore#//StyleSelector"/>
+        </subDiffElements>
+        <leftParent href="tooldef_1.4.ecore#//StyleSelector"/>
+      </subDiffElements>
+      <leftParent href="tooldef_1.4.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

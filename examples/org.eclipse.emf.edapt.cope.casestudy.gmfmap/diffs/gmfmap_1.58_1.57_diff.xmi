@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.57.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.58.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfmap_1.57.ecore#//CompartmentMapping/parentNode"/>
+            <rightElement href="gmfmap_1.58.ecore#//CompartmentMapping/parentNode"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfmap_1.58.ecore#//CompartmentMapping/parentNode"/>
+            <leftElement href="gmfmap_1.57.ecore#//CompartmentMapping/parentNode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.57.ecore#//CompartmentMapping/parentNode"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.57.ecore#//CompartmentMapping"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfmap_1.57.ecore#//LabelMapping/mapEntry"/>
+            <rightElement href="gmfmap_1.58.ecore#//LabelMapping/mapEntry"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfmap_1.58.ecore#//LabelMapping/mapEntry"/>
+            <leftElement href="gmfmap_1.57.ecore#//LabelMapping/mapEntry/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.57.ecore#//LabelMapping/mapEntry"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.57.ecore#//LabelMapping"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfmap_1.57.ecore#//LinkConstraints/linkMapping"/>
+            <rightElement href="gmfmap_1.58.ecore#//LinkConstraints/linkMapping"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfmap_1.58.ecore#//LinkConstraints/linkMapping"/>
+            <leftElement href="gmfmap_1.57.ecore#//LinkConstraints/linkMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%.1"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.57.ecore#//LinkConstraints/linkMapping"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.57.ecore#//LinkConstraints"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfmap_1.57.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+            <rightElement href="gmfmap_1.58.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfmap_1.58.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+            <leftElement href="gmfmap_1.57.ecore#//FeatureSeqInitializer/creatingInitializer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.57.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.57.ecore#//FeatureSeqInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfmap_1.57.ecore#//FeatureInitializer/featureSeqInitializer"/>
+            <rightElement href="gmfmap_1.58.ecore#//FeatureInitializer/featureSeqInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:RemoveModelElement">
+            <rightParent href="gmfmap_1.58.ecore#//FeatureInitializer/featureSeqInitializer"/>
+            <leftElement href="gmfmap_1.57.ecore#//FeatureInitializer/featureSeqInitializer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.57.ecore#//FeatureInitializer/featureSeqInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.57.ecore#//FeatureInitializer"/>
+      </subDiffElements>
+      <leftParent href="gmfmap_1.57.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

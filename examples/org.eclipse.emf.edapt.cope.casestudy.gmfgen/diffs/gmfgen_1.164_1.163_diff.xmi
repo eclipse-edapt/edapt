@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.163.ecore" right="gmfgen_1.164.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateAttribute">
+              <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              <leftElement href="gmfgen_1.163.ecore#//GenLinkLabel/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+              <rightElement href="gmfgen_1.164.ecore#//GenLinkLabel/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.163.ecore#//GenLinkLabel/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.163.ecore#//GenLinkLabel/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.163.ecore#//GenLinkLabel"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgen_1.164.ecore#//FeatureLinkModelFacet"/>
+          <leftElement href="gmfgen_1.163.ecore#//FeatureLinkModelFacet"/>
+          <leftRemovedTarget href="gmfgen_1.163.ecore#//FeatureModelFacet"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+            <rightElement href="gmfgen_1.164.ecore#//FeatureLinkModelFacet/@eGenericSuperTypes.0"/>
+            <leftElement href="gmfgen_1.163.ecore#//FeatureLinkModelFacet/@eGenericSuperTypes.0"/>
+            <leftTarget href="gmfgen_1.163.ecore#//LinkModelFacet"/>
+            <rightTarget href="gmfgen_1.163.ecore#//FeatureModelFacet"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.163.ecore#//FeatureLinkModelFacet/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.164.ecore#//FeatureLinkModelFacet"/>
+          <leftElement href="gmfgen_1.163.ecore#//FeatureLinkModelFacet/@eGenericSuperTypes.1"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.163.ecore#//FeatureLinkModelFacet"/>
+          <rightElement href="gmfgen_1.164.ecore#//FeatureLinkModelFacet/metaFeature"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.163.ecore#//FeatureLinkModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgen_1.164.ecore#//FeatureLabelModelFacet"/>
+          <leftElement href="gmfgen_1.163.ecore#//FeatureLabelModelFacet"/>
+          <leftRemovedTarget href="gmfgen_1.163.ecore#//FeatureModelFacet"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateAttribute">
+              <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              <leftElement href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+              <rightElement href="gmfgen_1.164.ecore#//FeatureLabelModelFacet/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+            <rightElement href="gmfgen_1.164.ecore#//FeatureLabelModelFacet/@eGenericSuperTypes.0"/>
+            <leftElement href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/@eGenericSuperTypes.0"/>
+            <leftTarget href="gmfgen_1.163.ecore#//LabelModelFacet"/>
+            <rightTarget href="gmfgen_1.163.ecore#//FeatureModelFacet"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.164.ecore#//FeatureLabelModelFacet"/>
+          <leftElement href="gmfgen_1.163.ecore#//FeatureLabelModelFacet/@eGenericSuperTypes.1"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.163.ecore#//FeatureLabelModelFacet"/>
+          <rightElement href="gmfgen_1.164.ecore#//FeatureLabelModelFacet/metaFeatures"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.163.ecore#//FeatureLabelModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:RemoveModelElement">
+        <rightParent href="gmfgen_1.164.ecore#/"/>
+        <leftElement href="gmfgen_1.163.ecore#//FeatureModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:RemoveModelElement">
+        <rightParent href="gmfgen_1.164.ecore#/"/>
+        <leftElement href="gmfgen_1.163.ecore#//CompositeFeatureModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:RemoveModelElement">
+        <rightParent href="gmfgen_1.164.ecore#/"/>
+        <leftElement href="gmfgen_1.163.ecore#//CompositeFeatureLabelModelFacet"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.163.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

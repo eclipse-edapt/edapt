@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.49.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.50.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//NeedsContainment"/>
+          <rightElement href="gmfmap_1.50.ecore#//NeedsContainment"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//NeedsContainment"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//ElementInitializer"/>
+          <rightElement href="gmfmap_1.50.ecore#//ElementInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//ElementInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//FeatureInitializer"/>
+          <rightElement href="gmfmap_1.50.ecore#//FeatureInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//FeatureInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//MenuOwner"/>
+          <rightElement href="gmfmap_1.50.ecore#//MenuOwner"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//MenuOwner"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//ToolOwner"/>
+          <rightElement href="gmfmap_1.50.ecore#//ToolOwner"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//ToolOwner"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//AppearanceSteward"/>
+          <rightElement href="gmfmap_1.50.ecore#//AppearanceSteward"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//AppearanceSteward"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//RuleBase"/>
+          <rightElement href="gmfmap_1.50.ecore#//RuleBase"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//RuleBase"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//Auditable"/>
+          <rightElement href="gmfmap_1.50.ecore#//Auditable"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//Auditable"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:UpdateAttribute">
+          <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EClass/abstract"/>
+          <leftElement href="gmfmap_1.49.ecore#//Measurable"/>
+          <rightElement href="gmfmap_1.50.ecore#//Measurable"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.49.ecore#//Measurable"/>
+      </subDiffElements>
+      <leftParent href="gmfmap_1.49.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

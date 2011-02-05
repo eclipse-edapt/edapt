@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<node:Node xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:node="node" name="EString_25976">
+  <parent href="split_2.xmi#//@children.0/@children.0/@children.0"/>
+  <sub href="split_2.xmi#//@children.0/@children.1/@children.2/@children.5/@children.0/@children.0/@children.0"/>
+  <sub href="split_2.xmi#//@children.0/@children.2/@children.3/@children.0/@children.0/@children.0/@children.0"/>
+  <source href="split_2.xmi#//@children.4/@children.1/@children.0/@children.0/@children.0/@children.1"/>
+  <source href="split_2.xmi#//@children.0/@children.1/@children.2/@children.0/@children.1/@children.1"/>
+  <source href="split_2.xmi#//@children.0/@children.1/@children.0/@children.4/@children.0"/>
+  <source href="split_2.xmi#//@children.0/@children.1/@children.1/@children.1/@children.2/@children.0"/>
+  <target href="split_2.xmi#//@children.0/@children.1/@children.1/@children.0/@children.0/@children.0/@children.2"/>
+  <next href="split_2.xmi#//@children.6/@children.0/@children.0"/>
+</node:Node>

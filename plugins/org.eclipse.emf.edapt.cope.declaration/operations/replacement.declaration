@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="replacement.groovy">
+  <operations name="replaceIdentifierByReference" description="In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element." label="Identifier to Reference">
+    <parameters classifierName="EAttribute" name="referencingAttribute" description="The referencing attribute" main="true"/>
+    <parameters classifierName="EAttribute" name="referencedAttribute" description="The referenced attribute"/>
+    <constraints label="Referencing and referenced attribute must be of the same type" booleanExpression="referencingAttribute.eType == referencedAttribute.eType "/>
+    <variables classifierName="EClass" name="referencedClass" initExpression="referencedAttribute.eContainingClass"/>
+  </operations>
+  <operations name="replaceInheritanceByDelegation" description="In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class." label="Inheritance to Delegation" deleting="true">
+    <parameters classifierName="EClass" name="subClass" description="The class from which the super class is removed" main="true"/>
+    <parameters classifierName="EClass" name="superClass" description="The super class to be removed" choiceExpression="subClass.eSuperTypes"/>
+    <parameters classifierName="EString" name="referenceName" description="The name of the reference to the super class"/>
+    <constraints label="The super class must be a super type of the sub class" booleanExpression="subClass.eSuperTypes.contains(superClass) "/>
+  </operations>
+  <operations name="introduceReferenceClass" description="In the metamodel, a reference is replaced by a reference class. More specifically, the reference class is now contained by the source class. In the model, links conforming to the reference are replaced by instances of the reference class." label="Association to Class">
+    <parameters classifierName="EReference" name="reference" description="The reference to be replaced by a reference class" main="true"/>
+    <parameters classifierName="EString" name="className" description="The name of the reference class"/>
+    <parameters classifierName="EString" name="sourceReferenceName" initExpression="null" description="The name of the opposite reference to the source class" required="false"/>
+    <parameters classifierName="EString" name="targetReferenceName" initExpression="null " description="The name of the opposite reference to the target class" required="false"/>
+    <constraints label="Reference is not allowed to be containment" booleanExpression="!reference.containment "/>
+    <constraints label="Reference has to have an opposite" booleanExpression="opposite != null "/>
+    <constraints label="Opposite reference is not allowed to be containment" booleanExpression="!opposite.containment "/>
+    <variables classifierName="EReference" name="opposite" initExpression="reference.eOpposite"/>
+  </operations>
+  <operations name="subClassesToEnumeration" description="In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal." label="Sub Classes to Enumeration">
+    <parameters classifierName="EClass" name="contextClass" description="The context class" main="true"/>
+    <parameters classifierName="EString" name="attributeName" description="The name of the enumeration attribute"/>
+    <parameters classifierName="EPackage" name="ePackage" initExpression="contextClass.ePackage" description="The package in which the enumeration is created"/>
+    <parameters classifierName="EString" name="enumName" description="The name of the enumeration"/>
+    <constraints label="The context class must be abstract" booleanExpression="!isConcrete(contextClass) "/>
+    <constraints label="The context class must have sub types" booleanExpression="!contextClass.eSubTypes.isEmpty() "/>
+    <constraints label="The sub types must not have sub types again" booleanExpression="contextClass.eSubTypes.every{c -> c.eSubTypes.isEmpty()} "/>
+  </operations>
+  <operations name="enumerationToSubClasses" description="In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute." label="Enumeration to Sub Classes">
+    <parameters classifierName="EAttribute" name="enumAttribute" description="The enumeration attribute" main="true"/>
+    <parameters classifierName="EPackage" name="ePackage" initExpression="enumAttribute.eContainingClass.ePackage " description="The package in which the subclasses are created"/>
+    <constraints label="The context class must be concrete" booleanExpression="isConcrete(contextClass) "/>
+    <constraints label="The context class must not have sub types" booleanExpression="contextClass.eSubTypes.isEmpty() "/>
+    <constraints label="The type of the attribute must be an enumeration" booleanExpression="enumeration instanceof EEnum "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="enumAttribute.eContainingClass"/>
+    <variables classifierName="EClassifier" name="enumeration" initExpression="enumAttribute.eType"/>
+  </operations>
+  <operations name="volatileToOpposite" description="In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set." label="Volatile to Opposite Reference">
+    <parameters classifierName="EReference" name="reference" description="The reference which is changed from volatile to opposite" main="true"/>
+    <parameters classifierName="EReference" name="opposite" description="The reference which is going to be the opposite"/>
+    <parameters classifierName="EBoolean" name="changeable" initExpression="true " description="Whether the reference is going to be changeable"/>
+    <constraints label="Reference must not already have an opposite" booleanExpression="reference.eOpposite == null "/>
+    <constraints label="Reference must be volatile" booleanExpression="reference.'volatile' "/>
+    <constraints label="Reference and opposite must be compatible with each other" booleanExpression="reference.eType == opposite.eContainingClass &amp;&amp; reference.eContainingClass == opposite.eType "/>
+  </operations>
+  <operations name="operationToVolatile" description="In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done." label="Operation to Volatile Feature">
+    <parameters classifierName="EOperation" name="operation" description="The operation to be transformed" main="true"/>
+    <constraints label="The operation must not have parameters" booleanExpression="operation.eParameters.isEmpty() "/>
+  </operations>
+  <operations name="notChangeableToSuppressedSetVisibility" description="In the metamodel, a reference is made changeable, and at the same time its setter is suppressed. Nothing is changed in the model." label="Not Changeable to Suppressed Set Visibility">
+    <parameters classifierName="EReference" name="reference" description="The reference to be made changeable" main="true"/>
+  </operations>
+  <operations name="suppressedSetVisibilityToNotChangeable" description="In the metamodel, the setter of a reference is made visible again, and at the same time it is made non-changeable. Nothing is changed in the model." label="Suppressed Set Visibility to Not Changeable">
+    <parameters classifierName="EReference" name="reference" description="The reference whose setter is made visible again" main="true"/>
+    <constraints label="Suppressed Set Visibility must be present" booleanExpression="entry != null "/>
+    <variables classifierName="EAnnotation" name="annotation" initExpression="reference.eAnnotations.find{a -> a.details.find{d -> d.key == &quot;suppressedSetVisibility&quot;} != null}"/>
+    <variables classifierName="EObject" name="entry" initExpression="annotation.details.find{d -> d.key == &quot;suppressedSetVisibility&quot;}"/>
+  </operations>
+</declaration:Library>

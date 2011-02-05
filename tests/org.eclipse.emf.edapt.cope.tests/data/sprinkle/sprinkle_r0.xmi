@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sprinkle:ProcessSignal xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:sprinkle="http://sprinkle/r0" name="Root">
+  <subSignal name="ProcessSignal0">
+    <port name="out0"/>
+  </subSignal>
+  <subSignal name="ProcessSignal1">
+    <subSignal name="ProcessSignal11">
+      <port name="in11"/>
+      <port name="out11"/>
+    </subSignal>
+    <port name="in1"/>
+    <port name="out1"/>
+    <connection source="//@subSignal.1/@port.0" destination="//@subSignal.1/@subSignal.0/@port.0"/>
+    <connection source="//@subSignal.1/@subSignal.0/@port.1" destination="//@subSignal.1/@port.1"/>
+  </subSignal>
+  <subSignal name="ProcessSignal3">
+    <port name="in3"/>
+    <port name="out3"/>
+  </subSignal>
+  <subSignal name="ProcessSignal2">
+    <port name="in2"/>
+  </subSignal>
+  <connection source="//@subSignal.0/@port.0" destination="//@subSignal.1/@port.0"/>
+  <connection source="//@subSignal.0/@port.0" destination="//@subSignal.2/@port.0"/>
+  <connection source="//@subSignal.1/@port.1" destination="//@subSignal.3/@port.0"/>
+  <connection source="//@subSignal.2/@port.1" destination="//@subSignal.3/@port.0"/>
+</sprinkle:ProcessSignal>

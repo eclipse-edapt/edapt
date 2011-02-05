@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ASCII"?>
+<association_to_class:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:association_to_class="association_to_class/v1" xsi:schemaLocation="association_to_class/v1 ../AssociationToClass.ecore">
+  <nodes name="a" oneToOneBackward="//@nodes.1" oneToManyBackward="//@nodes.3" manyToManyBackward="//@nodes.1 //@nodes.2 //@nodes.3 //@nodes.0" manyToManyForward="//@nodes.0"/>
+  <nodes name="b" oneToOneForward="//@nodes.0" oneToManyBackward="//@nodes.3" manyToManyForward="//@nodes.0"/>
+  <nodes name="c" oneToOneForward="//@nodes.3" oneToManyForward="//@nodes.2" oneToManyBackward="//@nodes.2" manyToManyForward="//@nodes.0"/>
+  <nodes name="d" oneToOneBackward="//@nodes.2" oneToManyForward="//@nodes.0 //@nodes.1" manyToManyForward="//@nodes.0"/>
+</association_to_class:Root>

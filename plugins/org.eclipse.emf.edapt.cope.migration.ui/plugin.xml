@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<!--
+    Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        BMW Car IT - Initial API and implementation
+        Technische Universitaet Muenchen - Major refactoring and extension
+ -->
+
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.emf.edapt.cope"
+            defaultHandler="org.eclipse.emf.edapt.cope.migration.ui.MigrateHandler"
+            id="org.eclipse.emf.edapt.cope.Migrate"
+            name="Migrate">
+      </command>
+      <command
+            categoryId="org.eclipse.emf.edapt.cope"
+            defaultHandler="org.eclipse.emf.edapt.cope.migration.ui.LoadModelHandler"
+            id="org.eclipse.emf.edapt.cope.LoadModel"
+            name="Load Model">
+      </command>
+      <command
+            categoryId="org.eclipse.emf.edapt.cope"
+            defaultHandler="org.eclipse.emf.edapt.cope.migration.ui.RestoreBackupHandler"
+            id="org.eclipse.emf.edapt.cope.RestoreBackup"
+            name="Restore Backup">
+      </command>
+      <command
+            categoryId="org.eclipse.emf.edapt.cope"
+            defaultHandler="org.eclipse.emf.edapt.cope.migration.ui.RegisterMetamodelHandler"
+            id="org.eclipse.emf.edapt.cope.RegisterMetamodel"
+            name="Register Metamodel">
+      </command>
+      <category
+            id="org.eclipse.emf.edapt.cope"
+            name="COPE">
+      </category>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="org.eclipse.emf.edapt.cope.menu"
+               label="COPE">
+            <command
+                  commandId="org.eclipse.emf.edapt.cope.Migrate"
+                  label="Migrate"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.emf.edapt.cope.LoadModel"
+                  label="Load Model"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.emf.edapt.cope.RestoreBackup"
+                  label="Restore Backup"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <reference
+                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                  </reference>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.emf.edapt.cope.RegisterMetamodel"
+                  label="Register Metamodel"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate>
+                        <adapt
+                              type="org.eclipse.core.resources.IFile">
+                           <test
+                                 property="org.eclipse.core.resources.extension"
+                                 value="ecore">
+                           </test>
+                        </adapt>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+         <with
+               variable="selection">
+            <iterate
+                  ifEmpty="false">
+               <adapt
+                     type="org.eclipse.core.resources.IResource">
+               </adapt>
+            </iterate>
+         </with>
+      </definition>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.eclipse.emf.edapt.cope.Migrate"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+M">
+      </key>
+      <key
+            commandId="org.eclipse.emf.edapt.cope.LoadModel"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+L">
+      </key>
+      <key
+            commandId="org.eclipse.emf.edapt.cope.RestoreBackup"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M3+R">
+      </key>
+   </extension>
+</plugin>

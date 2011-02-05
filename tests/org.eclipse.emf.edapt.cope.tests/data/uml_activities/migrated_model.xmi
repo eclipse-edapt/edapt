@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ASCII"?>
+<minuml2:Activity xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:minuml2="minuml2" name="graph">
+  <group name="Customer" nodes="//@node.1 //@node.2 //@node.9 //@node.11"/>
+  <group name="Sales" nodes="//@node.3 //@node.4 //@node.7 //@node.10 //@node.12"/>
+  <group name="Stockroom" nodes="//@node.5 //@node.6 //@node.14 //@node.15 //@node.13 //@node.8"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.0" target="//@node.1"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.1" target="//@node.2"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.2" target="//@node.4"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.4" target="//@node.3"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.3" target="//@node.6"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.5" target="//@node.8"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.8" target="//@node.7"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.2" target="//@node.9"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.9" target="//@node.7"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.7" target="//@node.10"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.10" target="//@node.12"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.12" target="//@node.11"/>
+  <edge xsi:type="minuml2:ObjectFlow" source="//@node.6" target="//@node.13"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.13" target="//@node.15">
+    <guard language="">
+      <body>in stock</body>
+    </guard>
+  </edge>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.13" target="//@node.14">
+    <guard language="">
+      <body>not in stock</body>
+    </guard>
+  </edge>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.15" target="//@node.5"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.14" target="//@node.15"/>
+  <edge xsi:type="minuml2:ControlFlow" source="//@node.11" target="//@node.16"/>
+  <node xsi:type="minuml2:InitialNode" name="pk_initial1" outgoing="//@edge.0"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Request service" incoming="//@edge.0" outgoing="//@edge.1"/>
+  <node xsi:type="minuml2:ForkNode" name="pk_fork1" incoming="//@edge.1" outgoing="//@edge.2 //@edge.7"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Take order" incoming="//@edge.3" outgoing="//@edge.4"/>
+  <node xsi:type="minuml2:ObjectNode" name="Placed Order" incoming="//@edge.2" outgoing="//@edge.3"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Fill order" incoming="//@edge.15" outgoing="//@edge.5"/>
+  <node xsi:type="minuml2:ObjectNode" name="Entered Order" incoming="//@edge.4" outgoing="//@edge.12"/>
+  <node xsi:type="minuml2:JoinNode" name="pk_join1" incoming="//@edge.6 //@edge.8" outgoing="//@edge.9"/>
+  <node xsi:type="minuml2:ObjectNode" name="Filled Order" incoming="//@edge.5" outgoing="//@edge.6"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Pay" incoming="//@edge.7" outgoing="//@edge.8"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Deliver order" incoming="//@edge.9" outgoing="//@edge.10"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Collect order" incoming="//@edge.11" outgoing="//@edge.17"/>
+  <node xsi:type="minuml2:ObjectNode" name="Delivered Order" incoming="//@edge.10" outgoing="//@edge.11"/>
+  <node xsi:type="minuml2:DecisionNode" name="pk_junction1" incoming="//@edge.12" outgoing="//@edge.13 //@edge.14"/>
+  <node xsi:type="minuml2:OpaqueAction" name="Restock" incoming="//@edge.14" outgoing="//@edge.16"/>
+  <node xsi:type="minuml2:DecisionNode" name="pk_junction2" incoming="//@edge.13 //@edge.16" outgoing="//@edge.15"/>
+  <node xsi:type="minuml2:ActivityFinalNode" name="Finished" incoming="//@edge.17"/>
+</minuml2:Activity>

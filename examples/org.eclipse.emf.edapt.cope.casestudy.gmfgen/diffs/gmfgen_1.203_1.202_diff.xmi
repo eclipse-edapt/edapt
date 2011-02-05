@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.202.ecore" right="gmfgen_1.203.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.202.ecore#//GenLink/getSources"/>
+            <rightElement href="gmfgen_1.203.ecore#//GenLink/getAssistantSources"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.202.ecore#//GenLink/getSources"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.202.ecore#//GenLink/getTargets"/>
+            <rightElement href="gmfgen_1.203.ecore#//GenLink/getAssistantTargets"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.202.ecore#//GenLink/getTargets"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.202.ecore#//GenLink"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.202.ecore#//LinkModelFacet/getSourceTypes"/>
+            <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getSourceType"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+            <leftElement href="gmfgen_1.202.ecore#//LinkModelFacet/getSourceTypes"/>
+            <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getSourceType"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.202.ecore#//LinkModelFacet/getSourceTypes"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ENamedElement/name"/>
+            <leftElement href="gmfgen_1.202.ecore#//LinkModelFacet/getTargetTypes"/>
+            <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getTargetType"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//ETypedElement/upperBound"/>
+            <leftElement href="gmfgen_1.202.ecore#//LinkModelFacet/getTargetTypes"/>
+            <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getTargetType"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.202.ecore#//LinkModelFacet/getTargetTypes"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.202.ecore#//LinkModelFacet"/>
+          <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getAssistantSourceTypes"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.202.ecore#//LinkModelFacet"/>
+          <rightElement href="gmfgen_1.203.ecore#//LinkModelFacet/getAssistantTargetTypes"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.202.ecore#//LinkModelFacet"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.202.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

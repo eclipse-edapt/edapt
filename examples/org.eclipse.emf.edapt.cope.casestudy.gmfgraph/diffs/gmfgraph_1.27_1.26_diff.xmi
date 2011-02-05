@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfgraph/gmfgraph_1.26.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfgraph/gmfgraph_1.27.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Figure"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Figure"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+            <rightElement href="gmfgraph_1.27.ecore#//Figure/@eGenericSuperTypes.0"/>
+            <leftElement href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.0"/>
+            <leftTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+            <rightTarget href="gmfgraph_1.27.ecore#//FigureMarker"/>
+          </subDiffElements>
+          <leftParent href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+            <rightElement href="gmfgraph_1.27.ecore#//Figure/@eGenericSuperTypes.1"/>
+            <leftElement href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.1"/>
+            <leftTarget href="gmfgraph_1.26.ecore#//FigureMarker"/>
+            <rightTarget href="gmfgraph_1.27.ecore#//FigureHandle"/>
+          </subDiffElements>
+          <leftParent href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.1"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EGenericType/eClassifier"/>
+            <rightElement href="gmfgraph_1.27.ecore#//Figure/@eGenericSuperTypes.2"/>
+            <leftElement href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.2"/>
+            <leftTarget href="gmfgraph_1.26.ecore#//FigureHandle"/>
+            <rightTarget href="gmfgraph_1.27.ecore#//Identity"/>
+          </subDiffElements>
+          <leftParent href="gmfgraph_1.26.ecore#//Figure/@eGenericSuperTypes.2"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Figure"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Figure/@eGenericSuperTypes.3"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Figure"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//CustomAttribute"/>
+          <leftElement href="gmfgraph_1.26.ecore#//CustomAttribute"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//CustomAttribute"/>
+          <rightElement href="gmfgraph_1.27.ecore#//CustomAttribute/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//CustomAttribute"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Color"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Color"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Color"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Color/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Color"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Font"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Font"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Font"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Font/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Font"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Point"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Point"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Point"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Point/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Point"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Dimension"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Dimension"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Dimension"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Dimension/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Dimension"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Insets"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Insets"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Insets"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Insets/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Insets"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Border"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Border"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Border"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Border/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Border"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//LayoutData"/>
+          <leftElement href="gmfgraph_1.26.ecore#//LayoutData"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//LayoutData"/>
+          <rightElement href="gmfgraph_1.27.ecore#//LayoutData/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//LayoutData"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddReferenceValue">
+          <reference href="http://www.eclipse.org/emf/2002/Ecore#//EClass/eSuperTypes"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Layout"/>
+          <leftElement href="gmfgraph_1.26.ecore#//Layout"/>
+          <rightAddedTarget href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgraph_1.26.ecore#//Layout"/>
+          <rightElement href="gmfgraph_1.27.ecore#//Layout/@eGenericSuperTypes.0"/>
+        </subDiffElements>
+        <leftParent href="gmfgraph_1.26.ecore#//Layout"/>
+      </subDiffElements>
+      <leftParent href="gmfgraph_1.26.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ASCII"?>
+<lit_petriNets:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lit_petriNets="lit_petriNets">
+  <places name="Start" out="//@arcs.3"/>
+  <places name="Mid 1" out="//@arcs.4" in="//@arcs.0"/>
+  <places name="Mid 2" out="//@arcs.5" in="//@arcs.1"/>
+  <places name="End" in="//@arcs.2"/>
+  <transitions in="//@arcs.3" out="//@arcs.0 //@arcs.1" name="Split"/>
+  <transitions in="//@arcs.4 //@arcs.5" out="//@arcs.2" name="Join"/>
+  <arcs xsi:type="lit_petriNets:TPArc" src="//@transitions.0" dst="//@places.1"/>
+  <arcs xsi:type="lit_petriNets:TPArc" src="//@transitions.0" dst="//@places.2"/>
+  <arcs xsi:type="lit_petriNets:TPArc" src="//@transitions.1" dst="//@places.3"/>
+  <arcs xsi:type="lit_petriNets:PTArc" src="//@places.0" dst="//@transitions.0"/>
+  <arcs xsi:type="lit_petriNets:PTArc" src="//@places.1" dst="//@transitions.1"/>
+  <arcs xsi:type="lit_petriNets:PTArc" src="//@places.2" dst="//@transitions.1"/>
+</lit_petriNets:Net>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="ASCII"?>
+<statemachine:StateMachine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:statemachine="http://statemachine/r0" xsi:schemaLocation="http://statemachine/r0 release0.ecore">
+  <root xsi:type="statemachine:CompositeState" name="EString_7577">
+    <outgoing target="//@root/@state.2/@state.0" trigger="EString_60588" effect="EString_40496"/>
+    <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1" trigger="EString_68254"/>
+    <outgoing target="//@root/@state.2/@state.0/@state.0/@state.1/@state.0/@state.0" trigger="EString_32586" effect="EString_65288"/>
+    <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1" trigger="EString_25149" effect="EString_1835"/>
+    <outgoing target="//@root/@state.2/@state.0/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0" trigger="EString_64067" effect="EString_96101"/>
+    <state name="EString_17052">
+      <outgoing target="//@root/@state.2"/>
+      <outgoing target="//@root" trigger="EString_4568" effect="EString_95465"/>
+      <outgoing target="//@root/@state.2/@state.0/@state.0/@state.1/@state.0" trigger="EString_28426" effect="EString_91068"/>
+      <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.2/@state.2" effect="EString_34906"/>
+      <outgoing target="//@root/@state.1/@state.0/@state.0" trigger="EString_70031"/>
+      <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@state.0" trigger="EString_59568" effect="EString_69238"/>
+    </state>
+    <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.0/@outgoing.0" name="EString_68522">
+      <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.0" effect="EString_65329"/>
+      <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.0" trigger="EString_55982" effect="EString_49160"/>
+      <state xsi:type="statemachine:CompositeState" name="EString_3578">
+        <state name="EString_691">
+          <outgoing target="//@root/@state.2/@state.0/@state.0/@state.1/@state.0/@state.0" trigger="EString_91399" effect="EString_12139"/>
+          <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.0" effect="EString_37856"/>
+          <outgoing target="//@root/@state.1" effect="EString_5625"/>
+          <outgoing target="//@root/@state.0" trigger="EString_9872" effect="EString_21688"/>
+        </state>
+        <state xsi:type="statemachine:CompositeState" name="EString_16396">
+          <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0" trigger="EString_58812" effect="EString_71131"/>
+          <outgoing target="//@root/@state.1/@state.0" effect="EString_41190"/>
+          <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0/@state.0/@outgoing.0" name="EString_29350">
+            <state xsi:type="statemachine:CompositeState" name="EString_65697">
+              <outgoing target="//@root/@state.2/@state.0" trigger="EString_14006" effect="EString_28372"/>
+              <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0" trigger="EString_75137"/>
+              <state name="EString_80209">
+                <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2" trigger="EString_9185" effect="EString_7891"/>
+                <outgoing target="//@root/@state.0" trigger="EString_82054" effect="EString_44491"/>
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@state.1/@state.0" trigger="EString_45259"/>
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.2/@state.0" trigger="EString_48788"/>
+              </state>
+            </state>
+            <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.0/@outgoing.1 //@root/@state.1/@state.0/@state.1/@state.0/@state.0/@outgoing.1 //@root/@state.2/@state.0/@state.0/@state.0/@outgoing.0" name="EString_12372">
+              <state incoming="//@root/@state.1/@state.0/@state.1/@outgoing.1 //@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@state.1/@state.0/@state.0/@outgoing.0" name="EString_41056">
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.0" trigger="EString_67110" effect="EString_57799"/>
+              </state>
+              <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@outgoing.1" name="EString_73645">
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@state.1/@state.0/@state.0" effect="EString_51392"/>
+                <state name="EString_41873"/>
+                <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@outgoing.1" name="EString_56258">
+                  <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.0/@state.0/@outgoing.1" name="EString_17432">
+                    <state incoming="//@root/@state.1/@state.0/@state.0/@outgoing.3 //@root/@state.1/@state.0/@state.0/@outgoing.2 //@root/@state.1/@state.0/@state.1/@outgoing.0" name="EString_632">
+                      <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0/@state.0" trigger="EString_18589" effect="EString_17223"/>
+                    </state>
+                  </state>
+                </state>
+              </state>
+            </state>
+            <state xsi:type="statemachine:CompositeState" name="EString_83255">
+              <outgoing target="//@root/@state.2" trigger="EString_11985"/>
+              <state incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@outgoing.1" name="EString_43488"/>
+              <state incoming="//@root/@state.1/@state.0/@state.0/@outgoing.1 //@root/@state.2/@state.0/@state.0/@outgoing.0" name="EString_60331"/>
+              <state xsi:type="statemachine:CompositeState" name="EString_17572">
+                <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@outgoing.0" name="EString_75314">
+                  <state name="EString_19804"/>
+                </state>
+              </state>
+            </state>
+            <state xsi:type="statemachine:CompositeState" name="EString_41960">
+              <state xsi:type="statemachine:CompositeState" name="EString_3042">
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.2/@state.0" effect="EString_88853"/>
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.3" trigger="EString_89814" effect="EString_53762"/>
+                <state incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@outgoing.0 //@root/@state.1/@outgoing.1" name="EString_43201">
+                  <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0" trigger="EString_71736"/>
+                  <outgoing target="//@root/@state.2/@state.0/@state.0/@state.1/@state.0/@state.0/@state.0" trigger="EString_11369"/>
+                </state>
+              </state>
+            </state>
+          </state>
+        </state>
+      </state>
+    </state>
+    <state xsi:type="statemachine:CompositeState" name="EString_19182">
+      <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@outgoing.1" name="EString_34191">
+        <state xsi:type="statemachine:CompositeState" name="EString_34016">
+          <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0" trigger="EString_84624"/>
+          <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.0/@outgoing.0" name="EString_46330">
+            <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@state.0" trigger="EString_97318" effect="EString_30469"/>
+            <state xsi:type="statemachine:CompositeState" name="EString_14841">
+              <outgoing target="//@root" trigger="EString_37711"/>
+              <state name="EString_6144">
+                <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0" trigger="EString_5489" effect="EString_75163"/>
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@state.1/@state.0" trigger="EString_2829" effect="EString_30004"/>
+              </state>
+              <state xsi:type="statemachine:CompositeState" name="EString_33485">
+                <outgoing target="//@root/@state.0" effect="EString_36853"/>
+                <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.0/@state.0"/>
+                <state incoming="//@root/@state.1/@state.0/@state.0/@outgoing.3 //@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@outgoing.1 //@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.0/@outgoing.0" name="EString_15596">
+                  <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0"/>
+                </state>
+                <state incoming="//@root/@state.1/@state.0/@state.0/@outgoing.0" name="EString_93767"/>
+              </state>
+              <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@state.0/@state.0/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.0/@state.0/@outgoing.1" name="EString_98142">
+                <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.0/@state.0/@outgoing.0" name="EString_45162">
+                  <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@state.0/@outgoing.0 //@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@outgoing.0 //@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@state.0/@outgoing.0 //@root/@state.0/@outgoing.4 //@root/@state.1/@outgoing.1 //@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.2/@state.0/@state.1/@state.0/@state.0/@outgoing.0" name="EString_57447">
+                    <state incoming="//@root/@state.1/@state.0/@state.1/@outgoing.1 //@root/@state.2/@state.0/@state.0/@state.1/@state.0/@state.0/@outgoing.0" name="EString_52072"/>
+                  </state>
+                  <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.0/@outgoing.1 //@root/@state.1/@state.0/@state.0/@outgoing.2" name="EString_88626">
+                    <state xsi:type="statemachine:CompositeState" name="EString_14190">
+                      <outgoing target="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.0" effect="EString_77180"/>
+                      <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@state.0/@outgoing.0 //@root/@state.2/@state.0/@state.0/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@outgoing.0 //@root/@outgoing.2" name="EString_2584">
+                        <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@state.0" trigger="EString_51951" effect="EString_21560"/>
+                        <state xsi:type="statemachine:CompositeState" name="EString_9631">
+                          <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@outgoing.1 //@root/@state.0/@outgoing.0 //@root/@state.1/@state.0/@state.1/@state.0/@state.3/@state.0/@state.0/@outgoing.0 //@root/@state.2/@state.0/@state.0/@outgoing.0 //@root/@outgoing.3 //@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.1/@outgoing.0 //@root/@outgoing.4" name="EString_53643">
+                            <state incoming="//@root/@outgoing.4" name="EString_27524">
+                              <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.0"/>
+                            </state>
+                          </state>
+                        </state>
+                      </state>
+                    </state>
+                    <state name="EString_94257"/>
+                    <state xsi:type="statemachine:CompositeState" name="EString_96294">
+                      <state xsi:type="statemachine:CompositeState" incoming="//@root/@outgoing.1 //@root/@outgoing.2 //@root/@state.2/@state.0/@state.0/@state.0/@outgoing.0" name="EString_87555">
+                        <state incoming="//@root/@state.2/@state.0/@state.0/@state.0/@state.0/@state.0/@outgoing.0 //@root/@state.0/@outgoing.5" name="EString_94165"/>
+                      </state>
+                    </state>
+                  </state>
+                </state>
+              </state>
+            </state>
+          </state>
+          <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.0/@outgoing.2" name="EString_61532">
+            <state xsi:type="statemachine:CompositeState" name="EString_5385">
+              <state xsi:type="statemachine:CompositeState" name="EString_92854">
+                <outgoing target="//@root/@state.1/@state.0/@state.1/@state.0/@state.1/@state.1/@state.0" trigger="EString_61926"/>
+                <state xsi:type="statemachine:CompositeState" incoming="//@root/@state.1/@state.0/@state.0/@outgoing.1" name="EString_26993">
+                  <state name="EString_25570"/>
+                </state>
+              </state>
+              <state name="EString_48966"/>
+            </state>
+          </state>
+        </state>
+      </state>
+    </state>
+  </root>
+</statemachine:StateMachine>

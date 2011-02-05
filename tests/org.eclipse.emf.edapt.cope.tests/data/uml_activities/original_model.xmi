@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<minuml1:ActivityGraph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:minuml1="minuml1" name="graph">
+  <top xsi:type="minuml1:CompositeState" name="top">
+    <subvertex xsi:type="minuml1:Pseudostate" name="pk_initial1" outgoing="//@transitions.0"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Request service" outgoing="//@transitions.1" incoming="//@transitions.0"/>
+    <subvertex xsi:type="minuml1:Pseudostate" name="pk_fork1" outgoing="//@transitions.2 //@transitions.7" incoming="//@transitions.1" kind="fork"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Take order" outgoing="//@transitions.4" incoming="//@transitions.3"/>
+    <subvertex xsi:type="minuml1:ObjectFlowState" name="Placed Order" outgoing="//@transitions.3" incoming="//@transitions.2"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Fill order" outgoing="//@transitions.5" incoming="//@transitions.15"/>
+    <subvertex xsi:type="minuml1:ObjectFlowState" name="Entered Order" outgoing="//@transitions.12" incoming="//@transitions.4"/>
+    <subvertex xsi:type="minuml1:Pseudostate" name="pk_join1" outgoing="//@transitions.9" incoming="//@transitions.6 //@transitions.8" kind="join"/>
+    <subvertex xsi:type="minuml1:ObjectFlowState" name="Filled Order" outgoing="//@transitions.6" incoming="//@transitions.5"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Pay" outgoing="//@transitions.8" incoming="//@transitions.7"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Deliver order" outgoing="//@transitions.10" incoming="//@transitions.9"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Collect order" outgoing="//@transitions.17" incoming="//@transitions.11"/>
+    <subvertex xsi:type="minuml1:ObjectFlowState" name="Delivered Order" outgoing="//@transitions.11" incoming="//@transitions.10"/>
+    <subvertex xsi:type="minuml1:Pseudostate" name="pk_junction1" outgoing="//@transitions.13 //@transitions.14" incoming="//@transitions.12" kind="junction"/>
+    <subvertex xsi:type="minuml1:ActionState" name="Restock" outgoing="//@transitions.16" incoming="//@transitions.14"/>
+    <subvertex xsi:type="minuml1:Pseudostate" name="pk_junction2" outgoing="//@transitions.15" incoming="//@transitions.13 //@transitions.16" kind="junction"/>
+    <subvertex xsi:type="minuml1:FinalState" name="Finished" incoming="//@transitions.17"/>
+  </top>
+  <transitions source="//@top/@subvertex.0" target="//@top/@subvertex.1"/>
+  <transitions source="//@top/@subvertex.1" target="//@top/@subvertex.2"/>
+  <transitions source="//@top/@subvertex.2" target="//@top/@subvertex.4"/>
+  <transitions source="//@top/@subvertex.4" target="//@top/@subvertex.3"/>
+  <transitions source="//@top/@subvertex.3" target="//@top/@subvertex.6"/>
+  <transitions source="//@top/@subvertex.5" target="//@top/@subvertex.8"/>
+  <transitions source="//@top/@subvertex.8" target="//@top/@subvertex.7"/>
+  <transitions source="//@top/@subvertex.2" target="//@top/@subvertex.9"/>
+  <transitions source="//@top/@subvertex.9" target="//@top/@subvertex.7"/>
+  <transitions source="//@top/@subvertex.7" target="//@top/@subvertex.10"/>
+  <transitions source="//@top/@subvertex.10" target="//@top/@subvertex.12"/>
+  <transitions source="//@top/@subvertex.12" target="//@top/@subvertex.11"/>
+  <transitions source="//@top/@subvertex.6" target="//@top/@subvertex.13"/>
+  <transitions source="//@top/@subvertex.13" target="//@top/@subvertex.15">
+    <guard name="in stock">
+      <expression language="" body="in stock"/>
+    </guard>
+  </transitions>
+  <transitions source="//@top/@subvertex.13" target="//@top/@subvertex.14">
+    <guard name="not in stock">
+      <expression language="" body="not in stock"/>
+    </guard>
+  </transitions>
+  <transitions source="//@top/@subvertex.15" target="//@top/@subvertex.5"/>
+  <transitions source="//@top/@subvertex.14" target="//@top/@subvertex.15"/>
+  <transitions source="//@top/@subvertex.11" target="//@top/@subvertex.16"/>
+  <partition name="Customer" contents="//@top/@subvertex.1 //@top/@subvertex.2 //@top/@subvertex.9 //@top/@subvertex.11"/>
+  <partition name="Sales" contents="//@top/@subvertex.3 //@top/@subvertex.4 //@top/@subvertex.7 //@top/@subvertex.10 //@top/@subvertex.12"/>
+  <partition name="Stockroom" contents="//@top/@subvertex.5 //@top/@subvertex.6 //@top/@subvertex.14 //@top/@subvertex.15 //@top/@subvertex.13 //@top/@subvertex.8"/>
+</minuml1:ActivityGraph>

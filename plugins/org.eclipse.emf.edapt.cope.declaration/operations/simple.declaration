@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="simple.groovy">
+  <operations name="rename" description="In the metamodel, an element is renamed. In the model, nothing is changed." label="Rename">
+    <parameters classifierName="ENamedElement" name="element" description="The metamodel element to be renamed" main="true"/>
+    <parameters classifierName="EString" name="name" initExpression="element.name " description="The new name"/>
+    <constraints label="The name must not be already defined by the children of the element's parent." booleanExpression="element.eContainer() == null || element.eContainer().eContents().findAll{e -> e instanceof ENamedElement}.every{n -> !n.name.equals(name)} "/>
+  </operations>
+  <operations name="changeAttributeType" description="In the metamodel, the type of an attribute is changed. In the model, the values are migrated based on EMF's default serialization." label="Change Attribute Type">
+    <parameters classifierName="EAttribute" name="attribute" description="The attribute whose type is changed" main="true"/>
+    <parameters classifierName="EDataType" name="type" description="The new type of the attribute"/>
+  </operations>
+  <operations name="moveClassifier" description="In the metamodel, a classifier is moved to a different package. In the model, nothing is changed." label="Move Classifier">
+    <parameters classifierName="EClassifier" name="classifier" description="The classifier to be moved" main="true"/>
+    <parameters classifierName="EPackage" name="targetPackage" description="The package to which the classifier is moved"/>
+    <constraints label="The classifier must not be already part of the target package" booleanExpression="classifier.ePackage != targetPackage "/>
+    <constraints label="A classifier with the same name exists in the target package" booleanExpression="targetPackage.getEClassifier(classifier.name) == null "/>
+  </operations>
+  <operations name="makeContainment" description="In the metamodel, a reference is made containment. In the model, its values are replaced by copies." label="Make Reference Containment">
+    <parameters classifierName="EReference" name="reference" description="The reference" main="true"/>
+    <constraints label="The reference must not already be containment." booleanExpression="!reference.containment "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="reference.eContainingClass"/>
+  </operations>
+  <operations name="makeAbstract" description="In the metamodel, a class is made abstract. In a model, instances of this class are migrated to a chosen subclass." label="Make Class Abstract">
+    <parameters classifierName="EClass" name="eClass" description="The class to be made abstract" main="true"/>
+    <parameters classifierName="EClass" name="subClass" description="The subclass to which instances are migrated"/>
+    <constraints label="The class is not yet abstract" booleanExpression="!eClass.'abstract' "/>
+    <constraints label="The class has to be a super type of the sub class" booleanExpression="subClass.eAllSuperTypes.contains(eClass) "/>
+  </operations>
+  <operations name="dropOpposite" description="In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done." label="Drop Opposite Relationship">
+    <parameters classifierName="EReference" name="reference" description="The reference whose opposite relationship should be dropped" main="true"/>
+    <constraints label="Reference must have an opposite" booleanExpression="reference.eOpposite != null "/>
+  </operations>
+  <operations name="dropContainment" description="In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class." label="Drop Containment">
+    <parameters classifierName="EReference" name="reference" description="The reference whose containment is dropped" main="true"/>
+    <parameters classifierName="EClass" name="containerClass" description="The container class in which the containment reference is created"/>
+    <parameters classifierName="EString" name="containerReferenceName" description="The name of the new containment reference"/>
+    <constraints label="The reference must be containment" booleanExpression="reference.containment "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="reference.eContainingClass"/>
+  </operations>
+  <operations name="document" description="In the metamodel, a metamodel element is documented. Nothing is changed in the model." label="Document Metamodel Element">
+    <parameters classifierName="EModelElement" name="element" description="The metamodel element to be documented" main="true"/>
+    <parameters classifierName="EString" name="documentation" initExpression="entry.value " description="The comment for documentation"/>
+  </operations>
+  <operations name="makeFeatureVolatile" description="In the metamodel, a feature is made volatile. In the model, its values have to be deleted." label="Make Feature Volatile" deleting="true">
+    <parameters classifierName="EStructuralFeature" name="feature" description="The feature to be made volatile" main="true"/>
+    <parameters classifierName="EBoolean" name="trans" initExpression="true" description="Whether the feature is transient"/>
+    <parameters classifierName="EBoolean" name="derived" initExpression="true" description="Whether the feature is derived"/>
+    <parameters classifierName="EBoolean" name="changeable" initExpression="false " description="Whether the feature is changeable"/>
+    <constraints label="Feature must not be volatile" booleanExpression="!feature.'volatile' "/>
+  </operations>
+</declaration:Library>

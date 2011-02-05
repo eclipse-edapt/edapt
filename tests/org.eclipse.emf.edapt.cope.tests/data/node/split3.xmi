@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="ASCII"?>
+<node:Node xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:node="node" name="EString_30445">
+  <parent href="split.xmi#//@children.0/@children.0/@children.1/@children.3/@children.0/@children.0/@children.0"/>
+  <children name="EString_65472">
+    <children name="EString_74491">
+      <super href="split.xmi#//@children.3/@children.0/@children.1"/>
+      <source href="split.xmi#//@children.2/@children.0/@children.0/@children.3"/>
+      <source href="split.xmi#//@children.0/@children.1/@children.2/@children.0/@children.0/@children.0/@children.0/@children.1"/>
+      <target href="split.xmi#//@children.0/@children.1"/>
+      <target href="split.xmi#//@children.5/@children.0/@children.1"/>
+      <prev href="split.xmi#//@children.3/@children.0/@children.1/@children.0/@children.1"/>
+    </children>
+    <super href="split.xmi#//@children.0/@children.1/@children.1/@children.2/@children.1"/>
+    <source href="split.xmi#//@children.0/@children.0/@children.0/@children.2/@children.1/@children.1"/>
+    <target href="split.xmi#//@children.0/@children.0/@children.1/@children.0/@children.0/@children.0/@children.3/@children.0/@children.0"/>
+    <prev href="split.xmi#//@children.2/@children.4"/>
+  </children>
+  <super href="split.xmi#//@children.0/@children.1/@children.2/@children.0/@children.0"/>
+  <source href="split.xmi#//@children.0/@children.1/@children.0/@children.1/@children.0/@children.0/@children.2/@children.2"/>
+  <source href="split.xmi#//@children.0/@children.1/@children.2/@children.0/@children.0/@children.0/@children.0/@children.1"/>
+  <source href="split.xmi#//@children.4/@children.0/@children.1"/>
+  <target href="split.xmi#//@children.0/@children.0/@children.0/@children.3/@children.0/@children.4/@children.2/@children.0/@children.0"/>
+  <prev href="split.xmi#//@children.0/@children.0/@children.0/@children.2/@children.3/@children.0/@children.0"/>
+</node:Node>

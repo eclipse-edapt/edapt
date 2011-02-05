@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2008-11-23T22:45:42.562+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="component.ecore#/">
+        <changes xsi:type="history:Set" element="component.ecore#/" featureName="name"
+            dataValue="component"/>
+        <changes xsi:type="history:Set" element="component.ecore#/" featureName="nsURI"
+            dataValue="http://component/r0"/>
+        <changes xsi:type="history:Set" element="component.ecore#/" featureName="nsPrefix"
+            dataValue="component"/>
+      </changes>
+      <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
+          element="component.ecore#//Signature">
+        <changes xsi:type="history:Set" element="component.ecore#//Signature" featureName="name"
+            dataValue="Signature"/>
+      </changes>
+      <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
+          element="component.ecore#//Port">
+        <changes xsi:type="history:Set" element="component.ecore#//Port" featureName="name"
+            dataValue="Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="component.ecore#//Signature" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.2/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+            featureName="name" dataValue="inPort"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+            featureName="eType" referenceValue="component.ecore#//Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="component.ecore#//Signature" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.3/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+            featureName="name" dataValue="outPort"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+            featureName="eType" referenceValue="component.ecore#//Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="component.ecore#//Port" referenceName="eStructuralFeatures"
+          element="component.ecore#//Port/name">
+        <changes xsi:type="history:Set" element="component.ecore#//Port/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Port/name" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Port/name" featureName="upperBound"
+            dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Port/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2008-11-23T22:49:28.078+0100">
+    <changes xsi:type="history:MigrationChange" migration="newClass(component, &quot;InPort&quot;, [component.Port])&#xA;newClass(component, &quot;OutPort&quot;, [component.Port])&#xA;portClass = component.Port&#xA;portClass.'abstract' = true&#xA;inPortReference = component.Signature.inPort&#xA;inPortClass = component.InPort&#xA;inPortReference.eType = inPortClass&#xA;outPortReference = component.Signature.outPort&#xA;outPortClass = component.OutPort&#xA;outPortReference.eType = outPortClass&#xA;&#xA;defaultPackage = component&#xA;&#xA;for(signature in Signature.instances) {&#xA;&#x9;for(port in signature.inPort) {&#xA;&#x9;&#x9;port.migrate(InPort)&#xA;&#x9;}&#xA;&#x9;for(port in signature.outPort) {&#xA;&#x9;&#x9;port.migrate(OutPort)&#xA;&#x9;}&#xA;}">
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
+            element="component.ecore#//InPort">
+          <changes xsi:type="history:Set" element="component.ecore#//InPort" featureName="name"
+              dataValue="InPort"/>
+          <changes xsi:type="history:Add" element="component.ecore#//InPort" featureName="eSuperTypes"
+              referenceValue="component.ecore#//Port"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="component.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>InPort</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="component.ecore#//Port"/>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
+            element="component.ecore#//OutPort">
+          <changes xsi:type="history:Set" element="component.ecore#//OutPort" featureName="name"
+              dataValue="OutPort"/>
+          <changes xsi:type="history:Add" element="component.ecore#//OutPort" featureName="eSuperTypes"
+              referenceValue="component.ecore#//Port"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="component.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>OutPort</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="component.ecore#//Port"/>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:Set" element="component.ecore#//Port" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.2/@changes.0/@element"
+          featureName="eType" referenceValue="component.ecore#//InPort" oldReferenceValue="component.ecore#//Port"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.0/@element"
+          featureName="eType" referenceValue="component.ecore#//OutPort" oldReferenceValue="component.ecore#//Port"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="component.ecore#//Signature" referenceName="eStructuralFeatures"
+          element="component.ecore#//Signature/port">
+        <changes xsi:type="history:Set" element="component.ecore#//Signature/port"
+            featureName="name" dataValue="port"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Signature/port"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Signature/port"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Signature/port"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="component.ecore#//Signature/port"
+            featureName="eType" referenceValue="component.ecore#//Port"/>
+      </changes>
+      <operation name="newReference">
+        <parameters name="eClass">
+          <referenceValue element="component.ecore#//Signature"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>port</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="component.ecore#//Port"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>-1</dataValue>
+        </parameters>
+        <parameters name="containment">
+          <dataValue>true</dataValue>
+        </parameters>
+        <parameters name="opposite"/>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="component.ecore#//Signature" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="inPort" upperBound="-1" eType="ecore:EClass component.ecore#//InPort"
+            containment="true"/>
+      </changes>
+      <operation name="merge">
+        <parameters name="toMerge">
+          <referenceValue element="#//@releases.1/@changes.2/@changes.0/@element"/>
+        </parameters>
+        <parameters name="mergeTo">
+          <referenceValue element="component.ecore#//Signature/port"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="component.ecore#//Signature" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="outPort" upperBound="-1" eType="ecore:EClass component.ecore#//OutPort"
+            containment="true"/>
+      </changes>
+      <operation name="merge">
+        <parameters name="toMerge">
+          <referenceValue element="#//@releases.1/@changes.3/@changes.0/@element"/>
+        </parameters>
+        <parameters name="mergeTo">
+          <referenceValue element="component.ecore#//Signature/port"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="component.ecore#/" featureName="nsURI"
+        dataValue="http://component/r1" oldDataValue="http://component/r0"/>
+  </releases>
+  <releases/>
+</history:History>

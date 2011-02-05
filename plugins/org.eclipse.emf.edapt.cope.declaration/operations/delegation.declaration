@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="delegation.groovy">
+  <operations name="extractClass" description="In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly." label="Extract Class">
+    <parameters classifierName="EClass" name="contextClass" description="The context class from which the features are extracted" main="true"/>
+    <parameters many="true" classifierName="EStructuralFeature" name="features" description="The features to be extracted" choiceExpression="contextClass.eStructuralFeatures"/>
+    <parameters classifierName="EPackage" name="ePackage" initExpression="contextClass.ePackage" description="The package in which the extracted class is created"/>
+    <parameters classifierName="EString" name="className" description="The name of the extracted class"/>
+    <parameters classifierName="EString" name="referenceName" description="The name of the new containment reference from context to extracted class"/>
+    <constraints label="The features have to belong to the same class" booleanExpression="contextClass.eStructuralFeatures.containsAll(features) "/>
+    <constraints label="A classifier with the same name already exists" booleanExpression="ePackage.getEClassifier(className) == null "/>
+    <constraints label="A feature with the same name already exists" booleanExpression="contextClass.getEStructuralFeature(referenceName) == null || features.contains(contextClass.getEStructuralFeature(referenceName)) "/>
+  </operations>
+  <operations name="inlineClass" description="In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly." label="Inline Class">
+    <parameters classifierName="EReference" name="reference" description="The reference to the class to be inlined" main="true"/>
+    <constraints label="The reference must not have an opposite" booleanExpression="reference.eOpposite == null "/>
+    <constraints label="The multiplicity of the reference must be single-valued" booleanExpression="reference.upperBound == 1 "/>
+    <constraints label="The reference must be containment" booleanExpression="reference.containment "/>
+    <constraints label="The class to be inlined must not have sub classes" booleanExpression="inlinedClass.eSubTypes.isEmpty() "/>
+    <constraints label="The class to be inlined must not be a type of another reference" booleanExpression="inlinedClass.getInverse(emf.ETypedElement.eType).every{feature -> feature instanceof EAttribute || feature.eOpposite == null || features.contains(feature.eOpposite) } "/>
+    <variables classifierName="EClass" name="inlinedClass" initExpression="reference.eReferenceType"/>
+    <variables classifierName="EClass" name="contextClass" initExpression="reference.eContainingClass"/>
+    <variables many="true" classifierName="EStructuralFeature" name="features" initExpression="new ArrayList(inlinedClass.eStructuralFeatures)"/>
+  </operations>
+  <operations name="partitionComposite" description="In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not." label="Introduce Composite Pattern">
+    <parameters classifierName="EClass" name="eClass" description="The class which is refined" main="true"/>
+    <parameters classifierName="EString" name="compositeName" description="The name of the composite class"/>
+    <parameters classifierName="EString" name="leafName" description="The name of the leaf class"/>
+    <parameters classifierName="EReference" name="childReference" description="The reference for composite elements" choiceExpression="eClass.eReferences.findAll{r -> r.containment}"/>
+    <constraints label="The child reference must be a containment reference defined by the class" booleanExpression="eClass.eReferences.findAll{r -> r.containment}.contains(childReference) "/>
+    <constraints label="The class must not have sub classes" booleanExpression="eClass.eSubTypes.isEmpty() "/>
+  </operations>
+  <operations name="moveFeature" description="In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly." label="Move Feature along Reference">
+    <parameters classifierName="EStructuralFeature" name="feature" description="The feature to be moved" main="true"/>
+    <parameters classifierName="EReference" name="reference" description="The reference along which the feature is moved" choiceExpression="sourceClass.eAllStructuralFeatures"/>
+    <constraints label="The multiplicity of the reference must be single-valued and obligatory" booleanExpression="reference.lowerBound == 1 &amp;&amp; reference.upperBound == 1 "/>
+    <constraints label="The multiplicity of its opposite reference must be single-valued" booleanExpression="reference.eOpposite == null || reference.eOpposite.upperBound == 1 "/>
+    <constraints label="The reference must be available in the same class as the feature" booleanExpression="sourceClass.eAllStructuralFeatures.contains(reference) "/>
+    <constraints label="A feature with that name already exists in the target class" booleanExpression="targetClass.getEStructuralFeature(feature.name) == null "/>
+    <variables classifierName="EClass" name="sourceClass" initExpression="feature.eContainingClass"/>
+    <variables classifierName="EClass" name="targetClass" initExpression="reference.eReferenceType"/>
+  </operations>
+  <operations name="collectFeature" description="In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly." label="Collect Feature over Reference" deleting="true">
+    <parameters classifierName="EStructuralFeature" name="feature" description="The feature to be moved" main="true"/>
+    <parameters classifierName="EReference" name="reference" description="The reference opposite to which the feature is moved"/>
+    <constraints label="Both feature and reference must be multi-valued or the reference must be single-valued" booleanExpression="(feature.many &amp;&amp; reference.many) || !reference.many "/>
+    <constraints label="The feature must belong to the reference's type" booleanExpression="reference.eReferenceType.eStructuralFeatures.contains(feature) "/>
+    <variables classifierName="EClass" name="sourceClass" initExpression="feature.eContainingClass"/>
+    <variables classifierName="EClass" name="targetClass" initExpression="reference.eContainingClass"/>
+  </operations>
+  <operations name="combineFeature" description="In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly." label="Combine Features over References">
+    <parameters many="true" classifierName="EStructuralFeature" name="features" description="The features to be combined" main="true"/>
+    <parameters many="true" classifierName="EReference" name="references" description="The references over which the features are moved (in the same order)"/>
+    <constraints label="All references must have the same class as type" booleanExpression="references.every{it -> it.eType == eClass} "/>
+    <constraints label="There must be an equal number of features and references" booleanExpression="features.size() == references.size() "/>
+    <constraints label="Each feature has to belong to its reference's class" booleanExpression="references.every{it -> it.eContainingClass == features[references.indexOf(it)].eContainingClass} "/>
+    <variables classifierName="EClass" name="eClass" initExpression="references[0].eType"/>
+    <variables classifierName="EStructuralFeature" name="mainFeature" initExpression="features[0]"/>
+  </operations>
+  <operations name="propagateFeature" description="In the metamodel, a feature is propagated opposite to a number of references. More specifically, the feature is created in each of the classes which are sources of the references. In the model, the values of that feature are moved accordingly." label="Propagate Feature over References">
+    <parameters classifierName="EStructuralFeature" name="mainFeature" description="The feature to be propagated" main="true"/>
+    <parameters many="true" classifierName="EReference" name="references" description="The references opposite to which the feature is propagated"/>
+    <constraints label="Every reference has to target the class with the feature" booleanExpression="references.every{it -> it.eType == eClass} "/>
+    <variables classifierName="EClass" name="eClass" initExpression="mainFeature.eContainingClass"/>
+  </operations>
+  <operations name="extractExistingClass" description="In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class." label="Fold Class">
+    <parameters many="true" classifierName="EStructuralFeature" name="toReplace" description="The features to be extracted" main="true"/>
+    <parameters classifierName="EClass" name="extractedClass" description="The extracted class"/>
+    <parameters many="true" classifierName="EStructuralFeature" name="replaceBy" description="The features of the extracted class by which they are replaced (in the same order)" choiceExpression="extractedClass.eAllStructuralFeatures"/>
+    <parameters classifierName="EString" name="referenceName" description="The name of the containment reference"/>
+    <constraints label="The replaced and replacing features must be of the same size" booleanExpression="toReplace.size() == replaceBy.size() "/>
+    <constraints label="The features to replace must be defined in the extracted class" booleanExpression="extractedClass.eAllStructuralFeatures.containsAll(replaceBy) "/>
+    <constraints label="The features must be of the same type" booleanExpression="toReplace.every{it.eType == replaceBy[toReplace.indexOf(it)].eType} "/>
+    <constraints label="The features must be of the same multiplicity" booleanExpression="toReplace.every{it.many == replaceBy[toReplace.indexOf(it)].many} "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="toReplace[0].eContainingClass"/>
+  </operations>
+  <operations name="extractAndGroupAttribute" description="In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute." label="Extract and Group Attribute">
+    <parameters classifierName="EAttribute" name="extractedAttribute" description="The attribute to be extracted" main="true"/>
+    <parameters classifierName="EPackage" name="contextPackage" description="The package in which the extracted class is created"/>
+    <parameters classifierName="EString" name="extractedClassName" description="The name of the extracted class"/>
+    <parameters classifierName="EString" name="referenceName" description="The reference from the context class to the extracted class"/>
+    <parameters classifierName="EClass" name="containerClass" description="The container class for the extracted class"/>
+    <parameters classifierName="EString" name="containerReferenceName" description="The name of the containment reference from the container class to the extracted class"/>
+    <constraints label="The extracted attribute must be single-valued" booleanExpression="!extractedAttribute.many "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="extractedAttribute.eContainingClass"/>
+  </operations>
+  <operations name="flattenHierarchy" description="In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly." label="Flatten Containment Hierarchy" deleting="true">
+    <parameters classifierName="EReference" name="rootReference" description="The reference to denote the root node" main="true"/>
+    <parameters classifierName="EReference" name="childrenReference" description="The reference to denote the children nodes" choiceExpression="nodeClass.eStructuralFeatures"/>
+    <parameters classifierName="EString" name="referenceName" description="The reference which replaces the containment hierarchy"/>
+    <constraints label="The root reference must be a single-valued containment reference." booleanExpression="!rootReference.many &amp;&amp; rootReference.containment "/>
+    <constraints label="The children reference must be a multi-valued containment reference." booleanExpression="childrenReference.many &amp;&amp; childrenReference.containment "/>
+    <constraints label="The children reference must be defined by the node class." booleanExpression="nodeClass.eStructuralFeatures.contains(childrenReference) "/>
+    <constraints label="The type of the children reference must be the node class." booleanExpression="childrenReference.eType == nodeClass "/>
+    <variables classifierName="EClass" name="rootClass" initExpression="rootReference.eContainingClass"/>
+    <variables classifierName="EClass" name="nodeClass" initExpression="rootReference.eType"/>
+  </operations>
+  <operations name="unfoldClass" description="In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly." label="Unfold Class">
+    <parameters classifierName="EReference" name="reference" description="The reference to the class to be unfolded" main="true"/>
+    <constraints label="The reference must not have an opposite" booleanExpression="reference.eOpposite == null "/>
+    <constraints label="The multiplicity of the reference must be single-valued" booleanExpression="reference.upperBound == 1 "/>
+    <constraints label="The reference must be containment" booleanExpression="reference.containment "/>
+    <constraints label="The class to be unfolded must not have sub classes" booleanExpression="unfoldedClass.eSubTypes.isEmpty() "/>
+    <variables classifierName="EClass" name="unfoldedClass" initExpression="reference.eReferenceType"/>
+    <variables classifierName="EClass" name="contextClass" initExpression="reference.eContainingClass"/>
+    <variables many="true" classifierName="EStructuralFeature" name="features" initExpression="new ArrayList(unfoldedClass.eAllStructuralFeatures)"/>
+  </operations>
+</declaration:Library>

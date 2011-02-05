@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.242.ecore" right="gmfgen_1.243.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.243.ecore#//GenAuditRule"/>
+          <leftElement href="gmfgen_1.242.ecore#//GenAuditRule/getContextSelectorQualifiedClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.243.ecore#//GenAuditRule"/>
+          <leftElement href="gmfgen_1.242.ecore#//GenAuditRule/getContextSelectorClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.243.ecore#//GenAuditRule"/>
+          <leftElement href="gmfgen_1.242.ecore#//GenAuditRule/contextSelectorLocalClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.242.ecore#//GenAuditRule"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.243.ecore#//GenAuditable"/>
+          <leftElement href="gmfgen_1.242.ecore#//GenAuditable/getClientContextID"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.242.ecore#//GenAuditable"/>
+          <rightElement href="gmfgen_1.243.ecore#//GenAuditable/contextSelector"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.242.ecore#//GenAuditable"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.242.ecore#//GenAuditRoot"/>
+          <rightElement href="gmfgen_1.243.ecore#//GenAuditRoot/clientContexts"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.242.ecore#//GenAuditRoot"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.242.ecore#/"/>
+        <rightElement href="gmfgen_1.243.ecore#//GenAuditContext"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.242.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

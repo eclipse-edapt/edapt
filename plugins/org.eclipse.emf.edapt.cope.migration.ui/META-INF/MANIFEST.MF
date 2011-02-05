@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.edapt.cope.migration.ui;singleton:=true
+Bundle-Version: 0.3.0
+Bundle-Activator: org.eclipse.emf.edapt.cope.migration.ui.MigrationUIActivator
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.edapt.cope.common,
+ org.eclipse.emf.edapt.cope.common.ui,
+ org.eclipse.core.expressions,
+ org.eclipse.emf.edapt.cope.migration,
+ org.eclipse.emf.edapt.cope.history
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.emf.edapt.cope.migration.ui
+Bundle-Vendor: %providerName

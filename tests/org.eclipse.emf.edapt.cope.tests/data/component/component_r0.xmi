@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<component:Signature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:component="http://component/r0" xsi:schemaLocation="http://component/r0 component.ecore">
+  <inPort name="in1"/>
+  <inPort name="in2"/>
+  <inPort name="in3"/>
+  <inPort name="in4"/>
+  <inPort name="in5"/>
+  <inPort name="in6"/>
+  <inPort name="in7"/>
+  <outPort name="out1"/>
+  <outPort name="out2"/>
+</component:Signature>

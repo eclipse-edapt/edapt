@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2008-11-23T22:55:22.968+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="sprinkle.ecore#/">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#/" featureName="name"
+            dataValue="sprinkle"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#/" featureName="nsURI"
+            dataValue="http://sprinkle/r0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#/" featureName="nsPrefix"
+            dataValue="sprinkle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
+          element="sprinkle.ecore#//ProcessSignal">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal" featureName="name"
+            dataValue="ProcessSignal"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//ProcessSignal" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//ProcessSignal/parent">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/parent"
+            featureName="name" dataValue="parent"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/parent"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/parent"
+            featureName="upperBound" dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/parent"
+            featureName="eType" referenceValue="sprinkle.ecore#//ProcessSignal"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//ProcessSignal" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//ProcessSignal/subSignal">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="name" dataValue="subSignal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="eType" referenceValue="sprinkle.ecore#//ProcessSignal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/subSignal"
+            featureName="eOpposite" referenceValue="sprinkle.ecore#//ProcessSignal/parent"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/parent"
+            featureName="eOpposite" referenceValue="sprinkle.ecore#//ProcessSignal/subSignal"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//ProcessSignal" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//ProcessSignal/name">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/name"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/name"
+            featureName="upperBound" dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
+          element="sprinkle.ecore#//Port">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port" featureName="name"
+            dataValue="Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//ProcessSignal" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//ProcessSignal/port">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="name" dataValue="port"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="eType" referenceValue="sprinkle.ecore#//Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//Port" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//Port/signal">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/signal" featureName="name"
+            dataValue="signal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/signal" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/signal" featureName="upperBound"
+            dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/signal" featureName="eType"
+            referenceValue="sprinkle.ecore#//ProcessSignal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/signal" featureName="eOpposite"
+            referenceValue="sprinkle.ecore#//ProcessSignal/port"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/port"
+            featureName="eOpposite" referenceValue="sprinkle.ecore#//Port/signal"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//Port" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//Port/name">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/name" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/name" featureName="upperBound"
+            dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Port/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
+          element="sprinkle.ecore#//Connection">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection" featureName="name"
+            dataValue="Connection"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//ProcessSignal" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//ProcessSignal/connection">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="name" dataValue="connection"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="lowerBound" dataValue="0" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="eType" referenceValue="sprinkle.ecore#//Connection"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//Connection" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//Connection/source">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/source"
+            featureName="name" dataValue="source"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/source"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/source"
+            featureName="upperBound" dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/source"
+            featureName="eType" referenceValue="sprinkle.ecore#//Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//Connection" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//Connection/destination">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/destination"
+            featureName="name" dataValue="destination"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/destination"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/destination"
+            featureName="upperBound" dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/destination"
+            featureName="eType" referenceValue="sprinkle.ecore#//Port"/>
+      </changes>
+      <changes xsi:type="history:Create" target="sprinkle.ecore#//Connection" referenceName="eStructuralFeatures"
+          element="sprinkle.ecore#//Connection/signal">
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/signal"
+            featureName="name" dataValue="signal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/signal"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/signal"
+            featureName="upperBound" dataValue="1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/signal"
+            featureName="eType" referenceValue="sprinkle.ecore#//ProcessSignal"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//Connection/signal"
+            featureName="eOpposite" referenceValue="sprinkle.ecore#//ProcessSignal/connection"/>
+        <changes xsi:type="history:Set" element="sprinkle.ecore#//ProcessSignal/connection"
+            featureName="eOpposite" referenceValue="sprinkle.ecore#//Connection/signal"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2008-11-23T22:57:16.328+0100">
+    <changes xsi:type="history:MigrationChange" migration="newClass(sprinkle, &quot;Input&quot;, [sprinkle.Port])&#xA;newClass(sprinkle, &quot;Output&quot;, [sprinkle.Port])&#xA;portClass = sprinkle.Port&#xA;portClass.'abstract' = true&#xA;&#xA;defaultPackage = sprinkle&#xA;&#xA;//model migration&#xA;//hierarchy inputs&#xA;for(connection in Connection.allInstances) {&#xA;&#x9;if(connection.destination.signal.parent == connection.source.signal) {&#xA;&#x9;&#x9;connection.source.migrate(Input)&#xA;&#x9;&#x9;connection.destination.migrate(Input)&#xA;&#x9;}&#xA;}&#xA;&#xA;//hierarchy outputs&#xA;for(connection in Connection.allInstances) {&#xA;&#x9;if(connection.source.signal.parent == connection.destination.signal) {&#xA;&#x9;&#x9;connection.source.migrate(Output)&#xA;&#x9;&#x9;connection.destination.migrate(Output)&#xA;&#x9;}&#xA;}&#xA;&#xA;//do inputs&#xA;for(port in Port.instances) {&#xA;&#x9;if(!port.getInverse(Connection.destination).isEmpty()) {&#xA;&#x9;&#x9;port.migrate(Input)&#xA;&#x9;}&#xA;}&#xA;&#xA;//do outputs&#xA;for(port in Port.instances) {&#xA;&#x9;if(!port.getInverse(Connection.source).isEmpty()) {&#xA;&#x9;&#x9;port.migrate(Output)&#xA;&#x9;}&#xA;}">
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
+            element="sprinkle.ecore#//Input">
+          <changes xsi:type="history:Set" element="sprinkle.ecore#//Input" featureName="name"
+              dataValue="Input"/>
+          <changes xsi:type="history:Add" element="sprinkle.ecore#//Input" featureName="eSuperTypes"
+              referenceValue="sprinkle.ecore#//Port"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="sprinkle.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>Input</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="sprinkle.ecore#//Port"/>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
+            element="sprinkle.ecore#//Output">
+          <changes xsi:type="history:Set" element="sprinkle.ecore#//Output" featureName="name"
+              dataValue="Output"/>
+          <changes xsi:type="history:Add" element="sprinkle.ecore#//Output" featureName="eSuperTypes"
+              referenceValue="sprinkle.ecore#//Port"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="sprinkle.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>Output</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="sprinkle.ecore#//Port"/>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:Set" element="sprinkle.ecore#//Port" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+    </changes>
+    <changes xsi:type="history:Set" element="sprinkle.ecore#/" featureName="nsURI"
+        dataValue="http://sprinkle/r1" oldDataValue="http://sprinkle/r0"/>
+  </releases>
+  <releases/>
+</history:History>

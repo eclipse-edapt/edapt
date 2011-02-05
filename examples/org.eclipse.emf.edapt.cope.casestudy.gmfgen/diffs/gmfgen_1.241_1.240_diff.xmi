@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.240.ecore" right="gmfgen_1.241.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenDiagram/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagram/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenDiagram/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagram/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenDiagram/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagram/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenDiagram/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenDiagram"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenEditorView/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenEditorView/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenEditorView/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenEditorView/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenEditorView/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenEditorView/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenEditorView/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenEditorView"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPreferencePage/parent"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPreferencePage/parent"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPreferencePage/parent"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPreferencePage/parent"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenPreferencePage/parent"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPreferencePage/parent/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenPreferencePage/parent"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenPreferencePage"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenDiagramUpdater/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagramUpdater/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenDiagramUpdater/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagramUpdater/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenDiagramUpdater/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenDiagramUpdater/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenDiagramUpdater/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenDiagramUpdater"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPlugin/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPlugin/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPlugin/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPlugin/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenPlugin/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPlugin/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenPlugin/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenPlugin"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//DynamicModelAccess/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//DynamicModelAccess/editorGen"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//DynamicModelAccess/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//DynamicModelAccess"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//Behaviour/subject"/>
+            <rightElement href="gmfgen_1.241.ecore#//Behaviour/subject"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//Behaviour/subject"/>
+            <rightElement href="gmfgen_1.241.ecore#//Behaviour/subject"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//Behaviour/subject"/>
+            <rightElement href="gmfgen_1.241.ecore#//Behaviour/subject/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//Behaviour/subject"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//Behaviour"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenTopLevelNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenTopLevelNode/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenTopLevelNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenTopLevelNode/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenTopLevelNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenTopLevelNode/diagram/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenTopLevelNode/diagram"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenTopLevelNode"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenChildNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenChildNode/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenChildNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenChildNode/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenChildNode/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenChildNode/diagram/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenChildNode/diagram"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenChildNode"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenCompartment/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenCompartment/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenCompartment/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenCompartment/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenCompartment/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenCompartment/diagram/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenCompartment/diagram"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenCompartment"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenLink/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenLink/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenLink/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenLink/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenLink/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenLink/diagram/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenLink/diagram"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenLink"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNodeLabel/node"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNodeLabel/node"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNodeLabel/node"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNodeLabel/node"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenNodeLabel/node"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNodeLabel/node/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenNodeLabel/node"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenNodeLabel"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//Palette/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//Palette/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//Palette/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//Palette/diagram"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//Palette/diagram"/>
+            <rightElement href="gmfgen_1.241.ecore#//Palette/diagram/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//Palette/diagram"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//Palette"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//ToolGroupItem/group"/>
+            <rightElement href="gmfgen_1.241.ecore#//ToolGroupItem/group"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//ToolGroupItem/group"/>
+            <rightElement href="gmfgen_1.241.ecore#//ToolGroupItem/group"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//ToolGroupItem/group"/>
+            <rightElement href="gmfgen_1.241.ecore#//ToolGroupItem/group/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//ToolGroupItem/group"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//ToolGroupItem"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//ToolGroup/palette"/>
+            <rightElement href="gmfgen_1.241.ecore#//ToolGroup/palette"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//ToolGroup/palette"/>
+            <rightElement href="gmfgen_1.241.ecore#//ToolGroup/palette/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//ToolGroup/palette"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//ToolGroup"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureSeqInitializer/creatingInitializer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenFeatureSeqInitializer/creatingInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenFeatureSeqInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenFeatureInitializer/featureSeqInitializer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenFeatureInitializer/featureSeqInitializer"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenFeatureInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditRoot/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRoot/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditRoot/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRoot/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenAuditRoot/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRoot/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenAuditRoot/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenAuditRoot"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditContainer/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditContainer/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditContainer/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenAuditContainer/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditContainer/root/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenAuditContainer/root"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenAuditContainer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditRule/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRule/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenAuditRule/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRule/root"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenAuditRule/root"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenAuditRule/root/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenAuditRule/root"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenAuditRule"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenMetricContainer/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenMetricContainer/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenMetricContainer/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenMetricContainer/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenMetricContainer/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenMetricContainer/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenMetricContainer/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenMetricContainer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenExpressionProviderContainer/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenExpressionProviderContainer/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderContainer/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenExpressionProviderContainer/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderContainer/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderContainer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenExpressionProviderBase/container"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenExpressionProviderBase/container"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenExpressionProviderBase/container"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenExpressionProviderBase/container"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderBase/container"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenExpressionProviderBase/container/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderBase/container"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenExpressionProviderBase"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigator/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigator/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigator/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigator/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenNavigator/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigator/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenNavigator/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenNavigator"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigatorChildReference/navigator"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorChildReference/navigator"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigatorChildReference/navigator"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorChildReference/navigator"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenNavigatorChildReference/navigator"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorChildReference/navigator/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenNavigatorChildReference/navigator"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenNavigatorChildReference"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigatorPathSegment/path"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorPathSegment/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenNavigatorPathSegment/path"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorPathSegment/path"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenNavigatorPathSegment/path"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenNavigatorPathSegment/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenNavigatorPathSegment/path"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenNavigatorPathSegment"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertySheet/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertySheet/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertySheet/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertySheet/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenPropertySheet/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertySheet/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenPropertySheet/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenPropertySheet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertyTab/sheet"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTab/sheet"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertyTab/sheet"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTab/sheet"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenPropertyTab/sheet"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTab/sheet/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenPropertyTab/sheet"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenPropertyTab"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertyTabFilter/tab"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTabFilter/tab"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenPropertyTabFilter/tab"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTabFilter/tab"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenPropertyTabFilter/tab"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenPropertyTabFilter/tab/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenPropertyTabFilter/tab"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenPropertyTabFilter"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenContributionItem/owner"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenContributionItem/owner"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenContributionItem/owner"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenContributionItem/owner"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenContributionItem/owner"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenContributionItem/owner/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenContributionItem/owner"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenContributionItem"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature/changeable"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenApplication/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenApplication/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:UpdateAttribute">
+            <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EReference/resolveProxies"/>
+            <leftElement href="gmfgen_1.240.ecore#//GenApplication/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenApplication/editorGen"/>
+          </subDiffElements>
+          <subDiffElements xsi:type="diff:AddModelElement">
+            <leftParent href="gmfgen_1.240.ecore#//GenApplication/editorGen"/>
+            <rightElement href="gmfgen_1.241.ecore#//GenApplication/editorGen/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.240.ecore#//GenApplication/editorGen"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.240.ecore#//GenApplication"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.240.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.198.ecore" right="gmfgen_1.199.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.199.ecore#//GenPreferencePage/children"/>
+            <leftElement href="gmfgen_1.198.ecore#//GenPreferencePage/children"/>
+            <leftTarget href="gmfgen_1.199.ecore#//GenPreferencePage/parent"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.198.ecore#//GenPreferencePage/children"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.198.ecore#//GenPreferencePage"/>
+          <rightElement href="gmfgen_1.199.ecore#//GenPreferencePage/parent"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.198.ecore#//GenPreferencePage"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.198.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.46.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.47.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfmap_1.46.ecore#//MappingEntry"/>
+          <rightElement href="gmfmap_1.47.ecore#//MappingEntry/relatedDiagrams"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.46.ecore#//MappingEntry"/>
+      </subDiffElements>
+      <leftParent href="gmfmap_1.46.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:statemachine="http://statemachine/r1">
+  <statemachine:CompositeState name="OFF">
+    <region/>
+  </statemachine:CompositeState>
+  <statemachine:CompositeState name="ON">
+    <region>
+      <state name="GREEN"/>
+    </region>
+  </statemachine:CompositeState>
+</xmi:XMI>

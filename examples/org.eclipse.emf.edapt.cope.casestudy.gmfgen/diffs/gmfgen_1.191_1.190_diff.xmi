@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.190.ecore" right="gmfgen_1.191.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.191.ecore#//EditorCandies"/>
+          <leftElement href="gmfgen_1.190.ecore#//EditorCandies/preferenceInitializerClassName"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:RemoveModelElement">
+          <rightParent href="gmfgen_1.191.ecore#//EditorCandies"/>
+          <leftElement href="gmfgen_1.190.ecore#//EditorCandies/getPreferenceInitializerQualifiedClassName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.190.ecore#//EditorCandies"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.190.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

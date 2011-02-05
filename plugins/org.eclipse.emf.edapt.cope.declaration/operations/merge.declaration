@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="merge.groovy">
+  <operations name="replaceClassBySibling" description="In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class." label="Replace Class by Sibling" deprecated="true">
+    <parameters classifierName="EClass" name="toReplace" description="The class to be replaced" main="true"/>
+    <parameters classifierName="EClass" name="replaceBy" description="The class by which it is replaced"/>
+    <constraints label="The replaced class must have exactly one super class" booleanExpression="toReplace.eSuperTypes.size() == 1 "/>
+    <constraints label="The replacing class must have exactly one super class" booleanExpression="replaceBy.eSuperTypes.size() == 1 "/>
+    <constraints label="The super classes of replaced and replacing class must be the same" booleanExpression="toReplace.eSuperTypes[0] == replaceBy.eSuperTypes[0] "/>
+    <constraints label="The replaced class must not have sub classes" booleanExpression="toReplace.eSubTypes.isEmpty() "/>
+    <constraints label="The replaced class must not have any features" booleanExpression="toReplace.eStructuralFeatures.isEmpty() "/>
+  </operations>
+  <operations name="replaceClass" description="In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features." label="Replace Class">
+    <parameters classifierName="EClass" name="toReplace" description="The class to be replaced" main="true"/>
+    <parameters classifierName="EClass" name="replaceBy" description="The class by which it is replaced"/>
+    <parameters many="true" classifierName="EStructuralFeature" name="featuresToReplace" initExpression="[]" description="The features to be replaced" choiceExpression="toReplace.eAllStructuralFeatures"/>
+    <parameters many="true" classifierName="EStructuralFeature" name="featuresReplaceBy" initExpression="[] " description="The features by which they are replaced (in the same order)" choiceExpression="replaceBy.eAllStructuralFeatures"/>
+    <constraints label="The class to be replaced must not have sub types" booleanExpression="toReplace.getInverse(emf.EClass._eSuperTypes).isEmpty() "/>
+    <constraints label="The replaced and replacing features have to be of the same size" booleanExpression="featuresToReplace.size() == featuresReplaceBy.size() "/>
+    <constraints label="The replace features must be defined in the replaced class" booleanExpression="toReplace.eAllStructuralFeatures.containsAll(featuresToReplace) "/>
+    <constraints label="The replacing features must be defined in the replacing class" booleanExpression="replaceBy.eAllStructuralFeatures.containsAll(featuresReplaceBy) "/>
+    <constraints label="The replace features must cover all features from the difference between the class to replace and the class by which it is replaced" booleanExpression="subtractFeatures(toReplace, replaceBy).every{feature -> featuresToReplace.contains(feature)} "/>
+  </operations>
+  <operations name="splitStringAttribute" description="In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression." label="Split String Attribute">
+    <parameters classifierName="EAttribute" name="toSplit" description="The feature whose values are split" main="true"/>
+    <parameters classifierName="EClass" name="context" description="The class in which the new feature is created" choiceExpression="eClass.eAllSubTypes.plus(eClass)"/>
+    <parameters classifierName="EString" name="attributeName" description="The name of the new attribute"/>
+    <parameters classifierName="EString" name="pattern" description="The regular expression"/>
+    <constraints label="The class with the new attribute must be a subclass of the class with the attribute to be split" booleanExpression="eClass.eAllSubTypes.plus(eClass).contains(context) "/>
+    <constraints label="The type of the attribute to split has to be String" booleanExpression="toSplit.eType == emf.EString "/>
+    <variables classifierName="EClass" name="eClass" initExpression="toSplit.eContainingClass"/>
+  </operations>
+  <operations name="merge" description="In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference." label="Merge Reference into Another">
+    <parameters classifierName="EReference" name="toMerge" description="The reference that is deleted" main="true"/>
+    <parameters classifierName="EReference" name="mergeTo" description="The reference to which the values are merged" choiceExpression="contextClass.eAllStructuralFeatures"/>
+    <constraints label="The reference to merge to must be available in the context class" booleanExpression="contextClass.eAllStructuralFeatures.contains(mergeTo) "/>
+    <constraints label="The reference to merge to must be multi-valued" booleanExpression="mergeTo.many "/>
+    <constraints label="The types of the references must be compatible" booleanExpression="toMerge.eReferenceType == mergeTo.eReferenceType || toMerge.eReferenceType.eAllSuperTypes.contains(mergeTo.eReferenceType) "/>
+    <constraints label="The references must be different from each other" booleanExpression="toMerge != mergeTo "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="toMerge.eContainingClass"/>
+  </operations>
+  <operations name="replaceLiteral" description="In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly." label="Replace Literal">
+    <parameters classifierName="EEnumLiteral" name="toReplace" description="The enum literal to replace" main="true"/>
+    <parameters classifierName="EEnumLiteral" name="replaceBy" description="The enum literal by which it is replaced" choiceExpression="contextEnum.eLiterals"/>
+    <constraints label="The enum literal by which it is replace must belong to the same enum." booleanExpression="contextEnum.eLiterals.contains(replaceBy) "/>
+    <variables classifierName="EEnum" name="contextEnum" initExpression="toReplace.eEnum"/>
+  </operations>
+  <operations name="uniteReferences" description="In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly." label="Unite References">
+    <parameters many="true" classifierName="EReference" name="references" description="The references which are united" main="true"/>
+    <parameters classifierName="EString" name="unitedReferenceName" description="The name of the single reference which unites all the references"/>
+    <constraints label="The references have to belong to the same class" booleanExpression="contextClass.eStructuralFeatures.containsAll(references) "/>
+    <constraints label="The references must be all either cross or containment references" booleanExpression="references.every{reference -> reference.containment == mainReference.containment} "/>
+    <variables classifierName="EReference" name="mainReference" initExpression="references[0]"/>
+    <variables classifierName="EClass" name="contextClass" initExpression="mainReference.eContainingClass"/>
+  </operations>
+  <operations name="partitionReference" description="In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly." label="Partition Reference">
+    <parameters classifierName="EReference" name="reference" description="The reference to be partitioned" main="true"/>
+    <constraints label="The type of the reference must be abstract" booleanExpression="!isConcrete(type) "/>
+    <constraints label="The reference must be multi-valued" booleanExpression="reference.many "/>
+    <variables classifierName="EClass" name="contextClass" initExpression="reference.eContainingClass"/>
+    <variables classifierName="EClass" name="type" initExpression="reference.eReferenceType"/>
+  </operations>
+  <operations name="replaceEnum" description="In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals." label="Replace Enumeration">
+    <parameters classifierName="EEnum" name="toReplace" description="The enumeration to be replaced" main="true"/>
+    <parameters classifierName="EEnum" name="replaceBy" description="The enumeration by which it is replaced"/>
+    <parameters many="true" classifierName="EEnumLiteral" name="literalsToReplace" description="The literals to be replaced" choiceExpression="toReplace.eLiterals"/>
+    <parameters many="true" classifierName="EEnumLiteral" name="literalsReplaceBy" description="The literals by which they are replaced (in the same order)" choiceExpression="replaceBy.eLiterals"/>
+    <constraints label="The replacing and replaced literals must be of the same size" booleanExpression="literalsToReplace.size() == literalsReplaceBy.size() "/>
+    <constraints label="The replaced literals must belong to the replaced enumeration" booleanExpression="toReplace.eLiterals.containsAll(literalsToReplace) "/>
+    <constraints label="The replacing literals must belong to the replacing enumeration" booleanExpression="replaceBy.eLiterals.containsAll(literalsReplaceBy) "/>
+  </operations>
+</declaration:Library>

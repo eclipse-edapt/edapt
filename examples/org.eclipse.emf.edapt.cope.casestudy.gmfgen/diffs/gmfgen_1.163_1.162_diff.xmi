@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.162.ecore" right="gmfgen_1.163.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:MoveModelElement">
+            <rightElement href="gmfgen_1.163.ecore#//GenLabel/readOnly"/>
+            <leftElement href="gmfgen_1.162.ecore#//LabelModelFacet/readOnly"/>
+            <leftTarget href="gmfgen_1.162.ecore#//GenLabel"/>
+            <rightTarget href="gmfgen_1.163.ecore#//LabelModelFacet"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.162.ecore#//LabelModelFacet/readOnly"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.162.ecore#//LabelModelFacet"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.162.ecore#//GenChildLabelNode"/>
+          <rightElement href="gmfgen_1.163.ecore#//GenChildLabelNode/labelReadOnly"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.162.ecore#//GenChildLabelNode"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.162.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

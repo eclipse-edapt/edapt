@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2010-04-11T16:12:18.093+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="test.ecore#/">
+        <changes xsi:type="history:Set" element="test.ecore#/" featureName="name"
+            dataValue="test"/>
+        <changes xsi:type="history:Set" element="test.ecore#/" featureName="nsURI"
+            dataValue="http://www.cs.tum.edu/cope/migration/test"/>
+        <changes xsi:type="history:Set" element="test.ecore#/" featureName="nsPrefix"
+            dataValue="test"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#/" referenceName="eClassifiers"
+          element="test.ecore#//TestSuiteDefinition">
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition"
+            featureName="name" dataValue="TestSuiteDefinition"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestSuiteDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestSuiteDefinition/history">
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/history"
+            featureName="name" dataValue="history"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/history"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/history"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestSuiteDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//NamedElement/name">
+        <changes xsi:type="history:Set" element="test.ecore#//NamedElement/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="test.ecore#//NamedElement/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#/" referenceName="eClassifiers"
+          element="test.ecore#//TestCaseDefinition">
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition"
+            featureName="name" dataValue="TestCaseDefinition"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestSuiteDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestSuiteDefinition/cases">
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/cases"
+            featureName="name" dataValue="cases"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/cases"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/cases"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/cases"
+            featureName="eType" referenceValue="test.ecore#//TestCaseDefinition"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestCaseDefinition/model">
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/model"
+            featureName="name" dataValue="model"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/model"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/model"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestCaseDefinition/expectedModel">
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedModel"
+            featureName="name" dataValue="expectedModel"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedModel"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedModel"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.1/@changes.4/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestCaseDefinition/suite">
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/suite"
+            featureName="name" dataValue="suite"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/suite"
+            featureName="eType" referenceValue="test.ecore#//TestSuiteDefinition"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/suite"
+            featureName="eOpposite" referenceValue="test.ecore#//TestSuiteDefinition/cases"/>
+      </changes>
+      <changes xsi:type="history:Set" element="test.ecore#//TestSuiteDefinition/cases"
+          featureName="eOpposite" referenceValue="test.ecore#//TestCaseDefinition/suite"/>
+      <operation name="newOppositeReference">
+        <parameters name="reference">
+          <referenceValue element="test.ecore#//TestSuiteDefinition/cases"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>suite</dataValue>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="changeable">
+          <dataValue>true</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="test.ecore#/" referenceName="eClassifiers"
+          element="test.ecore#//NamedElement">
+        <changes xsi:type="history:Set" element="test.ecore#//NamedElement" featureName="name"
+            dataValue="NamedElement"/>
+        <changes xsi:type="history:Set" element="test.ecore#//NamedElement" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Add" element="test.ecore#//TestSuiteDefinition" featureName="eSuperTypes"
+          referenceValue="test.ecore#//NamedElement"/>
+      <changes xsi:type="history:Add" element="test.ecore#//TestCaseDefinition" featureName="eSuperTypes"
+          referenceValue="test.ecore#//NamedElement"/>
+      <changes xsi:type="history:Move" target="test.ecore#//NamedElement" referenceName="eStructuralFeatures"
+          element="test.ecore#//NamedElement/name" source="test.ecore#//TestSuiteDefinition"/>
+      <changes xsi:type="history:Delete" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <operation name="extractSuperClass2">
+        <parameters name="subClasses">
+          <referenceValue element="test.ecore#//TestSuiteDefinition"/>
+          <referenceValue element="test.ecore#//TestCaseDefinition"/>
+        </parameters>
+        <parameters name="toExtract">
+          <referenceValue element="test.ecore#//NamedElement/name"/>
+          <referenceValue element="#//@releases.1/@changes.1/@changes.4/@element"/>
+        </parameters>
+        <parameters name="ePackage">
+          <referenceValue element="test.ecore#/"/>
+        </parameters>
+        <parameters name="superClassName">
+          <dataValue>NamedElement</dataValue>
+        </parameters>
+        <parameters name="abstr">
+          <dataValue>true</dataValue>
+        </parameters>
+        <parameters name="superSuperClasses"/>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="test.ecore#//TestCaseDefinition"
+          referenceName="eStructuralFeatures" element="test.ecore#//TestCaseDefinition/expectedDifferences">
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedDifferences"
+            featureName="name" dataValue="expectedDifferences"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedDifferences"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        <changes xsi:type="history:Set" element="test.ecore#//TestCaseDefinition/expectedDifferences"
+            featureName="defaultValueLiteral" dataValue="0"/>
+      </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="test.ecore#//TestCaseDefinition"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>expectedDifferences</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue>0</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="test.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/emf/edapt/cope/migration/test/0.3"
+        oldDataValue="http://www.cs.tum.edu/cope/migration/test"/>
+  </releases>
+</history:History>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.cs.tum.edu/cope/migration/test" name="Metamodel of Sprinkle's Example" history="sprinkle.history">
+  <cases name="Model of Sprinkle's Example" model="sprinkle_r0.xmi" expectedModel="sprinkle_r1.xmi"/>
+</test:TestSuiteDefinition>

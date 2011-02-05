@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.176.ecore" right="gmfgen_1.177.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.177.ecore#//Palette/groups"/>
+            <leftElement href="gmfgen_1.176.ecore#//Palette/groups"/>
+            <leftTarget href="gmfgen_1.177.ecore#//ToolGroup/palette"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.176.ecore#//Palette/groups"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.176.ecore#//Palette"/>
+          <rightElement href="gmfgen_1.177.ecore#//Palette/definesStandardTools"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.176.ecore#//Palette"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.177.ecore#//ToolGroup/entries"/>
+            <leftElement href="gmfgen_1.176.ecore#//ToolGroup/entries"/>
+            <leftTarget href="gmfgen_1.177.ecore#//ToolGroupItem/group"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.176.ecore#//ToolGroup/entries"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.176.ecore#//ToolGroup"/>
+          <rightElement href="gmfgen_1.177.ecore#//ToolGroup/palette"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.176.ecore#//ToolGroup"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.176.ecore#//ToolGroupItem"/>
+          <rightElement href="gmfgen_1.177.ecore#//ToolGroupItem/group"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.176.ecore#//ToolGroupItem"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.176.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

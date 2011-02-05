@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="filesystem" nsURI="http://filesystem/r1" nsPrefix="filesystem">
+  <eClassifiers xsi:type="ecore:EClass" name="FileSystem">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="files" upperBound="-1" eType="//FileSystemElement" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="users" upperBound="-1" eType="//User" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1" eType="//Group" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FileSystemElement" abstract="true" eSuperTypes="//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="owner" lowerBound="1" eType="//User"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="userRights" lowerBound="1" eType="//Rights" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groupRights" lowerBound="1" eType="//Rights" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="otherRights" lowerBound="1" eType="//Rights" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Group" eSuperTypes="//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1" eType="//User" eOpposite="//User/groups"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="User" eSuperTypes="//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1" eType="//Group" eOpposite="//Group/members"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Rights">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canRead" lowerBound="1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canWrite" lowerBound="1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="canExecute" lowerBound="1">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Directory" eSuperTypes="//FileSystemElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contents" upperBound="-1" eType="//FileSystemElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="//FileSystemElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="extension">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>

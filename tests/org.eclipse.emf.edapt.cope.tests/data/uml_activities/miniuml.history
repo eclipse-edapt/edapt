@@ -1,0 +1,1012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2010-04-09T16:56:53.234+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="miniuml.ecore#/">
+        <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="name"
+            dataValue="minuml1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="nsURI"
+            dataValue="minuml1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="nsPrefix"
+            dataValue="minuml1"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ModelElement">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ModelElement" featureName="name"
+            dataValue="ModelElement"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ModelElement" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ModelElement" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ModelElement/name">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ModelElement/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ModelElement/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.1/@changes.4/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="name" dataValue="StateMachine"/>
+        <changes xsi:type="history:Add" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="eSuperTypes" referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//Activity">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity" featureName="name"
+            dataValue="ActivityGraph"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//Activity" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.1/@changes.4/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ActivityPartition">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition"
+            featureName="name" dataValue="Partition"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ActivityPartition"
+            featureName="eSuperTypes" referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//Activity/group">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/group" featureName="name"
+            dataValue="partition"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/group" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/group" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/group" featureName="eType"
+            referenceValue="miniuml.ecore#//ActivityPartition"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.32/@changes.5/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.5/@element"
+            featureName="name" dataValue="contents"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.5/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.5/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ActivityNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode" featureName="name"
+            dataValue="StateVertex"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ActivityNode" featureName="eSuperTypes"
+            referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.7/@changes.8/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.7/@changes.8/@element"
+            featureName="name" dataValue="State"/>
+        <changes xsi:type="history:Add" element="#//@releases.1/@changes.7/@changes.8/@element"
+            featureName="eSuperTypes" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.1/@changes.4/@element"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.8/@changes.6/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.8/@changes.6/@element"
+            featureName="name" dataValue="top"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.8/@changes.6/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.8/@changes.6/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.8/@changes.6/@element"
+            featureName="eType" referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//StructuredActivityNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode"
+            featureName="name" dataValue="CompositeState"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//StructuredActivityNode"
+            featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//StructuredActivityNode"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//StructuredActivityNode/node">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode/node"
+            featureName="name" dataValue="subvertex"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode/node"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode/node"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode/node"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//OpaqueAction">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueAction" featureName="name"
+            dataValue="ActionState"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//OpaqueAction" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//OpaqueAction" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.22/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.22/@changes.0/@element"
+            featureName="name" dataValue="isDynamic"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.22/@changes.0/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.29/@changes.8/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.29/@changes.8/@element"
+            featureName="name" dataValue="Pseudostate"/>
+        <changes xsi:type="history:Add" element="#//@releases.1/@changes.29/@changes.8/@element"
+            featureName="eSuperTypes" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ObjectNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ObjectNode" featureName="name"
+            dataValue="ObjectFlowState"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ObjectNode" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ActivityFinalNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityFinalNode"
+            featureName="name" dataValue="FinalState"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ActivityFinalNode"
+            featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ActivityEdge">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge" featureName="name"
+            dataValue="Transition"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ActivityEdge" featureName="eSuperTypes"
+            referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.1/@changes.4/@element"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//Activity/edge">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/edge" featureName="name"
+            dataValue="transitions"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/edge" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/edge" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/edge" featureName="eType"
+            referenceValue="miniuml.ecore#//ActivityEdge"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ActivityEdge/source">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/source"
+            featureName="name" dataValue="source"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/source"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/source"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityNode" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ActivityNode/outgoing">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/outgoing"
+            featureName="name" dataValue="outgoing"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/outgoing"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/outgoing"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityEdge"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/outgoing"
+            featureName="eOpposite" referenceValue="miniuml.ecore#//ActivityEdge/source"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/source"
+            featureName="eOpposite" referenceValue="miniuml.ecore#//ActivityNode/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ActivityEdge/target">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/target"
+            featureName="name" dataValue="target"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/target"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/target"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityNode" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ActivityNode/incoming">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/incoming"
+            featureName="name" dataValue="incoming"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/incoming"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/incoming"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityEdge"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode/incoming"
+            featureName="eOpposite" referenceValue="miniuml.ecore#//ActivityEdge/target"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/target"
+            featureName="eOpposite" referenceValue="miniuml.ecore#//ActivityNode/incoming"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//Guard">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Guard" featureName="name"
+            dataValue="Guard"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//Guard" featureName="eSuperTypes"
+            referenceValue="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.18/@changes.2/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.18/@changes.2/@element"
+            featureName="name" dataValue="guard"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.18/@changes.2/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.18/@changes.2/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//Guard"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//OpaqueExpression">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression"
+            featureName="name" dataValue="BooleanExpression"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Guard" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//Guard/expression">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Guard/expression"
+            featureName="name" dataValue="expression"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Guard/expression"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Guard/expression"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Guard/expression"
+            featureName="eType" referenceValue="miniuml.ecore#//OpaqueExpression"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//OpaqueExpression"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//OpaqueExpression/language">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression/language"
+            featureName="name" dataValue="language"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression/language"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//OpaqueExpression"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//OpaqueExpression/body">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression/body"
+            featureName="name" dataValue="body"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression/body"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.23/@changes.5/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element"
+            featureName="name" dataValue="PseudostateKind"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.29/@changes.8/@element"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.23/@changes.4/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.4/@element"
+            featureName="name" dataValue="kind"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.4/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.4/@element"
+            featureName="eType" referenceValue="#//@releases.1/@changes.23/@changes.5/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.23/@changes.5/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.23/@changes.5/@element/initial">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/initial"
+            featureName="name" dataValue="initial"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/initial"
+            featureName="literal" dataValue="initial"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.23/@changes.5/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.23/@changes.5/@element/join">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/join"
+            featureName="name" dataValue="join"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/join"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/join"
+            featureName="literal" dataValue="join"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.23/@changes.5/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.23/@changes.5/@element/fork">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/fork"
+            featureName="name" dataValue="fork"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/fork"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/fork"
+            featureName="literal" dataValue="fork"/>
+      </changes>
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.23/@changes.5/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.23/@changes.5/@element/junction">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/junction"
+            featureName="name" dataValue="junction"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/junction"
+            featureName="value" dataValue="3" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.23/@changes.5/@element/junction"
+            featureName="literal" dataValue="junction"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2010-04-10T10:25:54.812+0200">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.4/@element"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
+      <operation name="makeAbstract">
+        <parameters name="eClass">
+          <referenceValue element="#//@releases.1/@changes.1/@changes.4/@element"/>
+        </parameters>
+        <parameters name="subClass">
+          <referenceValue element="miniuml.ecore#//Activity"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Move" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.8/@changes.6/@element" source="#//@releases.1/@changes.1/@changes.4/@element"/>
+      <changes xsi:type="history:Move" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//Activity/edge" source="#//@releases.1/@changes.1/@changes.4/@element"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//Activity" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.1/@changes.4/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//Activity" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ModelElement"/>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="StateMachine" abstract="true" eSuperTypes="miniuml.ecore#//ModelElement"/>
+      </changes>
+      <operation name="inlineSuperClass">
+        <parameters name="superClass">
+          <referenceValue element="#//@releases.1/@changes.1/@changes.4/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//Activity" featureName="name"
+          dataValue="Activity" oldDataValue="ActivityGraph"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//Activity"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>Activity</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/group" featureName="name"
+          dataValue="group" oldDataValue="partition"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//Activity/group"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>group</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityNode" featureName="name"
+          dataValue="ActivityNode" oldDataValue="StateVertex"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ActivityNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.7/@changes.8/@element"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
+      <operation name="makeAbstract">
+        <parameters name="eClass">
+          <referenceValue element="#//@releases.1/@changes.7/@changes.8/@element"/>
+        </parameters>
+        <parameters name="subClass">
+          <referenceValue element="miniuml.ecore#//OpaqueAction"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="#//@releases.1/@changes.8/@changes.6/@element"
+        featureName="eType" referenceValue="miniuml.ecore#//StructuredActivityNode"
+        oldReferenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//StructuredActivityNode"
+          featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//StructuredActivityNode"
+          featureName="eSuperTypes" referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//OpaqueAction" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//OpaqueAction" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//ObjectNode" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//ObjectNode" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//ActivityFinalNode"
+          featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.7/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//ActivityFinalNode"
+          featureName="eSuperTypes" referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="State" abstract="true" eSuperTypes="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <operation name="inlineSuperClass">
+        <parameters name="superClass">
+          <referenceValue element="#//@releases.1/@changes.7/@changes.8/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.9/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.9/@changes.0/@element"
+            featureName="name" dataValue="name_CompositeState"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.9/@changes.0/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.12/@changes.2/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.2/@element"
+            featureName="name" dataValue="source_Activity"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.2/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.2/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//Activity"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.12/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.1/@element"
+            featureName="name" dataValue="outgoing"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.1/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.1/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityEdge"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.1/@element"
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.12/@changes.2/@element"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.2/@element"
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.12/@changes.1/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.11/@changes.2/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.2/@element"
+            featureName="name" dataValue="target_Activity"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.2/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.2/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//Activity"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.11/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.1/@element"
+            featureName="name" dataValue="incoming"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.1/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.1/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityEdge"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.1/@element"
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.11/@changes.2/@element"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.2/@element"
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.11/@changes.1/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//Activity/node">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/node" featureName="name"
+            dataValue="subvertex"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/node" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/node" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/node" featureName="eType"
+            referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="top" lowerBound="1" eType="ecore:EClass miniuml.ecore#//StructuredActivityNode"
+            containment="true"/>
+      </changes>
+      <operation name="unfoldClass">
+        <parameters name="reference">
+          <referenceValue element="#//@releases.1/@changes.8/@changes.6/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="name_CompositeState" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.9/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/edge" featureName="name"
+          dataValue="edge" oldDataValue="transitions"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//Activity/edge"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>edge</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.11/@changes.2/@element"
+          featureName="eOpposite" oldReferenceValue="#//@releases.1/@changes.11/@changes.1/@element"/>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="incoming" upperBound="-1" eType="ecore:EClass miniuml.ecore#//ActivityEdge"
+            eOpposite="#//@releases.1/@changes.11/@changes.2/@element"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="target_Activity" lowerBound="1"
+            eType="ecore:EClass miniuml.ecore#//Activity"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.11/@changes.1/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.12/@changes.2/@element"
+          featureName="eOpposite" oldReferenceValue="#//@releases.1/@changes.12/@changes.1/@element"/>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//Activity" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="outgoing" upperBound="-1" eType="ecore:EClass miniuml.ecore#//ActivityEdge"
+            eOpposite="#//@releases.1/@changes.12/@changes.2/@element"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="source_Activity" lowerBound="1"
+            eType="ecore:EClass miniuml.ecore#//Activity"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.12/@changes.1/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//Activity/node" featureName="name"
+          dataValue="node" oldDataValue="subvertex"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//Activity/node"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>node</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition"
+          featureName="name" dataValue="ActivityPartition" oldDataValue="Partition"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityPartition"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ActivityPartition</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode"
+          featureName="name" dataValue="StructuredActivityNode" oldDataValue="CompositeState"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//StructuredActivityNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>StructuredActivityNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//StructuredActivityNode/node"
+          featureName="name" dataValue="node" oldDataValue="subvertex"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//StructuredActivityNode/node"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>node</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge" featureName="name"
+          dataValue="ActivityEdge" oldDataValue="Transition"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityEdge"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ActivityEdge</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.19/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.19/@changes.0/@element"
+            featureName="name" dataValue="name_Guard"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.19/@changes.0/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures"
+          element="miniuml.ecore#//ActivityEdge/guard">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/guard"
+            featureName="name" dataValue="expression"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/guard"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/guard"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/guard"
+            featureName="eType" referenceValue="miniuml.ecore#//OpaqueExpression"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="guard" eType="ecore:EClass miniuml.ecore#//Guard"
+            containment="true"/>
+      </changes>
+      <operation name="unfoldClass">
+        <parameters name="reference">
+          <referenceValue element="#//@releases.1/@changes.18/@changes.2/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityEdge" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="name_Guard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.19/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueExpression" featureName="name"
+          dataValue="OpaqueExpression" oldDataValue="BooleanExpression"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//OpaqueExpression"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>OpaqueExpression</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//OpaqueAction" featureName="name"
+          dataValue="OpaqueAction" oldDataValue="ActionState"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//OpaqueAction"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>OpaqueAction</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//OpaqueAction" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="isDynamic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.22/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//InitialNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//InitialNode" featureName="name"
+            dataValue="initial"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//InitialNode" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//JoinNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//JoinNode" featureName="name"
+            dataValue="join"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//JoinNode" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//ForkNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ForkNode" featureName="name"
+            dataValue="fork"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//ForkNode" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+          element="miniuml.ecore#//DecisionNode">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//DecisionNode" featureName="name"
+            dataValue="junction"/>
+        <changes xsi:type="history:Add" element="miniuml.ecore#//DecisionNode" featureName="eSuperTypes"
+            referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="#//@releases.1/@changes.29/@changes.8/@element"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="kind" lowerBound="1" eType="#//@releases.1/@changes.23/@changes.5/@element"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EEnum" name="PseudostateKind">
+          <eLiterals name="initial" literal="initial"/>
+          <eLiterals name="join" value="1" literal="join"/>
+          <eLiterals name="fork" value="2" literal="fork"/>
+          <eLiterals name="junction" value="3" literal="junction"/>
+        </element>
+      </changes>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.29/@changes.8/@element"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
+      <operation name="enumerationToSubClasses">
+        <parameters name="enumAttribute">
+          <referenceValue element="#//@releases.1/@changes.23/@changes.4/@element"/>
+        </parameters>
+        <parameters name="ePackage">
+          <referenceValue element="miniuml.ecore#/"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//InitialNode" featureName="name"
+          dataValue="InitialNode" oldDataValue="initial"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//InitialNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>InitialNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//JoinNode" featureName="name"
+          dataValue="JoinNode" oldDataValue="join"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//JoinNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>JoinNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ForkNode" featureName="name"
+          dataValue="ForkNode" oldDataValue="fork"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ForkNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ForkNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//DecisionNode" featureName="name"
+          dataValue="DecisionNode" oldDataValue="junction"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//DecisionNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>DecisionNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge/guard"
+          featureName="name" dataValue="guard" oldDataValue="expression"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityEdge/guard"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>guard</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//InitialNode" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//InitialNode" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//JoinNode" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//JoinNode" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//ForkNode" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//ForkNode" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Remove" element="miniuml.ecore#//DecisionNode" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.29/@changes.8/@element"/>
+      <changes xsi:type="history:Add" element="miniuml.ecore#//DecisionNode" featureName="eSuperTypes"
+          referenceValue="miniuml.ecore#//ActivityNode"/>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="Pseudostate" abstract="true" eSuperTypes="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <operation name="inlineSuperClass">
+        <parameters name="superClass">
+          <referenceValue element="#//@releases.1/@changes.29/@changes.8/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ObjectNode" featureName="name"
+          dataValue="ObjectNode" oldDataValue="ObjectFlowState"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ObjectNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ObjectNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityFinalNode"
+          featureName="name" dataValue="ActivityFinalNode" oldDataValue="FinalState"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityFinalNode"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ActivityFinalNode</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.36/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.36/@changes.0/@element"
+            featureName="name" dataValue="activity"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.36/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.36/@changes.0/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//Activity"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.37/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.37/@changes.0/@element"
+            featureName="name" dataValue="activityPartition"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.37/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.37/@changes.0/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityPartition"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//ActivityPartition/nodes">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/nodes"
+            featureName="name" dataValue="activityNode"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/nodes"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/nodes"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityNode"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="miniuml.ecore#//ActivityPartition/edges">
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/edges"
+            featureName="name" dataValue="activityEdge"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/edges"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/edges"
+            featureName="eType" referenceValue="miniuml.ecore#//ActivityEdge"/>
+      </changes>
+      <changes xsi:type="history:Create" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.35/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.35/@changes.0/@element"
+            featureName="name" dataValue="guard"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.35/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.35/@changes.0/@element"
+            featureName="eType" referenceValue="miniuml.ecore#//Guard"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="contents" upperBound="-1" eType="ecore:EClass miniuml.ecore#//ModelElement"/>
+      </changes>
+      <operation name="partitionReference">
+        <parameters name="reference">
+          <referenceValue element="#//@releases.1/@changes.32/@changes.5/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/edges"
+          featureName="name" dataValue="edges" oldDataValue="activityEdge"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityPartition/edges"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>edges</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityPartition/nodes"
+          featureName="name" dataValue="nodes" oldDataValue="activityNode"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="miniuml.ecore#//ActivityPartition/nodes"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>nodes</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="guard" upperBound="-1" eType="ecore:EClass miniuml.ecore#//Guard"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.35/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="activity" upperBound="-1" eType="ecore:EClass miniuml.ecore#//Activity"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.36/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="miniuml.ecore#//ActivityPartition"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="activityPartition" upperBound="-1"
+            eType="ecore:EClass miniuml.ecore#//ActivityPartition"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.37/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:MigrationChange" migration="activityEdgeClass = minuml1.ActivityEdge&#xA;activityEdgeClass.'abstract' = true&#xA;newClass(minuml1, &quot;ControlFlow&quot;, [minuml1.ActivityEdge], false)&#xA;newClass(minuml1, &quot;ObjectFlow&quot;, [minuml1.ActivityEdge], false)&#xA;&#xA;// model migration&#xA;for(edge in activityEdgeClass.allInstances) {&#xA;&#x9;if(edge.source.instanceOf(minuml1.ObjectNode) || edge.target.instanceOf(minuml1.ObjectNode)) {&#xA;&#x9;&#x9;edge.migrate(minuml1.ObjectFlow)&#xA;&#x9;} else {&#xA;&#x9;&#x9;edge.migrate(minuml1.ControlFlow)&#xA;&#x9;}&#xA;}">
+      <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+            element="miniuml.ecore#//ControlFlow">
+          <changes xsi:type="history:Set" element="miniuml.ecore#//ControlFlow" featureName="name"
+              dataValue="ControlFlow"/>
+          <changes xsi:type="history:Add" element="miniuml.ecore#//ControlFlow" featureName="eSuperTypes"
+              referenceValue="miniuml.ecore#//ActivityEdge"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="miniuml.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>ControlFlow</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="miniuml.ecore#//ActivityEdge"/>
+          </parameters>
+          <parameters name="abstr">
+            <dataValue>false</dataValue>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="miniuml.ecore#/" referenceName="eClassifiers"
+            element="miniuml.ecore#//ObjectFlow">
+          <changes xsi:type="history:Set" element="miniuml.ecore#//ObjectFlow" featureName="name"
+              dataValue="ObjectFlow"/>
+          <changes xsi:type="history:Add" element="miniuml.ecore#//ObjectFlow" featureName="eSuperTypes"
+              referenceValue="miniuml.ecore#//ActivityEdge"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="miniuml.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>ObjectFlow</dataValue>
+          </parameters>
+          <parameters name="superClasses">
+            <referenceValue element="miniuml.ecore#//ActivityEdge"/>
+          </parameters>
+          <parameters name="abstr">
+            <dataValue>false</dataValue>
+          </parameters>
+        </operation>
+      </changes>
+    </changes>
+    <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="name" dataValue="minuml2"
+        oldDataValue="minuml1"/>
+    <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="nsPrefix"
+        dataValue="minuml2" oldDataValue="minuml1"/>
+    <changes xsi:type="history:Set" element="miniuml.ecore#/" featureName="nsURI"
+        dataValue="minuml2" oldDataValue="minuml1"/>
+  </releases>
+  <releases/>
+</history:History>

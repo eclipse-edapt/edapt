@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2010-08-25T07:48:58.997+0200" label="v1">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="AssociationToClass.ecore#/">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#/" featureName="name"
+            dataValue="association_to_class"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#/" featureName="nsURI"
+            dataValue="association_to_class"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#/" featureName="nsPrefix"
+            dataValue="association_to_class"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#/" referenceName="eClassifiers"
+          element="AssociationToClass.ecore#//Root">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Root"
+            featureName="name" dataValue="Root"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#/" referenceName="eClassifiers"
+          element="AssociationToClass.ecore#//Node">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node"
+            featureName="name" dataValue="Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Root"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Root/nodes">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Root/nodes"
+            featureName="name" dataValue="nodes"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Root/nodes"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Root/nodes"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Root/nodes"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/name">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/oneToOneBackward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+            featureName="name" dataValue="oneToOneBackward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/oneToOneForward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+            featureName="name" dataValue="oneToOneForward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToOneBackward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToOneForward"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/oneToManyForward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+            featureName="name" dataValue="oneToManyForward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/oneToManyBackward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+            featureName="name" dataValue="oneToManyBackward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToManyForward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToManyBackward"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/manyToManyBackward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+            featureName="name" dataValue="manyToManyBackward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//Node"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//Node/manyToManyForward">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+            featureName="name" dataValue="manyToManyForward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/manyToManyBackward"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/manyToManyForward"/>
+      </changes>
+    </changes>
+    <changes xsi:type="history:Set" element="AssociationToClass.ecore#/" featureName="nsURI"
+        dataValue="association_to_class/v1" oldDataValue="association_to_class"/>
+    <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+        featureName="upperBound" dataValue="1" oldDataValue="-1"/>
+  </releases>
+  <releases date="2010-08-25T07:51:21.461+0200" label="v2">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#/" referenceName="eClassifiers"
+          element="AssociationToClass.ecore#//OneToOne">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne"
+            featureName="name" dataValue="OneToOne"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/oneToOneForward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/oneToOneBackward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//OneToOne"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//OneToOne"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+          featureName="containment" dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//OneToOne"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//OneToOne/source">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/source"
+            featureName="name" dataValue="source"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/source"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/source"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/source"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToOneForward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneForward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//OneToOne/source"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//OneToOne"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//OneToOne/target">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/target"
+            featureName="name" dataValue="target"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/target"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/target"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToOne/target"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToOneBackward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToOneBackward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//OneToOne/target"/>
+      <operation name="introduceReferenceClass">
+        <parameters name="reference">
+          <referenceValue element="AssociationToClass.ecore#//Node/oneToOneForward"/>
+        </parameters>
+        <parameters name="className">
+          <dataValue>OneToOne</dataValue>
+        </parameters>
+        <parameters name="sourceReferenceName">
+          <dataValue>source</dataValue>
+        </parameters>
+        <parameters name="targetReferenceName">
+          <dataValue>target</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#/" referenceName="eClassifiers"
+          element="AssociationToClass.ecore#//OneToMany">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany"
+            featureName="name" dataValue="OneToMany"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/oneToManyForward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/oneToManyBackward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//OneToMany"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//OneToMany"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+          featureName="containment" dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//OneToMany"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//OneToMany/source">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/source"
+            featureName="name" dataValue="source"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/source"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/source"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/source"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToManyForward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyForward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//OneToMany/source"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//OneToMany"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//OneToMany/target">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/target"
+            featureName="name" dataValue="target"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/target"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/target"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//OneToMany/target"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/oneToManyBackward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/oneToManyBackward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//OneToMany/target"/>
+      <operation name="introduceReferenceClass">
+        <parameters name="reference">
+          <referenceValue element="AssociationToClass.ecore#//Node/oneToManyForward"/>
+        </parameters>
+        <parameters name="className">
+          <dataValue>OneToMany</dataValue>
+        </parameters>
+        <parameters name="sourceReferenceName">
+          <dataValue>source</dataValue>
+        </parameters>
+        <parameters name="targetReferenceName">
+          <dataValue>target</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#/" referenceName="eClassifiers"
+          element="AssociationToClass.ecore#//ManyToMany">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany"
+            featureName="name" dataValue="ManyToMany"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/manyToManyForward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+          featureName="eOpposite" oldReferenceValue="AssociationToClass.ecore#//Node/manyToManyBackward"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//ManyToMany"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+          featureName="eType" referenceValue="AssociationToClass.ecore#//ManyToMany"
+          oldReferenceValue="AssociationToClass.ecore#//Node"/>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+          featureName="containment" dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//ManyToMany"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//ManyToMany/source">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/source"
+            featureName="name" dataValue="source"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/source"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/source"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/source"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/manyToManyForward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyForward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//ManyToMany/source"/>
+      <changes xsi:type="history:Create" target="AssociationToClass.ecore#//ManyToMany"
+          referenceName="eStructuralFeatures" element="AssociationToClass.ecore#//ManyToMany/target">
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/target"
+            featureName="name" dataValue="target"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/target"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/target"
+            featureName="eType" referenceValue="AssociationToClass.ecore#//Node"/>
+        <changes xsi:type="history:Set" element="AssociationToClass.ecore#//ManyToMany/target"
+            featureName="eOpposite" referenceValue="AssociationToClass.ecore#//Node/manyToManyBackward"/>
+      </changes>
+      <changes xsi:type="history:Set" element="AssociationToClass.ecore#//Node/manyToManyBackward"
+          featureName="eOpposite" referenceValue="AssociationToClass.ecore#//ManyToMany/target"/>
+      <operation name="introduceReferenceClass">
+        <parameters name="reference">
+          <referenceValue element="AssociationToClass.ecore#//Node/manyToManyForward"/>
+        </parameters>
+        <parameters name="className">
+          <dataValue>ManyToMany</dataValue>
+        </parameters>
+        <parameters name="sourceReferenceName">
+          <dataValue>source</dataValue>
+        </parameters>
+        <parameters name="targetReferenceName">
+          <dataValue>target</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="AssociationToClass.ecore#/" featureName="nsURI"
+        dataValue="association_to_class/v2" oldDataValue="association_to_class/v1"/>
+  </releases>
+  <releases/>
+</history:History>

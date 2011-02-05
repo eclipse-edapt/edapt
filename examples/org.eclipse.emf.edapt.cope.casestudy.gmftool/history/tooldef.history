@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+  <releases date="2009-02-09T23:06:22.328+0100" label="1.0">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="tooldef.ecore#/">
+        <changes xsi:type="history:Set" element="tooldef.ecore#/" featureName="name"
+            dataValue="tooldef"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#/" featureName="nsURI"
+            dataValue="http://www.eclipse.org/gmf/2005/ToolDefinition"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#/" featureName="nsPrefix"
+            dataValue="gmftool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ToolRegistry">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry" featureName="name"
+            dataValue="ToolRegistry"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//AbstractTool">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool" featureName="name"
+            dataValue="AbstractTool"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AbstractTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//AbstractTool/title">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/title"
+            featureName="name" dataValue="title"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/title"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AbstractTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//AbstractTool/description">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/description"
+            featureName="name" dataValue="description"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/description"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ToolContainer">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer" featureName="name"
+            dataValue="ToolContainer"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//ToolContainer" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolContainer" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolContainer/tools">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer/tools"
+            featureName="name" dataValue="tools"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer/tools"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer/tools"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolContainer/tools"
+            featureName="eType" referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//PaletteSeparator">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PaletteSeparator"
+            featureName="name" dataValue="PaletteSeparator"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PaletteSeparator"
+            featureName="eSuperTypes" referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ToolGroup">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup" featureName="name"
+            dataValue="ToolGroup"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//ToolGroup" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ToolContainer"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolGroup" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolGroup/collapsible">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/collapsible"
+            featureName="name" dataValue="collapsible"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/collapsible"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolGroup" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolGroup/active">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/active"
+            featureName="name" dataValue="active"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/active"
+            featureName="eType" referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//Palette">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Palette" featureName="name"
+            dataValue="Palette"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//Palette" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ToolContainer"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolRegistry" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolRegistry/palette">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/palette"
+            featureName="name" dataValue="palette"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/palette"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/palette"
+            featureName="eType" referenceValue="tooldef.ecore#//Palette"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//Palette" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//Palette/default">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Palette/default"
+            featureName="name" dataValue="default"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Palette/default"
+            featureName="eType" referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//StandardTool">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool" featureName="name"
+            dataValue="StandardTool"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//StandardTool" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardTool" referenceName="eAnnotations"
+          element="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="predefined, like zoom or marquee"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//StandardToolKind">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind"
+            featureName="name" dataValue="StandardToolKind"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//StandardTool/toolKind">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool/toolKind"
+            featureName="name" dataValue="toolKind"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardTool/toolKind"
+            featureName="eType" referenceValue="tooldef.ecore#//StandardToolKind"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/SELECT">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/SELECT"
+            featureName="name" dataValue="SELECT"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/SELECT"
+            featureName="literal" dataValue="SELECT"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/SELECT_PAN">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/SELECT_PAN"
+            featureName="name" dataValue="SELECT_PAN"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/SELECT_PAN"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/SELECT_PAN"
+            featureName="literal" dataValue="SELECT_PAN"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/MARQUEE">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/MARQUEE"
+            featureName="name" dataValue="MARQUEE"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/MARQUEE"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/MARQUEE"
+            featureName="literal" dataValue="MARQUEE"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/ZOOM_PAN">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_PAN"
+            featureName="name" dataValue="ZOOM_PAN"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_PAN"
+            featureName="value" dataValue="3" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_PAN"
+            featureName="literal" dataValue="ZOOM_PAN"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/ZOOM_IN">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_IN"
+            featureName="name" dataValue="ZOOM_IN"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_IN"
+            featureName="value" dataValue="4" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_IN"
+            featureName="literal" dataValue="ZOOM_IN"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StandardToolKind"
+          referenceName="eLiterals" element="tooldef.ecore#//StandardToolKind/ZOOM_OUT">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_OUT"
+            featureName="name" dataValue="ZOOM_OUT"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_OUT"
+            featureName="value" dataValue="5" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StandardToolKind/ZOOM_OUT"
+            featureName="literal" dataValue="ZOOM_OUT"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//CreationTool">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//CreationTool" featureName="name"
+            dataValue="CreationTool"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//CreationTool" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//GenericTool">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericTool" featureName="name"
+            dataValue="GenericTool"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//GenericTool" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//AbstractTool"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//GenericTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//GenericTool/toolClass">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericTool/toolClass"
+            featureName="name" dataValue="toolClass"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericTool/toolClass"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ItemBase">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemBase" featureName="name"
+            dataValue="ItemBase"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemBase" featureName="interface"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//Menu">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu" featureName="name"
+            dataValue="Menu"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolRegistry" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolRegistry/allMenus">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/allMenus"
+            featureName="name" dataValue="allMenus"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/allMenus"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/allMenus"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/allMenus"
+            featureName="eType" referenceValue="tooldef.ecore#//Menu"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//Menu" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//Menu/items">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu/items" featureName="name"
+            dataValue="items"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu/items" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu/items" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Menu/items" featureName="eType"
+            referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//Separator">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Separator" featureName="name"
+            dataValue="Separator"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//Separator" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//Separator" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//Separator/name">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Separator/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Separator/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//PredefinedItem">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PredefinedItem" featureName="name"
+            dataValue="PredefinedItem"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PredefinedItem" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//PredefinedItem" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//PredefinedItem/identifier">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PredefinedItem/identifier"
+            featureName="name" dataValue="identifier"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PredefinedItem/identifier"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//PredefinedMenu">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PredefinedMenu" featureName="name"
+            dataValue="PredefinedMenu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PredefinedMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Menu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PredefinedMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//PredefinedItem"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ContributionItem">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem"
+            featureName="name" dataValue="ContributionItem"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem"
+            featureName="interface" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//ContributionItem"
+            featureName="eSuperTypes" referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ContributionItem"
+          referenceName="eStructuralFeatures" element="tooldef.ecore#//ContributionItem/title">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem/title"
+            featureName="name" dataValue="title"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem/title"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//MenuAction">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MenuAction" featureName="name"
+            dataValue="MenuAction"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//MenuAction" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ContributionItem"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolRegistry" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ToolRegistry/sharedActions">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions"
+            featureName="name" dataValue="sharedActions"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions"
+            featureName="eType" referenceValue="tooldef.ecore#//MenuAction"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolRegistry/sharedActions"
+          referenceName="eAnnotations" element="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ToolRegistry/sharedActions/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="Instead of placing&#x9;common actions somewhere in menu hierarchy and referencing them in (2..n) cases, keep them in this central registry and use ItemRef everywhere (i.e. in 1..n cases)"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//MenuAction" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//MenuAction/hotKey">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MenuAction/hotKey"
+            featureName="name" dataValue="hotKey"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MenuAction/hotKey"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ItemRef">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemRef" featureName="name"
+            dataValue="ItemRef"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//ItemRef" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ItemRef" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ItemRef/item">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemRef/item" featureName="name"
+            dataValue="item"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemRef/item" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ItemRef/item" featureName="eType"
+            referenceValue="tooldef.ecore#//ItemBase"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ContextMenu">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContextMenu" featureName="name"
+            dataValue="ContextMenu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//ContextMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Menu"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ContextMenu" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//ContextMenu/default">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContextMenu/default"
+            featureName="name" dataValue="default"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContextMenu/default"
+            featureName="eType" referenceValue="tooldef.ecore#//MenuAction"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//PopupMenu">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PopupMenu" featureName="name"
+            dataValue="PopupMenu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PopupMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Menu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//PopupMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//ContributionItem"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//PopupMenu" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//PopupMenu/iD">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PopupMenu/iD" featureName="name"
+            dataValue="iD"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PopupMenu/iD" featureName="iD"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//PopupMenu/iD" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//MainMenu">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu" featureName="name"
+            dataValue="MainMenu"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//MainMenu" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Menu"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//MainMenu" referenceName="eAnnotations"
+          element="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="no default action and no id, just a collection of items"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//MainMenu" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//MainMenu/title">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu/title" featureName="name"
+            dataValue="title"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MainMenu/title" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//Toolbar">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Toolbar" featureName="name"
+            dataValue="Toolbar"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//Toolbar" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Menu"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//ActionKind">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind" featureName="name"
+            dataValue="ActionKind"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//MenuAction" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//MenuAction/kind">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MenuAction/kind"
+            featureName="name" dataValue="kind"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//MenuAction/kind"
+            featureName="eType" referenceValue="tooldef.ecore#//ActionKind"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ActionKind" referenceName="eLiterals"
+          element="tooldef.ecore#//ActionKind/CREATE">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/CREATE"
+            featureName="name" dataValue="CREATE"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/CREATE"
+            featureName="literal" dataValue="CREATE"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ActionKind" referenceName="eLiterals"
+          element="tooldef.ecore#//ActionKind/PROPCHANGE">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROPCHANGE"
+            featureName="name" dataValue="PROPCHANGE"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROPCHANGE"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROPCHANGE"
+            featureName="literal" dataValue="PROPCHANGE"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ActionKind" referenceName="eLiterals"
+          element="tooldef.ecore#//ActionKind/MODIFY">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/MODIFY"
+            featureName="name" dataValue="MODIFY"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/MODIFY"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/MODIFY"
+            featureName="literal" dataValue="MODIFY"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ActionKind" referenceName="eLiterals"
+          element="tooldef.ecore#//ActionKind/PROCESS">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROCESS"
+            featureName="name" dataValue="PROCESS"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROCESS"
+            featureName="value" dataValue="3" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/PROCESS"
+            featureName="literal" dataValue="PROCESS"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ActionKind" referenceName="eLiterals"
+          element="tooldef.ecore#//ActionKind/CUSTOM">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/CUSTOM"
+            featureName="name" dataValue="CUSTOM"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/CUSTOM"
+            featureName="value" dataValue="99" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ActionKind/CUSTOM"
+            featureName="literal" dataValue="CUSTOM"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//Image">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Image" featureName="name"
+            dataValue="Image"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//Image" featureName="interface"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AbstractTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//AbstractTool/smallIcon">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/smallIcon"
+            featureName="name" dataValue="smallIcon"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/smallIcon"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/smallIcon"
+            featureName="eType" referenceValue="tooldef.ecore#//Image"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AbstractTool" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//AbstractTool/largeIcon">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/largeIcon"
+            featureName="name" dataValue="largeIcon"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/largeIcon"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AbstractTool/largeIcon"
+            featureName="eType" referenceValue="tooldef.ecore#//Image"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//ContributionItem"
+          referenceName="eStructuralFeatures" element="tooldef.ecore#//ContributionItem/icon">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem/icon"
+            featureName="name" dataValue="icon"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem/icon"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem/icon"
+            featureName="eType" referenceValue="tooldef.ecore#//Image"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//DefaultImage">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//DefaultImage" featureName="name"
+            dataValue="DefaultImage"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//DefaultImage" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Image"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//DefaultImage" referenceName="eAnnotations"
+          element="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//DefaultImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="Delegate to EMF.Edit providers"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//BundleImage">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage" featureName="name"
+            dataValue="BundleImage"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//BundleImage" featureName="eSuperTypes"
+            referenceValue="tooldef.ecore#//Image"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//BundleImage/path">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/path"
+            featureName="name" dataValue="path"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/path"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage" referenceName="eStructuralFeatures"
+          element="tooldef.ecore#//BundleImage/bundle">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/bundle"
+            featureName="name" dataValue="bundle"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/bundle"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//StyleSelector">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector" featureName="name"
+            dataValue="StyleSelector"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector" featureName="interface"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StyleSelector" referenceName="eOperations"
+          element="tooldef.ecore#//StyleSelector/isOk">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector/isOk"
+            featureName="name" dataValue="isOk"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector/isOk"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//StyleSelector/isOk"
+          referenceName="eParameters" element="tooldef.ecore#//StyleSelector/isOk/style">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector/isOk/style"
+            featureName="name" dataValue="style"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector/isOk/style"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//GenericStyleSelector">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericStyleSelector"
+            featureName="name" dataValue="GenericStyleSelector"/>
+        <changes xsi:type="history:Add" element="tooldef.ecore#//GenericStyleSelector"
+            featureName="eSuperTypes" referenceValue="tooldef.ecore#//StyleSelector"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#/" referenceName="eClassifiers"
+          element="tooldef.ecore#//AppearanceStyle">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle"
+            featureName="name" dataValue="AppearanceStyle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//GenericStyleSelector"
+          referenceName="eStructuralFeatures" element="tooldef.ecore#//GenericStyleSelector/values">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericStyleSelector/values"
+            featureName="name" dataValue="values"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericStyleSelector/values"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericStyleSelector/values"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//GenericStyleSelector/values"
+            featureName="eType" referenceValue="tooldef.ecore#//AppearanceStyle"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AppearanceStyle"
+          referenceName="eLiterals" element="tooldef.ecore#//AppearanceStyle/Font">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Font"
+            featureName="name" dataValue="Font"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Font"
+            featureName="literal" dataValue="Font"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AppearanceStyle"
+          referenceName="eLiterals" element="tooldef.ecore#//AppearanceStyle/Fill">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Fill"
+            featureName="name" dataValue="Fill"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Fill"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Fill"
+            featureName="literal" dataValue="Fill"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//AppearanceStyle"
+          referenceName="eLiterals" element="tooldef.ecore#//AppearanceStyle/Line">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Line"
+            featureName="name" dataValue="Line"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Line"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//AppearanceStyle/Line"
+            featureName="literal" dataValue="Line"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2009-02-09T23:15:42.765+0100" label="2.0">
+    <changes xsi:type="history:Create" target="tooldef.ecore#//ToolGroup" referenceName="eStructuralFeatures"
+        element="tooldef.ecore#//ToolGroup/stack">
+      <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/stack" featureName="name"
+          dataValue="stack"/>
+      <changes xsi:type="history:Set" element="tooldef.ecore#//ToolGroup/stack" featureName="eType"
+          referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="tooldef.ecore#//GenericTool/toolClass"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <operation name="changeAttributeType">
+        <parameters name="attribute">
+          <referenceValue element="tooldef.ecore#//GenericTool/toolClass"/>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:NoChange" description="1.3"/>
+    <changes xsi:type="history:MigrationChange" migration="toolClassAttribute = tooldef.GenericTool.toolClass&#xA;toolClassAttribute.lowerBound = 1&#xA;">
+      <changes xsi:type="history:Set" element="tooldef.ecore#//GenericTool/toolClass"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+    </changes>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage/bundle"
+          referenceName="eAnnotations" element="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/bundle/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="Empty value means image path is relative to generated bundle"/>
+      </changes>
+    </changes>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage/path"
+          referenceName="eAnnotations" element="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/path/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="Relative path to image"/>
+      </changes>
+    </changes>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage" referenceName="eAnnotations"
+          element="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+            featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+      </changes>
+      <changes xsi:type="history:Create" target="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="key" dataValue="documentation"/>
+        <changes xsi:type="history:Set" element="tooldef.ecore#//BundleImage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+            featureName="value" dataValue="Image bundled as part of distribution"/>
+      </changes>
+    </changes>
+    <changes xsi:type="history:NoChange" description="1.4"/>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Set" element="tooldef.ecore#//StyleSelector" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="tooldef.ecore#//Image" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="tooldef.ecore#//ContributionItem" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="tooldef.ecore#//ItemBase" featureName="abstract"
+          dataValue="true" oldDataValue="false"/>
+    </changes>
+    <changes xsi:type="history:NoChange" description="1.5"/>
+  </releases>
+  <releases date="2009-02-09T23:15:51.328+0100" label="2.1"/>
+  <releases/>
+</history:History>

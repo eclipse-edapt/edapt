@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+    Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        BMW Car IT - Initial API and implementation
+        Technische Universitaet Muenchen - Major refactoring and extension
+ -->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationModelWizardID"
+            name="%_UI_DeclarationModelWizard_label"
+            class="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DeclarationModelFile.gif">
+         <description>%_UI_DeclarationModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditorID"
+            name="%_UI_DeclarationEditor_label"
+            icon="icons/full/obj16/DeclarationModelFile.gif"
+            extensions="declaration"
+            class="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditor"
+            contributorClass="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="org.eclipse.emf.edapt.cope.menu"
+               label="COPE">
+            <command
+                  commandId="org.eclipse.emf.edapt.cope.ExtractDeclaration"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <or>
+                     <with
+                           variable="selection">
+                        <count
+                              value="1">
+                        </count>
+                        <iterate>
+                           <adapt
+                                 type="org.eclipse.core.resources.IFile">
+                              <test
+                                    property="org.eclipse.core.resources.extension"
+                                    value="groovy">
+                              </test>
+                           </adapt>
+                        </iterate>
+                     </with>
+                     <with
+                           variable="selection">
+                        <count
+                              value="1">
+                        </count>
+                        <iterate>
+                           <adapt
+                                 type="org.eclipse.core.resources.IFolder">
+                           </adapt>
+                        </iterate>
+                     </with>
+                  </or>
+               </visibleWhen>
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.emf.edapt.cope"
+            defaultHandler="org.eclipse.emf.edapt.cope.declaration.parser.ui.ExtractDeclarationHandler"
+            id="org.eclipse.emf.edapt.cope.ExtractDeclaration"
+            name="Extract Declaration">
+      </command>
+      <category
+            id="org.eclipse.emf.edapt.cope"
+            name="COPE">
+      </category>
+   </extension>
+
+</plugin>

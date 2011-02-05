@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.44.ecore" right="file:/D:/Projekte/COPE/workspace_ganymede/edu.tum.cs.cope.incubator/gmfmap/gmfmap_1.45.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateAttribute">
+              <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              <leftElement href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4/@details.0"/>
+              <rightElement href="gmfmap_1.45.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4/@details.0"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:DiffGroup">
+            <subDiffElements xsi:type="diff:UpdateAttribute">
+              <attribute href="http://www.eclipse.org/emf/2002/Ecore#//EStringToStringMapEntry/value"/>
+              <leftElement href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5/@details.0"/>
+              <rightElement href="gmfmap_1.45.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5/@details.0"/>
+            </subDiffElements>
+            <leftParent href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5/@details.0"/>
+          </subDiffElements>
+          <leftParent href="gmfmap_1.44.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5"/>
+        </subDiffElements>
+        <leftParent href="gmfmap_1.44.ecore#//ChildReference"/>
+      </subDiffElements>
+      <leftParent href="gmfmap_1.44.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

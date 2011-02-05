@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.193.ecore" right="gmfgen_1.194.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.193.ecore#/"/>
+        <rightElement href="gmfgen_1.194.ecore#//GenStandardPreferencePage"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.193.ecore#/"/>
+        <rightElement href="gmfgen_1.194.ecore#//StandardPreferencePages"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.193.ecore#//GenDiagram"/>
+          <rightElement href="gmfgen_1.194.ecore#//GenDiagram/preferencePages"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.193.ecore#//GenDiagram"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.193.ecore#/"/>
+        <rightElement href="gmfgen_1.194.ecore#//GenCustomPreferencePage"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:AddModelElement">
+        <leftParent href="gmfgen_1.193.ecore#/"/>
+        <rightElement href="gmfgen_1.194.ecore#//GenPreferencePage"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.193.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

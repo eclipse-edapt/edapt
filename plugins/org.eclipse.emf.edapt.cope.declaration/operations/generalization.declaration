@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="generalization.groovy">
+  <operations name="generalizeReference" description="In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed." label="Generalize Reference">
+    <parameters classifierName="EReference" name="reference" description="The reference to be generalized" main="true"/>
+    <parameters classifierName="EClass" name="type" initExpression="reference.eType" description="The new type of the reference" choiceExpression="reference.eType.eAllSuperTypes.plus(reference.eType)"/>
+    <parameters classifierName="EInt" name="lowerBound" initExpression="reference.lowerBound" description="The new lower bound of the reference"/>
+    <parameters classifierName="EInt" name="upperBound" initExpression="reference.upperBound " description="The new upper bound of the reference"/>
+    <constraints label="The type must be the same or more general" booleanExpression="reference.eType.eAllSuperTypes.plus(reference.eType).contains(type) "/>
+    <constraints label="The multiplicity must be the same or more general" booleanExpression="lowerBound &lt;= reference.lowerBound &amp;&amp; (upperBound >= reference.upperBound || upperBound == -1) "/>
+  </operations>
+  <operations name="specializeSuperType" description="In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified." label="Specialize Super Type">
+    <parameters classifierName="EClass" name="eClass" description="The class whose super type is specialized" main="true"/>
+    <parameters classifierName="EClass" name="toReplace" description="The super type which is replaced" choiceExpression="replaceBy.eAllSuperTypes"/>
+    <parameters classifierName="EClass" name="replaceBy" description="The sub class by which is replaced"/>
+    <constraints label="The super type to be replaced must be a super type of the class" booleanExpression="eClass.eSuperTypes.contains(toReplace) "/>
+    <constraints label="The replacing super type must be a sub type of the replaced super type" booleanExpression="replaceBy.eAllSuperTypes.contains(toReplace) "/>
+  </operations>
+  <operations name="removeSuperfluousSuperType" description="In the metamodel, a super type is removed from a class that is already inherited from another super class. In the model, nothing is changed, as this super type is superfluous." label="Remove Superfluous Super Type">
+    <parameters classifierName="EClass" name="eClass" description="The class from which the super type is removed" main="true"/>
+    <parameters classifierName="EClass" name="superType" description="The super type to be removed"/>
+    <constraints label="The super type to be removed actually has to be a super type" booleanExpression="superTypes.contains(superType) "/>
+    <constraints label="The super type to be removed must be subsumed by one of the other super types" booleanExpression="superTypes.any{s -> s.eAllSuperTypes.contains(superType)} "/>
+    <variables many="true" classifierName="EClass" name="superTypes" initExpression="eClass.eSuperTypes"/>
+  </operations>
+  <operations name="removeSuperType" description="In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted." label="Remove Super Type" deleting="true">
+    <parameters classifierName="EClass" name="eClass" description="The class from which the super type is removed" main="true"/>
+    <parameters classifierName="EClass" name="superType" initExpression="eClass.eSuperTypes[0] " description="The super type to be removed" choiceExpression="eClass.eSuperTypes"/>
+    <constraints label="The super type to be removed actually has to be a super type of the class" booleanExpression="eClass.eSuperTypes.contains(superType) "/>
+  </operations>
+  <operations name="generalizeSuperType" description="In the metamodel, the super type of a class is replaced by its super types. In the model, the values of the features that the class inherits from that super type (excluding its super types) are deleted." label="Generalize Super Type" deleting="true">
+    <parameters classifierName="EClass" name="eClass" description="The class of which the super type is replaced" main="true"/>
+    <parameters classifierName="EClass" name="superType" initExpression="eClass.eSuperTypes[0] " description="The super type to be replaced by its super types" choiceExpression="eClass.eSuperTypes"/>
+    <constraints label="The super type to remove actually has to be a super type" booleanExpression="eClass.eSuperTypes.contains(superType) "/>
+  </operations>
+  <operations name="specializeComposition" description="In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type." label="Specialize Composition" deleting="true">
+    <parameters classifierName="EReference" name="reference" description="The containment reference to be specialized" main="true"/>
+    <parameters classifierName="EPackage" name="ePackage" description="The package in which the sub class is created"/>
+    <parameters classifierName="EString" name="name" description="The name of the sub class"/>
+    <constraints label="The reference has to be a containment reference" booleanExpression="reference.containment "/>
+    <variables classifierName="EClass" name="superType" initExpression="reference.eType"/>
+    <variables classifierName="EClass" name="eClass" initExpression="reference.eContainingClass"/>
+  </operations>
+  <operations name="generalizeAttribute" description="In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed." label="Generalize Attribute">
+    <parameters classifierName="EAttribute" name="attribute" description="The attribute to be generalized" main="true"/>
+    <parameters classifierName="EInt" name="lowerBound" initExpression="attribute.lowerBound" description="The new lower bound of the attribute"/>
+    <parameters classifierName="EInt" name="upperBound" initExpression="attribute.upperBound " description="The new upper bound of the attribute"/>
+    <constraints label="The multiplicity must be the same or more general" booleanExpression="lowerBound &lt;= attribute.lowerBound &amp;&amp; (upperBound >= attribute.upperBound || upperBound == -1) "/>
+  </operations>
+  <operations name="specializeReferenceType" description="In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed." label="Specialize Reference Type">
+    <parameters classifierName="EReference" name="reference" description="The reference whose type is specialized" main="true"/>
+    <parameters classifierName="EClass" name="type" description="The new type of the reference"/>
+    <constraints label="The old type of the reference must be abstract" booleanExpression="!isConcrete(oldType) "/>
+    <constraints label="The new type of the reference must be a subclass of its old type" booleanExpression="type.eSuperTypes.contains(oldType) "/>
+    <constraints label="The old type must not have any other subclass" booleanExpression="oldType.eSubTypes.size() == 1 "/>
+    <variables classifierName="EClass" name="oldType" initExpression="reference.eType"/>
+  </operations>
+  <operations name="specializeReference" description="In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed." label="Specialize Reference">
+    <parameters classifierName="EReference" name="reference" description="The reference to be generalized" main="true"/>
+    <parameters classifierName="EClass" name="type" initExpression="reference.eType" description="The new type of the reference"/>
+    <parameters classifierName="EInt" name="lowerBound" initExpression="reference.lowerBound" description="The new lower bound of the reference"/>
+    <parameters classifierName="EInt" name="upperBound" initExpression="reference.upperBound " description="The new upper bound of the reference"/>
+    <constraints label="The type must be the same or more special" booleanExpression="type.eAllSuperTypes.plus(type).contains(reference.eType) "/>
+    <constraints label="The multiplicity must be the same or more special" booleanExpression="lowerBound >= reference.lowerBound &amp;&amp; (upperBound &lt;= reference.upperBound || reference.upperBound == -1) "/>
+  </operations>
+</declaration:Library>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="node"
+    nsURI="node" nsPrefix="node">
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
+        eType="#//Node" containment="true" eOpposite="#//Node/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Node"
+        eOpposite="#//Node/children"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="super" eType="#//Node"
+        eOpposite="#//Node/sub"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sub" upperBound="-1" eType="#//Node"
+        eOpposite="#//Node/super"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" upperBound="-1"
+        eType="#//Node" eOpposite="#//Node/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//Node" eOpposite="#//Node/prev"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="prev" eType="#//Node" eOpposite="#//Node/next"/>
+  </eClassifiers>
+</ecore:EPackage>

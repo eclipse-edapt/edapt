@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.203.ecore" right="gmfgen_1.204.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:DiffGroup">
+          <subDiffElements xsi:type="diff:UpdateUniqueReferenceValue">
+            <reference href="http://www.eclipse.org/emf/2002/Ecore#//EReference/eOpposite"/>
+            <rightElement href="gmfgen_1.204.ecore#//GenContributionManager/items"/>
+            <leftElement href="gmfgen_1.203.ecore#//GenContributionManager/items"/>
+            <leftTarget href="gmfgen_1.204.ecore#//GenContributionItem/owner"/>
+          </subDiffElements>
+          <leftParent href="gmfgen_1.203.ecore#//GenContributionManager/items"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.203.ecore#//GenContributionManager"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.203.ecore#//GenContributionItem"/>
+          <rightElement href="gmfgen_1.204.ecore#//GenContributionItem/owner"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.203.ecore#//GenContributionItem"/>
+          <rightElement href="gmfgen_1.204.ecore#//GenContributionItem/application"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.203.ecore#//GenContributionItem"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.203.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>

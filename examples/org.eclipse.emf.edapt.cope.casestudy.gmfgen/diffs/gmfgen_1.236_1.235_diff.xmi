@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="Cp1252"?>
+<diff:DiffModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diff="http://www.eclipse.org/emf/compare/diff/1.1" left="gmfgen_1.235.ecore" right="gmfgen_1.236.ecore">
+  <ownedElements xsi:type="diff:DiffGroup">
+    <subDiffElements xsi:type="diff:DiffGroup">
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.235.ecore#//GenFeatureSeqInitializer"/>
+          <rightElement href="gmfgen_1.236.ecore#//GenFeatureSeqInitializer/getFeatureAccessor"/>
+        </subDiffElements>
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.235.ecore#//GenFeatureSeqInitializer"/>
+          <rightElement href="gmfgen_1.236.ecore#//GenFeatureSeqInitializer/getElementClassAccessor"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.235.ecore#//GenFeatureSeqInitializer"/>
+      </subDiffElements>
+      <subDiffElements xsi:type="diff:DiffGroup">
+        <subDiffElements xsi:type="diff:AddModelElement">
+          <leftParent href="gmfgen_1.235.ecore#//GenElementInitializer"/>
+          <rightElement href="gmfgen_1.236.ecore#//GenElementInitializer/getInitializerFieldName"/>
+        </subDiffElements>
+        <leftParent href="gmfgen_1.235.ecore#//GenElementInitializer"/>
+      </subDiffElements>
+      <leftParent href="gmfgen_1.235.ecore#/"/>
+    </subDiffElements>
+  </ownedElements>
+</diff:DiffModel>
