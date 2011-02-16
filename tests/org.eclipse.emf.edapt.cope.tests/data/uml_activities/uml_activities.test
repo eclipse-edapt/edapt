@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.cs.tum.edu/cope/migration/test" name="Minimal UML Activities Metamodel" history="miniuml.history">
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/cope/migration/test/0.3" name="Minimal UML Activities Metamodel" history="miniuml.history">
   <cases name="UML Activities Model" model="original_model.xmi" expectedModel="migrated_model.xmi"/>
 </test:TestSuiteDefinition>

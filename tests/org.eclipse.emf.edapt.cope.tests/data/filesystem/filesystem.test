@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.cs.tum.edu/cope/migration/test" name="Filesystem Metamodel" history="filesystem.history">
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/cope/migration/test/0.3" name="Filesystem Metamodel" history="filesystem.history">
   <cases name="Filesystem Model" model="filesystem_r0.xmi" expectedModel="filesystem_r1.xmi"/>
 </test:TestSuiteDefinition>
