@@ -9,14 +9,14 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.casestudy.gmfmap;
+package org.eclipse.emf.edapt.casestudy.gmfmap;
 
 import java.io.IOException;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.cope.migration.test.MigrationTestBase;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.test.MigrationTestBase;
 
 public class GMFMapModelMigrationTest extends MigrationTestBase {
 	

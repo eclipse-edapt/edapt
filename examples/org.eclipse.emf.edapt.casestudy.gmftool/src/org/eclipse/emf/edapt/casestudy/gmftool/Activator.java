@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.casestudy.gmfmap;
+package org.eclipse.emf.edapt.casestudy.gmftool;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -20,7 +20,7 @@ import org.osgi.framework.BundleContext;
 public class Activator extends AbstractUIPlugin {
 
 	// The plug-in ID
-	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.cope.casestudy.gmfmap";
+	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.cope.casestudy.gmftool";
 
 	// The shared instance
 	private static Activator plugin;

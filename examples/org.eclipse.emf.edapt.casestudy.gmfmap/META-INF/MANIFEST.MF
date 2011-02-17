@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.casestudy.gmfmap;singleton:=true
 Bundle-Version: 0.0.0
-Bundle-Activator: org.eclipse.emf.edapt.cope.casestudy.gmfmap.Activator
+Bundle-Activator: org.eclipse.emf.edapt.casestudy.gmfmap.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.junit4;bundle-version="4.3.1",
