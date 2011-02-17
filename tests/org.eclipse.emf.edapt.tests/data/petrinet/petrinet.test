@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/cope/migration/test/0.3" name="PetriNet Metamodel" history="petrinet.history">
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/migration/test/0.3" name="PetriNet Metamodel" history="petrinet.history">
   <cases name="PetriNet Model" model="petrinet.xmi" expectedModel="petrinet2.xmi"/>
 </test:TestSuiteDefinition>
