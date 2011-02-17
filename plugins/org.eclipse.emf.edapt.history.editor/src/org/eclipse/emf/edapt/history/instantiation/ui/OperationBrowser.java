@@ -49,7 +49,7 @@ public class OperationBrowser extends MetamodelEditorViewBase implements
 		IExtentProvider {
 
 	/** Identifier of this view an in the plugin.xml. */
-	public static final String ID = "org.eclipse.emf.edapt.cope.history.instantiation.view.operationsBrowser";
+	public static final String ID = "org.eclipse.emf.edapt.history.instantiation.view.operationsBrowser";
 
 	/** Button to execute an operation. */
 	private Button executeButton;

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.emf.edapt.cope.history;singleton:=true
+Bundle-SymbolicName: org.eclipse.emf.edapt.history;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -15,9 +15,9 @@ Export-Package: org.eclipse.emf.edapt.history,
  org.eclipse.emf.edapt.history.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.edapt.cope.common;visibility:=reexport,
+ org.eclipse.emf.edapt.common;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.edapt.cope.declaration,
- org.eclipse.emf.edapt.cope.migration
+ org.eclipse.emf.edapt.declaration,
+ org.eclipse.emf.edapt.migration
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.history.HistoryPlugin$Implementation

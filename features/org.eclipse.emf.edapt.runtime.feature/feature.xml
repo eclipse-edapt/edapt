@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.edapt.cope.runtime.feature"
+      id="org.eclipse.emf.edapt.runtime.feature"
       label="Edapt COPE Runtime Feature (Incubation)"
       version="0.3.0"
       provider-name="Eclipse Modeling Project">
@@ -113,21 +113,21 @@ This Agreement is governed by the laws of the State of New York and the intellec
          version="0.0.0"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.common"
+         id="org.eclipse.emf.edapt.common"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.declaration"
+         id="org.eclipse.emf.edapt.declaration"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.migration"
+         id="org.eclipse.emf.edapt.migration"
          download-size="0"
          install-size="0"
          version="0.0.0"

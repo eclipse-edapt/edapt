@@ -22,7 +22,7 @@ public class MigrationUIActivator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.cope.migration.ui";
+	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.migration.ui";
 
 	/**
 	 * The shared instance

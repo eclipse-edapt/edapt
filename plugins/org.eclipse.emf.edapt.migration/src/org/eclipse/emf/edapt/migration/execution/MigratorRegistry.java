@@ -70,7 +70,7 @@ public class MigratorRegistry {
 	private void registerExtensionMigrators() {
 		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
 		IConfigurationElement[] configurationElements = extensionRegistry
-				.getConfigurationElementsFor("org.eclipse.emf.edapt.cope.migrators");
+				.getConfigurationElementsFor("org.eclipse.emf.edapt.migrators");
 
 		for (IConfigurationElement configurationElement : configurationElements) {
 			registerExtensionMigrator(configurationElement);

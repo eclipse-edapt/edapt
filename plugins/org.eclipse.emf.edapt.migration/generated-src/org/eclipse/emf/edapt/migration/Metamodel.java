@@ -205,7 +205,7 @@ public interface Metamodel extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Validate the metamodel
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.cope.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
 	 * @generated
 	 */
 	void validate() throws DiagnosticException;

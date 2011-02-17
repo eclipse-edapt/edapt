@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.edapt.cope.history/generated-src"
-    editDirectory="/org.eclipse.emf.edapt.cope.history.edit/generated-src" editorDirectory="/org.eclipse.emf.edapt.cope.history.editor/generated-src"
-    modelPluginID="org.eclipse.emf.edapt.cope.history" templateDirectory="" modelName="History"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.edapt.history/generated-src"
+    editDirectory="/org.eclipse.emf.edapt.history.edit/generated-src" editorDirectory="/org.eclipse.emf.edapt.history.editor/generated-src"
+    modelPluginID="org.eclipse.emf.edapt.history" templateDirectory="" modelName="History"
     modelPluginClass="HistoryPlugin" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.edapt.cope.declaration/model/declaration.genmodel#//declaration platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.edapt.declaration/model/declaration.genmodel#//declaration platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>history.ecore</foreignModel>
   <genPackages prefix="History" basePackage="org.eclipse.emf.edapt.cope" disposableProviderFactory="true"
       multipleEditorPages="false" generateModelWizard="false" ecorePackage="history.ecore#/">

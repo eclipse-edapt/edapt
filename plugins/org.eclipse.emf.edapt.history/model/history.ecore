@@ -311,7 +311,7 @@
       </eAnnotations>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getOperation" eType="ecore:EClass ../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Operation">
+    <eOperations name="getOperation" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Operation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Helper method to determine the instantiated operation"/>
       </eAnnotations>
@@ -338,7 +338,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="A base class for instances of parameters and variables"/>
     </eAnnotations>
-    <eOperations name="getPlaceholder" eType="ecore:EClass ../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Placeholder">
+    <eOperations name="getPlaceholder" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Placeholder">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="body" value="return PlaceholderInstance_static.getPlaceholder(this);"/>
         <details key="documentation" value="Helper method to determine the instantiated placeholder"/>
@@ -367,7 +367,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An instance of a parameter, i.e. the parameter is assigned a value"/>
     </eAnnotations>
-    <eOperations name="getParameter" eType="ecore:EClass ../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Parameter">
+    <eOperations name="getParameter" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Helper method to determine the instantiated parameter"/>
       </eAnnotations>
@@ -388,7 +388,7 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An instance of a helper variable, i.e. the variable is assigned a value"/>
     </eAnnotations>
-    <eOperations name="getVariable" eType="ecore:EClass ../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Variable">
+    <eOperations name="getVariable" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Variable">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Helper method to determine the instantiated variable"/>
       </eAnnotations>

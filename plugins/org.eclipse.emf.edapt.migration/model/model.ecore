@@ -518,7 +518,7 @@
       <details key="documentation" value="Representation of a Uniform Resource Identifier (URI) for resources"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="DiagnosticException" instanceClassName="org.eclipse.emf.edapt.cope.migration.DiagnosticException">
+  <eClassifiers xsi:type="ecore:EDataType" name="DiagnosticException" instanceClassName="org.eclipse.emf.edapt.migration.DiagnosticException">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Exception that encapsulates constraint violations"/>
     </eAnnotations>

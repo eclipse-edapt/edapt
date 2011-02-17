@@ -18,25 +18,25 @@
       <command
             categoryId="org.eclipse.emf.edapt.cope"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.MigrateHandler"
-            id="org.eclipse.emf.edapt.cope.Migrate"
+            id="org.eclipse.emf.edapt.Migrate"
             name="Migrate">
       </command>
       <command
             categoryId="org.eclipse.emf.edapt.cope"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.LoadModelHandler"
-            id="org.eclipse.emf.edapt.cope.LoadModel"
+            id="org.eclipse.emf.edapt.LoadModel"
             name="Load Model">
       </command>
       <command
             categoryId="org.eclipse.emf.edapt.cope"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.RestoreBackupHandler"
-            id="org.eclipse.emf.edapt.cope.RestoreBackup"
+            id="org.eclipse.emf.edapt.RestoreBackup"
             name="Restore Backup">
       </command>
       <command
             categoryId="org.eclipse.emf.edapt.cope"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.RegisterMetamodelHandler"
-            id="org.eclipse.emf.edapt.cope.RegisterMetamodel"
+            id="org.eclipse.emf.edapt.RegisterMetamodel"
             name="Register Metamodel">
       </command>
       <category
@@ -49,43 +49,43 @@
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
-               id="org.eclipse.emf.edapt.cope.menu"
+               id="org.eclipse.emf.edapt.menu"
                label="COPE">
             <command
-                  commandId="org.eclipse.emf.edapt.cope.Migrate"
+                  commandId="org.eclipse.emf.edapt.Migrate"
                   label="Migrate"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                        definitionId="org.eclipse.emf.edapt.migration.ui.multipleResources">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="org.eclipse.emf.edapt.cope.LoadModel"
+                  commandId="org.eclipse.emf.edapt.LoadModel"
                   label="Load Model"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                        definitionId="org.eclipse.emf.edapt.migration.ui.multipleResources">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="org.eclipse.emf.edapt.cope.RestoreBackup"
+                  commandId="org.eclipse.emf.edapt.RestoreBackup"
                   label="Restore Backup"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
                   <reference
-                        definitionId="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+                        definitionId="org.eclipse.emf.edapt.migration.ui.multipleResources">
                   </reference>
                </visibleWhen>
             </command>
             <command
-                  commandId="org.eclipse.emf.edapt.cope.RegisterMetamodel"
+                  commandId="org.eclipse.emf.edapt.RegisterMetamodel"
                   label="Register Metamodel"
                   style="push">
                <visibleWhen
@@ -113,7 +113,7 @@
    <extension
          point="org.eclipse.core.expressions.definitions">
       <definition
-            id="org.eclipse.emf.edapt.cope.migration.ui.multipleResources">
+            id="org.eclipse.emf.edapt.migration.ui.multipleResources">
          <with
                variable="selection">
             <iterate
@@ -128,19 +128,19 @@
    <extension
          point="org.eclipse.ui.bindings">
       <key
-            commandId="org.eclipse.emf.edapt.cope.Migrate"
+            commandId="org.eclipse.emf.edapt.Migrate"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M3+M">
       </key>
       <key
-            commandId="org.eclipse.emf.edapt.cope.LoadModel"
+            commandId="org.eclipse.emf.edapt.LoadModel"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M3+L">
       </key>
       <key
-            commandId="org.eclipse.emf.edapt.cope.RestoreBackup"
+            commandId="org.eclipse.emf.edapt.RestoreBackup"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M3+R">

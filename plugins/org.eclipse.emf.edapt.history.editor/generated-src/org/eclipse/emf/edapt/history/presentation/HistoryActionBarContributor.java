@@ -184,7 +184,7 @@ public class HistoryActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditor_menu"), "org.eclipse.emf.edapt.cope.historyMenuID");
+		IMenuManager submenuManager = new MenuManager(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditor_menu"), "org.eclipse.emf.edapt.historyMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

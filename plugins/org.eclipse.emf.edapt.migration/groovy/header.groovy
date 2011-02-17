@@ -1,7 +1,7 @@
 import org.eclipse.emf.ecore.EStructuralFeature.Settingimport org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencerimport org.eclipse.emf.ecore.*
 import org.eclipse.emf.ecore.util.*
-import org.eclipse.emf.edapt.cope.migration.*
-import org.eclipse.emf.edapt.cope.migration.execution.*import org.eclipse.emf.edapt.cope.common.*/* * Primitives for User Interaction */ choose = { Instance instance, List values, String message ->	return MigratorRegistry.getInstance().getOracle().choose(instance, values, message)}debug = { Instance instance, String message ->	MigratorRegistry.getInstance().getDebugger().debug(instance, message)}
+import org.eclipse.emf.edapt.migration.*
+import org.eclipse.emf.edapt.migration.execution.*import org.eclipse.emf.edapt.common.*/* * Primitives for User Interaction */ choose = { Instance instance, List values, String message ->	return MigratorRegistry.getInstance().getOracle().choose(instance, values, message)}debug = { Instance instance, String message ->	MigratorRegistry.getInstance().getDebugger().debug(instance, message)}
 /*
  * Primitives for Metamodel Adaptation
  */

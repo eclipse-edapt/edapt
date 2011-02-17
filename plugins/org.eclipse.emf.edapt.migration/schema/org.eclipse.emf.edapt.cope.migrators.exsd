@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.emf.edapt.cope.migration.execution" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.emf.edapt.migration.execution" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.emf.edapt.cope.migration.execution" id="org.eclipse.emf.edapt.cope.migrators" name="Migrators"/>
+         <meta.schema plugin="org.eclipse.emf.edapt.migration.execution" id="org.eclipse.emf.edapt.migrators" name="Migrators"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

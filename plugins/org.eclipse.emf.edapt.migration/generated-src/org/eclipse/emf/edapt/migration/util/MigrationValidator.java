@@ -70,7 +70,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.emf.edapt.cope.migration";
+	public static final String DIAGNOSTIC_SOURCE = "org.eclipse.emf.edapt.migration";
 
 	/**
 	 * A constant with a fixed name that can be used as the base value for additional hand written constants.

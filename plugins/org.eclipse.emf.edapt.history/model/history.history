@@ -390,7 +390,7 @@
         <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getOperation"
             featureName="name" dataValue="getOperation"/>
         <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getOperation"
-            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Operation"/>
+            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Operation"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
           element="history.ecore#//PlaceholderInstance">
@@ -418,7 +418,7 @@
         <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder"
             featureName="name" dataValue="getPlaceholder"/>
         <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder"
-            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Placeholder"/>
+            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Placeholder"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/getPlaceholder"
           referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
@@ -593,7 +593,7 @@
         <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/getParameter"
             featureName="name" dataValue="getParameter"/>
         <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/getParameter"
-            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Parameter"/>
+            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Parameter"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
           element="history.ecore#//VariableInstance">
@@ -672,7 +672,7 @@
         <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable"
             featureName="name" dataValue="getVariable"/>
         <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable"
-            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.cope.declaration/model/declaration.ecore#//Variable"/>
+            featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Variable"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//NamedElement" referenceName="eAnnotations"
           element="history.ecore#//NamedElement/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">

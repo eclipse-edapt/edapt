@@ -49,7 +49,7 @@ public interface AbstractResource extends EObject {
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(URI)
 	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getAbstractResource_Uri()
-	 * @model dataType="org.eclipse.emf.edapt.cope.migration.URI" required="true"
+	 * @model dataType="org.eclipse.emf.edapt.migration.URI" required="true"
 	 * @generated
 	 */
 	URI getUri();

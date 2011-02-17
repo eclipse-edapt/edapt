@@ -187,7 +187,7 @@ public class MigratorProjectGenerator {
 			content.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 			content.append("<?eclipse version=\"3.2\"?>\n");
 			content.append("<plugin>\n");
-			content.append("<extension point=\"org.eclipse.emf.edapt.cope.migrators\">\n");
+			content.append("<extension point=\"org.eclipse.emf.edapt.migrators\">\n");
 			content.append("<migrator path=\"" + MIGRATOR_FOLDER + "/\"/>");
 			content.append("</extension>\n");
 			content.append("</plugin>");
@@ -236,7 +236,7 @@ public class MigratorProjectGenerator {
 			content.append("Bundle-Name: " + projectName + "\n");
 			content.append("Bundle-SymbolicName: " + projectName + "; singleton:=true\n");
 			content.append("Bundle-Version: 1.0.0\n");
-			content.append("Require-Bundle: org.eclipse.emf.edapt.cope.migration");
+			content.append("Require-Bundle: org.eclipse.emf.edapt.migration");
 			content.append("\n");
 
 			createFile(file, content.toString());

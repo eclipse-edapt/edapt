@@ -1026,7 +1026,7 @@ public interface MigrationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Diagnostic Exception</em>'.
 	 * @see org.eclipse.emf.edapt.migration.DiagnosticException
-	 * @model instanceClass="org.eclipse.emf.edapt.cope.migration.DiagnosticException"
+	 * @model instanceClass="org.eclipse.emf.edapt.migration.DiagnosticException"
 	 * @generated
 	 */
 	EDataType getDiagnosticException();

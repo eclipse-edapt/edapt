@@ -3083,8 +3083,8 @@
     <changes xsi:type="history:Set" element="model.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/emf/edapt/cope/migration/0.3"
         oldDataValue="http://www.cs.tum.edu/cope/migration"/>
     <changes xsi:type="history:Set" element="model.ecore#//DiagnosticException" featureName="instanceClassName"
-        dataValue="org.eclipse.emf.edapt.cope.migration.DiagnosticException" oldDataValue="edu.tum.cs.cope.migration.DiagnosticException"/>
+        dataValue="org.eclipse.emf.edapt.migration.DiagnosticException" oldDataValue="edu.tum.cs.cope.migration.DiagnosticException"/>
     <changes xsi:type="history:Set" element="model.ecore#//DiagnosticException" featureName="instanceTypeName"
-        dataValue="org.eclipse.emf.edapt.cope.migration.DiagnosticException" oldDataValue="edu.tum.cs.cope.migration.DiagnosticException"/>
+        dataValue="org.eclipse.emf.edapt.migration.DiagnosticException" oldDataValue="edu.tum.cs.cope.migration.DiagnosticException"/>
   </releases>
 </history:History>

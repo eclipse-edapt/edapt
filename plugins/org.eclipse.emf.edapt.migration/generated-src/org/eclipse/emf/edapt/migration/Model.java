@@ -258,7 +258,7 @@ public interface Model extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Validate the model
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.cope.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
 	 * @generated
 	 */
 	void validate() throws DiagnosticException;
@@ -269,7 +269,7 @@ public interface Model extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Check whether the model conforms to the metamodel
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.cope.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
 	 * @generated
 	 */
 	void checkConformance() throws DiagnosticException;
@@ -280,7 +280,7 @@ public interface Model extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Commit the changes to the repository, i.e. check conformance and consistency
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.cope.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
 	 * @generated
 	 */
 	void commit() throws DiagnosticException;

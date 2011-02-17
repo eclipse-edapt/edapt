@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.emf.edapt.cope.migration;singleton:=true
+Bundle-SymbolicName: org.eclipse.emf.edapt.migration;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.ocl.ecore;visibility:=reexport,
  org.codehaus.groovy;bundle-version="1.5.7",
  org.eclipse.emf.ecore.xmi,
- org.eclipse.emf.edapt.cope.declaration,
- org.eclipse.emf.edapt.cope.common
+ org.eclipse.emf.edapt.declaration,
+ org.eclipse.emf.edapt.common
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.migration.MigrationPlugin$Implementation

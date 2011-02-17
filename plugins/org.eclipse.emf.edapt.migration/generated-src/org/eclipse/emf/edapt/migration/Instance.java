@@ -132,7 +132,7 @@ public interface Instance extends EObject {
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(URI)
 	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getInstance_Uri()
-	 * @model dataType="org.eclipse.emf.edapt.cope.migration.URI"
+	 * @model dataType="org.eclipse.emf.edapt.migration.URI"
 	 * @generated
 	 */
 	URI getUri();
@@ -380,7 +380,7 @@ public interface Instance extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Validate the elements rooted at the instance (added all the violations to a diagnostic)
 	 * <!-- end-model-doc -->
-	 * @model required="true" chainDataType="org.eclipse.emf.edapt.cope.migration.DiagnosticChain"
+	 * @model required="true" chainDataType="org.eclipse.emf.edapt.migration.DiagnosticChain"
 	 * @generated
 	 */
 	boolean validate(DiagnosticChain chain);
@@ -391,7 +391,7 @@ public interface Instance extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Evaluate an OCL constraint with the instance as context
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.cope.migration.ParserException" expressionRequired="true"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.ParserException" expressionRequired="true"
 	 * @generated
 	 */
 	<V> V evaluate(String expression) throws ParserException;
