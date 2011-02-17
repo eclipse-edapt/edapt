@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!-- Schema file written by PDE -->
-<schema targetNamespace="org.eclipse.emf.edapt.cope.declaration.registry" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="org.eclipse.emf.edapt.declaration.registry" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appinfo>
-         <meta.schema plugin="org.eclipse.emf.edapt.cope.declaration.registry" id="org.eclipse.emf.edapt.cope.operations" name="Coupled Operations"/>
+         <meta.schema plugin="org.eclipse.emf.edapt.declaration.registry" id="org.eclipse.emf.edapt.operations" name="Coupled Operations"/>
       </appinfo>
       <documentation>
          [Enter description of this extension point.]

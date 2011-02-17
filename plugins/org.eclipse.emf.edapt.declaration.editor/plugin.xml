@@ -20,7 +20,7 @@
             id="org.eclipse.emf.ecore.Wizard.category.ID"
             name="%_UI_Wizard_category"/>
       <wizard
-            id="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationModelWizardID"
+            id="org.eclipse.emf.edapt.declaration.presentation.DeclarationModelWizardID"
             name="%_UI_DeclarationModelWizard_label"
             class="org.eclipse.emf.edapt.declaration.presentation.DeclarationModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
@@ -32,7 +32,7 @@
 
    <extension point="org.eclipse.ui.editors">
       <editor
-            id="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditorID"
+            id="org.eclipse.emf.edapt.declaration.presentation.DeclarationEditorID"
             name="%_UI_DeclarationEditor_label"
             icon="icons/full/obj16/DeclarationModelFile.gif"
             extensions="declaration"
@@ -45,10 +45,10 @@
       <menuContribution
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
-               id="org.eclipse.emf.edapt.cope.menu"
+               id="org.eclipse.emf.edapt.menu"
                label="COPE">
             <command
-                  commandId="org.eclipse.emf.edapt.cope.ExtractDeclaration"
+                  commandId="org.eclipse.emf.edapt.ExtractDeclaration"
                   style="push">
                <visibleWhen
                      checkEnabled="false">
@@ -90,7 +90,7 @@
       <command
             categoryId="org.eclipse.emf.edapt.cope"
             defaultHandler="org.eclipse.emf.edapt.declaration.parser.ui.ExtractDeclarationHandler"
-            id="org.eclipse.emf.edapt.cope.ExtractDeclaration"
+            id="org.eclipse.emf.edapt.ExtractDeclaration"
             name="Extract Declaration">
       </command>
       <category

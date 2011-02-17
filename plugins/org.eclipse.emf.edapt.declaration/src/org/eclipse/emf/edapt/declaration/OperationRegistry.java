@@ -163,7 +163,7 @@ public class OperationRegistry {
 			IExtensionRegistry extensionRegistry = Platform
 					.getExtensionRegistry();
 			IConfigurationElement[] configurationElements = extensionRegistry
-					.getConfigurationElementsFor("org.eclipse.emf.edapt.cope.operations");
+					.getConfigurationElementsFor("org.eclipse.emf.edapt.operations");
 
 			for (int i = 0, n = configurationElements.length; i < n; i++) {
 				IConfigurationElement configurationElement = configurationElements[i];
@@ -175,7 +175,7 @@ public class OperationRegistry {
 				DeclarationPackage.eINSTANCE.getOperation();
 
 				File dir = new File(
-						"../org.eclipse.emf.edapt.cope.declaration/operations/");
+						"../org.eclipse.emf.edapt.declaration/operations/");
 				for (File file : dir.listFiles()) {
 					if (file.getName().endsWith(".declaration")) {
 						URL declarationURL = file.toURI().toURL();

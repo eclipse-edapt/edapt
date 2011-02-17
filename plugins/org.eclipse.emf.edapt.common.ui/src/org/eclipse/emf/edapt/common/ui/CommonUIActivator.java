@@ -27,7 +27,7 @@ public class CommonUIActivator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.cope.common.ui";
+	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.common.ui";
 
 	/**
 	 * The shared instance

@@ -182,7 +182,7 @@ public class DeclarationActionBarContributor
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_DeclarationEditor_menu"), "org.eclipse.emf.edapt.cope.declarationMenuID");
+		IMenuManager submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_DeclarationEditor_menu"), "org.eclipse.emf.edapt.declarationMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

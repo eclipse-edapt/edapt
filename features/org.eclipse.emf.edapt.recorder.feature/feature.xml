@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.eclipse.emf.edapt.cope.feature"
+      id="org.eclipse.emf.edapt.feature"
       label="Edapt COPE Feature (Incubation)"
       version="0.3.0"
       provider-name="Eclipse Modeling Project">
@@ -184,63 +184,63 @@ This Agreement is governed by the laws of the State of New York and the intellec
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.common.ui"
+         id="org.eclipse.emf.edapt.common.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.declaration.edit"
+         id="org.eclipse.emf.edapt.declaration.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.declaration.editor"
+         id="org.eclipse.emf.edapt.declaration.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.history"
+         id="org.eclipse.emf.edapt.history"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.history.edit"
+         id="org.eclipse.emf.edapt.history.edit"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.history.editor"
+         id="org.eclipse.emf.edapt.history.editor"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.history.migrator"
+         id="org.eclipse.emf.edapt.history.migrator"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.migration.test"
+         id="org.eclipse.emf.edapt.migration.test"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.emf.edapt.cope.migration.ui"
+         id="org.eclipse.emf.edapt.migration.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"

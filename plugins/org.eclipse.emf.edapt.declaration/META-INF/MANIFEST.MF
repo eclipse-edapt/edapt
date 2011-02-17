@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.emf.edapt.cope.declaration;singleton:=true
+Bundle-SymbolicName: org.eclipse.emf.edapt.declaration;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -12,6 +12,6 @@ Export-Package: org.eclipse.emf.edapt.declaration,
  org.eclipse.emf.edapt.declaration.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.edapt.cope.common
+ org.eclipse.emf.edapt.common
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.declaration.DeclarationPlugin$Implementation

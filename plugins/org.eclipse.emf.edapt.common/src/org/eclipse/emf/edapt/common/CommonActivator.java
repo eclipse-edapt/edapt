@@ -27,7 +27,7 @@ public class CommonActivator extends Plugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.cope.common";
+	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.common";
 
 	/**
 	 * The shared instance

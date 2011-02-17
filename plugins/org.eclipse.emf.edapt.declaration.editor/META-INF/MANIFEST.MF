@@ -1,14 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.emf.edapt.cope.declaration.editor;singleton:=true
+Bundle-SymbolicName: org.eclipse.emf.edapt.declaration.editor;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.emf.edapt.declaration.presentation.DeclarationEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.edapt.cope.declaration,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.treewalker",
+Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.edapt.declaration,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.treewalker",
  org.eclipse.emf.edapt.declaration.parser.ui,
  org.eclipse.emf.edapt.declaration.presentation;
   uses:="org.eclipse.jface.wizard,
@@ -26,7 +26,7 @@ Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.
    org.eclipse.emf.ecore.resource,
    org.eclipse.emf.common.ui.viewer,
    org.eclipse.emf.edit.ui.action,
-   org.eclipse.emf.edapt.cope.declaration,
+   org.eclipse.emf.edapt.declaration,
    org.eclipse.emf.common.util,
    org.eclipse.swt.events,
    org.eclipse.ui,
@@ -39,10 +39,10 @@ Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.
    org.eclipse.emf.common.ui"
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
- org.eclipse.emf.edapt.cope.declaration.edit;visibility:=reexport,
+ org.eclipse.emf.edapt.declaration.edit;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
  org.codehaus.groovy;bundle-version="1.5.7",
- org.eclipse.emf.edapt.cope.common.ui
+ org.eclipse.emf.edapt.common.ui
 Bundle-ActivationPolicy: lazy

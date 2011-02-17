@@ -104,7 +104,7 @@ public class ExtractDeclarationHandler extends AbstractHandler {
 				.getActiveWorkbenchWindow().getActivePage();
 		DeclarationEditor editor = (DeclarationEditor) activePage.openEditor(
 				new URIEditorInput(declarationURI),
-				"org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditorID");
+				"org.eclipse.emf.edapt.declaration.presentation.DeclarationEditorID");
 		if (editor.getViewer() instanceof TreeViewer) {
 			((TreeViewer) editor.getViewer()).expandToLevel(3);
 		}

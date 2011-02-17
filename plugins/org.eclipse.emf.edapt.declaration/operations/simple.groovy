@@ -1,7 +1,7 @@
 import org.eclipse.emf.ecore.*
 import org.eclipse.emf.ecore.util.*
-import org.eclipse.emf.edapt.cope.migration.*
-import org.eclipse.emf.edapt.cope.common.*
+import org.eclipse.emf.edapt.migration.*
+import org.eclipse.emf.edapt.common.*
 
 
 
