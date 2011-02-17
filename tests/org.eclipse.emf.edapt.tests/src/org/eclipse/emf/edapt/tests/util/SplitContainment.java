@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.util;
+package org.eclipse.emf.edapt.tests.util;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,10 +21,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.migration.Metamodel;
-import org.eclipse.emf.edapt.cope.migration.execution.Persistency;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.execution.Persistency;
 
 /**
  * Split containment across different resources

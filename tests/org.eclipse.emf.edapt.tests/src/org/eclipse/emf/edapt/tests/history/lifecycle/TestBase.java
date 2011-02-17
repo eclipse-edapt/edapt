@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.history.lifecycle;
+package org.eclipse.emf.edapt.tests.history.lifecycle;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -25,13 +25,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.edapt.cope.common.FileUtils;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.history.Release;
-import org.eclipse.emf.edapt.cope.history.instantiation.MigratorImporter;
-import org.eclipse.emf.edapt.cope.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.cope.history.recorder.EditingDomainListener;
-import org.eclipse.emf.edapt.cope.migration.test.MigrationTestBase;
+import org.eclipse.emf.edapt.common.FileUtils;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.history.instantiation.MigratorImporter;
+import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
+import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
+import org.eclipse.emf.edapt.migration.test.MigrationTestBase;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;

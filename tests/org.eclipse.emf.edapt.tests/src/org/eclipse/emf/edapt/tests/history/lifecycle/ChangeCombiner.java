@@ -9,16 +9,16 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.history.lifecycle;
+package org.eclipse.emf.edapt.tests.history.lifecycle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.edapt.cope.history.Change;
-import org.eclipse.emf.edapt.cope.history.HistoryPackage;
-import org.eclipse.emf.edapt.cope.history.Release;
+import org.eclipse.emf.edapt.history.Change;
+import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.Release;
 
 
 /**

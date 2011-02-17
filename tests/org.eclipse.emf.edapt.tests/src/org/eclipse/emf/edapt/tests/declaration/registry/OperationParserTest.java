@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.declaration.registry;
+package org.eclipse.emf.edapt.tests.declaration.registry;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,13 +21,13 @@ import junit.framework.TestCase;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.edapt.cope.common.ExtensionFileFilter;
-import org.eclipse.emf.edapt.cope.common.FileUtils;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.declaration.Library;
-import org.eclipse.emf.edapt.cope.declaration.Operation;
-import org.eclipse.emf.edapt.cope.declaration.parser.OperationParser;
+import org.eclipse.emf.edapt.common.ExtensionFileFilter;
+import org.eclipse.emf.edapt.common.FileUtils;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.declaration.Library;
+import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.parser.OperationParser;
 
 import antlr.RecognitionException;
 import antlr.TokenStreamException;

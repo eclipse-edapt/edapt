@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.migration;
+package org.eclipse.emf.edapt.tests.migration;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,9 +18,9 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edapt.cope.common.FileUtils;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.migration.test.MigrationTestSuite;
+import org.eclipse.emf.edapt.common.FileUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.test.MigrationTestSuite;
 
 
 /**

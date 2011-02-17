@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.history.lifecycle;
+package org.eclipse.emf.edapt.tests.history.lifecycle;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -19,20 +19,20 @@ import junit.framework.Assert;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edapt.cope.common.FileUtils;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.history.History;
-import org.eclipse.emf.edapt.cope.history.HistoryPackage;
-import org.eclipse.emf.edapt.cope.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.cope.history.reconstruction.IntegrityChecker;
-import org.eclipse.emf.edapt.cope.history.reconstruction.Mapping;
-import org.eclipse.emf.edapt.cope.history.reconstruction.MigratorCodeGenerator;
-import org.eclipse.emf.edapt.cope.history.recorder.EditingDomainListener;
-import org.eclipse.emf.edapt.cope.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.cope.migration.execution.MigratorRegistry;
-import org.eclipse.emf.edapt.cope.migration.test.MigrationTestBase;
-import org.eclipse.emf.edapt.cope.tests.util.TestUtils;
+import org.eclipse.emf.edapt.common.FileUtils;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.history.History;
+import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
+import org.eclipse.emf.edapt.history.reconstruction.IntegrityChecker;
+import org.eclipse.emf.edapt.history.reconstruction.Mapping;
+import org.eclipse.emf.edapt.history.reconstruction.MigratorCodeGenerator;
+import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
+import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
+import org.eclipse.emf.edapt.migration.test.MigrationTestBase;
+import org.eclipse.emf.edapt.tests.util.TestUtils;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 

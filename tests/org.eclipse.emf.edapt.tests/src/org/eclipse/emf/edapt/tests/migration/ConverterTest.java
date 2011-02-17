@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.tests.migration;
+package org.eclipse.emf.edapt.tests.migration;
 
 import java.io.IOException;
 import java.util.IdentityHashMap;
@@ -25,16 +25,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.migration.DiagnosticException;
-import org.eclipse.emf.edapt.cope.migration.Metamodel;
-import org.eclipse.emf.edapt.cope.migration.Model;
-import org.eclipse.emf.edapt.cope.migration.ModelResource;
-import org.eclipse.emf.edapt.cope.migration.execution.BackwardConverter;
-import org.eclipse.emf.edapt.cope.migration.execution.ForwardConverter;
-import org.eclipse.emf.edapt.cope.migration.execution.Persistency;
-import org.eclipse.emf.edapt.cope.migration.execution.BackupUtils.URIMapper;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.DiagnosticException;
+import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.ModelResource;
+import org.eclipse.emf.edapt.migration.execution.BackwardConverter;
+import org.eclipse.emf.edapt.migration.execution.ForwardConverter;
+import org.eclipse.emf.edapt.migration.execution.Persistency;
+import org.eclipse.emf.edapt.migration.execution.BackupUtils.URIMapper;
 
 /**
  * Tests for {@link ForwardConverter} and {@link BackwardConverter}

@@ -13,9 +13,9 @@ Require-Bundle: org.junit4,
  org.eclipse.emf.edapt.cope.history.editor,
  org.eclipse.emf.edapt.cope.migration,
  org.eclipse.emf.edapt.cope.declaration.editor
-Export-Package: org.eclipse.emf.edapt.cope.tests.declaration.registry,
- org.eclipse.emf.edapt.cope.tests.history.lifecycle,
- org.eclipse.emf.edapt.cope.tests.history.recorder,
- org.eclipse.emf.edapt.cope.tests.migration,
- org.eclipse.emf.edapt.cope.tests.util
+Export-Package: org.eclipse.emf.edapt.tests.declaration.registry,
+ org.eclipse.emf.edapt.tests.history.lifecycle,
+ org.eclipse.emf.edapt.tests.history.recorder,
+ org.eclipse.emf.edapt.tests.migration,
+ org.eclipse.emf.edapt.tests.util
 Bundle-Vendor: %providerName
