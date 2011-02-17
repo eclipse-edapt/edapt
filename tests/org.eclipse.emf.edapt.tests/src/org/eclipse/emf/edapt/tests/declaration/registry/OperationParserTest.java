@@ -65,7 +65,7 @@ public class OperationParserTest extends TestCase {
 	/** Advanced test. */
 	public void testOperationParser() throws Exception {
 
-		File dir = new File("../org.eclipse.emf.edapt.cope.declaration/operations/");
+		File dir = new File("../org.eclipse.emf.edapt.declaration/operations/");
 		ExtensionFileFilter filter = new ExtensionFileFilter("declaration");
 		for (File declarationFile : dir.listFiles(filter)) {
 			URI declarationURI = URIUtils.getURI(declarationFile);

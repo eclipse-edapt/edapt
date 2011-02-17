@@ -28,19 +28,19 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 public class RecorderTest extends TestBase {
 
 	public void testGMFGenRecorder() throws IOException {
-		testRecorder("org.eclipse.emf.edapt.cope.casestudy.gmfgen");
+		testRecorder("org.eclipse.emf.edapt.casestudy.gmfgen");
 	}
 
 	public void testGMFMapRecorder() throws IOException {
-		testRecorder("org.eclipse.emf.edapt.cope.casestudy.gmfmap");
+		testRecorder("org.eclipse.emf.edapt.casestudy.gmfmap");
 	}
 
 	public void testGMFGraphRecorder() throws IOException {
-		testRecorder("org.eclipse.emf.edapt.cope.casestudy.gmfgraph");
+		testRecorder("org.eclipse.emf.edapt.casestudy.gmfgraph");
 	}
 
 	public void testGMFToolRecorder() throws IOException {
-		testRecorder("org.eclipse.emf.edapt.cope.casestudy.gmftool");
+		testRecorder("org.eclipse.emf.edapt.casestudy.gmftool");
 	}
 
 	private void testRecorder(String project) throws IOException, MalformedURLException {

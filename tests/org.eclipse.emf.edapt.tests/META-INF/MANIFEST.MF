@@ -1,18 +1,18 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: org.eclipse.emf.edapt.cope.tests
+Bundle-SymbolicName: org.eclipse.emf.edapt.tests
 Bundle-Version: 0.3.0
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.junit4,
  org.eclipse.emf.ecore.xmi,
  org.codehaus.groovy;bundle-version="1.5.7",
  org.eclipse.emf.edit,
- org.eclipse.emf.edapt.cope.common,
- org.eclipse.emf.edapt.cope.migration.test,
- org.eclipse.emf.edapt.cope.history.editor,
- org.eclipse.emf.edapt.cope.migration,
- org.eclipse.emf.edapt.cope.declaration.editor
+ org.eclipse.emf.edapt.common,
+ org.eclipse.emf.edapt.migration.test,
+ org.eclipse.emf.edapt.history.editor,
+ org.eclipse.emf.edapt.migration,
+ org.eclipse.emf.edapt.declaration.editor
 Export-Package: org.eclipse.emf.edapt.tests.declaration.registry,
  org.eclipse.emf.edapt.tests.history.lifecycle,
  org.eclipse.emf.edapt.tests.history.recorder,
