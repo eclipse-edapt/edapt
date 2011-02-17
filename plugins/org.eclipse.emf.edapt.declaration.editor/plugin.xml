@@ -46,7 +46,7 @@
             locationURI="popup:org.eclipse.ui.popup.any?after=additions">
          <menu
                id="org.eclipse.emf.edapt.menu"
-               label="COPE">
+               label="Edapt">
             <command
                   commandId="org.eclipse.emf.edapt.ExtractDeclaration"
                   style="push">

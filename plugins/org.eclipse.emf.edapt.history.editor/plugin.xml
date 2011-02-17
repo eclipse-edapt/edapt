@@ -110,7 +110,7 @@
            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
         <menu
               id="org.eclipse.emf.edapt.menu"
-              label="COPE">
+              label="Edapt">
            <command
                  commandId="org.eclipse.emf.edapt.AttachMigration"
                  style="push">
@@ -285,7 +285,7 @@
            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
         <menu
               id="org.eclipse.emf.edapt.menu"
-              label="COPE">
+              label="Edapt">
            <command
                  commandId="org.eclipse.emf.edapt.AddResource"
                  style="push">
@@ -378,7 +378,7 @@
            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
         <menu
               id="org.eclipse.emf.edapt.menu"
-              label="COPE">
+              label="Edapt">
            <command
                  commandId="org.eclipse.emf.edapt.GenerateMigrator"
                  style="push">
@@ -541,7 +541,7 @@
            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
         <menu
               id="org.eclipse.emf.edapt.menu"
-              label="COPE">
+              label="Edapt">
            <command
                  commandId="org.eclipse.emf.edapt.Replace"
                  style="push">
