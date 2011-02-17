@@ -51,7 +51,7 @@ public class HistoryFactoryImpl extends EFactoryImpl implements HistoryFactory {
 	 */
 	public static HistoryFactory init() {
 		try {
-			HistoryFactory theHistoryFactory = (HistoryFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/cope/history/0.3"); 
+			HistoryFactory theHistoryFactory = (HistoryFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/history/0.3"); 
 			if (theHistoryFactory != null) {
 				return theHistoryFactory;
 			}

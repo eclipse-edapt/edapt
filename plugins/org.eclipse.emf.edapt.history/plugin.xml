@@ -17,7 +17,7 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.eclipse.org/emf/edapt/cope/history/0.3" 
+       uri = "http://www.eclipse.org/emf/edapt/history/0.3" 
        class = "org.eclipse.emf.edapt.history.HistoryPackage"
        genModel = "model/history.genmodel" /> 
   </extension>
@@ -47,7 +47,7 @@
               class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
            <parameter
                  name="namespace"
-                 value="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+                 value="http://www.eclipse.org/emf/edapt/history/0.3">
            </parameter>
            <parameter
                  name="kind"

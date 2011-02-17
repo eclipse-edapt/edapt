@@ -49,7 +49,7 @@ public interface DeclarationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/cope/declaration/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/declaration/0.3";
 
 	/**
 	 * The package namespace name.

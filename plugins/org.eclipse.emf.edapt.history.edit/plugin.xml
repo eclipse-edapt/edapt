@@ -17,7 +17,7 @@
     
   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
     <factory 
-       uri = "http://www.eclipse.org/emf/edapt/cope/history/0.3" 
+       uri = "http://www.eclipse.org/emf/edapt/history/0.3" 
        class = "org.eclipse.emf.edapt.history.provider.HistoryItemProviderAdapterFactory" 
        supportedTypes = 
          "org.eclipse.emf.edit.provider.IEditingDomainItemProvider

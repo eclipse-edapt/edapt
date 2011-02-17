@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="history"
-    nsURI="http://www.eclipse.org/emf/edapt/cope/history/0.3" nsPrefix="history">
+    nsURI="http://www.eclipse.org/emf/edapt/history/0.3" nsPrefix="history">
   <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
     <details key="documentation" value="Metamodel to specify the history of a metamodel"/>
   </eAnnotations>

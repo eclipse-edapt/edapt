@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <history:History xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
   <releases date="2010-02-02T21:03:20.859+0100">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" element="model.ecore#/">
@@ -3080,7 +3080,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:Set" element="model.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/emf/edapt/cope/migration/0.3"
+    <changes xsi:type="history:Set" element="model.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/emf/edapt/migration/0.3"
         oldDataValue="http://www.cs.tum.edu/cope/migration"/>
     <changes xsi:type="history:Set" element="model.ecore#//DiagnosticException" featureName="instanceClassName"
         dataValue="org.eclipse.emf.edapt.migration.DiagnosticException" oldDataValue="edu.tum.cs.cope.migration.DiagnosticException"/>

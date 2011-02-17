@@ -50,7 +50,7 @@ public interface MigrationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/cope/migration/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/0.3";
 
 	/**
 	 * The package namespace name.

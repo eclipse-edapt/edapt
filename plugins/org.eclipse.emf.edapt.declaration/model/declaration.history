@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <history:History xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
   <releases date="2010-01-28T16:54:18.046+0100">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" element="declaration.ecore#/">
@@ -1066,6 +1066,6 @@
     <changes xsi:type="history:Set" element="declaration.ecore#//Operation/refines"
         featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <changes xsi:type="history:Set" element="declaration.ecore#/" featureName="nsURI"
-        dataValue="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" oldDataValue="http://www.cs.tum.edu/cope/declaration"/>
+        dataValue="http://www.eclipse.org/emf/edapt/declaration/0.3" oldDataValue="http://www.cs.tum.edu/cope/declaration"/>
   </releases>
 </history:History>

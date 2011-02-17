@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="simple.groovy">
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" implementation="simple.groovy">
   <operations name="rename" description="In the metamodel, an element is renamed. In the model, nothing is changed." label="Rename">
     <parameters classifierName="ENamedElement" name="element" description="The metamodel element to be renamed" main="true"/>
     <parameters classifierName="EString" name="name" initExpression="element.name " description="The new name"/>

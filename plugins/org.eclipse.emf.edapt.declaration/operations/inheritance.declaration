@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="inheritance.groovy">
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" implementation="inheritance.groovy">
   <operations name="replaceFeature" description="In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly." label="Replace Feature" deprecated="true">
     <parameters classifierName="EStructuralFeature" name="toReplace" description="The feature to be replaced" main="true"/>
     <parameters classifierName="EStructuralFeature" name="replaceBy" description="The feature by which it is replaced" choiceExpression="subClass.eAllStructuralFeatures"/>

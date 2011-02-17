@@ -48,7 +48,7 @@ public class MigrationFactoryImpl extends EFactoryImpl implements MigrationFacto
 	 */
 	public static MigrationFactory init() {
 		try {
-			MigrationFactory theMigrationFactory = (MigrationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/cope/migration/0.3"); 
+			MigrationFactory theMigrationFactory = (MigrationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/migration/0.3"); 
 			if (theMigrationFactory != null) {
 				return theMigrationFactory;
 			}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="replacement.groovy">
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" implementation="replacement.groovy">
   <operations name="replaceIdentifierByReference" description="In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element." label="Identifier to Reference">
     <parameters classifierName="EAttribute" name="referencingAttribute" description="The referencing attribute" main="true"/>
     <parameters classifierName="EAttribute" name="referencedAttribute" description="The referenced attribute"/>

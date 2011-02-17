@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <history:History xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
   <releases date="2009-04-23T19:01:54.140+0200">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" element="history.ecore#/">
@@ -2656,6 +2656,6 @@
     <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/setParameterValue/value"
         featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <changes xsi:type="history:Set" element="history.ecore#/" featureName="nsURI"
-        dataValue="http://www.eclipse.org/emf/edapt/cope/history/0.3" oldDataValue="http://www.cs.tum.edu/cope/history/0.1.42"/>
+        dataValue="http://www.eclipse.org/emf/edapt/history/0.3" oldDataValue="http://www.cs.tum.edu/cope/history/0.1.42"/>
   </releases>
 </history:History>

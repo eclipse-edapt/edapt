@@ -34,7 +34,7 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 	 */
 	public static DeclarationFactory init() {
 		try {
-			DeclarationFactory theDeclarationFactory = (DeclarationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/cope/declaration/0.3"); 
+			DeclarationFactory theDeclarationFactory = (DeclarationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/declaration/0.3"); 
 			if (theDeclarationFactory != null) {
 				return theDeclarationFactory;
 			}

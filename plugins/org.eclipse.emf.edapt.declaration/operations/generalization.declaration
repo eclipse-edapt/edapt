@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="generalization.groovy">
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" implementation="generalization.groovy">
   <operations name="generalizeReference" description="In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed." label="Generalize Reference">
     <parameters classifierName="EReference" name="reference" description="The reference to be generalized" main="true"/>
     <parameters classifierName="EClass" name="type" initExpression="reference.eType" description="The new type of the reference" choiceExpression="reference.eType.eAllSuperTypes.plus(reference.eType)"/>

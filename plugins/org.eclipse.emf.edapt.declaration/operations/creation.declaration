@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/cope/declaration/0.3" implementation="creation.groovy">
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" implementation="creation.groovy">
   <operations name="newClass" description="In the metamodel, a new class is created. Nothing is changed in the model." label="Create Class">
     <parameters classifierName="EPackage" name="ePackage" description="The package in which the class is created" main="true"/>
     <parameters classifierName="EString" name="name" description="The name of the new class"/>

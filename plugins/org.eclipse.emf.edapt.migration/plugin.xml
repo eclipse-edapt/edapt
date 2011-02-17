@@ -18,7 +18,7 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.eclipse.org/emf/edapt/cope/migration/0.3" 
+       uri = "http://www.eclipse.org/emf/edapt/migration/0.3" 
        class = "org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl"
        genModel = "model/model.genmodel" /> 
   </extension>

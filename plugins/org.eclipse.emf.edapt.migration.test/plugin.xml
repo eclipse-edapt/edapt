@@ -17,7 +17,7 @@
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://www.eclipse.org/emf/edapt/cope/migration/test/0.3"
+            uri="http://www.eclipse.org/emf/edapt/migration/test/0.3"
             class="org.eclipse.emf.edapt.migration.test.TestPackage"
             genModel="model/test.genmodel"/>
    </extension>
