@@ -3,12 +3,12 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.common.ui
 Bundle-Version: 0.3.0
-Bundle-Activator: org.eclipse.emf.edapt.cope.common.ui.CommonUIActivator
+Bundle-Activator: org.eclipse.emf.edapt.common.ui.CommonUIActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore.editor;visibility:=reexport,
  org.eclipse.emf.edapt.cope.common;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.common.ui
+Export-Package: org.eclipse.emf.edapt.common.ui
 Bundle-Vendor: %providerName

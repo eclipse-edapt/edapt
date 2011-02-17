@@ -4,16 +4,16 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.history.editor;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.emf.edapt.cope.history.presentation.HistoryEditorPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.history.instantiation.ui,
- org.eclipse.emf.edapt.cope.history.presentation,
- org.eclipse.emf.edapt.cope.history.presentation.action,
- org.eclipse.emf.edapt.cope.history.presentation.util,
- org.eclipse.emf.edapt.cope.history.reconstruction.ui,
- org.eclipse.emf.edapt.cope.history.recorder.ui
+Export-Package: org.eclipse.emf.edapt.history.instantiation.ui,
+ org.eclipse.emf.edapt.history.presentation,
+ org.eclipse.emf.edapt.history.presentation.action,
+ org.eclipse.emf.edapt.history.presentation.util,
+ org.eclipse.emf.edapt.history.reconstruction.ui,
+ org.eclipse.emf.edapt.history.recorder.ui
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.cope.history.edit;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,

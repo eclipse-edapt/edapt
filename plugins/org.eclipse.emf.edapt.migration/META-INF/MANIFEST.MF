@@ -7,10 +7,10 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.migration,
- org.eclipse.emf.edapt.cope.migration.execution,
- org.eclipse.emf.edapt.cope.migration.impl,
- org.eclipse.emf.edapt.cope.migration.util
+Export-Package: org.eclipse.emf.edapt.migration,
+ org.eclipse.emf.edapt.migration.execution,
+ org.eclipse.emf.edapt.migration.impl,
+ org.eclipse.emf.edapt.migration.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.ocl.ecore;visibility:=reexport,
@@ -19,4 +19,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.cope.declaration,
  org.eclipse.emf.edapt.cope.common
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.emf.edapt.cope.migration.MigrationPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.migration.MigrationPlugin$Implementation

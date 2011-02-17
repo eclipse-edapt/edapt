@@ -19,7 +19,7 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/emf/edapt/cope/declaration/0.3" 
-       class = "org.eclipse.emf.edapt.cope.declaration.DeclarationPackage"
+       class = "org.eclipse.emf.edapt.declaration.DeclarationPackage"
        genModel = "model/declaration.genmodel" /> 
   </extension>
   <extension

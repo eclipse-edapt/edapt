@@ -22,7 +22,7 @@
       <wizard
             id="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationModelWizardID"
             name="%_UI_DeclarationModelWizard_label"
-            class="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationModelWizard"
+            class="org.eclipse.emf.edapt.declaration.presentation.DeclarationModelWizard"
             category="org.eclipse.emf.ecore.Wizard.category.ID"
             icon="icons/full/obj16/DeclarationModelFile.gif">
          <description>%_UI_DeclarationModelWizard_description</description>
@@ -36,8 +36,8 @@
             name="%_UI_DeclarationEditor_label"
             icon="icons/full/obj16/DeclarationModelFile.gif"
             extensions="declaration"
-            class="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditor"
-            contributorClass="org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationActionBarContributor">
+            class="org.eclipse.emf.edapt.declaration.presentation.DeclarationEditor"
+            contributorClass="org.eclipse.emf.edapt.declaration.presentation.DeclarationActionBarContributor">
       </editor>
    </extension>
    <extension
@@ -89,7 +89,7 @@
          point="org.eclipse.ui.commands">
       <command
             categoryId="org.eclipse.emf.edapt.cope"
-            defaultHandler="org.eclipse.emf.edapt.cope.declaration.parser.ui.ExtractDeclarationHandler"
+            defaultHandler="org.eclipse.emf.edapt.declaration.parser.ui.ExtractDeclarationHandler"
             id="org.eclipse.emf.edapt.cope.ExtractDeclaration"
             name="Extract Declaration">
       </command>

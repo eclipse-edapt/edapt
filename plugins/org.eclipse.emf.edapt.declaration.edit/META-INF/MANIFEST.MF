@@ -4,11 +4,11 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.declaration.edit;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.emf.edapt.cope.declaration.provider.DeclarationEditPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.declaration.provider.DeclarationEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.declaration.provider
+Export-Package: org.eclipse.emf.edapt.declaration.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.cope.declaration;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,

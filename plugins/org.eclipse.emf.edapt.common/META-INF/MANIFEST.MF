@@ -3,13 +3,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.common
 Bundle-Version: 0.3.0
-Bundle-Activator: org.eclipse.emf.edapt.cope.common.CommonActivator
+Bundle-Activator: org.eclipse.emf.edapt.common.CommonActivator
 Require-Bundle: org.eclipse.core.runtime;visibility:=reexport,
  org.eclipse.core.resources;visibility:=reexport,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi;visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.edapt.cope.common
+Export-Package: org.eclipse.emf.edapt.common
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Vendor: %providerName

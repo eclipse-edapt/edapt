@@ -4,13 +4,13 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.declaration.editor;singleton:=true
 Bundle-Version: 0.3.0
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.emf.edapt.cope.declaration.presentation.DeclarationEditorPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.declaration.presentation.DeclarationEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.declaration.parser;uses:="org.eclipse.emf.edapt.cope.declaration,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.treewalker",
- org.eclipse.emf.edapt.cope.declaration.parser.ui,
- org.eclipse.emf.edapt.cope.declaration.presentation;
+Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.edapt.cope.declaration,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.treewalker",
+ org.eclipse.emf.edapt.declaration.parser.ui,
+ org.eclipse.emf.edapt.declaration.presentation;
   uses:="org.eclipse.jface.wizard,
    org.eclipse.core.runtime,
    org.eclipse.emf.edit.ui.provider,

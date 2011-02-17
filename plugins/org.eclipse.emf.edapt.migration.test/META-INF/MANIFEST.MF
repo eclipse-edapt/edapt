@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Test Plug-in
 Bundle-SymbolicName: org.eclipse.emf.edapt.cope.migration.test;singleton:=true
 Bundle-Version: 0.3.0
-Bundle-Activator: org.eclipse.emf.edapt.cope.migration.test.TestPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.migration.test.TestPlugin$Implementation
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.junit4;visibility:=reexport,
@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edapt.cope.migration;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.migration.test,
- org.eclipse.emf.edapt.cope.migration.test.impl,
- org.eclipse.emf.edapt.cope.migration.test.util
+Export-Package: org.eclipse.emf.edapt.migration.test,
+ org.eclipse.emf.edapt.migration.test.impl,
+ org.eclipse.emf.edapt.migration.test.util

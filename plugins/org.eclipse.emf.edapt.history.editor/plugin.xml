@@ -23,8 +23,8 @@
         name = "%_UI_HistoryEditor_label"
         icon = "icons/full/obj16/HistoryModelFile.gif"
         extensions = "history"
-        class = "org.eclipse.emf.edapt.cope.history.presentation.HistoryEditor" 
-        contributorClass="org.eclipse.emf.edapt.cope.history.presentation.HistoryActionBarContributor" >
+        class = "org.eclipse.emf.edapt.history.presentation.HistoryEditor" 
+        contributorClass="org.eclipse.emf.edapt.history.presentation.HistoryActionBarContributor" >
        <contentTypeBinding
              contentTypeId="org.eclipse.emf.edapt.cope.history">
        </contentTypeBinding>
@@ -33,7 +33,7 @@
   <extension
         point="org.eclipse.ui.editors.documentProviders">
      <provider
-           class="org.eclipse.emf.edapt.cope.history.presentation.util.SpecialDocumentProvider"
+           class="org.eclipse.emf.edapt.history.presentation.util.SpecialDocumentProvider"
            id="org.eclipse.emf.edapt.cope.history.editor.documentProvider"
            inputTypes="org.eclipse.emf.edapt.cope.history.presentation.util.SpecialEditorInput">
      </provider>
@@ -47,7 +47,7 @@
      <view
            allowMultiple="false"
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.presentation.ChangeDocumentationView"
+           class="org.eclipse.emf.edapt.history.presentation.ChangeDocumentationView"
            id="org.eclipse.emf.edapt.cope.history.presentation.ChangeDocumentationView"
            name="Change Documentation"
            restorable="true">
@@ -55,7 +55,7 @@
      <view
            allowMultiple="false"
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.presentation.ElementChangesView"
+           class="org.eclipse.emf.edapt.history.presentation.ElementChangesView"
            id="org.eclipse.emf.edapt.cope.history.presentation.ElementChangesView"
            name="Element Changes"
            restorable="true">
@@ -65,37 +65,37 @@
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.AttachMigrationHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.AttachMigrationHandler"
            id="org.eclipse.emf.edapt.cope.AttachMigration"
            name="Attach Custom Migration to Changes">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.FlattenMigrationHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.FlattenMigrationHandler"
            id="org.eclipse.emf.edapt.cope.FlattenMigration"
            name="Flatten Custom Migration">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.EditMigrationHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.EditMigrationHandler"
            id="org.eclipse.emf.edapt.cope.EditMigration"
            name="Edit Custom Migration">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.FlattenCompositeHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.FlattenCompositeHandler"
            id="org.eclipse.emf.edapt.cope.FlattenComposite"
            name="Flatten Composite Change">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.CombineChangesHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.CombineChangesHandler"
            id="org.eclipse.emf.edapt.cope.CombineChanges"
            name="Combine Changes to Composite Change">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.presentation.action.CheckBreakingHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.CheckBreakingHandler"
            id="org.eclipse.emf.edapt.cope.CheckBreaking"
            name="Check for Breaking Changes">
      </command>
@@ -240,14 +240,14 @@
   <extension
         point="org.eclipse.core.expressions.propertyTesters">
      <propertyTester
-           class="org.eclipse.emf.edapt.cope.history.presentation.action.SubsequentChangesPropertyTester"
+           class="org.eclipse.emf.edapt.history.presentation.action.SubsequentChangesPropertyTester"
            id="org.eclipse.emf.edapt.cope.history.editor.subsequentChanges"
            namespace="org.eclipse.emf.edapt.cope.history.editor"
            properties="subsequentChanges"
            type="org.eclipse.jface.viewers.ISelection">
      </propertyTester>
      <propertyTester
-           class="org.eclipse.emf.edapt.cope.history.presentation.action.ContainerIsReleasePropertyTester"
+           class="org.eclipse.emf.edapt.history.presentation.action.ContainerIsReleasePropertyTester"
            id="org.eclipse.emf.edapt.cope.history.editor.containerIsRelease"
            namespace="org.eclipse.emf.edapt.cope.history.editor"
            properties="containerIsRelease"
@@ -257,20 +257,20 @@
   <extension
         point="org.eclipse.ui.startup">
      <startup
-           class="org.eclipse.emf.edapt.cope.history.recorder.ui.RecorderStartup">
+           class="org.eclipse.emf.edapt.history.recorder.ui.RecorderStartup">
      </startup>
   </extension>
   <extension
         point="org.eclipse.ui.startup">
      <startup
-           class="org.eclipse.emf.edapt.cope.history.recorder.ui.GroovyStartup">
+           class="org.eclipse.emf.edapt.history.recorder.ui.GroovyStartup">
      </startup>
   </extension>
   <extension
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.recorder.ui.AddResourceHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.recorder.ui.AddResourceHandler"
            id="org.eclipse.emf.edapt.cope.AddResource"
            name="Add Metamodel to History">
      </command>
@@ -312,13 +312,13 @@
         point="org.eclipse.ui.views">
      <view
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ReconstructionView"
+           class="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
            id="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ReconstructionView"
            name="Reconstruction View">
      </view>
      <view
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ComparisonView"
+           class="org.eclipse.emf.edapt.history.reconstruction.ui.ComparisonView"
            id="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ComparisonView"
            name="Comparison View">
      </view>
@@ -327,43 +327,43 @@
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.GenerateMigratorHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateMigratorHandler"
            id="org.eclipse.emf.edapt.cope.GenerateMigrator"
            name="Generate Migrator">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.GenerateSpecialMigratorHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateSpecialMigratorHandler"
            id="org.eclipse.emf.edapt.cope.GenerateSpecialMigrator"
            name="Generate Special Migrator">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.CheckIntegrityHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CheckIntegrityHandler"
            id="org.eclipse.emf.edapt.cope.CheckIntegrity"
            name="Check Integrity">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ShowReconstructionHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ShowReconstructionHandler"
            id="org.eclipse.emf.edapt.cope.ShowReconstruction"
            name="Show Reconstruction">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ReconstructHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructHandler"
            id="org.eclipse.emf.edapt.cope.Reconstruct"
            name="Reconstruct">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.ReconstructWithHistoryHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructWithHistoryHandler"
            id="org.eclipse.emf.edapt.cope.ReconstructWithHistory"
            name="Reconstruct with History">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.reconstruction.ui.CompareHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CompareHandler"
            id="org.eclipse.emf.edapt.cope.Compare"
            name="Compare">
      </command>
@@ -522,14 +522,14 @@
      <view
            allowMultiple="false"
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.instantiation.ui.OperationBrowser"
+           class="org.eclipse.emf.edapt.history.instantiation.ui.OperationBrowser"
            icon="platform:/plugin/org.eclipse.emf.edapt.cope.history.edit/icons/full/obj16/OperationInstance.gif"
            id="org.eclipse.emf.edapt.cope.history.instantiation.view.operationsBrowser"
            name="Operation Browser">
      </view>
      <view
            category="org.eclipse.emf.edapt.cope.view.category"
-           class="org.eclipse.emf.edapt.cope.history.instantiation.ui.ConvergenceView"
+           class="org.eclipse.emf.edapt.history.instantiation.ui.ConvergenceView"
            id="org.eclipse.emf.edapt.cope.history.instantiation.ui.ConvergenceView"
            name="Convergence View"
            restorable="true">
@@ -595,13 +595,13 @@
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.ReplaceHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReplaceHandler"
            id="org.eclipse.emf.edapt.cope.Replace"
            name="Replace Primitive Changes with Operation">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.UndoChangesHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.UndoChangesHandler"
            id="org.eclipse.emf.edapt.cope.UndoChanges"
            name="Undo Changes">
      </command>
@@ -640,31 +640,31 @@
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.CreateHistoryHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.CreateHistoryHandler"
            id="org.eclipse.emf.edapt.cope.CreateHistory"
            name="Create History">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.RunScriptHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.RunScriptHandler"
            id="org.eclipse.emf.edapt.cope.RunScript"
            name="Run Script">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.ImportMigratorHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ImportMigratorHandler"
            id="org.eclipse.emf.edapt.cope.ImportMigrator"
            name="Import Migrator">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.ReleaseHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReleaseHandler"
            id="org.eclipse.emf.edapt.cope.Release"
            name="Release">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt.cope"
-           defaultHandler="org.eclipse.emf.edapt.cope.history.instantiation.ui.ConvergeHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ConvergeHandler"
            id="org.eclipse.emf.edapt.cope.Converge"
            name="Converge">
      </command>

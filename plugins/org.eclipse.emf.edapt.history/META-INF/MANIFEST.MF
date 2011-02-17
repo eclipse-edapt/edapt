@@ -7,12 +7,12 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.cope.history,
- org.eclipse.emf.edapt.cope.history.impl,
- org.eclipse.emf.edapt.cope.history.instantiation,
- org.eclipse.emf.edapt.cope.history.reconstruction,
- org.eclipse.emf.edapt.cope.history.recorder,
- org.eclipse.emf.edapt.cope.history.util
+Export-Package: org.eclipse.emf.edapt.history,
+ org.eclipse.emf.edapt.history.impl,
+ org.eclipse.emf.edapt.history.instantiation,
+ org.eclipse.emf.edapt.history.reconstruction,
+ org.eclipse.emf.edapt.history.recorder,
+ org.eclipse.emf.edapt.history.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.edapt.cope.common;visibility:=reexport,
@@ -20,4 +20,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.cope.declaration,
  org.eclipse.emf.edapt.cope.migration
 Bundle-ActivationPolicy: lazy
-Bundle-Activator: org.eclipse.emf.edapt.cope.history.HistoryPlugin$Implementation
+Bundle-Activator: org.eclipse.emf.edapt.history.HistoryPlugin$Implementation
