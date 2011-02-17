@@ -9,17 +9,17 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.casestudy.gmfgen;
+package org.eclipse.emf.edapt.casestudy.gmfgen;
 
 import java.io.File;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.cope.common.FileUtils;
-import org.eclipse.emf.edapt.cope.common.ResourceUtils;
-import org.eclipse.emf.edapt.cope.history.reconstruction.ModelAssert;
-import org.eclipse.emf.edapt.cope.migration.test.PrintStreamProgressMonitor;
-import org.eclipse.emf.edapt.cope.tests.history.lifecycle.TestBase;
+import org.eclipse.emf.edapt.common.FileUtils;
+import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
+import org.eclipse.emf.edapt.migration.test.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.tests.history.lifecycle.TestBase;
 
 
 public class GMFGenMetamodelAdaptationTest extends TestBase {

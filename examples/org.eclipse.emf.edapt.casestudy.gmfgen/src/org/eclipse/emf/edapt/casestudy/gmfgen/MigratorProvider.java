@@ -9,13 +9,13 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.cope.casestudy.gmfgen;
+package org.eclipse.emf.edapt.casestudy.gmfgen;
 
 import java.io.IOException;
 
-import org.eclipse.emf.edapt.cope.common.URIUtils;
-import org.eclipse.emf.edapt.cope.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.cope.migration.execution.Migrator;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
 
 
 public class MigratorProvider {
