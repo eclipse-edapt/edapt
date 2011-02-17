@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <history:History xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/cope/history/0.3">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
   <releases date="2009-02-08T12:16:45.796+0100" label="1.0">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" element="gmfgraph.ecore#/">
