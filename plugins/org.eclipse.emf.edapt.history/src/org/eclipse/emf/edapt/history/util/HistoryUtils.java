@@ -36,7 +36,7 @@ import org.eclipse.emf.edapt.history.HistoryPackage;
 public final class HistoryUtils {
 
 	/** Source for the annotation to maintain the history URI. */
-	private static final String HISTORY_ANNOTATION_SOURCE = "http://www.cs.tum.edu/cope";
+	private static final String HISTORY_ANNOTATION_SOURCE = "http://www.eclipse.org/edapt";
 
 	/** Key for the annotation to maintain the history URI. */
 	private static final String HISTORY_ANNOTATION_KEY = "historyURI";

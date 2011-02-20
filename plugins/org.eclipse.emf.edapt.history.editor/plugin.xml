@@ -42,7 +42,7 @@
         point="org.eclipse.ui.views">
      <category
            id="org.eclipse.emf.edapt.view.category"
-           name="COPE">
+           name="Edapt">
      </category>
      <view
            allowMultiple="false"
@@ -64,44 +64,44 @@
   <extension
         point="org.eclipse.ui.commands">
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.AttachMigrationHandler"
            id="org.eclipse.emf.edapt.AttachMigration"
            name="Attach Custom Migration to Changes">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.FlattenMigrationHandler"
            id="org.eclipse.emf.edapt.FlattenMigration"
            name="Flatten Custom Migration">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.EditMigrationHandler"
            id="org.eclipse.emf.edapt.EditMigration"
            name="Edit Custom Migration">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.FlattenCompositeHandler"
            id="org.eclipse.emf.edapt.FlattenComposite"
            name="Flatten Composite Change">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.CombineChangesHandler"
            id="org.eclipse.emf.edapt.CombineChanges"
            name="Combine Changes to Composite Change">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.presentation.action.CheckBreakingHandler"
            id="org.eclipse.emf.edapt.CheckBreaking"
            name="Check for Breaking Changes">
      </command>
      <category
-           id="org.eclipse.emf.edapt.cope"
-           name="COPE">
+           id="org.eclipse.emf.edapt"
+           name="Edapt">
      </category>
   </extension>
   <extension
@@ -269,14 +269,14 @@
   <extension
         point="org.eclipse.ui.commands">
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.recorder.ui.AddResourceHandler"
            id="org.eclipse.emf.edapt.AddResource"
            name="Add Metamodel to History">
      </command>
      <category
-           id="org.eclipse.emf.edapt.cope"
-           name="COPE">
+           id="org.eclipse.emf.edapt"
+           name="Edapt">
      </category>
   </extension>
   <extension
@@ -326,50 +326,50 @@
   <extension
         point="org.eclipse.ui.commands">
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateMigratorHandler"
            id="org.eclipse.emf.edapt.GenerateMigrator"
            name="Generate Migrator">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateSpecialMigratorHandler"
            id="org.eclipse.emf.edapt.GenerateSpecialMigrator"
            name="Generate Special Migrator">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CheckIntegrityHandler"
            id="org.eclipse.emf.edapt.CheckIntegrity"
            name="Check Integrity">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ShowReconstructionHandler"
            id="org.eclipse.emf.edapt.ShowReconstruction"
            name="Show Reconstruction">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructHandler"
            id="org.eclipse.emf.edapt.Reconstruct"
            name="Reconstruct">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructWithHistoryHandler"
            id="org.eclipse.emf.edapt.ReconstructWithHistory"
            name="Reconstruct with History">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CompareHandler"
            id="org.eclipse.emf.edapt.Compare"
            name="Compare">
      </command>
      <category
-           id="org.eclipse.emf.edapt.cope"
-           name="COPE">
+           id="org.eclipse.emf.edapt"
+           name="Edapt">
      </category>
   </extension>
   <extension
@@ -594,20 +594,20 @@
   <extension
         point="org.eclipse.ui.commands">
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReplaceHandler"
            id="org.eclipse.emf.edapt.Replace"
            name="Replace Primitive Changes with Operation">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.UndoChangesHandler"
            id="org.eclipse.emf.edapt.UndoChanges"
            name="Undo Changes">
      </command>
      <category
-           id="org.eclipse.emf.edapt.cope"
-           name="COPE">
+           id="org.eclipse.emf.edapt"
+           name="Edapt">
      </category>
   </extension>
   <extension
@@ -639,38 +639,38 @@
   <extension
         point="org.eclipse.ui.commands">
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.CreateHistoryHandler"
            id="org.eclipse.emf.edapt.CreateHistory"
            name="Create History">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.RunScriptHandler"
            id="org.eclipse.emf.edapt.RunScript"
            name="Run Script">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ImportMigratorHandler"
            id="org.eclipse.emf.edapt.ImportMigrator"
            name="Import Migrator">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReleaseHandler"
            id="org.eclipse.emf.edapt.Release"
            name="Release">
      </command>
      <command
-           categoryId="org.eclipse.emf.edapt.cope"
+           categoryId="org.eclipse.emf.edapt"
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ConvergeHandler"
            id="org.eclipse.emf.edapt.Converge"
            name="Converge">
      </command>
      <category
-           id="org.eclipse.emf.edapt.cope"
-           name="COPE">
+           id="org.eclipse.emf.edapt"
+           name="Edapt">
      </category>
   </extension>
 </plugin>

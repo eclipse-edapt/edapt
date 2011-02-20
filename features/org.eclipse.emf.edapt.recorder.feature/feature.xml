@@ -5,8 +5,8 @@
       version="0.3.0"
       provider-name="Eclipse Modeling Project">
 
-   <description url="http://cope.in.tum.de">
-      COPE eases the coupled evolution of EMF metamodels and models.
+   <description url="http://www.eclipse.org/edapt">
+      Edapt eases the coupled evolution of EMF metamodels and models.
    </description>
 
    <copyright>
@@ -103,11 +103,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </license>
 
    <url>
-      <discovery label="COPE project site" url="http://cope.in.tum.de"/>
+      <discovery label="Edapt project site" url="http://www.eclipse.org/edapt/"/>
    </url>
 
    <requires>
-      <import feature="edu.tum.cs.cope.runtime.feature" version="0.0.0"/>
+      <import feature="org.eclipse.emf.edapt.runtime.feature" version="0.3.0"/>
    </requires>
 
    <plugin

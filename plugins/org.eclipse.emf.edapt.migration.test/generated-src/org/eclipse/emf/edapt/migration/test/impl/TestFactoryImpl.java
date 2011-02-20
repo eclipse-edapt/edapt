@@ -36,7 +36,7 @@ public class TestFactoryImpl extends EFactoryImpl implements TestFactory {
 	 */
 	public static TestFactory init() {
 		try {
-			TestFactory theTestFactory = (TestFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.cs.tum.edu/cope/migration/test"); 
+			TestFactory theTestFactory = (TestFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/migration/test/0.3"); 
 			if (theTestFactory != null) {
 				return theTestFactory;
 			}

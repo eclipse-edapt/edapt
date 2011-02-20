@@ -16,32 +16,32 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="org.eclipse.emf.edapt.cope"
+            categoryId="org.eclipse.emf.edapt"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.MigrateHandler"
             id="org.eclipse.emf.edapt.Migrate"
             name="Migrate">
       </command>
       <command
-            categoryId="org.eclipse.emf.edapt.cope"
+            categoryId="org.eclipse.emf.edapt"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.LoadModelHandler"
             id="org.eclipse.emf.edapt.LoadModel"
             name="Load Model">
       </command>
       <command
-            categoryId="org.eclipse.emf.edapt.cope"
+            categoryId="org.eclipse.emf.edapt"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.RestoreBackupHandler"
             id="org.eclipse.emf.edapt.RestoreBackup"
             name="Restore Backup">
       </command>
       <command
-            categoryId="org.eclipse.emf.edapt.cope"
+            categoryId="org.eclipse.emf.edapt"
             defaultHandler="org.eclipse.emf.edapt.migration.ui.RegisterMetamodelHandler"
             id="org.eclipse.emf.edapt.RegisterMetamodel"
             name="Register Metamodel">
       </command>
       <category
-            id="org.eclipse.emf.edapt.cope"
-            name="COPE">
+            id="org.eclipse.emf.edapt"
+            name="Edapt">
       </category>
    </extension>
    <extension

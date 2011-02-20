@@ -6,7 +6,7 @@
     modelPluginClass="MigrationPlugin" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>model.ecore</foreignModel>
-  <genPackages prefix="Migration" basePackage="org.eclipse.emf.edapt.cope" disposableProviderFactory="true"
+  <genPackages prefix="Migration" basePackage="org.eclipse.emf.edapt" disposableProviderFactory="true"
       multipleEditorPages="false" generateModelWizard="false" ecorePackage="model.ecore#/">
     <genDataTypes ecoreDataType="model.ecore#//Set">
       <genTypeParameters ecoreTypeParameter="model.ecore#//Set/E"/>

@@ -132,10 +132,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A reference to the meta-metamodel feature which is derived from the featureName attribute"/>
       </eAnnotations>
-      <eAnnotations source="http://www.eclipse.org/gmt/cope/codegen">
-        <details key="get" value=""/>
-        <details key="set" value=""/>
-      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -240,10 +236,6 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="oldValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
         volatile="true" transient="true" derived="true">
-      <eAnnotations source="http://www.eclipse.org/gmt/cope/codegen">
-        <details key="get" value=""/>
-        <details key="set" value=""/>
-      </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Derived attribute that provides either oldDataValue or oldFeferenceValue depending on the type of the feature (attribute or reference respectively)"/>
       </eAnnotations>

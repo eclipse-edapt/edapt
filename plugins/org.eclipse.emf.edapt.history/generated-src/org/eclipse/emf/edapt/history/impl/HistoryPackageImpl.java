@@ -1134,32 +1134,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
-		// http://www.eclipse.org/gmt/cope/codegen
-		createCodegenAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>http://www.eclipse.org/gmt/cope/codegen</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createCodegenAnnotations() {
-		String source = "http://www.eclipse.org/gmt/cope/codegen";																												
-		addAnnotation
-		  (getContentChange_Reference(), 
-		   source, 
-		   new String[] {
-			 "get", "",
-			 "set", ""
-		   });																					
-		addAnnotation
-		  (getSet_OldValue(), 
-		   source, 
-		   new String[] {
-			 "get", "",
-			 "set", ""
-		   });																																		
 	}
 
 	/**
@@ -1175,13 +1149,13 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		   source, 
 		   new String[] {
 			 "constraints", "Breaking"
-		   });																			
+		   });																		
 		addAnnotation
 		  (deleteEClass, 
 		   source, 
 		   new String[] {
 			 "text", ""
-		   });																																														
+		   });																																													
 	}
 
 } //HistoryPackageImpl

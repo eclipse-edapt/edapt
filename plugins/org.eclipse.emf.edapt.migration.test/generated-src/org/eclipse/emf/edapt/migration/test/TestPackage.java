@@ -46,7 +46,7 @@ public interface TestPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.cs.tum.edu/cope/migration/test";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/test/0.3";
 
 	/**
 	 * The package namespace name.

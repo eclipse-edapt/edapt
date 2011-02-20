@@ -866,22 +866,22 @@
             featureName="value" dataValue="A reference to the meta-metamodel feature which is derived from the featureName attribute"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//ContentChange/reference"
-          referenceName="eAnnotations" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%">
-        <changes xsi:type="history:Set" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.56/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.56/@element"
             featureName="source" dataValue="http://www.eclipse.org/gmt/cope/codegen"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
-          referenceName="details" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.56/@element"
+          referenceName="details" element="#//@releases.3/@changes.56/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.56/@element/@details.0"
             featureName="key" dataValue="get"/>
-        <changes xsi:type="history:Set" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.56/@element/@details.0"
             featureName="value" dataValue=""/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
-          referenceName="details" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1">
-        <changes xsi:type="history:Set" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.56/@element"
+          referenceName="details" element="#//@releases.3/@changes.56/@element/@details.1">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.56/@element/@details.1"
             featureName="key" dataValue="set"/>
-        <changes xsi:type="history:Set" element="history.ecore#//ContentChange/reference/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.56/@element/@details.1"
             featureName="value" dataValue=""/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//NonDelete" referenceName="eStructuralFeatures"
@@ -1740,22 +1740,22 @@
           referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </changes>
     <changes xsi:type="history:Create" target="history.ecore#//Set/oldValue" referenceName="eAnnotations"
-        element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%">
-      <changes xsi:type="history:Set" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
+        element="#//@releases.3/@changes.55/@element">
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.55/@element"
           featureName="source" dataValue="http://www.eclipse.org/gmt/cope/codegen"/>
     </changes>
-    <changes xsi:type="history:Create" target="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
-        referenceName="details" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0">
-      <changes xsi:type="history:Set" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0"
+    <changes xsi:type="history:Create" target="#//@releases.3/@changes.55/@element"
+        referenceName="details" element="#//@releases.3/@changes.55/@element/@details.0">
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.55/@element/@details.0"
           featureName="key" dataValue="get"/>
-      <changes xsi:type="history:Set" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.0"
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.55/@element/@details.0"
           featureName="value" dataValue=""/>
     </changes>
-    <changes xsi:type="history:Create" target="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%"
-        referenceName="details" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1">
-      <changes xsi:type="history:Set" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1"
+    <changes xsi:type="history:Create" target="#//@releases.3/@changes.55/@element"
+        referenceName="details" element="#//@releases.3/@changes.55/@element/@details.1">
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.55/@element/@details.1"
           featureName="key" dataValue="set"/>
-      <changes xsi:type="history:Set" element="history.ecore#//Set/oldValue/%http:%2F%2Fwww.eclipse.org%2Fgmt%2Fcope%2Fcodegen%/@details.1"
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.55/@element/@details.1"
           featureName="value" dataValue=""/>
     </changes>
     <changes xsi:type="history:Create" target="history.ecore#//Delete" referenceName="eStructuralFeatures"
@@ -2657,5 +2657,18 @@
         featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     <changes xsi:type="history:Set" element="history.ecore#/" featureName="nsURI"
         dataValue="http://www.eclipse.org/emf/edapt/history/0.3" oldDataValue="http://www.cs.tum.edu/cope/history/0.1.42"/>
+    <changes xsi:type="history:Delete" target="history.ecore#//Set/oldValue" referenceName="eAnnotations">
+      <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmt/cope/codegen">
+        <details key="get" value=""/>
+        <details key="set" value=""/>
+      </element>
+    </changes>
+    <changes xsi:type="history:Delete" target="history.ecore#//ContentChange/reference"
+        referenceName="eAnnotations">
+      <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmt/cope/codegen">
+        <details key="get" value=""/>
+        <details key="set" value=""/>
+      </element>
+    </changes>
   </releases>
 </history:History>

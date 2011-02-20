@@ -75,7 +75,6 @@ public interface ContentChange extends PrimitiveChange {
 	 * @see #setReference(EReference)
 	 * @see org.eclipse.emf.edapt.history.HistoryPackage#getContentChange_Reference()
 	 * @model transient="true" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/gmt/cope/codegen get='' set=''"
 	 * @generated
 	 */
 	EReference getReference();

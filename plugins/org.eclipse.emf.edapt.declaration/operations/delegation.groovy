@@ -1,7 +1,7 @@
 import org.eclipse.emf.ecore.*
 import org.eclipse.emf.ecore.util.*
-import org.eclipse.emf.edaptcope.migration.*
-import org.eclipse.emf.edaptcope.common.*
+import org.eclipse.emf.edapt.migration.*
+import org.eclipse.emf.edapt.common.*
 
 
 @description("In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")

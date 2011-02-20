@@ -88,14 +88,14 @@
    <extension
          point="org.eclipse.ui.commands">
       <command
-            categoryId="org.eclipse.emf.edapt.cope"
+            categoryId="org.eclipse.emf.edapt"
             defaultHandler="org.eclipse.emf.edapt.declaration.parser.ui.ExtractDeclarationHandler"
             id="org.eclipse.emf.edapt.ExtractDeclaration"
             name="Extract Declaration">
       </command>
       <category
-            id="org.eclipse.emf.edapt.cope"
-            name="COPE">
+            id="org.eclipse.emf.edapt"
+            name="Edapt">
       </category>
    </extension>
 

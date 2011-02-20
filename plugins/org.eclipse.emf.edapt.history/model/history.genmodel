@@ -7,7 +7,7 @@
     modelPluginClass="HistoryPlugin" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
     copyrightFields="false" usedGenPackages="../../org.eclipse.emf.edapt.declaration/model/declaration.genmodel#//declaration platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>history.ecore</foreignModel>
-  <genPackages prefix="History" basePackage="org.eclipse.emf.edapt.cope" disposableProviderFactory="true"
+  <genPackages prefix="History" basePackage="org.eclipse.emf.edapt" disposableProviderFactory="true"
       multipleEditorPages="false" generateModelWizard="false" ecorePackage="history.ecore#/">
     <genClasses ecoreClass="history.ecore#//History">
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference history.ecore#//History/releases"/>

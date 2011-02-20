@@ -111,7 +111,6 @@ public interface Set extends ValueChange {
 	 * @see #setOldValue(Object)
 	 * @see org.eclipse.emf.edapt.history.HistoryPackage#getSet_OldValue()
 	 * @model transient="true" volatile="true" derived="true"
-	 *        annotation="http://www.eclipse.org/gmt/cope/codegen get='' set=''"
 	 * @generated
 	 */
 	Object getOldValue();
