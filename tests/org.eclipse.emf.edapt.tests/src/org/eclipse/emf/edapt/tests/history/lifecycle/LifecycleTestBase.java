@@ -67,12 +67,12 @@ public abstract class LifecycleTestBase extends MigrationTestBase {
 	 */
 	private String id;
 
-	/** Test the full lifecycle of COPE. */
+	/** Test the full lifecycle of Edapt. */
 	protected void testLifecycle(String id) throws Exception {
 		testLifecycle(id, 0);
 	}
 
-	/** Test the full lifecyle of COPE. */
+	/** Test the full lifecyle of Edapt. */
 	protected void testLifecycle(String id, int expectedDifferences)
 			throws Exception {
 		this.id = id;
