@@ -158,7 +158,7 @@
     </changes>
   </releases>
   <releases date="2008-11-23T22:57:16.328+0100">
-    <changes xsi:type="history:MigrationChange" migration="newClass(sprinkle, &quot;Input&quot;, [sprinkle.Port])&#xA;newClass(sprinkle, &quot;Output&quot;, [sprinkle.Port])&#xA;portClass = sprinkle.Port&#xA;portClass.'abstract' = true&#xA;&#xA;defaultPackage = sprinkle&#xA;&#xA;//model migration&#xA;//hierarchy inputs&#xA;for(connection in Connection.allInstances) {&#xA;&#x9;if(connection.destination.signal.parent == connection.source.signal) {&#xA;&#x9;&#x9;connection.source.migrate(Input)&#xA;&#x9;&#x9;connection.destination.migrate(Input)&#xA;&#x9;}&#xA;}&#xA;&#xA;//hierarchy outputs&#xA;for(connection in Connection.allInstances) {&#xA;&#x9;if(connection.source.signal.parent == connection.destination.signal) {&#xA;&#x9;&#x9;connection.source.migrate(Output)&#xA;&#x9;&#x9;connection.destination.migrate(Output)&#xA;&#x9;}&#xA;}&#xA;&#xA;//do inputs&#xA;for(port in Port.instances) {&#xA;&#x9;if(!port.getInverse(Connection.destination).isEmpty()) {&#xA;&#x9;&#x9;port.migrate(Input)&#xA;&#x9;}&#xA;}&#xA;&#xA;//do outputs&#xA;for(port in Port.instances) {&#xA;&#x9;if(!port.getInverse(Connection.source).isEmpty()) {&#xA;&#x9;&#x9;port.migrate(Output)&#xA;&#x9;}&#xA;}">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.SprinklePortCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
             element="sprinkle.ecore#//Input">

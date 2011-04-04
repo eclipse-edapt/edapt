@@ -62,7 +62,7 @@
     </changes>
   </releases>
   <releases date="2008-11-23T22:49:28.078+0100">
-    <changes xsi:type="history:MigrationChange" migration="newClass(component, &quot;InPort&quot;, [component.Port])&#xA;newClass(component, &quot;OutPort&quot;, [component.Port])&#xA;portClass = component.Port&#xA;portClass.'abstract' = true&#xA;inPortReference = component.Signature.inPort&#xA;inPortClass = component.InPort&#xA;inPortReference.eType = inPortClass&#xA;outPortReference = component.Signature.outPort&#xA;outPortClass = component.OutPort&#xA;outPortReference.eType = outPortClass&#xA;&#xA;defaultPackage = component&#xA;&#xA;for(signature in Signature.instances) {&#xA;&#x9;for(port in signature.inPort) {&#xA;&#x9;&#x9;port.migrate(InPort)&#xA;&#x9;}&#xA;&#x9;for(port in signature.outPort) {&#xA;&#x9;&#x9;port.migrate(OutPort)&#xA;&#x9;}&#xA;}">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.ComponentSignatureCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
             element="component.ecore#//InPort">
