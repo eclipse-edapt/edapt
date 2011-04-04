@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
 
 
 public class MigratorProvider {

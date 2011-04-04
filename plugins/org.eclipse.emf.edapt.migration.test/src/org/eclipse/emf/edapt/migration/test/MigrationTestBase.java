@@ -22,14 +22,15 @@ import junit.framework.TestCase;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
-import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
+import org.eclipse.emf.edapt.migration.execution.incubator.MigratorRegistry;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
 
 /**
  * A class for test cases to validate a model migration
@@ -99,13 +100,13 @@ public abstract class MigrationTestBase extends TestCase {
 			URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
 			int expectedNumber) throws MigrationException, IOException {
 
-		Set<Integer> releases = migrator.getRelease(modelURI);
-		Assert.assertTrue(releases.size() == 1);
-		int release = releases.iterator().next();
+		Set<Release> releases = migrator.getRelease(modelURI);
+		Assert.assertTrue(releases.size() >= 1);
+		Release release = getMinimumRelease(releases);
 		URI targetModelURI = rename(migrator, modelURI, release);
 
 		migrator.migrate(Collections.singletonList(targetModelURI), release,
-				Integer.MAX_VALUE, new PrintStreamProgressMonitor(System.out));
+				null, new PrintStreamProgressMonitor(System.out));
 
 		Metamodel expectedMetamodel = Persistency
 				.loadMetamodel(expectedTargetMetamodelURI);
@@ -121,6 +122,20 @@ public abstract class MigrationTestBase extends TestCase {
 				.assertDifference(expectedModel, actualModel, expectedNumber);
 	}
 
+	private Release getMinimumRelease(Set<Release> releases) {
+		Release minRelease = null;
+		for (Release release : releases) {
+			if (minRelease == null) {
+				minRelease = release;
+			} else {
+				if (release.getNumber() < minRelease.getNumber()) {
+					minRelease = release;
+				}
+			}
+		}
+		return minRelease;
+	}
+
 	/**
 	 * Rename a model.
 	 * 
@@ -130,7 +145,7 @@ public abstract class MigrationTestBase extends TestCase {
 	 *            URI of the model to be renamed
 	 * @return URI of the renamed model
 	 */
-	private URI rename(Migrator migrator, URI modelURI, int release)
+	private URI rename(Migrator migrator, URI modelURI, Release release)
 			throws IOException {
 
 		Metamodel metamodel = migrator.getMetamodel(release);
@@ -169,8 +184,7 @@ public abstract class MigrationTestBase extends TestCase {
 	 */
 	public void testMigration(URI modelURI, URI expectedTargetModelURI,
 			URI expectedTargetMetamodelURI, int expectedDifferences)
-			throws MigrationException,
-			IOException {
+			throws MigrationException, IOException {
 
 		String nsURI = ReleaseUtil.getNamespaceURI(modelURI);
 

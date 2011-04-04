@@ -20,13 +20,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.history.reconstruction.MigratorCodeGenerator;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
-import org.eclipse.emf.edapt.migration.test.TestCaseDefinition;
-import org.eclipse.emf.edapt.migration.test.TestPackage;
-import org.eclipse.emf.edapt.migration.test.TestSuiteDefinition;
+import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
 
 /**
  * Suite to test a migration.
@@ -71,11 +65,9 @@ public class MigrationTestSuite extends TestSuite {
 	@Override
 	public void run(TestResult result) {
 		try {
-			migrator = generateMigrator();
+			migrator = loadMigrator();
 			super.run(result);
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (MigrationException e) {
 			e.printStackTrace();
 		}
 	}
@@ -84,21 +76,6 @@ public class MigrationTestSuite extends TestSuite {
 	private URI getURI(String uri) {
 		URI definitionURI = suiteDefinition.eResource().getURI();
 		return URI.createFileURI(uri).resolve(definitionURI);
-	}
-
-	/** Generate the migrator. */
-	private Migrator generateMigrator() throws MigrationException, IOException {
-		History history = loadHistory();
-		URI historyURI = history.eResource().getURI();
-
-		URI migratorURI = URI.createFileURI("migrator").resolve(historyURI);
-
-		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-				migratorURI);
-		reconstructor.addReconstructor(new MigratorCodeGenerator(migratorURI));
-		reconstructor.reconstruct(history.getLastRelease(), false);
-
-		return new Migrator(migratorURI);
 	}
 
 	/** Load the history. */
@@ -112,6 +89,12 @@ public class MigrationTestSuite extends TestSuite {
 
 	/** Get the migrator. */
 	Migrator getMigrator() {
+		return migrator;
+	}
+
+	private Migrator loadMigrator() throws IOException {
+		History history = loadHistory();
+		Migrator migrator = new Migrator(history);
 		return migrator;
 	}
 }

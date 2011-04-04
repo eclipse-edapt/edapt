@@ -62,7 +62,7 @@ public class BackwardConverter {
 	 * @return EMF elements
 	 */
 	public ResourceSet convert(Model model) {
-		hackMetamodel(model.getMetamodel());
+		model.getMetamodel().refreshCaches();
 		ResourceSet resourceSet = new ResourceSetImpl();
 		ResourceUtils.register(model.getMetamodel().getEPackages(), resourceSet.getPackageRegistry());
 		
@@ -183,23 +183,5 @@ public class BackwardConverter {
 	 */
 	private EObject resolve(Instance instance) {
 		return mapping.get(instance);
-	}
-	
-	
-	/**
-	 * Clear the internal caches within the metamodel elements
-	 * 
-	 * @param metamodel
-	 */
-	private void hackMetamodel(Metamodel metamodel) {
-		for(EPackage ePackage : metamodel.getEPackages()) {
-			for(Iterator<EObject> i = ePackage.eAllContents(); i.hasNext(); ) {
-				EObject element = i.next();
-				if(element instanceof EStructuralFeatureImpl) {
-					EStructuralFeatureImpl feature = (EStructuralFeatureImpl) element;
-					feature.setSettingDelegate(null);
-				}
-			}
-		}
-	}
+	}	
 }

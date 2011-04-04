@@ -12,6 +12,7 @@
 package org.eclipse.emf.edapt.migration.impl;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -24,13 +25,16 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -431,4 +435,21 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		return super.eIsSet(featureID);
 	}
 
+	/** {@inheritDoc} */
+	public void refreshCaches() {
+		for(EPackage ePackage : getEPackages()) {
+			for(Iterator<EObject> i = ePackage.eAllContents(); i.hasNext(); ) {
+				EObject element = i.next();
+				if(element instanceof EStructuralFeatureImpl) {
+					EStructuralFeatureImpl feature = (EStructuralFeatureImpl) element;
+					feature.setSettingDelegate(null);
+				}
+				if(element instanceof EEnumLiteral) {
+					EEnumLiteral literal = (EEnumLiteral) element;
+					literal.setInstance(literal);
+				}
+			}
+		}
+	}
+	
 } //MetamodelImpl

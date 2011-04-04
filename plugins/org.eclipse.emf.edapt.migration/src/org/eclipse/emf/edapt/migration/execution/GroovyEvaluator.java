@@ -63,6 +63,10 @@ public class GroovyEvaluator {
 	 */
 	private Repository repository;
 	
+	public Repository getRepository() {
+		return repository;
+	}
+
 	/**
 	 * Hidden constructor
 	 */

@@ -209,5 +209,8 @@ public interface Metamodel extends EObject {
 	 * @generated
 	 */
 	void validate() throws DiagnosticException;
+	
+	/** Clear the internal caches within the metamodel elements. */
+	void refreshCaches();
 
 } // Metamodel
