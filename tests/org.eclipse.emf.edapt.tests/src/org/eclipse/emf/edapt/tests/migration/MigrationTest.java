@@ -20,8 +20,8 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.execution.incubator.ClassLoaderFacade;
 import org.eclipse.emf.edapt.migration.test.MigrationTestSuite;
-
 
 /**
  * Test of model migrations defined by test models.
@@ -52,7 +52,9 @@ public class MigrationTest extends TestSuite {
 				if (extension != null && "test".equals(extension)) {
 					URI uri = URIUtils.getURI(file);
 					try {
-						suite.addTest(new MigrationTestSuite(uri));
+						suite.addTest(new MigrationTestSuite(uri,
+								new ClassLoaderFacade(MigrationTest.class
+										.getClassLoader())));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}

@@ -52,19 +52,23 @@ public class Migrator {
 	/** Mapping of namespace URIs to releases. */
 	private HashMap<String, Set<Release>> releaseMap;
 
+	private IClassLoader classLoader;
+
 	/** Constructor. */
-	public Migrator(URI historyURI) throws MigrationException {
+	public Migrator(URI historyURI, IClassLoader classLoader) throws MigrationException {
 		try {
 			history = ResourceUtils.loadElement(historyURI);
 		} catch (IOException e) {
 			throw new MigrationException("History could not be loaded", e);
 		}
+		this.classLoader = classLoader;
 		init();
 	}
 
 	/** Constructor. */
-	public Migrator(History history) {
+	public Migrator(History history, IClassLoader classLoader) {
 		this.history = history;
+		this.classLoader = classLoader;
 		init();
 	}
 
@@ -164,7 +168,7 @@ public class Migrator {
 			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 					URI.createFileURI("test"));
 			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
-					modelURIs, sourceRelease, targetRelease, monitor);
+					modelURIs, sourceRelease, targetRelease, monitor, classLoader);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);

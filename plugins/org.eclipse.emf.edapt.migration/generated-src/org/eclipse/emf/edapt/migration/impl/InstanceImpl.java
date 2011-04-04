@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.Instance;
+import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationFactory;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
 import org.eclipse.emf.edapt.migration.Model;
@@ -457,6 +458,46 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 */
 	public boolean isProxy() {
 		return this.getUri() != null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void migrate(String className) {
+		Metamodel metamodel = getType().getModel().getMetamodel();
+		EClass eClass = metamodel.getEClass(className);
+		migrate(eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <V> V getInverse(String referenceName) {
+		EReference reference = getType().getModel().getMetamodel()
+				.getEReference(referenceName);
+		return getInverse(reference);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Instance getReference(String referenceName) {
+		return (Instance) get(referenceName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<Instance> getReferences(String referenceName) {
+		return (EList<Instance>) get(referenceName);
 	}
 
 	/**

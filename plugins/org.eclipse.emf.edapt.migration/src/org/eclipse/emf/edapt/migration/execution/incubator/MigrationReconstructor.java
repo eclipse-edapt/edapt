@@ -47,8 +47,10 @@ import org.eclipse.emf.edapt.history.reconstruction.EcoreReconstructorSwitchBase
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
+import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationPlugin;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
@@ -98,13 +100,18 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Switch to perform migration depending on change. */
 	private MigrationReconstructorSwitch migrationSwitch;
 
+	private CustomMigration customMigration;
+
+	private IClassLoader classLoader;
+
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
-			Release targetRelease, IProgressMonitor monitor) {
+			Release targetRelease, IProgressMonitor monitor, IClassLoader classLoader) {
 		this.modelURIs = modelURIs;
 		this.sourceRelease = sourceRelease;
 		this.targetRelease = targetRelease;
 		this.monitor = monitor;
+		this.classLoader = classLoader;
 	}
 
 	/** {@inheritDoc} */
@@ -223,6 +230,12 @@ public class MigrationReconstructor extends ReconstructorBase {
 	public void endChange(Change change) {
 		if (isEnabled()) {
 			checkResume(change);
+			if (isStarted()) {
+				if (change instanceof MigrationChange
+						&& customMigration != null) {
+					customMigration.migrateAfter(model);
+				}
+			}
 		}
 	}
 
@@ -240,7 +253,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return;
 		}
 		if (originalChange instanceof OperationChange
-				|| originalChange instanceof MigrationChange
+				|| (originalChange instanceof MigrationChange && !((MigrationChange) originalChange)
+						.getMigration().startsWith("class:"))
 				|| originalChange instanceof Delete) {
 			started = false;
 			trigger = originalChange;
@@ -353,8 +367,26 @@ public class MigrationReconstructor extends ReconstructorBase {
 		@Override
 		public Object caseMigrationChange(MigrationChange change) {
 			String migration = change.getMigration();
-			GroovyEvaluator.getInstance().evaluate(
-					new ByteArrayInputStream(migration.getBytes()));
+			if (migration.startsWith("class:")) {
+				try {
+					migration = migration.substring(6);
+					Class<?> c = classLoader.load(migration);
+					customMigration = (CustomMigration) c.newInstance();
+					customMigration.migrateBefore(model);
+				} catch (ClassNotFoundException e) {
+					throwWrappedMigrationException(
+							"Custom migration could not be loaded", e);
+				} catch (InstantiationException e) {
+					throwWrappedMigrationException(
+							"Custom migration could not be instantiated", e);
+				} catch (IllegalAccessException e) {
+					throwWrappedMigrationException(
+							"Custom migration could not be accessed", e);
+				}
+			} else {
+				GroovyEvaluator.getInstance().evaluate(
+						new ByteArrayInputStream(migration.getBytes()));
+			}
 
 			return change;
 		}
@@ -405,8 +437,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 				EObject targetElement = targetChildren.get(index);
 				return targetElement;
 			}
-			EObject targetElement = (EObject) targetParent
-					.eGet(reference);
+			EObject targetElement = (EObject) targetParent.eGet(reference);
 			return targetElement;
 		}
 	}

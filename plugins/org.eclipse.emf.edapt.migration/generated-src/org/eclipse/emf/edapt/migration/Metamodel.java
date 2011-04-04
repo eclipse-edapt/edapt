@@ -38,6 +38,7 @@ import org.eclipse.emf.edapt.migration.DiagnosticException;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.migration.Metamodel#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.migration.Metamodel#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.Metamodel#getDefaultPackage <em>Default Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -95,6 +96,31 @@ public interface Metamodel extends EObject {
 	 * @generated
 	 */
 	void setRepository(Repository value);
+
+	/**
+	 * Returns the value of the '<em><b>Default Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Packages that constitute the root of a metamodel resource
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Default Package</em>' reference.
+	 * @see #setDefaultPackage(EPackage)
+	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getMetamodel_DefaultPackage()
+	 * @model
+	 * @generated
+	 */
+	EPackage getDefaultPackage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.Metamodel#getDefaultPackage <em>Default Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Default Package</em>' reference.
+	 * @see #getDefaultPackage()
+	 * @generated
+	 */
+	void setDefaultPackage(EPackage value);
 
 	/**
 	 * <!-- begin-user-doc -->

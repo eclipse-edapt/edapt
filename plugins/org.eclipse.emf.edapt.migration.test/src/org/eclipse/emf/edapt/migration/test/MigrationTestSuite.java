@@ -20,6 +20,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.migration.execution.incubator.ClassLoaderFacade;
+import org.eclipse.emf.edapt.migration.execution.incubator.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
 
 /**
@@ -38,9 +40,12 @@ public class MigrationTestSuite extends TestSuite {
 	/** Migrator. */
 	private Migrator migrator;
 
+	private IClassLoader loader;
+
 	/** Constructor. */
-	public MigrationTestSuite(URI definitionURI) throws IOException {
+	public MigrationTestSuite(URI definitionURI, IClassLoader loader) throws IOException {
 		this(loadTestSuiteDefinition(definitionURI));
+		this.loader = loader;
 	}
 
 	/** Helper method to load a test suite definition. */
@@ -94,7 +99,7 @@ public class MigrationTestSuite extends TestSuite {
 
 	private Migrator loadMigrator() throws IOException {
 		History history = loadHistory();
-		Migrator migrator = new Migrator(history);
+		Migrator migrator = new Migrator(history, loader);
 		return migrator;
 	}
 }

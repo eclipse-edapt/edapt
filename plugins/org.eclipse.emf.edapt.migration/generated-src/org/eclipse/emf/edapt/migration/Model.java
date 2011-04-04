@@ -285,4 +285,26 @@ public interface Model extends EObject {
 	 */
 	void commit() throws DiagnosticException;
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get all instances of a class, including all sub classes
+	 * <!-- end-model-doc -->
+	 * @model classNameRequired="true"
+	 * @generated
+	 */
+	EList<Instance> getAllInstances(String className);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get all instances of a class, excluding sub classes
+	 * <!-- end-model-doc -->
+	 * @model classNameRequired="true"
+	 * @generated
+	 */
+	EList<Instance> getInstances(String className);
+
 } // Model

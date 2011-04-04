@@ -27,6 +27,7 @@ import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.execution.incubator.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.incubator.MigratorRegistry;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
@@ -55,10 +56,10 @@ public abstract class MigrationTestBase extends TestCase {
 	 *            URI of the target metamodel of the migration
 	 */
 	public void testMigration(URI migratorURI, URI modelURI,
-			URI expectedTargetModelURI, URI expectedTargetMetamodelURI)
+			URI expectedTargetModelURI, URI expectedTargetMetamodelURI, IClassLoader loader)
 			throws MigrationException, IOException {
 
-		Migrator migrator = new Migrator(migratorURI);
+		Migrator migrator = new Migrator(migratorURI, loader);
 		testMigration(migrator, modelURI, expectedTargetModelURI,
 				expectedTargetMetamodelURI);
 	}

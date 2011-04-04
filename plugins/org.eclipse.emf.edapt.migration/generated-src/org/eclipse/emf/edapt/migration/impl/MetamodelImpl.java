@@ -55,6 +55,7 @@ import org.eclipse.emf.edapt.migration.Repository;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.migration.impl.MetamodelImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.migration.impl.MetamodelImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.MetamodelImpl#getDefaultPackage <em>Default Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -70,6 +71,15 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 * @ordered
 	 */
 	protected EList<MetamodelResource> resources;
+	/**
+	 * The cached value of the '{@link #getDefaultPackage() <em>Default Package</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDefaultPackage()
+	 * @generated
+	 * @ordered
+	 */
+	protected EPackage defaultPackage;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,6 +150,44 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.METAMODEL__REPOSITORY, newRepository, newRepository));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage getDefaultPackage() {
+		if (defaultPackage != null && defaultPackage.eIsProxy()) {
+			InternalEObject oldDefaultPackage = (InternalEObject)defaultPackage;
+			defaultPackage = (EPackage)eResolveProxy(oldDefaultPackage);
+			if (defaultPackage != oldDefaultPackage) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationPackage.METAMODEL__DEFAULT_PACKAGE, oldDefaultPackage, defaultPackage));
+			}
+		}
+		return defaultPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EPackage basicGetDefaultPackage() {
+		return defaultPackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDefaultPackage(EPackage newDefaultPackage) {
+		EPackage oldDefaultPackage = defaultPackage;
+		defaultPackage = newDefaultPackage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.METAMODEL__DEFAULT_PACKAGE, oldDefaultPackage, defaultPackage));
 	}
 
 	/**
@@ -244,6 +292,10 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 */
 	public EClassifier getEClassifier(String name) {
 		try {
+			if (getDefaultPackage() != null
+					&& getDefaultPackage().getEClassifier(name) != null) {
+				return getDefaultPackage().getEClassifier(name);
+			}
 			int pos = name.lastIndexOf('.');
 			String packageName = name.substring(0, pos);
 			EPackage p = this.getEPackage(packageName);
@@ -377,6 +429,9 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 				return getResources();
 			case MigrationPackage.METAMODEL__REPOSITORY:
 				return getRepository();
+			case MigrationPackage.METAMODEL__DEFAULT_PACKAGE:
+				if (resolve) return getDefaultPackage();
+				return basicGetDefaultPackage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -397,6 +452,9 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			case MigrationPackage.METAMODEL__REPOSITORY:
 				setRepository((Repository)newValue);
 				return;
+			case MigrationPackage.METAMODEL__DEFAULT_PACKAGE:
+				setDefaultPackage((EPackage)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -415,6 +473,9 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			case MigrationPackage.METAMODEL__REPOSITORY:
 				setRepository((Repository)null);
 				return;
+			case MigrationPackage.METAMODEL__DEFAULT_PACKAGE:
+				setDefaultPackage((EPackage)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -431,6 +492,8 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 				return resources != null && !resources.isEmpty();
 			case MigrationPackage.METAMODEL__REPOSITORY:
 				return getRepository() != null;
+			case MigrationPackage.METAMODEL__DEFAULT_PACKAGE:
+				return defaultPackage != null;
 		}
 		return super.eIsSet(featureID);
 	}

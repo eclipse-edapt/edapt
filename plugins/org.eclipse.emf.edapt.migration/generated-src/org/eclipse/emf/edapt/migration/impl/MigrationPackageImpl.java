@@ -321,6 +321,15 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getMetamodel_DefaultPackage() {
+		return (EReference)metamodelEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getType() {
 		return typeEClass;
 	}
@@ -672,6 +681,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		metamodelEClass = createEClass(METAMODEL);
 		createEReference(metamodelEClass, METAMODEL__RESOURCES);
 		createEReference(metamodelEClass, METAMODEL__REPOSITORY);
+		createEReference(metamodelEClass, METAMODEL__DEFAULT_PACKAGE);
 
 		metamodelResourceEClass = createEClass(METAMODEL_RESOURCE);
 		createEReference(metamodelResourceEClass, METAMODEL_RESOURCE__ROOT_PACKAGES);
@@ -770,6 +780,12 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		op = addEOperation(modelEClass, null, "commit", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getDiagnosticException());
+
+		op = addEOperation(modelEClass, this.getInstance(), "getAllInstances", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(modelEClass, this.getInstance(), "getInstances", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(modelResourceEClass, ModelResource.class, "ModelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelResource_RootInstances(), this.getInstance(), null, "rootInstances", null, 0, -1, ModelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -873,6 +889,21 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		addEOperation(instanceEClass, ecorePackage.getEBoolean(), "isProxy", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(instanceEClass, null, "migrate", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(instanceEClass, null, "getInverse", 0, 1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "V");
+		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
+
+		op = addEOperation(instanceEClass, this.getInstance(), "getReference", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(instanceEClass, this.getInstance(), "getReferences", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(slotEClass, Slot.class, "Slot", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSlot_Instance(), this.getInstance(), this.getInstance_Slots(), "instance", null, 1, 1, Slot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -889,6 +920,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		initEClass(metamodelEClass, Metamodel.class, "Metamodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodel_Resources(), this.getMetamodelResource(), null, "resources", null, 0, -1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMetamodel_Repository(), this.getRepository(), this.getRepository_Metamodel(), "repository", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMetamodel_DefaultPackage(), ecorePackage.getEPackage(), null, "defaultPackage", null, 0, 1, Metamodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(metamodelEClass, ecorePackage.getEPackage(), "getEPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -947,13 +979,13 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";																													
+		String source = "http://www.eclipse.org/emf/2002/Ecore";																															
 		addAnnotation
 		  (instanceEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "validContainment validType"
-		   });																															
+		   });																																			
 		addAnnotation
 		  (slotEClass, 
 		   source, 
@@ -965,7 +997,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																									
+		   });																										
 	}
 
 } //MigrationPackageImpl

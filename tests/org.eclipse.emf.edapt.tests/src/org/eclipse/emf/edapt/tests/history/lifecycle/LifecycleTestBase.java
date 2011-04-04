@@ -29,6 +29,7 @@ import org.eclipse.emf.edapt.history.reconstruction.IntegrityChecker;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.migration.execution.incubator.ClassLoaderFacade;
 import org.eclipse.emf.edapt.migration.execution.incubator.MigratorRegistry;
 import org.eclipse.emf.edapt.migration.test.MigrationTestBase;
 import org.eclipse.emf.edapt.tests.util.TestUtils;
@@ -175,7 +176,9 @@ public abstract class LifecycleTestBase extends MigrationTestBase {
 
 		URI historyURI = contextURI.appendSegment(id).appendFileExtension(
 				HistoryUtils.HISTORY_FILE_EXTENSION);
-		MigratorRegistry.getInstance().registerMigrator(historyURI);
+		ClassLoaderFacade loader = new ClassLoaderFacade(
+				LifecycleTestBase.class.getClassLoader());
+		MigratorRegistry.getInstance().registerMigrator(historyURI, loader);
 
 		testMigration(sourceModelURI, expectedTargetModelURI,
 				expectedTargetMetamodelURI, expectedDifferences);

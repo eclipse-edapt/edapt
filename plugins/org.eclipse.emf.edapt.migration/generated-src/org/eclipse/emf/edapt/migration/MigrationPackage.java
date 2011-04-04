@@ -493,13 +493,22 @@ public interface MigrationPackage extends EPackage {
 	int METAMODEL__REPOSITORY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Default Package</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METAMODEL__DEFAULT_PACKAGE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Metamodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_FEATURE_COUNT = 2;
+	int METAMODEL_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.impl.MetamodelResourceImpl <em>Metamodel Resource</em>}' class.
@@ -687,6 +696,17 @@ public interface MigrationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMetamodel_Repository();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.migration.Metamodel#getDefaultPackage <em>Default Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Default Package</em>'.
+	 * @see org.eclipse.emf.edapt.migration.Metamodel#getDefaultPackage()
+	 * @see #getMetamodel()
+	 * @generated
+	 */
+	EReference getMetamodel_DefaultPackage();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.Type <em>Type</em>}'.
@@ -1128,6 +1148,14 @@ public interface MigrationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference METAMODEL__REPOSITORY = eINSTANCE.getMetamodel_Repository();
+
+		/**
+		 * The meta object literal for the '<em><b>Default Package</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference METAMODEL__DEFAULT_PACKAGE = eINSTANCE.getMetamodel_DefaultPackage();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.impl.TypeImpl <em>Type</em>}' class.

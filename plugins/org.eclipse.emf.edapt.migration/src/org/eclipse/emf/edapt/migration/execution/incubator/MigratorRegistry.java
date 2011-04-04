@@ -30,7 +30,6 @@ import org.eclipse.emf.edapt.migration.execution.RandomOracle;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
 import org.osgi.framework.Bundle;
 
-
 /**
  * Registry for all migrators (singleton). A migrator is registered as an
  * Eclipse extension.
@@ -95,23 +94,25 @@ public class MigratorRegistry {
 		URL migratorURL = bundle.getResource(migrationPath);
 
 		try {
-			registerMigrator(migratorURL);
+			registerMigrator(migratorURL, new BundleClassLoader(bundle));
 		} catch (MigrationException e) {
 			LoggingUtils.logError(MigrationPlugin.getPlugin(), e);
 		}
 	}
 
 	/** Register a migrator by its URL. */
-	public void registerMigrator(URL migratorURL) throws MigrationException {
-		Migrator migrator = new Migrator(URIUtils.getURI(migratorURL));
+	public void registerMigrator(URL migratorURL, IClassLoader loader)
+			throws MigrationException {
+		Migrator migrator = new Migrator(URIUtils.getURI(migratorURL), loader);
 		for (String nsURI : migrator.getNsURIs()) {
 			migrators.put(nsURI, migrator);
 		}
 	}
 
 	/** Register a migrator by its URI. */
-	public void registerMigrator(URI migratorURI) throws MigrationException {
-		registerMigrator(URIUtils.getURL(migratorURI));
+	public void registerMigrator(URI migratorURI, IClassLoader loader)
+			throws MigrationException {
+		registerMigrator(URIUtils.getURL(migratorURI), loader);
 	}
 
 	/** Get a migrator by its namespace already stripped from version. */

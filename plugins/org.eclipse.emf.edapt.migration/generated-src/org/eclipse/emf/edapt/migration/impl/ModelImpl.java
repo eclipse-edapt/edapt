@@ -481,6 +481,26 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<Instance> getAllInstances(String className) {
+		EClass eClass = getMetamodel().getEClass(className);
+		return getAllInstances(eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<Instance> getInstances(String className) {
+		EClass eClass = getMetamodel().getEClass(className);
+		return getInstances(eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")

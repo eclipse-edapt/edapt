@@ -429,4 +429,48 @@ public interface Instance extends EObject {
 	 */
 	boolean isProxy();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Change the type of instance to a different class
+	 * <!-- end-model-doc -->
+	 * @model classNameRequired="true"
+	 * @generated
+	 */
+	void migrate(String className);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the inverse value of the reference
+	 * <!-- end-model-doc -->
+	 * @model referenceNameRequired="true"
+	 * @generated
+	 */
+	<V> V getInverse(String referenceName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the value of the feature which is given by its name
+	 * <!-- end-model-doc -->
+	 * @model referenceNameRequired="true"
+	 * @generated
+	 */
+	Instance getReference(String referenceName);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the value of the feature which is given by its name
+	 * <!-- end-model-doc -->
+	 * @model referenceNameRequired="true"
+	 * @generated
+	 */
+	EList<Instance> getReferences(String referenceName);
+
 } // Instance

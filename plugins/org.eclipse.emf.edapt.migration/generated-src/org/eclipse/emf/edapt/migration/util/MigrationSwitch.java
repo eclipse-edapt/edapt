@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edapt.migration.*;
 import org.eclipse.emf.edapt.migration.AbstractResource;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.Instance;
