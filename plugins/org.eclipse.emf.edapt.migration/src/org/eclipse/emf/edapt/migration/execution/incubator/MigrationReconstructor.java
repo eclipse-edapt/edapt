@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     BMW Car IT - Initial API and implementation
+ *     Technische Universitaet Muenchen - Major refactoring and extension
+ *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution.incubator;
 
 import java.io.ByteArrayInputStream;
@@ -8,14 +19,10 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -41,23 +48,37 @@ import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
-import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 
+/**
+ * A recontructor that perform the migration of models from a source release to
+ * a target release.
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating RED Rev:
+ */
 public class MigrationReconstructor extends ReconstructorBase {
 
+	/** Source release. */
 	private Release sourceRelease;
-	private Release targetRelease;
-	private List<URI> modelURIs;
-	private MetamodelExtent extent;
-	private Model model;
 
-	/** Switch to perform reconstruction depending on change. */
-	private EcoreReconstructorSwitch ecoreSwitch;
+	/** Target release. */
+	private Release targetRelease;
+
+	/** URIs of the models that need to be migrated. */
+	private List<URI> modelURIs;
+
+	/** Extent of the reconstructed metamodel. */
+	private MetamodelExtent extent;
+
+	/** Internal representation of the model during migration. */
+	private Model model;
 
 	/** Whether migration is active. */
 	private boolean enabled = false;
@@ -68,9 +89,16 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Trigger to restart migration. */
 	private Change trigger = null;
 
+	/** Mapping to the reconstructed metamodel. */
 	private Mapping mapping;
+
+	/** Monitor to show progress. */
 	private IProgressMonitor monitor;
 
+	/** Switch to perform migration depending on change. */
+	private MigrationReconstructorSwitch migrationSwitch;
+
+	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor) {
 		this.modelURIs = modelURIs;
@@ -79,13 +107,23 @@ public class MigrationReconstructor extends ReconstructorBase {
 		this.monitor = monitor;
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void init(Mapping mapping, MetamodelExtent extent) {
-		ecoreSwitch = new EcoreReconstructorSwitch();
+		migrationSwitch = new MigrationReconstructorSwitch();
 		this.extent = extent;
 		this.mapping = mapping;
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public void startRelease(Release originalRelease) {
+		if (isEnabled()) {
+			monitor.subTask("Release " + originalRelease.getNumber());
+		}
+	}
+
+	/** {@inheritDoc} */
 	@Override
 	public void endRelease(Release originalRelease) {
 		if (originalRelease == targetRelease) {
@@ -97,47 +135,40 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (originalRelease == sourceRelease) {
 			enable();
 			started = true;
-			model = loadModel(originalRelease);
+			model = loadModel();
 			GroovyEvaluator.getInstance().setModel(model);
 			try {
 				model.checkConformance();
 			} catch (DiagnosticException e) {
-				throwException("Model not consistent before migration", e);
+				throwWrappedMigrationException(
+						"Model not consistent before migration", e);
 			}
 		}
 	}
 
-	private void throwException(String message, Throwable e) {
-		throw new WrappedMigrationException(new MigrationException(message, e));
-	}
-
-	@Override
-	public void startRelease(Release originalRelease) {
-		if (isEnabled()) {
-			monitor.subTask("Release " + originalRelease.getNumber());
-		}
-	}
-
-	private void saveModel() {
-		try {
-			Persistency.saveModel(model);
-		} catch (IOException e) {
-			throwException("Model could not be saved", e);
-		}
-	}
-
-	private Model loadModel(Release originalRelease) {
-		Metamodel metamodel = loadMetamodel(originalRelease);
+	/** Load the model before migration. */
+	private Model loadModel() {
+		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
 			return Persistency.loadModel(modelURIs, metamodel);
 		} catch (IOException e) {
-			throwException("Model could not be loaded", e);
+			throwWrappedMigrationException("Model could not be loaded", e);
 		}
 		return null;
 	}
 
-	private Metamodel loadMetamodel(Release originalRelease) {
+	/** Save the model after migration. */
+	private void saveModel() {
+		try {
+			Persistency.saveModel(model);
+		} catch (IOException e) {
+			throwWrappedMigrationException("Model could not be saved", e);
+		}
+	}
+
+	/** Load the metamodel. */
+	private Metamodel loadMetamodel() {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		URI metamodelURI = URI.createFileURI(new File("metamodel."
 				+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
@@ -180,7 +211,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	public void startChange(Change change) {
 		if (isEnabled()) {
 			if (isStarted()) {
-				ecoreSwitch.doSwitch(change);
+				migrationSwitch.doSwitch(change);
 				monitor.worked(1);
 			}
 			checkPause(change);
@@ -216,37 +247,36 @@ public class MigrationReconstructor extends ReconstructorBase {
 		}
 	}
 
-	/**
-	 * Whether generation is started.
-	 * 
-	 * @return true if generation is started, false otherwise
-	 */
+	/** Check whether migration is started. */
 	private boolean isStarted() {
 		return started;
 	}
 
-	/**
-	 * Whether generation is active.
-	 * 
-	 * @return true if generation is active, false otherwise
-	 */
+	/** Check whether migration is active. */
 	private boolean isEnabled() {
 		return enabled;
 	}
 
-	/** De-activate generation. */
+	/** De-activate migration. */
 	private void disable() {
 		enabled = false;
 	}
 
-	/** Activate generation. */
+	/** Activate migration. */
 	private void enable() {
 		enabled = true;
 	}
 
-	private class EcoreReconstructorSwitch extends
+	/** Wrap and throw a {@link MigrationException}. */
+	private void throwWrappedMigrationException(String message, Throwable e) {
+		throw new WrappedMigrationException(new MigrationException(message, e));
+	}
+
+	/** Switch that performs the migration attached to a change. */
+	private class MigrationReconstructorSwitch extends
 			EcoreReconstructorSwitchBase<Object> {
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseSet(Set set) {
 			EObject element = set.getElement();
@@ -261,6 +291,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return set;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseAdd(Add add) {
 			EObject element = add.getElement();
@@ -275,6 +306,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return add;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseRemove(Remove remove) {
 			EObject element = remove.getElement();
@@ -289,6 +321,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return remove;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseCreate(Create create) {
 			EObject element = create.getTarget();
@@ -298,6 +331,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return create;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseDelete(Delete delete) {
 			EObject element = delete.getElement();
@@ -306,6 +340,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return delete;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseMove(Move move) {
 			move(resolve(move.getElement()), resolve(move.getTarget()), move
@@ -314,6 +349,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return move;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseMigrationChange(MigrationChange change) {
 			String migration = change.getMigration();
@@ -323,6 +359,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return change;
 		}
 
+		/** {@inheritDoc} */
 		@Override
 		public Object caseOperationChange(OperationChange change) {
 			OperationInstance operationInstance = (OperationInstance) mapping
@@ -335,12 +372,15 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return change;
 		}
 
+		/** Resolve a metamodel element. */
 		private EObject resolve(EObject element) {
 			element = mapping.resolveTarget(element);
 			element = find(element);
 			return element;
 		}
 
+		/** Find an element in the metamodel created for migration. */
+		@SuppressWarnings("unchecked")
 		private EObject find(EObject sourceElement) {
 			EObject sourceParent = sourceElement.eContainer();
 			if (sourceParent == null) {
@@ -353,23 +393,21 @@ public class MigrationReconstructor extends ReconstructorBase {
 					}
 				}
 				return sourcePackage;
-			} else {
-				EObject targetParent = find(sourceParent);
-				EReference reference = sourceElement.eContainmentFeature();
-				if (reference.isMany()) {
-					List<EObject> targetChildren = (List<EObject>) targetParent
-							.eGet(reference);
-					List<EObject> sourceChildren = (List<EObject>) sourceParent
-							.eGet(reference);
-					int index = sourceChildren.indexOf(sourceElement);
-					EObject targetElement = targetChildren.get(index);
-					return targetElement;
-				} else {
-					EObject targetElement = (EObject) targetParent
-							.eGet(reference);
-					return targetElement;
-				}
 			}
+			EObject targetParent = find(sourceParent);
+			EReference reference = sourceElement.eContainmentFeature();
+			if (reference.isMany()) {
+				List<EObject> targetChildren = (List<EObject>) targetParent
+						.eGet(reference);
+				List<EObject> sourceChildren = (List<EObject>) sourceParent
+						.eGet(reference);
+				int index = sourceChildren.indexOf(sourceElement);
+				EObject targetElement = targetChildren.get(index);
+				return targetElement;
+			}
+			EObject targetElement = (EObject) targetParent
+					.eGet(reference);
+			return targetElement;
 		}
 	}
 }

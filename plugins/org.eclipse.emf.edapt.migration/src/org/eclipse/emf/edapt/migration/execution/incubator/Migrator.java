@@ -1,3 +1,14 @@
+/*******************************************************************************
+ * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     BMW Car IT - Initial API and implementation
+ *     Technische Universitaet Muenchen - Major refactoring and extension
+ *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution.incubator;
 
 import java.io.IOException;
@@ -25,12 +36,23 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
 
+/**
+ * Migrator to migrate a model from a previous to the current release.
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating RED Rev:
+ */
 public class Migrator {
 
+	/** Metamodel history no which this migrator is based. */
 	private History history;
 
+	/** Mapping of namespace URIs to releases. */
 	private HashMap<String, Set<Release>> releaseMap;
 
+	/** Constructor. */
 	public Migrator(URI historyURI) throws MigrationException {
 		try {
 			history = ResourceUtils.loadElement(historyURI);
@@ -40,11 +62,13 @@ public class Migrator {
 		init();
 	}
 
+	/** Constructor. */
 	public Migrator(History history) {
 		this.history = history;
 		init();
 	}
 
+	/** Initialize release map for the migrator. */
 	private void init() {
 		releaseMap = new HashMap<String, Set<Release>>();
 		Map<EPackage, String> packageMap = new HashMap<EPackage, String>();
@@ -57,6 +81,7 @@ public class Migrator {
 		}
 	}
 
+	/** Register a package for a certain release. */
 	private void registerRelease(Release release,
 			Map<EPackage, String> packageMap) {
 		for (Entry<EPackage, String> entry : packageMap.entrySet()) {
@@ -70,6 +95,7 @@ public class Migrator {
 		}
 	}
 
+	/** Update the namespace URIs based on the changes during a release. */
 	private void updatePackages(Release release,
 			Map<EPackage, String> packageMap) {
 		for (Iterator<EObject> i = release.eAllContents(); i.hasNext();) {
@@ -89,6 +115,18 @@ public class Migrator {
 		}
 	}
 
+	/**
+	 * Migrate a model based on a set of {@link URI}.
+	 * 
+	 * @param modelURIs
+	 * @param sourceRelease
+	 *            Release to which the model conforms (0 is the first release)
+	 * @param targetRelease
+	 *            Release to which the model should be migrated (use
+	 *            Integer.MAX_VALUE for the newest release)
+	 * @param monitor
+	 *            Progress monitor
+	 */
 	public void migrate(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
@@ -112,6 +150,7 @@ public class Migrator {
 		}
 	}
 
+	/** Get the latest release. */
 	private Release getLatestRelease() {
 		List<Release> releases = history.getReleases();
 		return releases.get(releases.size() - 2);
@@ -121,13 +160,17 @@ public class Migrator {
 	private void performMigration(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
-		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-				URI.createFileURI("test"));
-		MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
-				modelURIs, sourceRelease, targetRelease, monitor);
-		reconstructor.addReconstructor(migrationReconstructor);
+		try {
+			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
+					URI.createFileURI("test"));
+			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
+					modelURIs, sourceRelease, targetRelease, monitor);
+			reconstructor.addReconstructor(migrationReconstructor);
 
-		reconstructor.reconstruct(targetRelease, false);
+			reconstructor.reconstruct(targetRelease, false);
+		} catch (WrappedMigrationException e) {
+			throw e.getCause();
+		}
 	}
 
 	/** Returns the length of the migration in terms of the steps. */
@@ -159,8 +202,7 @@ public class Migrator {
 		return releaseMap.keySet();
 	}
 
-	/**
-	 * Returns the metamodel for a release.
+	/** Returns the metamodel for a release.
 	 * 
 	 * Note: This metamodel should not be changed, as it is cached.
 	 */
@@ -170,5 +212,4 @@ public class Migrator {
 		reconstructor.reconstruct(release, false);
 		return Persistency.loadMetamodel(reconstructor.getResourceSet());
 	}
-
 }
