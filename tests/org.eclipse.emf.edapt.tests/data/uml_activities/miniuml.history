@@ -951,7 +951,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="activityEdgeClass = minuml1.ActivityEdge&#xA;activityEdgeClass.'abstract' = true&#xA;newClass(minuml1, &quot;ControlFlow&quot;, [minuml1.ActivityEdge], false)&#xA;newClass(minuml1, &quot;ObjectFlow&quot;, [minuml1.ActivityEdge], false)&#xA;&#xA;// model migration&#xA;for(edge in activityEdgeClass.allInstances) {&#xA;&#x9;if(edge.source.instanceOf(minuml1.ObjectNode) || edge.target.instanceOf(minuml1.ObjectNode)) {&#xA;&#x9;&#x9;edge.migrate(minuml1.ObjectFlow)&#xA;&#x9;} else {&#xA;&#x9;&#x9;edge.migrate(minuml1.ControlFlow)&#xA;&#x9;}&#xA;}">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.UMLActivityEdgeCustomMigration">
       <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:OperationChange">

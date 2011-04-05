@@ -22,7 +22,6 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationFactory;
 import org.eclipse.emf.edapt.migration.Model;
@@ -134,9 +133,6 @@ public class Migrator {
 			performMigration(model, sourceRelease, targetRelease, monitor);
 
 			Persistency.saveModel(model);
-		} catch (DiagnosticException e) {
-			throw new MigrationException(
-					"Model not consistent before migration", e);
 		} catch (IOException e) {
 			throw new MigrationException("Model could not be saved", e);
 		} finally {

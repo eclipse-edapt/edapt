@@ -16,9 +16,8 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 
 /**
@@ -258,10 +257,10 @@ public interface Model {
 	 * <!-- begin-model-doc -->
 	 * Validate the model
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException"
 	 * @generated
 	 */
-	void validate() throws DiagnosticException;
+	void validate() throws MigrationException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -269,10 +268,10 @@ public interface Model {
 	 * <!-- begin-model-doc -->
 	 * Check whether the model conforms to the metamodel
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException"
 	 * @generated
 	 */
-	void checkConformance() throws DiagnosticException;
+	void checkConformance() throws MigrationException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -280,10 +279,10 @@ public interface Model {
 	 * <!-- begin-model-doc -->
 	 * Commit the changes to the repository, i.e. check conformance and consistency
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException"
 	 * @generated
 	 */
-	void commit() throws DiagnosticException;
+	void commit() throws MigrationException;
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -46,6 +46,7 @@ import org.eclipse.emf.edapt.migration.ReferenceSlot;
 import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 
 /**
@@ -424,7 +425,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void validate() throws DiagnosticException {
+	public void validate() throws MigrationException {
 		BasicDiagnostic chain = new BasicDiagnostic();
 		for(ModelResource modelResource : this.getResources()) {
 			for(Instance root : modelResource.getRootInstances()) {
@@ -432,7 +433,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 			}
 		}
 		if(chain.getSeverity() != Diagnostic.OK) {
-			throw new DiagnosticException("Model not valid", chain);
+			throw new MigrationException(new DiagnosticException("Model not valid", chain));
 		}
 	}
 
@@ -441,7 +442,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void checkConformance() throws DiagnosticException {
+	public void checkConformance() throws MigrationException {
 		Diagnostician diagnostician = new Diagnostician() {
 			@Override
 			public String getObjectLabel(EObject object) {
@@ -469,7 +470,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 		};
 		Diagnostic diagnostic = diagnostician.validate(this);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			throw new DiagnosticException("Model inconsistent", diagnostic);
+			throw new MigrationException(new DiagnosticException("Model inconsistent", diagnostic));
 		}
 	}
 
@@ -478,7 +479,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void commit() throws DiagnosticException {
+	public void commit() throws MigrationException {
 		this.getMetamodel().validate();
 		this.checkConformance();
 		this.validate();

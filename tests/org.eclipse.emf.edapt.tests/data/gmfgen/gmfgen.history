@@ -6319,26 +6319,26 @@
             dataValue="GenLanguage"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgen.ecore#//ValueExpression" referenceName="eStructuralFeatures"
-          element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"
+          element="#//@releases.2/@changes.30/@changes.10/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element"
             featureName="name" dataValue="language"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element"
             featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element"
             featureName="defaultValueLiteral" dataValue="ocl"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element"
             featureName="eType" referenceValue="gmfgen.ecore#//GenLanguage"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.30/@changes.10/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.30/@changes.10/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Specifies the language in which the expression is stated"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgen.ecore#//GenExpressionProviderBase"
@@ -10657,7 +10657,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="for(container in gmfgen.GenAuditContainer.instances.findAll({it.parentContainer == null})) {&#xA;&#x9;def generator = container.getContainer()&#xA;&#x9;&#xA;&#x9;if(generator == null) {&#xA;&#x9;&#x9;def root = gmfgen.GenAuditRoot.newInstance()&#xA;&#x9;&#x9;container.resource.rootInstances.add(root)&#xA;&#x9;&#x9;container.resource.rootInstances.remove(container)&#x9;&#x9;&#xA;&#x9;&#x9;root.audits = container&#xA;&#x9;}&#xA;}&#xA;repository.model.checkConsistency()"/>
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.GMFGenGeneratorCustomMigration"/>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditRoot" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//GenAuditRoot/categories">
@@ -10841,7 +10841,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="newReference(gmfgen.GenAuditContainer, &quot;path&quot;, gmfgen.GenAuditContainer, 1, -1, false, null)&#xA;&#xA;for(container in gmfgen.GenAuditContainer.allInstances) {&#xA;&#x9;def current = container&#xA;&#x9;while(current.parentContainer != null) {&#xA;&#x9;&#x9;current = current.parentContainer&#xA;&#x9;&#x9;container.path.add(0, current)&#xA;&#x9;}&#xA;}&#xA;repository.model.checkConsistency()">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.GMFGenPathCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditContainer"
             referenceName="eStructuralFeatures" element="gmfgen.ecore#//GenAuditContainer/path">
@@ -12867,7 +12867,7 @@
     </changes>
     <changes xsi:type="history:Set" element="gmfgen.ecore#//GenAuditContext/root"
         featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
-    <changes xsi:type="history:MigrationChange" migration="genAuditContextClass = gmfgen.GenAuditContext&#xA;idAttribute = genAuditContextClass.newEAttribute()&#xA;idAttribute.name = &quot;id&quot;&#xA;idAttribute.lowerBound = 1&#xA;idAttribute.defaultValueLiteral = &quot;DefaultCtx&quot;&#xA;eStringDataType = emf.EString&#xA;idAttribute.eType = eStringDataType&#xA;eAnnotation = idAttribute.newEAnnotation()&#xA;eAnnotation.source = &quot;http://www.eclipse.org/emf/2002/GenModel&quot;&#xA;eStringToStringMapEntry = eAnnotation.newEStringToStringMapEntry()&#xA;eStringToStringMapEntry.key = &quot;documentation&quot;&#xA;eStringToStringMapEntry.value = &quot;Identifier of the validation client context for this target. Should be a valid java identifier. Identifier will be qualified automatically (i.e. should be unique within this editor only).&quot;&#xA;&#xA;generateUnique = {context ->&#xA;&#x9;def id = context.className&#xA;&#x9;int i = 0&#xA;&#x9;boolean haveSuchId = true&#xA;&#x9;while(haveSuchId) {&#xA;&#x9;&#x9;haveSuchId = false&#xA;&#x9;&#x9;for(next in context.root.clientContexts) {&#xA;&#x9;&#x9;&#x9;if(id.equals(next.id)) {&#xA;&#x9;&#x9;&#x9;&#x9;haveSuchId = true&#xA;&#x9;&#x9;&#x9;&#x9;id = defaultId + (++i)&#xA;&#x9;&#x9;&#x9;&#x9;break&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return id&#xA;}&#xA; &#xA;for(context in gmfgen.GenAuditContext.allInstances) {&#xA;&#x9;context.id = generateUnique(context)&#xA;}&#xA;&#xA;repository.model.checkConsistency()">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.GMFGenUniquenessCustomMigration">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditContext" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//GenAuditContext/id">
         <changes xsi:type="history:Set" element="gmfgen.ecore#//GenAuditContext/id"
@@ -13324,7 +13324,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="valueExpressionClass = gmfgen.ValueExpression&#xA;providerReference = valueExpressionClass.newEReference()&#xA;providerReference.name = &quot;provider&quot;&#xA;providerReference.lowerBound = 1&#xA;providerReference.changeable = false&#xA;providerReference.resolveProxies = false&#xA;genExpressionProviderBaseClass = gmfgen.GenExpressionProviderBase&#xA;providerReference.eType = genExpressionProviderBaseClass&#xA;expressionsReference = gmfgen.GenExpressionProviderBase.expressions&#xA;expressionsReference.eOpposite = providerReference&#xA;providerReference.eOpposite = expressionsReference&#xA;expressionsReference.lowerBound = 1&#xA;expressionsReference.containment = true&#xA;getProviderOperation = gmfgen.GenExpressionProviderContainer.getProvider&#xA;getProviderOperation.delete()&#xA;&#xA;//ruleReference = gmfgen.GenAuditRule.rule&#xA;//ruleReference.containment = false&#xA;//ruleReference2 = gmfgen.GenMetricRule.rule&#xA;//ruleReference2.containment = false&#xA;//modelElementSelectorReference = gmfgen.TypeModelFacet.modelElementSelector&#xA;//modelElementSelectorReference.containment = false&#xA;//sourceEndReference = gmfgen.GenLinkConstraints.sourceEnd&#xA;//sourceEndReference.containment = false&#xA;//targetEndReference = gmfgen.GenLinkConstraints.targetEnd&#xA;//targetEndReference.containment = false&#xA;//valueReference = gmfgen.GenFeatureValueSpec.value&#xA;//valueReference.containment = false&#xA;&#xA;def container = gmfgen.GenExpressionProviderContainer.instances[0]&#xA;&#xA;findProvider = {valueExpression ->&#xA;&#x9;for(provider in container.providers) {&#xA;&#x9;&#x9;if(valueExpression.language == gmfgen.GenLanguage.java &amp;&amp;&#xA;&#x9;&#x9;&#x9;&#x9;provider.instanceOf(gmfgen.GenJavaExpressionProvider)) {&#xA;&#x9;&#x9;&#x9;return provider&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;else if(valueExpression.language == provider.language) {&#xA;&#x9;&#x9;&#x9;return provider&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return null&#xA;}&#xA;&#xA;findExpression = {valueExpression ->&#xA;&#x9;def provider = findProvider(valueExpression)&#xA;&#x9;if(provider != null) {&#xA;&#x9;&#x9;for(expression in provider.expressions) {&#xA;&#x9;&#x9;&#x9;if(expression.body == valueExpression.body) {&#xA;&#x9;&#x9;&#x9;&#x9;return expression&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;&#x9;return null&#xA;}&#xA;&#xA;import org.eclipse.emf.ecore.*&#xA;&#xA;containment2Association = {EReference reference ->&#xA;&#x9;&#xA;&#x9;// metamodel adaptation&#xA;&#x9;reference.containment = false&#xA;&#x9;&#xA;&#x9;// model migration&#xA;&#x9;for(instance in reference.eContainingClass.allInstances) {&#xA;&#x9;&#x9;def valueExpression = instance.get(reference)&#xA;&#x9;&#x9;if(valueExpression != null) {&#xA;&#x9;&#x9;&#x9;if(container == null) {&#xA;&#x9;&#x9;&#x9;&#x9;valueExpression.delete()&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;else {&#xA;&#x9;&#x9;&#x9;&#x9;def expression = findExpression(valueExpression)&#xA;&#x9;&#x9;&#x9;&#x9;if(expression != valueExpression) {&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;instance.set(reference, expression)&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;valueExpression.delete()&#xA;&#x9;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;&#x9;}&#xA;&#x9;&#x9;}&#xA;&#x9;}&#xA;}&#xA;&#xA;containment2Association(gmfgen.TypeModelFacet.modelElementSelector)&#xA;containment2Association(gmfgen.GenLinkConstraints.sourceEnd)&#xA;containment2Association(gmfgen.GenLinkConstraints.targetEnd)&#xA;containment2Association(gmfgen.GenAuditRule.rule)&#xA;containment2Association(gmfgen.GenMetricRule.rule)&#xA;containment2Association(gmfgen.GenFeatureValueSpec.value)&#xA;&#xA;&#xA;&#xA;deleteFeature(gmfgen.ValueExpression.language)&#xA;">
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.GMFGenValueExpressionCustomMigration">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//ValueExpression" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//ValueExpression/provider">
         <changes xsi:type="history:Set" element="gmfgen.ecore#//ValueExpression/provider"
@@ -13364,21 +13364,13 @@
           featureName="containment" dataValue="false" oldDataValue="true"/>
       <changes xsi:type="history:Set" element="gmfgen.ecore#//GenFeatureValueSpec/value"
           featureName="containment" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Delete" target="gmfgen.ecore#//ValueExpression"
-            referenceName="eStructuralFeatures">
-          <element xsi:type="ecore:EAttribute" name="language" lowerBound="1" eType="ecore:EEnum gmfgen.ecore#//GenLanguage"
-              defaultValueLiteral="ocl">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="Specifies the language in which the expression is stated"/>
-            </eAnnotations>
-          </element>
-        </changes>
-        <operation name="deleteFeature">
-          <parameters name="feature">
-            <referenceValue element="#//@releases.2/@changes.30/@changes.10/@changes.0/@element"/>
-          </parameters>
-        </operation>
+      <changes xsi:type="history:Delete" target="gmfgen.ecore#//ValueExpression" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="language" lowerBound="1" eType="ecore:EEnum gmfgen.ecore#//GenLanguage"
+            defaultValueLiteral="ocl">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Specifies the language in which the expression is stated"/>
+          </eAnnotations>
+        </element>
       </changes>
     </changes>
     <changes xsi:type="history:CompositeChange">

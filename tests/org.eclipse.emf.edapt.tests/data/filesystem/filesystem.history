@@ -1,239 +1,169 @@
 <?xml version="1.0" encoding="ASCII"?>
-<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
   <releases date="2009-08-05T08:17:17.171+0200" label="r0">
     <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Create">
-        <element href="filesystem.ecore#/"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="filesystem">
-          <element href="filesystem.ecore#/"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="nsURI" dataValue="http://filesystem/r0">
-          <element href="filesystem.ecore#/"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="nsPrefix" dataValue="filesystem">
-          <element href="filesystem.ecore#/"/>
-        </changes>
+      <changes xsi:type="history:Create" element="filesystem.ecore#/">
+        <changes xsi:type="history:Set" element="filesystem.ecore#/" featureName="name"
+            dataValue="filesystem"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#/" featureName="nsURI"
+            dataValue="http://filesystem/r0"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#/" featureName="nsPrefix"
+            dataValue="filesystem"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//FileSystem"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="FileSystem">
-          <element href="filesystem.ecore#//FileSystem"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//FileSystem">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem" featureName="name"
+            dataValue="FileSystem"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//NamedElement"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="Entity">
-          <element href="filesystem.ecore#//NamedElement"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="abstract" dataValue="true" oldDataValue="false">
-          <element href="filesystem.ecore#//NamedElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//NamedElement">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement"
+            featureName="name" dataValue="Entity"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement"
+            featureName="abstract" dataValue="true" oldDataValue="false"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//NamedElement"/>
-        <element href="filesystem.ecore#//NamedElement/name"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="name">
-          <element href="filesystem.ecore#//NamedElement/name"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-          <element href="filesystem.ecore#//NamedElement/name"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//NamedElement/name"/>
-          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//NamedElement"
+          referenceName="eStructuralFeatures" element="filesystem.ecore#//NamedElement/name">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement/name"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//FileSystemElement"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="File">
-          <element href="filesystem.ecore#//FileSystemElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//FileSystemElement">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement"
+            featureName="name" dataValue="File"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystem"/>
-        <element href="filesystem.ecore#//FileSystem/files"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="files">
-          <element href="filesystem.ecore#//FileSystem/files"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//FileSystem/files"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-          <element href="filesystem.ecore#//FileSystem/files"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//FileSystem/files"/>
-          <referenceValue href="filesystem.ecore#//FileSystemElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystem" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//FileSystem/files">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/files"
+            featureName="name" dataValue="files"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/files"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/files"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/files"
+            featureName="eType" referenceValue="filesystem.ecore#//FileSystemElement"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures" element="//@releases.1/@changes.4/@changes.1/@element">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.4/@changes.1/@element" featureName="name" dataValue="filename"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.4/@changes.1/@element" featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.4/@changes.1/@element" featureName="eType">
-          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.4/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.4/@changes.1/@element"
+            featureName="name" dataValue="filename"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.4/@changes.1/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.4/@changes.1/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures" element="//@releases.1/@changes.3/@changes.7/@element">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.3/@changes.7/@element" featureName="name" dataValue="rights"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.3/@changes.7/@element" featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="//@releases.1/@changes.3/@changes.7/@element" featureName="eType">
-          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.3/@changes.7/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.7/@element"
+            featureName="name" dataValue="rights"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.7/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.3/@changes.7/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <element href="filesystem.ecore#//Directory/contents"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="contents">
-          <element href="filesystem.ecore#//Directory/contents"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//Directory/contents"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-          <element href="filesystem.ecore#//Directory/contents"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//Directory/contents"/>
-          <referenceValue href="filesystem.ecore#//FileSystemElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures" element="filesystem.ecore#//Directory/contents">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Directory/contents"
+            featureName="name" dataValue="contents"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Directory/contents"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Directory/contents"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Directory/contents"
+            featureName="eType" referenceValue="filesystem.ecore#//FileSystemElement"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//Group"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="Group">
-          <element href="filesystem.ecore#//Group"/>
-        </changes>
-        <changes xsi:type="history:Add" featureName="eSuperTypes">
-          <element href="filesystem.ecore#//Group"/>
-          <referenceValue href="filesystem.ecore#//NamedElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//Group">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Group" featureName="name"
+            dataValue="Group"/>
+        <changes xsi:type="history:Add" element="filesystem.ecore#//Group" featureName="eSuperTypes"
+            referenceValue="filesystem.ecore#//NamedElement"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystem"/>
-        <element href="filesystem.ecore#//FileSystem/groups"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="groups">
-          <element href="filesystem.ecore#//FileSystem/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//FileSystem/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-          <element href="filesystem.ecore#//FileSystem/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//FileSystem/groups"/>
-          <referenceValue href="filesystem.ecore#//Group"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystem" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//FileSystem/groups">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/groups"
+            featureName="name" dataValue="groups"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/groups"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/groups"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/groups"
+            featureName="eType" referenceValue="filesystem.ecore#//Group"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//User"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="User">
-          <element href="filesystem.ecore#//User"/>
-        </changes>
-        <changes xsi:type="history:Add" featureName="eSuperTypes">
-          <element href="filesystem.ecore#//User"/>
-          <referenceValue href="filesystem.ecore#//NamedElement"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//User">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//User" featureName="name"
+            dataValue="User"/>
+        <changes xsi:type="history:Add" element="filesystem.ecore#//User" featureName="eSuperTypes"
+            referenceValue="filesystem.ecore#//NamedElement"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystem"/>
-        <element href="filesystem.ecore#//FileSystem/users"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="users">
-          <element href="filesystem.ecore#//FileSystem/users"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//FileSystem/users"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-          <element href="filesystem.ecore#//FileSystem/users"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//FileSystem/users"/>
-          <referenceValue href="filesystem.ecore#//User"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystem" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//FileSystem/users">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/users"
+            featureName="name" dataValue="users"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/users"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/users"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystem/users"
+            featureName="eType" referenceValue="filesystem.ecore#//User"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <element href="filesystem.ecore#//FileSystemElement/owner"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="owner">
-          <element href="filesystem.ecore#//FileSystemElement/owner"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-          <element href="filesystem.ecore#//FileSystemElement/owner"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//FileSystemElement/owner"/>
-          <referenceValue href="filesystem.ecore#//User"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures" element="filesystem.ecore#//FileSystemElement/owner">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/owner"
+            featureName="name" dataValue="owner"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/owner"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/owner"
+            featureName="eType" referenceValue="filesystem.ecore#//User"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//User"/>
-        <element href="filesystem.ecore#//User/groups"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="groups">
-          <element href="filesystem.ecore#//User/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//User/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//User/groups"/>
-          <referenceValue href="filesystem.ecore#//Group"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//User" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//User/groups">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//User/groups" featureName="name"
+            dataValue="groups"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//User/groups" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//User/groups" featureName="eType"
+            referenceValue="filesystem.ecore#//Group"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//Group"/>
-        <element href="filesystem.ecore#//Group/members"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="users">
-          <element href="filesystem.ecore#//Group/members"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="upperBound" dataValue="-1" oldDataValue="1">
-          <element href="filesystem.ecore#//Group/members"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//Group/members"/>
-          <referenceValue href="filesystem.ecore#//User"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eOpposite">
-          <element href="filesystem.ecore#//Group/members"/>
-          <referenceValue href="filesystem.ecore#//User/groups"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eOpposite">
-          <element href="filesystem.ecore#//User/groups"/>
-          <referenceValue href="filesystem.ecore#//Group/members"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//Group" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//Group/members">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members"
+            featureName="name" dataValue="users"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members"
+            featureName="eType" referenceValue="filesystem.ecore#//User"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members"
+            featureName="eOpposite" referenceValue="filesystem.ecore#//User/groups"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//User/groups" featureName="eOpposite"
+            referenceValue="filesystem.ecore#//Group/members"/>
       </changes>
     </changes>
   </releases>
   <releases date="2009-08-05T08:17:20.671+0200" label="r1">
-    <changes xsi:type="history:Set" featureName="name" dataValue="NamedElement" oldDataValue="Entity">
-      <element href="filesystem.ecore#//NamedElement"/>
-    </changes>
-    <changes xsi:type="history:Set" featureName="name" dataValue="FileSystemElement" oldDataValue="File">
-      <element href="filesystem.ecore#//FileSystemElement"/>
-    </changes>
-    <changes xsi:type="history:Set" featureName="name" dataValue="members" oldDataValue="users">
-      <element href="filesystem.ecore#//Group/members"/>
-    </changes>
-    <changes xsi:type="history:MigrationChange" migration="newClass(filesystem, &quot;Rights&quot;, [])&#xA;newAttribute(filesystem.Rights, &quot;canRead&quot;, emf.EBoolean, 1, 1)&#xA;newAttribute(filesystem.Rights, &quot;canWrite&quot;, emf.EBoolean, 1, 1)&#xA;newAttribute(filesystem.Rights, &quot;canExecute&quot;, emf.EBoolean, 1, 1)&#xA;newReference(filesystem.FileSystemElement, &quot;userRights&quot;, filesystem.Rights, 1, 1, true, null)&#xA;newReference(filesystem.FileSystemElement, &quot;groupRights&quot;, filesystem.Rights, 1, 1, true, null)&#xA;newReference(filesystem.FileSystemElement, &quot;otherRights&quot;, filesystem.Rights, 1, 1, true, null)&#xA;rightsAttribute = filesystem.FileSystemElement.rights&#xA;rightsAttribute.delete()&#xA;// model migration&#xA;Integer.metaClass.getDigit = {int digit ->&#xA;&#x9;def value = (int) delegate&#xA;&#x9;def n = Integer.toString(value).length()&#xA;&#x9;def i = n - 1 - digit&#xA;&#x9;while(i > 0) {&#xA;&#x9;&#x9;value = (int) (value / 10)&#xA;&#x9;&#x9;i--&#xA;&#x9;}&#xA;&#x9;value % 10&#xA;}&#xA;&#xA;Integer.metaClass.toRights = {&#xA;&#x9;def instance = filesystem.Rights.newInstance()&#xA;&#x9;&#xA;&#x9;def rights = (int) delegate&#xA;&#x9;instance.canExecute = rights % 2 > 0&#xA;&#x9;rights = (int) (rights / 2)&#xA;&#x9;instance.canWrite = rights % 2 > 0&#xA;&#x9;rights = (int) (rights / 2)&#xA;&#x9;instance.canRead = rights % 2 > 0&#xA;&#x9;rights = (int) (rights / 2)&#xA;&#x9;&#xA;&#x9;instance&#xA;}&#xA;&#xA;for(element in filesystem.FileSystemElement.allInstances) {&#xA;&#x9;Integer rights = element.get(rightsAttribute)&#xA;&#x9;&#xA;&#x9;element.userRights = rights.getDigit(0).toRights()&#xA;&#x9;element.groupRights = rights.getDigit(1).toRights()&#xA;&#x9;element.otherRights = rights.getDigit(2).toRights()&#xA;&#x9;element.unset(rightsAttribute)&#xA;}&#xA;">
+    <changes xsi:type="history:Set" element="filesystem.ecore#//NamedElement" featureName="name"
+        dataValue="NamedElement" oldDataValue="Entity"/>
+    <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement"
+        featureName="name" dataValue="FileSystemElement" oldDataValue="File"/>
+    <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members" featureName="name"
+        dataValue="members" oldDataValue="users"/>
+    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.FileSystemRightsCustomMigration">
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eClassifiers">
-          <target href="filesystem.ecore#/"/>
-          <element href="filesystem.ecore#//Rights"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="Rights">
-            <element href="filesystem.ecore#//Rights"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+            element="filesystem.ecore#//Rights">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights" featureName="name"
+              dataValue="Rights"/>
         </changes>
         <operation name="newClass">
           <parameters name="ePackage">
-            <referenceValue>
-              <element href="filesystem.ecore#/"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#/"/>
           </parameters>
           <parameters name="name">
             <dataValue>Rights</dataValue>
@@ -242,33 +172,24 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//Rights"/>
-          <element href="filesystem.ecore#//Rights/canRead"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="canRead">
-            <element href="filesystem.ecore#//Rights/canRead"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//Rights/canRead"/>
-            <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//Rights/canRead"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//Rights" referenceName="eStructuralFeatures"
+            element="filesystem.ecore#//Rights/canRead">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canRead"
+              featureName="name" dataValue="canRead"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canRead"
+              featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canRead"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
         </changes>
         <operation name="newAttribute">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="name">
             <dataValue>canRead</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-            </referenceValue>
+            <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -279,33 +200,24 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//Rights"/>
-          <element href="filesystem.ecore#//Rights/canWrite"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="canWrite">
-            <element href="filesystem.ecore#//Rights/canWrite"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//Rights/canWrite"/>
-            <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//Rights/canWrite"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//Rights" referenceName="eStructuralFeatures"
+            element="filesystem.ecore#//Rights/canWrite">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canWrite"
+              featureName="name" dataValue="canWrite"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canWrite"
+              featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canWrite"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
         </changes>
         <operation name="newAttribute">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="name">
             <dataValue>canWrite</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-            </referenceValue>
+            <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -316,33 +228,24 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//Rights"/>
-          <element href="filesystem.ecore#//Rights/canExecute"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="canExecute">
-            <element href="filesystem.ecore#//Rights/canExecute"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//Rights/canExecute"/>
-            <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//Rights/canExecute"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//Rights" referenceName="eStructuralFeatures"
+            element="filesystem.ecore#//Rights/canExecute">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canExecute"
+              featureName="name" dataValue="canExecute"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canExecute"
+              featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//Rights/canExecute"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
         </changes>
         <operation name="newAttribute">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="name">
             <dataValue>canExecute</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-            </referenceValue>
+            <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -353,36 +256,26 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//FileSystemElement"/>
-          <element href="filesystem.ecore#//FileSystemElement/userRights"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="userRights">
-            <element href="filesystem.ecore#//FileSystemElement/userRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//FileSystemElement/userRights"/>
-            <referenceValue href="filesystem.ecore#//Rights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//FileSystemElement/userRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-            <element href="filesystem.ecore#//FileSystemElement/userRights"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+            referenceName="eStructuralFeatures" element="filesystem.ecore#//FileSystemElement/userRights">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/userRights"
+              featureName="name" dataValue="userRights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/userRights"
+              featureName="eType" referenceValue="filesystem.ecore#//Rights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/userRights"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/userRights"
+              featureName="containment" dataValue="true" oldDataValue="false"/>
         </changes>
         <operation name="newReference">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//FileSystemElement"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//FileSystemElement"/>
           </parameters>
           <parameters name="name">
             <dataValue>userRights</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -397,36 +290,26 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//FileSystemElement"/>
-          <element href="filesystem.ecore#//FileSystemElement/groupRights"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="groupRights">
-            <element href="filesystem.ecore#//FileSystemElement/groupRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//FileSystemElement/groupRights"/>
-            <referenceValue href="filesystem.ecore#//Rights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//FileSystemElement/groupRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-            <element href="filesystem.ecore#//FileSystemElement/groupRights"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+            referenceName="eStructuralFeatures" element="filesystem.ecore#//FileSystemElement/groupRights">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/groupRights"
+              featureName="name" dataValue="groupRights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/groupRights"
+              featureName="eType" referenceValue="filesystem.ecore#//Rights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/groupRights"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/groupRights"
+              featureName="containment" dataValue="true" oldDataValue="false"/>
         </changes>
         <operation name="newReference">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//FileSystemElement"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//FileSystemElement"/>
           </parameters>
           <parameters name="name">
             <dataValue>groupRights</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -441,36 +324,26 @@
         </operation>
       </changes>
       <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-          <target href="filesystem.ecore#//FileSystemElement"/>
-          <element href="filesystem.ecore#//FileSystemElement/otherRights"/>
-          <changes xsi:type="history:Set" featureName="name" dataValue="otherRights">
-            <element href="filesystem.ecore#//FileSystemElement/otherRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="eType">
-            <element href="filesystem.ecore#//FileSystemElement/otherRights"/>
-            <referenceValue href="filesystem.ecore#//Rights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="lowerBound" dataValue="1" oldDataValue="0">
-            <element href="filesystem.ecore#//FileSystemElement/otherRights"/>
-          </changes>
-          <changes xsi:type="history:Set" featureName="containment" dataValue="true" oldDataValue="false">
-            <element href="filesystem.ecore#//FileSystemElement/otherRights"/>
-          </changes>
+        <changes xsi:type="history:Create" target="filesystem.ecore#//FileSystemElement"
+            referenceName="eStructuralFeatures" element="filesystem.ecore#//FileSystemElement/otherRights">
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/otherRights"
+              featureName="name" dataValue="otherRights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/otherRights"
+              featureName="eType" referenceValue="filesystem.ecore#//Rights"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/otherRights"
+              featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+          <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement/otherRights"
+              featureName="containment" dataValue="true" oldDataValue="false"/>
         </changes>
         <operation name="newReference">
           <parameters name="eClass">
-            <referenceValue>
-              <element href="filesystem.ecore#//FileSystemElement"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//FileSystemElement"/>
           </parameters>
           <parameters name="name">
             <dataValue>otherRights</dataValue>
           </parameters>
           <parameters name="type">
-            <referenceValue>
-              <element href="filesystem.ecore#//Rights"/>
-            </referenceValue>
+            <referenceValue element="filesystem.ecore#//Rights"/>
           </parameters>
           <parameters name="lowerBound">
             <dataValue>1</dataValue>
@@ -484,81 +357,55 @@
           <parameters name="opposite"/>
         </operation>
       </changes>
-      <changes xsi:type="history:Delete" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <element xsi:type="ecore:EAttribute" name="rights" lowerBound="1">
-          <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-        </element>
+      <changes xsi:type="history:Delete" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="rights" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </changes>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Add" featureName="eSuperTypes">
-        <element href="filesystem.ecore#//FileSystemElement"/>
-        <referenceValue href="filesystem.ecore#//NamedElement"/>
-      </changes>
-      <changes xsi:type="history:Delete" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//FileSystemElement"/>
-        <element xsi:type="ecore:EAttribute" name="filename" lowerBound="1">
-          <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </element>
+      <changes xsi:type="history:Add" element="filesystem.ecore#//FileSystemElement"
+          featureName="eSuperTypes" referenceValue="filesystem.ecore#//NamedElement"/>
+      <changes xsi:type="history:Delete" target="filesystem.ecore#//FileSystemElement"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="filename" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <operation name="useSuperClass">
         <parameters name="subClass">
-          <referenceValue>
-            <element href="filesystem.ecore#//FileSystemElement"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//FileSystemElement"/>
         </parameters>
         <parameters name="superClass">
-          <referenceValue>
-            <element href="filesystem.ecore#//NamedElement"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//NamedElement"/>
         </parameters>
         <parameters name="toReplace">
-          <referenceValue element="//@releases.1/@changes.4/@changes.1/@element"/>
+          <referenceValue element="#//@releases.1/@changes.4/@changes.1/@element"/>
         </parameters>
         <parameters name="replaceBy">
-          <referenceValue>
-            <element href="filesystem.ecore#//NamedElement/name"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//NamedElement/name"/>
         </parameters>
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Set" featureName="abstract" dataValue="true" oldDataValue="false">
-        <element href="filesystem.ecore#//FileSystemElement"/>
+      <changes xsi:type="history:Set" element="filesystem.ecore#//FileSystemElement"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//Directory">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//Directory" featureName="name"
+            dataValue="Directory"/>
+        <changes xsi:type="history:Add" element="filesystem.ecore#//Directory" featureName="eSuperTypes"
+            referenceValue="filesystem.ecore#//FileSystemElement"/>
       </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//Directory"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="Directory">
-          <element href="filesystem.ecore#//Directory"/>
-        </changes>
-        <changes xsi:type="history:Add" featureName="eSuperTypes">
-          <element href="filesystem.ecore#//Directory"/>
-          <referenceValue href="filesystem.ecore#//FileSystemElement"/>
-        </changes>
-      </changes>
-      <changes xsi:type="history:Move" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//Directory"/>
-        <element href="filesystem.ecore#//Directory/contents"/>
-        <source href="filesystem.ecore#//FileSystemElement"/>
-      </changes>
-      <changes xsi:type="history:Create" referenceName="eClassifiers">
-        <target href="filesystem.ecore#/"/>
-        <element href="filesystem.ecore#//File"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="File">
-          <element href="filesystem.ecore#//File"/>
-        </changes>
-        <changes xsi:type="history:Add" featureName="eSuperTypes">
-          <element href="filesystem.ecore#//File"/>
-          <referenceValue href="filesystem.ecore#//FileSystemElement"/>
-        </changes>
+      <changes xsi:type="history:Move" target="filesystem.ecore#//Directory" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//Directory/contents" source="filesystem.ecore#//FileSystemElement"/>
+      <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
+          element="filesystem.ecore#//File">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//File" featureName="name"
+            dataValue="File"/>
+        <changes xsi:type="history:Add" element="filesystem.ecore#//File" featureName="eSuperTypes"
+            referenceValue="filesystem.ecore#//FileSystemElement"/>
       </changes>
       <operation name="partitionComposite">
         <parameters name="eClass">
-          <referenceValue>
-            <element href="filesystem.ecore#//FileSystemElement"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//FileSystemElement"/>
         </parameters>
         <parameters name="compositeName">
           <dataValue>Directory</dataValue>
@@ -567,34 +414,24 @@
           <dataValue>File</dataValue>
         </parameters>
         <parameters name="childReference">
-          <referenceValue>
-            <element href="filesystem.ecore#//Directory/contents"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//Directory/contents"/>
         </parameters>
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" referenceName="eStructuralFeatures">
-        <target href="filesystem.ecore#//File"/>
-        <element href="filesystem.ecore#//File/extension"/>
-        <changes xsi:type="history:Set" featureName="name" dataValue="extension">
-          <element href="filesystem.ecore#//File/extension"/>
-        </changes>
-        <changes xsi:type="history:Set" featureName="eType">
-          <element href="filesystem.ecore#//File/extension"/>
-          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        </changes>
+      <changes xsi:type="history:Create" target="filesystem.ecore#//File" referenceName="eStructuralFeatures"
+          element="filesystem.ecore#//File/extension">
+        <changes xsi:type="history:Set" element="filesystem.ecore#//File/extension"
+            featureName="name" dataValue="extension"/>
+        <changes xsi:type="history:Set" element="filesystem.ecore#//File/extension"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <operation name="splitStringAttribute">
         <parameters name="toSplit">
-          <referenceValue>
-            <element href="filesystem.ecore#//NamedElement/name"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//NamedElement/name"/>
         </parameters>
         <parameters name="context">
-          <referenceValue>
-            <element href="filesystem.ecore#//File"/>
-          </referenceValue>
+          <referenceValue element="filesystem.ecore#//File"/>
         </parameters>
         <parameters name="attributeName">
           <dataValue>extension</dataValue>
@@ -604,9 +441,8 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:Set" featureName="nsURI" dataValue="http://filesystem/r1" oldDataValue="http://filesystem/r0">
-      <element href="filesystem.ecore#/"/>
-    </changes>
+    <changes xsi:type="history:Set" element="filesystem.ecore#/" featureName="nsURI"
+        dataValue="http://filesystem/r1" oldDataValue="http://filesystem/r0"/>
   </releases>
   <releases/>
 </history:History>

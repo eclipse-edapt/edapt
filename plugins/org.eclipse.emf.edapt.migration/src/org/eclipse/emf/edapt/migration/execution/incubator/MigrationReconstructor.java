@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -48,7 +49,6 @@ import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
@@ -105,7 +105,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
-			Release targetRelease, IProgressMonitor monitor, IClassLoader classLoader) {
+			Release targetRelease, IProgressMonitor monitor,
+			IClassLoader classLoader) {
 		this.modelURIs = modelURIs;
 		this.sourceRelease = sourceRelease;
 		this.targetRelease = targetRelease;
@@ -145,9 +146,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 			GroovyEvaluator.getInstance().setModel(model);
 			try {
 				model.checkConformance();
-			} catch (DiagnosticException e) {
-				throwWrappedMigrationException(
-						"Model not consistent before migration", e);
+			} catch (MigrationException e) {
+				throwWrappedMigrationException(e);
 			}
 		}
 	}
@@ -233,7 +233,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 				if (change instanceof MigrationChange
 						&& customMigration != null) {
 					try {
-						customMigration.migrateAfter(model, model.getMetamodel());
+						customMigration.migrateAfter(model, model
+								.getMetamodel());
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
 					}
@@ -304,7 +305,11 @@ public class MigrationReconstructor extends ReconstructorBase {
 			EObject element = set.getElement();
 			EStructuralFeature feature = set.getFeature();
 			Object value = set.getValue();
-			if (feature instanceof EReference) {
+			if (feature == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
+				model.setEOpposite((EReference) resolve(element),
+						(EReference) resolve((EObject) value));
+			} else 
+				if (feature instanceof EReference) {
 				set(resolve(element), feature, resolve((EObject) value));
 			} else {
 				set(resolve(element), feature, value);

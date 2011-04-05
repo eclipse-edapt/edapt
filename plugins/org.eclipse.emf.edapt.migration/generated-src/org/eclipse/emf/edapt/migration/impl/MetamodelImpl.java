@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
@@ -44,6 +45,7 @@ import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MetamodelResource;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
 import org.eclipse.emf.edapt.migration.Repository;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 
 /**
@@ -211,6 +213,39 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	public void setDefaultPackage(String packageName) {
 		EPackage ePackage = getEPackage(packageName);
 		setDefaultPackage(ePackage);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EEnum getEEnum(String name) {
+		try {
+			return (EEnum) this.getEDataType(name);
+		} catch (ClassCastException e) {
+			return null;
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EEnumLiteral getEEnumLiteral(String name) {
+		try {
+			int pos = name.lastIndexOf('.');
+			String classifierName = name.substring(0, pos);
+			EEnum eEnum = getEEnum(classifierName);
+			String literalName = name.substring(pos + 1);
+			EEnumLiteral literal = eEnum.getEEnumLiteral(literalName);
+			return literal;
+		} catch (NullPointerException e) {
+			return null;
+		} catch (IndexOutOfBoundsException e) {
+			return null;
+		}
 	}
 
 	/**
@@ -416,14 +451,14 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void validate() throws DiagnosticException {
+	public void validate() throws MigrationException {
 		BasicDiagnostic diagnostic = new BasicDiagnostic();
 		Diagnostician diagnostician = new Diagnostician();
 		for (EPackage p : this.getEPackages()) {
 			diagnostician.validate(p, diagnostic);
 		}
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			throw new DiagnosticException("Metamodel not valid", diagnostic);
+			throw new MigrationException(new DiagnosticException("Metamodel not valid", diagnostic));
 		}
 	}
 

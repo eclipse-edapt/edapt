@@ -507,4 +507,15 @@ public interface Instance {
 	 */
 	void remove(String featureName, Object value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Add an element at a certain position to the value of the feature
+	 * <!-- end-model-doc -->
+	 * @model featureNameRequired="true" indexRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	void add(String featureName, int index, Object value);
+
 } // Instance

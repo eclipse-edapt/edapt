@@ -1087,8 +1087,8 @@
             referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Model/validate" referenceName="eGenericExceptions"
-          element="model.ecore#//Model/validate/@eGenericExceptions.0">
-        <changes xsi:type="history:Set" element="model.ecore#//Model/validate/@eGenericExceptions.0"
+          element="#//@releases.1/@changes.187/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.187/@element"
             featureName="eClassifier" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Model" referenceName="eOperations"
@@ -1099,8 +1099,8 @@
             featureName="eExceptions" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Model/checkConformance"
-          referenceName="eGenericExceptions" element="model.ecore#//Model/checkConformance/@eGenericExceptions.0">
-        <changes xsi:type="history:Set" element="model.ecore#//Model/checkConformance/@eGenericExceptions.0"
+          referenceName="eGenericExceptions" element="#//@releases.1/@changes.175/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.175/@element"
             featureName="eClassifier" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Model" referenceName="eOperations"
@@ -1111,8 +1111,8 @@
             referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Model/commit" referenceName="eGenericExceptions"
-          element="model.ecore#//Model/commit/@eGenericExceptions.0">
-        <changes xsi:type="history:Set" element="model.ecore#//Model/commit/@eGenericExceptions.0"
+          element="#//@releases.1/@changes.179/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.179/@element"
             featureName="eClassifier" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
@@ -1123,8 +1123,8 @@
             featureName="eExceptions" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Metamodel/validate"
-          referenceName="eGenericExceptions" element="model.ecore#//Metamodel/validate/@eGenericExceptions.0">
-        <changes xsi:type="history:Set" element="model.ecore#//Metamodel/validate/@eGenericExceptions.0"
+          referenceName="eGenericExceptions" element="#//@releases.1/@changes.183/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.183/@element"
             featureName="eClassifier" referenceValue="model.ecore#//DiagnosticException"/>
       </changes>
     </changes>
@@ -3513,5 +3513,168 @@
         oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     <changes xsi:type="history:Set" element="model.ecore#//Instance/remove.2/featureName"
         featureName="name" dataValue="featureName" oldDataValue="feature"/>
+    <changes xsi:type="history:Remove" element="model.ecore#//Model/checkConformance"
+        featureName="eExceptions" referenceValue="model.ecore#//DiagnosticException"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Model/checkConformance"
+        referenceName="eGenericExceptions">
+      <element xsi:type="ecore:EGenericType" eClassifier="ecore:EDataType model.ecore#//DiagnosticException"/>
+    </changes>
+    <changes xsi:type="history:Add" element="model.ecore#//Model/checkConformance"
+        featureName="eExceptions" referenceValue="model.ecore#//MigrationException"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Model/checkConformance"
+        referenceName="eGenericExceptions" element="model.ecore#//Model/checkConformance/@eGenericExceptions.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Model/checkConformance/@eGenericExceptions.0"
+          featureName="eClassifier" referenceValue="model.ecore#//MigrationException"/>
+    </changes>
+    <changes xsi:type="history:Remove" element="model.ecore#//Model/commit" featureName="eExceptions"
+        referenceValue="model.ecore#//DiagnosticException"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Model/commit" referenceName="eGenericExceptions">
+      <element xsi:type="ecore:EGenericType" eClassifier="ecore:EDataType model.ecore#//DiagnosticException"/>
+    </changes>
+    <changes xsi:type="history:Add" element="model.ecore#//Model/commit" featureName="eExceptions"
+        referenceValue="model.ecore#//MigrationException"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Model/commit" referenceName="eGenericExceptions"
+        element="model.ecore#//Model/commit/@eGenericExceptions.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Model/commit/@eGenericExceptions.0"
+          featureName="eClassifier" referenceValue="model.ecore#//MigrationException"/>
+    </changes>
+    <changes xsi:type="history:Remove" element="model.ecore#//Metamodel/validate"
+        featureName="eExceptions" referenceValue="model.ecore#//DiagnosticException"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Metamodel/validate" referenceName="eGenericExceptions">
+      <element xsi:type="ecore:EGenericType" eClassifier="ecore:EDataType model.ecore#//DiagnosticException"/>
+    </changes>
+    <changes xsi:type="history:Add" element="model.ecore#//Metamodel/validate" featureName="eExceptions"
+        referenceValue="model.ecore#//MigrationException"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/validate" referenceName="eGenericExceptions"
+        element="model.ecore#//Metamodel/validate/@eGenericExceptions.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/validate/@eGenericExceptions.0"
+          featureName="eClassifier" referenceValue="model.ecore#//MigrationException"/>
+    </changes>
+    <changes xsi:type="history:Remove" element="model.ecore#//Model/validate" featureName="eExceptions"
+        referenceValue="model.ecore#//DiagnosticException"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Model/validate" referenceName="eGenericExceptions">
+      <element xsi:type="ecore:EGenericType" eClassifier="ecore:EDataType model.ecore#//DiagnosticException"/>
+    </changes>
+    <changes xsi:type="history:Add" element="model.ecore#//Model/validate" featureName="eExceptions"
+        referenceValue="model.ecore#//MigrationException"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Model/validate" referenceName="eGenericExceptions"
+        element="model.ecore#//Model/validate/@eGenericExceptions.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Model/validate/@eGenericExceptions.0"
+          featureName="eClassifier" referenceValue="model.ecore#//MigrationException"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
+        element="model.ecore#//Instance/add.3">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3" featureName="name"
+          dataValue="add"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/add.3" referenceName="eAnnotations"
+        element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Add an element at a certain position to the value of the feature"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/add.3" referenceName="eParameters"
+        element="model.ecore#//Instance/add.3/featureName">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/featureName"
+          featureName="name" dataValue="feature"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/featureName"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/featureName"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/add.3" referenceName="eParameters"
+        element="model.ecore#//Instance/add.3/index">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/index"
+          featureName="name" dataValue="index"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/index"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/index"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/add.3" referenceName="eParameters"
+        element="model.ecore#//Instance/add.3/value">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/value"
+          featureName="name" dataValue="value"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/value"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/value"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/featureName"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/featureName"
+        featureName="name" dataValue="featureName" oldDataValue="feature"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/getEEnum">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum" featureName="name"
+          dataValue="getEDataType"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum" featureName="eType"
+          referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnum" referenceName="eAnnotations"
+        element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Resolve a data type of the metamodel by its fully qualified name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnum" referenceName="eParameters"
+        element="model.ecore#//Metamodel/getEEnum/name">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/name"
+          featureName="name" dataValue="name"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/name"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/name"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum" featureName="name"
+        dataValue="getEEnum" oldDataValue="getEDataType"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum" featureName="eType"
+        referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EEnum" oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EDataType"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/getEEnumLiteral">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral"
+          featureName="name" dataValue="getEEnum"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnumLiteral"
+        referenceName="eAnnotations" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Resolve a data type of the metamodel by its fully qualified name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getEEnumLiteral"
+        referenceName="eParameters" element="model.ecore#//Metamodel/getEEnumLiteral/name">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/name"
+          featureName="name" dataValue="name"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/name"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/name"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral"
+        featureName="name" dataValue="getEEnumLiteral" oldDataValue="getEEnum"/>
   </releases>
 </history:History>

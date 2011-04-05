@@ -75,17 +75,17 @@
       <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
       <eParameters name="opposite" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     </eOperations>
-    <eOperations name="validate" eExceptions="#//DiagnosticException">
+    <eOperations name="validate" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Validate the model"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="checkConformance" eExceptions="#//DiagnosticException">
+    <eOperations name="checkConformance" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Check whether the model conforms to the metamodel"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="commit" eExceptions="#//DiagnosticException">
+    <eOperations name="commit" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Commit the changes to the repository, i.e. check conformance and consistency"/>
       </eAnnotations>
@@ -378,6 +378,14 @@
       <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
+    <eOperations name="add">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Add an element at a certain position to the value of the feature"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="slots" upperBound="-1"
         eType="#//Slot" containment="true" eOpposite="#//Slot/instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -515,7 +523,7 @@
       </eAnnotations>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="validate" eExceptions="#//DiagnosticException">
+    <eOperations name="validate" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Validate the metamodel"/>
       </eAnnotations>
@@ -530,6 +538,18 @@
         <details key="documentation" value="Resolve an attribute of the metamodel by its fully qualified name"/>
       </eAnnotations>
       <eParameters name="packageName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getEEnum" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnum">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Resolve a data type of the metamodel by its fully qualified name"/>
+      </eAnnotations>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getEEnumLiteral" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Resolve a data type of the metamodel by its fully qualified name"/>
+      </eAnnotations>
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//MetamodelResource" containment="true">

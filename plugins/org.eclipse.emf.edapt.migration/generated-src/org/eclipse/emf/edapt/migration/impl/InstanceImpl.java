@@ -539,6 +539,16 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	public void add(String featureName, int index, Object value) {
+		EStructuralFeature feature = this.getEClass().getEStructuralFeature(featureName);
+		add(feature, index, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
 	@SuppressWarnings("unchecked")
 	public <V> V getInverse(EReference reference) {
 		EList<Instance> instances = this.getInverseList(reference);

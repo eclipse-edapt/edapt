@@ -20,7 +20,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Model;
 
 /**
@@ -90,11 +89,7 @@ public class MigratorStep {
 			throwException("Runtime error during migration", e);
 		}
 		monitor.worked(1);
-		try {
-			model.checkConformance();
-		} catch (DiagnosticException e) {
-			throwException("Validation error after migration script", e);
-		}
+		model.checkConformance();
 	}
 
 	/** Throw a migration exception with the step as location. */

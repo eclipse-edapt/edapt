@@ -774,13 +774,13 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		addEParameter(op, ecorePackage.getEReference(), "opposite", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(modelEClass, null, "validate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getDiagnosticException());
+		addEException(op, this.getMigrationException());
 
 		op = addEOperation(modelEClass, null, "checkConformance", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getDiagnosticException());
+		addEException(op, this.getMigrationException());
 
 		op = addEOperation(modelEClass, null, "commit", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getDiagnosticException());
+		addEException(op, this.getMigrationException());
 
 		op = addEOperation(modelEClass, this.getInstance(), "getAllInstances", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -919,6 +919,11 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		addEParameter(op, ecorePackage.getEString(), "featureName", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(instanceEClass, null, "add", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "featureName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEInt(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(slotEClass, Slot.class, "Slot", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSlot_Instance(), this.getInstance(), this.getInstance_Slots(), "instance", null, 1, 1, Slot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -962,12 +967,18 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(metamodelEClass, null, "validate", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getDiagnosticException());
+		addEException(op, this.getMigrationException());
 
 		addEOperation(metamodelEClass, ecorePackage.getEPackage(), "getEPackages", 0, -1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(metamodelEClass, null, "setDefaultPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "packageName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(metamodelEClass, ecorePackage.getEEnum(), "getEEnum", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(metamodelEClass, ecorePackage.getEEnumLiteral(), "getEEnumLiteral", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(metamodelResourceEClass, MetamodelResource.class, "MetamodelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelResource_RootPackages(), ecorePackage.getEPackage(), null, "rootPackages", null, 0, -1, MetamodelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1003,7 +1014,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validContainment validType"
-		   });																																						
+		   });																																							
 		addAnnotation
 		  (slotEClass, 
 		   source, 
@@ -1015,7 +1026,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																											
+		   });																													
 	}
 
 } //MigrationPackageImpl

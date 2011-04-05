@@ -16,12 +16,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 
 /**
@@ -152,6 +153,28 @@ public interface Metamodel {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Resolve a data type of the metamodel by its fully qualified name
+	 * <!-- end-model-doc -->
+	 * @model nameRequired="true"
+	 * @generated
+	 */
+	EEnum getEEnum(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Resolve a data type of the metamodel by its fully qualified name
+	 * <!-- end-model-doc -->
+	 * @model nameRequired="true"
+	 * @generated
+	 */
+	EEnumLiteral getEEnumLiteral(String name);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Resolve a package of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
 	 * @model nameRequired="true"
@@ -242,10 +265,10 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Validate the metamodel
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.migration.DiagnosticException"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException"
 	 * @generated
 	 */
-	void validate() throws DiagnosticException;
+	void validate() throws MigrationException;
 	
 	/** Clear the internal caches within the metamodel elements. */
 	void refreshCaches();
