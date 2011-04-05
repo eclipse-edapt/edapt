@@ -474,4 +474,37 @@ public interface Instance {
 	 */
 	EList<Instance> getLinks(String referenceName);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Check whether the instance is of a certain type (or its sub types)
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	boolean instanceOf(String className);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Add an element to the value of the feature
+	 * <!-- end-model-doc -->
+	 * @model featureNameRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	void add(String featureName, Object value);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Remove an element from the value of the feature
+	 * <!-- end-model-doc -->
+	 * @model featureNameRequired="true" valueRequired="true"
+	 * @generated
+	 */
+	void remove(String featureName, Object value);
+
 } // Instance

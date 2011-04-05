@@ -102,6 +102,12 @@
       </eAnnotations>
       <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
+    <eOperations name="newInstance" lowerBound="1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Create a new instance of a certain class"/>
+      </eAnnotations>
+      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodel" eType="#//Metamodel">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the metamodel to which this model conforms"/>
@@ -351,6 +357,26 @@
         <details key="documentation" value="Get the value of the feature which is given by its name"/>
       </eAnnotations>
       <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="instanceOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Check whether the instance is of a certain type (or its sub types)"/>
+      </eAnnotations>
+      <eParameters name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="add">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Add an element to the value of the feature"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="remove">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Remove an element from the value of the feature"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="slots" upperBound="-1"
         eType="#//Slot" containment="true" eOpposite="#//Slot/instance">

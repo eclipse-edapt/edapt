@@ -46,7 +46,6 @@ import org.eclipse.emf.edapt.migration.ReferenceSlot;
 import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
-import org.eclipse.emf.edapt.migration.impl.LazyExtentMap;
 
 
 /**
@@ -503,6 +502,16 @@ public class ModelImpl extends EObjectImpl implements Model {
 	public EList<Instance> getInstances(String className) {
 		EClass eClass = getMetamodel().getEClass(className);
 		return getInstances(eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Instance newInstance(String className) {
+		EClass eClass = getMetamodel().getEClass(className);
+		return newInstance(eClass);
 	}
 
 	/**

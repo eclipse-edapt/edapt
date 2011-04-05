@@ -15,7 +15,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -503,6 +502,36 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 */
 	public EList<Instance> getLinks(String referenceName) {
 		return (EList<Instance>) get(referenceName);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean instanceOf(String className) {
+		EClass eClass = getType().getModel().getMetamodel().getEClass(className);
+		return instanceOf(eClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void add(String featureName, Object value) {
+		EStructuralFeature feature = this.getEClass().getEStructuralFeature(featureName);
+		add(feature, value);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void remove(String featureName, Object value) {
+		EStructuralFeature feature = this.getEClass().getEStructuralFeature(featureName);
+		remove(feature, value);
 	}
 
 	/**

@@ -307,4 +307,15 @@ public interface Model {
 	 */
 	EList<Instance> getInstances(String className);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Create a new instance of a certain class
+	 * <!-- end-model-doc -->
+	 * @model required="true" classNameRequired="true"
+	 * @generated
+	 */
+	Instance newInstance(String className);
+
 } // Model

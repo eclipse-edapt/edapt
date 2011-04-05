@@ -788,6 +788,9 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(modelEClass, this.getInstance(), "getInstances", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(modelEClass, this.getInstance(), "newInstance", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(modelResourceEClass, ModelResource.class, "ModelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelResource_RootInstances(), this.getInstance(), null, "rootInstances", null, 0, -1, ModelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -905,6 +908,17 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(instanceEClass, this.getInstance(), "getLinks", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(instanceEClass, ecorePackage.getEBoolean(), "instanceOf", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "className", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(instanceEClass, null, "add", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "featureName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(instanceEClass, null, "remove", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "featureName", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(slotEClass, Slot.class, "Slot", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSlot_Instance(), this.getInstance(), this.getInstance_Slots(), "instance", null, 1, 1, Slot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -983,13 +997,13 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";																															
+		String source = "http://www.eclipse.org/emf/2002/Ecore";																																
 		addAnnotation
 		  (instanceEClass, 
 		   source, 
 		   new String[] {
 			 "constraints", "validContainment validType"
-		   });																																			
+		   });																																						
 		addAnnotation
 		  (slotEClass, 
 		   source, 
