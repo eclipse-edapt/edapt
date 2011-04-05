@@ -303,7 +303,7 @@
       </eAnnotations>
       <eParameters name="chain" eType="#//DiagnosticChain"/>
     </eOperations>
-    <eOperations name="evaluate" eExceptions="#//ParserException">
+    <eOperations name="evaluate" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Evaluate an OCL constraint with the instance as context"/>
       </eAnnotations>
@@ -499,6 +499,12 @@
         <details key="documentation" value="The root packages of all resources of which the metamodel consists"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="setDefaultPackage">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Resolve an attribute of the metamodel by its fully qualified name"/>
+      </eAnnotations>
+      <eParameters name="packageName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//MetamodelResource" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -545,12 +551,6 @@
     </eAnnotations>
     <eTypeParameters name="E"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="ParserException" instanceClassName="org.eclipse.ocl.ParserException"
-      serializable="false">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="Exception indicating a failure to parse or validate OCL constraints"/>
-    </eAnnotations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="DiagnosticChain" instanceClassName="org.eclipse.emf.common.util.DiagnosticChain">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An accumulator of diagnostics"/>
@@ -564,6 +564,12 @@
   <eClassifiers xsi:type="ecore:EDataType" name="DiagnosticException" instanceClassName="org.eclipse.emf.edapt.migration.DiagnosticException">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Exception that encapsulates constraint violations"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="MigrationException" instanceClassName="org.eclipse.emf.edapt.migration.execution.MigrationException"
+      serializable="false">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Exception indicating a failure to parse or validate OCL constraints"/>
     </eAnnotations>
   </eClassifiers>
 </ecore:EPackage>

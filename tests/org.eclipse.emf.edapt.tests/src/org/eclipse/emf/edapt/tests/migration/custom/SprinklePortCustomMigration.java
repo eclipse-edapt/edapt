@@ -6,33 +6,30 @@ import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 public class SprinklePortCustomMigration extends CustomMigration {
 
 	@Override
-	public void migrateAfter(Model model) {
+	public void migrateAfter(Model model, Metamodel metamodel) throws MigrationException {
 
-		Metamodel metamodel = model.getMetamodel();
-		metamodel.setDefaultPackage(metamodel.getEPackage("sprinkle"));
+		metamodel.setDefaultPackage("sprinkle");
 
-		// model migration
 		// hierarchy inputs
 		for (Instance connection : model.getAllInstances("Connection")) {
-			if (connection.getReference("destination").getReference("signal")
-					.getReference("parent") == connection
-					.getReference("source").getReference("signal")) {
-				connection.getReference("source").migrate("Input");
-				connection.getReference("destination").migrate("Input");
+			if (connection.evaluate("destination.signal.parent") == connection
+					.evaluate("source.signal")) {
+				connection.getLink("source").migrate("Input");
+				connection.getLink("destination").migrate("Input");
 			}
 		}
 
 		// hierarchy outputs
 		for (Instance connection : model.getAllInstances("Connection")) {
-			if (connection.getReference("source").getReference("signal")
-					.getReference("parent") == connection.getReference(
-					"destination").getReference("signal")) {
-				connection.getReference("source").migrate("Output");
-				connection.getReference("destination").migrate("Output");
+			if (connection.evaluate("source.signal.parent") == connection
+					.evaluate("destination.signal")) {
+				connection.getLink("source").migrate("Output");
+				connection.getLink("destination").migrate("Output");
 			}
 		}
 

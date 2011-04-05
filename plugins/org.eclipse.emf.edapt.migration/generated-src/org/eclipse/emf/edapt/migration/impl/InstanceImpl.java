@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -49,8 +50,7 @@ import org.eclipse.emf.edapt.migration.ModelResource;
 import org.eclipse.emf.edapt.migration.ReferenceSlot;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
-import org.eclipse.emf.edapt.migration.impl.ModelValidator;
-import org.eclipse.emf.edapt.migration.impl.UpdatingList;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.ocl.OCL;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.Query;
@@ -198,7 +198,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 */
 	public void setType(Type newType) {
 		if (newType != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.INSTANCE__TYPE && newType != null)) {
-			if (EcoreUtil.isAncestor(this, newType))
+			if (EcoreUtil.isAncestor(this, (EObject)newType))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -393,7 +393,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	@SuppressWarnings("unchecked")
-	public <V> V evaluate(String expression) throws ParserException {
+	public <V> V evaluate(String expression) throws MigrationException {
 		Model model = this.getType().getModel();
 		this.enableReflection();
 		
@@ -402,8 +402,13 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
 		
 		helper.setContext(this.eClass());
-		OCLExpression<EClassifier> query = helper.createQuery(expression);
-		ocl.setExtentMap(model.createExtentMap());
+		OCLExpression<EClassifier> query;
+		try {
+			query = helper.createQuery(expression);
+		} catch (ParserException e) {
+			throw new MigrationException("OCL expression could not be parsed", e);
+		}
+		ocl.setExtentMap((Map) model.createExtentMap());
 		
 		// create a Query to evaluate our query expression
 		Query<EClassifier, EClass, EObject> queryEval = ocl.createQuery(query);
@@ -487,7 +492,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public Instance getReference(String referenceName) {
+	public Instance getLink(String referenceName) {
 		return (Instance) get(referenceName);
 	}
 
@@ -496,7 +501,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public EList<Instance> getReferences(String referenceName) {
+	public EList<Instance> getLinks(String referenceName) {
 		return (EList<Instance>) get(referenceName);
 	}
 

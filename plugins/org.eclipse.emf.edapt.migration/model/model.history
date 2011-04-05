@@ -991,15 +991,15 @@
             dataValue="E"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#/" referenceName="eClassifiers"
-          element="model.ecore#//ParserException">
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException" featureName="name"
-            dataValue="ParserException"/>
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException" featureName="instanceClassName"
-            dataValue="org.eclipse.ocl.ParserException"/>
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException" featureName="instanceTypeName"
-            dataValue="org.eclipse.ocl.ParserException"/>
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException" featureName="serializable"
-            dataValue="false" oldDataValue="true"/>
+          element="#//@releases.1/@changes.140/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element"
+            featureName="name" dataValue="ParserException"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element"
+            featureName="instanceClassName" dataValue="org.eclipse.ocl.ParserException"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element"
+            featureName="instanceTypeName" dataValue="org.eclipse.ocl.ParserException"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element"
+            featureName="serializable" dataValue="false" oldDataValue="true"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
           element="model.ecore#//Instance/evaluate">
@@ -1008,7 +1008,7 @@
         <changes xsi:type="history:Set" element="model.ecore#//Instance/evaluate"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
         <changes xsi:type="history:Add" element="model.ecore#//Instance/evaluate"
-            featureName="eExceptions" referenceValue="model.ecore#//ParserException"/>
+            featureName="eExceptions" referenceValue="#//@releases.1/@changes.140/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Instance/evaluate"
           referenceName="eTypeParameters" element="model.ecore#//Instance/evaluate/V">
@@ -1025,9 +1025,9 @@
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#//Instance/evaluate"
-          referenceName="eGenericExceptions" element="model.ecore#//Instance/evaluate/@eGenericExceptions.0">
-        <changes xsi:type="history:Set" element="model.ecore#//Instance/evaluate/@eGenericExceptions.0"
-            featureName="eClassifier" referenceValue="model.ecore#//ParserException"/>
+          referenceName="eGenericExceptions" element="#//@releases.1/@changes.137/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.137/@element"
+            featureName="eClassifier" referenceValue="#//@releases.1/@changes.140/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="model.ecore#/" referenceName="eClassifiers"
           element="model.ecore#//DiagnosticChain">
@@ -1285,21 +1285,21 @@
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="model.ecore#//ParserException" referenceName="eAnnotations"
-          element="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.140/@element"
+          referenceName="eAnnotations" element="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="model.ecore#//ParserException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.140/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Exception indicating a failure to parse or validate OCL constraints"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="model.ecore#//ParserException"/>
+          <referenceValue element="#//@releases.1/@changes.140/@element"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Exception indicating a failure to parse or validate OCL constraints</dataValue>
@@ -3269,11 +3269,6 @@
       <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Get the value of the feature which is given by its name"/>
     </changes>
-    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLink" referenceName="eTypeParameters"
-        element="#//@releases.1/@changes.131/@element">
-      <changes xsi:type="history:Set" element="#//@releases.1/@changes.131/@element"
-          featureName="name" dataValue="V"/>
-    </changes>
     <changes xsi:type="history:Create" target="model.ecore#//Instance/getLink" referenceName="eParameters"
         element="model.ecore#//Instance/getLink/referenceName">
       <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink/referenceName"
@@ -3289,44 +3284,88 @@
         dataValue="getReference" oldDataValue="get"/>
     <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink/referenceName"
         featureName="name" dataValue="referenceName" oldDataValue="featureName"/>
-    <changes xsi:type="history:Delete" target="model.ecore#//Instance/getLink" referenceName="eTypeParameters">
-      <element xsi:type="ecore:ETypeParameter" name="V"/>
+    <changes xsi:type="history:Create" target="model.ecore#/" referenceName="eClassifiers"
+        element="model.ecore#//MigrationException">
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="name"
+          dataValue="ParserException"/>
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="instanceClassName"
+          dataValue="org.eclipse.ocl.ParserException"/>
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="instanceTypeName"
+          dataValue="org.eclipse.ocl.ParserException"/>
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="serializable"
+          dataValue="false" oldDataValue="true"/>
     </changes>
-    <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
-        element="model.ecore#//Instance/getLinks">
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks" featureName="name"
-          dataValue="getReference"/>
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks" featureName="eType"
-          referenceValue="model.ecore#//Instance"/>
-    </changes>
-    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks" referenceName="eAnnotations"
-        element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+    <changes xsi:type="history:Create" target="model.ecore#//MigrationException" referenceName="eAnnotations"
+        element="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
           featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
     </changes>
-    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-        referenceName="details" element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+    <changes xsi:type="history:Create" target="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="key" dataValue="documentation"/>
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
-          featureName="value" dataValue="Get the value of the feature which is given by its name"/>
+      <changes xsi:type="history:Set" element="model.ecore#//MigrationException/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Exception indicating a failure to parse or validate OCL constraints"/>
     </changes>
-    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks" referenceName="eParameters"
-        element="model.ecore#//Instance/getLinks/referenceName">
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/referenceName"
-          featureName="name" dataValue="referenceName"/>
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/referenceName"
+    <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="name"
+        dataValue="MigrationException" oldDataValue="ParserException"/>
+    <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="instanceClassName"
+        dataValue="org.eclipse.emf.edapt.migration.execution.MigrationException" oldDataValue="org.eclipse.ocl.ParserException"/>
+    <changes xsi:type="history:Set" element="model.ecore#//MigrationException" featureName="instanceTypeName"
+        dataValue="org.eclipse.emf.edapt.migration.execution.MigrationException" oldDataValue="org.eclipse.ocl.ParserException"/>
+    <changes xsi:type="history:Remove" element="model.ecore#//Instance/evaluate" featureName="eExceptions"
+        referenceValue="#//@releases.1/@changes.140/@element"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Instance/evaluate" referenceName="eGenericExceptions">
+      <element xsi:type="ecore:EGenericType" eClassifier="#//@releases.1/@changes.140/@element"/>
+    </changes>
+    <changes xsi:type="history:Add" element="model.ecore#//Instance/evaluate" featureName="eExceptions"
+        referenceValue="model.ecore#//MigrationException"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/evaluate" referenceName="eGenericExceptions"
+        element="model.ecore#//Instance/evaluate/@eGenericExceptions.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/evaluate/@eGenericExceptions.0"
+          featureName="eClassifier" referenceValue="model.ecore#//MigrationException"/>
+    </changes>
+    <changes xsi:type="history:Delete" target="model.ecore#/" referenceName="eClassifiers">
+      <element xsi:type="ecore:EDataType" name="ParserException" instanceClassName="org.eclipse.ocl.ParserException"
+          serializable="false">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Exception indicating a failure to parse or validate OCL constraints"/>
+        </eAnnotations>
+      </element>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/setDefaultPackage">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage"
+          featureName="name" dataValue="getEAttribute"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/setDefaultPackage"
+        referenceName="eAnnotations" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Resolve an attribute of the metamodel by its fully qualified name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/setDefaultPackage"
+        referenceName="eParameters" element="model.ecore#//Metamodel/setDefaultPackage/packageName">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/packageName"
+          featureName="name" dataValue="name"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/packageName"
           featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/referenceName"
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/packageName"
           featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </changes>
-    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks" featureName="upperBound"
-        dataValue="-1" oldDataValue="1"/>
-    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks" featureName="name"
-        dataValue="getReferences" oldDataValue="getReference"/>
-    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink" featureName="name"
-        dataValue="getLink" oldDataValue="getReference"/>
-    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks" featureName="name"
-        dataValue="getLinks" oldDataValue="getReferences"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage"
+        featureName="name" dataValue="setDefaultPackage" oldDataValue="getEAttribute"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/packageName"
+        featureName="name" dataValue="packageName" oldDataValue="name"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage"
+        featureName="eType" oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EAttribute"/>
   </releases>
 </history:History>

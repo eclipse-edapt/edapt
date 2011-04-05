@@ -39,6 +39,7 @@ import org.eclipse.emf.edapt.migration.ReferenceSlot;
 import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.util.MigrationValidator;
 import org.eclipse.ocl.ParserException;
 
@@ -139,13 +140,6 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EDataType parserExceptionEDataType = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EDataType diagnosticChainEDataType = null;
 
 	/**
@@ -161,6 +155,13 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * @generated
 	 */
 	private EDataType diagnosticExceptionEDataType = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EDataType migrationExceptionEDataType = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -582,15 +583,6 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EDataType getParserException() {
-		return parserExceptionEDataType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EDataType getDiagnosticChain() {
 		return diagnosticChainEDataType;
 	}
@@ -611,6 +603,15 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 */
 	public EDataType getDiagnosticException() {
 		return diagnosticExceptionEDataType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EDataType getMigrationException() {
+		return migrationExceptionEDataType;
 	}
 
 	/**
@@ -691,10 +692,10 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		// Create data types
 		setEDataType = createEDataType(SET);
-		parserExceptionEDataType = createEDataType(PARSER_EXCEPTION);
 		diagnosticChainEDataType = createEDataType(DIAGNOSTIC_CHAIN);
 		uriEDataType = createEDataType(URI);
 		diagnosticExceptionEDataType = createEDataType(DIAGNOSTIC_EXCEPTION);
+		migrationExceptionEDataType = createEDataType(MIGRATION_EXCEPTION);
 	}
 
 	/**
@@ -879,7 +880,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(instanceEClass, null, "evaluate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		t1 = addETypeParameter(op, "V");
 		addEParameter(op, ecorePackage.getEString(), "expression", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEException(op, this.getParserException());
+		addEException(op, this.getMigrationException());
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
@@ -898,10 +899,10 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		op = addEOperation(instanceEClass, this.getInstance(), "getReference", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(instanceEClass, this.getInstance(), "getLink", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(instanceEClass, this.getInstance(), "getReferences", 0, -1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(instanceEClass, this.getInstance(), "getLinks", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(slotEClass, Slot.class, "Slot", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -951,6 +952,9 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		addEOperation(metamodelEClass, ecorePackage.getEPackage(), "getEPackages", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(metamodelEClass, null, "setDefaultPackage", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "packageName", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(metamodelResourceEClass, MetamodelResource.class, "MetamodelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelResource_RootPackages(), ecorePackage.getEPackage(), null, "rootPackages", null, 0, -1, MetamodelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -959,10 +963,10 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		// Initialize data types
 		initEDataType(setEDataType, Set.class, "Set", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
-		initEDataType(parserExceptionEDataType, ParserException.class, "ParserException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(diagnosticChainEDataType, DiagnosticChain.class, "DiagnosticChain", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(uriEDataType, org.eclipse.emf.common.util.URI.class, "URI", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 		initEDataType(diagnosticExceptionEDataType, DiagnosticException.class, "DiagnosticException", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
+		initEDataType(migrationExceptionEDataType, MigrationException.class, "MigrationException", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -997,7 +1001,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																										
+		   });																											
 	}
 
 } //MigrationPackageImpl

@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Type extends EObject {
+public interface Type {
 	/**
 	 * Returns the value of the '<em><b>EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->

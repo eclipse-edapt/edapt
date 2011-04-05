@@ -50,7 +50,6 @@ import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.MigrationPlugin;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
@@ -68,13 +67,13 @@ import org.eclipse.emf.edapt.migration.execution.Persistency;
 public class MigrationReconstructor extends ReconstructorBase {
 
 	/** Source release. */
-	private Release sourceRelease;
+	private final Release sourceRelease;
 
 	/** Target release. */
-	private Release targetRelease;
+	private final Release targetRelease;
 
 	/** URIs of the models that need to be migrated. */
-	private List<URI> modelURIs;
+	private final List<URI> modelURIs;
 
 	/** Extent of the reconstructed metamodel. */
 	private MetamodelExtent extent;
@@ -95,14 +94,14 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private Mapping mapping;
 
 	/** Monitor to show progress. */
-	private IProgressMonitor monitor;
+	private final IProgressMonitor monitor;
 
 	/** Switch to perform migration depending on change. */
 	private MigrationReconstructorSwitch migrationSwitch;
 
 	private CustomMigration customMigration;
 
-	private IClassLoader classLoader;
+	private final IClassLoader classLoader;
 
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
@@ -233,7 +232,11 @@ public class MigrationReconstructor extends ReconstructorBase {
 			if (isStarted()) {
 				if (change instanceof MigrationChange
 						&& customMigration != null) {
-					customMigration.migrateAfter(model);
+					try {
+						customMigration.migrateAfter(model, model.getMetamodel());
+					} catch (MigrationException e) {
+						throwWrappedMigrationException(e);
+					}
 				}
 			}
 		}
@@ -283,7 +286,12 @@ public class MigrationReconstructor extends ReconstructorBase {
 
 	/** Wrap and throw a {@link MigrationException}. */
 	private void throwWrappedMigrationException(String message, Throwable e) {
-		throw new WrappedMigrationException(new MigrationException(message, e));
+		MigrationException me = new MigrationException(message, e);
+		throwWrappedMigrationException(me);
+	}
+
+	private void throwWrappedMigrationException(MigrationException me) {
+		throw new WrappedMigrationException(me);
 	}
 
 	/** Switch that performs the migration attached to a change. */
@@ -372,7 +380,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 					migration = migration.substring(6);
 					Class<?> c = classLoader.load(migration);
 					customMigration = (CustomMigration) c.newInstance();
-					customMigration.migrateBefore(model);
+					customMigration.migrateBefore(model, model.getMetamodel());
 				} catch (ClassNotFoundException e) {
 					throwWrappedMigrationException(
 							"Custom migration could not be loaded", e);
@@ -382,6 +390,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 				} catch (IllegalAccessException e) {
 					throwWrappedMigrationException(
 							"Custom migration could not be accessed", e);
+				} catch (MigrationException e) {
+					throwWrappedMigrationException(e);
 				}
 			} else {
 				GroovyEvaluator.getInstance().evaluate(

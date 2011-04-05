@@ -78,15 +78,15 @@ public class MigrationFactoryImpl extends EFactoryImpl implements MigrationFacto
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case MigrationPackage.REPOSITORY: return createRepository();
-			case MigrationPackage.MODEL: return createModel();
-			case MigrationPackage.MODEL_RESOURCE: return createModelResource();
-			case MigrationPackage.TYPE: return createType();
-			case MigrationPackage.INSTANCE: return createInstance();
-			case MigrationPackage.ATTRIBUTE_SLOT: return createAttributeSlot();
-			case MigrationPackage.REFERENCE_SLOT: return createReferenceSlot();
-			case MigrationPackage.METAMODEL: return createMetamodel();
-			case MigrationPackage.METAMODEL_RESOURCE: return createMetamodelResource();
+			case MigrationPackage.REPOSITORY: return (EObject)createRepository();
+			case MigrationPackage.MODEL: return (EObject)createModel();
+			case MigrationPackage.MODEL_RESOURCE: return (EObject)createModelResource();
+			case MigrationPackage.TYPE: return (EObject)createType();
+			case MigrationPackage.INSTANCE: return (EObject)createInstance();
+			case MigrationPackage.ATTRIBUTE_SLOT: return (EObject)createAttributeSlot();
+			case MigrationPackage.REFERENCE_SLOT: return (EObject)createReferenceSlot();
+			case MigrationPackage.METAMODEL: return (EObject)createMetamodel();
+			case MigrationPackage.METAMODEL_RESOURCE: return (EObject)createMetamodelResource();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Repository extends EObject {
+public interface Repository {
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' containment reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.Model#getRepository <em>Repository</em>}'.

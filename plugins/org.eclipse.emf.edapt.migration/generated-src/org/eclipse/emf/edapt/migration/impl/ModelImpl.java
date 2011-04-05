@@ -142,7 +142,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * @generated
 	 */
 	public Metamodel getMetamodel() {
-		if (metamodel != null && metamodel.eIsProxy()) {
+		if (metamodel != null && ((EObject)metamodel).eIsProxy()) {
 			InternalEObject oldMetamodel = (InternalEObject)metamodel;
 			metamodel = (Metamodel)eResolveProxy(oldMetamodel);
 			if (metamodel != oldMetamodel) {
@@ -246,7 +246,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 */
 	public void setRepository(Repository newRepository) {
 		if (newRepository != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.MODEL__REPOSITORY && newRepository != null)) {
-			if (EcoreUtil.isAncestor(this, newRepository))
+			if (EcoreUtil.isAncestor(this, (EObject)newRepository))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -446,23 +446,30 @@ public class ModelImpl extends EObjectImpl implements Model {
 		Diagnostician diagnostician = new Diagnostician() {
 			@Override
 			public String getObjectLabel(EObject object) {
-				if(object instanceof Instance) {
+				if (object instanceof Instance) {
 					Instance instance = (Instance) object;
-					return "Instance of type \"" + instance.getEClass().getName() + "\"";
-				}
-				else if(object instanceof ReferenceSlot) {
+					return "Instance of type \""
+							+ instance.getEClass().getName() + "\"";
+				} else if (object instanceof ReferenceSlot) {
 					ReferenceSlot referenceSlot = (ReferenceSlot) object;
-					return "Reference \"" + referenceSlot.getEReference().getName() + "\" of " + getObjectLabel(referenceSlot.getInstance());
-				}
-				else if(object instanceof AttributeSlot) {
+					return "Reference \""
+							+ referenceSlot.getEReference().getName()
+							+ "\" of "
+							+ getObjectLabel((EObject) referenceSlot
+									.getInstance());
+				} else if (object instanceof AttributeSlot) {
 					AttributeSlot referenceSlot = (AttributeSlot) object;
-					return "Attribute \"" + referenceSlot.getEAttribute().getName() + "\" of " + getObjectLabel(referenceSlot.getInstance());
+					return "Attribute \""
+							+ referenceSlot.getEAttribute().getName()
+							+ "\" of "
+							+ getObjectLabel((EObject) referenceSlot
+									.getInstance());
 				}
 				return super.getObjectLabel(object);
 			}
 		};
 		Diagnostic diagnostic = diagnostician.validate(this);
-		if(diagnostic.getSeverity() != Diagnostic.OK) {
+		if (diagnostic.getSeverity() != Diagnostic.OK) {
 			throw new DiagnosticException("Model inconsistent", diagnostic);
 		}
 	}

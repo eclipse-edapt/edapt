@@ -45,7 +45,7 @@ import org.eclipse.emf.edapt.migration.DiagnosticException;
  * @model
  * @generated
  */
-public interface Model extends EObject {
+public interface Model {
 	/**
 	 * Returns the value of the '<em><b>Metamodel</b></em>' reference.
 	 * <!-- begin-user-doc -->

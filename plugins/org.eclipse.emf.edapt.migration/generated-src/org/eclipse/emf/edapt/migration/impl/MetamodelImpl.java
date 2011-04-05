@@ -138,7 +138,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 */
 	public void setRepository(Repository newRepository) {
 		if (newRepository != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.METAMODEL__REPOSITORY && newRepository != null)) {
-			if (EcoreUtil.isAncestor(this, newRepository))
+			if (EcoreUtil.isAncestor(this, (EObject)newRepository))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
@@ -201,6 +201,16 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			ePackages.addAll(resource.getRootPackages());
 		}
 		return ePackages;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void setDefaultPackage(String packageName) {
+		EPackage ePackage = getEPackage(packageName);
+		setDefaultPackage(ePackage);
 	}
 
 	/**

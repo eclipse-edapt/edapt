@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -88,7 +89,7 @@ public abstract class SlotImpl extends EObjectImpl implements Slot {
 	 */
 	public void setInstance(Instance newInstance) {
 		if (newInstance != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.SLOT__INSTANCE && newInstance != null)) {
-			if (EcoreUtil.isAncestor(this, newInstance))
+			if (EcoreUtil.isAncestor(this, (EObject)newInstance))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)

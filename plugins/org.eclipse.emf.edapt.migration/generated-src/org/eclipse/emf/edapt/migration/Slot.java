@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='validFeature validMultiplicity'"
  * @generated
  */
-public interface Slot extends EObject {
+public interface Slot {
 	/**
 	 * Returns the value of the '<em><b>Instance</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.Instance#getSlots <em>Slots</em>}'.

@@ -17,6 +17,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -162,7 +163,7 @@ public class TypeImpl extends EObjectImpl implements Type {
 	 */
 	public void setModel(Model newModel) {
 		if (newModel != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.TYPE__MODEL && newModel != null)) {
-			if (EcoreUtil.isAncestor(this, newModel))
+			if (EcoreUtil.isAncestor(this, (EObject)newModel))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)

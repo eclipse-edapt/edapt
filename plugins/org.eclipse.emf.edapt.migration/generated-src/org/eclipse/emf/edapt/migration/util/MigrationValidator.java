@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.edapt.migration.*;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.AbstractResource;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
@@ -143,14 +145,14 @@ public class MigrationValidator extends EObjectValidator {
 				return validateAbstractResource((AbstractResource)value, diagnostics, context);
 			case MigrationPackage.SET:
 				return validateSet((Set<?>)value, diagnostics, context);
-			case MigrationPackage.PARSER_EXCEPTION:
-				return validateParserException((ParserException)value, diagnostics, context);
 			case MigrationPackage.DIAGNOSTIC_CHAIN:
 				return validateDiagnosticChain((DiagnosticChain)value, diagnostics, context);
 			case MigrationPackage.URI:
 				return validateURI((URI)value, diagnostics, context);
 			case MigrationPackage.DIAGNOSTIC_EXCEPTION:
 				return validateDiagnosticException((DiagnosticException)value, diagnostics, context);
+			case MigrationPackage.MIGRATION_EXCEPTION:
+				return validateMigrationException((MigrationException)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -162,7 +164,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateModel(Model model, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(model, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)model, diagnostics, context);
 	}
 
 	/**
@@ -171,7 +173,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMetamodel(Metamodel metamodel, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(metamodel, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)metamodel, diagnostics, context);
 	}
 
 	/**
@@ -180,7 +182,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateType(Type type, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(type, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)type, diagnostics, context);
 	}
 
 	/**
@@ -189,13 +191,13 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInstance(Instance instance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validate_EveryMultiplicityConforms(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(instance, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(instance, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validateInstance_validContainment(instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validateInstance_validType(instance, diagnostics, context);
 		return result;
@@ -215,7 +217,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validContainment", getObjectLabel(instance, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validContainment", getObjectLabel((EObject) instance, context) }),
 						 new Object[] { instance }));
 			}
 			return false;
@@ -270,7 +272,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validType", getObjectLabel(instance, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validType", getObjectLabel((EObject) instance, context) }),
 						 new Object[] { instance }));
 			}
 			return false;
@@ -296,13 +298,13 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSlot(Slot slot, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validate_EveryMultiplicityConforms(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(slot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(slot, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validFeature(slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validMultiplicity(slot, diagnostics, context);
 		return result;
@@ -322,7 +324,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validFeature", getObjectLabel(slot, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validFeature", getObjectLabel((EObject) slot, context) }),
 						 new Object[] { slot }));
 			}
 			return false;
@@ -358,7 +360,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validMultiplicity", getObjectLabel(slot, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validMultiplicity", getObjectLabel((EObject) slot, context) }),
 						 new Object[] { slot }));
 			}
 			return false;
@@ -385,13 +387,13 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAttributeSlot(AttributeSlot attributeSlot, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validate_EveryMultiplicityConforms(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(attributeSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(attributeSlot, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validFeature(attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validMultiplicity(attributeSlot, diagnostics, context);
 		return result;
@@ -403,13 +405,13 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateReferenceSlot(ReferenceSlot referenceSlot, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		boolean result = validate_EveryMultiplicityConforms(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryProxyResolves(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_UniqueID(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryKeyUnique(referenceSlot, diagnostics, context);
-		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(referenceSlot, diagnostics, context);
+		boolean result = validate_EveryMultiplicityConforms((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_UniqueID((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validFeature(referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateSlot_validMultiplicity(referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validateReferenceSlot_validType(referenceSlot, diagnostics, context);
@@ -432,7 +434,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validType", getObjectLabel(referenceSlot, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validType", getObjectLabel((EObject) referenceSlot, context) }),
 						 new Object[] { referenceSlot }));
 			}
 			return false;
@@ -475,7 +477,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "noDanglingReference", getObjectLabel(referenceSlot, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "noDanglingReference", getObjectLabel((EObject) referenceSlot, context) }),
 						 new Object[] { referenceSlot }));
 			}
 			return false;
@@ -514,7 +516,7 @@ public class MigrationValidator extends EObjectValidator {
 						(Diagnostic.ERROR,
 						 DIAGNOSTIC_SOURCE,
 						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validOpposite", getObjectLabel(referenceSlot, context) }),
+						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "validOpposite", getObjectLabel((EObject) referenceSlot, context) }),
 						 new Object[] { referenceSlot }));
 			}
 			return false;
@@ -560,7 +562,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRepository(Repository repository, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(repository, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)repository, diagnostics, context);
 	}
 
 	/**
@@ -569,7 +571,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateModelResource(ModelResource modelResource, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(modelResource, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)modelResource, diagnostics, context);
 	}
 
 	/**
@@ -578,7 +580,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAbstractResource(AbstractResource abstractResource, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(abstractResource, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)abstractResource, diagnostics, context);
 	}
 
 	/**
@@ -587,7 +589,7 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMetamodelResource(MetamodelResource metamodelResource, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(metamodelResource, diagnostics, context);
+		return validate_EveryDefaultConstraint((EObject)metamodelResource, diagnostics, context);
 	}
 
 	/**
@@ -596,15 +598,6 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSet(Set<?> set, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateParserException(ParserException parserException, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 
@@ -632,6 +625,15 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDiagnosticException(DiagnosticException diagnosticException, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateMigrationException(MigrationException migrationException, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return true;
 	}
 

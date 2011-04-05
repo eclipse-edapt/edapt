@@ -59,7 +59,7 @@ public class ModelValidator extends EObjectValidator {
 	 */
 	public ModelValidator(Model model) {
 		ocl = OCL.newInstance(EcoreEnvironmentFactory.INSTANCE);
-		ocl.setExtentMap(model.createExtentMap());		
+		ocl.setExtentMap((Map) model.createExtentMap());		
 	}
 	
 	/**
@@ -99,7 +99,7 @@ public class ModelValidator extends EObjectValidator {
 									(Diagnostic.ERROR,
 									 DIAGNOSTIC_SOURCE,
 									 0,
-									 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { entry.getKey(), getObjectLabel(instance, context) }),
+									 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { entry.getKey(), getObjectLabel((EObject) instance, context) }),
 									 new Object[] { instance }));
 						}
 						return false;
@@ -123,7 +123,7 @@ public class ModelValidator extends EObjectValidator {
 	private Object evaluate(Instance instance, String expression) throws ParserException {
 		OCLHelper<EClassifier, ?, ?, Constraint> helper = ocl.createOCLHelper();
 
-		helper.setContext(instance.eClass());
+		helper.setContext(((EObject) instance).eClass());
 		OCLExpression<EClassifier> query = helper.createQuery(expression);
 
 		// create a Query to evaluate our query expression

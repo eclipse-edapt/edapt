@@ -46,7 +46,7 @@ import org.eclipse.emf.edapt.migration.DiagnosticException;
  * @model
  * @generated
  */
-public interface Metamodel extends EObject {
+public interface Metamodel {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.migration.MetamodelResource}.
@@ -136,6 +136,17 @@ public interface Metamodel extends EObject {
 	 * @generated
 	 */
 	EList<EPackage> getEPackages();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Resolve an attribute of the metamodel by its fully qualified name
+	 * <!-- end-model-doc -->
+	 * @model packageNameRequired="true"
+	 * @generated
+	 */
+	void setDefaultPackage(String packageName);
 
 	/**
 	 * <!-- begin-user-doc -->

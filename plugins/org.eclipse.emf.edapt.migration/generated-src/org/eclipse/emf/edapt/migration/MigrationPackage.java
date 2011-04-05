@@ -558,16 +558,6 @@ public interface MigrationPackage extends EPackage {
 	int SET = 11;
 
 	/**
-	 * The meta object id for the '<em>Parser Exception</em>' data type.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.ocl.ParserException
-	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getParserException()
-	 * @generated
-	 */
-	int PARSER_EXCEPTION = 12;
-
-	/**
 	 * The meta object id for the '<em>Diagnostic Chain</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -575,7 +565,7 @@ public interface MigrationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getDiagnosticChain()
 	 * @generated
 	 */
-	int DIAGNOSTIC_CHAIN = 13;
+	int DIAGNOSTIC_CHAIN = 12;
 
 
 	/**
@@ -586,7 +576,7 @@ public interface MigrationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getURI()
 	 * @generated
 	 */
-	int URI = 14;
+	int URI = 13;
 
 
 	/**
@@ -597,7 +587,18 @@ public interface MigrationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getDiagnosticException()
 	 * @generated
 	 */
-	int DIAGNOSTIC_EXCEPTION = 15;
+	int DIAGNOSTIC_EXCEPTION = 14;
+
+
+	/**
+	 * The meta object id for the '<em>Exception</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getMigrationException()
+	 * @generated
+	 */
+	int MIGRATION_EXCEPTION = 15;
 
 
 	/**
@@ -1008,17 +1009,6 @@ public interface MigrationPackage extends EPackage {
 	EDataType getSet();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.ocl.ParserException <em>Parser Exception</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for data type '<em>Parser Exception</em>'.
-	 * @see org.eclipse.ocl.ParserException
-	 * @model instanceClass="org.eclipse.ocl.ParserException" serializeable="false"
-	 * @generated
-	 */
-	EDataType getParserException();
-
-	/**
 	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.DiagnosticChain <em>Diagnostic Chain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1050,6 +1040,17 @@ public interface MigrationPackage extends EPackage {
 	 * @generated
 	 */
 	EDataType getDiagnosticException();
+
+	/**
+	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.migration.execution.MigrationException <em>Exception</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Exception</em>'.
+	 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+	 * @model instanceClass="org.eclipse.emf.edapt.migration.execution.MigrationException" serializeable="false"
+	 * @generated
+	 */
+	EDataType getMigrationException();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1402,16 +1403,6 @@ public interface MigrationPackage extends EPackage {
 		EDataType SET = eINSTANCE.getSet();
 
 		/**
-		 * The meta object literal for the '<em>Parser Exception</em>' data type.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.ocl.ParserException
-		 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getParserException()
-		 * @generated
-		 */
-		EDataType PARSER_EXCEPTION = eINSTANCE.getParserException();
-
-		/**
 		 * The meta object literal for the '<em>Diagnostic Chain</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1440,6 +1431,16 @@ public interface MigrationPackage extends EPackage {
 		 * @generated
 		 */
 		EDataType DIAGNOSTIC_EXCEPTION = eINSTANCE.getDiagnosticException();
+
+		/**
+		 * The meta object literal for the '<em>Exception</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+		 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getMigrationException()
+		 * @generated
+		 */
+		EDataType MIGRATION_EXCEPTION = eINSTANCE.getMigrationException();
 
 	}
 

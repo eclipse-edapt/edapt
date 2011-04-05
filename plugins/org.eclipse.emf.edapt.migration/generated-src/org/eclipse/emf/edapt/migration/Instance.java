@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.ocl.ParserException;
 
 /**
@@ -44,7 +45,7 @@ import org.eclipse.ocl.ParserException;
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='validContainment validType'"
  * @generated
  */
-public interface Instance extends EObject {
+public interface Instance {
 	/**
 	 * Returns the value of the '<em><b>Slots</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.migration.Slot}.
@@ -391,10 +392,10 @@ public interface Instance extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Evaluate an OCL constraint with the instance as context
 	 * <!-- end-model-doc -->
-	 * @model exceptions="org.eclipse.emf.edapt.migration.ParserException" expressionRequired="true"
+	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException" expressionRequired="true"
 	 * @generated
 	 */
-	<V> V evaluate(String expression) throws ParserException;
+	<V> V evaluate(String expression) throws MigrationException;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -460,7 +461,7 @@ public interface Instance extends EObject {
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
-	Instance getReference(String referenceName);
+	Instance getLink(String referenceName);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -471,6 +472,6 @@ public interface Instance extends EObject {
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
-	EList<Instance> getReferences(String referenceName);
+	EList<Instance> getLinks(String referenceName);
 
 } // Instance
