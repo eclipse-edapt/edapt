@@ -39,7 +39,7 @@ public final class EcoreUtils {
 	 * is denoted by the root elements.
 	 */
 	public static List<? extends EObject> getInverse(EObject element,
-			EReference reference, List<EObject> searchArea) {
+			EReference reference, List<? extends EObject> searchArea) {
 		List<EObject> inverseList = new ArrayList<EObject>();
 		for (Setting setting : UsageCrossReferencer.find(element, searchArea)) {
 			if (setting.getEStructuralFeature() == reference) {
