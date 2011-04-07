@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.migration.Instance;
@@ -77,21 +75,6 @@ public class PushFeature extends OperationBase {
 		if(!superClass.isAbstract()) {
 			for (Instance instance : model.getInstances(superClass)) {
 				deleteFeatureValue(instance, feature);
-			}
-		}
-	}
-
-	private void deleteFeatureValue(Instance instance,
-			EStructuralFeature feature) {
-		Object value = instance.unset(feature);
-		if (feature instanceof EReference) {
-			EReference reference = (EReference) feature;
-			if (reference.isMany()) {
-				for (EObject v : (List<EObject>) value) {
-					EcoreUtil.delete(v);
-				}
-			} else if (value != null) {
-				EcoreUtil.delete((EObject) value);
 			}
 		}
 	}

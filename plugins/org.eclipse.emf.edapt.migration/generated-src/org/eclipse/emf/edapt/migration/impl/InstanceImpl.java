@@ -13,6 +13,7 @@ package org.eclipse.emf.edapt.migration.impl;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -544,6 +545,100 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 		add(feature, index, value);
 	}
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Instance getLink(EReference reference) {
+		return (Instance) get(reference);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<Instance> getLinks(EReference reference) {
+		return (EList<Instance>) get(reference);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Instance copy() {
+
+		// mapping of originals to copies
+		Map<Instance, Instance> map = new HashMap<Instance, Instance>();
+
+		// copy tree structure
+		Instance copy = copyTree(this, map);
+		// copy cross references
+		copyReferences(this, map);
+
+		return copy;
+	}
+
+	/** Copy the tree structure with an instance as root. */
+	private Instance copyTree(Instance original, Map<Instance,Instance> map) {
+		EClass eClass = original.getEClass();
+		Instance copi = getType().getModel().newInstance(eClass);
+		for (EReference reference : eClass.getEAllReferences()) {
+			if (reference.isContainment()) {
+				if (reference.isMany()) {
+					for (Instance child : original.getLinks(reference)) {
+						copi.add(reference, copyTree(child, map));
+					}
+				} else {
+					Instance child = original.get(reference);
+					if (child != null) {
+						copi.set(reference, copyTree(child, map));
+					}
+				}
+			}
+		}
+		for (EAttribute attribute : eClass.getEAllAttributes()) {
+			copi.set(attribute, original.get(attribute));
+		}
+		map.put(original, copi);
+		return copi;
+	}
+
+	/** Copy cross references of an instance. */
+	private void copyReferences(Instance original, Map<Instance,Instance> map) {
+		EClass eClass = original.getEClass();
+		Instance copi = map.get(original);
+		for (EReference reference : eClass.getEAllReferences()) {
+			if (!reference.isContainment()) {
+				if (reference.isMany()) {
+					if (reference.getEOpposite() == null
+							|| reference.getEOpposite().isMany()) {
+						for (Instance ref : original.getLinks(reference)) {
+							if (map.get(ref) != null) {
+								ref = map.get(ref);
+							}
+							copi.add(reference, ref);
+						}
+					}
+				} else {
+					if (reference.getEOpposite() == null
+							|| !reference.getEOpposite().isContainment()) {
+						Instance ref = original.get(reference);
+						if (ref != null) {
+							if (map.get(ref) != null) {
+								ref = map.get(ref);
+							}
+							copi.set(reference, ref);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3676,5 +3676,249 @@
         oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EEnum"/>
     <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral"
         featureName="name" dataValue="getEEnumLiteral" oldDataValue="getEEnum"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
+        element="model.ecore#//Instance/getLink.1">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1" featureName="name"
+          dataValue="getLink"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1" featureName="eType"
+          referenceValue="model.ecore#//Instance"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLink.1" referenceName="eAnnotations"
+        element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of the feature which is given by its name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLink.1" referenceName="eParameters"
+        element="model.ecore#//Instance/getLink.1/reference">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+          featureName="name" dataValue="referenceName"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
+        element="model.ecore#//Instance/getLinks.1">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1"
+          featureName="name" dataValue="getLinks"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1"
+          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1"
+          featureName="eType" referenceValue="model.ecore#//Instance"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks.1"
+        referenceName="eAnnotations" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of the feature which is given by its name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/getLinks.1"
+        referenceName="eParameters" element="model.ecore#//Instance/getLinks.1/reference">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/reference"
+          featureName="name" dataValue="referenceName"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/reference"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/reference"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+        featureName="name" dataValue="reference" oldDataValue="referenceName"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+        featureName="eType" oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/reference"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/reference"
+        featureName="name" dataValue="reference" oldDataValue="referenceName"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/reference"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/delete">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete" featureName="name"
+          dataValue="delete"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/delete" referenceName="eAnnotations"
+        element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Delete an instance from the model, including all the contained instances"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/delete" referenceName="eParameters"
+        element="model.ecore#//Metamodel/delete/metamodelElement">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+          featureName="name" dataValue="instance"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+          featureName="eType" referenceValue="model.ecore#//Instance"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"
+        oldReferenceValue="model.ecore#//Instance"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+        featureName="name" dataValue="element" oldDataValue="instance"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/metamodelElement"
+        featureName="name" dataValue="metamodelElement" oldDataValue="element"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/getInverse">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse"
+          featureName="name" dataValue="getInverse"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getInverse"
+        referenceName="eAnnotations" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the inverse value of the reference"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getInverse"
+        referenceName="eTypeParameters" element="model.ecore#//Metamodel/getInverse/V">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/V"
+          featureName="name" dataValue="V"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getInverse"
+        referenceName="eParameters" element="model.ecore#//Metamodel/getInverse/reference">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/reference"
+          featureName="name" dataValue="reference"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/reference"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/reference"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getInverse"
+        referenceName="eParameters" element="model.ecore#//Metamodel/getInverse/metamodelElement">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/metamodelElement"
+          featureName="name" dataValue="metamodelElement"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/metamodelElement"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/metamodelElement"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse" featureName="upperBound"
+        dataValue="-1" oldDataValue="1"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel" referenceName="eOperations"
+        element="model.ecore#//Metamodel/getESubTypes">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes"
+          featureName="name" dataValue="getInverse"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes"
+          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eAnnotations" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the inverse value of the reference"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eTypeParameters" element="#//@releases.1/@changes.246/@element">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.246/@element"
+          featureName="name" dataValue="V"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eParameters" element="model.ecore#//Metamodel/getESubTypes/eClass">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/eClass"
+          featureName="name" dataValue="metamodelElement"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/eClass"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/eClass"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eParameters" element="#//@releases.1/@changes.247/@element">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.247/@element"
+          featureName="name" dataValue="reference"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.247/@element"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.247/@element"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes"
+        featureName="name" dataValue="getESubTypes" oldDataValue="getInverse"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eTypeParameters">
+      <element xsi:type="ecore:ETypeParameter" name="V"/>
+    </changes>
+    <changes xsi:type="history:Delete" target="model.ecore#//Metamodel/getESubTypes"
+        referenceName="eParameters">
+      <element xsi:type="ecore:EParameter" name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/eClass"
+        featureName="name" dataValue="eClass" oldDataValue="metamodelElement"/>
+    <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/eClass"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EClass"
+        oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance" referenceName="eOperations"
+        element="model.ecore#//Instance/copy">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy" featureName="name"
+          dataValue="getLink"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy" featureName="eType"
+          referenceValue="model.ecore#//Instance"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/copy" referenceName="eAnnotations"
+        element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of the feature which is given by its name"/>
+    </changes>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/copy" referenceName="eParameters"
+        element="#//@releases.1/@changes.255/@element">
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.255/@element"
+          featureName="name" dataValue="referenceName"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.255/@element"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.255/@element"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/copy" featureName="name"
+        dataValue="copy" oldDataValue="getLink"/>
+    <changes xsi:type="history:Delete" target="model.ecore#//Instance/copy" referenceName="eParameters">
+      <element xsi:type="ecore:EParameter" name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
   </releases>
 </history:History>

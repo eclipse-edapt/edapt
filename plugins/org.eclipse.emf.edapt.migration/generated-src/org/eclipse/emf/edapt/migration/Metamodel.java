@@ -175,6 +175,39 @@ public interface Metamodel {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Delete an instance from the model, including all the contained instances
+	 * <!-- end-model-doc -->
+	 * @model metamodelElementRequired="true"
+	 * @generated
+	 */
+	void delete(EModelElement metamodelElement);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the inverse value of the reference
+	 * <!-- end-model-doc -->
+	 * @model metamodelElementRequired="true" referenceRequired="true"
+	 * @generated
+	 */
+	<V> EList<V> getInverse(EModelElement metamodelElement, EReference reference);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the inverse value of the reference
+	 * <!-- end-model-doc -->
+	 * @model eClassRequired="true"
+	 * @generated
+	 */
+	EList<EClass> getESubTypes(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Resolve a package of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
 	 * @model nameRequired="true"

@@ -518,4 +518,37 @@ public interface Instance {
 	 */
 	void add(String featureName, int index, Object value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the value of the feature which is given by its name
+	 * <!-- end-model-doc -->
+	 * @model referenceRequired="true"
+	 * @generated
+	 */
+	Instance getLink(EReference reference);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the value of the feature which is given by its name
+	 * <!-- end-model-doc -->
+	 * @model referenceRequired="true"
+	 * @generated
+	 */
+	EList<Instance> getLinks(EReference reference);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Get the value of the feature which is given by its name
+	 * <!-- end-model-doc -->
+	 * @model
+	 * @generated
+	 */
+	Instance copy();
+
 } // Instance

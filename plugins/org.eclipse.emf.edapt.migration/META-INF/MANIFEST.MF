@@ -8,6 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.migration,
+ org.eclipse.emf.edapt.migration.declaration.incubator,
  org.eclipse.emf.edapt.migration.execution,
  org.eclipse.emf.edapt.migration.execution.incubator,
  org.eclipse.emf.edapt.migration.impl,

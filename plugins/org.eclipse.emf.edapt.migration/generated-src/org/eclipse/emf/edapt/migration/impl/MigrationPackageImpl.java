@@ -924,6 +924,14 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		addEParameter(op, ecorePackage.getEInt(), "index", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "value", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(instanceEClass, this.getInstance(), "getLink", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(instanceEClass, this.getInstance(), "getLinks", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(instanceEClass, this.getInstance(), "copy", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(slotEClass, Slot.class, "Slot", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSlot_Instance(), this.getInstance(), this.getInstance_Slots(), "instance", null, 1, 1, Slot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -980,6 +988,19 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(metamodelEClass, ecorePackage.getEEnumLiteral(), "getEEnumLiteral", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(metamodelEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEModelElement(), "metamodelElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		op = addEOperation(metamodelEClass, null, "getInverse", 0, -1, IS_UNIQUE, IS_ORDERED);
+		t1 = addETypeParameter(op, "V");
+		addEParameter(op, ecorePackage.getEModelElement(), "metamodelElement", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
+		g1 = createEGenericType(t1);
+		initEOperation(op, g1);
+
+		op = addEOperation(metamodelEClass, ecorePackage.getEClass(), "getESubTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(metamodelResourceEClass, MetamodelResource.class, "MetamodelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelResource_RootPackages(), ecorePackage.getEPackage(), null, "rootPackages", null, 0, -1, MetamodelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1014,7 +1035,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validContainment validType"
-		   });																																							
+		   });																																										
 		addAnnotation
 		  (slotEClass, 
 		   source, 
@@ -1026,7 +1047,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																													
+		   });																																
 	}
 
 } //MigrationPackageImpl

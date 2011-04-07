@@ -15,9 +15,15 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -37,8 +43,40 @@ public abstract class OperationBase {
 	/** Check the preconditions of the operation. */
 	public final List<String> checkPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
+		result.addAll(checkRequiredParameters());
 		result.addAll(checkRestrictions(metamodel));
 		result.addAll(checkCustomPreconditions(metamodel));
+		return result;
+	}
+
+	/** Check whether a required parameter is set. */
+	@SuppressWarnings("unchecked")
+	private Collection<? extends String> checkRequiredParameters() {
+		List<String> result = new ArrayList<String>();
+		for (Field field : getClass().getFields()) {
+			org.eclipse.emf.edapt.migration.declaration.incubator.Parameter p = field
+					.getAnnotation(org.eclipse.emf.edapt.migration.declaration.incubator.Parameter.class);
+
+			if (p != null && !p.optional()) {
+				try {
+					Object value = field.get(this);
+					if (field.getType() == List.class) {
+						if (value == null || ((List) value).isEmpty()) {
+							result.add("Parameter '" + field.getName()
+									+ "' must be set");
+						}
+					} else {
+						if (value == null) {
+							result.add("Parameter '" + field.getName()
+									+ "' must be set");
+						}
+					}
+				} catch (Exception e) {
+					// if we ignore all exceptions, then we are on the safe
+					// side.
+				}
+			}
+		}
 		return result;
 	}
 
@@ -102,5 +140,20 @@ public abstract class OperationBase {
 	/** Initialize the parameters of the operation. */
 	public void initialize(@SuppressWarnings("unused") Metamodel metamodel) {
 		// to be implemented by subclasses
+	}
+	
+	protected void deleteFeatureValue(Instance instance,
+			EStructuralFeature feature) {
+		Object value = instance.unset(feature);
+		if (feature instanceof EReference) {
+			EReference reference = (EReference) feature;
+			if (reference.isMany()) {
+				for (EObject v : (List<EObject>) value) {
+					EcoreUtil.delete(v);
+				}
+			} else if (value != null) {
+				EcoreUtil.delete((EObject) value);
+			}
+		}
 	}
 }

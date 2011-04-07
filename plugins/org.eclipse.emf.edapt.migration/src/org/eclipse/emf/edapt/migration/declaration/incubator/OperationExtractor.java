@@ -41,14 +41,14 @@ public class OperationExtractor {
 	@SuppressWarnings("unchecked")
 	public Operation extractOperation(Class c) {
 
-		org.eclipse.emf.edapt.migration.declaration.incubator.Operation o = (org.eclipse.emf.edapt.migration.declaration.incubator.Operation) c
+		org.eclipse.emf.edapt.migration.declaration.incubator.Operation operationAnnotation = (org.eclipse.emf.edapt.migration.declaration.incubator.Operation) c
 				.getAnnotation(org.eclipse.emf.edapt.migration.declaration.incubator.Operation.class);
-		if (o != null) {
+		if (operationAnnotation != null) {
 			Operation operation = DeclarationFactory.eINSTANCE
 					.createOperation();
 			operation.setName(c.getName());
-			operation.setLabel(o.label());
-			operation.setDescription(o.description());
+			operation.setLabel(operationAnnotation.label());
+			operation.setDescription(operationAnnotation.description());
 
 			for (Field field : c.getFields()) {
 				addParameter(operation, field);
@@ -64,10 +64,10 @@ public class OperationExtractor {
 	 */
 	@SuppressWarnings("unchecked")
 	private void addParameter(Operation operation, Field field) {
-		org.eclipse.emf.edapt.migration.declaration.incubator.Parameter p = field
+		org.eclipse.emf.edapt.migration.declaration.incubator.Parameter parameterAnnotation = field
 				.getAnnotation(org.eclipse.emf.edapt.migration.declaration.incubator.Parameter.class);
 
-		if (p != null) {
+		if (parameterAnnotation != null) {
 			Parameter parameter = DeclarationFactory.eINSTANCE
 					.createParameter();
 			if (operation.getMainParameter() == null) {
@@ -76,8 +76,7 @@ public class OperationExtractor {
 			operation.getParameters().add(parameter);
 
 			parameter.setName(field.getName());
-			parameter.setRequired(true);
-			parameter.setDescription(p.description());
+			parameter.setDescription(parameterAnnotation.description());
 
 			Class type = setManyAndReturnType(parameter, field);
 

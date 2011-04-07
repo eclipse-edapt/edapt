@@ -30,4 +30,7 @@ public @interface Parameter {
 
 	/** Description of the parameter. */
 	String description();
+	
+	/** Optional parameter. */
+	boolean optional() default false;
 }

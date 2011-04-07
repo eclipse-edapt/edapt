@@ -44,6 +44,7 @@ public class ExtractClass extends OperationBase {
 		return Collections.emptyList();
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
 		if (ePackage == null) {

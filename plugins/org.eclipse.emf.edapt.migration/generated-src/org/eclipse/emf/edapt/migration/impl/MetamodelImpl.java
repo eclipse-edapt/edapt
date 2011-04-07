@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
@@ -40,6 +41,7 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MetamodelResource;
@@ -246,6 +248,34 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 		} catch (IndexOutOfBoundsException e) {
 			return null;
 		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public void delete(EModelElement metamodelElement) {
+		EcoreUtil.delete(metamodelElement);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public <V> EList<V> getInverse(EModelElement metamodelElement, EReference reference) {
+		return new UniqueEList<V>((List) EcoreUtils.getInverse(
+				metamodelElement, reference, getEPackages()));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<EClass> getESubTypes(EClass eClass) {
+		return getInverse(eClass, EcorePackage.eINSTANCE.getEClass_ESuperTypes());
 	}
 
 	/**
