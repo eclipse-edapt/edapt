@@ -13,6 +13,7 @@ package org.eclipse.emf.edapt.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -162,9 +163,7 @@ public final class MetamodelUtils {
 		return subPackage;
 	}
 
-	/**
-	 * Create a new class in a package.
-	 */
+	/** Create a new class in a package. */
 	public static EClass newEClass(EPackage ePackage, String name,
 			Collection<EClass> superClasses, boolean abstr) {
 		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
@@ -173,6 +172,24 @@ public final class MetamodelUtils {
 		eClass.setAbstract(abstr);
 		ePackage.getEClassifiers().add(eClass);
 		return eClass;
+	}
+
+	/** Create a new class in a package. */
+	public static EClass newEClass(EPackage ePackage, String name,
+			Collection<EClass> superClasses) {
+		return newEClass(ePackage, name, superClasses,
+				false);
+	}
+
+	/** Create a new class in a package. */
+	public static EClass newEClass(EPackage ePackage, String name,
+			EClass superClass) {
+		return newEClass(ePackage, name, Collections.singletonList(superClass));
+	}
+
+	/** Create a new class in a package. */
+	public static EClass newEClass(EPackage ePackage, String name) {
+		return newEClass(ePackage, name, Collections.<EClass> emptyList());
 	}
 
 	/**
@@ -196,7 +213,7 @@ public final class MetamodelUtils {
 		ePackage.getEClassifiers().add(eDataType);
 		return eDataType;
 	}
-	
+
 	/**
 	 * Create a new attribute in a class.
 	 */
@@ -212,14 +229,14 @@ public final class MetamodelUtils {
 	/**
 	 * Initialize a feature.
 	 */
-	private static void initTypedElement(ETypedElement eTypedElement, String name,
-			EClassifier type, int lowerBound, int upperBound) {
+	private static void initTypedElement(ETypedElement eTypedElement,
+			String name, EClassifier type, int lowerBound, int upperBound) {
 		eTypedElement.setName(name);
 		eTypedElement.setEType(type);
 		eTypedElement.setLowerBound(lowerBound);
 		eTypedElement.setUpperBound(upperBound);
 	}
-	
+
 	/**
 	 * Create a new reference in a class.
 	 */
@@ -241,13 +258,12 @@ public final class MetamodelUtils {
 		eEnum.getELiterals().add(eEnumLiteral);
 		return eEnumLiteral;
 	}
-	
+
 	/**
 	 * Create a new operation in a class.
 	 */
 	public static EOperation newEOperation(EClass eClass, String name,
-			EClassifier type,
-			int lowerBound, int upperBound) {
+			EClassifier type, int lowerBound, int upperBound) {
 		EOperation eOperation = EcoreFactory.eINSTANCE.createEOperation();
 		initTypedElement(eOperation, name, type, lowerBound, upperBound);
 		eClass.getEOperations().add(eOperation);
@@ -276,11 +292,12 @@ public final class MetamodelUtils {
 		eModelElement.getEAnnotations().add(eAnnotation);
 		return eAnnotation;
 	}
-
+	
 	/**
 	 * Create a new entry in an annotation.
 	 */
-	public static EStringToStringMapEntryImpl newEStringToStringMapEntry(EAnnotation eAnnotation, String key, String value) {
+	public static EStringToStringMapEntryImpl newEStringToStringMapEntry(
+			EAnnotation eAnnotation, String key, String value) {
 		EStringToStringMapEntryImpl entry = (EStringToStringMapEntryImpl) EcoreFactory.eINSTANCE
 				.create(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
 		entry.setKey(key);
@@ -293,7 +310,7 @@ public final class MetamodelUtils {
 	 * Copy a metamodel element. Do not copy opposites in case this might lead
 	 * to an inconsistency.
 	 */
-	public static EModelElement copy(EModelElement modelElement) {
+	public static <V extends EModelElement> V copy(V modelElement) {
 		Copier copier = new Copier() {
 			@Override
 			protected void copyReference(EReference eReference,
@@ -310,7 +327,7 @@ public final class MetamodelUtils {
 				super.copyReference(eReference, eObject, copyEObject);
 			}
 		};
-		EModelElement result = (EModelElement) copier.copy(modelElement);
+		V result = (V) copier.copy(modelElement);
 		copier.copyReferences();
 		return result;
 	}
@@ -319,12 +336,13 @@ public final class MetamodelUtils {
 	public static Collection<EPackage> getAllRootPackages(
 			ResourceSet resourceSet) {
 		List<EPackage> result = new ArrayList<EPackage>();
-		
-		for(Resource resource : resourceSet.getResources()) {
-			if(!MetamodelUtils.isMetamodelResource(resource)) continue;
-			
-			for(EObject o : resource.getContents()) {
-				if(o instanceof EPackage) {
+
+		for (Resource resource : resourceSet.getResources()) {
+			if (!MetamodelUtils.isMetamodelResource(resource))
+				continue;
+
+			for (EObject o : resource.getContents()) {
+				if (o instanceof EPackage) {
 					EPackage p = (EPackage) o;
 					result.add(p);
 				}
@@ -349,5 +367,9 @@ public final class MetamodelUtils {
 	public static EPackage getRootPackage(ResourceSet resourceSet) {
 		Resource resource = (Resource) resourceSet.getResources().get(0);
 		return (EPackage) resource.getContents().get(0);
+	}
+	
+	public static boolean isConcrete(EClass eClass) {
+		return !(eClass.isAbstract() || eClass.isInterface());
 	}
 }
