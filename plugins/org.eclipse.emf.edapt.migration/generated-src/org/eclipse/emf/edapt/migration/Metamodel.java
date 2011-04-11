@@ -208,6 +208,17 @@ public interface Metamodel {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Get the inverse value of the reference
+	 * <!-- end-model-doc -->
+	 * @model eClassRequired="true"
+	 * @generated
+	 */
+	EList<EClass> getEAllSubTypes(EClass eClass);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Resolve a package of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
 	 * @model nameRequired="true"

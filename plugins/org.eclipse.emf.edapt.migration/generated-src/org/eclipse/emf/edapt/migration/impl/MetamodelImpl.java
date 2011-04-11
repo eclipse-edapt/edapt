@@ -281,6 +281,22 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public EList<EClass> getEAllSubTypes(EClass eClass) {
+		EList<EClass> subTypes = new UniqueEList<EClass>();
+		for (EClass subType : getESubTypes(eClass)) {
+			if (!subTypes.contains(subType)) {
+				subTypes.add(subType);
+			}
+			subTypes.addAll(getEAllSubTypes(subType));
+		}
+		return subTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override

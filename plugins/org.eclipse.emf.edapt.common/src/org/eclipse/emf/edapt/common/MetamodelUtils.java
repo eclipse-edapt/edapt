@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -177,8 +178,7 @@ public final class MetamodelUtils {
 	/** Create a new class in a package. */
 	public static EClass newEClass(EPackage ePackage, String name,
 			Collection<EClass> superClasses) {
-		return newEClass(ePackage, name, superClasses,
-				false);
+		return newEClass(ePackage, name, superClasses, false);
 	}
 
 	/** Create a new class in a package. */
@@ -225,7 +225,19 @@ public final class MetamodelUtils {
 		eClass.getEStructuralFeatures().add(eAttribute);
 		return eAttribute;
 	}
+	
+	/** Create a new attribute in a class. */
+	public static EAttribute newEAttribute(EClass eClass, String name,
+			EDataType type) {
+		return newEAttribute(eClass, name, type, 0, 1, null);
+	}
 
+
+	/** Create a new attribute in a class. */
+	public static EAttribute newEAttribute(EClass eClass, String name,
+			EDataType type, int lowerBound, int upperBound) {
+		return newEAttribute(eClass, name, type, lowerBound, upperBound, null);
+	}
 	/**
 	 * Initialize a feature.
 	 */
@@ -237,9 +249,7 @@ public final class MetamodelUtils {
 		eTypedElement.setUpperBound(upperBound);
 	}
 
-	/**
-	 * Create a new reference in a class.
-	 */
+	/** Create a new reference in a class. */
 	public static EReference newEReference(EClass eClass, String name,
 			EClass type, int lowerBound, int upperBound, boolean containment) {
 		EReference eReference = EcoreFactory.eINSTANCE.createEReference();
@@ -249,6 +259,13 @@ public final class MetamodelUtils {
 		return eReference;
 	}
 
+
+	/** Create a new reference in a class. */
+	public static EReference newEReference(EClass eClass, String name,
+			EClass type, int lowerBound, int upperBound) {
+		return newEReference(eClass, name, type, lowerBound, upperBound, false);
+	}
+	
 	/**
 	 * Create a new literal in an enumeration.
 	 */
@@ -292,7 +309,7 @@ public final class MetamodelUtils {
 		eModelElement.getEAnnotations().add(eAnnotation);
 		return eAnnotation;
 	}
-	
+
 	/**
 	 * Create a new entry in an annotation.
 	 */
@@ -368,8 +385,47 @@ public final class MetamodelUtils {
 		Resource resource = (Resource) resourceSet.getResources().get(0);
 		return (EPackage) resource.getContents().get(0);
 	}
-	
+
+	/**
+	 * Check whether a class is concrete, i.e. neither abstract nor an
+	 * interface.
+	 */
 	public static boolean isConcrete(EClass eClass) {
 		return !(eClass.isAbstract() || eClass.isInterface());
 	}
+
+	/**
+	 * Subtract the types that are provided by a class from the types that are
+	 * provided by another class.
+	 */
+	public static List<EClass> subtractTypes(EClass minuend, EClass subtrahend) {
+
+		List<EClass> superTypes = new ArrayList<EClass>();
+
+		superTypes.addAll(minuend.getEAllSuperTypes());
+		superTypes.add(0, minuend);
+
+		superTypes.removeAll(subtrahend.getEAllSuperTypes());
+		superTypes.remove(subtrahend);
+
+		return superTypes;
+	}
+
+	/**
+	 * Subtract the features that are provided by a class from the types that
+	 * are provided by another class.
+	 */
+	public static List<EStructuralFeature> subtractFeatures(EClass minuend,
+			EClass subtrahend) {
+
+		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+		List<EClass> superTypes = subtractTypes(minuend, subtrahend);
+
+		for (EClass superType : superTypes) {
+			features.addAll(superType.getEStructuralFeatures());
+		}
+
+		return features;
+	}
+
 }

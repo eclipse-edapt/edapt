@@ -1001,6 +1001,9 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(metamodelEClass, ecorePackage.getEClass(), "getESubTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(metamodelEClass, ecorePackage.getEClass(), "getEAllSubTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(metamodelResourceEClass, MetamodelResource.class, "MetamodelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelResource_RootPackages(), ecorePackage.getEPackage(), null, "rootPackages", null, 0, -1, MetamodelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1047,7 +1050,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																																
+		   });																																	
 	}
 
 } //MigrationPackageImpl
