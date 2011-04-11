@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: FFF6A3733C03CF77D57DF243915166F2
+ * @levd.rating YELLOW Hash: 8C95522D38ECD147B0A65F6F3DF2AF95
  */
 @Operation(label = "Remove Super Type", description = "In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted.")
 public class RemoveSuperType extends OperationBase {
@@ -45,7 +45,9 @@ public class RemoveSuperType extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		superType = eClass.getESuperTypes().get(0);
+		if (superType == null && !eClass.getESuperTypes().isEmpty()) {
+			superType = eClass.getESuperTypes().get(0);
+		}
 	}
 
 	/** {@inheritDoc} */

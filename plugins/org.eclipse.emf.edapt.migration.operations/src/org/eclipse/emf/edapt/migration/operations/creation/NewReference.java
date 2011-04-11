@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1C7D25B594C82C723D28FFB636383515
+ * @levd.rating YELLOW Hash: 568C1F26B69FC0489DABD24374FF2D20
  */
 @Operation(label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.")
 public class NewReference extends OperationBase {
@@ -34,27 +34,19 @@ public class NewReference extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The lower bound of the new reference")
-	public int lowerBound;
+	public int lowerBound = 0;
 
 	/** {@description} */
 	@Parameter(description = "The upper bound of the new reference")
-	public int upperBound;
+	public int upperBound = 1;
 
 	/** {@description} */
 	@Parameter(description = "Whether the new reference is a containment reference")
-	public Boolean containment;
+	public Boolean containment = false;
 
 	/** {@description} */
 	@Parameter(description = "The opposite reference of the new reference", optional = true)
 	public EReference opposite;
-
-	/** {@inheritDoc} */
-	@Override
-	public void initialize(Metamodel metamodel) {
-		lowerBound = 0;
-		upperBound = 1;
-		containment = false;
-	}
 
 	/** {@inheritDoc} */
 	@Override

@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7FC59C2C028D62F3F1D319B2C338DE84
+ * @levd.rating YELLOW Hash: 12692AF52BBEAEF904E4B1F5F7EC5C8F
  */
 @Operation(label = "Unfold Superclass", description = "In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly.")
 public class ImitateSuperType extends OperationBase {
@@ -60,7 +60,7 @@ public class ImitateSuperType extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		if (!subClass.getESuperTypes().isEmpty()) {
+		if (superClass == null && !subClass.getESuperTypes().isEmpty()) {
 			superClass = subClass.getESuperTypes().get(0);
 		}
 	}

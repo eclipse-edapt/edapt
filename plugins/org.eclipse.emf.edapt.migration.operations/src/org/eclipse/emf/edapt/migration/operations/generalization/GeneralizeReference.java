@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D062D5E356A02FEA841B33272708F307
+ * @levd.rating YELLOW Hash: 955A6DCA0B9F2C079568E0FCF08A5120
  */
 @Operation(label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
 public class GeneralizeReference extends OperationBase {
@@ -46,7 +46,7 @@ public class GeneralizeReference extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The new lower bound of the reference")
-	public int lowerBound;
+	public int lowerBound = -1;
 
 	/** {@description} */
 	@Parameter(description = "The new upper bound of the reference")
@@ -68,8 +68,12 @@ public class GeneralizeReference extends OperationBase {
 	@Override
 	public void initialize(Metamodel metamodel) {
 		type = reference.getEReferenceType();
-		lowerBound = reference.getLowerBound();
-		upperBound = reference.getUpperBound();
+		if (lowerBound == -1) {
+			lowerBound = reference.getLowerBound();
+		}
+		if (upperBound == 0) {
+			upperBound = reference.getUpperBound();
+		}
 	}
 
 	/** {@inheritDoc} */

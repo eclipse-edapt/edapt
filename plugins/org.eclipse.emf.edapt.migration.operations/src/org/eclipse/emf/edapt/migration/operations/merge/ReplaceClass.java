@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 3FC5D7E72BBC10E6DB09D2CF00331B28
+ * @levd.rating YELLOW Hash: 6A70910BEC0A96859C0AF1AFD36F50AA
  */
 @Operation(label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationBase {
@@ -38,7 +38,7 @@ public class ReplaceClass extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The features to be replaced")
-	public List<EStructuralFeature> featuresToReplace;
+	public List<EStructuralFeature> featuresToReplace = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@Restriction(parameter = "featuresToReplace")
@@ -53,7 +53,7 @@ public class ReplaceClass extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The features by which they are replaced (in the same order)")
-	public List<EStructuralFeature> featuresReplaceBy;
+	public List<EStructuralFeature> featuresReplaceBy = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@Restriction(parameter = "featuresReplaceBy")
@@ -84,17 +84,6 @@ public class ReplaceClass extends OperationBase {
 					+ "replace and the class by which it is replaced");
 		}
 		return result;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void initialize(Metamodel metamodel) {
-		if (featuresToReplace == null) {
-			featuresToReplace = new ArrayList<EStructuralFeature>();
-		}
-		if (featuresReplaceBy == null) {
-			featuresReplaceBy = new ArrayList<EStructuralFeature>();
-		}
 	}
 
 	/** {@inheritDoc} */

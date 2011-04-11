@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DFD685532ACCCDC230D73ABDBB1FB062
+ * @levd.rating YELLOW Hash: 61BC289859929255248F86C8C293B417
  */
 @Operation(label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
 public class MakeFeatureVolatile extends OperationBase {
@@ -29,15 +29,15 @@ public class MakeFeatureVolatile extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "Whether the feature is transient")
-	public Boolean trans;
+	public Boolean trans = true;
 
 	/** {@description} */
 	@Parameter(description = "Whether the feature is derived")
-	public Boolean derived;
+	public Boolean derived = true;
 
 	/** {@description} */
 	@Parameter(description = "Whether the feature is changeable")
-	public Boolean changeable;
+	public Boolean changeable = false;
 
 	/** {@inheritDoc} */
 	@Override
@@ -47,14 +47,6 @@ public class MakeFeatureVolatile extends OperationBase {
 			result.add("Feature must not be volatile");
 		}
 		return result;
-	}
-
-	/** {@inheritDoc} */
-	@Override
-	public void initialize(Metamodel metamodel) {
-		trans = true;
-		derived = true;
-		changeable = false;
 	}
 
 	/** {@inheritDoc} */

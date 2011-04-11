@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 54280FC18341E840B3168A715380E45B
+ * @levd.rating YELLOW Hash: 7CFC49448C97DE1926EE2865412F2227
  */
 @Operation(label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
 public class NewClass extends OperationBase {
@@ -33,18 +33,11 @@ public class NewClass extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The super classes of the new class")
-	public List<EClass> superClasses;
+	public List<EClass> superClasses = new ArrayList<EClass>();
 
 	/** {@description} */
 	@Parameter(description = "Whether the class is abstract")
-	public Boolean abstr;
-
-	/** {@inheritDoc} */
-	@Override
-	public void initialize(Metamodel metamodel) {
-		superClasses = new ArrayList<EClass>();
-		abstr = false;
-	}
+	public Boolean abstr = false;
 
 	/** {@inheritDoc} */
 	@Override

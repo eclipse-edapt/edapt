@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 3AED692A601D5D50BE66765A20833DB2
+ * @levd.rating YELLOW Hash: 1FF0213AB6CA208B39AA762AEB3BE9FF
  */
 @Operation(label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
 public class ExtractSuperClass2 extends OperationBase {
@@ -45,11 +45,11 @@ public class ExtractSuperClass2 extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "Whether the super class is abstract")
-	public Boolean abstr;
+	public Boolean abstr = true;
 
 	/** {@description} */
 	@Parameter(description = "The super classes of the sub class which become super classes of the super class")
-	public List<EClass> superSuperClasses;
+	public List<EClass> superSuperClasses = new ArrayList<EClass>();
 
 	/** {@description} */
 	@Restriction(parameter = "superSuperClasses")
@@ -122,9 +122,9 @@ public class ExtractSuperClass2 extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		ePackage = subClasses.get(0).getEPackage();
-		abstr = true;
-		superSuperClasses = new ArrayList<EClass>();
+		if (ePackage == null) {
+			ePackage = subClasses.get(0).getEPackage();
+		}
 	}
 
 	/** {@inheritDoc} */

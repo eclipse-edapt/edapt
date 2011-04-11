@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 19F2B36886429EEACD51623A3C382A59
+ * @levd.rating YELLOW Hash: 5A4ADB004FD92006DAAED5E883F23ED1
  */
 @Operation(label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.")
 public class NewOppositeReference extends OperationBase {
@@ -33,7 +33,7 @@ public class NewOppositeReference extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The lower bound of the opposite reference")
-	public int lowerBound;
+	public int lowerBound = 0;
 
 	/** {@description} */
 	@Parameter(description = "The upper bound of the opposite reference")
@@ -41,7 +41,7 @@ public class NewOppositeReference extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "Whether the opposite reference is changeable")
-	public Boolean changeable;
+	public Boolean changeable = true;
 
 	/** {@inheritDoc} */
 	@Override
@@ -64,9 +64,9 @@ public class NewOppositeReference extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		lowerBound = 0;
-		upperBound = reference.isContainment() ? 1 : -1;
-		changeable = true;
+		if (upperBound == 0) {
+			upperBound = reference.isContainment() ? 1 : -1;
+		}
 	}
 
 	/** {@inheritDoc} */

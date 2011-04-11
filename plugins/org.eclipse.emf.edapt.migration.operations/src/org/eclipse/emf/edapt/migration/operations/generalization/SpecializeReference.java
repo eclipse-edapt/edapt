@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 280A52D1E392C5B45B2A80EBCD3CA6A6
+ * @levd.rating YELLOW Hash: A6704A70D29E503D896F6BE32A080EF7
  */
 @Operation(label = "Specialize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed.")
 public class SpecializeReference extends OperationBase {
@@ -46,7 +46,7 @@ public class SpecializeReference extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The new lower bound of the reference")
-	public int lowerBound;
+	public int lowerBound = -1;
 
 	/** {@description} */
 	@Parameter(description = "The new upper bound of the reference")
@@ -68,8 +68,12 @@ public class SpecializeReference extends OperationBase {
 	@Override
 	public void initialize(Metamodel metamodel) {
 		type = reference.getEReferenceType();
-		lowerBound = reference.getLowerBound();
-		upperBound = reference.getUpperBound();
+		if (lowerBound == -1) {
+			lowerBound = reference.getLowerBound();
+		}
+		if (upperBound == 0) {
+			upperBound = reference.getUpperBound();
+		}
 	}
 
 	/** {@inheritDoc} */

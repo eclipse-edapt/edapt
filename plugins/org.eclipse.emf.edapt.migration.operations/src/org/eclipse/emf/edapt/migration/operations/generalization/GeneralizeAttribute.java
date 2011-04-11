@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 81C697C1D584352C55BEDAE451C05DF6
+ * @levd.rating YELLOW Hash: 9308DFB3E173BE5B141E082903B9D16E
  */
 @Operation(label = "Generalize Attribute", description = "In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed.")
 public class GeneralizeAttribute extends OperationBase {
@@ -27,7 +27,7 @@ public class GeneralizeAttribute extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The new lower bound of the attribute")
-	public int lowerBound;
+	public int lowerBound = -1;
 
 	/** {@description} */
 	@Parameter(description = "The new upper bound of the attribute")
@@ -48,8 +48,12 @@ public class GeneralizeAttribute extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		lowerBound = attribute.getLowerBound();
-		upperBound = attribute.getUpperBound();
+		if (lowerBound == -1) {
+			lowerBound = attribute.getLowerBound();
+		}
+		if (upperBound == 0) {
+			upperBound = attribute.getUpperBound();
+		}
 	}
 
 	/** {@inheritDoc} */

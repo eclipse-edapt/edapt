@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.operations.generalization.GeneralizeRefer
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 35758495627FF6AB29CA32C2AE87C241
+ * @levd.rating YELLOW Hash: ECCF7A2562AF3A30C591E50465C90AD0
  */
 @Operation(label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationBase {
@@ -78,10 +78,12 @@ public class PullFeature extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		List<EClass> superTypes = features.get(0).getEContainingClass()
-				.getESuperTypes();
-		if (!superTypes.isEmpty()) {
-			targetClass = superTypes.get(0);
+		if (targetClass == null) {
+			List<EClass> superTypes = features.get(0).getEContainingClass()
+					.getESuperTypes();
+			if (!superTypes.isEmpty()) {
+				targetClass = superTypes.get(0);
+			}
 		}
 	}
 

@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E4FC56D39F54EBE2370AC1A6DD03AA0F
+ * @levd.rating YELLOW Hash: 84284E6E3C421B27D9D6E030AFA307A5
  */
 @Operation(label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
 public class Rename extends OperationBase {
@@ -53,7 +53,9 @@ public class Rename extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		name = element.getName();
+		if (name == null) {
+			name = element.getName();
+		}
 	}
 
 	/** {@inheritDoc} */

@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5A11DE0ED03C5FDAA6266CA82CD3C201
+ * @levd.rating YELLOW Hash: B1D0C51FDB3BF4F2537AC3070A94AFF2
  */
 @Operation(label = "Extract Class", description = "In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")
 public class ExtractClass extends OperationBase {
@@ -76,7 +76,9 @@ public class ExtractClass extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		ePackage = contextClass.getEPackage();
+		if (ePackage == null) {
+			ePackage = contextClass.getEPackage();
+		}
 	}
 
 	/** {@inheritDoc} */

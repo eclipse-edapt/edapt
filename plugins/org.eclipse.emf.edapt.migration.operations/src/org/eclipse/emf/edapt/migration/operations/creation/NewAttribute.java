@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 99C27371CB6A5B2DB1463400198F131E
+ * @levd.rating YELLOW Hash: 27F35ECA37C6A866C5CB34301BE094C7
  */
 @Operation(label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
 public class NewAttribute extends OperationBase {
@@ -34,22 +34,15 @@ public class NewAttribute extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The lower bound of the new attribute")
-	public int lowerBound;
+	public int lowerBound = 0;
 
 	/** {@description} */
 	@Parameter(description = "The upper bound of the new reference")
-	public int upperBound;
+	public int upperBound = 1;
 
 	/** {@description} */
 	@Parameter(description = "The default value literal", optional = true)
 	public String defaultValue;
-
-	/** {@inheritDoc} */
-	@Override
-	public void initialize(Metamodel metamodel) {
-		lowerBound = 0;
-		lowerBound = 1;
-	}
 
 	/** {@inheritDoc} */
 	@Override
