@@ -27,12 +27,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.ModelResource;
 import org.eclipse.emf.edapt.migration.execution.BackwardConverter;
 import org.eclipse.emf.edapt.migration.execution.ForwardConverter;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils.URIMapper;
 
@@ -54,7 +54,7 @@ public class ConverterTest extends TestCase {
 	/**
 	 * Test whether both converters maintain the order of multi-valued references
 	 */
-	public void testOrder() throws IOException, DiagnosticException {
+	public void testOrder() throws IOException, MigrationException {
 		
 		URI contextURI = URIUtils.getURI("data/node");
 		URI metamodelURI = contextURI.appendSegment("node.ecore");
