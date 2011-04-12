@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
 public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 
 	private EAttribute languageAttribute;
-	
+
 	private Instance container;
 
 	@Override
@@ -74,8 +74,8 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 	public void migrateAfter(Model model, Metamodel metamodel)
 			throws MigrationException {
 
-		container = model.getInstances(
-				"gmfgen.GenExpressionProviderContainer").get(0);
+		container = model.getInstances("gmfgen.GenExpressionProviderContainer")
+				.get(0);
 
 		EReference[] references = new EReference[] {
 				metamodel
@@ -87,7 +87,6 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 				metamodel.getEReference("gmfgen.GenFeatureValueSpec.value") };
 
 		for (EReference reference : references) {
-			System.out.println(reference.getName() + " " + reference.isContainment());
 			containment2Association(reference);
 		}
 
@@ -95,7 +94,7 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 				.getAllInstances("gmfgen.ValueExpression")) {
 			instance.unset(languageAttribute);
 		}
-		
+
 		model.checkConformance();
 	}
 }
