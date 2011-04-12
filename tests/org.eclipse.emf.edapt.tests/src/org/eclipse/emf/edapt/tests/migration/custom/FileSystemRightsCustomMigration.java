@@ -1,10 +1,10 @@
 package org.eclipse.emf.edapt.tests.migration.custom;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 public class FileSystemRightsCustomMigration extends CustomMigration {
@@ -33,20 +33,22 @@ public class FileSystemRightsCustomMigration extends CustomMigration {
 
 		return instance;
 	}
-	
+
 	@Override
 	public void migrateBefore(Model model, Metamodel metamodel)
 			throws MigrationException {
-		rightsAttribute = metamodel.getEAttribute("filesystem.FileSystemElement.rights");
+		rightsAttribute = metamodel
+				.getEAttribute("filesystem.FileSystemElement.rights");
 	}
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
 			throws MigrationException {
 
-		for(Instance element : model.getAllInstances("filesystem.FileSystemElement")) {
+		for (Instance element : model
+				.getAllInstances("filesystem.FileSystemElement")) {
 			Integer rights = element.get(rightsAttribute);
-			
+
 			element.set("userRights", toRights(getDigit(rights, 0), model));
 			element.set("groupRights", toRights(getDigit(rights, 1), model));
 			element.set("otherRights", toRights(getDigit(rights, 2), model));

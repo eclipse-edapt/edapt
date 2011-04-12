@@ -254,7 +254,7 @@ public class HistoryInterpreter extends ReconstructorBase {
 	}
 
 	/**
-	 * Execute a dommand
+	 * Execute a command
 	 */
 	private void execute(Command command) {
 		listener.getEditingDomain().getCommandStack().execute(command);

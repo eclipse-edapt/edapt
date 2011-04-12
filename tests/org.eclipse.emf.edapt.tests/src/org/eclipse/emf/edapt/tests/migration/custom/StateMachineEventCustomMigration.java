@@ -1,10 +1,10 @@
 package org.eclipse.emf.edapt.tests.migration.custom;
 
 import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 public class StateMachineEventCustomMigration extends CustomMigration {
