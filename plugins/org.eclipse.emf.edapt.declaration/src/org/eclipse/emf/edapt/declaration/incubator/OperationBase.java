@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * Base class for implementations of operations.
@@ -39,7 +40,8 @@ import org.eclipse.emf.edapt.migration.Model;
 public abstract class OperationBase {
 
 	/** Execute the operation. */
-	public abstract void execute(Metamodel metamodel, Model model);
+	public abstract void execute(Metamodel metamodel, Model model)
+			throws MigrationException;
 
 	/** Check the preconditions of the operation. */
 	public final List<String> checkPreconditions(Metamodel metamodel) {
@@ -172,12 +174,14 @@ public abstract class OperationBase {
 		Object value = instance.unset(feature);
 		if (feature instanceof EReference) {
 			EReference reference = (EReference) feature;
-			if (reference.isMany()) {
-				for (EObject v : (List<EObject>) value) {
-					EcoreUtil.delete(v);
+			if (reference.isContainment()) {
+				if (reference.isMany()) {
+					for (EObject v : (List<EObject>) value) {
+						EcoreUtil.delete(v);
+					}
+				} else if (value != null) {
+					EcoreUtil.delete((EObject) value);
 				}
-			} else if (value != null) {
-				EcoreUtil.delete((EObject) value);
 			}
 		}
 	}

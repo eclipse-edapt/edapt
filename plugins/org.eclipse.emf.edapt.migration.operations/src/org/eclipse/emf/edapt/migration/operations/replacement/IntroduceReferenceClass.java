@@ -13,6 +13,7 @@ import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -59,7 +60,8 @@ public class IntroduceReferenceClass extends OperationBase {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 		// variables
 		EReference opposite = reference.getEOpposite();
 
@@ -101,8 +103,18 @@ public class IntroduceReferenceClass extends OperationBase {
 		}
 
 		// metamodel adaptation
-		createOppositeReference(model, reference, sourceReferenceName);
-		createOppositeReference(model, opposite, targetReferenceName);
+		if (sourceReferenceName != null) {
+			EReference sourceReference = MetamodelUtils.newEReference(
+					referenceClass, sourceReferenceName, sourceClass, 1, 1,
+					false);
+			model.setEOpposite(reference, sourceReference);
+		}
+		if (targetReferenceName != null) {
+			EReference targetReference = MetamodelUtils.newEReference(
+					referenceClass, targetReferenceName, targetClass, 1, 1,
+					false);
+			model.setEOpposite(opposite, targetReference);
+		}
 	}
 
 	/** Put a value into a reference depending on the multiplicity. */
@@ -112,17 +124,6 @@ public class IntroduceReferenceClass extends OperationBase {
 			target.add(opposite, referenceInstance);
 		} else {
 			target.set(opposite, referenceInstance);
-		}
-	}
-
-	/** Create an opposite reference if the name is not null. */
-	private void createOppositeReference(Model model, EReference reference,
-			String oppositeReferenceName) {
-		if (oppositeReferenceName != null) {
-			EReference sourceReference = MetamodelUtils.newEReference(reference
-					.getEReferenceType(), oppositeReferenceName, reference
-					.getEContainingClass(), 1, 1, false);
-			model.setEOpposite(sourceReference, reference);
 		}
 	}
 }

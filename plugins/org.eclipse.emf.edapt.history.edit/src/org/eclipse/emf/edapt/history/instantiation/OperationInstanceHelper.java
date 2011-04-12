@@ -28,6 +28,7 @@ import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
 import org.eclipse.emf.edapt.migration.Repository;
+import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
 
 /**
  * Helper to deal with operation instances

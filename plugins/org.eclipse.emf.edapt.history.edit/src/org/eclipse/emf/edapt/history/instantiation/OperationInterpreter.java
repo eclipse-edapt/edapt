@@ -11,8 +11,11 @@
 package org.eclipse.emf.edapt.history.instantiation;
 
 import org.eclipse.emf.edapt.common.MetamodelExtent;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.migration.Repository;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
 
 /**
  * Interpreter for an operation
@@ -52,8 +55,13 @@ public class OperationInterpreter {
 	public void execute() {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(extent);
-		OperationInstanceConverter.convert(operationInstance,
-				repository.getMetamodel()).execute(repository.getMetamodel(),
-				repository.getModel());
+		OperationBase operation = OperationInstanceConverter.convert(
+				operationInstance, repository.getMetamodel());
+		try {
+			operation.execute(repository.getMetamodel(), repository.getModel());
+		} catch (MigrationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

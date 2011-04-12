@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.Create;
@@ -43,11 +44,11 @@ import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.Remove;
 import org.eclipse.emf.edapt.history.Set;
-import org.eclipse.emf.edapt.history.reconstruction.CodeGeneratorHelper;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreReconstructorSwitchBase;
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
+import org.eclipse.emf.edapt.history.reconstruction.ResolverBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.CustomMigration;
@@ -157,9 +158,13 @@ public class MigrationReconstructor extends ReconstructorBase {
 		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
-			return Persistency.loadModel(modelURIs, metamodel);
+			Model model = Persistency.loadModel(modelURIs, metamodel);
+			model.checkConformance();
+			return model;
 		} catch (IOException e) {
 			throwWrappedMigrationException("Model could not be loaded", e);
+		} catch (MigrationException e) {
+			throwWrappedMigrationException(e);
 		}
 		return null;
 	}
@@ -167,9 +172,12 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Save the model after migration. */
 	private void saveModel() {
 		try {
+			model.checkConformance();
 			Persistency.saveModel(model);
 		} catch (IOException e) {
 			throwWrappedMigrationException("Model could not be saved", e);
+		} catch (MigrationException e) {
+			throwWrappedMigrationException(e);
 		}
 	}
 
@@ -218,7 +226,14 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (isEnabled()) {
 			if (isStarted()) {
 				migrationSwitch.doSwitch(change);
-				monitor.worked(1);
+				if (customMigration == null) {
+					monitor.worked(1);
+					try {
+						model.checkConformance();
+					} catch (MigrationException e) {
+						throwWrappedMigrationException(e);
+					}
+				}
 			}
 			checkPause(change);
 		}
@@ -298,6 +313,16 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Switch that performs the migration attached to a change. */
 	private class MigrationReconstructorSwitch extends
 			EcoreReconstructorSwitchBase<Object> {
+
+		private final ResolverBase resolver = new ResolverBase() {
+
+			@Override
+			protected EObject doResolve(EObject element) {
+				element = mapping.resolveTarget(element);
+				element = find(element);
+				return element;
+			}
+		};
 
 		/** {@inheritDoc} */
 		@Override
@@ -408,21 +433,22 @@ public class MigrationReconstructor extends ReconstructorBase {
 		/** {@inheritDoc} */
 		@Override
 		public Object caseOperationChange(OperationChange change) {
-			OperationInstance operationInstance = (OperationInstance) mapping
-					.copyResolveTarget(change.getOperation());
-			CodeGeneratorHelper coder = new CodeGeneratorHelper(extent);
-			String assembledCode = coder.assembleCode(operationInstance);
-			GroovyEvaluator.getInstance().evaluate(
-					new ByteArrayInputStream(assembledCode.getBytes()));
+			OperationInstance operationInstance = (OperationInstance) resolver
+					.copyResolve(change.getOperation(), true);
+
+			OperationBase operation = OperationInstanceConverter.convert(
+					operationInstance, model.getMetamodel());
+			try {
+				operation.execute(model.getMetamodel(), model);
+			} catch (MigrationException e) {
+				throwWrappedMigrationException(e);
+			}
 
 			return change;
 		}
 
-		/** Resolve a metamodel element. */
 		private EObject resolve(EObject element) {
-			element = mapping.resolveTarget(element);
-			element = find(element);
-			return element;
+			return resolver.resolve(element);
 		}
 
 		/** Find an element in the metamodel created for migration. */

@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-abstract class ResolverBase {
+public abstract class ResolverBase {
 
 	/**
 	 * Do the resolution (to be implemented by subclasses)

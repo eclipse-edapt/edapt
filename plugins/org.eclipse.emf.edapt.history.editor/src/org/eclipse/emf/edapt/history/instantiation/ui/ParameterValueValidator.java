@@ -12,8 +12,8 @@ import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
 import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.history.instantiation.OperationInstanceConverter;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
+import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
 
 /**
  * Validator for parameters
