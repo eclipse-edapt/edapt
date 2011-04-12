@@ -49,6 +49,7 @@ import org.eclipse.emf.edapt.declaration.Variable;
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#isDeleting <em>Deleting</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getBefore <em>Before</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getAfter <em>After</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getImplementation <em>Implementation</em>}</li>
  * </ul>
  * </p>
  *
@@ -204,6 +205,16 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	 * @ordered
 	 */
 	protected String after = AFTER_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getImplementation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Class<?> implementation;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -430,6 +441,27 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Class<?> getImplementation() {
+		return implementation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImplementation(Class<?> newImplementation) {
+		Class<?> oldImplementation = implementation;
+		implementation = newImplementation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__IMPLEMENTATION, oldImplementation, implementation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public Parameter getParameter(String name) {
@@ -563,6 +595,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 				return getBefore();
 			case DeclarationPackage.OPERATION__AFTER:
 				return getAfter();
+			case DeclarationPackage.OPERATION__IMPLEMENTATION:
+				return getImplementation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -609,6 +643,9 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 			case DeclarationPackage.OPERATION__AFTER:
 				setAfter((String)newValue);
 				return;
+			case DeclarationPackage.OPERATION__IMPLEMENTATION:
+				setImplementation((Class<?>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -651,6 +688,9 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 			case DeclarationPackage.OPERATION__AFTER:
 				setAfter(AFTER_EDEFAULT);
 				return;
+			case DeclarationPackage.OPERATION__IMPLEMENTATION:
+				setImplementation((Class<?>)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -683,6 +723,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 				return BEFORE_EDEFAULT == null ? before != null : !BEFORE_EDEFAULT.equals(before);
 			case DeclarationPackage.OPERATION__AFTER:
 				return AFTER_EDEFAULT == null ? after != null : !AFTER_EDEFAULT.equals(after);
+			case DeclarationPackage.OPERATION__IMPLEMENTATION:
+				return implementation != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -753,6 +795,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		result.append(before);
 		result.append(", after: ");
 		result.append(after);
+		result.append(", implementation: ");
+		result.append(implementation);
 		result.append(')');
 		return result.toString();
 	}

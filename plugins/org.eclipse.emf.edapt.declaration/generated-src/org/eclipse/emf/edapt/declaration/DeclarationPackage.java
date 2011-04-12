@@ -298,13 +298,22 @@ public interface DeclarationPackage extends EPackage {
 	int OPERATION__AFTER = IDENTIFIED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__IMPLEMENTATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 10;
+	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.TypedElementImpl <em>Typed Element</em>}' class.
@@ -839,6 +848,17 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_After();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Implementation</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Operation#getImplementation()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EAttribute getOperation_Implementation();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Placeholder <em>Placeholder</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1184,6 +1204,14 @@ public interface DeclarationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATION__AFTER = eINSTANCE.getOperation_After();
+
+		/**
+		 * The meta object literal for the '<em><b>Implementation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OPERATION__IMPLEMENTATION = eINSTANCE.getOperation_Implementation();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.PlaceholderImpl <em>Placeholder</em>}' class.

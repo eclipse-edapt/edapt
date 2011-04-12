@@ -9,9 +9,11 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.declaration,
  org.eclipse.emf.edapt.declaration.impl,
+ org.eclipse.emf.edapt.declaration.incubator,
  org.eclipse.emf.edapt.declaration.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.edapt.common
+ org.eclipse.emf.edapt.common,
+ org.eclipse.emf.edapt.migration
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.declaration.DeclarationPlugin$Implementation

@@ -33,6 +33,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#isDeleting <em>Deleting</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getBefore <em>Before</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getAfter <em>After</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}</li>
  * </ul>
  * </p>
  *
@@ -234,6 +235,32 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	 * @generated
 	 */
 	void setAfter(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Implementation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Implementation</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Implementation</em>' attribute.
+	 * @see #setImplementation(Class)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation_Implementation()
+	 * @model required="true" transient="true"
+	 * @generated
+	 */
+	Class<?> getImplementation();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Implementation</em>' attribute.
+	 * @see #getImplementation()
+	 * @generated
+	 */
+	void setImplementation(Class<?> value);
 
 	/**
 	 * <!-- begin-user-doc -->
