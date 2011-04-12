@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: A5219CEA6197749192E02C64AF634FD2
  */
-@Operation(label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
+@Operation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
 public class MoveClassifier extends OperationBase {
 
 	/** {@description} */

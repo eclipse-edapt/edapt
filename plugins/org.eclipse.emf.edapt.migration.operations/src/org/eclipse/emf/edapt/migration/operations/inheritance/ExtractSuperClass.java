@@ -9,12 +9,12 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -25,7 +25,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @levd.rating YELLOW Hash: 244178D656AB1021A49BF6B598DE6537
  */
 @Deprecated
-@Operation(label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
+@Operation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
 public class ExtractSuperClass extends OperationBase {
 
 	/** {@description} */

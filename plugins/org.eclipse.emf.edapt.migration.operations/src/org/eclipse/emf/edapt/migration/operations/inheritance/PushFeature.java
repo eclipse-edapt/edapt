@@ -7,12 +7,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -22,16 +23,17 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 3A10850C9B3A8C2BA3E3B07C3FD6E50E
  */
-@Operation(label = "Push down Feature", description = "In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly.")
+@Operation(identifier = "pushFeature", label = "Push down Feature", description = "In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly.")
 public class PushFeature extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The feature to be pushed down")
 	public EStructuralFeature feature;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+	/** {@description} */
+	@Restriction(parameter = "feature")
+	public List<String> checkFeature(EStructuralFeature feature,
+			Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
 		EClass superClass = feature.getEContainingClass();
 		if (feature instanceof EReference) {

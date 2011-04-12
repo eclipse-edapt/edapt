@@ -7,12 +7,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -22,16 +23,16 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: DEEC7FB54E39E282ACF504C4487F1027
  */
-@Operation(label = "Unfold Class", description = "In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly.")
+@Operation(identifier = "unfoldClass", label = "Unfold Class", description = "In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly.")
 public class UnfoldClass extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The reference to the class to be unfolded")
 	public EReference reference;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+	/** {@description} */
+	@Restriction(parameter = "reference")
+	public List<String> checkReference(EReference reference) {
 		List<String> result = new ArrayList<String>();
 		if (reference.getEOpposite() != null) {
 			result.add("The reference must not have an opposite");
@@ -43,6 +44,13 @@ public class UnfoldClass extends OperationBase {
 		if (!reference.isContainment()) {
 			result.add("The reference must be containment");
 		}
+		return result;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+		List<String> result = new ArrayList<String>();
 		EClass unfoldedClass = reference.getEReferenceType();
 		if (!metamodel.getESubTypes(unfoldedClass).isEmpty()) {
 			result.add("The class to be unfolded must not have sub classes");
@@ -78,7 +86,8 @@ public class UnfoldClass extends OperationBase {
 							+ contextClass.getName());
 					r.getEReferenceType().getEStructuralFeatures().add(
 							foldedOpposite);
-					model.setEOpposite(foldedOpposite, (EReference) unfoldedFeature);
+					model.setEOpposite(foldedOpposite,
+							(EReference) unfoldedFeature);
 				}
 			}
 		}

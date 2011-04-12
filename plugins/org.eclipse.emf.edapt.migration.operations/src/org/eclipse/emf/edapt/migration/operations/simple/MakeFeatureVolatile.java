@@ -5,12 +5,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -20,12 +21,22 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 61BC289859929255248F86C8C293B417
  */
-@Operation(label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
+@Operation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
 public class MakeFeatureVolatile extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The feature to be made volatile")
 	public EStructuralFeature feature;
+
+	/** {@description} */
+	@Restriction(parameter = "feature")
+	public List<String> checkFeature(EStructuralFeature feature) {
+		List<String> result = new ArrayList<String>();
+		if (feature.isVolatile()) {
+			result.add("Feature must not be volatile");
+		}
+		return result;
+	}
 
 	/** {@description} */
 	@Parameter(description = "Whether the feature is transient")
@@ -38,16 +49,6 @@ public class MakeFeatureVolatile extends OperationBase {
 	/** {@description} */
 	@Parameter(description = "Whether the feature is changeable")
 	public Boolean changeable = false;
-
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (feature.isVolatile()) {
-			result.add("Feature must not be volatile");
-		}
-		return result;
-	}
 
 	/** {@inheritDoc} */
 	@Override

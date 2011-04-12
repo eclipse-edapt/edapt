@@ -8,12 +8,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.operations.generalization.GeneralizeReference;
 
 /**
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.operations.generalization.GeneralizeRefer
  * @version $Rev$
  * @levd.rating YELLOW Hash: ECCF7A2562AF3A30C591E50465C90AD0
  */
-@Operation(label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
+@Operation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationBase {
 
 	/** {@description} */
@@ -98,8 +98,8 @@ public class PullFeature extends OperationBase {
 			if (mainReference.getEOpposite() != null) {
 				GeneralizeReference operation = new GeneralizeReference();
 				operation.reference = mainReference.getEOpposite();
-				operation.type = targetClass;
 				operation.initialize(metamodel);
+				operation.type = targetClass;
 				operation.execute(metamodel, model);
 			}
 		}

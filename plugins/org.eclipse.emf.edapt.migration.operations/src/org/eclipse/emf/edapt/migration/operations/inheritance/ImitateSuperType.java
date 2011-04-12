@@ -8,13 +8,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 12692AF52BBEAEF904E4B1F5F7EC5C8F
  */
-@Operation(label = "Unfold Superclass", description = "In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly.")
+@Operation(identifier = "imitateSuperType", label = "Unfold Superclass", description = "In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly.")
 public class ImitateSuperType extends OperationBase {
 
 	/** {@description} */

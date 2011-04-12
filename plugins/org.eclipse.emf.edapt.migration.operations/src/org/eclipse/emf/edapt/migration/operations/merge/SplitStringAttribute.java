@@ -8,13 +8,13 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: B91FE43712435F4F88DEE463B3D5AA13
  */
-@Operation(label = "Split String Attribute", description = "In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression.")
+@Operation(identifier = "splitStringAttribute", label = "Split String Attribute", description = "In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression.")
 public class SplitStringAttribute extends OperationBase {
 
 	/** {@description} */

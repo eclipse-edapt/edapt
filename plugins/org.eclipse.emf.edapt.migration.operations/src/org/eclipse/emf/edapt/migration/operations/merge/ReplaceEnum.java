@@ -9,13 +9,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -25,7 +25,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 07445202FC45211ED83C0892AD808CB7
  */
-@Operation(label = "Replace Enumeration", description = "In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals.")
+@Operation(identifier = "replaceEnum", label = "Replace Enumeration", description = "In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals.")
 public class ReplaceEnum extends OperationBase {
 
 	/** {@description} */

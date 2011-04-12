@@ -6,12 +6,13 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -21,7 +22,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 2E8D4BF98500A2AF7BDB16178B50A00C
  */
-@Operation(label = "Collect Feature over Reference", description = "In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly.")
+@Operation(identifier = "collectFeature", label = "Collect Feature over Reference", description = "In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly.")
 public class CollectFeature extends OperationBase {
 
 	/** {@description} */
@@ -32,9 +33,9 @@ public class CollectFeature extends OperationBase {
 	@Parameter(description = "The reference opposite to which the feature is moved")
 	public EReference reference;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+	/** {@description} */
+	@Restriction(parameter = "reference")
+	public List<String> checkReference(EReference reference) {
 		List<String> result = new ArrayList<String>();
 		if (!((feature.isMany() && reference.isMany()) || !reference.isMany())) {
 			result.add("Both feature and reference must be "

@@ -1,14 +1,16 @@
 package org.eclipse.emf.edapt.migration.operations.replacement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -18,7 +20,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 8AC258749B2910757219681FDA26C88C
  */
-@Operation(label = "Volatile to Opposite Reference", description = "In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set.")
+@Operation(identifier = "volatileToOpposite", label = "Volatile to Opposite Reference", description = "In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set.")
 public class VolatileToOpposite extends OperationBase {
 
 	/** {@description} */
@@ -28,6 +30,17 @@ public class VolatileToOpposite extends OperationBase {
 	/** {@description} */
 	@Parameter(description = "The reference which is going to be the opposite")
 	public EReference opposite;
+	
+	/** {@description} */
+	@Restriction(parameter = "opposite")
+	public List<String> checkOpposite(EReference opposite) {
+		if (reference.getEType() != opposite.getEContainingClass()
+				|| reference.getEContainingClass() != opposite.getEType()) {
+			return Collections.singletonList("Reference and opposite "
+					+ "must be compatible with each other");
+		}
+		return Collections.emptyList();
+	}
 
 	/** {@description} */
 	@Parameter(description = "Whether the reference is going to be changeable")
@@ -42,11 +55,6 @@ public class VolatileToOpposite extends OperationBase {
 		}
 		if (!reference.isVolatile()) {
 			result.add("Reference must be volatile");
-		}
-		if (reference.getEType() != opposite.getEContainingClass()
-				|| reference.getEContainingClass() != opposite.getEType()) {
-			result.add("Reference and opposite "
-					+ "must be compatible with each other");
 		}
 		return result;
 	}

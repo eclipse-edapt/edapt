@@ -7,12 +7,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -22,12 +23,22 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 8C7CDFC7A2E7320DCB5C75AE3C2525F5
  */
-@Operation(label = "Specialize Composition", description = "In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type.")
+@Operation(identifier = "specializeComposition", label = "Specialize Composition", description = "In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type.")
 public class SpecializeComposition extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The containment reference to be specialized")
 	public EReference reference;
+
+	/** {@description} */
+	@Restriction(parameter = "reference")
+	public List<String> checkReference(EReference reference) {
+		List<String> result = new ArrayList<String>();
+		if (!reference.isContainment()) {
+			result.add("The reference has to be a containment reference");
+		}
+		return result;
+	}
 
 	/** {@description} */
 	@Parameter(description = "The package in which the sub class is created")
@@ -36,16 +47,6 @@ public class SpecializeComposition extends OperationBase {
 	/** {@description} */
 	@Parameter(description = "The name of the sub class")
 	public String name;
-
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!reference.isContainment()) {
-			result.add("The reference has to be a containment reference");
-		}
-		return result;
-	}
 
 	/** {@inheritDoc} */
 	@SuppressWarnings("unchecked")

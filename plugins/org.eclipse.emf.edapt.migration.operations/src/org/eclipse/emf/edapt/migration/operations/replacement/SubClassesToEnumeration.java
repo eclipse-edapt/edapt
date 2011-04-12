@@ -9,12 +9,12 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: DAE9180C71AFF0D7BC04276291959BB4
  */
-@Operation(label = "Sub Classes to Enumeration", description = "In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal.")
+@Operation(identifier = "subClassesToEnumeration", label = "Sub Classes to Enumeration", description = "In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal.")
 public class SubClassesToEnumeration extends OperationBase {
 
 	/** {@description} */

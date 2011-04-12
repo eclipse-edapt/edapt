@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 4ED07FDDC32ED4FAACD2D70F94AC00CF
  */
-@Operation(label = "Merge Reference into Another", description = "In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference.")
+@Operation(identifier = "merge", label = "Merge Reference into Another", description = "In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference.")
 public class Merge extends OperationBase {
 
 	/** {@description} */

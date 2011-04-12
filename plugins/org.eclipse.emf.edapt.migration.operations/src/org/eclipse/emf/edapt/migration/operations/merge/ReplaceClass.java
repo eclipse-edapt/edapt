@@ -9,13 +9,13 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -25,7 +25,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 6A70910BEC0A96859C0AF1AFD36F50AA
  */
-@Operation(label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
+@Operation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationBase {
 
 	/** {@description} */
@@ -77,11 +77,13 @@ public class ReplaceClass extends OperationBase {
 			result.add("The replaced and replacing features "
 					+ "have to be of the same size");
 		}
-		if (!featuresToReplace.containsAll(MetamodelUtils.subtractFeatures(
-				toReplace, replaceBy))) {
-			result.add("The replace features must cover all "
-					+ "features from the difference between the class to "
-					+ "replace and the class by which it is replaced");
+		if (replaceBy != null) {
+			if (!featuresToReplace.containsAll(MetamodelUtils.subtractFeatures(
+					toReplace, replaceBy))) {
+				result.add("The replace features must cover all "
+						+ "features from the difference between the class to "
+						+ "replace and the class by which it is replaced");
+			}
 		}
 		return result;
 	}

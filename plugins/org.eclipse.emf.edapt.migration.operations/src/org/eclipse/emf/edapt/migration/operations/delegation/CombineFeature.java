@@ -7,13 +7,13 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 1461A20889B02B650804F895245EB12B
  */
-@Operation(label = "Combine Features over References", description = "In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly.")
+@Operation(identifier = "combineFeature", label = "Combine Features over References", description = "In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly.")
 public class CombineFeature extends OperationBase {
 
 	/** {@description} */
@@ -37,11 +37,6 @@ public class CombineFeature extends OperationBase {
 	/** Check whether a reference is allowed. */
 	@Restriction(parameter = "reference")
 	public List<String> checkReferences(EReference reference) {
-		if (reference.getEContainingClass() != features.get(
-				references.indexOf(reference)).getEContainingClass()) {
-			return Collections.singletonList("Each feature has to belong "
-					+ "to its reference's class");
-		}
 		return Collections.emptyList();
 	}
 
@@ -49,16 +44,27 @@ public class CombineFeature extends OperationBase {
 	@Override
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
-		EClass eClass = references.get(0).getEReferenceType();
-		for (EReference reference : references) {
-			if (reference.getEType() != eClass) {
-				result.add("All references must have the same class as type");
-				break;
+		if (!references.isEmpty()) {
+			EClass eClass = references.get(0).getEReferenceType();
+			for (EReference reference : references) {
+				if (reference.getEType() != eClass) {
+					result
+							.add("All references must have the same class as type");
+					break;
+				}
 			}
 		}
 		if (features.size() != references.size()) {
 			result.add("There must be an equal number "
 					+ "of features and references");
+		}
+		for (EReference reference : references) {
+			if (reference.getEContainingClass() != features.get(
+					references.indexOf(reference)).getEContainingClass()) {
+				result.add("Each feature has to belong "
+						+ "to its reference's class");
+				break;
+			}
 		}
 		return result;
 	}

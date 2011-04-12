@@ -5,12 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 7C713F2982645977F9A51AF273861A95
  */
-@Operation(label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
+@Operation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
 public class SpecializeSuperType extends OperationBase {
 
 	/** {@description} */

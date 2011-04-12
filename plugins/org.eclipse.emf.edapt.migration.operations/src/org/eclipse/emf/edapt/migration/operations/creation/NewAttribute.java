@@ -3,11 +3,11 @@ package org.eclipse.emf.edapt.migration.operations.creation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 27F35ECA37C6A866C5CB34301BE094C7
  */
-@Operation(label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
+@Operation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
 public class NewAttribute extends OperationBase {
 
 	/** {@description} */

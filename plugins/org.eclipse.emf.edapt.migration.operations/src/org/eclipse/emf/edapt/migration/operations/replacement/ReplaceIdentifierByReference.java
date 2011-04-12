@@ -9,12 +9,12 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 419BA09CF5AAE6C41B33171BD2170AF7
  */
-@Operation(label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
+@Operation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
 public class ReplaceIdentifierByReference extends OperationBase {
 
 	/** {@description} */
@@ -39,9 +39,12 @@ public class ReplaceIdentifierByReference extends OperationBase {
 	@Override
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
-		if (referencingAttribute.getEType() != referencedAttribute.getEType()) {
-			result.add("Referencing and referenced attribute "
-					+ "must be of the same type");
+		if (referencedAttribute != null) {
+			if (referencingAttribute.getEType() != referencedAttribute
+					.getEType()) {
+				result.add("Referencing and referenced attribute "
+						+ "must be of the same type");
+			}
 		}
 		return result;
 	}

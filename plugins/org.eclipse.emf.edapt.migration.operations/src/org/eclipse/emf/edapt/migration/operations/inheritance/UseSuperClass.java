@@ -7,12 +7,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 88710860F858893E33856A0FD6675F98
  */
-@Operation(label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
+@Operation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
 public class UseSuperClass extends OperationBase {
 
 	/** {@description} */
@@ -66,8 +66,8 @@ public class UseSuperClass extends OperationBase {
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
 		if (toReplace.size() != replaceBy.size()) {
-			result
-					.add("The number of features to be replaced and to replace them must be the same");
+			result.add("The number of features to be "
+					+ "replaced and to replace them must be the same");
 		} else {
 			if (!hasSameValue(toReplace, replaceBy,
 					EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {

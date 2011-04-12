@@ -9,11 +9,11 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 87144E418BA4C517FAED97584952862A
  */
-@Operation(label = "Operation to Volatile Feature", description = "In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done.")
+@Operation(identifier = "operationToVolatile", label = "Operation to Volatile Feature", description = "In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done.")
 public class OperationToVolatile extends OperationBase {
 
 	/** {@description} */

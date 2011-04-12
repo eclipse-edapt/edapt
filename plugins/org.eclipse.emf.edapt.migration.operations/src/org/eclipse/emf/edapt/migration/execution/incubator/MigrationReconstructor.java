@@ -48,9 +48,9 @@ import org.eclipse.emf.edapt.history.reconstruction.EcoreReconstructorSwitchBase
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
-import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
@@ -308,8 +308,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			if (feature == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
 				model.setEOpposite((EReference) resolve(element),
 						(EReference) resolve((EObject) value));
-			} else 
-				if (feature instanceof EReference) {
+			} else if (feature instanceof EReference) {
 				set(resolve(element), feature, resolve((EObject) value));
 			} else {
 				set(resolve(element), feature, value);

@@ -8,13 +8,13 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: ACA67F3B97716E068D6B5D96F9F0C39C
  */
-@Operation(label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
+@Operation(identifier = "extractExistingClass", label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
 public class ExtractExistingClass extends OperationBase {
 
 	/** {@description} */
@@ -57,18 +57,21 @@ public class ExtractExistingClass extends OperationBase {
 	@Override
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
-		if(toReplace.size() != replaceBy.size()) {
-			result.add("The replaced and replacing features must be of the same size");
+		if (toReplace.size() != replaceBy.size()) {
+			result.add("The replaced and replacing "
+					+ "features must be of the same size");
+		} else {
+			for (EStructuralFeature source : toReplace) {
+				EStructuralFeature target = replaceBy.get(toReplace
+						.indexOf(source));
+				if (source.getEType() != target.getEType()) {
+					result.add("The features must be of the same type");
+				}
+				if (source.isMany() != target.isMany()) {
+					result.add("The features must be of the same multiplicity");
+				}
+			}
 		}
-		for(EStructuralFeature source : toReplace) {
-			EStructuralFeature target = replaceBy.get(toReplace.indexOf(source));
-			if(source.getEType() != target.getEType()) {
-				result.add("The features must be of the same type");
-			}
-			if(source.isMany() != target.isMany()) {
-				result.add("The features must be of the same multiplicity");
-			}
-		}		
 		return result;
 	}
 

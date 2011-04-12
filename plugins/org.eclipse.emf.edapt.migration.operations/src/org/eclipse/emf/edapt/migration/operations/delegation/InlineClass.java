@@ -9,12 +9,13 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -24,18 +25,17 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 45570AD3BAC3BF88335E1B821A98387E
  */
-@Operation(label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.")
+@Operation(identifier = "inlineClass", label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.")
 public class InlineClass extends OperationBase {
 
 	/** {@description} */
 	@Parameter(description = "The reference to the class to be inlined")
 	public EReference reference;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+	/** {@description} */
+	@Restriction(parameter = "reference")
+	public List<String> checkReference(EReference reference) {
 		List<String> result = new ArrayList<String>();
-		EClass inlinedClass = reference.getEReferenceType();
 		if (reference.getEOpposite() != null) {
 			result.add("The reference must not have an opposite");
 		}
@@ -46,6 +46,14 @@ public class InlineClass extends OperationBase {
 		if (!reference.isContainment()) {
 			result.add("The reference must be containment");
 		}
+		return result;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public List<String> checkCustomPreconditions(Metamodel metamodel) {
+		List<String> result = new ArrayList<String>();
+		EClass inlinedClass = reference.getEReferenceType();
 		EList<EClass> subTypes = metamodel.getInverse(inlinedClass,
 				EcorePackage.eINSTANCE.getEClass_ESuperTypes());
 		if (!subTypes.isEmpty()) {

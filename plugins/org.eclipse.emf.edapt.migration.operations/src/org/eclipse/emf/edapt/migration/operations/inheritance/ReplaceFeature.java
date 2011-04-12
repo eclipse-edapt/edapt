@@ -6,13 +6,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @levd.rating YELLOW Hash: 4D3CECED09F193D4FD2ECC35353C2202
  */
 @Deprecated
-@Operation(label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.")
+@Operation(identifier = "replaceFeature", label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.")
 public class ReplaceFeature extends OperationBase {
 
 	/** {@description} */
@@ -50,11 +50,13 @@ public class ReplaceFeature extends OperationBase {
 	@Override
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
-		if(toReplace.getEType() != replaceBy.getEType()) {
-			result.add("The features must be of the same type");
-		}
-		if(toReplace.isMany() != replaceBy.isMany()) {
-			result.add("The features must be of the same cardinality");
+		if (replaceBy != null) {
+			if (toReplace.getEType() != replaceBy.getEType()) {
+				result.add("The features must be of the same type");
+			}
+			if (toReplace.isMany() != replaceBy.isMany()) {
+				result.add("The features must be of the same cardinality");
+			}
 		}
 		return result;
 	}

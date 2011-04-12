@@ -6,12 +6,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 955A6DCA0B9F2C079568E0FCF08A5120
  */
-@Operation(label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
+@Operation(identifier = "generalizeReference", label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
 public class GeneralizeReference extends OperationBase {
 
 	/** {@description} */
@@ -67,7 +67,9 @@ public class GeneralizeReference extends OperationBase {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		type = reference.getEReferenceType();
+		if (type == null) {
+			type = reference.getEReferenceType();
+		}
 		if (lowerBound == -1) {
 			lowerBound = reference.getLowerBound();
 		}

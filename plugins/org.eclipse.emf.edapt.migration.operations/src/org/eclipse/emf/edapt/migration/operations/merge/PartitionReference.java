@@ -6,12 +6,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 620136213B0056211794342E9CD9D465
  */
-@Operation(label = "Partition Reference", description = "In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly.")
+@Operation(identifier = "partitionReference", label = "Partition Reference", description = "In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly.")
 public class PartitionReference extends OperationBase {
 
 	/** {@description} */

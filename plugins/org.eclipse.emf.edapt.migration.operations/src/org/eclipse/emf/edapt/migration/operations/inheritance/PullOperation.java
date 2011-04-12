@@ -7,12 +7,12 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: D70D05C6BE1B386EBCBCCA5A3543C800
  */
-@Operation(label = "Pull up Operation", description = "In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done.")
+@Operation(identifier = "pullOperation", label = "Pull up Operation", description = "In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done.")
 public class PullOperation extends OperationBase {
 
 	/** {@description} */

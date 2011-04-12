@@ -6,11 +6,11 @@ import java.util.List;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
 
 /**
  * {@description}
@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 84284E6E3C421B27D9D6E030AFA307A5
  */
-@Operation(label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
+@Operation(identifier = "rename", label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
 public class Rename extends OperationBase {
 
 	/** {@description} */

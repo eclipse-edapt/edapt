@@ -7,13 +7,13 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.incubator.Operation;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.incubator.Parameter;
+import org.eclipse.emf.edapt.declaration.incubator.Restriction;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Operation;
-import org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Parameter;
-import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
 
 /**
  * {@description}
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.declaration.incubator.Restriction;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 0174E27A328E9B45977B5CD1C8631CA4
  */
-@Operation(label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.")
+@Operation(identifier = "moveFeature", label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.")
 public class MoveFeature extends OperationBase {
 
 	/** {@description} */
@@ -49,19 +49,22 @@ public class MoveFeature extends OperationBase {
 	@Override
 	public List<String> checkCustomPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
-		if (reference.getLowerBound() != 1 || reference.getUpperBound() != 1) {
-			result.add("The multiplicity of the reference must "
-					+ "be single-valued and obligatory");
-		}
-		if (reference.getEOpposite() != null
-				&& reference.getEOpposite().getUpperBound() != 1) {
-			result.add("The multiplicity of its opposite "
-					+ "reference must be single-valued");
-		}
-		EClass targetClass = reference.getEReferenceType();
-		if (targetClass.getEStructuralFeature(feature.getName()) != null) {
-			result.add("A feature with that name already "
-					+ "exists in the target class");
+		if (reference != null) {
+			if (reference.getLowerBound() != 1
+					|| reference.getUpperBound() != 1) {
+				result.add("The multiplicity of the reference must "
+						+ "be single-valued and obligatory");
+			}
+			if (reference.getEOpposite() != null
+					&& reference.getEOpposite().getUpperBound() != 1) {
+				result.add("The multiplicity of its opposite "
+						+ "reference must be single-valued");
+			}
+			EClass targetClass = reference.getEReferenceType();
+			if (targetClass.getEStructuralFeature(feature.getName()) != null) {
+				result.add("A feature with that name already "
+						+ "exists in the target class");
+			}
 		}
 		return result;
 	}
