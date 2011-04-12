@@ -24,5 +24,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.compare.match;bundle-version="1.0.1",
  org.eclipse.emf.edapt.migration,
  org.eclipse.jdt.core,
- org.junit4
+ org.junit4,
+ org.eclipse.emf.edapt.migration.operations;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -1,21 +1,18 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2006, 2009 Markus Herrmannsdoerfer.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ *     Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -25,15 +22,12 @@ import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.declaration.Parameter;
-import org.eclipse.emf.edapt.declaration.Variable;
+import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.history.VariableInstance;
-import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
-
+import org.eclipse.emf.edapt.migration.Repository;
 
 /**
  * Helper to deal with operation instances
@@ -71,8 +65,8 @@ public class OperationInstanceHelper {
 		List<OperationInstance> result = new ArrayList<OperationInstance>();
 
 		// iterate over all registered operations
-		Collection<Operation> operations = OperationRegistry.getInstance()
-				.getOperations();
+		Collection<Operation> operations = org.eclipse.emf.edapt.declaration.incubator.OperationRegistry
+				.getInstance().getOperations();
 		for (Operation operation : operations) {
 
 			if (operation.refines()) {
@@ -92,12 +86,16 @@ public class OperationInstanceHelper {
 						if (mainParameter.isMany()) {
 							OperationInstance operationInstance = createOperationInstance(
 									operation, selectedElements);
-							result.add(operationInstance);
+							if (isApplicable(operationInstance)) {
+								result.add(operationInstance);
+							}
 						}
 					} else {
 						OperationInstance operationInstance = createOperationInstance(
 								operation, selectedElements);
-						result.add(operationInstance);
+						if (isApplicable(operationInstance)) {
+							result.add(operationInstance);
+						}
 					}
 				}
 			}
@@ -105,32 +103,19 @@ public class OperationInstanceHelper {
 		return result;
 	}
 
-	/**
-	 * Evaluate the helper variables of an operation instance
-	 * 
-	 * @param operationInstance
-	 *            Operation instance
-	 */
-	public void evaluateVariables(OperationInstance operationInstance) {
-		operationInstance.getVariables().clear();
-		Operation operation = operationInstance.getOperation();
+	private boolean isApplicable(OperationInstance operationInstance) {
+		Repository repository = OperationInstanceConverter
+				.createEmptyRepository(getExtent());
+		OperationBase operationBase = OperationInstanceConverter.convert(
+				operationInstance, repository.getMetamodel());
 
-		for (Variable variable : operation.getVariables()) {
-			// create variable instance
-			VariableInstance variableInstance = HistoryFactory.eINSTANCE
-					.createVariableInstance();
-			variableInstance.setName(variable.getName());
-			operationInstance.getVariables().add(variableInstance);
+		List<String> messages = operationBase.checkRestriction(repository
+				.getMetamodel(), operationInstance.getOperation()
+				.getMainParameter().getName());
 
-			// set value of type instance
-			try {
-				Object value = evaluateScript(operationInstance, variable
-						.getInitExpression());
-				variableInstance.setValue(value);
-			} catch (RuntimeException e) {
-				// ignore
-			}
-		}
+		OperationInstanceConverter.convert(operationBase, operationInstance);
+
+		return messages.isEmpty();
 	}
 
 	/**
@@ -152,50 +137,20 @@ public class OperationInstanceHelper {
 
 		// create instance of main parameter and initialize with selected
 		// elements
-		{
-			Parameter parameter = operation.getMainParameter();
-
+		for (Parameter parameter : operation.getParameters()) {
 			ParameterInstance parameterInstance = factory
 					.createParameterInstance();
 			parameterInstance.setName(parameter.getName());
 			operationInstance.getParameters().add(parameterInstance);
 
-			if (parameter.isMany()) {
-				parameterInstance.setValue(selectedElements);
-			} else {
-				parameterInstance.setValue(selectedElements.get(0));
-			}
-		}
-
-		// helper variables have to be evaluated in order to be accessible for
-		// init expressions
-		evaluateVariables(operationInstance);
-
-		// create instance of the other parameters and initialize
-		for (Parameter parameter : operation.getParameters()) {
-
-			if (!parameter.isMain()) {
-
-				ParameterInstance parameterInstance = factory
-						.createParameterInstance();
-				parameterInstance.setName(parameter.getName());
-				operationInstance.getParameters().add(parameterInstance);
-
-				if (parameter.getInitExpression() != null) {
-					try {
-						Object value = evaluateScript(operationInstance,
-								parameter.getInitExpression());
-						parameterInstance.setValue(value);
-					} catch (RuntimeException e) {
-						// ignore
-					}
+			if (parameter.isMain()) {
+				if (parameter.isMany()) {
+					parameterInstance.setValue(selectedElements);
+				} else {
+					parameterInstance.setValue(selectedElements.get(0));
 				}
 			}
 		}
-
-		// re-evaluate helper variables, because they may depend on parameters
-		// which have changed
-		evaluateVariables(operationInstance);
 
 		return operationInstance;
 	}
@@ -210,68 +165,27 @@ public class OperationInstanceHelper {
 	 */
 	public List<Constraint> getViolatedConstraints(
 			OperationInstance operationInstance) {
-		Operation operation = operationInstance.getOperation();
+		Repository repository = OperationInstanceConverter
+				.createEmptyRepository(getExtent());
+		OperationBase operationBase = OperationInstanceConverter.convert(
+				operationInstance, repository.getMetamodel());
+		List<String> messages = operationBase.checkPreconditions(repository
+				.getMetamodel());
+
 		List<Constraint> violatedConstraints = new ArrayList<Constraint>();
-
-		// check all constraints
-		for (Constraint constraint : operation.getConstraints()) {
-			boolean result;
-			try {
-				result = (Boolean) evaluateScript(operationInstance, constraint
-						.getBooleanExpression());
-			} catch (RuntimeException e) {
-				// strict evaluation: an error means violation
-				result = false;
-			}
-
-			if (!result) {
-				violatedConstraints.add(constraint);
-			}
+		for (String message : messages) {
+			Constraint constraint = createConstraint(message);
+			violatedConstraints.add(constraint);
 		}
-
-		for (Parameter parameter : operation.getParameters()) {
-			if (parameter.isRequired()) {
-				ParameterInstance parameterInstance = operationInstance
-						.getParameter(parameter.getName());
-				Object value = parameterInstance.getValue();
-				if (value == null) {
-					Constraint constraint = DeclarationFactory.eINSTANCE
-							.createConstraint();
-					constraint.setLabel("Parameter '" + parameter.getName()
-							+ "' must be set");
-					constraint.setBooleanExpression(constraint.getLabel());
-					violatedConstraints.add(constraint);
-				}
-			}
-		}
+		OperationInstanceConverter.convert(operationBase, operationInstance);
 
 		return violatedConstraints;
 	}
 
-	/**
-	 * Evaluate a script for an operation instance
-	 * 
-	 * @param operationInstance
-	 * @param script
-	 * @return Result of evaluation
-	 */
-	public Object evaluateScript(OperationInstance operationInstance,
-			String script) {
-
-		Map<String, Object> variables = new HashMap<String, Object>();
-		for (ParameterInstance parameterInstance : operationInstance
-				.getParameters()) {
-			Parameter parameter = parameterInstance.getParameter();
-			variables.put(parameter.getName(), parameterInstance.getValue());
-		}
-		for (VariableInstance variableInstance : operationInstance
-				.getVariables()) {
-			Variable variable = variableInstance.getVariable();
-			variables.put(variable.getName(), variableInstance.getValue());
-		}
-		script = "import org.eclipse.emf.ecore.*\n" + script;
-		return GroovyEvaluator.getInstance().evaluateCached(script, variables,
-				getExtent().getRootPackages());
+	private Constraint createConstraint(String message) {
+		Constraint constraint = DeclarationFactory.eINSTANCE.createConstraint();
+		constraint.setLabel(message);
+		return constraint;
 	}
 
 	/**

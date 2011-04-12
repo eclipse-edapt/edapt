@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2006, 2009 Markus Herrmannsdoerfer.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ *     Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -61,7 +60,6 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
-
 
 /**
  * Table viewer to display and edit parameter instances of an operation (An
@@ -387,9 +385,9 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 					@Override
 					protected Object openDialogBox(Control cellEditorWindow) {
 
-						EClass type = (EClass) parameter.getClassifier();
 						ParameterValueValidator selection = new ParameterValueValidator(
-								getChoiceOfValues(parameterInstance), type);
+								parameterInstance, operationSash.getHelper()
+										.getExtent());
 
 						List values = (List) parameterInstance.getValue();
 						MultiValueSelectionDialog dialog = new MultiValueSelectionDialog(
@@ -434,9 +432,9 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 					@Override
 					protected Object openDialogBox(Control cellEditorWindow) {
 
-						EClass type = (EClass) parameter.getClassifier();
 						ParameterValueValidator selection = new ParameterValueValidator(
-								getChoiceOfValues(parameterInstance), type);
+								parameterInstance, operationSash.getHelper()
+										.getExtent());
 
 						SingleValueSelectionDialog dialog = new SingleValueSelectionDialog(
 								cellEditorWindow.getShell(), parameterImage,
@@ -463,33 +461,6 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 				return new PropertyDescriptor.EDataTypeCellEditor(
 						(EDataType) parameter.getClassifier(), getTable());
 			}
-		}
-
-		return null;
-	}
-
-	/**
-	 * Get choice of values for a parameter instance based on extent
-	 * 
-	 * @param parameterInstance
-	 *            Parameter instance
-	 * @return Collection of possible values
-	 */
-	@SuppressWarnings("unchecked")
-	public Collection getChoiceOfValues(ParameterInstance parameterInstance) {
-
-		Parameter parameter = parameterInstance.getParameter();
-
-		try {
-			String choiceExpression = parameter.getChoiceExpression();
-			if (choiceExpression != null) {
-				OperationInstance operationInstance = (OperationInstance) parameterInstance
-						.eContainer();
-				return (Collection) operationSash.getHelper().evaluateScript(
-						operationInstance, choiceExpression);
-			}
-		} catch (RuntimeException e) {
-			// ignore
 		}
 
 		return null;

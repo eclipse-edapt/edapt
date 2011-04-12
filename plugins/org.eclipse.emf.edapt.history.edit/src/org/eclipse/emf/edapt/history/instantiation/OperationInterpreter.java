@@ -1,23 +1,18 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2006, 2009 Markus Herrmannsdoerfer.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ *     Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
-import java.util.HashMap;
-
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.reconstruction.CodeGeneratorHelper;
-import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
-
+import org.eclipse.emf.edapt.migration.Repository;
 
 /**
  * Interpreter for an operation
@@ -55,9 +50,10 @@ public class OperationInterpreter {
 	 * Execute the operation
 	 */
 	public void execute() {
-		String script = new CodeGeneratorHelper(extent)
-				.assembleCode(operationInstance);
-		GroovyEvaluator.getInstance().evaluate(script,
-				new HashMap<String, Object>(), extent.getRootPackages());
+		Repository repository = OperationInstanceConverter
+				.createEmptyRepository(extent);
+		OperationInstanceConverter.convert(operationInstance,
+				repository.getMetamodel()).execute(repository.getMetamodel(),
+				repository.getModel());
 	}
 }

@@ -1,13 +1,12 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2006, 2009 Markus Herrmannsdoerfer.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ *     Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -30,7 +29,6 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-
 
 /**
  * Sash containing the operation, parameter and constraint viewer
@@ -182,8 +180,6 @@ public class OperationSash extends SashForm {
 	 * @return true if no constraint is violated, false otherwise
 	 */
 	protected boolean updateConstraints(OperationInstance operationInstance) {
-
-		helper.evaluateVariables(operationInstance);
 
 		List<Constraint> violatedConstraints = helper
 				.getViolatedConstraints(operationInstance);
