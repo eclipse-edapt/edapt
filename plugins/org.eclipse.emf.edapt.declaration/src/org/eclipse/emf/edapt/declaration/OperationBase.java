@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.declaration.incubator;
+package org.eclipse.emf.edapt.declaration;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -57,8 +57,8 @@ public abstract class OperationBase {
 	private Collection<? extends String> checkRequiredParameters() {
 		List<String> result = new ArrayList<String>();
 		for (Field field : getClass().getFields()) {
-			org.eclipse.emf.edapt.declaration.incubator.Parameter p = field
-					.getAnnotation(org.eclipse.emf.edapt.declaration.incubator.Parameter.class);
+			org.eclipse.emf.edapt.declaration.EdaptParameter p = field
+					.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptParameter.class);
 
 			if (p != null && !p.optional()) {
 				try {
@@ -88,8 +88,8 @@ public abstract class OperationBase {
 		List<String> result = new ArrayList<String>();
 		for (Method method : getClass().getMethods()) {
 			try {
-				Restriction restriction = method
-						.getAnnotation(Restriction.class);
+				EdaptRestriction restriction = method
+						.getAnnotation(EdaptRestriction.class);
 				if (restriction != null) {
 					String parameterName = restriction.parameter();
 					checkRestriction(metamodel, method, parameterName, result);
@@ -126,8 +126,8 @@ public abstract class OperationBase {
 		List<String> result = new ArrayList<String>();
 		for (Method method : getClass().getMethods()) {
 			try {
-				Restriction restriction = method
-						.getAnnotation(Restriction.class);
+				EdaptRestriction restriction = method
+						.getAnnotation(EdaptRestriction.class);
 				if (restriction != null) {
 					if (parameterName.equals(restriction.parameter())) {
 						checkRestriction(metamodel, method, parameterName,
@@ -224,6 +224,13 @@ public abstract class OperationBase {
 			}
 		}
 		return true;
+	}
+	
+	protected boolean isOfSameType(List<? extends EObject> elements) {
+		if(elements.isEmpty()) {
+			return true;
+		}
+		return isOfType(elements, elements.get(0).eClass());
 	}
 
 	protected boolean hasSameValue(List<? extends EObject> first,

@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.declaration.incubator;
+package org.eclipse.emf.edapt.declaration;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
@@ -41,8 +41,8 @@ public class OperationExtractor {
 	@SuppressWarnings("unchecked")
 	public Operation extractOperation(Class c) {
 
-		org.eclipse.emf.edapt.declaration.incubator.Operation operationAnnotation = (org.eclipse.emf.edapt.declaration.incubator.Operation) c
-				.getAnnotation(org.eclipse.emf.edapt.declaration.incubator.Operation.class);
+		org.eclipse.emf.edapt.declaration.EdaptOperation operationAnnotation = (org.eclipse.emf.edapt.declaration.EdaptOperation) c
+				.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptOperation.class);
 		if (operationAnnotation != null) {
 			Operation operation = DeclarationFactory.eINSTANCE
 					.createOperation();
@@ -69,8 +69,8 @@ public class OperationExtractor {
 	 */
 	@SuppressWarnings("unchecked")
 	private void addParameter(Operation operation, Field field) {
-		org.eclipse.emf.edapt.declaration.incubator.Parameter parameterAnnotation = field
-				.getAnnotation(org.eclipse.emf.edapt.declaration.incubator.Parameter.class);
+		org.eclipse.emf.edapt.declaration.EdaptParameter parameterAnnotation = field
+				.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptParameter.class);
 
 		if (parameterAnnotation != null) {
 			Parameter parameter = DeclarationFactory.eINSTANCE

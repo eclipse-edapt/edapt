@@ -8,8 +8,14 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.declaration,
+ org.eclipse.emf.edapt.declaration.creation,
+ org.eclipse.emf.edapt.declaration.delegation,
+ org.eclipse.emf.edapt.declaration.generalization,
  org.eclipse.emf.edapt.declaration.impl,
- org.eclipse.emf.edapt.declaration.incubator,
+ org.eclipse.emf.edapt.declaration.inheritance,
+ org.eclipse.emf.edapt.declaration.merge,
+ org.eclipse.emf.edapt.declaration.replacement,
+ org.eclipse.emf.edapt.declaration.simple,
  org.eclipse.emf.edapt.declaration.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

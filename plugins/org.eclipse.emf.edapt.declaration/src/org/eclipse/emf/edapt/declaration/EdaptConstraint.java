@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.declaration.incubator;
+package org.eclipse.emf.edapt.declaration;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -17,8 +17,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation for a method implementing a restriction on a parameter of an
- * operation.
+ * Annotation for a method implementing the constraint of an operation.
  * 
  * @author herrmama
  * @author $Author$
@@ -27,8 +26,11 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Restriction {
+public @interface EdaptConstraint {
 
-	/** The name of the parameter that is restricted. */
-	String parameter();
+	/** Description of the constraint. */
+	String description();
+	
+	/** Optional restricted parameter. */
+	String restricts() default "";
 }

@@ -1,0 +1,67 @@
+package org.eclipse.emf.edapt.declaration.generalization;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptOperation;
+import org.eclipse.emf.edapt.declaration.EdaptParameter;
+import org.eclipse.emf.edapt.declaration.EdaptRestriction;
+import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.Model;
+
+/**
+ * {@description}
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating YELLOW Hash: 51DC68B5EEEED698AE01F6D31FA61D01
+ */
+@EdaptOperation(identifier = "specializeReferenceType", label = "Specialize Reference Type", description = "In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed.")
+public class SpecializeReferenceType extends OperationBase {
+
+	/** {@description} */
+	@EdaptParameter(description = "The reference whose type is specialized")
+	public EReference reference;
+
+	/** {@description} */
+	@EdaptRestriction(parameter = "reference")
+	public List<String> checkReference(EReference reference, Metamodel metamodel) {
+		List<String> result = new ArrayList<String>();
+		EClass oldType = reference.getEReferenceType();
+		if (MetamodelUtils.isConcrete(oldType)) {
+			result.add("The old type of the reference must be abstract");
+		}
+		if (metamodel.getESubTypes(oldType).size() > 1) {
+			result.add("The old type must not have any other subclass");
+		}
+		return result;
+	}
+
+	/** {@description} */
+	@EdaptParameter(description = "The new type of the reference")
+	public EClass type;
+
+	/** {@description} */
+	@EdaptRestriction(parameter = "type")
+	public List<String> checkType(EClass type) {
+		EClass oldType = reference.getEReferenceType();
+		if (type.getESuperTypes().contains(oldType)) {
+			return Collections.singletonList("The new type of the reference "
+					+ "must be a subclass of its old type");
+		}
+		return Collections.emptyList();
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void execute(Metamodel metamodel, Model model) {
+		// metamodel adaptation
+		reference.setEType(type);
+	}
+}
