@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
 
 /**
  * Action to restore the backup of the model file.
@@ -36,7 +36,7 @@ public class RestoreBackupHandler extends MigratorHandlerBase {
 
 	/** {@inheritDoc} */
 	@Override
-	protected void run(List<URI> backupURIs, Migrator migrator, int release) {
+	protected void run(List<URI> backupURIs, OldMigrator migrator, int release) {
 
 		try {
 			Metamodel metamodel = migrator.getMetamodel(release);

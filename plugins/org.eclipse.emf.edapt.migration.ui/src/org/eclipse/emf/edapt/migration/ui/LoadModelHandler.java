@@ -28,7 +28,7 @@ import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
@@ -83,7 +83,7 @@ public class LoadModelHandler extends MigratorHandlerBase {
 
 	/** {@inheritDoc} */
 	@Override
-	protected void run(List<URI> modelURIs, Migrator migrator, int release) {
+	protected void run(List<URI> modelURIs, OldMigrator migrator, int release) {
 		Metamodel metamodel = migrator.getMetamodel(release);
 		List<EPackage> ePackages = metamodel.getEPackages();
 		loadModel(modelURIs, ePackages);

@@ -26,12 +26,12 @@ import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils;
+import org.eclipse.emf.edapt.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.incubator.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.incubator.MigratorRegistry;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
-import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
 
 /**
  * A class for test cases to validate a model migration

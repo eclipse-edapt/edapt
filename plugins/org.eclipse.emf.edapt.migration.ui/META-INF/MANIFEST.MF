@@ -10,8 +10,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edapt.common.ui,
  org.eclipse.core.expressions,
  org.eclipse.emf.edapt.migration,
- org.eclipse.emf.edapt.history,
- org.eclipse.emf.edapt.migration.operations
+ org.eclipse.emf.edapt.history
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.migration.ui

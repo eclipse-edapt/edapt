@@ -26,7 +26,7 @@ import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.BackupUtils;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -48,7 +48,7 @@ public class MigrateHandler extends MigratorHandlerBase {
 
 	/** Perform the migration. */
 	@Override
-	protected void run(final List<URI> modelURIs, final Migrator migrator,
+	protected void run(final List<URI> modelURIs, final OldMigrator migrator,
 			int release) {
 		try {
 			final Metamodel metamodel = migrator.getMetamodel(release);

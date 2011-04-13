@@ -20,9 +20,8 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.migration.execution.incubator.ClassLoaderFacade;
-import org.eclipse.emf.edapt.migration.execution.incubator.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.incubator.Migrator;
+import org.eclipse.emf.edapt.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
 
 /**
  * Suite to test a migration.

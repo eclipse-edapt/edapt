@@ -38,8 +38,8 @@ import org.eclipse.emf.edapt.history.reconstruction.MigratorCodeGenerator;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
-import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigratorRegistry;
 import org.eclipse.emf.edapt.migration.execution.Persistency;
 import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -77,7 +77,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	/** Run the action. */
 	protected void run() {
 		final List<URI> modelURIs = getURIs();
-		final Migrator migrator = getMigrator(modelURIs);
+		final OldMigrator migrator = getMigrator(modelURIs);
 		if (migrator == null) {
 			return;
 		}
@@ -91,14 +91,14 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Run the action. */
-	protected abstract void run(List<URI> modelURIs, Migrator migrator,
+	protected abstract void run(List<URI> modelURIs, OldMigrator migrator,
 			int release);
 
 	/** Get the migrator for a model. */
-	protected Migrator getMigrator(final List<URI> modelURIs) {
+	protected OldMigrator getMigrator(final List<URI> modelURIs) {
 
-		MigratorRegistry.getInstance().setOracle(new InteractiveOracle());
-		MigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
+		OldMigratorRegistry.getInstance().setOracle(new InteractiveOracle());
+		OldMigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
 
 		String nsURI = ReleaseUtil.getNamespaceURI(modelURIs.get(0));
 
@@ -108,7 +108,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 			return null;
 		}
 
-		Migrator migrator = null;
+		OldMigrator migrator = null;
 		if (migratorFolder != null) {
 			migrator = getFolderMigrator(nsURI);
 		}
@@ -122,9 +122,9 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Load the migrator from a folder. */
-	private Migrator getFolderMigrator(String nsURI) {
+	private OldMigrator getFolderMigrator(String nsURI) {
 		try {
-			Migrator migrator = new Migrator(URIUtils.getURI(migratorFolder));
+			OldMigrator migrator = new OldMigrator(URIUtils.getURI(migratorFolder));
 			if (migrator.getNsURIs().contains(nsURI)) {
 				return migrator;
 			}
@@ -136,9 +136,9 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Load the migrator from a history file. */
-	private Migrator getHistoryMigrator(String nsURI) {
+	private OldMigrator getHistoryMigrator(String nsURI) {
 		try {
-			Migrator migrator = generateMigrator();
+			OldMigrator migrator = generateMigrator();
 			if (migrator.getNsURIs().contains(nsURI)) {
 				return migrator;
 			}
@@ -153,8 +153,8 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Search for a migrator in the registry. */
-	private Migrator getRegistryMigrator(String nsURI) {
-		final Migrator migrator = MigratorRegistry.getInstance().getMigrator(
+	private OldMigrator getRegistryMigrator(String nsURI) {
+		final OldMigrator migrator = OldMigratorRegistry.getInstance().getMigrator(
 				nsURI);
 		if (migrator == null) {
 			MessageDialog.openError(Display.getDefault().getActiveShell(),
@@ -166,7 +166,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Generate the migrator. */
-	private Migrator generateMigrator() throws MigrationException, IOException {
+	private OldMigrator generateMigrator() throws MigrationException, IOException {
 		History history = loadHistory();
 		URI historyURI = history.eResource().getURI();
 
@@ -186,7 +186,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 		reconstructor.addReconstructor(new MigratorCodeGenerator(migratorURI));
 		reconstructor.reconstruct(history.getLastRelease(), false);
 
-		return new Migrator(migratorURI);
+		return new OldMigrator(migratorURI);
 	}
 
 	/** Load the history. */
@@ -197,7 +197,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Infer the release of a model. */
-	protected int getRelease(final List<URI> modelURIs, final Migrator migrator) {
+	protected int getRelease(final List<URI> modelURIs, final OldMigrator migrator) {
 		Set<Integer> releases = new HashSet<Integer>(migrator
 				.getRelease(modelURIs.get(0)));
 		int release = -1;
