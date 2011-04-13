@@ -13,5 +13,4 @@ Require-Bundle: org.eclipse.ui,
  org.codehaus.groovy;bundle-version="1.5.7"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.edapt.migration.execution,
- org.eclipse.emf.edapt.migration.execution.incubator
+Export-Package: org.eclipse.emf.edapt.migration.execution
