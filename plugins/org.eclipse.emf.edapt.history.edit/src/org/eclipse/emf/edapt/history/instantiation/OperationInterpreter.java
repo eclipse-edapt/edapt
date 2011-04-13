@@ -11,11 +11,11 @@
 package org.eclipse.emf.edapt.history.instantiation;
 
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
+import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
 
 /**
  * Interpreter for an operation

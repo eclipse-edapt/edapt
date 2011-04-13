@@ -22,13 +22,13 @@ import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.declaration.Parameter;
-import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
 import org.eclipse.emf.edapt.migration.Repository;
-import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
+import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
 
 /**
  * Helper to deal with operation instances
@@ -66,7 +66,7 @@ public class OperationInstanceHelper {
 		List<OperationInstance> result = new ArrayList<OperationInstance>();
 
 		// iterate over all registered operations
-		Collection<Operation> operations = org.eclipse.emf.edapt.declaration.incubator.OperationRegistry
+		Collection<Operation> operations = org.eclipse.emf.edapt.declaration.OperationRegistry
 				.getInstance().getOperations();
 		for (Operation operation : operations) {
 
