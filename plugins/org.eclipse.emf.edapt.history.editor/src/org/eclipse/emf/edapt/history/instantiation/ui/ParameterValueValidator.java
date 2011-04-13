@@ -8,12 +8,12 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ui.IValueValidator;
-import org.eclipse.emf.edapt.declaration.incubator.OperationBase;
-import org.eclipse.emf.edapt.declaration.incubator.Restriction;
+import org.eclipse.emf.edapt.declaration.EdaptRestriction;
+import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
-import org.eclipse.emf.edapt.migration.execution.incubator.OperationInstanceConverter;
+import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
 
 /**
  * Validator for parameters
@@ -50,7 +50,7 @@ public class ParameterValueValidator implements IValueValidator {
 
 	private Method getRestriction() {
 		for (Method method : operationBase.getClass().getMethods()) {
-			Restriction restriction = method.getAnnotation(Restriction.class);
+			EdaptRestriction restriction = method.getAnnotation(EdaptRestriction.class);
 			if (restriction != null) {
 				if (parameterInstance.getName().equals(restriction.parameter())) {
 					return method;
