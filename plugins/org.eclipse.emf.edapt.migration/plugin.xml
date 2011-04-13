@@ -16,7 +16,6 @@
 <plugin>
    <extension-point id="org.eclipse.emf.edapt.migrators" name="Migrators" schema="schema/org.eclipse.emf.edapt.migrators.exsd"/>
    <extension-point id="org.eclipse.emf.edapt.migrators2" name="org.eclipse.emf.edapt.migrators2" schema="schema/org.eclipse.emf.edapt.migrators2.exsd"/>
-   <extension-point id="org.eclipse.emf.edapt.operations2" name="org.eclipse.emf.edapt.operations2" schema="schema/org.eclipse.emf.edapt.operations2.exsd"/>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
