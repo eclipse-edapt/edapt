@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.incubator.OperationRegistry;
+import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;

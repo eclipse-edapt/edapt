@@ -11,11 +11,13 @@ Export-Package: org.eclipse.emf.edapt.history,
  org.eclipse.emf.edapt.history.impl,
  org.eclipse.emf.edapt.history.reconstruction,
  org.eclipse.emf.edapt.history.recorder,
- org.eclipse.emf.edapt.history.util
+ org.eclipse.emf.edapt.history.util,
+ org.eclipse.emf.edapt.migration.execution
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.edapt.common;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.edapt.declaration;visibility:=reexport
+ org.eclipse.emf.edapt.declaration;visibility:=reexport,
+ org.eclipse.emf.edapt.migration
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.history.HistoryPlugin$Implementation
