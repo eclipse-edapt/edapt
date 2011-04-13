@@ -27,6 +27,8 @@ import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.OperationExtractor;
+import org.eclipse.emf.edapt.declaration.delegation.ExtractClass;
 import org.eclipse.emf.edapt.declaration.parser.OperationParser;
 
 import antlr.RecognitionException;
@@ -45,21 +47,16 @@ public class OperationParserTest extends TestCase {
 	/** Basic test. */
 	public void testSimpleOperationParser() throws Exception {
 
-		File file = new File("data/operation.groovy");
-		Library library = parseLibrary(file);
+		OperationExtractor extractor = new OperationExtractor();
+		Operation operation = extractor.extractOperation(ExtractClass.class);
 
-		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(library);
-		Assert.assertEquals(diagnostic.getSeverity(), Diagnostic.OK);
-
-		Assert.assertEquals(1, library.getOperations().size());
-
-		Operation operation = library.getOperation("extractPartClass");
 		Assert.assertNotNull(operation);
 
+		Diagnostic diagnostic = Diagnostician.INSTANCE.validate(operation);
+		Assert.assertEquals(diagnostic.getSeverity(), Diagnostic.OK);
+
 		Assert.assertNotNull(operation.getLabel());
-		Assert.assertEquals(4, operation.getParameters().size());
-		Assert.assertEquals(1, operation.getVariables().size());
-		Assert.assertEquals(3, operation.getConstraints().size());
+		Assert.assertEquals(5, operation.getParameters().size());
 	}
 
 	/** Advanced test. */
