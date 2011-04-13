@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
 import org.eclipse.emf.edapt.migration.test.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.tests.history.lifecycle.TestBase;
 
@@ -55,7 +55,7 @@ public class GMFToolMetamodelAdaptationTest extends TestBase {
 		
 		URI migratorURI = contextURI.appendSegment("migrator");
 		
-		Migrator migrator = new Migrator(migratorURI);
+		OldMigrator migrator = new OldMigrator(migratorURI);
 		migrator.adapt(targetMetamodelURI, 0, Integer.MAX_VALUE, new PrintStreamProgressMonitor(System.out));
 
 		EObject actual = ResourceUtils.loadResourceSet(targetMetamodelURI).getResources().get(0).getContents().get(0);

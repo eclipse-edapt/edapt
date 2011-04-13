@@ -15,15 +15,15 @@ import java.io.IOException;
 
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.OldMigrator;
 
 public class MigratorProvider {
 
-	private static Migrator migrator;
+	private static OldMigrator migrator;
 	
-	public static Migrator getMigrator() throws IOException, MigrationException {
+	public static OldMigrator getMigrator() throws IOException, MigrationException {
 		if(migrator == null) {
-			migrator = new Migrator(URIUtils.getURI("migrator/."));
+			migrator = new OldMigrator(URIUtils.getURI("migrator/."));
 		}
 		return migrator;
 	}
