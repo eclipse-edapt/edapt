@@ -1,13 +1,10 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -18,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 20916EBD48183771A792B5F6570285BB
+ * @levd.rating YELLOW Hash: 015CDF7091174D2196EE3CFED9F33C49
  */
 @EdaptOperation(identifier = "deleteClass", label = "Delete Class", description = "In the metamodel, a class that is no longer used is deleted. In the model, nothing is changed.")
 public class DeleteClass extends OperationBase {
@@ -28,20 +25,22 @@ public class DeleteClass extends OperationBase {
 	public EClass eClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "eClass")
-	public List<String> checkEClass(EClass eClass, Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!metamodel.getInverse(eClass,
-				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty()) {
-			result.add("The class must not be the target of a reference");
-		}
-		if (!metamodel.getESubTypes(eClass).isEmpty()) {
-			result.add("The class must not have sub classes");
-		}
-		if (!eClass.getESuperTypes().isEmpty()) {
-			result.add("The class must not have super classes");
-		}
-		return result;
+	@EdaptConstraint(restricts = "eClass", description = "The class must not be the target of a reference")
+	public boolean checkEClass(EClass eClass, Metamodel metamodel) {
+		return metamodel.getInverse(eClass,
+				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "eClass", description = "The class must not have sub classes")
+	public boolean checkClassNoSubTypes(EClass eClass, Metamodel metamodel) {
+		return metamodel.getESubTypes(eClass).isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "eClass", description = "The class must not have super classes")
+	public boolean checkClassNoSuperTypes(EClass eClass) {
+		return eClass.getESuperTypes().isEmpty();
 	}
 
 	/** {@inheritDoc} */

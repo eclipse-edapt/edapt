@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -23,9 +24,9 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 32A6A73D90ACD6CD171DBFFA788934A9
+ * @levd.rating YELLOW Hash: 6FC6C6CC6394E6282A09F2BB33CED689
  */
-@EdaptOperation(identifier= "enumerationToSubClasses", label = "Enumeration to Sub Classes", description = "In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute.")
+@EdaptOperation(identifier = "enumerationToSubClasses", label = "Enumeration to Sub Classes", description = "In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute.")
 public class EnumerationToSubClasses extends OperationBase {
 
 	/** {@description} */
@@ -36,21 +37,24 @@ public class EnumerationToSubClasses extends OperationBase {
 	@EdaptParameter(description = "The package in which the subclasses are created")
 	public EPackage ePackage;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	/** {@description} */
+	@EdaptConstraint(description = "The type of the attribute must be an enumeration")
+	public boolean checkAttributeTypeEnum() {
+		return enumAttribute.getEType() instanceof EEnum;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The context class must not have sub types")
+	public boolean checkContextClassNoSubTypes(Metamodel metamodel) {
 		EClass contextClass = enumAttribute.getEContainingClass();
-		if (!MetamodelUtils.isConcrete(contextClass)) {
-			result.add("The context class must be concrete");
-		}
-		if (!metamodel.getESubTypes(contextClass).isEmpty()) {
-			result.add("The context class must not have sub types");
-		}
-		if (!(enumAttribute.getEType() instanceof EEnum)) {
-			result.add("The type of the attribute must be an enumeration");
-		}
-		return result;
+		return metamodel.getESubTypes(contextClass).isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The context class must be concrete")
+	public boolean checkContextClassConcrete() {
+		EClass contextClass = enumAttribute.getEContainingClass();
+		return MetamodelUtils.isConcrete(contextClass);
 	}
 
 	/** {@inheritDoc} */

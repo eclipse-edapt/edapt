@@ -1,7 +1,6 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -9,9 +8,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -23,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6A70910BEC0A96859C0AF1AFD36F50AA
+ * @levd.rating YELLOW Hash: BF7D8D8C06E51CF866F6C17DE3D39DCF
  */
 @EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationBase {
@@ -41,14 +40,10 @@ public class ReplaceClass extends OperationBase {
 	public List<EStructuralFeature> featuresToReplace = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "featuresToReplace")
-	public List<String> checkFeaturesToReplace(
-			EStructuralFeature featuresToReplace) {
-		if (!toReplace.getEAllStructuralFeatures().contains(featuresToReplace)) {
-			return Collections.singletonList("The replace features must "
-					+ "be defined in the replaced class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "featuresToReplace", description = "The replace features must be defined in the replaced class")
+	public boolean checkFeaturesToReplace(EStructuralFeature featuresToReplace) {
+		return toReplace.getEAllStructuralFeatures()
+				.contains(featuresToReplace);
 	}
 
 	/** {@description} */
@@ -56,36 +51,32 @@ public class ReplaceClass extends OperationBase {
 	public List<EStructuralFeature> featuresReplaceBy = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "featuresReplaceBy")
-	public List<String> checkFeaturesReplaceBy(
-			EStructuralFeature featuresReplaceBy) {
-		if (replaceBy.getEAllStructuralFeatures().contains(featuresReplaceBy)) {
-			return Collections.singletonList("The replacing features must "
-					+ "be defined in the replacing class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "featuresReplaceBy", description = "The replacing features must be defined in the replacing class")
+	public boolean checkFeaturesReplaceBy(EStructuralFeature featuresReplaceBy) {
+		return replaceBy.getEAllStructuralFeatures()
+				.contains(featuresReplaceBy);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!metamodel.getESubTypes(toReplace).isEmpty()) {
-			result.add("The class to be replaced must not have sub types");
-		}
-		if (featuresToReplace.size() != featuresReplaceBy.size()) {
-			result.add("The replaced and replacing features "
-					+ "have to be of the same size");
-		}
-		if (replaceBy != null) {
-			if (!featuresToReplace.containsAll(MetamodelUtils.subtractFeatures(
-					toReplace, replaceBy))) {
-				result.add("The replace features must cover all "
-						+ "features from the difference between the class to "
-						+ "replace and the class by which it is replaced");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The replace features must cover all "
+			+ "features from the difference between the class to "
+			+ "replace and the class by which it is replaced")
+	public boolean checkCoverFeatureDifference() {
+		return replaceBy == null
+				|| featuresToReplace.containsAll(MetamodelUtils
+						.subtractFeatures(toReplace, replaceBy));
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The replaced and replacing features have to be of the same size")
+	public boolean checkFeaturesSameSize() {
+		return featuresToReplace.size() == featuresReplaceBy.size();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The class to be replaced must not have sub types")
+	public boolean checkToReplaceNoSubTypes(Metamodel metamodel) {
+		return metamodel.getESubTypes(toReplace).isEmpty();
 	}
 
 	/** {@inheritDoc} */

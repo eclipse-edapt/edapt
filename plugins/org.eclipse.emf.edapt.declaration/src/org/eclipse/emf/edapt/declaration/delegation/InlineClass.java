@@ -9,9 +9,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 45570AD3BAC3BF88335E1B821A98387E
+ * @levd.rating YELLOW Hash: 30D18B4B7A0160B0A42E31AE81FE0520
  */
 @EdaptOperation(identifier = "inlineClass", label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.")
 public class InlineClass extends OperationBase {
@@ -33,32 +33,36 @@ public class InlineClass extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (reference.getEOpposite() != null) {
-			result.add("The reference must not have an opposite");
-		}
-		if (reference.isMany()) {
-			result.add("The multiplicity of the reference "
-					+ "must be single-valued");
-		}
-		if (!reference.isContainment()) {
-			result.add("The reference must be containment");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference must not have an opposite")
+	public boolean checkReference(EReference reference) {
+		return reference.getEOpposite() == null;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The multiplicity of the reference must be single-valued")
+	public boolean checkReferenceSingleValued(EReference reference) {
+		return !reference.isMany();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The reference must be containment")
+	public boolean checkReferenceContainment(EReference reference) {
+		return reference.isContainment();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The class to be inlined must not have sub classes")
+	public boolean checkInlinedClassNoSubTypes(Metamodel metamodel) {
 		EClass inlinedClass = reference.getEReferenceType();
 		EList<EClass> subTypes = metamodel.getInverse(inlinedClass,
 				EcorePackage.eINSTANCE.getEClass_ESuperTypes());
-		if (!subTypes.isEmpty()) {
-			result.add("The class to be inlined must not have sub classes");
-		}
+		return subTypes.isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The class to be inlined must not be a type of another reference")
+	public boolean checkInlinedClassNotTargetedByReference(Metamodel metamodel) {
+		EClass inlinedClass = reference.getEReferenceType();
 		for (ETypedElement element : metamodel.<ETypedElement> getInverse(
 				inlinedClass, EcorePackage.eINSTANCE.getETypedElement_EType())) {
 			if (element instanceof EReference) {
@@ -67,13 +71,11 @@ public class InlineClass extends OperationBase {
 				EList<EStructuralFeature> features = inlinedClass
 						.getEStructuralFeatures();
 				if (eOpposite != null && !features.contains(eOpposite)) {
-					result.add("The class to be inlined must not be a "
-							+ "type of another reference");
-					break;
+					return false;
 				}
 			}
 		}
-		return result;
+		return true;
 	}
 
 	/** {@inheritDoc} */

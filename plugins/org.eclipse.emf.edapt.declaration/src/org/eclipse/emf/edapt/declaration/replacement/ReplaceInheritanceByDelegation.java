@@ -1,16 +1,14 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -23,7 +21,7 @@ import org.eclipse.emf.edapt.migration.ReferenceSlot;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F06EAA5353670EC3634D79810EFA66A0
+ * @levd.rating YELLOW Hash: F0A5736129ABA276558E0C0B8C87E289
  */
 @EdaptOperation(identifier = "replaceInheritanceByDelegation", label = "Inheritance to Delegation", description = "In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class.")
 public class ReplaceInheritanceByDelegation extends OperationBase {
@@ -37,13 +35,9 @@ public class ReplaceInheritanceByDelegation extends OperationBase {
 	public EClass superClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "superClass")
-	public List<String> checkSuperClass(EClass superClass) {
-		if (!subClass.getESuperTypes().contains(superClass)) {
-			return Collections
-					.singletonList("The super class must be a super type of the sub class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "superClass", description = "The super class must be a super type of the sub class")
+	public boolean checkSuperClass(EClass superClass) {
+		return subClass.getESuperTypes().contains(superClass);
 	}
 
 	/** {@description} */

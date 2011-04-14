@@ -1,13 +1,10 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -19,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 64E0475FD8822A0D9E81D18A5BA8E995
+ * @levd.rating YELLOW Hash: B8D90CBFF36DF56D560C81E05591B71D
  */
 @EdaptOperation(identifier = "deleteOppositeReference", label = "Delete Opposite Reference", description = "In the metamodel, the opposite of a reference is deleted. In the model, its values are deleted, too.")
 public class DeleteOppositeReference extends OperationBase {
@@ -29,14 +26,9 @@ public class DeleteOppositeReference extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		EReference opposite = reference.getEOpposite();
-		if(opposite == null) {
-			result.add("The reference needs to define an opposite");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference needs to define an opposite")
+	public boolean checkReferenceOpposite(EReference reference) {
+		return reference.getEOpposite() != null;
 	}
 
 	/** {@inheritDoc} */

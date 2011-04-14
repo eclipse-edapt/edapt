@@ -1,14 +1,11 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -19,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5A4ADB004FD92006DAAED5E883F23ED1
+ * @levd.rating YELLOW Hash: 9D4D6EC4A3C204DFD2CFACD6C7031DCA
  */
 @EdaptOperation(identifier = "newOppositeReference", label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.")
 public class NewOppositeReference extends OperationBase {
@@ -29,13 +26,9 @@ public class NewOppositeReference extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (reference.getEOpposite() != null) {
-			result.add("The reference must not already have an opposite");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference must not already have an opposite")
+	public boolean checkReference(EReference reference) {
+		return reference.getEOpposite() == null;
 	}
 
 	/** {@description} */
@@ -54,27 +47,22 @@ public class NewOppositeReference extends OperationBase {
 	@EdaptParameter(description = "Whether the opposite reference is changeable")
 	public Boolean changeable = true;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (reference.isContainment() && upperBound != 1) {
-			result.add("In case of a containment reference, "
-					+ "the upper bound of the opposite reference must be 1.");
-		}
-		if (!reference.isContainment() && upperBound == 1) {
-			result.add("In case of a cross reference, "
-					+ "the upper bound of the opposite reference must be -1.");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "In case of a containment reference, the upper bound of the opposite reference must be 1.")
+	public boolean checkContainmentSingleValued() {
+		return !reference.isContainment() || upperBound == 1;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "In case of a cross reference, the upper bound of the opposite reference must be -1.")
+	public boolean checkCrossReferenceManyValued() {
+		return reference.isContainment() || upperBound == -1;
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		if (upperBound == 0) {
-			upperBound = reference.isContainment() ? 1 : -1;
-		}
+		upperBound = reference.isContainment() ? 1 : -1;
 	}
 
 	/** {@inheritDoc} */

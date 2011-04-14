@@ -1,13 +1,12 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -19,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4ED07FDDC32ED4FAACD2D70F94AC00CF
+ * @levd.rating YELLOW Hash: 2DE56FEFB243C232FFC57B2DFC3AB090
  */
 @EdaptOperation(identifier = "merge", label = "Merge Reference into Another", description = "In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference.")
 public class Merge extends OperationBase {
@@ -33,25 +32,29 @@ public class Merge extends OperationBase {
 	public EReference mergeTo;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "mergeTo")
-	public List<String> checkMergeTo(EReference mergeTo) {
-		List<String> result = new ArrayList<String>();
+	@EdaptConstraint(restricts = "mergeTo", description = "The references must be different from each other")
+	public boolean checkReferencesDifferent(EReference mergeTo) {
+		return toMerge != mergeTo;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The types of the references must be compatible")
+	public boolean checkReferenceTypesCompatible() {
+		return mergeTo.getEReferenceType().isSuperTypeOf(
+				toMerge.getEReferenceType());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "mergeTo", description = "The reference to merge to must be multi-valued")
+	public boolean checkMergeToMany(EReference mergeTo) {
+		return mergeTo.isMany();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The reference to merge to must be available in the context class")
+	public boolean checkMergeToAvailableInContextClass() {
 		EClass contextClass = toMerge.getEContainingClass();
-		if (!contextClass.getEAllStructuralFeatures().contains(mergeTo)) {
-			result.add("The reference to merge to "
-					+ "must be available in the context class");
-		}
-		if (!mergeTo.isMany()) {
-			result.add("The reference to merge to must be multi-valued");
-		}
-		if (!mergeTo.getEReferenceType().isSuperTypeOf(
-				toMerge.getEReferenceType())) {
-			result.add("The types of the references must be compatible");
-		}
-		if (toMerge == mergeTo) {
-			result.add("The references must be different from each other");
-		}
-		return result;
+		return contextClass.getEAllStructuralFeatures().contains(mergeTo);
 	}
 
 	/** {@inheritDoc} */

@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 0559ECA4E626A91EF59896CAFD3ADD1A
+ * @levd.rating YELLOW Hash: 7800367F71D41EB4081B0388CCF00A5A
  */
 @EdaptOperation(identifier = "changeAttributeType", label = "Change Attribute Type", description = "In the metamodel, the type of an attribute is changed. In the model, the values are migrated based on EMF's default serialization.")
 public class ChangeAttributeType extends OperationBase {

@@ -1,15 +1,11 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -21,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 0174E27A328E9B45977B5CD1C8631CA4
+ * @levd.rating YELLOW Hash: FF1AF6E8832965408F419F6AFCF6DC0D
  */
 @EdaptOperation(identifier = "moveFeature", label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.")
 public class MoveFeature extends OperationBase {
@@ -35,38 +31,29 @@ public class MoveFeature extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
+	@EdaptConstraint(restricts = "reference", description = "The reference must be available in the same class as the feature")
+	public boolean checkReferenceInSameClass(EReference reference) {
 		EClass sourceClass = feature.getEContainingClass();
-		if (!sourceClass.getEAllStructuralFeatures().contains(reference)) {
-			return Collections.singletonList("The reference must be available "
-					+ "in the same class as the feature");
-		}
-		return Collections.emptyList();
+		return sourceClass.getEAllStructuralFeatures().contains(reference);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (reference != null) {
-			if (reference.getLowerBound() != 1
-					|| reference.getUpperBound() != 1) {
-				result.add("The multiplicity of the reference must "
-						+ "be single-valued and obligatory");
-			}
-			if (reference.getEOpposite() != null
-					&& reference.getEOpposite().getUpperBound() != 1) {
-				result.add("The multiplicity of its opposite "
-						+ "reference must be single-valued");
-			}
-			EClass targetClass = reference.getEReferenceType();
-			if (targetClass.getEStructuralFeature(feature.getName()) != null) {
-				result.add("A feature with that name already "
-						+ "exists in the target class");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The multiplicity of the reference must be single-valued and obligatory")
+	public boolean checkReferenceSingleValued() {
+		return reference.getLowerBound() == 1 && reference.getUpperBound() == 1;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The multiplicity of its opposite reference must be single-valued")
+	public boolean checkReferenceOppositeSingleValued() {
+		return reference.getEOpposite().getUpperBound() == 1;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "A feature with that name already exists in the target class")
+	public boolean checkFeatureNameUniqueInTargetClass() {
+		EClass targetClass = reference.getEReferenceType();
+		return targetClass.getEStructuralFeature(feature.getName()) == null;
 	}
 
 	/** {@inheritDoc} */

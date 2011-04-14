@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5BAB81D34A7A7B67AC240D70D4A1D774
+ * @levd.rating YELLOW Hash: 494BAC93E689FAB4DC4BDFE204C36AE3
  */
 @EdaptOperation(identifier = "pushOperation", label = "Push down Operation", description = "In the metamodel, an operation is pushed down to its sub classes. In the model, nothing needs to be done.")
 public class PushOperation extends OperationBase {

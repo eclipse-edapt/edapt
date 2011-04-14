@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 940CC38F192B7D441411AB2E8655882E
+ * @levd.rating YELLOW Hash: 991ED2213EF078EA587E610F10C36342
  */
 @EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.")
 public class CreateEnumeration extends OperationBase {

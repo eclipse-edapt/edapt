@@ -6,6 +6,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -19,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 620136213B0056211794342E9CD9D465
+ * @levd.rating YELLOW Hash: CA0F7AD795D32EE1BA851E90B2AAC573
  */
 @EdaptOperation(identifier = "partitionReference", label = "Partition Reference", description = "In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly.")
 public class PartitionReference extends OperationBase {
@@ -28,18 +29,17 @@ public class PartitionReference extends OperationBase {
 	@EdaptParameter(description = "The reference to be partitioned")
 	public EReference reference;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The reference must be multi-valued")
+	public boolean checkReferenceMany(EReference reference) {
+		return reference.isMany();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The type of the reference must be abstract")
+	public boolean checkReferenceTypeAbstract(EReference reference) {
 		EClass type = reference.getEReferenceType();
-		if (MetamodelUtils.isConcrete(type)) {
-			result.add("The type of the reference must be abstract");
-		}
-		if (!reference.isMany()) {
-			result.add("The reference must be multi-valued");
-		}
-		return result;
+		return !MetamodelUtils.isConcrete(type);
 	}
 
 	/** {@inheritDoc} */

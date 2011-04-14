@@ -1,15 +1,14 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -21,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 3A10850C9B3A8C2BA3E3B07C3FD6E50E
+ * @levd.rating YELLOW Hash: 9B76063E8AA01FED42CCC3C0D9323114
  */
 @EdaptOperation(identifier = "pushFeature", label = "Push down Feature", description = "In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly.")
 public class PushFeature extends OperationBase {
@@ -31,20 +30,16 @@ public class PushFeature extends OperationBase {
 	public EStructuralFeature feature;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "feature")
-	public List<String> checkFeature(EStructuralFeature feature,
-			Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	@EdaptConstraint(restricts = "feature", description = "If the feature has an opposite, "
+			+ "then the super class may only have one sub type.")
+	public boolean checkFeature(EStructuralFeature feature, Metamodel metamodel) {
 		EClass superClass = feature.getEContainingClass();
 		if (feature instanceof EReference) {
 			EReference reference = (EReference) feature;
-			if (reference.getEOpposite() != null
-					&& metamodel.getESubTypes(superClass).size() != 1) {
-				result.add("If the feature has an opposite, "
-						+ "then the super class may only have one sub type.");
-			}
+			return reference.getEOpposite() == null
+					|| metamodel.getESubTypes(superClass).size() == 1;
 		}
-		return result;
+		return true;
 	}
 
 	/** {@inheritDoc} */

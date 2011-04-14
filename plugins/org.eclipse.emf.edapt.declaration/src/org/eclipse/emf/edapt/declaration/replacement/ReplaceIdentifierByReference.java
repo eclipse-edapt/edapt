@@ -1,14 +1,13 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 419BA09CF5AAE6C41B33171BD2170AF7
+ * @levd.rating YELLOW Hash: 7F529BB92C7A9BC7EC388CC3510AF704
  */
 @EdaptOperation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
 public class ReplaceIdentifierByReference extends OperationBase {
@@ -35,18 +34,12 @@ public class ReplaceIdentifierByReference extends OperationBase {
 	@EdaptParameter(description = "The referenced attribute")
 	public EAttribute referencedAttribute;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (referencedAttribute != null) {
-			if (referencingAttribute.getEType() != referencedAttribute
-					.getEType()) {
-				result.add("Referencing and referenced attribute "
-						+ "must be of the same type");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "Referencing and referenced attribute must be of the same type")
+	public boolean checkAttributesSameType() {
+		return referencedAttribute == null
+				|| referencingAttribute.getEType() == referencedAttribute
+						.getEType();
 	}
 
 	/** {@inheritDoc} */

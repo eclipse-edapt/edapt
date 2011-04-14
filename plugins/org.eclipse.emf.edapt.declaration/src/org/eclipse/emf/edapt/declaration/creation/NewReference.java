@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 568C1F26B69FC0489DABD24374FF2D20
+ * @levd.rating YELLOW Hash: 4FB28B2C2763FE35A67163DF8631D054
  */
 @EdaptOperation(identifier = "newReference", label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.")
 public class NewReference extends OperationBase {

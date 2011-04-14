@@ -1,15 +1,13 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -20,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D70D05C6BE1B386EBCBCCA5A3543C800
+ * @levd.rating YELLOW Hash: 4FF5872005A08744CBA3572660EE940D
  */
 @EdaptOperation(identifier = "pullOperation", label = "Pull up Operation", description = "In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done.")
 public class PullOperation extends OperationBase {
@@ -32,33 +30,33 @@ public class PullOperation extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The super class to which the operations are pulled")
 	public EClass targetClass;
-	
+
 	/** {@description} */
-	@EdaptRestriction(parameter = "targetClass")
-	public List<String> checkTargetClass(EClass targetClass) {
-		for(EOperation operation : operations) {
-			if(!operation.getEContainingClass().getESuperTypes().contains(targetClass)) {
-				return Collections.singletonList("The operations' classes must have a common super type");
+	@EdaptConstraint(restricts = "targetClass", description = "The operations' classes must have a common super type")
+	public boolean checkTargetClass(EClass targetClass) {
+		for (EOperation operation : operations) {
+			if (!operation.getEContainingClass().getESuperTypes().contains(
+					targetClass)) {
+				return false;
 			}
 		}
-		return Collections.emptyList();
+		return true;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!hasSameValue(operations,
-				EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {
-			result.add("The operations' types have to be the same");
-		}
-		if (!hasSameValue(operations,
-				EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND)
-				|| !hasSameValue(operations,
-						EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND)) {
-			result.add("The operations' multiplicities have to be the same");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The operations' multiplicities have to be the same")
+	public boolean checkOperationsSameMultiplicity() {
+		return hasSameValue(operations, EcorePackage.eINSTANCE
+				.getETypedElement_LowerBound())
+				&& hasSameValue(operations, EcorePackage.eINSTANCE
+						.getETypedElement_UpperBound());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The operations' types have to be the same")
+	public boolean checkOperationsSameType() {
+		return hasSameValue(operations, EcorePackage.eINSTANCE
+				.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */

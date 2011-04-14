@@ -1,14 +1,13 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -20,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E36D2033870AFBF5A440722075FFF533
+ * @levd.rating YELLOW Hash: 25A9677BE0D6FF05C9B46B2AB5F8B679
  */
 @EdaptOperation(identifier = "flattenHierarchy", label = "Flatten Containment Hierarchy", description = "In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly.")
 public class FlattenHierarchy extends OperationBase {
@@ -30,14 +29,10 @@ public class FlattenHierarchy extends OperationBase {
 	public EReference rootReference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "rootReference")
-	public List<String> checkRootReference(EReference rootReference) {
-		List<String> result = new ArrayList<String>();
-		if (rootReference.isMany() || !rootReference.isContainment()) {
-			result.add("The root reference must be a single-valued "
-					+ "containment reference.");
-		}
-		return result;
+	@EdaptConstraint(restricts = "rootReference", description = "The root reference must be a single-valued containment reference.")
+	public boolean checkRootReferenceSingleValueContainment(
+			EReference rootReference) {
+		return !rootReference.isMany() && rootReference.isContainment();
 	}
 
 	/** {@description} */
@@ -45,38 +40,28 @@ public class FlattenHierarchy extends OperationBase {
 	public EReference childrenReference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "childrenReference")
-	public List<String> checkChildrenReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
+	@EdaptConstraint(restricts = "childrenReference", description = "The children reference must be defined by the node class.")
+	public boolean checkChildrenReferenceInNodeClass(EReference reference) {
 		EClass nodeClass = rootReference.getEReferenceType();
-		if (!nodeClass.getEStructuralFeatures().contains(reference)) {
-			result.add("The children reference must be "
-					+ "defined by the node class.");
-		}
-		return result;
+		return nodeClass.getEStructuralFeatures().contains(reference);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "childrenReference", description = "The children reference must be a multi-valued containment reference.")
+	public boolean checkChildrenReferenceManyValuedContainment(
+			EReference childrenReference) {
+		return childrenReference.isMany() && childrenReference.isContainment();
 	}
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference which replaces the containment hierarchy")
 	public String referenceName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		EClass nodeClass = rootReference.getEReferenceType();
-		if (childrenReference != null) {
-			if (!childrenReference.isMany()
-					|| !childrenReference.isContainment()) {
-				result.add("The children reference must be a "
-						+ "multi-valued containment reference.");
-			}
-			if (childrenReference.getEType() != nodeClass) {
-				result.add("The type of the children reference "
-						+ "must be the node class.");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The type of the children reference must be the node class.")
+	public boolean checkChildrenReferenceType() {
+		return childrenReference.getEType() == rootReference
+				.getEReferenceType();
 	}
 
 	/** {@inheritDoc} */

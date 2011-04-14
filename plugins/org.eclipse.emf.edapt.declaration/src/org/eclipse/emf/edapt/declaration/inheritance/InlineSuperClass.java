@@ -6,9 +6,9 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 53FD7B048C0E0377621030982A2DEF6F
+ * @levd.rating YELLOW Hash: 6E5AA872EFE3005C773993D2408C3884
  */
 @EdaptOperation(identifier = "inlineSuperClass", label = "Inline Super Class", description = "In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly.")
 public class InlineSuperClass extends OperationBase {
@@ -29,13 +29,9 @@ public class InlineSuperClass extends OperationBase {
 	public EClass superClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "superClass")
-	public List<String> checkSuperClass(EClass superClass) {
-		List<String> result = new ArrayList<String>();
-		if (MetamodelUtils.isConcrete(superClass)) {
-			result.add("The super class must be abstract");
-		}
-		return result;
+	@EdaptConstraint(restricts = "superClass", description = "The super class must be abstract")
+	public boolean checkSuperClassAbstract(EClass superClass) {
+		return !MetamodelUtils.isConcrete(superClass);
 	}
 
 	/** {@inheritDoc} */

@@ -1,16 +1,12 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: B91FE43712435F4F88DEE463B3D5AA13
+ * @levd.rating YELLOW Hash: A15083AFC2A0446591C25202F4E26E57
  */
 @EdaptOperation(identifier = "splitStringAttribute", label = "Split String Attribute", description = "In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression.")
 public class SplitStringAttribute extends OperationBase {
@@ -30,22 +26,23 @@ public class SplitStringAttribute extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The feature whose values are split")
 	public EAttribute toSplit;
+	
+	/** {@description} */
+	@EdaptConstraint(restricts = "toSplit", description = "The type of the attribute to split has to be String")
+	public boolean checkAttributeTypeString(EAttribute toSplit) {
+		return toSplit.getEType() == EcorePackage.Literals.ESTRING;
+	}
 
 	/** {@description} */
 	@EdaptParameter(description = "The class in which the new feature is created")
 	public EClass context;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "context")
-	public List<String> checkContext(EClass context, Metamodel metamodel) {
+	@EdaptConstraint(restricts = "context", description = "The class with the new attribute must be a subclass of the class with the attribute to be split")
+	public boolean checkContext(EClass context, Metamodel metamodel) {
 		EClass eClass = toSplit.getEContainingClass();
-		if (context != eClass
-				&& !metamodel.getEAllSubTypes(eClass).contains(context)) {
-			return Collections.singletonList("The class with the new "
-					+ "attribute must be a subclass of the class with "
-					+ "the attribute to be split");
-		}
-		return Collections.emptyList();
+		return context == eClass
+				|| metamodel.getEAllSubTypes(eClass).contains(context);
 	}
 
 	/** {@description} */
@@ -55,16 +52,6 @@ public class SplitStringAttribute extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The regular expression")
 	public String pattern;
-
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (toSplit.getEType() != EcorePackage.Literals.ESTRING) {
-			result.add("The type of the attribute to split has to be String");
-		}
-		return result;
-	}
 
 	/** {@inheritDoc} */
 	@Override

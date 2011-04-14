@@ -1,14 +1,10 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -20,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4D3CECED09F193D4FD2ECC35353C2202
+ * @levd.rating YELLOW Hash: CDD6B54D406523D32A12B3C04E9AC318
  */
 @Deprecated
 @EdaptOperation(identifier = "replaceFeature", label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.")
@@ -35,30 +31,24 @@ public class ReplaceFeature extends OperationBase {
 	public EStructuralFeature replaceBy;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "replaceBy")
-	public List<String> checkReplaceBy(EStructuralFeature replaceBy) {
+	@EdaptConstraint(restricts = "replaceBy", description = "The feature to replace "
+			+ "must be defined in a sub class of the one "
+			+ "with the feature by which it is replaced")
+	public boolean checkFeaturesInCompatibleClasses(EStructuralFeature replaceBy) {
 		EClass subClass = toReplace.getEContainingClass();
-		if (!subClass.getEAllStructuralFeatures().contains(replaceBy)) {
-			return Collections.singletonList("The feature to replace "
-					+ "must be defined in a sub class of the one "
-					+ "with the feature by which it is replaced");
-		}
-		return Collections.emptyList();
+		return subClass.getEAllStructuralFeatures().contains(replaceBy);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (replaceBy != null) {
-			if (toReplace.getEType() != replaceBy.getEType()) {
-				result.add("The features must be of the same type");
-			}
-			if (toReplace.isMany() != replaceBy.isMany()) {
-				result.add("The features must be of the same cardinality");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same cardinality")
+	public boolean checkFeaturesSameMultiplicity() {
+		return toReplace.isMany() == replaceBy.isMany();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same type")
+	public boolean checkFeaturesSameType() {
+		return toReplace.getEType() == replaceBy.getEType();
 	}
 
 	/** {@inheritDoc} */

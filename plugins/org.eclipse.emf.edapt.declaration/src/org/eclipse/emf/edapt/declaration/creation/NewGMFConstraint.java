@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D23A2473150ADEAA92C9E9ED43ACA5AD
+ * @levd.rating YELLOW Hash: F93A0FBE215E9B53F495776AF45032C6
  */
 @EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.")
 public class NewGMFConstraint extends OperationBase {

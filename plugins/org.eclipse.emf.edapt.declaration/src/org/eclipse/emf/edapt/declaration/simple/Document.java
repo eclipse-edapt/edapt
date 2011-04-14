@@ -1,15 +1,12 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -20,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DDB3F248A132B4B24DFC2E1C411FEE7F
+ * @levd.rating YELLOW Hash: 7C722F3D4C841EA9DF5C5B01740C0CF7
  */
 @EdaptOperation(identifier = "document", label = "Document Metamodel Element", description = "In the metamodel, a metamodel element is documented. Nothing is changed in the model.")
 public class Document extends OperationBase {
@@ -36,14 +33,9 @@ public class Document extends OperationBase {
 	public EModelElement element;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "element")
-	public List<String> checkElement(EModelElement element) {
-		if (element instanceof EAnnotation
-				|| element instanceof EStringToStringMapEntryImpl) {
-			return Collections
-					.singletonList("The element must not be an annotation.");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "element", description = "The element must not be an annotation.")
+	public boolean checkElement(EModelElement element) {
+		return (!(element instanceof EAnnotation) && !(element instanceof EStringToStringMapEntryImpl));
 	}
 
 	/** {@description} */

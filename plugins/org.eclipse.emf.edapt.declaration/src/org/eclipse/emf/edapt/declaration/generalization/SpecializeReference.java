@@ -1,14 +1,13 @@
 package org.eclipse.emf.edapt.declaration.generalization;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -20,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A6704A70D29E503D896F6BE32A080EF7
+ * @levd.rating YELLOW Hash: FF23F0F8E6A4C4E5F2C55B69B78431C6
  */
 @EdaptOperation(identifier = "specializeReference", label = "Specialize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed.")
 public class SpecializeReference extends OperationBase {
@@ -34,46 +33,33 @@ public class SpecializeReference extends OperationBase {
 	public EClass type;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "type")
-	public List<String> checkType(EClass type) {
-		if (type != reference.getEType()
-				&& !type.getEAllSuperTypes().contains(reference.getEType())) {
-			return Collections
-					.singletonList("The type must be the same or more special");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "type", description = "The type must be the same or more special")
+	public boolean checkType(EClass type) {
+		return reference.getEReferenceType().isSuperTypeOf(type);
 	}
 
 	/** {@description} */
 	@EdaptParameter(description = "The new lower bound of the reference")
-	public int lowerBound = -1;
+	public int lowerBound;
 
 	/** {@description} */
 	@EdaptParameter(description = "The new upper bound of the reference")
 	public int upperBound;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (lowerBound < reference.getLowerBound()
-				|| (upperBound > reference.getUpperBound() && reference
-						.getUpperBound() != -1)) {
-			result.add("The multiplicity must be the same or more special");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The multiplicity must be the same or more special")
+	public boolean checkReferenceMultiplicityRestricted() {
+		return lowerBound >= reference.getLowerBound()
+				&& (upperBound <= reference.getUpperBound() || reference
+						.getUpperBound() == -1);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
 		type = reference.getEReferenceType();
-		if (lowerBound == -1) {
-			lowerBound = reference.getLowerBound();
-		}
-		if (upperBound == 0) {
-			upperBound = reference.getUpperBound();
-		}
+		lowerBound = reference.getLowerBound();
+		upperBound = reference.getUpperBound();
 	}
 
 	/** {@inheritDoc} */

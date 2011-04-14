@@ -1,15 +1,13 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -20,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 88710860F858893E33856A0FD6675F98
+ * @levd.rating YELLOW Hash: A8E0D8B779A44ECE774579CC9CD348B9
  */
 @EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
 public class UseSuperClass extends OperationBase {
@@ -38,13 +36,9 @@ public class UseSuperClass extends OperationBase {
 	public List<EStructuralFeature> toReplace;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "toReplace")
-	public List<String> checkToReplace(EStructuralFeature toReplace) {
-		if (!subClass.getEStructuralFeatures().contains(toReplace)) {
-			return Collections.singletonList("The features to be "
-					+ "replaced must belong to the sub class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "toReplace", description = "The features to be replaced must belong to the sub class")
+	public boolean checkToReplaceInSubClass(EStructuralFeature toReplace) {
+		return subClass.getEStructuralFeatures().contains(toReplace);
 	}
 
 	/** {@description} */
@@ -52,33 +46,29 @@ public class UseSuperClass extends OperationBase {
 	public List<EStructuralFeature> replaceBy;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "replaceBy")
-	public List<String> checkReplaceBy(EStructuralFeature replaceBy) {
-		if (!superClass.getEAllStructuralFeatures().contains(replaceBy)) {
-			return Collections.singletonList("The features to replace "
-					+ "must be available in the super class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "replaceBy", description = "The features to replace must be available in the super class")
+	public boolean checkReplaceByInSuperClass(EStructuralFeature replaceBy) {
+		return superClass.getEAllStructuralFeatures().contains(replaceBy);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (toReplace.size() != replaceBy.size()) {
-			result.add("The number of features to be "
-					+ "replaced and to replace them must be the same");
-		} else {
-			if (!hasSameValue(toReplace, replaceBy,
-					EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {
-				result.add("The features must be of the same type");
-			}
-			if (!hasSameValue(toReplace, replaceBy,
-					EcorePackage.Literals.ETYPED_ELEMENT__MANY)) {
-				result.add("The features must be of the same multiplicity");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The number of features to be replaced and to replace them must be the same")
+	public boolean checkFeaturesSameSize() {
+		return toReplace.size() == replaceBy.size();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same multiplicity")
+	public boolean checkFeaturesSameMultiplicity() {
+		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
+				.getETypedElement_Many());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same type")
+	public boolean checkFeaturesSameType() {
+		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
+				.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */

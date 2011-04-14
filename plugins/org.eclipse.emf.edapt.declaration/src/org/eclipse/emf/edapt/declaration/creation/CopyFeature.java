@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BB672265AA506A1C0C8875B2FC75412D
+ * @levd.rating YELLOW Hash: C00D87F04BA89E08F4A6F5F338A225BB
  */
 @EdaptOperation(identifier = "copyFeature", label = "Copy Feature", description = "In the metamodel, a feature is copied, giving it a new name. In the model, the values are copied, accordingly.")
 public class CopyFeature extends OperationBase {

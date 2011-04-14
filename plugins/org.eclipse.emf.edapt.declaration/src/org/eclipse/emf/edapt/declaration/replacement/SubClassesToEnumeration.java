@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -22,7 +23,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DAE9180C71AFF0D7BC04276291959BB4
+ * @levd.rating YELLOW Hash: ED8FB04CDA70FBBD6E39E0161F282A58
  */
 @EdaptOperation(identifier = "subClassesToEnumeration", label = "Sub Classes to Enumeration", description = "In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal.")
 public class SubClassesToEnumeration extends OperationBase {
@@ -43,23 +44,27 @@ public class SubClassesToEnumeration extends OperationBase {
 	@EdaptParameter(description = "The name of the enumeration")
 	public String enumName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (MetamodelUtils.isConcrete(contextClass)) {
-			result.add("The context class must be abstract");
-		}
-		if (metamodel.getESubTypes(contextClass).isEmpty()) {
-			result.add("The context class must have sub types");
-		}
+	/** {@description} */
+	@EdaptConstraint(description = "The sub types must not have sub types again")
+	public boolean checkContextClassSubTypesNoSubTypes(Metamodel metamodel) {
 		for (EClass subClass : metamodel.getESubTypes(contextClass)) {
 			if (!metamodel.getESubTypes(subClass).isEmpty()) {
-				result.add("The sub types must not have sub types again");
-				break;
+				return false;
 			}
 		}
-		return result;
+		return true;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The context class must have sub types")
+	public boolean checkContextClassSubTypes(Metamodel metamodel) {
+		return !metamodel.getESubTypes(contextClass).isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The context class must be abstract")
+	public boolean checkContextClassAbstract() {
+		return !MetamodelUtils.isConcrete(contextClass);
 	}
 
 	/** {@inheritDoc} */

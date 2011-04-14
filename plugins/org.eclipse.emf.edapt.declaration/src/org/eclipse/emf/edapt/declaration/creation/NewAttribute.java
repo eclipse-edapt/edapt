@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 27F35ECA37C6A866C5CB34301BE094C7
+ * @levd.rating YELLOW Hash: 517525C715158E58A6DAC40EF436036E
  */
 @EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
 public class NewAttribute extends OperationBase {

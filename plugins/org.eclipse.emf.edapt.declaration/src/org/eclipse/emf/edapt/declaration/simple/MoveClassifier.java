@@ -1,10 +1,8 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -17,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A5219CEA6197749192E02C64AF634FD2
+ * @levd.rating YELLOW Hash: 8F3D023CD2B64571901452761ED2C644
  */
 @EdaptOperation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
 public class MoveClassifier extends OperationBase {
@@ -30,20 +28,17 @@ public class MoveClassifier extends OperationBase {
 	@EdaptParameter(description = "The package to which the classifier is moved")
 	public EPackage targetPackage;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (classifier.getEPackage() == targetPackage) {
-			result.add("The classifier must not be already "
-					+ "part of the target package");
-		}
-		if (targetPackage != null
-				&& targetPackage.getEClassifier(classifier.getName()) != null) {
-			result.add("A classifier with the same name "
-					+ "exists in the target package");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "A classifier with the same name exists in the target package")
+	public boolean checkUniqueClassifierNameInTargetPackage() {
+		return targetPackage == null
+				|| targetPackage.getEClassifier(classifier.getName()) == null;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The classifier must not be already part of the target package")
+	public boolean checkClassifierNotInTargetPackage() {
+		return classifier.getEPackage() != targetPackage;
 	}
 
 	/** {@inheritDoc} */

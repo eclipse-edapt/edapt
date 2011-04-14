@@ -1,12 +1,9 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -17,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1FC0DA6B5D76EB448371291010B943BB
+ * @levd.rating YELLOW Hash: 43DD741B001842847771F4B372603548
  */
 @EdaptOperation(identifier = "deletePackage", label = "Delete Package", description = "In the metamodel, an empty package is deleted.")
 public class DeletePackage extends OperationBase {
@@ -27,16 +24,15 @@ public class DeletePackage extends OperationBase {
 	public EPackage ePackage;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "ePackage")
-	public List<String> checkPackage(EPackage ePackage) {
-		List<String> result = new ArrayList<String>();
-		if (!ePackage.getEClassifiers().isEmpty()) {
-			result.add("The package must not contain classifiers");
-		}
-		if (!ePackage.getESubpackages().isEmpty()) {
-			result.add("The package must not contain subpackages");
-		}
-		return result;
+	@EdaptConstraint(restricts = "ePackage", description = "The package must not contain classifiers")
+	public boolean checkPackageNoClassifiers(EPackage ePackage) {
+		return ePackage.getEClassifiers().isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "ePackage", description = "The package must not contain subpackages")
+	public boolean checkPackageNoSubPackages(EPackage ePackage) {
+		return ePackage.getESubpackages().isEmpty();
 	}
 
 	/** {@inheritDoc} */

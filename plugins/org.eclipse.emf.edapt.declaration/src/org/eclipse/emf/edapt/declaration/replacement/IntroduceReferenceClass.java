@@ -1,19 +1,18 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -21,7 +20,7 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F9B991F21366773EF8BB3E047D3F73E8
+ * @levd.rating YELLOW Hash: E71E7AC82AC7F7E36DAE0EB4F6212578
  */
 @EdaptOperation(identifier = "introduceReferenceClass", label = "Association to Class", description = "In the metamodel, a reference is replaced by a reference class. More specifically, the reference class is now contained by the source class. In the model, links conforming to the reference are replaced by instances of the reference class.")
 public class IntroduceReferenceClass extends OperationBase {
@@ -42,26 +41,28 @@ public class IntroduceReferenceClass extends OperationBase {
 	@EdaptParameter(description = "The name of the opposite reference to the target class", optional = true)
 	public String targetReferenceName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (reference.isContainment()) {
-			result.add("Reference is not allowed to be containment");
-		}
-		EReference opposite = reference.getEOpposite();
-		if (opposite == null) {
-			result.add("Reference has to have an opposite");
-		} else if (opposite.isContainment()) {
-			result.add("Opposite reference is not allowed to be containment");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "Reference has to have an opposite")
+	public boolean checkReferenceOpposite() {
+		return reference.getEOpposite() != null;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "Opposite reference is not allowed to be containment")
+	public boolean checkOppositeNotContainment() {
+		return reference.getEOpposite() == null
+				|| !reference.getEOpposite().isContainment();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "Reference is not allowed to be containment")
+	public boolean checkReferenceNotContainment() {
+		return !reference.isContainment();
 	}
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
+	public void execute(Metamodel metamodel, Model model) {
 		// variables
 		EReference opposite = reference.getEOpposite();
 

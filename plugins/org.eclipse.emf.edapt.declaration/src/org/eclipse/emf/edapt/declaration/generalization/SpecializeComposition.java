@@ -1,15 +1,14 @@
 package org.eclipse.emf.edapt.declaration.generalization;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -21,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 8C7CDFC7A2E7320DCB5C75AE3C2525F5
+ * @levd.rating YELLOW Hash: 914FE818B573EEBFDCBD0E8B673105F1
  */
 @EdaptOperation(identifier = "specializeComposition", label = "Specialize Composition", description = "In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type.")
 public class SpecializeComposition extends OperationBase {
@@ -31,13 +30,9 @@ public class SpecializeComposition extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (!reference.isContainment()) {
-			result.add("The reference has to be a containment reference");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference has to be a containment reference")
+	public boolean checkReference(EReference reference) {
+		return reference.isContainment();
 	}
 
 	/** {@description} */

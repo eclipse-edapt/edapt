@@ -7,9 +7,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DEEC7FB54E39E282ACF504C4487F1027
+ * @levd.rating YELLOW Hash: C489B43D62EFCB4A06F40039AAFA7CD2
  */
 @EdaptOperation(identifier = "unfoldClass", label = "Unfold Class", description = "In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly.")
 public class UnfoldClass extends OperationBase {
@@ -31,31 +31,29 @@ public class UnfoldClass extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (reference.getEOpposite() != null) {
-			result.add("The reference must not have an opposite");
-		}
-		if (reference.isMany()) {
-			result.add("The multiplicity of the reference "
-					+ "must be single-valued");
-		}
-		if (!reference.isContainment()) {
-			result.add("The reference must be containment");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference must not have an opposite")
+	public boolean checkReference(EReference reference) {
+		return reference.getEOpposite() == null;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The multiplicity of the reference must be single-valued")
+	public boolean checkReferenceManyValued(EReference reference) {
+		return !reference.isMany();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The reference must be containment")
+	public boolean checkReferenceContainment(EReference reference) {
+		return reference.isContainment();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "reference", description = "The class to be unfolded must not have sub classes")
+	public boolean checkUnfoldedClassNoSubTypes(EReference reference,
+			Metamodel metamodel) {
 		EClass unfoldedClass = reference.getEReferenceType();
-		if (!metamodel.getESubTypes(unfoldedClass).isEmpty()) {
-			result.add("The class to be unfolded must not have sub classes");
-		}
-		return result;
+		return metamodel.getESubTypes(unfoldedClass).isEmpty();
 	}
 
 	/** {@inheritDoc} */

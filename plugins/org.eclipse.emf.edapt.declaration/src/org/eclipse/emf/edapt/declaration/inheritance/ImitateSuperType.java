@@ -1,16 +1,15 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 12692AF52BBEAEF904E4B1F5F7EC5C8F
+ * @levd.rating YELLOW Hash: 8E0378489288AA7E8C256C70F07C595C
  */
 @EdaptOperation(identifier = "imitateSuperType", label = "Unfold Superclass", description = "In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly.")
 public class ImitateSuperType extends OperationBase {
@@ -36,25 +35,16 @@ public class ImitateSuperType extends OperationBase {
 	public EClass superClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "superClass")
-	public List<String> checkSuperClass(EClass superClass) {
-		if (!subClass.getESuperTypes().contains(superClass)) {
-			return Collections.singletonList("The super class has "
-					+ "to be a super type of the sub class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "superClass", description = "The super class has to be a super type of the sub class")
+	public boolean checkSuperClass(EClass superClass) {
+		return subClass.getESuperTypes().contains(superClass);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!metamodel.getInverse(superClass,
-				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty()) {
-			return Collections.singletonList("The super class must "
-					+ "not be target of a reference");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The super class must not be target of a reference")
+	public boolean checkSuperClassNoReferenceTarget(Metamodel metamodel) {
+		return metamodel.getInverse(superClass,
+				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
 	}
 
 	/** {@inheritDoc} */

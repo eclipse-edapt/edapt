@@ -12,6 +12,7 @@
 package org.eclipse.emf.edapt.declaration;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -19,9 +20,6 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.declaration.DeclarationFactory;
-import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.Parameter;
 
 /**
  * Helper class to extract the declaration of an operation from its
@@ -41,8 +39,8 @@ public class OperationExtractor {
 	@SuppressWarnings("unchecked")
 	public Operation extractOperation(Class c) {
 
-		org.eclipse.emf.edapt.declaration.EdaptOperation operationAnnotation = (org.eclipse.emf.edapt.declaration.EdaptOperation) c
-				.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptOperation.class);
+		EdaptOperation operationAnnotation = (EdaptOperation) c
+				.getAnnotation(EdaptOperation.class);
 		if (operationAnnotation != null) {
 			Operation operation = DeclarationFactory.eINSTANCE
 					.createOperation();
@@ -58,6 +56,9 @@ public class OperationExtractor {
 			for (Field field : c.getFields()) {
 				addParameter(operation, field);
 			}
+			for (Method method : c.getMethods()) {
+				addConstraint(operation, method);
+			}
 			return operation;
 		}
 
@@ -69,8 +70,8 @@ public class OperationExtractor {
 	 */
 	@SuppressWarnings("unchecked")
 	private void addParameter(Operation operation, Field field) {
-		org.eclipse.emf.edapt.declaration.EdaptParameter parameterAnnotation = field
-				.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptParameter.class);
+		EdaptParameter parameterAnnotation = field
+				.getAnnotation(EdaptParameter.class);
 
 		if (parameterAnnotation != null) {
 			Parameter parameter = DeclarationFactory.eINSTANCE
@@ -119,6 +120,21 @@ public class OperationExtractor {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Add a constraint to the operation declaration based on a method of a
+	 * class.
+	 */
+	private void addConstraint(Operation operation, Method method) {
+		EdaptConstraint constraintAnnotation = method
+				.getAnnotation(EdaptConstraint.class);
+		
+		if(constraintAnnotation != null) {
+			Constraint constraint = DeclarationFactory.eINSTANCE.createConstraint();
+			constraint.setLabel(constraintAnnotation.description());
+			operation.getConstraints().add(constraint);
+		}
 	}
 
 }

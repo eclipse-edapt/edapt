@@ -1,7 +1,5 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -9,9 +7,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -23,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: B1D0C51FDB3BF4F2537AC3070A94AFF2
+ * @levd.rating YELLOW Hash: 1DEEF5603F0C1E810B6373984232FFBC
  */
 @EdaptOperation(identifier = "extractClass", label = "Extract Class", description = "In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")
 public class ExtractClass extends OperationBase {
@@ -37,13 +35,9 @@ public class ExtractClass extends OperationBase {
 	public List<EStructuralFeature> features;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "features")
-	public List<String> checkFeatures(EStructuralFeature feature) {
-		if (!contextClass.getEStructuralFeatures().contains(feature)) {
-			return Collections
-					.singletonList("The features have to belong to the same class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "features", description = "The features have to belong to the same class")
+	public boolean checkFeatures(EStructuralFeature feature) {
+		return contextClass.getEStructuralFeatures().contains(feature);
 	}
 
 	/** {@description} */
@@ -58,19 +52,18 @@ public class ExtractClass extends OperationBase {
 	@EdaptParameter(description = "The name of the new containment reference from context to extracted class")
 	public String referenceName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (ePackage.getEClassifier(className) != null) {
-			result.add("A classifier with the same name already exists");
-		}
+	/** {@description} */
+	@EdaptConstraint(description = "A classifier with the same name already exists")
+	public boolean checkUniqueClassifierName() {
+		return ePackage.getEClassifier(className) == null;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "A feature with the same name already exists")
+	public boolean checkUniqueFeatureName() {
 		EStructuralFeature feature = contextClass
 				.getEStructuralFeature(referenceName);
-		if (feature != null && !features.contains(feature)) {
-			result.add("A feature with the same name already exists");
-		}
-		return result;
+		return feature == null || features.contains(feature);
 	}
 
 	/** {@inheritDoc} */

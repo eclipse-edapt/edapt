@@ -1,6 +1,5 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -8,9 +7,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: AB19D61624C3FE4172A4D208B0E81B58
+ * @levd.rating YELLOW Hash: 2E292796E81B1441CE17A06D69EF33B1
  */
 @EdaptOperation(identifier = "extractAndGroupAttribute", label = "Extract and Group Attribute", description = "In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute.")
 public class ExtractAndGroupAttribute extends OperationBase {
@@ -30,15 +29,11 @@ public class ExtractAndGroupAttribute extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The attribute to be extracted")
 	public EAttribute extractedAttribute;
-	
+
 	/** {@description} */
-	@EdaptRestriction(parameter = "extractedAttribute")
-	public List<String> checkExtractedAttribute(EAttribute extractedAttribute) {
-		List<String> result = new ArrayList<String>();
-		if (extractedAttribute.isMany()) {
-			result.add("The extracted attribute must be single-valued");
-		}
-		return result;
+	@EdaptConstraint(restricts = "extractedAttribute", description = "The extracted attribute must be single-valued")
+	public boolean checkExtractedAttribute(EAttribute extractedAttribute) {
+		return !extractedAttribute.isMany();
 	}
 
 	/** {@description} */

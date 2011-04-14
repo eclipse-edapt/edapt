@@ -1,14 +1,11 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -20,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C7A1E773D125014A110A83B1EAD30D7E
+ * @levd.rating YELLOW Hash: 7C8DBDE26C9BC806DEEB8DAB6918F721
  */
 @Deprecated
 @EdaptOperation(identifier = "replaceClassBySibling", label = "Replace Class by Sibling", description = "In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class.")
@@ -33,36 +30,31 @@ public class ReplaceClassBySibling extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The class by which it is replaced")
 	public EClass replaceBy;
-	
+
 	/** {@description} */
-	@EdaptRestriction(parameter = "replaceBy")
-	public List<String> checkReplaceBy(EClass replaceBy) {
-		List<String> result = new ArrayList<String>();
-		if (replaceBy.getESuperTypes().size() != 1) {
-			result.add("The replacing class must have exactly one super class");
-		}
-		if (toReplace.getESuperTypes().size() > 0
-				&& replaceBy.getESuperTypes().size() > 0) {
-			if (toReplace.getESuperTypes().get(0) != replaceBy.getESuperTypes()
-					.get(0)) {
-				result.add("The super classes of "
-						+ "replaced and replacing class must be the same");
-			}
-		}
-		return result;
+	@EdaptConstraint(restricts = "replaceBy", description = "The replacing class must have exactly one super class")
+	public boolean checkReplaceBySingleSuperClass(EClass replaceBy) {
+		return replaceBy.getESuperTypes().size() == 1;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (toReplace.getESuperTypes().size() != 1) {
-			result.add("The replaced class must have exactly one super class");
-		}
-		if (!toReplace.getEStructuralFeatures().isEmpty()) {
-			result.add("The replaced class must not have any features");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(restricts = "replaceBy", description = "The super classes of "
+			+ "replaced and replacing class must be the same")
+	public boolean checkSameSuperClasses(EClass replaceBy) {
+		return toReplace.getESuperTypes().get(0) == replaceBy.getESuperTypes()
+				.get(0);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "toReplace", description = "The replaced class must not have any features")
+	public boolean checkToReplaceNoFeatures(EClass toReplace) {
+		return toReplace.getEStructuralFeatures().isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "toReplace", description = "The replaced class must have exactly one super class")
+	public boolean checkToReplaceSingleSuperClass(EClass toReplace) {
+		return toReplace.getESuperTypes().size() == 1;
 	}
 
 	/** {@inheritDoc} */

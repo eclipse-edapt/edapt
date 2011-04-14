@@ -1,13 +1,9 @@
 package org.eclipse.emf.edapt.declaration.generalization;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -18,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7C713F2982645977F9A51AF273861A95
+ * @levd.rating YELLOW Hash: 1D4697210CB3A586BE4FF1A84617B640
  */
 @EdaptOperation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
 public class SpecializeSuperType extends OperationBase {
@@ -32,28 +28,19 @@ public class SpecializeSuperType extends OperationBase {
 	public EClass toReplace;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "toReplace")
-	public List<String> checkToReplace(EClass toReplace) {
-		if (!replaceBy.getEAllSuperTypes().contains(toReplace)) {
-			return Collections.singletonList("The replacing super type must "
-					+ "be a sub type of the replaced super type");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "toReplace", description = "The super type to be replaced must be a super type of the class")
+	public boolean checkToReplaceSuperType(EClass toReplace) {
+		return eClass.getESuperTypes().contains(toReplace);
 	}
 
 	/** {@description} */
 	@EdaptParameter(description = "The sub class by which is replaced")
 	public EClass replaceBy;
-
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!eClass.getESuperTypes().contains(toReplace)) {
-			result.add("The super type to be replaced "
-					+ "must be a super type of the class");
-		}
-		return result;
+	
+	/** {@description} */
+	@EdaptConstraint(description = "The replacing super type must be a sub type of the replaced super type")
+	public boolean checkToReplaceSubType() {
+		return replaceBy.getEAllSuperTypes().contains(toReplace);
 	}
 
 	/** {@inheritDoc} */

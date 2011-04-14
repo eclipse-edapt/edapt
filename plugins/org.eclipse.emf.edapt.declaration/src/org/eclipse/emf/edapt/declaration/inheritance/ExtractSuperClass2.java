@@ -1,7 +1,6 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -9,9 +8,9 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1FF0213AB6CA208B39AA762AEB3BE9FF
+ * @levd.rating YELLOW Hash: E7AA504E8515FD437D2904529BE7777D
  */
 @EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
 public class ExtractSuperClass2 extends OperationBase {
@@ -52,47 +51,51 @@ public class ExtractSuperClass2 extends OperationBase {
 	public List<EClass> superSuperClasses = new ArrayList<EClass>();
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "superSuperClasses")
-	public List<String> checkSuperSuperClasses(EClass superSuperClass) {
+	@EdaptConstraint(restricts = "superSuperClasses", description = "The sub classes must have the super classes as common super classes")
+	public boolean checkSuperSuperClasses(EClass superSuperClass) {
 		for (EClass subClass : subClasses) {
 			if (!subClass.getESuperTypes().contains(superSuperClass)) {
-				return Collections.singletonList("The sub classes must "
-						+ "have the super classes as common super classes");
+				return false;
 			}
 		}
-		return Collections.emptyList();
+		return true;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!hasSameValue(toExtract, EcorePackage.eINSTANCE
-				.getETypedElement_EType())) {
-			result.add("The features' types have to be the same");
-		}
-		if (!hasSameValue(toExtract, EcorePackage.eINSTANCE
-				.getETypedElement_LowerBound())
-				|| !hasSameValue(toExtract, EcorePackage.eINSTANCE
-						.getETypedElement_UpperBound())) {
-			result.add("The features' multiplicities " + "have to be the same");
-		}
-		if (!isOfSameType(toExtract)) {
-			result.add("The features have "
-					+ "to be all attributes or references");
-		}
-		if (isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-				&& !hasSameValue(toExtract, EcorePackage.eINSTANCE
-						.getEReference_Containment())) {
-			result.add("The features have to "
-					+ "be all containment references or not");
-		}
-		if (isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-				&& !hasValue(toExtract, EcorePackage.eINSTANCE
-						.getEReference_EOpposite(), null)) {
-			result.add("The features must not have opposite references");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The features must not have opposite references")
+	public boolean checkSameOpposite() {
+		return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
+				|| hasValue(toExtract, EcorePackage.eINSTANCE
+						.getEReference_EOpposite(), null);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features have to be all containment references or not")
+	public boolean checkSameContainment() {
+		return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
+				|| hasSameValue(toExtract, EcorePackage.eINSTANCE
+						.getEReference_Containment());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features have to be all attributes or references")
+	public boolean checkSameClass() {
+		return isOfSameType(toExtract);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features' multiplicities have to be the same")
+	public boolean checkSameMultiplicity() {
+		EcorePackage mmm = EcorePackage.eINSTANCE;
+		return hasSameValue(toExtract, mmm.getETypedElement_LowerBound())
+				&& hasSameValue(toExtract, mmm.getETypedElement_UpperBound());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features' types have to be the same")
+	public boolean checkSameType() {
+		return hasSameValue(toExtract, EcorePackage.eINSTANCE
+				.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */

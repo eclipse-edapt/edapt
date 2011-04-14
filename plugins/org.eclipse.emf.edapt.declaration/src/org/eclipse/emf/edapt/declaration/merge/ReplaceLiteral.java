@@ -1,6 +1,5 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -8,9 +7,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A71A319FAA4F852391C02FE2A36121DF
+ * @levd.rating YELLOW Hash: EB606535E52A970731004DE5BF7C9C02
  */
 @EdaptOperation(identifier = "replaceLiteral", label = "Replace Literal", description = "In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly.")
 public class ReplaceLiteral extends OperationBase {
@@ -36,14 +35,9 @@ public class ReplaceLiteral extends OperationBase {
 	public EEnumLiteral replaceBy;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "replaceBy")
-	public List<String> checkReplaceBy(EEnumLiteral replaceBy) {
-		EEnum contextEnum = toReplace.getEEnum();
-		if (!contextEnum.getELiterals().contains(replaceBy)) {
-			return Collections.singletonList("The enum literal by which "
-					+ "it is replace must belong to the same enum.");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "replaceBy", description = "The enum literal by which it is replace must belong to the same enum.")
+	public boolean checkReplaceBy(EEnumLiteral replaceBy) {
+		return toReplace.getEEnum().getELiterals().contains(replaceBy);
 	}
 
 	/** {@inheritDoc} */

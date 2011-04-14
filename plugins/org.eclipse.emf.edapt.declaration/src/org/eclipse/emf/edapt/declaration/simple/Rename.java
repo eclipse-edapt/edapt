@@ -1,11 +1,9 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -18,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 84284E6E3C421B27D9D6E030AFA307A5
+ * @levd.rating YELLOW Hash: 5D2A8BDDCC5C14C8F2E1111F8B885F82
  */
 @EdaptOperation(identifier = "rename", label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
 public class Rename extends OperationBase {
@@ -31,23 +29,19 @@ public class Rename extends OperationBase {
 	@EdaptParameter(description = "The new name")
 	public String name;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+	/** {@description} */
+	@EdaptConstraint(description = "The name must not be already defined by the children of the element's parent.")
+	public boolean checkUniqueName() {
 		if (element.eContainer() != null) {
 			for (EObject sibling : element.eContainer().eContents()) {
 				if (sibling instanceof ENamedElement) {
 					if (((ENamedElement) sibling).getName().equals(name)) {
-						result.add("The name must not be "
-								+ "already defined by the children "
-								+ "of the element's parent.");
-						break;
+						return false;
 					}
 				}
 			}
 		}
-		return result;
+		return true;
 	}
 
 	/** {@inheritDoc} */

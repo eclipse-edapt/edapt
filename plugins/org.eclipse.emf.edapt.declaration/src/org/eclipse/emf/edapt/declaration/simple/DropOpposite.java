@@ -1,12 +1,9 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -17,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 171BF598904806296D52325A83B25A1B
+ * @levd.rating YELLOW Hash: 9E427A59B2DBAC45FC9DCDFBED27A462
  */
 @EdaptOperation(identifier = "dropOpposite", label = "Drop Opposite Relationship", description = "In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done.")
 public class DropOpposite extends OperationBase {
@@ -27,13 +24,9 @@ public class DropOpposite extends OperationBase {
 	public EReference reference;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (reference.getEOpposite() == null) {
-			result.add("Reference must have an opposite");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "Reference must have an opposite")
+	public boolean checkReferenceOpposite(EReference reference) {
+		return reference.getEOpposite() != null;
 	}
 
 	/** {@inheritDoc} */

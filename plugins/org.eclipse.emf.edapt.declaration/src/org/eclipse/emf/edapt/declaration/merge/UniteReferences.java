@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.TypeUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -21,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: CF12DA31D4CCED2A2581B224A04B1DFA
+ * @levd.rating YELLOW Hash: E3D0AC7477ADB3D53D0535C063E36728
  */
 @EdaptOperation(identifier = "uniteReferences", label = "Unite References", description = "In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly.")
 public class UniteReferences extends OperationBase {
@@ -34,21 +35,18 @@ public class UniteReferences extends OperationBase {
 	@EdaptParameter(description = "The name of the single reference which unites all the references")
 	public String unitedReferenceName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		EReference mainReference = references.get(0);
-		EClass contextClass = mainReference.getEContainingClass();
-		if (!contextClass.getEStructuralFeatures().containsAll(references)) {
-			result.add("The references have to belong to the same class");
-		}
-		if (!hasSameValue(references,
-				EcorePackage.Literals.EREFERENCE__CONTAINMENT)) {
-			result.add("The references must be all "
-					+ "either cross or containment references");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The references must be all either cross or containment references")
+	public boolean checkReferencesSameContainment() {
+		return hasSameValue(references,
+				EcorePackage.Literals.EREFERENCE__CONTAINMENT);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The references have to belong to the same class")
+	public boolean checkReferencesSameClass() {
+		return hasSameValue(references, EcorePackage.eINSTANCE
+				.getEStructuralFeature_EContainingClass());
 	}
 
 	/** {@inheritDoc} */

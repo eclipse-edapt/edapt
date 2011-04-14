@@ -1,14 +1,13 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -20,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 90E9AA0A98E4B5EA24B0D4ABA8A9B79E
+ * @levd.rating YELLOW Hash: 046CD39EE34F715E29C44ED0EF745586
  */
 @EdaptOperation(identifier = "dropContainment", label = "Drop Containment", description = "In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class.")
 public class DropContainment extends OperationBase {
@@ -28,15 +27,11 @@ public class DropContainment extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The reference whose containment is dropped")
 	public EReference reference;
-	
+
 	/** {@description} */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReference(EReference reference) {
-		List<String> result = new ArrayList<String>();
-		if (!reference.isContainment()) {
-			result.add("The reference must be containment");
-		}
-		return result;
+	@EdaptConstraint(restricts = "reference", description = "The reference must be containment")
+	public boolean checkReferenceContainment(EReference reference) {
+		return reference.isContainment();
 	}
 
 	/** {@description} */

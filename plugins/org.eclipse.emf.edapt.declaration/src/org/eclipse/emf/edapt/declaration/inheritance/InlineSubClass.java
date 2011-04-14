@@ -1,13 +1,10 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -19,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 694680BD230529BBFDCC6DA5044ABECD
+ * @levd.rating YELLOW Hash: A52F9B056FBFCA8C43DD94275B63D5BD
  */
 @EdaptOperation(identifier = "inlineSubClass", label = "Inline Sub Class", description = "In the metamodel, the sub class is deleted. In the model, all instances of this sub class are migrated to its super class.")
 public class InlineSubClass extends OperationBase {
@@ -29,24 +26,27 @@ public class InlineSubClass extends OperationBase {
 	public EClass subClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "subClass")
-	public List<String> checkSubClass(EClass subClass, Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!subClass.getESuperTypes().isEmpty()) {
-			EClass superClass = subClass.getESuperTypes().get(0);
-			if (subClass.getESuperTypes().size() != 1) {
-				result.add("The sub class must have exactly one super type");
-			} else if (!MetamodelUtils.isConcrete(superClass)) {
-				result.add("The super class must not be abstract");
-			}
-		}
-		if (!metamodel.getESubTypes(subClass).isEmpty()) {
-			result.add("The sub class must not have sub types");
-		}
-		if (!subClass.getEStructuralFeatures().isEmpty()) {
-			result.add("The sub class must not have features");
-		}
-		return result;
+	@EdaptConstraint(restricts = "subClass", description = "The super class must not be abstract")
+	public boolean checkSubClass(EClass subClass) {
+		return MetamodelUtils.isConcrete(subClass.getESuperTypes().get(0));
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "subClass", description = "The sub class must have exactly one super type")
+	public boolean checkSubClassSingleSuperType(EClass subClass) {
+		return subClass.getESuperTypes().size() == 1;
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "subClass", description = "The sub class must not have features")
+	public boolean checkSubClassNoFeatures(EClass subClass) {
+		return subClass.getEStructuralFeatures().isEmpty();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(restricts = "subClass", description = "The sub class must not have sub types")
+	public boolean checkSubClassNoSubTypes(EClass subClass, Metamodel metamodel) {
+		return metamodel.getESubTypes(subClass).isEmpty();
 	}
 
 	/** {@inheritDoc} */

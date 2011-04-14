@@ -1,7 +1,5 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
@@ -9,9 +7,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -23,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 07445202FC45211ED83C0892AD808CB7
+ * @levd.rating YELLOW Hash: E75C06FB024393BD7820D217AF98F4CE
  */
 @EdaptOperation(identifier = "replaceEnum", label = "Replace Enumeration", description = "In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals.")
 public class ReplaceEnum extends OperationBase {
@@ -41,13 +39,11 @@ public class ReplaceEnum extends OperationBase {
 	public List<EEnumLiteral> literalsToReplace;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "literalsToReplace")
-	public List<String> checkLiteralsToReplace(EEnumLiteral literalsToReplace) {
-		if (toReplace.getELiterals().contains(literalsToReplace)) {
-			return Collections.singletonList("The replaced literals must "
-					+ "belong to the replaced enumeration");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "literalsToReplace", description = "The replaced literals must "
+			+ "belong to the replaced enumeration")
+	public boolean checkLiteralsToReplaceCommonEnumeration(
+			EEnumLiteral literalsToReplace) {
+		return !toReplace.getELiterals().contains(literalsToReplace);
 	}
 
 	/** {@description} */
@@ -55,24 +51,16 @@ public class ReplaceEnum extends OperationBase {
 	public List<EEnumLiteral> literalsReplaceBy;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "literalsReplaceBy")
-	public List<String> checkLiteralsReplaceBy(EEnumLiteral literalsReplaceBy) {
-		if (!replaceBy.getELiterals().contains(literalsReplaceBy)) {
-			return Collections.singletonList("The replacing literals must "
-					+ "belong to the replacing enumeration");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "literalsReplaceBy", description = "The replacing literals must "
+			+ "belong to the replacing enumeration")
+	public boolean checkLiteralsReplaceBy(EEnumLiteral literalsReplaceBy) {
+		return replaceBy.getELiterals().contains(literalsReplaceBy);
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (literalsReplaceBy.size() != literalsToReplace.size()) {
-			result.add("The replacing and replaced "
-					+ "literals must be of the same size");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The replacing and replaced literals must be of the same size")
+	public boolean checkLiteralsSameSize() {
+		return literalsReplaceBy.size() == literalsToReplace.size();
 	}
 
 	/** {@inheritDoc} */

@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7CFC49448C97DE1926EE2865412F2227
+ * @levd.rating YELLOW Hash: EE5F81A63677A52680C550BE89180AA4
  */
 @EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
 public class NewClass extends OperationBase {

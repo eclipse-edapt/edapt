@@ -1,13 +1,10 @@
 package org.eclipse.emf.edapt.declaration.simple;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -19,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 61BC289859929255248F86C8C293B417
+ * @levd.rating YELLOW Hash: 9309E2FB52389ED9860D69A9A4B3DFAA
  */
 @EdaptOperation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
 public class MakeFeatureVolatile extends OperationBase {
@@ -29,13 +26,9 @@ public class MakeFeatureVolatile extends OperationBase {
 	public EStructuralFeature feature;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "feature")
-	public List<String> checkFeature(EStructuralFeature feature) {
-		List<String> result = new ArrayList<String>();
-		if (feature.isVolatile()) {
-			result.add("Feature must not be volatile");
-		}
-		return result;
+	@EdaptConstraint(restricts = "feature", description = "Feature must not be volatile")
+	public boolean checkFeatureNotVolatile(EStructuralFeature feature) {
+		return !feature.isVolatile();
 	}
 
 	/** {@description} */

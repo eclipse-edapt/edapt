@@ -1,16 +1,14 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.declaration.generalization.GeneralizeReference;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: ECCF7A2562AF3A30C591E50465C90AD0
+ * @levd.rating YELLOW Hash: 4B63C18EC4A67E456372717B1C22EB34
  */
 @EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationBase {
@@ -36,43 +34,46 @@ public class PullFeature extends OperationBase {
 	public EClass targetClass;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "targetClass")
-	public List<String> checkTargetClass(EClass targetClass) {
+	@EdaptConstraint(restricts = "targetClass", description = "The features' classes must have a common super type")
+	public boolean checkTargetClassCommonSuperType(EClass targetClass) {
 		for (EStructuralFeature feature : features) {
 			if (!feature.getEContainingClass().getESuperTypes().contains(
 					targetClass)) {
-				return Collections.singletonList("The features' classes "
-						+ "must have a common super type");
+				return false;
 			}
 		}
-		return Collections.emptyList();
+		return true;
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!hasSameValue(features, EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {
-			result.add("The features' types have to be the same");
-		}
-		if (!hasSameValue(features,
-				EcorePackage.Literals.ETYPED_ELEMENT__LOWER_BOUND)
-				|| !hasSameValue(features,
-						EcorePackage.Literals.ETYPED_ELEMENT__UPPER_BOUND)) {
-			result.add("The features' multiplicities have to be the same");
-		}
-		if (isOfType(features, EcorePackage.Literals.EREFERENCE)) {
-			if (!hasSameValue(features,
-					EcorePackage.Literals.EREFERENCE__CONTAINMENT)) {
-				result.add("The features have to be "
-						+ "all containment references or not");
-			}
-			if (!hasValue(features,
-					EcorePackage.Literals.EREFERENCE__EOPPOSITE, null)) {
-				result.add("The features must not have opposite references");
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The features must not have opposite references")
+	public boolean checkReferencesOpposite() {
+		EcorePackage mmm = EcorePackage.eINSTANCE;
+		return !isOfType(features, mmm.getEReference())
+				|| hasValue(features, mmm.getEReference_EOpposite(), null);
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features have to be all containment references or not")
+	public boolean checkReferencesContainment() {
+		EcorePackage mmm = EcorePackage.eINSTANCE;
+		return !isOfType(features, mmm.getEReference())
+				|| hasSameValue(features, mmm.getEReference_Containment());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features' multiplicities have to be the same")
+	public boolean checkFeaturesSameMultiplicity() {
+		EcorePackage mmm = EcorePackage.eINSTANCE;
+		return hasSameValue(features, mmm.getETypedElement_LowerBound())
+				&& hasSameValue(features, mmm.getETypedElement_UpperBound());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features' types have to be the same")
+	public boolean checkFeaturesSameType() {
+		return hasSameValue(features,
+				EcorePackage.Literals.ETYPED_ELEMENT__ETYPE);
 	}
 
 	/** {@inheritDoc} */

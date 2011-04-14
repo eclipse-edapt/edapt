@@ -1,13 +1,9 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -18,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 8AC258749B2910757219681FDA26C88C
+ * @levd.rating YELLOW Hash: A70CBEA22B2D0A3816E741782ADBF624
  */
 @EdaptOperation(identifier = "volatileToOpposite", label = "Volatile to Opposite Reference", description = "In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set.")
 public class VolatileToOpposite extends OperationBase {
@@ -30,33 +26,29 @@ public class VolatileToOpposite extends OperationBase {
 	/** {@description} */
 	@EdaptParameter(description = "The reference which is going to be the opposite")
 	public EReference opposite;
-	
+
 	/** {@description} */
-	@EdaptRestriction(parameter = "opposite")
-	public List<String> checkOpposite(EReference opposite) {
-		if (reference.getEType() != opposite.getEContainingClass()
-				|| reference.getEContainingClass() != opposite.getEType()) {
-			return Collections.singletonList("Reference and opposite "
-					+ "must be compatible with each other");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "opposite", description = "Reference and opposite "
+			+ "must be compatible with each other")
+	public boolean checkOppositeCompatible(EReference opposite) {
+		return reference.getEType() == opposite.getEContainingClass()
+				&& reference.getEContainingClass() == opposite.getEType();
 	}
 
 	/** {@description} */
 	@EdaptParameter(description = "Whether the reference is going to be changeable")
 	public Boolean changeable = true;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (reference.getEOpposite() != null) {
-			result.add("Reference must not already have an opposite");
-		}
-		if (!reference.isVolatile()) {
-			result.add("Reference must be volatile");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "Reference must be volatile")
+	public boolean checkReferenceVolatile() {
+		return reference.isVolatile();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "Reference must not already have an opposite")
+	public boolean checkReferenceNoOpposite() {
+		return reference.getEOpposite() == null;
 	}
 
 	/** {@inheritDoc} */

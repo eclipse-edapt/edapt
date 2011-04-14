@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: CEAD8EA0392233119D11244476976DE7
+ * @levd.rating YELLOW Hash: DE2DF20BB72CE45B8F3D558998C097DA
  */
 @Deprecated
 @EdaptOperation(identifier = "deleteFeature", label = "Delete Feature", description = "In the metamodel, a feature is deleted. In the model, its values are deleted, too.")

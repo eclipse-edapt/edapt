@@ -1,11 +1,10 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationBase;
@@ -18,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 98B388D3FE09A19828F4551B7312E6C2
+ * @levd.rating YELLOW Hash: D92E04CFE2E89F29E8C5405C1CA3D22A
  */
 @EdaptOperation(identifier = "suppressedSetVisibilityToNotChangeable", label = "Suppressed Set Visibility to Not Changeable", description = "In the metamodel, the setter of a reference is made visible again, and at the same time it is made non-changeable. Nothing is changed in the model.")
 public class SuppressedSetVisibilityToNotChangeable extends OperationBase {
@@ -27,14 +26,10 @@ public class SuppressedSetVisibilityToNotChangeable extends OperationBase {
 	@EdaptParameter(description = "The reference whose setter is made visible again")
 	public EReference reference;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (getAnnotation() == null) {
-			result.add("Suppressed Set Visibility must be present");
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "Suppressed Set Visibility must be present")
+	public boolean checkSuppressedSetVisibilityNotPresent() {
+		return getAnnotation() != null;
 	}
 
 	/** {@inheritDoc} */

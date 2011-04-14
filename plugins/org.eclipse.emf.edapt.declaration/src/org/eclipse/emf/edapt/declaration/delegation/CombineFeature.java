@@ -1,15 +1,14 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -21,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1461A20889B02B650804F895245EB12B
+ * @levd.rating YELLOW Hash: D85998CAAB81D60A557B0F7BCA777A88
  */
 @EdaptOperation(identifier = "combineFeature", label = "Combine Features over References", description = "In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly.")
 public class CombineFeature extends OperationBase {
@@ -34,39 +33,28 @@ public class CombineFeature extends OperationBase {
 	@EdaptParameter(description = "The references over which the features are moved (in the same order)")
 	public List<EReference> references;
 
-	/** Check whether a reference is allowed. */
-	@EdaptRestriction(parameter = "reference")
-	public List<String> checkReferences(EReference reference) {
-		return Collections.emptyList();
+	/** {@description} */
+	@EdaptConstraint(description = "All references must have the same class as type")
+	public boolean checkReferenceSameType() {
+		return hasSameValue(references, EcorePackage.eINSTANCE.getETypedElement_EType());
 	}
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (!references.isEmpty()) {
-			EClass eClass = references.get(0).getEReferenceType();
-			for (EReference reference : references) {
-				if (reference.getEType() != eClass) {
-					result
-							.add("All references must have the same class as type");
-					break;
-				}
-			}
-		}
-		if (features.size() != references.size()) {
-			result.add("There must be an equal number "
-					+ "of features and references");
-		}
+	/** {@description} */
+	@EdaptConstraint(description = "There must be an equal number of features and references")
+	public boolean checkFeatureSize() {
+		return features.size() == references.size();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "Each feature has to belong to its reference's class")
+	public boolean checkFeatureParent() {
 		for (EReference reference : references) {
 			if (reference.getEContainingClass() != features.get(
 					references.indexOf(reference)).getEContainingClass()) {
-				result.add("Each feature has to belong "
-						+ "to its reference's class");
-				break;
+				return false;
 			}
 		}
-		return result;
+		return true;
 	}
 
 	/** {@inheritDoc} */

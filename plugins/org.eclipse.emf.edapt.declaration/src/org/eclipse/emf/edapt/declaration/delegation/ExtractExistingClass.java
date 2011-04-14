@@ -1,16 +1,15 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: ACA67F3B97716E068D6B5D96F9F0C39C
+ * @levd.rating YELLOW Hash: 9081661C521688FAF6F722C2ABF50B0C
  */
 @EdaptOperation(identifier = "extractExistingClass", label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
 public class ExtractExistingClass extends OperationBase {
@@ -40,39 +39,33 @@ public class ExtractExistingClass extends OperationBase {
 	public List<EStructuralFeature> replaceBy;
 
 	/** {@description} */
-	@EdaptRestriction(parameter = "replaceBy")
-	public List<String> checkReplaceBy(EStructuralFeature feature) {
-		if (!extractedClass.getEAllStructuralFeatures().contains(feature)) {
-			return Collections
-					.singletonList("The features to replace must be defined in the extracted class");
-		}
-		return Collections.emptyList();
+	@EdaptConstraint(restricts = "replaceBy", description = "The features to replace must be defined in the extracted class")
+	public boolean checkReplaceBy(EStructuralFeature feature) {
+		return extractedClass.getEAllStructuralFeatures().contains(feature);
 	}
 
 	/** {@description} */
 	@EdaptParameter(description = "The name of the containment reference")
 	public String referenceName;
 
-	/** {@inheritDoc} */
-	@Override
-	public List<String> checkCustomPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		if (toReplace.size() != replaceBy.size()) {
-			result.add("The replaced and replacing "
-					+ "features must be of the same size");
-		} else {
-			for (EStructuralFeature source : toReplace) {
-				EStructuralFeature target = replaceBy.get(toReplace
-						.indexOf(source));
-				if (source.getEType() != target.getEType()) {
-					result.add("The features must be of the same type");
-				}
-				if (source.isMany() != target.isMany()) {
-					result.add("The features must be of the same multiplicity");
-				}
-			}
-		}
-		return result;
+	/** {@description} */
+	@EdaptConstraint(description = "The replaced and replacing features must be of the same size")
+	public boolean checkFeaturesSize() {
+		return toReplace.size() == replaceBy.size();
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same type")
+	public boolean checkFeaturesSameType() {
+		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
+				.getETypedElement_EType());
+	}
+
+	/** {@description} */
+	@EdaptConstraint(description = "The features must be of the same multiplicity")
+	public boolean checkFeaturesSameMultiplicity() {
+		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
+				.getETypedElement_Many());
 	}
 
 	/** {@inheritDoc} */

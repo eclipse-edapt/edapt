@@ -12,11 +12,10 @@
 package org.eclipse.emf.edapt.declaration;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -47,18 +46,16 @@ public abstract class OperationBase {
 	public final List<String> checkPreconditions(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
 		result.addAll(checkRequiredParameters());
-		result.addAll(checkRestrictions(metamodel));
-		result.addAll(checkCustomPreconditions(metamodel));
+		result.addAll(checkConstraints(metamodel));
 		return result;
 	}
 
-	/** Check whether a required parameter is set. */
+	/** Check whether all required parameters are set. */
 	@SuppressWarnings("unchecked")
 	private Collection<? extends String> checkRequiredParameters() {
 		List<String> result = new ArrayList<String>();
 		for (Field field : getClass().getFields()) {
-			org.eclipse.emf.edapt.declaration.EdaptParameter p = field
-					.getAnnotation(org.eclipse.emf.edapt.declaration.EdaptParameter.class);
+			EdaptParameter p = field.getAnnotation(EdaptParameter.class);
 
 			if (p != null && !p.optional()) {
 				try {
@@ -83,85 +80,118 @@ public abstract class OperationBase {
 		return result;
 	}
 
-	/** Check the parameter restrictions of the operation. */
-	private List<String> checkRestrictions(Metamodel metamodel) {
+	/** Check whether all defined constraints are fulfilled. */
+	private List<String> checkConstraints(Metamodel metamodel) {
 		List<String> result = new ArrayList<String>();
 		for (Method method : getClass().getMethods()) {
-			try {
-				EdaptRestriction restriction = method
-						.getAnnotation(EdaptRestriction.class);
-				if (restriction != null) {
-					String parameterName = restriction.parameter();
-					checkRestriction(metamodel, method, parameterName, result);
+			EdaptConstraint constraint = method
+					.getAnnotation(EdaptConstraint.class);
+			if (constraint != null) {
+				if (constraint.restricts().length() > 0) {
+					checkRestriction(method, constraint, metamodel, result);
+				} else {
+					invokeMethodAndAddResult(method, constraint, metamodel,
+							result);
 				}
-			} catch (Exception e) {
-				// if we ignore all exceptions, then we are on the safe side.
 			}
 		}
 		return result;
 	}
 
-	/** Invoke a restriction method an add the result to a list. */
+	/** Check whether a restriction on a parameter value is fulfilled. */
 	@SuppressWarnings("unchecked")
-	private void invokeRestrictionAndAddResult(Method method, Object value,
-			Metamodel metamodel, List<String> result)
-			throws IllegalArgumentException, IllegalAccessException,
-			InvocationTargetException {
-		Class<?>[] parameterTypes = method.getParameterTypes();
-		List<String> messages = new ArrayList<String>();
-		if (parameterTypes.length > 1) {
-			messages = (List<String>) method.invoke(this, value, metamodel);
-		} else {
-			messages = (List<String>) method.invoke(this, value);
-		}
-		for (String message : messages) {
-			if (!result.contains(message)) {
-				result.add(message);
-			}
-		}
-	}
-
-	public List<String> checkRestriction(Metamodel metamodel,
-			String parameterName) {
-		List<String> result = new ArrayList<String>();
-		for (Method method : getClass().getMethods()) {
-			try {
-				EdaptRestriction restriction = method
-						.getAnnotation(EdaptRestriction.class);
-				if (restriction != null) {
-					if (parameterName.equals(restriction.parameter())) {
-						checkRestriction(metamodel, method, parameterName,
-								result);
-					}
-				}
-			} catch (Exception e) {
-				// if we ignore all exceptions, then we are on the safe side.
-			}
-		}
-		return result;
-	}
-
-	private void checkRestriction(Metamodel metamodel, Method method,
-			String parameterName, List<String> result)
-			throws NoSuchFieldException, IllegalAccessException,
-			InvocationTargetException {
-		Field field = getClass().getField(parameterName);
-		Object value = field.get(this);
-		if (value != null) {
+	private void checkRestriction(Method method, EdaptConstraint constraint,
+			Metamodel metamodel, List<String> result) {
+		try {
+			Field field = getClass().getField(constraint.restricts());
+			Object value = field.get(this);
 			if (field.getType() == List.class) {
 				for (Object v : (List) value) {
-					invokeRestrictionAndAddResult(method, v, metamodel, result);
+					if (invokeMethodAndAddResult(method, constraint, metamodel,
+							result, v)) {
+						break;
+					}
 				}
 			} else {
-				invokeRestrictionAndAddResult(method, value, metamodel, result);
+				invokeMethodAndAddResult(method, constraint, metamodel, result,
+						value);
 			}
+		} catch (Exception e) {
+			// if we ignore all exceptions, then we are on the safe side.
 		}
 	}
 
-	/** Check custom preconditions of the operation. */
-	protected List<String> checkCustomPreconditions(
-			@SuppressWarnings("unused") Metamodel metamodel) {
-		return Collections.emptyList();
+	/**
+	 * Invoke a constraint method with a number of parameters and add the
+	 * message to the result if the constraint is not fulfilled.
+	 */
+	private boolean invokeMethodAndAddResult(Method method,
+			EdaptConstraint constraint, Metamodel metamodel,
+			List<String> result, Object... parameters) {
+		try {
+			boolean fulfilled = true;
+			if (method.getParameterTypes().length > parameters.length) {
+				parameters = Arrays.copyOf(parameters, parameters.length + 1);
+				parameters[parameters.length - 1] = metamodel;
+				fulfilled = (Boolean) method.invoke(this, parameters);
+			} else {
+				fulfilled = (Boolean) method.invoke(this, parameters);
+			}
+
+			if (!fulfilled) {
+				result.add(constraint.description());
+				return true;
+			}
+		} catch (Exception e) {
+			// if we ignore all exceptions, then we are on the safe side.
+		}
+		return false;
+	}
+
+	/** Check whether all restrictions on a certain parameter are fulfilled. */
+	public List<String> checkRestriction(String parameterName,
+			Metamodel metamodel) {
+		List<String> result = new ArrayList<String>();
+		for (Method method : getRestrictions(parameterName)) {
+			try {
+				EdaptConstraint constraint = method
+						.getAnnotation(EdaptConstraint.class);
+				checkRestriction(method, constraint, metamodel, result);
+			} catch (Exception e) {
+				// if we ignore all exceptions, then we are on the safe side.
+			}
+		}
+		return result;
+	}
+
+	/** Get the restriction methods for a certain parameter. */
+	private List<Method> getRestrictions(String parameterName) {
+		List<Method> restrictions = new ArrayList<Method>();
+		for (Method method : getClass().getMethods()) {
+			EdaptConstraint constraint = method
+					.getAnnotation(EdaptConstraint.class);
+			if (constraint != null
+					&& parameterName.equals(constraint.restricts())) {
+				restrictions.add(method);
+			}
+		}
+		return restrictions;
+	}
+
+	/**
+	 * Check whether all restrictions on a certain parameter value are fulfilled
+	 * for a certain value.
+	 */
+	public List<String> checkRestriction(String parameterName, Object value,
+			Metamodel metamodel) {
+		List<String> result = new ArrayList<String>();
+		for (Method method : getRestrictions(parameterName)) {
+			EdaptConstraint constraint = method
+					.getAnnotation(EdaptConstraint.class);
+			invokeMethodAndAddResult(method, constraint, metamodel, result,
+					value);
+		}
+		return result;
 	}
 
 	/** Initialize the parameters of the operation. */
@@ -169,6 +199,11 @@ public abstract class OperationBase {
 		// to be implemented by subclasses
 	}
 
+	/**
+	 * Remove the value of a feature and in case of a containment reference
+	 * delete the value from the model.
+	 */
+	@SuppressWarnings("unchecked")
 	protected void deleteFeatureValue(Instance instance,
 			EStructuralFeature feature) {
 		Object value = instance.unset(feature);
@@ -186,6 +221,10 @@ public abstract class OperationBase {
 		}
 	}
 
+	/**
+	 * Check whether a list of elements has the same value for a certain
+	 * feature.
+	 */
 	protected boolean hasSameValue(List<? extends EObject> elements,
 			EStructuralFeature feature) {
 		if (elements.isEmpty()) {
@@ -195,6 +234,10 @@ public abstract class OperationBase {
 		return hasValue(elements, feature, referenceValue);
 	}
 
+	/**
+	 * Check whether a list of elements has a certain value for a certain
+	 * feature.
+	 */
 	protected boolean hasValue(List<? extends EObject> elements,
 			EStructuralFeature feature, Object referenceValue) {
 		for (EObject element : elements) {
@@ -206,6 +249,7 @@ public abstract class OperationBase {
 		return true;
 	}
 
+	/** Check whether two values are the same. */
 	private boolean isSame(Object referenceValue, Object value) {
 		if (referenceValue != value) {
 			if (referenceValue == null || value == null) {
@@ -217,6 +261,7 @@ public abstract class OperationBase {
 		return true;
 	}
 
+	/** Check whether a list of elements is of a certain type. */
 	protected boolean isOfType(List<? extends EObject> elements, EClass eClass) {
 		for (EObject element : elements) {
 			if (element.eClass() != eClass) {
@@ -225,14 +270,20 @@ public abstract class OperationBase {
 		}
 		return true;
 	}
-	
+
+	/** Check whether a list of elements has the same type. */
 	protected boolean isOfSameType(List<? extends EObject> elements) {
-		if(elements.isEmpty()) {
+		if (elements.isEmpty()) {
 			return true;
 		}
 		return isOfType(elements, elements.get(0).eClass());
 	}
 
+	/**
+	 * Check whether for two lists of elements the value of a feature of an
+	 * element in one list is the same than the value of a feature of the
+	 * element at the same index position in the other list.
+	 */
 	protected boolean hasSameValue(List<? extends EObject> first,
 			List<? extends EObject> second, EStructuralFeature feature) {
 		if (first.size() != second.size()) {
