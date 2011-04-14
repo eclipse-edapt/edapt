@@ -104,15 +104,19 @@ public class OperationInstanceHelper {
 		return result;
 	}
 
+	/**
+	 * Check whether an operation is applicable based on the main parameter
+	 * restrictions.
+	 */
 	private boolean isApplicable(OperationInstance operationInstance) {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(getExtent());
 		OperationBase operationBase = OperationInstanceConverter.convert(
 				operationInstance, repository.getMetamodel());
 
-		List<String> messages = operationBase.checkRestriction(repository
-				.getMetamodel(), operationInstance.getOperation()
-				.getMainParameter().getName());
+		List<String> messages = operationBase.checkRestriction(
+				operationInstance.getOperation().getMainParameter().getName(),
+				repository.getMetamodel());
 
 		OperationInstanceConverter.convert(operationBase, operationInstance);
 

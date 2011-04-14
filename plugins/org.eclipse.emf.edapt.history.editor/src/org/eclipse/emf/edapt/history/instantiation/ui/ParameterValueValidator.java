@@ -1,18 +1,15 @@
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
-import java.lang.reflect.Method;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ui.IValueValidator;
-import org.eclipse.emf.edapt.declaration.EdaptRestriction;
 import org.eclipse.emf.edapt.declaration.OperationBase;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
+import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
 
 /**
@@ -25,70 +22,42 @@ import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
  */
 public class ParameterValueValidator implements IValueValidator {
 
+	/** The parameter whose possible values should be restricted. */
 	private final ParameterInstance parameterInstance;
 
-	private final MetamodelExtent extent;
-
-	private final Method method;
-
+	/**
+	 * The operation implementation based on which the parameters can be
+	 * restricted.
+	 */
 	private final OperationBase operationBase;
 
-	/**
-	 * Constructor
-	 */
+	/** The current metamodel. */
+	private final Metamodel metamodel;
+
+	/** Constructor. */
 	public ParameterValueValidator(ParameterInstance parameterInstance,
 			MetamodelExtent extent) {
 		this.parameterInstance = parameterInstance;
-		this.extent = extent;
 
+		metamodel = OperationInstanceConverter.createEmptyRepository(extent)
+				.getMetamodel();
 		operationBase = OperationInstanceConverter.convert(
-				(OperationInstance) parameterInstance.eContainer(),
-				OperationInstanceConverter.createEmptyRepository(extent)
-						.getMetamodel());
-		method = getRestriction();
+				(OperationInstance) parameterInstance.eContainer(), metamodel);
 	}
 
-	private Method getRestriction() {
-		for (Method method : operationBase.getClass().getMethods()) {
-			EdaptRestriction restriction = method.getAnnotation(EdaptRestriction.class);
-			if (restriction != null) {
-				if (parameterInstance.getName().equals(restriction.parameter())) {
-					return method;
-				}
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public boolean isPossibleValue(Object element) {
 		if (element instanceof EClass
 				&& ((EClass) element).getEPackage() == EcorePackage.eINSTANCE) {
 			return false;
 		}
 
-		try {
-			if (method != null) {
-				return ((List) method.invoke(operationBase, element)).isEmpty();
-			}
-		} catch (Exception e) {
-
+		if (parameterInstance.getParameter().getClassifier()
+				.isInstance(element)) {
+			List<String> messages = operationBase.checkRestriction(
+					parameterInstance.getName(), element, metamodel);
+			return messages.isEmpty();
 		}
-		return parameterInstance.getParameter().getClassifier().isInstance(
-				element);
-	}
-
-	private Class getClass(EClassifier eClassifier) {
-		if (eClassifier.getInstanceClass() != null) {
-			return eClassifier.getInstanceClass();
-		}
-		try {
-			return HistoryEditorPlugin.getPlugin().getBundle().loadClass(
-					"org.eclipse.emf.ecore." + eClassifier.getName());
-		} catch (Exception e) {
-			return null;
-		}
+		return false;
 	}
 }
