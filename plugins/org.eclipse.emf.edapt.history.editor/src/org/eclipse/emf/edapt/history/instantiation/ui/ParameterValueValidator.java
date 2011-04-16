@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ui.IValueValidator;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -29,7 +29,7 @@ public class ParameterValueValidator implements IValueValidator {
 	 * The operation implementation based on which the parameters can be
 	 * restricted.
 	 */
-	private final OperationBase operationBase;
+	private final OperationImplementation operationBase;
 
 	/** The current metamodel. */
 	private final Metamodel metamodel;

@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.Parameter;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.OperationInstance;
@@ -111,7 +111,7 @@ public class OperationInstanceHelper {
 	private boolean isApplicable(OperationInstance operationInstance) {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(getExtent());
-		OperationBase operationBase = OperationInstanceConverter.convert(
+		OperationImplementation operationBase = OperationInstanceConverter.convert(
 				operationInstance, repository.getMetamodel());
 
 		List<String> messages = operationBase.checkRestriction(
@@ -172,7 +172,7 @@ public class OperationInstanceHelper {
 			OperationInstance operationInstance) {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(getExtent());
-		OperationBase operationBase = OperationInstanceConverter.convert(
+		OperationImplementation operationBase = OperationInstanceConverter.convert(
 				operationInstance, repository.getMetamodel());
 		List<String> messages = operationBase.checkPreconditions(repository
 				.getMetamodel());

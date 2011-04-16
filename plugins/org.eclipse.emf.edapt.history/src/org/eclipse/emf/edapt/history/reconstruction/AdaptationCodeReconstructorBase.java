@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OldOperationRegistry;
+import org.eclipse.emf.edapt.declaration.TODELETE.OldOperationRegistry;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Create;
 import org.eclipse.emf.edapt.history.Delete;

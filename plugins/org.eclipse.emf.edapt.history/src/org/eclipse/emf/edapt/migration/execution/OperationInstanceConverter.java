@@ -4,7 +4,7 @@ import java.lang.reflect.Field;
 
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.Parameter;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Repository;
 
 /**
- * Helper class to convert from {@link OperationBase} to
+ * Helper class to convert from {@link OperationImplementation} to
  * {@link OperationInstance} and vice versa.
  * 
  * @author herrmama
@@ -41,14 +41,14 @@ public class OperationInstanceConverter {
 		return repository;
 	}
 
-	/** Convert an {@link OperationInstance} to an {@link OperationBase}. */
-	public static OperationBase convert(OperationInstance operationInstance,
+	/** Convert an {@link OperationInstance} to an {@link OperationImplementation}. */
+	public static OperationImplementation convert(OperationInstance operationInstance,
 			Metamodel metamodel) {
 		try {
 			Operation operation = operationInstance.getOperation();
 			Parameter mainParameter = operation.getMainParameter();
 
-			OperationBase operationBase = (OperationBase) operation
+			OperationImplementation operationBase = (OperationImplementation) operation
 					.getImplementation().newInstance();
 
 			ParameterInstance mainParameterInstance = operationInstance
@@ -71,10 +71,10 @@ public class OperationInstanceConverter {
 
 	/**
 	 * Transfer the value of a {@link ParameterInstance} to an
-	 * {@link OperationBase}.
+	 * {@link OperationImplementation}.
 	 */
 	private static void transfer(ParameterInstance parameterInstance,
-			OperationBase operationBase) throws NoSuchFieldException,
+			OperationImplementation operationBase) throws NoSuchFieldException,
 			IllegalAccessException {
 		Field field = operationBase.getClass().getField(
 				parameterInstance.getName());
@@ -83,8 +83,8 @@ public class OperationInstanceConverter {
 		}
 	}
 
-	/** Convert an {@link OperationBase} to an {@link OperationInstance}. */
-	public static void convert(OperationBase operationBase,
+	/** Convert an {@link OperationImplementation} to an {@link OperationInstance}. */
+	public static void convert(OperationImplementation operationBase,
 			OperationInstance operationInstance) {
 		try {
 			for (ParameterInstance parameterInstance : operationInstance

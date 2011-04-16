@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.Create;
@@ -432,7 +432,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			OperationInstance operationInstance = (OperationInstance) resolver
 					.copyResolve(change.getOperation(), true);
 
-			OperationBase operation = OperationInstanceConverter.convert(
+			OperationImplementation operation = OperationInstanceConverter.convert(
 					operationInstance, model.getMetamodel());
 			try {
 				operation.execute(model.getMetamodel(), model);
