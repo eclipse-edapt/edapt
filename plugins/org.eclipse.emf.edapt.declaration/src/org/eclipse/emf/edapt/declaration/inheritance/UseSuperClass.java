@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A8E0D8B779A44ECE774579CC9CD348B9
+ * @levd.rating YELLOW Hash: 5828B0B2DAE76F9F0F708CA33F83E6C2
  */
 @EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
-public class UseSuperClass extends OperationBase {
+public class UseSuperClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The class to which the super class is added")

@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 517525C715158E58A6DAC40EF436036E
+ * @levd.rating YELLOW Hash: F25891C739560944E86B52B17CEFDDE4
  */
 @EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
-public class NewAttribute extends OperationBase {
+public class NewAttribute extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The class in which the attribute is created")

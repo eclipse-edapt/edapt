@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -21,10 +21,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E75C06FB024393BD7820D217AF98F4CE
+ * @levd.rating YELLOW Hash: 9A672C8C733BCAB352A71AD63B9A9F02
  */
 @EdaptOperation(identifier = "replaceEnum", label = "Replace Enumeration", description = "In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals.")
-public class ReplaceEnum extends OperationBase {
+public class ReplaceEnum extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The enumeration to be replaced")

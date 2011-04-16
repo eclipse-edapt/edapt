@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F93A0FBE215E9B53F495776AF45032C6
+ * @levd.rating YELLOW Hash: 90F610E3128C1FBDDC38CA75DD9D5091
  */
 @EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.")
-public class NewGMFConstraint extends OperationBase {
+public class NewGMFConstraint extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The metamodel element in which context the constraint is created")

@@ -9,7 +9,7 @@ import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -20,10 +20,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E71E7AC82AC7F7E36DAE0EB4F6212578
+ * @levd.rating YELLOW Hash: 095ED1BD13730B72CE267EE9BE9798EA
  */
 @EdaptOperation(identifier = "introduceReferenceClass", label = "Association to Class", description = "In the metamodel, a reference is replaced by a reference class. More specifically, the reference class is now contained by the source class. In the model, links conforming to the reference are replaced by instances of the reference class.")
-public class IntroduceReferenceClass extends OperationBase {
+public class IntroduceReferenceClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference to be replaced by a reference class")

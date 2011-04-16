@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 494BAC93E689FAB4DC4BDFE204C36AE3
+ * @levd.rating YELLOW Hash: 248D92BE2937E58B4C99A056F66F91D1
  */
 @EdaptOperation(identifier = "pushOperation", label = "Push down Operation", description = "In the metamodel, an operation is pushed down to its sub classes. In the model, nothing needs to be done.")
-public class PushOperation extends OperationBase {
+public class PushOperation extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The operation to be pushed down")

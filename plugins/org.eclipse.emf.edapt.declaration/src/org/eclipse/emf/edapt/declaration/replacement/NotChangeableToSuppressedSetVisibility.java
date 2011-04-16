@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -14,10 +14,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D86D3282C5D9C0D073FEABB22022C83C
+ * @levd.rating YELLOW Hash: AFDAC6FA33326ED5B4B297D1839DFD44
  */
 @EdaptOperation(identifier = "notChangeableToSuppressedSetVisibility", label = "Not Changeable to Suppressed Set Visibility", description = "In the metamodel, a reference is made changeable, and at the same time its setter is suppressed. Nothing is changed in the model.")
-public class NotChangeableToSuppressedSetVisibility extends OperationBase {
+public class NotChangeableToSuppressedSetVisibility extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference to be made changeable")

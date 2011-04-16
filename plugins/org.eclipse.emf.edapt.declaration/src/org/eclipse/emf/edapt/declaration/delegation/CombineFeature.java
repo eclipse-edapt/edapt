@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -20,10 +20,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D85998CAAB81D60A557B0F7BCA777A88
+ * @levd.rating YELLOW Hash: 4E40BB4F1A65D29F9CC272E57A1ADC5B
  */
 @EdaptOperation(identifier = "combineFeature", label = "Combine Features over References", description = "In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly.")
-public class CombineFeature extends OperationBase {
+public class CombineFeature extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The features to be combined")

@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -18,10 +18,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2DE56FEFB243C232FFC57B2DFC3AB090
+ * @levd.rating YELLOW Hash: 6910513FA4A211E67A32812FF98988BC
  */
 @EdaptOperation(identifier = "merge", label = "Merge Reference into Another", description = "In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference.")
-public class Merge extends OperationBase {
+public class Merge extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference that is deleted")

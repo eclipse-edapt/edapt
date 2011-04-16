@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -14,10 +14,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BEA28EA446FE7BD812E0ECC0412F1D5B
+ * @levd.rating YELLOW Hash: 58BA927C0D150AFB919BDEBC125482D5
  */
 @EdaptOperation(identifier = "generalizeAttribute", label = "Generalize Attribute", description = "In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed.")
-public class GeneralizeAttribute extends OperationBase {
+public class GeneralizeAttribute extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The attribute to be generalized")

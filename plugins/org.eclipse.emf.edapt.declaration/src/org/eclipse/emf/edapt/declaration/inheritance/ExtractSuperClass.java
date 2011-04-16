@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -21,11 +21,11 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4F9CA2EAC5B9B6EAEF8BFA38E775D636
+ * @levd.rating YELLOW Hash: DF2E0B003194CA8110EFF85244BD235A
  */
 @Deprecated
 @EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
-public class ExtractSuperClass extends OperationBase {
+public class ExtractSuperClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The class from which the features are extracted")

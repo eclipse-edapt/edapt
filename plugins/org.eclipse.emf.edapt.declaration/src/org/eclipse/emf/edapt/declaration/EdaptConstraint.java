@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: EFB12F99B1EF5418973B6CB0753B2190
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

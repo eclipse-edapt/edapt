@@ -8,7 +8,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -18,10 +18,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4FF5872005A08744CBA3572660EE940D
+ * @levd.rating YELLOW Hash: 6C40EEE5A4968612255B935FD797CA3F
  */
 @EdaptOperation(identifier = "pullOperation", label = "Pull up Operation", description = "In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done.")
-public class PullOperation extends OperationBase {
+public class PullOperation extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The operations to be pulled up")

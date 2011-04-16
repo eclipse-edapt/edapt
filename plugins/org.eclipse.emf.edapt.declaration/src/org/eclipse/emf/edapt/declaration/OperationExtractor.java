@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 75613EC6B8A7327E8D1A77FBC81348CC
  */
 public class OperationExtractor {
 

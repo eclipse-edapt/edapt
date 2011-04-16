@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
@@ -17,11 +17,11 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7C8DBDE26C9BC806DEEB8DAB6918F721
+ * @levd.rating YELLOW Hash: 198372C125F0736D508A6CDA5205E899
  */
 @Deprecated
 @EdaptOperation(identifier = "replaceClassBySibling", label = "Replace Class by Sibling", description = "In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class.")
-public class ReplaceClassBySibling extends OperationBase {
+public class ReplaceClassBySibling extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The class to be replaced")

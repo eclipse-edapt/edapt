@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -15,10 +15,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 8F3D023CD2B64571901452761ED2C644
+ * @levd.rating YELLOW Hash: 89E66E29B745D24F31DEDA478BA02CD1
  */
 @EdaptOperation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
-public class MoveClassifier extends OperationBase {
+public class MoveClassifier extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The classifier to be moved")

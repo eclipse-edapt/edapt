@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.declaration;
+package org.eclipse.emf.edapt.declaration.TODELETE;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -46,7 +46,7 @@ import org.osgi.framework.Bundle;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating RED Hash: 9005FADE54546D79A0C0B4003A82C73F
  */
 public class OldOperationRegistry {
 

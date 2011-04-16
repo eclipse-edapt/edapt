@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -17,10 +17,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D92E04CFE2E89F29E8C5405C1CA3D22A
+ * @levd.rating YELLOW Hash: A7498060023E3ADACD12450B35C81586
  */
 @EdaptOperation(identifier = "suppressedSetVisibilityToNotChangeable", label = "Suppressed Set Visibility to Not Changeable", description = "In the metamodel, the setter of a reference is made visible again, and at the same time it is made non-changeable. Nothing is changed in the model.")
-public class SuppressedSetVisibilityToNotChangeable extends OperationBase {
+public class SuppressedSetVisibilityToNotChangeable extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference whose setter is made visible again")

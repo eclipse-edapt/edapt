@@ -34,9 +34,9 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: A2C89DB1F6BCDE1CE7E14A2021A028FF
  */
-public abstract class OperationBase {
+public abstract class OperationImplementation {
 
 	/** Execute the operation. */
 	public abstract void execute(Metamodel metamodel, Model model)

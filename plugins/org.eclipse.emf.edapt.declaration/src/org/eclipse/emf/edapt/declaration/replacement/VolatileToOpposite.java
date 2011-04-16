@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationBase;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -14,10 +14,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A70CBEA22B2D0A3816E741782ADBF624
+ * @levd.rating YELLOW Hash: 61D648874B647BA251BDACE82199F2DA
  */
 @EdaptOperation(identifier = "volatileToOpposite", label = "Volatile to Opposite Reference", description = "In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set.")
-public class VolatileToOpposite extends OperationBase {
+public class VolatileToOpposite extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The reference which is changed from volatile to opposite")

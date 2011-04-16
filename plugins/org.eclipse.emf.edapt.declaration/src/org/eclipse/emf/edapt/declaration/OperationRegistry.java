@@ -31,9 +31,9 @@ import org.eclipse.emf.edapt.migration.MigrationPlugin;
  * a Eclipse extension.
  * 
  * @author herrmama
- * @author $Author$
- * @version $Rev$
- * @levd.rating RED Rev:
+ * @author $Author: mherrmannsd $
+ * @version $Rev: 117 $
+ * @levd.rating YELLOW Hash: E68C22AD7159B33EC894EBC386C70D0E
  */
 public class OperationRegistry {
 
