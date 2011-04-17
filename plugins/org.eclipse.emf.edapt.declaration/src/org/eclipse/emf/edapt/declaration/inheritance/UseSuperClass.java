@@ -10,8 +10,8 @@ import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E2955B639401EDF01AE0FA27C4B8DD0F
+ * @levd.rating YELLOW Hash: BC10339F5E99A229E386A88FD00EBBA2
  */
 @EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
 public class UseSuperClass extends OperationImplementation {

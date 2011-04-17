@@ -18,7 +18,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.core.runtime.AssertionFailedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -26,8 +25,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * Base class for implementations of operations.
@@ -35,7 +34,7 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C87A11479D2822CF9243BE911C145196
+ * @levd.rating YELLOW Hash: 13908D128DFD7FCD897E9738AA6EADDF
  */
 public abstract class OperationImplementation {
 
@@ -56,8 +55,8 @@ public abstract class OperationImplementation {
 			throws MigrationException {
 		List<String> messages = checkPreconditions(metamodel);
 		if (!messages.isEmpty()) {
-			throw new AssertionFailedException("The preconditions of the "
-					+ "operation are not fulfilled: " + messages);
+			throw new MigrationException("The preconditions of the "
+					+ "operation are not fulfilled: " + messages, null);
 		}
 		execute(metamodel, model);
 	}
