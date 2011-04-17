@@ -27,14 +27,14 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.BackwardConverter;
+import org.eclipse.emf.edapt.migration.ForwardConverter;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.ModelResource;
-import org.eclipse.emf.edapt.migration.execution.BackwardConverter;
-import org.eclipse.emf.edapt.migration.execution.ForwardConverter;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Persistency;
-import org.eclipse.emf.edapt.migration.execution.BackupUtils.URIMapper;
+import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.migration.BackupUtils.URIMapper;
 
 /**
  * Tests for {@link ForwardConverter} and {@link BackwardConverter}

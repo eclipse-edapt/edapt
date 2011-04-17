@@ -2,11 +2,11 @@ package org.eclipse.emf.edapt.tests.migration.custom;
 
 import java.util.List;
 
+import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.CustomMigration;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 public class SprinklePortCustomMigration extends CustomMigration {
 
