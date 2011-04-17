@@ -211,7 +211,7 @@ public class HistoryInterpreter extends ReconstructorBase {
 				};
 			} else {
 				command = new AttachMigrationCommand(changes, migrationChange
-						.getMigration());
+						.getMigration(), migrationChange.getLanguage());
 			}
 			execute(command);
 			migrationCombiner = null;
