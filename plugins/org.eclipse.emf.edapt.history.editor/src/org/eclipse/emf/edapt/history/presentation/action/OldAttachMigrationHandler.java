@@ -14,10 +14,7 @@ package org.eclipse.emf.edapt.history.presentation.action;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
@@ -26,17 +23,13 @@ import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.history.presentation.util.SpecialEditorInput;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
-import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.ui.actions.OpenNewClassWizardAction;
-import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IStorageEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+
 
 /**
  * Action to combine a sequence of primitives changes into a composite one
@@ -46,7 +39,7 @@ import org.eclipse.ui.PlatformUI;
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-public class AttachMigrationHandler extends
+public class OldAttachMigrationHandler extends
 		SubsequentChangesHandler<MigrateableChange> {
 
 	/** {@inheritDoc} */
@@ -59,19 +52,9 @@ public class AttachMigrationHandler extends
 		final MigrationChangeReconstructor reconstructor = reconstruct(
 				sourceChange, targetChange);
 		if (isConsistent(reconstructor)) {
-			OpenNewClassWizardAction action = new OpenNewClassWizardAction();
-			IFile file = URIUtils.getFile(release.eResource().getURI());
-			IProject project = file.getProject();
-			NewClassWizardPage page = new NewClassWizardPage();
-			page.init(new StructuredSelection(project));
-			page.setSuperClass(CustomMigration.class.getName(), true);
-			action.setConfiguredWizardPage(page);
-			action.run();
-			IJavaElement element = action.getCreatedElement();
-			if (element != null) {
-				attachMigration(changes, "class:" + element.getElementName(),
-						domain);
-			}
+			MigrationChange migrationChange = attachMigration(changes,
+					reconstructor.getCode(), domain);
+			showMigrationEditor(domain, migrationChange);
 		}
 		return null;
 	}
