@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
-import org.eclipse.emf.edapt.migration.execution.OldMigrator;
+import org.eclipse.emf.edapt.migration.TODELETE.OldMigrator;
 import org.eclipse.emf.edapt.migration.test.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.tests.history.lifecycle.TestBase;
 

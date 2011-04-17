@@ -14,8 +14,8 @@ package org.eclipse.emf.edapt.casestudy.gmfmap;
 import java.io.IOException;
 
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.OldMigrator;
+import org.eclipse.emf.edapt.migration.MigrationException;
+import org.eclipse.emf.edapt.migration.TODELETE.OldMigrator;
 
 public class MigratorProvider {
 
