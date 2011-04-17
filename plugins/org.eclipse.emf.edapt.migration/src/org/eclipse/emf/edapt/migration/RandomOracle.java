@@ -9,31 +9,27 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration;
 
 import java.util.List;
-
-import org.eclipse.emf.edapt.migration.Instance;
-
+import java.util.Random;
 
 /**
- * Oracle to choose a value
+ * Oracle to perform a random choice.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 9A6B169DEFB9C692C59DD3847AAE4EA1
  */
-public interface IOracle {
-	
-	/**
-	 * Choose a value
-	 * 
-	 * @param <V>
-	 * @param context
-	 * @param values
-	 * @param message
-	 * @return Choice
-	 */
-	<V> V choose(Instance context, List<V> values, String message);
+public class RandomOracle implements IOracle {
+
+	/** Random generator. */
+	private final Random random = new Random();
+
+	/** {@inheritDoc} */
+	public <V> V choose(Instance instance, List<V> values, String message) {
+		int index = random.nextInt(values.size());
+		return values.get(index);
+	}
 }

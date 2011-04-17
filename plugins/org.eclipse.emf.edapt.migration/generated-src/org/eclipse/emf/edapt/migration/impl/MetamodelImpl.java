@@ -45,9 +45,9 @@ import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MetamodelResource;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
 import org.eclipse.emf.edapt.migration.Repository;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 
 /**

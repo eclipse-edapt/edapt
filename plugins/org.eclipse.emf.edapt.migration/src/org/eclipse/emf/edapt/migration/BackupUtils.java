@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,96 +19,89 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
-
 
 /**
- * Helper methods to deal with model backup
+ * Helper methods to deal with model backup.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 79D1350584168827FC59AC2546F8221E
  */
 public final class BackupUtils {
 
-	/**
-	 * File extension for backed up model
-	 */
+	/** File extension for backed up model. */
 	public static final String BACKUP_FILE_EXTENSION = "backup";
-	
-	/**
-	 * File extension for log file
-	 */
+
+	/** File extension for log file. */
 	public static final String LOG_FILE_EXTENSION = "log";
 
-	/**
-	 * Constructor
-	 */
+	/** Constructor. */
 	private BackupUtils() {
 		// hidden, since this class only provides static helper methods
 	}
-	
+
 	/**
-	 * Get the URI of the backup model corresponding to the URI of the model
+	 * Get the URI of the backup model corresponding to the URI of the model.
 	 * 
-	 * @param modelURI URI of model
+	 * @param modelURI
+	 *            URI of model
 	 * @return URI of backup model
 	 */
 	public static URI getBackupURI(URI modelURI) {
 		return modelURI.appendFileExtension(BACKUP_FILE_EXTENSION);
 	}
-	
+
 	/**
-	 * Get the URI of the model corresponding to the URI of the backup model
+	 * Get the URI of the model corresponding to the URI of the backup model.
 	 * 
-	 * @param backupURI URI of backup model
+	 * @param backupURI
+	 *            URI of backup model
 	 * @return URI of model
 	 */
 	public static URI getModelURI(URI backupURI) {
-		if(BACKUP_FILE_EXTENSION.equals(backupURI.fileExtension())) {
+		if (BACKUP_FILE_EXTENSION.equals(backupURI.fileExtension())) {
 			return backupURI.trimFileExtension();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Get the URI of the log file corresponding to the URI of the model
+	 * Get the URI of the log file corresponding to the URI of the model.
 	 * 
-	 * @param modelURI URI of model
+	 * @param modelURI
+	 *            URI of model
 	 * @return URI of log file
 	 */
 	public static URI getLogURI(URI modelURI) {
 		return modelURI.appendFileExtension(LOG_FILE_EXTENSION);
 	}
 
-	/**
-	 * Backup a model based on a number of {@link URI}s
-	 */
-	public static List<URI> backup(List<URI> modelURIs, Metamodel metamodel) throws IOException {
+	/** Backup a model based on a number of {@link URI}s. */
+	public static List<URI> backup(List<URI> modelURIs, Metamodel metamodel)
+			throws IOException {
 		return copy(modelURIs, metamodel, new BackupMapper());
 	}
 
-	/**
-	 * Backup a model based on a number of {@link URI}s
-	 */
-	public static List<URI> restore(List<URI> backupURIs, Metamodel metamodel) throws IOException {
+	/** Backup a model based on a number of {@link URI}s. */
+	public static List<URI> restore(List<URI> backupURIs, Metamodel metamodel)
+			throws IOException {
 		return copy(backupURIs, metamodel, new RestoreMapper());
 	}
 
-	/**
-	 * Copy a model based on a number of {@link URI}s
-	 * @throws IOException 
-	 */
-	public static List<URI> copy(List<URI> sourceURIs, Metamodel metamodel, URIMapper mapper) throws IOException {
+	/** Copy a model based on a number of {@link URI}s. */
+	public static List<URI> copy(List<URI> sourceURIs, Metamodel metamodel,
+			URIMapper mapper) throws IOException {
 		List<URI> targetURIs = new ArrayList<URI>();
-		ResourceSet model = ResourceUtils.loadResourceSet(sourceURIs, metamodel.getEPackages());
-		for(Resource resource : model.getResources()) {
-			if(resource.getURI() == null || resource.getURI().isPlatformPlugin()) {
+		ResourceSet model = ResourceUtils.loadResourceSet(sourceURIs, metamodel
+				.getEPackages());
+		for (Resource resource : model.getResources()) {
+			if (resource.getURI() == null
+					|| resource.getURI().isPlatformPlugin()) {
 				continue;
 			}
 			URI targetURI = mapper.map(resource.getURI());
-			if(targetURI != null) {
+			if (targetURI != null) {
 				resource.setURI(targetURI);
 				targetURIs.add(targetURI);
 			}
@@ -116,40 +109,26 @@ public final class BackupUtils {
 		ResourceUtils.saveResourceSet(model);
 		return targetURIs;
 	}
-	
-	/**
-	 * Mapper to perform a mapping on URIs
-	 */
+
+	/** Mapper to perform a mapping on URIs. */
 	public static interface URIMapper {
-		/**
-		 * Map a source URI to a target URI
-		 */
+		/** Map a source URI to a target URI. */
 		URI map(URI uri);
 	}
 
-	/**
-	 * Mapper to backup a model based on a number of {@link URI}s
-	 */
+	/** Mapper to backup a model based on a number of {@link URI}s. */
 	private static class BackupMapper implements URIMapper {
-		/**
-		 * {@inheritDoc}
-		 */
+		/** {@inheritDoc} */
 		public URI map(URI uri) {
 			return getBackupURI(uri);
 		}
-		
 	}
-	
-	/**
-	 * Mapper to restore a model based on a number of {@link URI}s
-	 */
+
+	/** Mapper to restore a model based on a number of {@link URI}s. */
 	private static class RestoreMapper implements URIMapper {
-		/**
-		 * {@inheritDoc}
-		 */
+		/** {@inheritDoc} */
 		public URI map(URI uri) {
 			return getModelURI(uri);
 		}
-		
 	}
 }

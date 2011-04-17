@@ -9,25 +9,25 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
-
-import org.eclipse.emf.edapt.migration.Instance;
+package org.eclipse.emf.edapt.migration;
 
 /**
- * Debugger for model migrations
+ * Debugger for model migrations.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 47D3E8208842791C60FCA0C718D4BD6A
  */
 public interface IDebugger {
 
 	/**
-	 * Debug
+	 * Show debug information.
 	 * 
 	 * @param context
+	 *            The context instance
 	 * @param message
+	 *            A message
 	 */
 	public void debug(Instance context, String message);
 }

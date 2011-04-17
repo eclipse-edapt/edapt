@@ -14,42 +14,31 @@ package org.eclipse.emf.edapt.migration;
 import org.eclipse.emf.common.util.Diagnostic;
 
 /**
- * Exception that encapsulates constraint violations
+ * Exception that encapsulates constraint violations.
  * 
  * @author herrmama
- *
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating YELLOW Hash: 373C04E5EB3EEFC650BD79DF0EC39901
  */
 public class DiagnosticException extends Exception {
 
-	/**
-	 * Constraint violation
-	 */
-	private Diagnostic diagnostic;
+	/** Constraint violation. */
+	private final Diagnostic diagnostic;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param message
-	 * @param diagnostic
-	 */
+	/** Constructor. */
 	public DiagnosticException(String message, Diagnostic diagnostic) {
 		super(message);
 		this.diagnostic = diagnostic;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public String getMessage() {
 		return super.getMessage() + "\n" + assembleViolations();
 	}
 	
-	/**
-	 * Assemble textual representation of violations
-	 * 
-	 * @return Textual representation
-	 */
+	/** Assemble textual representation of violations. */
 	protected String assembleViolations() {
 		StringBuffer buffer = new StringBuffer();
 		for(Diagnostic d : diagnostic.getChildren()) {
@@ -58,11 +47,7 @@ public class DiagnosticException extends Exception {
 		return buffer.toString();
 	}
 
-	/**
-	 * Get the diagnostic
-	 * 
-	 * @return Diagnostic
-	 */
+	/** Get the diagnostic. */
 	public Diagnostic getDiagnostic() {
 		return diagnostic;
 	}

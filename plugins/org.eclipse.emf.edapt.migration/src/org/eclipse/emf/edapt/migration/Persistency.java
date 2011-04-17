@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -22,41 +22,26 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.MetamodelResource;
-import org.eclipse.emf.edapt.migration.MigrationFactory;
-import org.eclipse.emf.edapt.migration.Model;
 
 
 /**
- * Helper class for loading and saving models
+ * Helper class for loading and saving models.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 7340771F1DE173BDAA2534B8901681B1
  */
 public class Persistency {
 	
-	/**
-	 * Load metamodel based on {@link URI}
-	 * 
-	 * @param metamodelURI
-	 * @return Metamodel
-	 * @throws IOException 
-	 */
+	/** Load metamodel based on {@link URI}. */
 	public static Metamodel loadMetamodel(URI metamodelURI) throws IOException {		
 		ResourceSet resourceSet = ResourceUtils.loadResourceSet(metamodelURI);
 
 		return loadMetamodel(resourceSet);
 	}
 
-	/**
-	 * Create metamodel from a {@link ResourceSet}
-	 * 
-	 * @param resourceSet
-	 * @return Metamodel
-	 */
+	/** Create metamodel from a {@link ResourceSet}. */
 	public static Metamodel loadMetamodel(ResourceSet resourceSet) {
 		ResourceUtils.resolveAll(resourceSet);
 		Metamodel metamodel = MigrationFactory.eINSTANCE.createMetamodel();
@@ -75,23 +60,12 @@ public class Persistency {
 		return metamodel;
 	}
 
-	/**
-	 * Load metamodel based on file name
-	 * 
-	 * @param fileName
-	 * @return Metamodel
-	 * @throws IOException 
-	 */
+	/** Load metamodel based on file name. */
 	public static Metamodel loadMetamodel(String fileName) throws IOException {
 		return loadMetamodel(URI.createFileURI(fileName));
 	}
 	
-	/**
-	 * Save metamodel based on {@link URI}
-	 * 
-	 * @param metamodel
-	 * @throws IOException 
-	 */
+	/** Save metamodel based on {@link URI}. */
 	public static void saveMetamodel(Metamodel metamodel) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		
@@ -103,40 +77,19 @@ public class Persistency {
 		ResourceUtils.saveResourceSet(resourceSet);
 	}
 	
-	/**
-	 * Load model based on {@link URI} for model and metamodel
-	 * 
-	 * @param modelURI
-	 * @param metamodelURI
-	 * @return Model
-	 * @throws IOException 
-	 */
+	/** Load model based on {@link URI} for model and metamodel. */
 	public static Model loadModel(URI modelURI, URI metamodelURI) throws IOException {
 		Metamodel metamodel = loadMetamodel(metamodelURI);
 		Model model = loadModel(modelURI, metamodel);
 		return model;
 	}
 	
-	/**
-	 * Load model based on {@link URI} and metamodel
-	 * 
-	 * @param modelURI
-	 * @param metamodel
-	 * @return Model
-	 * @throws IOException 
-	 */
+	/** Load model based on {@link URI} and metamodel. */
 	public static Model loadModel(URI modelURI, Metamodel metamodel) throws IOException {
 		return loadModel(Collections.singletonList(modelURI), metamodel);
 	}
 	
-	/**
-	 * Load model based on a set of {@link URI} and metamodel
-	 * 
-	 * @param modelURIs
-	 * @param metamodel
-	 * @return Model
-	 * @throws IOException
-	 */
+	/** Load model based on a set of {@link URI} and metamodel. */
 	public static Model loadModel(List<URI> modelURIs, Metamodel metamodel) throws IOException {
 		ResourceSet resourceSet = ResourceUtils.loadResourceSet(modelURIs, metamodel.getEPackages());
 		ForwardConverter fConverter = new ForwardConverter();
@@ -145,24 +98,12 @@ public class Persistency {
 		return model;
 	}	
 	
-	/**
-	 * Load model based on file name and metamodel
-	 * 
-	 * @param fileName
-	 * @param metamodel
-	 * @return Model
-	 * @throws IOException 
-	 */
+	/** Load model based on file name and metamodel. */
 	public static Model loadModel(String fileName, Metamodel metamodel) throws IOException {		
 		return loadModel(URI.createFileURI(fileName), metamodel);
 	}
 
-	/**
-	 * Save model based on {@link URI}
-	 * 
-	 * @param model
-	 * @throws IOException 
-	 */
+	/** Save model based on {@link URI}. */
 	public static void saveModel(Model model) throws IOException {
 		BackwardConverter bConverter = new BackwardConverter();
 		ResourceSet resourceSet = bConverter.convert(model);

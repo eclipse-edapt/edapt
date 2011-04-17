@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration.TODELETE;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -22,7 +22,12 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.migration.IDebugger;
+import org.eclipse.emf.edapt.migration.IOracle;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationPlugin;
+import org.eclipse.emf.edapt.migration.RandomOracle;
+import org.eclipse.emf.edapt.migration.ReleaseUtil;
 import org.osgi.framework.Bundle;
 
 

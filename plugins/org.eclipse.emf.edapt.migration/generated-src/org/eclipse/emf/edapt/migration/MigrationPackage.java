@@ -594,7 +594,7 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '<em>Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+	 * @see org.eclipse.emf.edapt.migration.MigrationException
 	 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getMigrationException()
 	 * @generated
 	 */
@@ -1042,11 +1042,11 @@ public interface MigrationPackage extends EPackage {
 	EDataType getDiagnosticException();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.migration.execution.MigrationException <em>Exception</em>}'.
+	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.migration.MigrationException <em>Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Exception</em>'.
-	 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+	 * @see org.eclipse.emf.edapt.migration.MigrationException
 	 * @model instanceClass="org.eclipse.emf.edapt.migration.execution.MigrationException" serializeable="false"
 	 * @generated
 	 */
@@ -1436,7 +1436,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>Exception</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.migration.execution.MigrationException
+		 * @see org.eclipse.emf.edapt.migration.MigrationException
 		 * @see org.eclipse.emf.edapt.migration.impl.MigrationPackageImpl#getMigrationException()
 		 * @generated
 		 */

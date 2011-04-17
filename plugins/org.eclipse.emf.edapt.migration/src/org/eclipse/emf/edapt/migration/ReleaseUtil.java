@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration;
 
 import java.io.File;
 import java.io.FileReader;
@@ -32,14 +32,13 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-
 /**
- * Helper methods for extraction of namespace URI and version from a model file
+ * Helper methods for extraction of namespace URI and version from a model file.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: AA6566F4A08EAD2A2649F1D179DD5283
  */
 public final class ReleaseUtil {
 

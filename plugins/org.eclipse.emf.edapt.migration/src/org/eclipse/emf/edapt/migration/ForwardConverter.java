@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.execution;
+package org.eclipse.emf.edapt.migration;
 
 import java.util.HashSet;
 import java.util.IdentityHashMap;
@@ -27,69 +27,50 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.edapt.migration.Instance;
-import org.eclipse.emf.edapt.migration.MigrationFactory;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.ModelResource;
-import org.eclipse.emf.edapt.migration.ReferenceSlot;
-
 
 /**
- * Convert an EMF model to a model graph
+ * Convert an EMF model to a model graph.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 224885B562FA00F13CB391D095844148
  */
 public class ForwardConverter {
-	
-	/**
-	 * Model graph
-	 */
+
+	/** Model graph. */
 	private Model model;
-	
-	/**
-	 * Mapping from EMF elements to graph nodes
-	 */
+
+	/** Mapping from EMF elements to graph nodes. */
 	private Map<EObject, Instance> mapping;
 
-	/**
-	 * Convert an EMF model to a model graph
-	 * 
-	 * @param resourceSet 
-	 * @return Model graph
-	 */
+	/** Convert an EMF model to a model graph. */
 	public Model convert(ResourceSet resourceSet) {
-		this.model = MigrationFactory.eINSTANCE.createModel();
+		model = MigrationFactory.eINSTANCE.createModel();
 		mapping = new IdentityHashMap<EObject, Instance>();
-		
+
 		initElements(resourceSet);
 		initProperties(resourceSet);
 		initResources(resourceSet);
-		
+
 		return model;
 	}
 
-	/**
-	 * Create a node for each EMF model element
-	 * 
-	 * @param resourceSet
-	 */
+	/** Create a node for each EMF model element */
 	private void initElements(ResourceSet resourceSet) {
-		for(Resource resource : resourceSet.getResources()) {
+		for (Resource resource : resourceSet.getResources()) {
 			XMLResource xmlResource = null;
-			if(resource instanceof XMLResource) {
+			if (resource instanceof XMLResource) {
 				xmlResource = (XMLResource) resource;
 			}
-			for(TreeIterator<EObject> i = resource.getAllContents(); i.hasNext(); ) {
+			for (TreeIterator<EObject> i = resource.getAllContents(); i
+					.hasNext();) {
 				EObject eObject = i.next();
-				if(mapping.containsKey(eObject)) {
+				if (mapping.containsKey(eObject)) {
 					i.prune();
-				}
-				else {
+				} else {
 					Instance instance = newInstance(eObject, eObject.eIsProxy());
-					if(xmlResource != null) {
+					if (xmlResource != null) {
 						String uuid = xmlResource.getID(eObject);
 						instance.setUuid(uuid);
 					}
@@ -98,20 +79,16 @@ public class ForwardConverter {
 		}
 	}
 
-	/**
-	 * Initialize the properties of the nodes
-	 * 
-	 * @param resourceSet
-	 */
+	/** Initialize the properties of the nodes. */
 	private void initProperties(ResourceSet resourceSet) {
 		Set<EObject> done = new HashSet<EObject>();
-		for(Resource resource : resourceSet.getResources()) {
-			for(TreeIterator<EObject> i = resource.getAllContents(); i.hasNext(); ) {
+		for (Resource resource : resourceSet.getResources()) {
+			for (TreeIterator<EObject> i = resource.getAllContents(); i
+					.hasNext();) {
 				EObject eObject = i.next();
-				if(done.contains(eObject)) {
+				if (done.contains(eObject)) {
 					i.prune();
-				}
-				else {
+				} else {
 					initInstance(eObject);
 					done.add(eObject);
 				}
@@ -119,67 +96,61 @@ public class ForwardConverter {
 		}
 	}
 
-	/**
-	 * Determine the root nodes
-	 * 
-	 * @param resourceSet
-	 */
+	/** Determine the root nodes. */
 	private void initResources(ResourceSet resourceSet) {
-		for(Resource resource : resourceSet.getResources()) {
-			if(resource.getContents().isEmpty()) {
+		for (Resource resource : resourceSet.getResources()) {
+			if (resource.getContents().isEmpty()) {
 				continue;
 			}
-			ModelResource modelResource = MigrationFactory.eINSTANCE.createModelResource();
+			ModelResource modelResource = MigrationFactory.eINSTANCE
+					.createModelResource();
 			modelResource.setUri(resource.getURI());
 			model.getResources().add(modelResource);
-			for(EObject element : resource.getContents()) {
+			for (EObject element : resource.getContents()) {
 				modelResource.getRootInstances().add(resolve(element));
 			}
 		}
 	}
 
-	/**
-	 * Initialize edges outgoing from a node
-	 * 
-	 * @param eObject EMF model element
-	 */
+	/** Initialize edges outgoing from a node. */
 	@SuppressWarnings("unchecked")
 	private void initInstance(EObject eObject) {
 		Instance element = resolve(eObject);
 		EClass c = eObject.eClass();
-		for(EAttribute attribute : c.getEAllAttributes()) {
-			if(ignore(attribute)) {
+		for (EAttribute attribute : c.getEAllAttributes()) {
+			if (ignore(attribute)) {
 				continue;
 			}
-			if(eObject.eIsSet(attribute)) {
+			if (eObject.eIsSet(attribute)) {
 				Object value = eObject.eGet(attribute);
 				element.set(attribute, value);
 			}
 		}
-		
-		for(EReference reference : c.getEAllReferences()) {
-			if(ignore(reference)) {
+
+		for (EReference reference : c.getEAllReferences()) {
+			if (ignore(reference)) {
 				continue;
 			}
 			Object value = eObject.eGet(reference);
-			
-			if(reference.isMany()) {
+
+			if (reference.isMany()) {
 				List<EObject> valueEObjects = (List<EObject>) value;
 				int index = 0;
-				for(EObject valueEObject : valueEObjects) {
+				for (EObject valueEObject : valueEObjects) {
 					Instance valueInstance = resolve(valueEObject);
-					if(reference.isUnique() && ((List) element.get(reference)).contains(valueInstance)) {
-						ReferenceSlot referenceSlot = (ReferenceSlot) element.getSlot(reference);
+					if (reference.isUnique()
+							&& ((List) element.get(reference))
+									.contains(valueInstance)) {
+						ReferenceSlot referenceSlot = (ReferenceSlot) element
+								.getSlot(reference);
 						referenceSlot.getValues().move(index, valueInstance);
-					}
-					else {
+					} else {
 						element.add(reference, index, valueInstance);
 					}
 					index++;
 				}
-			}
-			else {
-				if(value != null) {
+			} else {
+				if (value != null) {
 					EObject valueEObject = (EObject) value;
 					Instance valueInstance = resolve(valueEObject);
 					element.set(reference, valueInstance);
@@ -189,13 +160,14 @@ public class ForwardConverter {
 	}
 
 	/**
-	 * Determines whether a certain feature should be ignored during conversion
+	 * Determines whether a certain feature should be ignored during conversion.
 	 */
 	private boolean ignore(EStructuralFeature feature) {
-		if(feature.isTransient()) {
-			if(feature instanceof EReference) {
+		if (feature.isTransient()) {
+			if (feature instanceof EReference) {
 				EReference reference = (EReference) feature;
-				if(reference.getEOpposite() != null && !reference.getEOpposite().isTransient()) {
+				if (reference.getEOpposite() != null
+						&& !reference.getEOpposite().isTransient()) {
 					return false;
 				}
 			}
@@ -214,11 +186,11 @@ public class ForwardConverter {
 		}
 		return element;
 	}
-	
+
 	/** Get the node corresponding to an EMF model element. */
 	private Instance resolve(EObject eObject) {
 		Instance resolved = mapping.get(eObject);
-		if(resolved == null) {
+		if (resolved == null) {
 			resolved = newInstance(eObject, true);
 		}
 		return resolved;
