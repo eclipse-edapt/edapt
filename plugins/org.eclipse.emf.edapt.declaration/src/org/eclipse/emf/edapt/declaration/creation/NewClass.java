@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 3C0934C00953702E7DB2BF6040195DD4
+ * @levd.rating YELLOW Hash: FDCAEC97E4B560A32E95704B1CF5F2B5
  */
 @EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
 public class NewClass extends OperationImplementation {
@@ -32,7 +32,7 @@ public class NewClass extends OperationImplementation {
 	public String name;
 
 	/** {@description} */
-	@EdaptParameter(description = "The super classes of the new class")
+	@EdaptParameter(optional = true, description = "The super classes of the new class")
 	public List<EClass> superClasses = new ArrayList<EClass>();
 
 	/** {@description} */

@@ -14,6 +14,7 @@ import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -21,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 9A0A4B0234E1F168524DC834B3EC6520
+ * @levd.rating YELLOW Hash: CBB3EE8344CA45FEEA4B703DB258FB16
  */
 @EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
 public class ExtractSuperClass2 extends OperationImplementation {
@@ -31,8 +32,8 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	public List<EClass> subClasses;
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be extracted")
-	public List<EStructuralFeature> toExtract;
+	@EdaptParameter(optional = true, description = "The features to be extracted")
+	public List<EStructuralFeature> toExtract = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@EdaptParameter(description = "The package in which the super class is created")
@@ -47,7 +48,7 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	public Boolean abstr = true;
 
 	/** {@description} */
-	@EdaptParameter(description = "The super classes of the sub class which become super classes of the super class")
+	@EdaptParameter(optional = true, description = "The super classes of the sub class which become super classes of the super class")
 	public List<EClass> superSuperClasses = new ArrayList<EClass>();
 
 	/** {@description} */
@@ -108,7 +109,8 @@ public class ExtractSuperClass2 extends OperationImplementation {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 		// metamodel adaptation
 		EClass superClass = MetamodelUtils.newEClass(ePackage, superClassName,
 				superSuperClasses, abstr);
@@ -121,7 +123,7 @@ public class ExtractSuperClass2 extends OperationImplementation {
 			PullFeature operation = new PullFeature();
 			operation.features = toExtract;
 			operation.targetClass = superClass;
-			operation.execute(metamodel, model);
+			operation.checkAndExecute(metamodel, model);
 		}
 	}
 }

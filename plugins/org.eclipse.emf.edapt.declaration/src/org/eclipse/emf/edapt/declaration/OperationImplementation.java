@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.core.runtime.AssertionFailedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -34,12 +35,12 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A2C89DB1F6BCDE1CE7E14A2021A028FF
+ * @levd.rating YELLOW Hash: C87A11479D2822CF9243BE911C145196
  */
 public abstract class OperationImplementation {
 
 	/** Execute the operation. */
-	public abstract void execute(Metamodel metamodel, Model model)
+	protected abstract void execute(Metamodel metamodel, Model model)
 			throws MigrationException;
 
 	/** Check the preconditions of the operation. */
@@ -48,6 +49,17 @@ public abstract class OperationImplementation {
 		result.addAll(checkRequiredParameters());
 		result.addAll(checkConstraints(metamodel));
 		return result;
+	}
+
+	/** Check the preconditions before executing the operation. */
+	public void checkAndExecute(Metamodel metamodel, Model model)
+			throws MigrationException {
+		List<String> messages = checkPreconditions(metamodel);
+		if (!messages.isEmpty()) {
+			throw new AssertionFailedException("The preconditions of the "
+					+ "operation are not fulfilled: " + messages);
+		}
+		execute(metamodel, model);
 	}
 
 	/** Check whether all required parameters are set. */

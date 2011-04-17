@@ -1,5 +1,6 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C4654F78BEB3B1C3BD634BB95422DD32
+ * @levd.rating YELLOW Hash: 62D3F92D106E86F9EB6DBC148BF82DCC
  */
 @EdaptOperation(identifier = "extractClass", label = "Extract Class", description = "In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")
 public class ExtractClass extends OperationImplementation {
@@ -31,8 +32,8 @@ public class ExtractClass extends OperationImplementation {
 	public EClass contextClass;
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be extracted")
-	public List<EStructuralFeature> features;
+	@EdaptParameter(optional = true, description = "The features to be extracted")
+	public List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "features", description = "The features have to belong to the same class")

@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 57B61737B7CCB170F418633F3166442A
+ * @levd.rating YELLOW Hash: 7973FA3C738EB85F933281E71E4950C0
  */
 @EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.")
 public class CreateEnumeration extends OperationImplementation {
@@ -32,7 +32,7 @@ public class CreateEnumeration extends OperationImplementation {
 	public String name;
 
 	/** {@description} */
-	@EdaptParameter(description = "The names of the literals of the new enumeration")
+	@EdaptParameter(optional = true, description = "The names of the literals of the new enumeration")
 	public List<String> literals;
 
 	/** {@inheritDoc} */

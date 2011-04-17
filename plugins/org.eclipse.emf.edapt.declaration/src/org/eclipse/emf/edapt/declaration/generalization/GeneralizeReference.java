@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 213F3C0F7937CA73383CEEEA52BA9E27
+ * @levd.rating YELLOW Hash: 7D3E70DE45475CD86B7C0CE70A6C3083
  */
 @EdaptOperation(identifier = "generalizeReference", label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
 public class GeneralizeReference extends OperationImplementation {
@@ -47,8 +47,7 @@ public class GeneralizeReference extends OperationImplementation {
 	@EdaptConstraint(description = "The multiplicity must be the same or more general")
 	public boolean checkSameOrExtendedMultiplicity() {
 		return lowerBound <= reference.getLowerBound()
-				&& (upperBound >= reference.getUpperBound() && reference
-						.getUpperBound() != -1);
+				&& (upperBound >= reference.getUpperBound() || upperBound == -1);
 	}
 
 	/** {@inheritDoc} */

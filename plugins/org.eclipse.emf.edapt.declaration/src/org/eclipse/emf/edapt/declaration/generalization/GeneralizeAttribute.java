@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 58BA927C0D150AFB919BDEBC125482D5
+ * @levd.rating YELLOW Hash: 5863D83B24D97519835DFB5C1FD5A8A9
  */
 @EdaptOperation(identifier = "generalizeAttribute", label = "Generalize Attribute", description = "In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed.")
 public class GeneralizeAttribute extends OperationImplementation {
@@ -35,8 +35,7 @@ public class GeneralizeAttribute extends OperationImplementation {
 	@EdaptConstraint(description = "The multiplicity must be the same or more general")
 	public boolean checkSameOrExtendedMultiplicity() {
 		return lowerBound <= attribute.getLowerBound()
-				&& (upperBound >= attribute.getUpperBound() && attribute
-						.getUpperBound() != -1);
+				&& (upperBound >= attribute.getUpperBound() || upperBound == -1);
 	}
 
 	/** {@inheritDoc} */

@@ -1,5 +1,6 @@
 package org.eclipse.emf.edapt.declaration.delegation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: B211D35E4B6EDB65B9B749CCC458CD54
+ * @levd.rating YELLOW Hash: 0BD821ACD15CD343869907BE7AC483BC
  */
 @EdaptOperation(identifier = "extractExistingClass", label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
 public class ExtractExistingClass extends OperationImplementation {
@@ -36,7 +37,7 @@ public class ExtractExistingClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The features of the extracted class by which they are replaced (in the same order)")
-	public List<EStructuralFeature> replaceBy;
+	public List<EStructuralFeature> replaceBy = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "replaceBy", description = "The features to replace must be defined in the extracted class")

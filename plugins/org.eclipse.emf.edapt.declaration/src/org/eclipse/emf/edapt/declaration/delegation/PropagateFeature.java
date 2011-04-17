@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A893BA028D848BA4517080953B998C64
+ * @levd.rating YELLOW Hash: 1540C2E72D60300B4FE0EC171B9B4FA0
  */
 @EdaptOperation(identifier = "propagateFeature", label = "Propagate Feature over References", description = "In the metamodel, a feature is propagated opposite to a number of references. More specifically, the feature is created in each of the classes which are sources of the references. In the model, the values of that feature are moved accordingly.")
 public class PropagateFeature extends OperationImplementation {
@@ -31,7 +31,7 @@ public class PropagateFeature extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The references opposite to which the feature is propagated")
-	public List<EReference> references;
+	public List<EReference> references = new ArrayList<EReference>();
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "references", description = "Every reference has to target the class with the feature")

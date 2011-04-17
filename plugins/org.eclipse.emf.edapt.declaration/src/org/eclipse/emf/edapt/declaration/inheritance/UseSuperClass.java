@@ -11,6 +11,7 @@ import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -18,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5828B0B2DAE76F9F0F708CA33F83E6C2
+ * @levd.rating YELLOW Hash: E2955B639401EDF01AE0FA27C4B8DD0F
  */
 @EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
 public class UseSuperClass extends OperationImplementation {
@@ -73,7 +74,8 @@ public class UseSuperClass extends OperationImplementation {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 
 		subClass.getESuperTypes().add(superClass);
 		subClass.getESuperTypes().removeAll(superClass.getEAllSuperTypes());
@@ -82,7 +84,7 @@ public class UseSuperClass extends OperationImplementation {
 			ReplaceFeature operation = new ReplaceFeature();
 			operation.replaceBy = replaceBy.get(i);
 			operation.toReplace = toReplace.get(i);
-			operation.execute(metamodel, model);
+			operation.checkAndExecute(metamodel, model);
 		}
 	}
 }

@@ -435,7 +435,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			OperationImplementation operation = OperationInstanceConverter.convert(
 					operationInstance, model.getMetamodel());
 			try {
-				operation.execute(model.getMetamodel(), model);
+				operation.checkAndExecute(model.getMetamodel(), model);
 			} catch (MigrationException e) {
 				throwWrappedMigrationException(e);
 			}

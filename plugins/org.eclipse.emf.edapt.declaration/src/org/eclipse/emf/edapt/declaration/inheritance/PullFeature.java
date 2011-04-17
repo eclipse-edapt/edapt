@@ -13,6 +13,7 @@ import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.generalization.GeneralizeReference;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -20,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F0157BBB6B8F5FA21934BF6469E2BCDC
+ * @levd.rating YELLOW Hash: 0159BF5DE44FF6D6A1DFBF74E33EA306
  */
 @EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationImplementation {
@@ -90,7 +91,8 @@ public class PullFeature extends OperationImplementation {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 		EStructuralFeature mainFeature = features.get(0);
 
 		targetClass.getEStructuralFeatures().add(mainFeature);
@@ -101,7 +103,7 @@ public class PullFeature extends OperationImplementation {
 				operation.reference = mainReference.getEOpposite();
 				operation.initialize(metamodel);
 				operation.type = targetClass;
-				operation.execute(metamodel, model);
+				operation.checkAndExecute(metamodel, model);
 			}
 		}
 		for (EStructuralFeature feature : features) {
@@ -109,7 +111,7 @@ public class PullFeature extends OperationImplementation {
 				ReplaceFeature operation = new ReplaceFeature();
 				operation.toReplace = feature;
 				operation.replaceBy = mainFeature;
-				operation.execute(metamodel, model);
+				operation.checkAndExecute(metamodel, model);
 			}
 		}
 	}

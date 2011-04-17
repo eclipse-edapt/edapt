@@ -58,7 +58,8 @@ public class OperationInterpreter {
 		OperationImplementation operation = OperationInstanceConverter.convert(
 				operationInstance, repository.getMetamodel());
 		try {
-			operation.execute(repository.getMetamodel(), repository.getModel());
+			operation.checkAndExecute(repository.getMetamodel(), repository
+					.getModel());
 		} catch (MigrationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DF2E0B003194CA8110EFF85244BD235A
+ * @levd.rating YELLOW Hash: 6CFB3401227FD956918314EDBF752F75
  */
 @Deprecated
 @EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
@@ -32,8 +32,8 @@ public class ExtractSuperClass extends OperationImplementation {
 	public EClass subClass;
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be extracted")
-	public List<EStructuralFeature> toExtract;
+	@EdaptParameter(optional = true, description = "The features to be extracted")
+	public List<EStructuralFeature> toExtract = new ArrayList<EStructuralFeature>();
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "toExtract", description = "The features to be extracted must belong to sub class")
@@ -54,7 +54,7 @@ public class ExtractSuperClass extends OperationImplementation {
 	public Boolean abstr = true;
 
 	/** {@description} */
-	@EdaptParameter(description = "The super classes of the sub class which become super classes of the super class")
+	@EdaptParameter(optional = true, description = "The super classes of the sub class which become super classes of the super class")
 	public List<EClass> superSuperClasses = new ArrayList<EClass>();
 
 	/** {@description} */
@@ -67,9 +67,7 @@ public class ExtractSuperClass extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		if (ePackage == null) {
-			ePackage = subClass.getEPackage();
-		}
+		ePackage = subClass.getEPackage();
 	}
 
 	/** {@inheritDoc} */

@@ -9,6 +9,7 @@ import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -16,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F2481C9B9B50764AF6C52D5AE9782FA0
+ * @levd.rating YELLOW Hash: 0F8A6057797B55D8DC0BA25E62A5289D
  */
 @EdaptOperation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
 public class MakeFeatureVolatile extends OperationImplementation {
@@ -45,7 +46,8 @@ public class MakeFeatureVolatile extends OperationImplementation {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 		// metamodel adaptation
 		feature.setVolatile(true);
 		feature.setTransient(trans);
@@ -56,7 +58,7 @@ public class MakeFeatureVolatile extends OperationImplementation {
 			if (reference.getEOpposite() != null) {
 				DropOpposite operation = new DropOpposite();
 				operation.reference = reference;
-				operation.execute(metamodel, model);
+				operation.checkAndExecute(metamodel, model);
 			}
 		}
 

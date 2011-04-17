@@ -12,6 +12,7 @@ import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.execution.MigrationException;
 
 /**
  * {@description}
@@ -19,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7BF28820B15B774F06E59751B35521A6
+ * @levd.rating YELLOW Hash: 36AA07FEC1E70802C11803687CCC2325
  */
 @EdaptOperation(identifier = "inlineSuperClass", label = "Inline Super Class", description = "In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly.")
 public class InlineSuperClass extends OperationImplementation {
@@ -36,13 +37,14 @@ public class InlineSuperClass extends OperationImplementation {
 
 	/** {@inheritDoc} */
 	@Override
-	public void execute(Metamodel metamodel, Model model) {
+	public void execute(Metamodel metamodel, Model model)
+			throws MigrationException {
 
 		for (EStructuralFeature feature : new ArrayList<EStructuralFeature>(
 				superClass.getEStructuralFeatures())) {
 			PushFeature operation = new PushFeature();
 			operation.feature = feature;
-			operation.execute(metamodel, model);
+			operation.checkAndExecute(metamodel, model);
 		}
 
 		List<EClass> subClasses = metamodel.getESubTypes(superClass);

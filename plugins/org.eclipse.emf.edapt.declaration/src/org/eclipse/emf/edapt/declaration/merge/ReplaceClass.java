@@ -1,6 +1,5 @@
 package org.eclipse.emf.edapt.declaration.merge;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
@@ -22,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: E7EB3A46C3C257E4EDF7C905189A5C31
+ * @levd.rating YELLOW Hash: 660494C2C7FA68226DD25F3B244A8EA0
  */
 @EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationImplementation {
@@ -37,7 +36,7 @@ public class ReplaceClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The features to be replaced")
-	public List<EStructuralFeature> featuresToReplace = new ArrayList<EStructuralFeature>();
+	public List<EStructuralFeature> featuresToReplace;
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "featuresToReplace", description = "The replace features must be defined in the replaced class")
@@ -48,7 +47,7 @@ public class ReplaceClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptParameter(description = "The features by which they are replaced (in the same order)")
-	public List<EStructuralFeature> featuresReplaceBy = new ArrayList<EStructuralFeature>();
+	public List<EStructuralFeature> featuresReplaceBy;
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "featuresReplaceBy", description = "The replacing features must be defined in the replacing class")
