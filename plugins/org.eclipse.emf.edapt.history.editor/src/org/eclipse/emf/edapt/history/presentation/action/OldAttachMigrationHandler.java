@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.edapt.common.LoggingUtils;
+import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
@@ -93,7 +94,7 @@ public class OldAttachMigrationHandler extends
 	private MigrationChange attachMigration(List<MigrateableChange> changes,
 			String migrationCode, EditingDomain domain) {
 		AttachMigrationCommand command = new AttachMigrationCommand(changes,
-				migrationCode);
+				migrationCode, Language.GROOVY);
 		domain.getCommandStack().execute(command);
 		return command.getMigrationChange();
 	}

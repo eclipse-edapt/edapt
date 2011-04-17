@@ -31,10 +31,9 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 
-
 /**
- * Table viewer to display violated contraints
- * (A list of constraints is expected as input of the viewer)
+ * Table viewer to display violated contraints (A list of constraints is
+ * expected as input of the viewer)
  * 
  * @author herrmama
  * @author $Author$
@@ -43,34 +42,37 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
  */
 @SuppressWarnings("restriction")
 public class ConstraintViewer extends TableViewer {
-	
+
 	/**
 	 * Constraint icon
 	 */
-	private Image constraintImage;
+	private final Image constraintImage;
 
 	/**
 	 * Default constructor
 	 * 
-	 * @param parent Parent composite
+	 * @param parent
+	 *            Parent composite
 	 */
 	public ConstraintViewer(Composite parent) {
-		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.FULL_SELECTION);
-		
+		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER
+				| SWT.FULL_SELECTION);
+
 		// icon taken from IDE Workbench plugin
-		ImageDescriptor imageDescriptor = IDEWorkbenchPlugin.getIDEImageDescriptor("obj16/error_tsk.gif");
+		ImageDescriptor imageDescriptor = IDEWorkbenchPlugin
+				.getIDEImageDescriptor("obj16/error_tsk.gif");
 		constraintImage = imageDescriptor.createImage();
-		
+
 		init();
 	}
-	
+
 	/**
 	 * Initialize table viewer
 	 */
 	private void init() {
-		
+
 		final Table constraintTable = getTable();
-		
+
 		// content provider
 		setContentProvider(new IStructuredContentProvider() {
 
@@ -84,27 +86,32 @@ public class ConstraintViewer extends TableViewer {
 				// not required
 			}
 
-			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+			public void inputChanged(Viewer viewer, Object oldInput,
+					Object newInput) {
 				// not required
 			}
-			
+
 		});
-		
+
 		// label provider
 		setLabelProvider(new ITableLabelProvider() {
 
 			public Image getColumnImage(Object element, int columnIndex) {
-				switch(columnIndex) {
-				case 0: return constraintImage;
-				default: return null;
+				switch (columnIndex) {
+				case 0:
+					return constraintImage;
+				default:
+					return null;
 				}
 			}
 
 			public String getColumnText(Object element, int columnIndex) {
 				Constraint constraint = (Constraint) element;
-				switch(columnIndex) {
-				case 0: return constraint.getLabel();
-				default: return "";
+				switch (columnIndex) {
+				case 0:
+					return constraint.getDescription();
+				default:
+					return "";
 				}
 			}
 
@@ -123,43 +130,45 @@ public class ConstraintViewer extends TableViewer {
 			public void removeListener(ILabelProviderListener listener) {
 				// not required
 			}
-			
+
 		});
-		
+
 		// show constraint description upon double click
 		constraintTable.addHelpListener(new HelpListener() {
 
 			public void helpRequested(HelpEvent e) {
 
-				if(constraintTable.getSelectionCount() > 0) {
+				if (constraintTable.getSelectionCount() > 0) {
 					TableItem tableItem = constraintTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
-			
+
 		});
-		
+
 		addDoubleClickListener(new IDoubleClickListener() {
 
 			public void doubleClick(DoubleClickEvent event) {
-				
-				if(constraintTable.getSelectionCount() > 0) {
+
+				if (constraintTable.getSelectionCount() > 0) {
 					TableItem tableItem = constraintTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
-			
+
 		});
 	}
 
 	/**
 	 * Show the description of a constraint which is associated to a table item
 	 * 
-	 * @param tableItem Table item
+	 * @param tableItem
+	 *            Table item
 	 */
 	private void showDescription(TableItem tableItem) {
 		Constraint constraint = (Constraint) tableItem.getData();
-		TableItemPopupDialog dialog = new TableItemPopupDialog(tableItem, constraint.getLabel(), constraint.getBooleanExpression());
+		TableItemPopupDialog dialog = new TableItemPopupDialog(tableItem,
+				constraint.getDescription(), constraint.getName());
 		dialog.open();
 	}
 

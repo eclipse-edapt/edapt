@@ -16,14 +16,12 @@ import java.util.List;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.presentation.AttachMigrationCommand;
-import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
-import org.eclipse.emf.edapt.history.presentation.util.SpecialEditorInput;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
 import org.eclipse.emf.edapt.migration.CustomMigration;
@@ -34,9 +32,6 @@ import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IStorageEditorInput;
-import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 
 /**
  * Action to combine a sequence of primitives changes into a composite one
@@ -110,22 +105,8 @@ public class AttachMigrationHandler extends
 	private MigrationChange attachMigration(List<MigrateableChange> changes,
 			String migrationCode, EditingDomain domain) {
 		AttachMigrationCommand command = new AttachMigrationCommand(changes,
-				migrationCode);
+				migrationCode, Language.JAVA);
 		domain.getCommandStack().execute(command);
 		return command.getMigrationChange();
-	}
-
-	/** Open the custom migration in the migration editor. */
-	private void showMigrationEditor(EditingDomain domain,
-			MigrationChange migrationChange) {
-		IStorageEditorInput editorInput = new SpecialEditorInput(
-				migrationChange, domain);
-		try {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-					.getActivePage().openEditor(editorInput,
-							"org.codehaus.groovy.eclipse.editor.GroovyEditor");
-		} catch (PartInitException e) {
-			LoggingUtils.logError(HistoryEditorPlugin.getPlugin(), e);
-		}
 	}
 }
