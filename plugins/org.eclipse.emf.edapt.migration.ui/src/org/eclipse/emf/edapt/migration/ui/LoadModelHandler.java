@@ -28,7 +28,7 @@ import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.execution.OldMigrator;
+import org.eclipse.emf.edapt.migration.TODELETE.OldMigrator;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;

@@ -10,7 +10,7 @@
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
-import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
+import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 import org.eclipse.ui.IStartup;
 
 

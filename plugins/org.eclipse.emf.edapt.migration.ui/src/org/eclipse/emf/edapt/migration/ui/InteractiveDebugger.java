@@ -11,9 +11,9 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
+import org.eclipse.emf.edapt.migration.IDebugger;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.IDebugger;
 
 /**
  * Debugger that shows the state of the model to the user

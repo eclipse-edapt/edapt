@@ -187,6 +187,7 @@ public class OperationInstanceHelper {
 		return violatedConstraints;
 	}
 
+	/** Create a constraint with a certain message. */
 	private Constraint createConstraint(String message) {
 		Constraint constraint = DeclarationFactory.eINSTANCE.createConstraint();
 		constraint.setLabel(message);

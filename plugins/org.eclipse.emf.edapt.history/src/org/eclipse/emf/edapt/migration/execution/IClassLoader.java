@@ -11,7 +11,18 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
+import org.eclipse.emf.edapt.migration.CustomMigration;
+
+/**
+ * Interface for a classloader for {@link CustomMigration}s.
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating RED Rev:
+ */
 public interface IClassLoader {
 
+	/** Load a class with a certain name. */
 	<T> Class<T> load(String name) throws ClassNotFoundException;
 }

@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 
@@ -29,7 +30,7 @@ import org.eclipse.emf.edapt.migration.execution.Migrator;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 2C4DF77775780E1EA52BAB95C2F42E0A
  */
 public class MigrationTestSuite extends TestSuite {
 
@@ -39,10 +40,12 @@ public class MigrationTestSuite extends TestSuite {
 	/** Migrator. */
 	private Migrator migrator;
 
+	/** Classloader for loading {@link CustomMigration}s. */
 	private IClassLoader loader;
 
 	/** Constructor. */
-	public MigrationTestSuite(URI definitionURI, IClassLoader loader) throws IOException {
+	public MigrationTestSuite(URI definitionURI, IClassLoader loader)
+			throws IOException {
 		this(loadTestSuiteDefinition(definitionURI));
 		this.loader = loader;
 	}
@@ -66,6 +69,7 @@ public class MigrationTestSuite extends TestSuite {
 		}
 	}
 
+	/** {@inheritDoc} */
 	@Override
 	public void run(TestResult result) {
 		try {
@@ -96,6 +100,7 @@ public class MigrationTestSuite extends TestSuite {
 		return migrator;
 	}
 
+	/** Load the migrator from the history model. */
 	private Migrator loadMigrator() throws IOException {
 		History history = loadHistory();
 		Migrator migrator = new Migrator(history, loader);

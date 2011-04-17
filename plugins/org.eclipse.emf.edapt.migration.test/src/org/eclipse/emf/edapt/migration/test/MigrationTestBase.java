@@ -24,22 +24,22 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
+import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.execution.BackupUtils;
+import org.eclipse.emf.edapt.migration.MigrationException;
+import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.migration.ReleaseUtil;
 import org.eclipse.emf.edapt.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
-import org.eclipse.emf.edapt.migration.execution.Persistency;
-import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
 
 /**
- * A class for test cases to validate a model migration
+ * A class for test cases to validate a model migration.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: 420363CE78BAACD039471DF2B9D073DE
  */
 public abstract class MigrationTestBase extends TestCase {
 
@@ -56,8 +56,8 @@ public abstract class MigrationTestBase extends TestCase {
 	 *            URI of the target metamodel of the migration
 	 */
 	public void testMigration(URI migratorURI, URI modelURI,
-			URI expectedTargetModelURI, URI expectedTargetMetamodelURI, IClassLoader loader)
-			throws MigrationException, IOException {
+			URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
+			IClassLoader loader) throws MigrationException, IOException {
 
 		Migrator migrator = new Migrator(migratorURI, loader);
 		testMigration(migrator, modelURI, expectedTargetModelURI,
@@ -123,6 +123,7 @@ public abstract class MigrationTestBase extends TestCase {
 				.assertDifference(expectedModel, actualModel, expectedNumber);
 	}
 
+	/** Get the minimum release of a set of releases. */
 	private Release getMinimumRelease(Set<Release> releases) {
 		Release minRelease = null;
 		for (Release release : releases) {

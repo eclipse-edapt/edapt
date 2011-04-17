@@ -49,8 +49,12 @@ import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.history.reconstruction.Mapping;
 import org.eclipse.emf.edapt.history.reconstruction.ReconstructorBase;
 import org.eclipse.emf.edapt.history.reconstruction.ResolverBase;
+import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 
 /**
  * A recontructor that perform the migration of models from a source release to
@@ -96,8 +100,10 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Switch to perform migration depending on change. */
 	private MigrationReconstructorSwitch migrationSwitch;
 
+	/** Custom migration that is currently active. */
 	private CustomMigration customMigration;
 
+	/** Classloader to load {@link CustomMigration}s. */
 	private final IClassLoader classLoader;
 
 	/** Constructor. */
@@ -302,6 +308,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		throwWrappedMigrationException(me);
 	}
 
+	/** Wrap and throw a {@link MigrationException}. */
 	private void throwWrappedMigrationException(MigrationException me) {
 		throw new WrappedMigrationException(me);
 	}
@@ -310,6 +317,10 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private class MigrationReconstructorSwitch extends
 			EcoreReconstructorSwitchBase<Object> {
 
+		/**
+		 * Resolver to resolve the metamodel on which the migration is performed
+		 * from the original metamodel.
+		 */
 		private final ResolverBase resolver = new ResolverBase() {
 
 			@Override
@@ -432,8 +443,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 			OperationInstance operationInstance = (OperationInstance) resolver
 					.copyResolve(change.getOperation(), true);
 
-			OperationImplementation operation = OperationInstanceConverter.convert(
-					operationInstance, model.getMetamodel());
+			OperationImplementation operation = OperationInstanceConverter
+					.convert(operationInstance, model.getMetamodel());
 			try {
 				operation.checkAndExecute(model.getMetamodel(), model);
 			} catch (MigrationException e) {
@@ -443,6 +454,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return change;
 		}
 
+		/** Resolve an element using the resolver. */
 		private EObject resolve(EObject element) {
 			return resolver.resolve(element);
 		}

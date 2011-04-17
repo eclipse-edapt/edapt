@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.PrimitiveChange;
 import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
-import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
+import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 

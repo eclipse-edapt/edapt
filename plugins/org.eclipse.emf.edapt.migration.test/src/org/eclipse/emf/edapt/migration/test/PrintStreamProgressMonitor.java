@@ -16,66 +16,49 @@ import java.io.PrintStream;
 import org.eclipse.core.runtime.NullProgressMonitor;
 
 /**
- * A progress monitor to report to a {@link PrintStream}
+ * A progress monitor to report to a {@link PrintStream}.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: BC9473B55AE6444A8FA63FEC9C1215E7
  */
 public class PrintStreamProgressMonitor extends NullProgressMonitor {
-	
-	/**
-	 * Print stream
-	 */
-	private PrintStream out;
-	
-	/**
-	 * Current step
-	 */
+
+	/** Print stream */
+	private final PrintStream out;
+
+	/** Current step */
 	int step = 1;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param out
-	 */
+	/** Constructor. */
 	public PrintStreamProgressMonitor(PrintStream out) {
 		this.out = out;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void beginTask(String name, int totalWork) {
 		out.println(name + "...");
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void done() {
 		out.println("...done");
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void subTask(String name) {
 		out.println(name);
 		step = 1;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void worked(int work) {
 		out.println("Step " + step);
 		step++;
 	}
-
 }

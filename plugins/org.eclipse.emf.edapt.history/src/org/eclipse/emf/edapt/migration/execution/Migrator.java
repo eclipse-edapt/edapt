@@ -30,11 +30,12 @@ import org.eclipse.emf.edapt.history.Delete;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
+import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.execution.GroovyEvaluator;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
-import org.eclipse.emf.edapt.migration.execution.Persistency;
-import org.eclipse.emf.edapt.migration.execution.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.MigrationException;
+import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 
 /**
  * Migrator to migrate a model from a previous to the current release.
@@ -52,7 +53,8 @@ public class Migrator {
 	/** Mapping of namespace URIs to releases. */
 	private HashMap<String, Set<Release>> releaseMap;
 
-	private IClassLoader classLoader;
+	/** Classloader to load {@link CustomMigration}s. */
+	private final IClassLoader classLoader;
 
 	/** Constructor. */
 	public Migrator(URI historyURI, IClassLoader classLoader) throws MigrationException {

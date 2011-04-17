@@ -11,7 +11,7 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.MigrationException;
 
 /**
  * Wrap a {@link MigrationException} into a {@link RuntimeException}.

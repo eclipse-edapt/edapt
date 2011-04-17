@@ -13,17 +13,29 @@ package org.eclipse.emf.edapt.migration.execution;
 
 import org.osgi.framework.Bundle;
 
+/**
+ * Helper class to wrap an Eclipse bundle into the {@link IClassLoader}
+ * interface.
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating RED Rev:
+ */
 public class BundleClassLoader implements IClassLoader {
-	
+
+	/** An Eclipse bundle. */
 	private final Bundle bundle;
 
+	/** Constructor. */
 	public BundleClassLoader(Bundle bundle) {
 		this.bundle = bundle;
 	}
 
+	/** {@inheritDoc} */
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> Class<T> load(String name) throws ClassNotFoundException {
 		return bundle.loadClass(name);
 	}
-
 }

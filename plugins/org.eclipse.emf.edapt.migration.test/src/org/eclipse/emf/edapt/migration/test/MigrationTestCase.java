@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.execution.MigrationException;
+import org.eclipse.emf.edapt.migration.MigrationException;
 
 /**
  * Case to test a migration.
@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.migration.execution.MigrationException;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: C5996ABBF98D5B24404E1E8E8287BA93
  */
 public class MigrationTestCase extends MigrationTestBase {
 

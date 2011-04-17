@@ -11,17 +11,29 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
+/**
+ * Helper class to wrap a Java class loader into the {@link IClassLoader}
+ * interface.
+ * 
+ * @author herrmama
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating RED Rev:
+ */
 public class ClassLoaderFacade implements IClassLoader {
-	
+
+	/** The Java classloader. */
 	private final ClassLoader loader;
 
+	/** Constructor. */
 	public ClassLoaderFacade(ClassLoader loader) {
 		this.loader = loader;
 	}
 
+	/** {@inheritDoc} */
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> Class<T> load(String name) throws ClassNotFoundException {
 		return (Class<T>) loader.loadClass(name);
 	}
-
 }
