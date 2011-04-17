@@ -25,7 +25,7 @@ package org.eclipse.emf.edapt.declaration;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Constraint#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Constraint#getBooleanExpression <em>Boolean Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Constraint#getRestricts <em>Restricts</em>}</li>
  * </ul>
  * </p>
  *
@@ -33,7 +33,7 @@ package org.eclipse.emf.edapt.declaration;
  * @model
  * @generated
  */
-public interface Constraint extends LabeledElement {
+public interface Constraint extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}'.
@@ -66,32 +66,29 @@ public interface Constraint extends LabeledElement {
 	void setOperation(Operation value);
 
 	/**
-	 * Returns the value of the '<em><b>Boolean Expression</b></em>' attribute.
+	 * Returns the value of the '<em><b>Restricts</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Boolean Expression</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Restricts</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The boolean expression to evaluate whether the constraint is fulfilled
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Boolean Expression</em>' attribute.
-	 * @see #setBooleanExpression(String)
-	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getConstraint_BooleanExpression()
-	 * @model required="true"
+	 * @return the value of the '<em>Restricts</em>' reference.
+	 * @see #setRestricts(Parameter)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getConstraint_Restricts()
+	 * @model
 	 * @generated
 	 */
-	String getBooleanExpression();
+	Parameter getRestricts();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Constraint#getBooleanExpression <em>Boolean Expression</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Constraint#getRestricts <em>Restricts</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Boolean Expression</em>' attribute.
-	 * @see #getBooleanExpression()
+	 * @param value the new value of the '<em>Restricts</em>' reference.
+	 * @see #getRestricts()
 	 * @generated
 	 */
-	void setBooleanExpression(String value);
+	void setRestricts(Parameter value);
 
 } // Constraint

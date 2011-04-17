@@ -8,9 +8,7 @@ Bundle-Activator: org.eclipse.emf.edapt.declaration.presentation.DeclarationEdit
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.declaration.parser;uses:="org.eclipse.emf.edapt.declaration,org.codehaus.groovy.antlr,org.codehaus.groovy.antlr.treewalker",
- org.eclipse.emf.edapt.declaration.parser.ui,
- org.eclipse.emf.edapt.declaration.presentation;
+Export-Package: org.eclipse.emf.edapt.declaration.presentation;
   uses:="org.eclipse.jface.wizard,
    org.eclipse.core.runtime,
    org.eclipse.emf.edit.ui.provider,
@@ -43,6 +41,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edit.ui;visibility:=reexport,
  org.eclipse.ui.ide;visibility:=reexport,
  org.eclipse.emf.ecore.xmi,
- org.codehaus.groovy;bundle-version="1.5.7",
  org.eclipse.emf.edapt.common.ui
 Bundle-ActivationPolicy: lazy

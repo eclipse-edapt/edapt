@@ -87,69 +87,22 @@ public interface DeclarationPackage extends EPackage {
 	int IDENTIFIED_ELEMENT__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Identified Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int IDENTIFIED_ELEMENT_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.DescribedElementImpl <em>Described Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.declaration.impl.DescribedElementImpl
-	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getDescribedElement()
-	 * @generated
-	 */
-	int DESCRIBED_ELEMENT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIBED_ELEMENT__DESCRIPTION = 0;
+	int IDENTIFIED_ELEMENT__DESCRIPTION = 1;
 
 	/**
-	 * The number of structural features of the '<em>Described Element</em>' class.
+	 * The number of structural features of the '<em>Identified Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DESCRIBED_ELEMENT_FEATURE_COUNT = 1;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.LabeledElementImpl <em>Labeled Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.declaration.impl.LabeledElementImpl
-	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getLabeledElement()
-	 * @generated
-	 */
-	int LABELED_ELEMENT = 2;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABELED_ELEMENT__LABEL = 0;
-
-	/**
-	 * The number of structural features of the '<em>Labeled Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LABELED_ELEMENT_FEATURE_COUNT = 1;
+	int IDENTIFIED_ELEMENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl <em>Library</em>}' class.
@@ -159,7 +112,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getLibrary()
 	 * @generated
 	 */
-	int LIBRARY = 3;
+	int LIBRARY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
@@ -196,7 +149,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getOperation()
 	 * @generated
 	 */
-	int OPERATION = 4;
+	int OPERATION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -214,16 +167,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__DESCRIPTION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__LABEL = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
+	int OPERATION__DESCRIPTION = IDENTIFIED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Library</b></em>' container reference.
@@ -232,7 +176,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__LIBRARY = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
+	int OPERATION__LIBRARY = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
@@ -241,7 +185,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__PARAMETERS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
+	int OPERATION__PARAMETERS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -250,16 +194,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__CONSTRAINTS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__VARIABLES = IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
+	int OPERATION__CONSTRAINTS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
@@ -268,16 +203,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__DEPRECATED = IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Deleting</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION__DELETING = IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
+	int OPERATION__DEPRECATED = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Before</b></em>' attribute.
@@ -286,7 +212,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__BEFORE = IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
+	int OPERATION__BEFORE = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>After</b></em>' attribute.
@@ -295,7 +221,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__AFTER = IDENTIFIED_ELEMENT_FEATURE_COUNT + 9;
+	int OPERATION__AFTER = IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
@@ -304,7 +230,16 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION__IMPLEMENTATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 10;
+	int OPERATION__IMPLEMENTATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__LABEL = IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
@@ -313,117 +248,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 11;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.TypedElementImpl <em>Typed Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.declaration.impl.TypedElementImpl
-	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getTypedElement()
-	 * @generated
-	 */
-	int TYPED_ELEMENT = 9;
-
-	/**
-	 * The feature id for the '<em><b>Many</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT__MANY = 0;
-
-	/**
-	 * The feature id for the '<em><b>Classifier</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT__CLASSIFIER = 1;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT__CLASSIFIER_NAME = 2;
-
-	/**
-	 * The number of structural features of the '<em>Typed Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_ELEMENT_FEATURE_COUNT = 3;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.PlaceholderImpl <em>Placeholder</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.declaration.impl.PlaceholderImpl
-	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getPlaceholder()
-	 * @generated
-	 */
-	int PLACEHOLDER = 5;
-
-	/**
-	 * The feature id for the '<em><b>Many</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER__MANY = TYPED_ELEMENT__MANY;
-
-	/**
-	 * The feature id for the '<em><b>Classifier</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER__CLASSIFIER = TYPED_ELEMENT__CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER__CLASSIFIER_NAME = TYPED_ELEMENT__CLASSIFIER_NAME;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER__NAME = TYPED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Init Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER__INIT_EXPRESSION = TYPED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Placeholder</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER_FEATURE_COUNT = TYPED_ELEMENT_FEATURE_COUNT + 2;
+	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -433,34 +258,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getParameter()
 	 * @generated
 	 */
-	int PARAMETER = 6;
-
-	/**
-	 * The feature id for the '<em><b>Many</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__MANY = PLACEHOLDER__MANY;
-
-	/**
-	 * The feature id for the '<em><b>Classifier</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__CLASSIFIER = PLACEHOLDER__CLASSIFIER;
-
-	/**
-	 * The feature id for the '<em><b>Classifier Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__CLASSIFIER_NAME = PLACEHOLDER__CLASSIFIER_NAME;
+	int PARAMETER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -469,16 +267,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__NAME = PLACEHOLDER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Init Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__INIT_EXPRESSION = PLACEHOLDER__INIT_EXPRESSION;
+	int PARAMETER__NAME = IDENTIFIED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -487,7 +276,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__DESCRIPTION = PLACEHOLDER_FEATURE_COUNT + 0;
+	int PARAMETER__DESCRIPTION = IDENTIFIED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Operation</b></em>' container reference.
@@ -496,7 +285,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__OPERATION = PLACEHOLDER_FEATURE_COUNT + 1;
+	int PARAMETER__OPERATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
@@ -505,16 +294,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__REQUIRED = PLACEHOLDER_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Choice Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER__CHOICE_EXPRESSION = PLACEHOLDER_FEATURE_COUNT + 3;
+	int PARAMETER__REQUIRED = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Main</b></em>' attribute.
@@ -523,26 +303,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER__MAIN = PLACEHOLDER_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Parameter</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_FEATURE_COUNT = PLACEHOLDER_FEATURE_COUNT + 5;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.VariableImpl <em>Variable</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.declaration.impl.VariableImpl
-	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getVariable()
-	 * @generated
-	 */
-	int VARIABLE = 7;
+	int PARAMETER__MAIN = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Many</b></em>' attribute.
@@ -551,7 +312,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__MANY = PLACEHOLDER__MANY;
+	int PARAMETER__MANY = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Classifier</b></em>' reference.
@@ -560,7 +321,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__CLASSIFIER = PLACEHOLDER__CLASSIFIER;
+	int PARAMETER__CLASSIFIER = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Classifier Name</b></em>' attribute.
@@ -569,43 +330,16 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__CLASSIFIER_NAME = PLACEHOLDER__CLASSIFIER_NAME;
+	int PARAMETER__CLASSIFIER_NAME = IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = PLACEHOLDER__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Init Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__INIT_EXPRESSION = PLACEHOLDER__INIT_EXPRESSION;
-
-	/**
-	 * The feature id for the '<em><b>Operation</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__OPERATION = PLACEHOLDER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Variable</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_FEATURE_COUNT = PLACEHOLDER_FEATURE_COUNT + 1;
+	int PARAMETER_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -615,16 +349,25 @@ public interface DeclarationPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getConstraint()
 	 * @generated
 	 */
-	int CONSTRAINT = 8;
+	int CONSTRAINT = 4;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__LABEL = LABELED_ELEMENT__LABEL;
+	int CONSTRAINT__NAME = IDENTIFIED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONSTRAINT__DESCRIPTION = IDENTIFIED_ELEMENT__DESCRIPTION;
 
 	/**
 	 * The feature id for the '<em><b>Operation</b></em>' container reference.
@@ -633,16 +376,16 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__OPERATION = LABELED_ELEMENT_FEATURE_COUNT + 0;
+	int CONSTRAINT__OPERATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Boolean Expression</b></em>' attribute.
+	 * The feature id for the '<em><b>Restricts</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT__BOOLEAN_EXPRESSION = LABELED_ELEMENT_FEATURE_COUNT + 1;
+	int CONSTRAINT__RESTRICTS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Constraint</em>' class.
@@ -651,7 +394,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONSTRAINT_FEATURE_COUNT = LABELED_ELEMENT_FEATURE_COUNT + 2;
+	int CONSTRAINT_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
 
 	/**
@@ -676,46 +419,15 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getIdentifiedElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.DescribedElement <em>Described Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Described Element</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.DescribedElement
-	 * @generated
-	 */
-	EClass getDescribedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.DescribedElement#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Description</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.DescribedElement#getDescription()
-	 * @see #getDescribedElement()
+	 * @see org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription()
+	 * @see #getIdentifiedElement()
 	 * @generated
 	 */
-	EAttribute getDescribedElement_Description();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.LabeledElement <em>Labeled Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Labeled Element</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.LabeledElement
-	 * @generated
-	 */
-	EClass getLabeledElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.LabeledElement#getLabel <em>Label</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.LabeledElement#getLabel()
-	 * @see #getLabeledElement()
-	 * @generated
-	 */
-	EAttribute getLabeledElement_Label();
+	EAttribute getIdentifiedElement_Description();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Library <em>Library</em>}'.
@@ -793,17 +505,6 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Constraints();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Operation#getVariables <em>Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Operation#getVariables()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EReference getOperation_Variables();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#isDeprecated <em>Deprecated</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -813,17 +514,6 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOperation_Deprecated();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#isDeleting <em>Deleting</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Deleting</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Operation#isDeleting()
-	 * @see #getOperation()
-	 * @generated
-	 */
-	EAttribute getOperation_Deleting();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getBefore <em>Before</em>}'.
@@ -859,25 +549,15 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_Implementation();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Placeholder <em>Placeholder</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getLabel <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Placeholder</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Placeholder
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Operation#getLabel()
+	 * @see #getOperation()
 	 * @generated
 	 */
-	EClass getPlaceholder();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Placeholder#getInitExpression <em>Init Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Init Expression</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Placeholder#getInitExpression()
-	 * @see #getPlaceholder()
-	 * @generated
-	 */
-	EAttribute getPlaceholder_InitExpression();
+	EAttribute getOperation_Label();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Parameter <em>Parameter</em>}'.
@@ -912,17 +592,6 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getParameter_Required();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#getChoiceExpression <em>Choice Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Choice Expression</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Parameter#getChoiceExpression()
-	 * @see #getParameter()
-	 * @generated
-	 */
-	EAttribute getParameter_ChoiceExpression();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -934,25 +603,37 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getParameter_Main();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Variable <em>Variable</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Variable
+	 * @return the meta object for the attribute '<em>Many</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Parameter#isMany()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EClass getVariable();
+	EAttribute getParameter_Many();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.declaration.Variable#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Operation</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Variable#getOperation()
-	 * @see #getVariable()
+	 * @return the meta object for the reference '<em>Classifier</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Parameter#getClassifier()
+	 * @see #getParameter()
 	 * @generated
 	 */
-	EReference getVariable_Operation();
+	EReference getParameter_Classifier();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Classifier Name</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Parameter#getClassifierName()
+	 * @see #getParameter()
+	 * @generated
+	 */
+	EAttribute getParameter_ClassifierName();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Constraint <em>Constraint</em>}'.
@@ -976,58 +657,15 @@ public interface DeclarationPackage extends EPackage {
 	EReference getConstraint_Operation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Constraint#getBooleanExpression <em>Boolean Expression</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Constraint#getRestricts <em>Restricts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Boolean Expression</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.Constraint#getBooleanExpression()
+	 * @return the meta object for the reference '<em>Restricts</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Constraint#getRestricts()
 	 * @see #getConstraint()
 	 * @generated
 	 */
-	EAttribute getConstraint_BooleanExpression();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.TypedElement <em>Typed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Typed Element</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.TypedElement
-	 * @generated
-	 */
-	EClass getTypedElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.TypedElement#isMany <em>Many</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Many</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.TypedElement#isMany()
-	 * @see #getTypedElement()
-	 * @generated
-	 */
-	EAttribute getTypedElement_Many();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.TypedElement#getClassifier <em>Classifier</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Classifier</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.TypedElement#getClassifier()
-	 * @see #getTypedElement()
-	 * @generated
-	 */
-	EReference getTypedElement_Classifier();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.TypedElement#getClassifierName <em>Classifier Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Classifier Name</em>'.
-	 * @see org.eclipse.emf.edapt.declaration.TypedElement#getClassifierName()
-	 * @see #getTypedElement()
-	 * @generated
-	 */
-	EAttribute getTypedElement_ClassifierName();
+	EReference getConstraint_Restricts();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1070,40 +708,12 @@ public interface DeclarationPackage extends EPackage {
 		EAttribute IDENTIFIED_ELEMENT__NAME = eINSTANCE.getIdentifiedElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.DescribedElementImpl <em>Described Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.declaration.impl.DescribedElementImpl
-		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getDescribedElement()
-		 * @generated
-		 */
-		EClass DESCRIBED_ELEMENT = eINSTANCE.getDescribedElement();
-
-		/**
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute DESCRIBED_ELEMENT__DESCRIPTION = eINSTANCE.getDescribedElement_Description();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.LabeledElementImpl <em>Labeled Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.declaration.impl.LabeledElementImpl
-		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getLabeledElement()
-		 * @generated
-		 */
-		EClass LABELED_ELEMENT = eINSTANCE.getLabeledElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LABELED_ELEMENT__LABEL = eINSTANCE.getLabeledElement_Label();
+		EAttribute IDENTIFIED_ELEMENT__DESCRIPTION = eINSTANCE.getIdentifiedElement_Description();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl <em>Library</em>}' class.
@@ -1166,28 +776,12 @@ public interface DeclarationPackage extends EPackage {
 		EReference OPERATION__CONSTRAINTS = eINSTANCE.getOperation_Constraints();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION__VARIABLES = eINSTANCE.getOperation_Variables();
-
-		/**
 		 * The meta object literal for the '<em><b>Deprecated</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute OPERATION__DEPRECATED = eINSTANCE.getOperation_Deprecated();
-
-		/**
-		 * The meta object literal for the '<em><b>Deleting</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute OPERATION__DELETING = eINSTANCE.getOperation_Deleting();
 
 		/**
 		 * The meta object literal for the '<em><b>Before</b></em>' attribute feature.
@@ -1214,22 +808,12 @@ public interface DeclarationPackage extends EPackage {
 		EAttribute OPERATION__IMPLEMENTATION = eINSTANCE.getOperation_Implementation();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.PlaceholderImpl <em>Placeholder</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.declaration.impl.PlaceholderImpl
-		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getPlaceholder()
-		 * @generated
-		 */
-		EClass PLACEHOLDER = eINSTANCE.getPlaceholder();
-
-		/**
-		 * The meta object literal for the '<em><b>Init Expression</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PLACEHOLDER__INIT_EXPRESSION = eINSTANCE.getPlaceholder_InitExpression();
+		EAttribute OPERATION__LABEL = eINSTANCE.getOperation_Label();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -1258,14 +842,6 @@ public interface DeclarationPackage extends EPackage {
 		EAttribute PARAMETER__REQUIRED = eINSTANCE.getParameter_Required();
 
 		/**
-		 * The meta object literal for the '<em><b>Choice Expression</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PARAMETER__CHOICE_EXPRESSION = eINSTANCE.getParameter_ChoiceExpression();
-
-		/**
 		 * The meta object literal for the '<em><b>Main</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1274,22 +850,28 @@ public interface DeclarationPackage extends EPackage {
 		EAttribute PARAMETER__MAIN = eINSTANCE.getParameter_Main();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.VariableImpl <em>Variable</em>}' class.
+		 * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.declaration.impl.VariableImpl
-		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getVariable()
 		 * @generated
 		 */
-		EClass VARIABLE = eINSTANCE.getVariable();
+		EAttribute PARAMETER__MANY = eINSTANCE.getParameter_Many();
 
 		/**
-		 * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE__OPERATION = eINSTANCE.getVariable_Operation();
+		EReference PARAMETER__CLASSIFIER = eINSTANCE.getParameter_Classifier();
+
+		/**
+		 * The meta object literal for the '<em><b>Classifier Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER__CLASSIFIER_NAME = eINSTANCE.getParameter_ClassifierName();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl <em>Constraint</em>}' class.
@@ -1310,46 +892,12 @@ public interface DeclarationPackage extends EPackage {
 		EReference CONSTRAINT__OPERATION = eINSTANCE.getConstraint_Operation();
 
 		/**
-		 * The meta object literal for the '<em><b>Boolean Expression</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Restricts</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONSTRAINT__BOOLEAN_EXPRESSION = eINSTANCE.getConstraint_BooleanExpression();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.TypedElementImpl <em>Typed Element</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.declaration.impl.TypedElementImpl
-		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getTypedElement()
-		 * @generated
-		 */
-		EClass TYPED_ELEMENT = eINSTANCE.getTypedElement();
-
-		/**
-		 * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPED_ELEMENT__MANY = eINSTANCE.getTypedElement_Many();
-
-		/**
-		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TYPED_ELEMENT__CLASSIFIER = eINSTANCE.getTypedElement_Classifier();
-
-		/**
-		 * The meta object literal for the '<em><b>Classifier Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TYPED_ELEMENT__CLASSIFIER_NAME = eINSTANCE.getTypedElement_ClassifierName();
+		EReference CONSTRAINT__RESTRICTS = eINSTANCE.getConstraint_Restricts();
 
 	}
 

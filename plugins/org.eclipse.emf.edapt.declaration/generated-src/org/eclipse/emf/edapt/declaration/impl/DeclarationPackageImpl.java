@@ -22,15 +22,10 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.DeclarationPackage;
-import org.eclipse.emf.edapt.declaration.DescribedElement;
 import org.eclipse.emf.edapt.declaration.IdentifiedElement;
-import org.eclipse.emf.edapt.declaration.LabeledElement;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.Parameter;
-import org.eclipse.emf.edapt.declaration.Placeholder;
-import org.eclipse.emf.edapt.declaration.TypedElement;
-import org.eclipse.emf.edapt.declaration.Variable;
 
 
 /**
@@ -52,20 +47,6 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass describedElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass labeledElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass libraryEClass = null;
 
 	/**
@@ -80,13 +61,6 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass placeholderEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass parameterEClass = null;
 
 	/**
@@ -94,21 +68,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass constraintEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass typedElementEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -197,35 +157,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDescribedElement() {
-		return describedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getDescribedElement_Description() {
-		return (EAttribute)describedElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getLabeledElement() {
-		return labeledElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getLabeledElement_Label() {
-		return (EAttribute)labeledElementEClass.getEStructuralFeatures().get(0);
+	public EAttribute getIdentifiedElement_Description() {
+		return (EAttribute)identifiedElementEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -296,26 +229,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperation_Variables() {
-		return (EReference)operationEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getOperation_Deprecated() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getOperation_Deleting() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(5);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -324,7 +239,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * @generated
 	 */
 	public EAttribute getOperation_Before() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(6);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -333,7 +248,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * @generated
 	 */
 	public EAttribute getOperation_After() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(7);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -342,7 +257,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * @generated
 	 */
 	public EAttribute getOperation_Implementation() {
-		return (EAttribute)operationEClass.getEStructuralFeatures().get(8);
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -350,17 +265,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getPlaceholder() {
-		return placeholderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlaceholder_InitExpression() {
-		return (EAttribute)placeholderEClass.getEStructuralFeatures().get(0);
+	public EAttribute getOperation_Label() {
+		return (EAttribute)operationEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -395,7 +301,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_ChoiceExpression() {
+	public EAttribute getParameter_Main() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -404,7 +310,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getParameter_Main() {
+	public EAttribute getParameter_Many() {
 		return (EAttribute)parameterEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -413,8 +319,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVariable() {
-		return variableEClass;
+	public EReference getParameter_Classifier() {
+		return (EReference)parameterEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -422,8 +328,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariable_Operation() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(0);
+	public EAttribute getParameter_ClassifierName() {
+		return (EAttribute)parameterEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -449,44 +355,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getConstraint_BooleanExpression() {
-		return (EAttribute)constraintEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTypedElement() {
-		return typedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTypedElement_Many() {
-		return (EAttribute)typedElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTypedElement_Classifier() {
-		return (EReference)typedElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getTypedElement_ClassifierName() {
-		return (EAttribute)typedElementEClass.getEStructuralFeatures().get(2);
+	public EReference getConstraint_Restricts() {
+		return (EReference)constraintEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -519,12 +389,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		// Create classes and their features
 		identifiedElementEClass = createEClass(IDENTIFIED_ELEMENT);
 		createEAttribute(identifiedElementEClass, IDENTIFIED_ELEMENT__NAME);
-
-		describedElementEClass = createEClass(DESCRIBED_ELEMENT);
-		createEAttribute(describedElementEClass, DESCRIBED_ELEMENT__DESCRIPTION);
-
-		labeledElementEClass = createEClass(LABELED_ELEMENT);
-		createEAttribute(labeledElementEClass, LABELED_ELEMENT__LABEL);
+		createEAttribute(identifiedElementEClass, IDENTIFIED_ELEMENT__DESCRIPTION);
 
 		libraryEClass = createEClass(LIBRARY);
 		createEReference(libraryEClass, LIBRARY__OPERATIONS);
@@ -534,33 +399,23 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		createEReference(operationEClass, OPERATION__LIBRARY);
 		createEReference(operationEClass, OPERATION__PARAMETERS);
 		createEReference(operationEClass, OPERATION__CONSTRAINTS);
-		createEReference(operationEClass, OPERATION__VARIABLES);
 		createEAttribute(operationEClass, OPERATION__DEPRECATED);
-		createEAttribute(operationEClass, OPERATION__DELETING);
 		createEAttribute(operationEClass, OPERATION__BEFORE);
 		createEAttribute(operationEClass, OPERATION__AFTER);
 		createEAttribute(operationEClass, OPERATION__IMPLEMENTATION);
-
-		placeholderEClass = createEClass(PLACEHOLDER);
-		createEAttribute(placeholderEClass, PLACEHOLDER__INIT_EXPRESSION);
+		createEAttribute(operationEClass, OPERATION__LABEL);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEReference(parameterEClass, PARAMETER__OPERATION);
 		createEAttribute(parameterEClass, PARAMETER__REQUIRED);
-		createEAttribute(parameterEClass, PARAMETER__CHOICE_EXPRESSION);
 		createEAttribute(parameterEClass, PARAMETER__MAIN);
-
-		variableEClass = createEClass(VARIABLE);
-		createEReference(variableEClass, VARIABLE__OPERATION);
+		createEAttribute(parameterEClass, PARAMETER__MANY);
+		createEReference(parameterEClass, PARAMETER__CLASSIFIER);
+		createEAttribute(parameterEClass, PARAMETER__CLASSIFIER_NAME);
 
 		constraintEClass = createEClass(CONSTRAINT);
 		createEReference(constraintEClass, CONSTRAINT__OPERATION);
-		createEAttribute(constraintEClass, CONSTRAINT__BOOLEAN_EXPRESSION);
-
-		typedElementEClass = createEClass(TYPED_ELEMENT);
-		createEAttribute(typedElementEClass, TYPED_ELEMENT__MANY);
-		createEReference(typedElementEClass, TYPED_ELEMENT__CLASSIFIER);
-		createEAttribute(typedElementEClass, TYPED_ELEMENT__CLASSIFIER_NAME);
+		createEReference(constraintEClass, CONSTRAINT__RESTRICTS);
 	}
 
 	/**
@@ -592,24 +447,13 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 
 		// Add supertypes to classes
 		operationEClass.getESuperTypes().add(this.getIdentifiedElement());
-		operationEClass.getESuperTypes().add(this.getDescribedElement());
-		operationEClass.getESuperTypes().add(this.getLabeledElement());
-		placeholderEClass.getESuperTypes().add(this.getTypedElement());
-		placeholderEClass.getESuperTypes().add(this.getIdentifiedElement());
-		parameterEClass.getESuperTypes().add(this.getPlaceholder());
-		parameterEClass.getESuperTypes().add(this.getDescribedElement());
-		variableEClass.getESuperTypes().add(this.getPlaceholder());
-		constraintEClass.getESuperTypes().add(this.getLabeledElement());
+		parameterEClass.getESuperTypes().add(this.getIdentifiedElement());
+		constraintEClass.getESuperTypes().add(this.getIdentifiedElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(identifiedElementEClass, IdentifiedElement.class, "IdentifiedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIdentifiedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, IdentifiedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(describedElementEClass, DescribedElement.class, "DescribedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getDescribedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, DescribedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(labeledElementEClass, LabeledElement.class, "LabeledElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getLabeledElement_Label(), ecorePackage.getEString(), "label", null, 1, 1, LabeledElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getIdentifiedElement_Description(), ecorePackage.getEString(), "description", null, 0, 1, IdentifiedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLibrary_Operations(), this.getOperation(), this.getOperation_Library(), "operations", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -624,46 +468,36 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		initEReference(getOperation_Library(), this.getLibrary(), this.getLibrary_Operations(), "library", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_Parameters(), this.getParameter(), this.getParameter_Operation(), "parameters", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_Constraints(), this.getConstraint(), this.getConstraint_Operation(), "constraints", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperation_Variables(), this.getVariable(), this.getVariable_Operation(), "variables", null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_Deprecated(), ecorePackage.getEBoolean(), "deprecated", "false", 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getOperation_Deleting(), ecorePackage.getEBoolean(), "deleting", "false", 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_Before(), ecorePackage.getEString(), "before", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_After(), ecorePackage.getEString(), "after", null, 0, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		EGenericType g1 = createEGenericType(ecorePackage.getEJavaClass());
 		EGenericType g2 = createEGenericType();
 		g1.getETypeArguments().add(g2);
 		initEAttribute(getOperation_Implementation(), g1, "implementation", null, 1, 1, Operation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Label(), ecorePackage.getEString(), "label", null, 1, 1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(operationEClass, this.getParameter(), "getParameter", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(operationEClass, this.getVariable(), "getVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(operationEClass, this.getParameter(), "getMainParameter", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(operationEClass, ecorePackage.getEBoolean(), "refines", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(placeholderEClass, Placeholder.class, "Placeholder", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlaceholder_InitExpression(), ecorePackage.getEString(), "initExpression", null, 0, 1, Placeholder.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		op = addEOperation(operationEClass, this.getConstraint(), "getConstraint", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getParameter_Operation(), this.getOperation(), this.getOperation_Parameters(), "operation", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Required(), ecorePackage.getEBoolean(), "required", "true", 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getParameter_ChoiceExpression(), ecorePackage.getEString(), "choiceExpression", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Main(), ecorePackage.getEBoolean(), "main", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariable_Operation(), this.getOperation(), this.getOperation_Variables(), "operation", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Classifier(), ecorePackage.getEClassifier(), null, "classifier", null, 1, 1, Parameter.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameter_ClassifierName(), ecorePackage.getEString(), "classifierName", null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConstraint_Operation(), this.getOperation(), this.getOperation_Constraints(), "operation", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getConstraint_BooleanExpression(), ecorePackage.getEString(), "booleanExpression", null, 1, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(typedElementEClass, TypedElement.class, "TypedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTypedElement_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTypedElement_Classifier(), ecorePackage.getEClassifier(), null, "classifier", null, 1, 1, TypedElement.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTypedElement_ClassifierName(), ecorePackage.getEString(), "classifierName", null, 1, 1, TypedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConstraint_Restricts(), this.getParameter(), null, "restricts", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

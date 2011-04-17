@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 43145CFA416F7997CD1E8D8794BE0B42
+ * @levd.rating YELLOW Hash: 5300198671E8D49BAA16BDB043822CCF
  */
 @EdaptOperation(identifier = "removeSuperfluousSuperType", label = "Remove Superfluous Super Type", description = "In the metamodel, a super type is removed from a class that is already inherited from another super class. In the model, nothing is changed, as this super type is superfluous.")
 public class RemoveSuperfluousSuperType extends OperationImplementation {
@@ -42,6 +42,17 @@ public class RemoveSuperfluousSuperType extends OperationImplementation {
 			}
 		}
 		return false;
+	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void initialize(Metamodel metamodel) {
+		for(EClass superType : eClass.getESuperTypes()) {
+			if(checkSuperTypeSubsumed(superType)) {
+				this.superType = superType;
+				break;
+			}
+		}
 	}
 
 	/** {@inheritDoc} */

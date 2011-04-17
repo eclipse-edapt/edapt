@@ -68,6 +68,7 @@ public class IdentifiedElementItemProvider
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -86,6 +87,28 @@ public class IdentifiedElementItemProvider
 				 getString("_UI_IdentifiedElement_name_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_name_feature", "_UI_IdentifiedElement_type"),
 				 DeclarationPackage.Literals.IDENTIFIED_ELEMENT__NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_IdentifiedElement_description_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_description_feature", "_UI_IdentifiedElement_type"),
+				 DeclarationPackage.Literals.IDENTIFIED_ELEMENT__DESCRIPTION,
 				 true,
 				 false,
 				 false,
@@ -121,6 +144,7 @@ public class IdentifiedElementItemProvider
 
 		switch (notification.getFeatureID(IdentifiedElement.class)) {
 			case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
+			case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

@@ -129,14 +129,10 @@ public class HistoryValidator extends EObjectValidator {
 				return validateOperationChange((OperationChange)value, diagnostics, context);
 			case HistoryPackage.OPERATION_INSTANCE:
 				return validateOperationInstance((OperationInstance)value, diagnostics, context);
-			case HistoryPackage.PLACEHOLDER_INSTANCE:
-				return validatePlaceholderInstance((PlaceholderInstance)value, diagnostics, context);
 			case HistoryPackage.PARAMETER_INSTANCE:
 				return validateParameterInstance((ParameterInstance)value, diagnostics, context);
 			case HistoryPackage.MODEL_REFERENCE:
 				return validateModelReference((ModelReference)value, diagnostics, context);
-			case HistoryPackage.VARIABLE_INSTANCE:
-				return validateVariableInstance((VariableInstance)value, diagnostics, context);
 			case HistoryPackage.NAMED_ELEMENT:
 				return validateNamedElement((NamedElement)value, diagnostics, context);
 			case HistoryPackage.MIGRATEABLE_CHANGE:
@@ -145,6 +141,8 @@ public class HistoryValidator extends EObjectValidator {
 				return validateMigrationChange((MigrationChange)value, diagnostics, context);
 			case HistoryPackage.INITIALIZER_CHANGE:
 				return validateInitializerChange((InitializerChange)value, diagnostics, context);
+			case HistoryPackage.LANGUAGE:
+				return validateLanguage((Language)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -442,15 +440,6 @@ public class HistoryValidator extends EObjectValidator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean validatePlaceholderInstance(PlaceholderInstance placeholderInstance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(placeholderInstance, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean validateParameterInstance(ParameterInstance parameterInstance, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(parameterInstance, diagnostics, context);
 	}
@@ -462,15 +451,6 @@ public class HistoryValidator extends EObjectValidator {
 	 */
 	public boolean validateModelReference(ModelReference modelReference, DiagnosticChain diagnostics, Map<Object, Object> context) {
 		return validate_EveryDefaultConstraint(modelReference, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateVariableInstance(VariableInstance variableInstance, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return validate_EveryDefaultConstraint(variableInstance, diagnostics, context);
 	}
 
 	/**
@@ -531,6 +511,15 @@ public class HistoryValidator extends EObjectValidator {
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validateChange_Breaking(initializerChange, diagnostics, context);
 		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean validateLanguage(Language language, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		return true;
 	}
 
 	/**

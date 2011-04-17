@@ -337,31 +337,31 @@
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//OperationInstance"
-          referenceName="eOperations" element="history.ecore#//OperationInstance/getVariableValue">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue"
+          referenceName="eOperations" element="#//@releases.3/@changes.62/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element"
             featureName="name" dataValue="getVariableValue"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariableValue"
-          referenceName="eAnnotations" element="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.62/@element"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
           referenceName="details" element="#//@releases.3/@changes.20/@element">
         <changes xsi:type="history:Set" element="#//@releases.3/@changes.20/@element"
             featureName="key" dataValue="body"/>
         <changes xsi:type="history:Set" element="#//@releases.3/@changes.20/@element"
             featureName="value" dataValue="return OperationInstance_static.getVariableValue(this, name);"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariableValue"
-          referenceName="eParameters" element="history.ecore#//OperationInstance/getVariableValue/name">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/name"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.62/@element"
+          referenceName="eParameters" element="#//@releases.3/@changes.62/@element/name">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/name"
             featureName="name" dataValue="name"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/name"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/name"
             featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/name"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/name"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//OperationInstance"
@@ -393,69 +393,69 @@
             featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Operation"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
-          element="history.ecore#//PlaceholderInstance">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance"
+          element="#//@releases.3/@changes.61/@changes.5/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element"
             featureName="name" dataValue="PlaceholderInstance"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element"
             featureName="abstract" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Add" element="history.ecore#//PlaceholderInstance"
+        <changes xsi:type="history:Add" element="#//@releases.3/@changes.61/@changes.5/@element"
             featureName="eSuperTypes" referenceValue="history.ecore#//NamedElement"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance"
-          referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="A base class for instances of parameters and variables"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance"
-          referenceName="eOperations" element="history.ecore#//PlaceholderInstance/getPlaceholder">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element"
+          referenceName="eOperations" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder"
             featureName="name" dataValue="getPlaceholder"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder"
             featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Placeholder"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/getPlaceholder"
-          referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="body"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="return PlaceholderInstance_static.getPlaceholder(this);"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance"
-          referenceName="eStructuralFeatures" element="history.ecore#//PlaceholderInstance/value">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/value">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value"
             featureName="name" dataValue="value"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value"
             featureName="volatile" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value"
             featureName="transient" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/value"
-          referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/value"
+          referenceName="eAnnotations" element="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/value/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="The value conforming to the type derived from dataValue and referenceValue depending on its characteristics (primitive or object type, single-valued or multi-valued type)"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/value"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/value"
           referenceName="eAnnotations" element="#//@releases.3/@changes.50/@element">
         <changes xsi:type="history:Set" element="#//@releases.3/@changes.50/@element"
             featureName="source" dataValue="http://www.eclipse.org/gmt/cope/codegen"/>
@@ -474,48 +474,48 @@
         <changes xsi:type="history:Set" element="#//@releases.3/@changes.50/@element/@details.1"
             featureName="value" dataValue=""/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance"
-          referenceName="eStructuralFeatures" element="history.ecore#//PlaceholderInstance/dataValue">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/dataValue">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue"
             featureName="name" dataValue="dataValue"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue"
             featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/dataValue"
-          referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/dataValue"
+          referenceName="eAnnotations" element="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/dataValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="A list of serialized instances of a primitive type"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance"
-          referenceName="eStructuralFeatures" element="history.ecore#//PlaceholderInstance/referenceValue">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/referenceValue">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue"
             featureName="name" dataValue="referenceValue"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue"
             featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue"
             featureName="containment" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue"
             featureName="eType" referenceValue="history.ecore#//ModelReference"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/referenceValue"
-          referenceName="eAnnotations" element="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/referenceValue"
+          referenceName="eAnnotations" element="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance/referenceValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="A list of serialized instances of an object type"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
@@ -523,7 +523,7 @@
         <changes xsi:type="history:Set" element="history.ecore#//ParameterInstance"
             featureName="name" dataValue="ParameterInstance"/>
         <changes xsi:type="history:Add" element="history.ecore#//ParameterInstance"
-            featureName="eSuperTypes" referenceValue="history.ecore#//PlaceholderInstance"/>
+            featureName="eSuperTypes" referenceValue="#//@releases.3/@changes.61/@changes.5/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//OperationInstance"
           referenceName="eOperations" element="history.ecore#//OperationInstance/getParameter">
@@ -596,82 +596,82 @@
             featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Parameter"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
-          element="history.ecore#//VariableInstance">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance"
+          element="#//@releases.3/@changes.60/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element"
             featureName="name" dataValue="VariableInstance"/>
-        <changes xsi:type="history:Add" element="history.ecore#//VariableInstance"
-            featureName="eSuperTypes" referenceValue="history.ecore#//PlaceholderInstance"/>
+        <changes xsi:type="history:Add" element="#//@releases.3/@changes.60/@element"
+            featureName="eSuperTypes" referenceValue="#//@releases.3/@changes.61/@changes.5/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//OperationInstance"
-          referenceName="eOperations" element="history.ecore#//OperationInstance/getVariable">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable"
+          referenceName="eOperations" element="#//@releases.3/@changes.63/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element"
             featureName="name" dataValue="getVariable"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable"
-            featureName="eType" referenceValue="history.ecore#//VariableInstance"/>
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element"
+            featureName="eType" referenceValue="#//@releases.3/@changes.60/@element"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariable"
-          referenceName="eAnnotations" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.63/@element"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="body"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="return OperationInstance_static.getVariable(this, name);"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariable"
-          referenceName="eParameters" element="history.ecore#//OperationInstance/getVariable/name">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/name"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.63/@element"
+          referenceName="eParameters" element="#//@releases.3/@changes.63/@element/name">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/name"
             featureName="name" dataValue="name"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/name"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/name"
             featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/name"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/name"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//OperationInstance"
-          referenceName="eStructuralFeatures" element="history.ecore#//OperationInstance/variables">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables"
+          referenceName="eStructuralFeatures" element="#//@releases.3/@changes.59/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element"
             featureName="name" dataValue="variables"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element"
             featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element"
             featureName="transient" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element"
             featureName="containment" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables"
-            featureName="eType" referenceValue="history.ecore#//VariableInstance"/>
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element"
+            featureName="eType" referenceValue="#//@releases.3/@changes.60/@element"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/variables"
-          referenceName="eAnnotations" element="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.59/@changes.0/@element"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/variables/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.59/@changes.0/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="List of instance of parameters (only needed during runtime and is therefore not persisted)"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//VariableInstance"
-          referenceName="eAnnotations" element="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.60/@element"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="An instance of a helper variable, i.e. the variable is assigned a value"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//VariableInstance"
-          referenceName="eOperations" element="history.ecore#//VariableInstance/getVariable">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.60/@element"
+          referenceName="eOperations" element="#//@releases.3/@changes.60/@element/getVariable">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/getVariable"
             featureName="name" dataValue="getVariable"/>
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/getVariable"
             featureName="eType" referenceValue="../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Variable"/>
       </changes>
       <changes xsi:type="history:Create" target="history.ecore#//NamedElement" referenceName="eAnnotations"
@@ -2166,21 +2166,21 @@
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#//VariableInstance/getVariable"
-          referenceName="eAnnotations" element="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.60/@element/getVariable"
+          referenceName="eAnnotations" element="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//VariableInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.60/@element/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Helper method to determine the instantiated variable"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="history.ecore#//VariableInstance/getVariable"/>
+          <referenceValue element="#//@releases.3/@changes.60/@element/getVariable"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Helper method to determine the instantiated variable</dataValue>
@@ -2232,16 +2232,16 @@
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1">
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//PlaceholderInstance/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
             featureName="value" dataValue="Helper method to determine the instantiated placeholder"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="history.ecore#//PlaceholderInstance/getPlaceholder"/>
+          <referenceValue element="#//@releases.3/@changes.61/@changes.5/@element/getPlaceholder"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Helper method to determine the instantiated placeholder</dataValue>
@@ -2249,23 +2249,23 @@
       </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Helper method to determine the value of a variable with a certain name"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="history.ecore#//OperationInstance/getVariableValue"/>
+          <referenceValue element="#//@releases.3/@changes.62/@element"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Helper method to determine the value of a variable with a certain name</dataValue>
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:Delete" target="history.ecore#//OperationInstance/getVariableValue/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+    <changes xsi:type="history:Delete" target="#//@releases.3/@changes.62/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
         referenceName="details">
       <element xsi:type="ecore:EStringToStringMapEntry" key="body" value="return OperationInstance_static.getVariableValue(this, name);"/>
     </changes>
@@ -2291,16 +2291,16 @@
       <element xsi:type="ecore:EStringToStringMapEntry" key="body" value="return OperationInstance_static.getParameterValue(this, name);"/>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1">
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
+      <changes xsi:type="history:Create" target="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1">
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/getVariable/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
+        <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.1"
             featureName="value" dataValue="Helper method to determine the instantiated variable with a certain name"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="history.ecore#//OperationInstance/getVariable"/>
+          <referenceValue element="#//@releases.3/@changes.63/@element"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Helper method to determine the instantiated variable with a certain name</dataValue>
@@ -2642,7 +2642,7 @@
       <changes xsi:type="history:Set" element="history.ecore#//OperationInstance/setParameterValue/name"
           featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </changes>
-    <changes xsi:type="history:Delete" target="history.ecore#//PlaceholderInstance/value"
+    <changes xsi:type="history:Delete" target="history.ecore#//ParameterInstance/value"
         referenceName="eAnnotations">
       <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmt/cope/codegen">
         <details key="get" value=""/>
@@ -2668,6 +2668,155 @@
       <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmt/cope/codegen">
         <details key="get" value=""/>
         <details key="set" value=""/>
+      </element>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
+          element="history.ecore#//Language">
+        <changes xsi:type="history:Set" element="history.ecore#//Language" featureName="name"
+            dataValue="Language"/>
+      </changes>
+      <changes xsi:type="history:Create" target="history.ecore#//Language" referenceName="eLiterals"
+          element="history.ecore#//Language/Groovy">
+        <changes xsi:type="history:Set" element="history.ecore#//Language/Groovy"
+            featureName="name" dataValue="Groovy"/>
+        <changes xsi:type="history:Set" element="history.ecore#//Language/Groovy"
+            featureName="literal" dataValue="Groovy"/>
+      </changes>
+      <changes xsi:type="history:Create" target="history.ecore#//Language" referenceName="eLiterals"
+          element="history.ecore#//Language/Java">
+        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="name"
+            dataValue="Java"/>
+        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="literal"
+            dataValue="Java"/>
+        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="value"
+            dataValue="1" oldDataValue="0"/>
+      </changes>
+      <operation name="createEnumeration">
+        <parameters name="ePackage">
+          <referenceValue element="history.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>Language</dataValue>
+        </parameters>
+        <parameters name="literals">
+          <dataValue>Groovy</dataValue>
+          <dataValue>Java</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="history.ecore#//MigrationChange"
+          referenceName="eStructuralFeatures" element="history.ecore#//MigrationChange/language">
+        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
+            featureName="name" dataValue="language"/>
+        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
+            featureName="defaultValueLiteral" dataValue=""/>
+        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
+            featureName="eType" referenceValue="history.ecore#//Language"/>
+      </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="history.ecore#//MigrationChange"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>language</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="history.ecore#//Language"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue></dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="history.ecore#//OperationInstance"
+          referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="variables" upperBound="-1" eType="#//@releases.3/@changes.60/@element"
+            transient="true" containment="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="List of instance of parameters (only needed during runtime and is therefore not persisted)"/>
+          </eAnnotations>
+        </element>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.3/@changes.59/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Delete" target="history.ecore#/" referenceName="eClassifiers">
+      <changes xsi:type="history:Set" element="#//@releases.3/@changes.63/@element"
+          featureName="eType" oldReferenceValue="#//@releases.3/@changes.60/@element"/>
+      <element xsi:type="ecore:EClass" name="VariableInstance">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="An instance of a helper variable, i.e. the variable is assigned a value"/>
+        </eAnnotations>
+        <eOperations name="getVariable" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Variable">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Helper method to determine the instantiated variable"/>
+          </eAnnotations>
+        </eOperations>
+      </element>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Move" target="history.ecore#//ParameterInstance"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/value"
+          source="#//@releases.3/@changes.61/@changes.5/@element"/>
+      <changes xsi:type="history:Move" target="history.ecore#//ParameterInstance"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/dataValue"
+          source="#//@releases.3/@changes.61/@changes.5/@element"/>
+      <changes xsi:type="history:Move" target="history.ecore#//ParameterInstance"
+          referenceName="eStructuralFeatures" element="history.ecore#//ParameterInstance/referenceValue"
+          source="#//@releases.3/@changes.61/@changes.5/@element"/>
+      <changes xsi:type="history:Remove" element="history.ecore#//ParameterInstance"
+          featureName="eSuperTypes" referenceValue="#//@releases.3/@changes.61/@changes.5/@element"/>
+      <changes xsi:type="history:Add" element="history.ecore#//ParameterInstance"
+          featureName="eSuperTypes" referenceValue="history.ecore#//NamedElement"/>
+      <changes xsi:type="history:Delete" target="history.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="PlaceholderInstance" abstract="true"
+            eSuperTypes="history.ecore#//NamedElement">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="A base class for instances of parameters and variables"/>
+          </eAnnotations>
+          <eOperations name="getPlaceholder" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Placeholder">
+            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="body" value="return PlaceholderInstance_static.getPlaceholder(this);"/>
+              <details key="documentation" value="Helper method to determine the instantiated placeholder"/>
+            </eAnnotations>
+          </eOperations>
+        </element>
+      </changes>
+      <operation name="inlineSuperClass">
+        <parameters name="superClass">
+          <referenceValue element="#//@releases.3/@changes.61/@changes.5/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Delete" target="history.ecore#//OperationInstance"
+        referenceName="eOperations">
+      <element xsi:type="ecore:EOperation" name="getVariableValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Helper method to determine the value of a variable with a certain name"/>
+        </eAnnotations>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </element>
+    </changes>
+    <changes xsi:type="history:Delete" target="history.ecore#//OperationInstance"
+        referenceName="eOperations">
+      <element xsi:type="ecore:EOperation" name="getVariable">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="body" value="return OperationInstance_static.getVariable(this, name);"/>
+          <details key="documentation" value="Helper method to determine the instantiated variable with a certain name"/>
+        </eAnnotations>
+        <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </element>
     </changes>
   </releases>

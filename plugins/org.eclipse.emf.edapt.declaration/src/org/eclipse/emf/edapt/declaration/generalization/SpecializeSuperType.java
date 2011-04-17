@@ -1,5 +1,8 @@
 package org.eclipse.emf.edapt.declaration.generalization;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
@@ -14,7 +17,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1DB1C60C933229E8B5B7DFF0429D34F0
+ * @levd.rating YELLOW Hash: 87E079BD6E282566CD0FB93D1F4D8823
  */
 @EdaptOperation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
 public class SpecializeSuperType extends OperationImplementation {
@@ -36,11 +39,25 @@ public class SpecializeSuperType extends OperationImplementation {
 	/** {@description} */
 	@EdaptParameter(description = "The sub class by which is replaced")
 	public EClass replaceBy;
-	
+
 	/** {@description} */
 	@EdaptConstraint(description = "The replacing super type must be a sub type of the replaced super type")
 	public boolean checkToReplaceSubType() {
 		return replaceBy.getEAllSuperTypes().contains(toReplace);
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public void initialize(Metamodel metamodel) {
+		if (eClass.getESuperTypes().size() == 1) {
+			toReplace = eClass.getESuperTypes().get(0);
+			List<EClass> subClasses = new ArrayList<EClass>(metamodel
+					.getESubTypes(toReplace));
+			subClasses.remove(eClass);
+			if (subClasses.size() == 1) {
+				replaceBy = subClasses.get(0);
+			}
+		}
 	}
 
 	/** {@inheritDoc} */

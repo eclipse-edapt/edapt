@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.history.MigrationChange#getMigration <em>Migration</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.history.MigrationChange#getChanges <em>Changes</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.history.MigrationChange#getLanguage <em>Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -74,5 +75,35 @@ public interface MigrationChange extends Change {
 	 * @generated
 	 */
 	EList<MigrateableChange> getChanges();
+
+	/**
+	 * Returns the value of the '<em><b>Language</b></em>' attribute.
+	 * The default value is <code>""</code>.
+	 * The literals are from the enumeration {@link org.eclipse.emf.edapt.history.Language}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Language</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Language</em>' attribute.
+	 * @see org.eclipse.emf.edapt.history.Language
+	 * @see #setLanguage(Language)
+	 * @see org.eclipse.emf.edapt.history.HistoryPackage#getMigrationChange_Language()
+	 * @model default=""
+	 * @generated
+	 */
+	Language getLanguage();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.history.MigrationChange#getLanguage <em>Language</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Language</em>' attribute.
+	 * @see org.eclipse.emf.edapt.history.Language
+	 * @see #getLanguage()
+	 * @generated
+	 */
+	void setLanguage(Language value);
 
 } // MigrationChange

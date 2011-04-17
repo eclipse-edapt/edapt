@@ -157,15 +157,6 @@ public interface HistoryFactory extends EFactory {
 	ModelReference createModelReference();
 
 	/**
-	 * Returns a new object of class '<em>Variable Instance</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable Instance</em>'.
-	 * @generated
-	 */
-	VariableInstance createVariableInstance();
-
-	/**
 	 * Returns a new object of class '<em>Migration Change</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

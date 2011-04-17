@@ -28,12 +28,11 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#isDeprecated <em>Deprecated</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#isDeleting <em>Deleting</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getBefore <em>Before</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getAfter <em>After</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Operation#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,7 +40,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Operation extends IdentifiedElement, DescribedElement, LabeledElement {
+public interface Operation extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Library</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}'.
@@ -108,23 +107,6 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	EList<Constraint> getConstraints();
 
 	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.edapt.declaration.Variable}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Variable#getOperation <em>Operation</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A list of helper variables for use in initial expressions of parameters and constraint expressions. Helper variables are initialized in the order in which they are specified so that a variable can access all previously declared variables.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation_Variables()
-	 * @see org.eclipse.emf.edapt.declaration.Variable#getOperation
-	 * @model opposite="operation" containment="true"
-	 * @generated
-	 */
-	EList<Variable> getVariables();
-
-	/**
 	 * Returns the value of the '<em><b>Deprecated</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -153,36 +135,6 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	 * @generated
 	 */
 	void setDeprecated(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Deleting</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Deleting</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Whether the operation deletes elements of values of elements
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Deleting</em>' attribute.
-	 * @see #setDeleting(boolean)
-	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation_Deleting()
-	 * @model default="false"
-	 * @generated
-	 */
-	boolean isDeleting();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Operation#isDeleting <em>Deleting</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Deleting</em>' attribute.
-	 * @see #isDeleting()
-	 * @generated
-	 */
-	void setDeleting(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Before</b></em>' attribute.
@@ -263,6 +215,31 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	void setImplementation(Class<?> value);
 
 	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Label for an element
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see #setLabel(String)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation_Label()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getLabel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Operation#getLabel <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label</em>' attribute.
+	 * @see #getLabel()
+	 * @generated
+	 */
+	void setLabel(String value);
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -272,17 +249,6 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	 * @generated
 	 */
 	Parameter getParameter(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Helper method to determine the variable of the operation with a certain name
-	 * <!-- end-model-doc -->
-	 * @model
-	 * @generated
-	 */
-	Variable getVariable(String name);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -302,5 +268,13 @@ public interface Operation extends IdentifiedElement, DescribedElement, LabeledE
 	 * @generated
 	 */
 	boolean refines();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model
+	 * @generated
+	 */
+	Constraint getConstraint(String name);
 
 } // Operation

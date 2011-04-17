@@ -24,7 +24,6 @@ import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.OperationChange;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.history.PlaceholderInstance;
 import org.eclipse.emf.edapt.history.provider.util.HistoryUIUtils;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -113,14 +112,14 @@ public class OperationChangeItemProvider
 	}
 	
 	/**
-	 * Get the textual representation of the instance of a placeholder
+	 * Get the textual representation of the instance of a parameter
 	 * 
-	 * @param placeholderInstance
+	 * @param parameterInstance
 	 * @return Textual representation
 	 */
 	@SuppressWarnings("unchecked")
-	private String getLabel(PlaceholderInstance placeholderInstance) {
-		Object o = placeholderInstance.getValue();
+	private String getLabel(ParameterInstance parameterInstance) {
+		Object o = parameterInstance.getValue();
 		if (o instanceof List) {
 			String result = "[";
 			for (Iterator i = ((List) o).iterator(); i.hasNext();) {
@@ -135,13 +134,13 @@ public class OperationChangeItemProvider
 				}
 			}
 			result += "]";
-			return placeholderInstance.getName() + " = " + result;
+			return parameterInstance.getName() + " = " + result;
 		}
 		if (o instanceof EObject) {
-			return placeholderInstance.getName() + " = "
+			return parameterInstance.getName() + " = "
 					+ HistoryUIUtils.getBracedLabel(o);
 		}
-		return placeholderInstance.getName() + " = "
+		return parameterInstance.getName() + " = "
 				+ HistoryUIUtils.getLabel(o);
 	}
 

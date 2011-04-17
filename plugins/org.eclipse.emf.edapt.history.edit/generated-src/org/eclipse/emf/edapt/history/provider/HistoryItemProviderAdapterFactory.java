@@ -402,29 +402,6 @@ public class HistoryItemProviderAdapterFactory extends HistoryAdapterFactory imp
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.edapt.history.VariableInstance} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableInstanceItemProvider variableInstanceItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.edapt.history.VariableInstance}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableInstanceAdapter() {
-		if (variableInstanceItemProvider == null) {
-			variableInstanceItemProvider = new VariableInstanceItemProvider(this);
-		}
-
-		return variableInstanceItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.edapt.history.MigrationChange} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -560,7 +537,6 @@ public class HistoryItemProviderAdapterFactory extends HistoryAdapterFactory imp
 		if (operationInstanceItemProvider != null) operationInstanceItemProvider.dispose();
 		if (parameterInstanceItemProvider != null) parameterInstanceItemProvider.dispose();
 		if (modelReferenceItemProvider != null) modelReferenceItemProvider.dispose();
-		if (variableInstanceItemProvider != null) variableInstanceItemProvider.dispose();
 		if (migrationChangeItemProvider != null) migrationChangeItemProvider.dispose();
 	}
 

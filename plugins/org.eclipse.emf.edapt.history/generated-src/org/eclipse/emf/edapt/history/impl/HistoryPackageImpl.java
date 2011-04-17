@@ -13,6 +13,7 @@ package org.eclipse.emf.edapt.history.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -29,6 +30,7 @@ import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.InitializerChange;
+import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.ModelReference;
@@ -39,13 +41,11 @@ import org.eclipse.emf.edapt.history.NonDelete;
 import org.eclipse.emf.edapt.history.OperationChange;
 import org.eclipse.emf.edapt.history.OperationInstance;
 import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.history.PlaceholderInstance;
 import org.eclipse.emf.edapt.history.PrimitiveChange;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.Remove;
 import org.eclipse.emf.edapt.history.Set;
 import org.eclipse.emf.edapt.history.ValueChange;
-import org.eclipse.emf.edapt.history.VariableInstance;
 import org.eclipse.emf.edapt.history.util.HistoryValidator;
 
 
@@ -180,13 +180,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass placeholderInstanceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass parameterInstanceEClass = null;
 
 	/**
@@ -195,13 +188,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * @generated
 	 */
 	private EClass modelReferenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass variableInstanceEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -230,6 +216,13 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * @generated
 	 */
 	private EClass initializerChangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum languageEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -687,53 +680,35 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOperationInstance_Variables() {
-		return (EReference)operationInstanceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPlaceholderInstance() {
-		return placeholderInstanceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlaceholderInstance_Value() {
-		return (EAttribute)placeholderInstanceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getPlaceholderInstance_DataValue() {
-		return (EAttribute)placeholderInstanceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPlaceholderInstance_ReferenceValue() {
-		return (EReference)placeholderInstanceEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getParameterInstance() {
 		return parameterInstanceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterInstance_Value() {
+		return (EAttribute)parameterInstanceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getParameterInstance_DataValue() {
+		return (EAttribute)parameterInstanceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getParameterInstance_ReferenceValue() {
+		return (EReference)parameterInstanceEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -752,15 +727,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 */
 	public EReference getModelReference_Element() {
 		return (EReference)modelReferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getVariableInstance() {
-		return variableInstanceEClass;
 	}
 
 	/**
@@ -822,6 +788,15 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getMigrationChange_Language() {
+		return (EAttribute)migrationChangeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getInitializerChange() {
 		return initializerChangeEClass;
 	}
@@ -833,6 +808,15 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 */
 	public EReference getInitializerChange_Changes() {
 		return (EReference)initializerChangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EEnum getLanguage() {
+		return languageEEnum;
 	}
 
 	/**
@@ -921,19 +905,14 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 
 		operationInstanceEClass = createEClass(OPERATION_INSTANCE);
 		createEReference(operationInstanceEClass, OPERATION_INSTANCE__PARAMETERS);
-		createEReference(operationInstanceEClass, OPERATION_INSTANCE__VARIABLES);
-
-		placeholderInstanceEClass = createEClass(PLACEHOLDER_INSTANCE);
-		createEAttribute(placeholderInstanceEClass, PLACEHOLDER_INSTANCE__VALUE);
-		createEAttribute(placeholderInstanceEClass, PLACEHOLDER_INSTANCE__DATA_VALUE);
-		createEReference(placeholderInstanceEClass, PLACEHOLDER_INSTANCE__REFERENCE_VALUE);
 
 		parameterInstanceEClass = createEClass(PARAMETER_INSTANCE);
+		createEAttribute(parameterInstanceEClass, PARAMETER_INSTANCE__VALUE);
+		createEAttribute(parameterInstanceEClass, PARAMETER_INSTANCE__DATA_VALUE);
+		createEReference(parameterInstanceEClass, PARAMETER_INSTANCE__REFERENCE_VALUE);
 
 		modelReferenceEClass = createEClass(MODEL_REFERENCE);
 		createEReference(modelReferenceEClass, MODEL_REFERENCE__ELEMENT);
-
-		variableInstanceEClass = createEClass(VARIABLE_INSTANCE);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -943,9 +922,13 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		migrationChangeEClass = createEClass(MIGRATION_CHANGE);
 		createEAttribute(migrationChangeEClass, MIGRATION_CHANGE__MIGRATION);
 		createEReference(migrationChangeEClass, MIGRATION_CHANGE__CHANGES);
+		createEAttribute(migrationChangeEClass, MIGRATION_CHANGE__LANGUAGE);
 
 		initializerChangeEClass = createEClass(INITIALIZER_CHANGE);
 		createEReference(initializerChangeEClass, INITIALIZER_CHANGE__CHANGES);
+
+		// Create enums
+		languageEEnum = createEEnum(LANGUAGE);
 	}
 
 	/**
@@ -994,9 +977,7 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		compositeChangeEClass.getESuperTypes().add(this.getMigrateableChange());
 		operationChangeEClass.getESuperTypes().add(this.getCompositeChange());
 		operationInstanceEClass.getESuperTypes().add(this.getNamedElement());
-		placeholderInstanceEClass.getESuperTypes().add(this.getNamedElement());
-		parameterInstanceEClass.getESuperTypes().add(this.getPlaceholderInstance());
-		variableInstanceEClass.getESuperTypes().add(this.getPlaceholderInstance());
+		parameterInstanceEClass.getESuperTypes().add(this.getNamedElement());
 		migrateableChangeEClass.getESuperTypes().add(this.getChange());
 		migrationChangeEClass.getESuperTypes().add(this.getChange());
 		initializerChangeEClass.getESuperTypes().add(this.getContentChange());
@@ -1078,7 +1059,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 
 		initEClass(operationInstanceEClass, OperationInstance.class, "OperationInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getOperationInstance_Parameters(), this.getParameterInstance(), null, "parameters", null, 0, -1, OperationInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getOperationInstance_Variables(), this.getVariableInstance(), null, "variables", null, 0, -1, OperationInstance.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(operationInstanceEClass, this.getParameterInstance(), "getParameter", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -1086,7 +1066,7 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		op = addEOperation(operationInstanceEClass, ecorePackage.getEJavaObject(), "getParameterValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(operationInstanceEClass, this.getVariableInstance(), "getVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
+		op = addEOperation(operationInstanceEClass, null, "getVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(operationInstanceEClass, ecorePackage.getEJavaObject(), "getVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1098,23 +1078,15 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEJavaObject(), "value", 0, 1, IS_UNIQUE, IS_ORDERED);
 
-		initEClass(placeholderInstanceEClass, PlaceholderInstance.class, "PlaceholderInstance", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPlaceholderInstance_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, PlaceholderInstance.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getPlaceholderInstance_DataValue(), ecorePackage.getEString(), "dataValue", null, 0, -1, PlaceholderInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlaceholderInstance_ReferenceValue(), this.getModelReference(), null, "referenceValue", null, 0, -1, PlaceholderInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		addEOperation(placeholderInstanceEClass, theDeclarationPackage.getPlaceholder(), "getPlaceholder", 0, 1, IS_UNIQUE, IS_ORDERED);
-
 		initEClass(parameterInstanceEClass, ParameterInstance.class, "ParameterInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getParameterInstance_Value(), ecorePackage.getEJavaObject(), "value", null, 0, 1, ParameterInstance.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getParameterInstance_DataValue(), ecorePackage.getEString(), "dataValue", null, 0, -1, ParameterInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameterInstance_ReferenceValue(), this.getModelReference(), null, "referenceValue", null, 0, -1, ParameterInstance.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		addEOperation(parameterInstanceEClass, theDeclarationPackage.getParameter(), "getParameter", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(modelReferenceEClass, ModelReference.class, "ModelReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getModelReference_Element(), ecorePackage.getEObject(), null, "element", null, 1, 1, ModelReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(variableInstanceEClass, VariableInstance.class, "VariableInstance", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		addEOperation(variableInstanceEClass, theDeclarationPackage.getVariable(), "getVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1124,9 +1096,15 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		initEClass(migrationChangeEClass, MigrationChange.class, "MigrationChange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMigrationChange_Migration(), ecorePackage.getEString(), "migration", null, 1, 1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMigrationChange_Changes(), this.getMigrateableChange(), null, "changes", null, 0, -1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMigrationChange_Language(), this.getLanguage(), "language", "", 0, 1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(initializerChangeEClass, InitializerChange.class, "InitializerChange", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInitializerChange_Changes(), this.getValueChange(), null, "changes", null, 0, -1, InitializerChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		// Initialize enums and add enum literals
+		initEEnum(languageEEnum, Language.class, "Language");
+		addEEnumLiteral(languageEEnum, Language.GROOVY);
+		addEEnumLiteral(languageEEnum, Language.JAVA);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1155,7 +1133,7 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		   source, 
 		   new String[] {
 			 "text", ""
-		   });																																													
+		   });																																								
 	}
 
 } //HistoryPackageImpl

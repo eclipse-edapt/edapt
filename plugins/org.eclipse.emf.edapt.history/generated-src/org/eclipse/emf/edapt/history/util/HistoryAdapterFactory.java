@@ -143,20 +143,12 @@ public class HistoryAdapterFactory extends AdapterFactoryImpl {
 				return createOperationInstanceAdapter();
 			}
 			@Override
-			public Adapter casePlaceholderInstance(PlaceholderInstance object) {
-				return createPlaceholderInstanceAdapter();
-			}
-			@Override
 			public Adapter caseParameterInstance(ParameterInstance object) {
 				return createParameterInstanceAdapter();
 			}
 			@Override
 			public Adapter caseModelReference(ModelReference object) {
 				return createModelReferenceAdapter();
-			}
-			@Override
-			public Adapter caseVariableInstance(VariableInstance object) {
-				return createVariableInstanceAdapter();
 			}
 			@Override
 			public Adapter caseNamedElement(NamedElement object) {
@@ -433,20 +425,6 @@ public class HistoryAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.history.PlaceholderInstance <em>Placeholder Instance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.history.PlaceholderInstance
-	 * @generated
-	 */
-	public Adapter createPlaceholderInstanceAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.history.ParameterInstance <em>Parameter Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -471,20 +449,6 @@ public class HistoryAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createModelReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.history.VariableInstance <em>Variable Instance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.history.VariableInstance
-	 * @generated
-	 */
-	public Adapter createVariableInstanceAdapter() {
 		return null;
 	}
 

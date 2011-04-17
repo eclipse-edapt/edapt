@@ -41,9 +41,12 @@ public class OperationInstanceConverter {
 		return repository;
 	}
 
-	/** Convert an {@link OperationInstance} to an {@link OperationImplementation}. */
-	public static OperationImplementation convert(OperationInstance operationInstance,
-			Metamodel metamodel) {
+	/**
+	 * Convert an {@link OperationInstance} to an
+	 * {@link OperationImplementation}.
+	 */
+	public static OperationImplementation convert(
+			OperationInstance operationInstance, Metamodel metamodel) {
 		try {
 			Operation operation = operationInstance.getOperation();
 			Parameter mainParameter = operation.getMainParameter();
@@ -55,7 +58,11 @@ public class OperationInstanceConverter {
 					.getParameter(mainParameter.getName());
 			transfer(mainParameterInstance, operationBase);
 
-			operationBase.initialize(metamodel);
+			try {
+				operationBase.initialize(metamodel);
+			} catch (RuntimeException e) {
+				// ignore RuntimeException to make more robust
+			}
 
 			for (ParameterInstance parameterInstance : operationInstance
 					.getParameters()) {
@@ -83,7 +90,10 @@ public class OperationInstanceConverter {
 		}
 	}
 
-	/** Convert an {@link OperationImplementation} to an {@link OperationInstance}. */
+	/**
+	 * Convert an {@link OperationImplementation} to an
+	 * {@link OperationInstance}.
+	 */
 	public static void convert(OperationImplementation operationBase,
 			OperationInstance operationInstance) {
 		try {

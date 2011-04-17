@@ -12,11 +12,11 @@
 package org.eclipse.emf.edapt.history.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.edapt.history.*;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.CompositeChange;
 import org.eclipse.emf.edapt.history.Create;
@@ -24,6 +24,7 @@ import org.eclipse.emf.edapt.history.Delete;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.ModelReference;
 import org.eclipse.emf.edapt.history.Move;
@@ -34,7 +35,6 @@ import org.eclipse.emf.edapt.history.ParameterInstance;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.Remove;
 import org.eclipse.emf.edapt.history.Set;
-import org.eclipse.emf.edapt.history.VariableInstance;
 
 
 /**
@@ -95,10 +95,39 @@ public class HistoryFactoryImpl extends EFactoryImpl implements HistoryFactory {
 			case HistoryPackage.OPERATION_INSTANCE: return createOperationInstance();
 			case HistoryPackage.PARAMETER_INSTANCE: return createParameterInstance();
 			case HistoryPackage.MODEL_REFERENCE: return createModelReference();
-			case HistoryPackage.VARIABLE_INSTANCE: return createVariableInstance();
 			case HistoryPackage.MIGRATION_CHANGE: return createMigrationChange();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object createFromString(EDataType eDataType, String initialValue) {
+		switch (eDataType.getClassifierID()) {
+			case HistoryPackage.LANGUAGE:
+				return createLanguageFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String convertToString(EDataType eDataType, Object instanceValue) {
+		switch (eDataType.getClassifierID()) {
+			case HistoryPackage.LANGUAGE:
+				return convertLanguageToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -247,9 +276,9 @@ public class HistoryFactoryImpl extends EFactoryImpl implements HistoryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VariableInstance createVariableInstance() {
-		VariableInstanceImpl variableInstance = new VariableInstanceImpl();
-		return variableInstance;
+	public MigrationChange createMigrationChange() {
+		MigrationChangeImpl migrationChange = new MigrationChangeImpl();
+		return migrationChange;
 	}
 
 	/**
@@ -257,9 +286,19 @@ public class HistoryFactoryImpl extends EFactoryImpl implements HistoryFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public MigrationChange createMigrationChange() {
-		MigrationChangeImpl migrationChange = new MigrationChangeImpl();
-		return migrationChange;
+	public Language createLanguageFromString(EDataType eDataType, String initialValue) {
+		Language result = Language.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLanguageToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

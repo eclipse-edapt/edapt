@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 75613EC6B8A7327E8D1A77FBC81348CC
+ * @levd.rating YELLOW Hash: 21E320ACD0FC25CBAF53AEB619B02CA6
  */
 public class OperationExtractor {
 
@@ -52,6 +52,9 @@ public class OperationExtractor {
 			}
 			operation.setLabel(operationAnnotation.label());
 			operation.setDescription(operationAnnotation.description());
+			if (c.getAnnotation(Deprecated.class) != null) {
+				operation.setDeprecated(true);
+			}
 
 			for (Field field : c.getFields()) {
 				addParameter(operation, field);
@@ -129,11 +132,18 @@ public class OperationExtractor {
 	private void addConstraint(Operation operation, Method method) {
 		EdaptConstraint constraintAnnotation = method
 				.getAnnotation(EdaptConstraint.class);
-		
-		if(constraintAnnotation != null) {
-			Constraint constraint = DeclarationFactory.eINSTANCE.createConstraint();
-			constraint.setLabel(constraintAnnotation.description());
+
+		if (constraintAnnotation != null) {
+			Constraint constraint = DeclarationFactory.eINSTANCE
+					.createConstraint();
+			constraint.setName(method.getName());
+			constraint.setDescription(constraintAnnotation.description());
 			operation.getConstraints().add(constraint);
+
+			String restricts = constraintAnnotation.restricts();
+			if (!restricts.isEmpty()) {
+				constraint.setRestricts(operation.getParameter(restricts));
+			}
 		}
 	}
 

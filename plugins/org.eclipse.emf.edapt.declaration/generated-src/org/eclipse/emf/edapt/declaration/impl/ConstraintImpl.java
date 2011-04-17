@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationPackage;
 import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.Parameter;
 
 
 /**
@@ -30,32 +31,22 @@ import org.eclipse.emf.edapt.declaration.Operation;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl#getBooleanExpression <em>Boolean Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl#getRestricts <em>Restricts</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class ConstraintImpl extends LabeledElementImpl implements Constraint {
+public class ConstraintImpl extends IdentifiedElementImpl implements Constraint {
 	/**
-	 * The default value of the '{@link #getBooleanExpression() <em>Boolean Expression</em>}' attribute.
+	 * The cached value of the '{@link #getRestricts() <em>Restricts</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getBooleanExpression()
+	 * @see #getRestricts()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String BOOLEAN_EXPRESSION_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getBooleanExpression() <em>Boolean Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBooleanExpression()
-	 * @generated
-	 * @ordered
-	 */
-	protected String booleanExpression = BOOLEAN_EXPRESSION_EDEFAULT;
+	protected Parameter restricts;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -122,8 +113,16 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBooleanExpression() {
-		return booleanExpression;
+	public Parameter getRestricts() {
+		if (restricts != null && restricts.eIsProxy()) {
+			InternalEObject oldRestricts = (InternalEObject)restricts;
+			restricts = (Parameter)eResolveProxy(oldRestricts);
+			if (restricts != oldRestricts) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DeclarationPackage.CONSTRAINT__RESTRICTS, oldRestricts, restricts));
+			}
+		}
+		return restricts;
 	}
 
 	/**
@@ -131,11 +130,20 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBooleanExpression(String newBooleanExpression) {
-		String oldBooleanExpression = booleanExpression;
-		booleanExpression = newBooleanExpression;
+	public Parameter basicGetRestricts() {
+		return restricts;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRestricts(Parameter newRestricts) {
+		Parameter oldRestricts = restricts;
+		restricts = newRestricts;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION, oldBooleanExpression, booleanExpression));
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.CONSTRAINT__RESTRICTS, oldRestricts, restricts));
 	}
 
 	/**
@@ -192,8 +200,9 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 		switch (featureID) {
 			case DeclarationPackage.CONSTRAINT__OPERATION:
 				return getOperation();
-			case DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION:
-				return getBooleanExpression();
+			case DeclarationPackage.CONSTRAINT__RESTRICTS:
+				if (resolve) return getRestricts();
+				return basicGetRestricts();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,8 +218,8 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 			case DeclarationPackage.CONSTRAINT__OPERATION:
 				setOperation((Operation)newValue);
 				return;
-			case DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION:
-				setBooleanExpression((String)newValue);
+			case DeclarationPackage.CONSTRAINT__RESTRICTS:
+				setRestricts((Parameter)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -227,8 +236,8 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 			case DeclarationPackage.CONSTRAINT__OPERATION:
 				setOperation((Operation)null);
 				return;
-			case DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION:
-				setBooleanExpression(BOOLEAN_EXPRESSION_EDEFAULT);
+			case DeclarationPackage.CONSTRAINT__RESTRICTS:
+				setRestricts((Parameter)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -244,26 +253,10 @@ public class ConstraintImpl extends LabeledElementImpl implements Constraint {
 		switch (featureID) {
 			case DeclarationPackage.CONSTRAINT__OPERATION:
 				return getOperation() != null;
-			case DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION:
-				return BOOLEAN_EXPRESSION_EDEFAULT == null ? booleanExpression != null : !BOOLEAN_EXPRESSION_EDEFAULT.equals(booleanExpression);
+			case DeclarationPackage.CONSTRAINT__RESTRICTS:
+				return restricts != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (booleanExpression: ");
-		result.append(booleanExpression);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ConstraintImpl

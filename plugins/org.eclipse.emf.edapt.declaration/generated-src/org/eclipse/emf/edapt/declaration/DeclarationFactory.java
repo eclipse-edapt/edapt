@@ -58,15 +58,6 @@ public interface DeclarationFactory extends EFactory {
 	Parameter createParameter();
 
 	/**
-	 * Returns a new object of class '<em>Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Variable</em>'.
-	 * @generated
-	 */
-	Variable createVariable();
-
-	/**
 	 * Returns a new object of class '<em>Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

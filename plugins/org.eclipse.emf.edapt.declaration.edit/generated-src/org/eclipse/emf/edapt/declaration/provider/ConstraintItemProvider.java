@@ -37,7 +37,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class ConstraintItemProvider
-	extends LabeledElementItemProvider
+	extends IdentifiedElementItemProvider
 	implements	
 		IEditingDomainItemProvider,	
 		IStructuredItemContentProvider,	
@@ -65,29 +65,29 @@ public class ConstraintItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addBooleanExpressionPropertyDescriptor(object);
+			addRestrictsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Boolean Expression feature.
+	 * This adds a property descriptor for the Restricts feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addBooleanExpressionPropertyDescriptor(Object object) {
+	protected void addRestrictsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Constraint_booleanExpression_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_booleanExpression_feature", "_UI_Constraint_type"),
-				 DeclarationPackage.Literals.CONSTRAINT__BOOLEAN_EXPRESSION,
-				 true,
+				 getString("_UI_Constraint_restricts_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_restricts_feature", "_UI_Constraint_type"),
+				 DeclarationPackage.Literals.CONSTRAINT__RESTRICTS,
 				 true,
 				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 true,
+				 null,
 				 null,
 				 null));
 	}
@@ -111,7 +111,7 @@ public class ConstraintItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Constraint)object).getLabel();
+		String label = ((Constraint)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Constraint_type") :
 			getString("_UI_Constraint_type") + " " + label;
@@ -127,12 +127,6 @@ public class ConstraintItemProvider
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-
-		switch (notification.getFeatureID(Constraint.class)) {
-			case DeclarationPackage.CONSTRAINT__BOOLEAN_EXPRESSION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
 		super.notifyChanged(notification);
 	}
 

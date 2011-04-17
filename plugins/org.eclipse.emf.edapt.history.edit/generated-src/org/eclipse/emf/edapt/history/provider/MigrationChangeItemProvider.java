@@ -67,6 +67,7 @@ public class MigrationChangeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addMigrationPropertyDescriptor(object);
+			addLanguagePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -85,6 +86,28 @@ public class MigrationChangeItemProvider
 				 getString("_UI_MigrationChange_migration_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_MigrationChange_migration_feature", "_UI_MigrationChange_type"),
 				 HistoryPackage.Literals.MIGRATION_CHANGE__MIGRATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Language feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLanguagePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MigrationChange_language_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MigrationChange_language_feature", "_UI_MigrationChange_type"),
+				 HistoryPackage.Literals.MIGRATION_CHANGE__LANGUAGE,
 				 true,
 				 false,
 				 false,
@@ -158,6 +181,7 @@ public class MigrationChangeItemProvider
 
 		switch (notification.getFeatureID(MigrationChange.class)) {
 			case HistoryPackage.MIGRATION_CHANGE__MIGRATION:
+			case HistoryPackage.MIGRATION_CHANGE__LANGUAGE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case HistoryPackage.MIGRATION_CHANGE__CHANGES:

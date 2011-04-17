@@ -13,6 +13,7 @@ package org.eclipse.emf.edapt.history;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -195,7 +196,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getMigrateableChange()
 	 * @generated
 	 */
-	int MIGRATEABLE_CHANGE = 22;
+	int MIGRATEABLE_CHANGE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
@@ -677,7 +678,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 21;
+	int NAMED_ELEMENT = 19;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.OperationInstanceImpl <em>Operation Instance</em>}' class.
@@ -690,16 +691,6 @@ public interface HistoryPackage extends EPackage {
 	int OPERATION_INSTANCE = 16;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.PlaceholderInstanceImpl <em>Placeholder Instance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.history.impl.PlaceholderInstanceImpl
-	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getPlaceholderInstance()
-	 * @generated
-	 */
-	int PLACEHOLDER_INSTANCE = 17;
-
-	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.ParameterInstanceImpl <em>Parameter Instance</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -707,7 +698,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getParameterInstance()
 	 * @generated
 	 */
-	int PARAMETER_INSTANCE = 18;
+	int PARAMETER_INSTANCE = 17;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.ModelReferenceImpl <em>Model Reference</em>}' class.
@@ -717,17 +708,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getModelReference()
 	 * @generated
 	 */
-	int MODEL_REFERENCE = 19;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.VariableInstanceImpl <em>Variable Instance</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.history.impl.VariableInstanceImpl
-	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getVariableInstance()
-	 * @generated
-	 */
-	int VARIABLE_INSTANCE = 20;
+	int MODEL_REFERENCE = 18;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.MigrationChangeImpl <em>Migration Change</em>}' class.
@@ -737,7 +718,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getMigrationChange()
 	 * @generated
 	 */
-	int MIGRATION_CHANGE = 23;
+	int MIGRATION_CHANGE = 21;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.impl.InitializerChangeImpl <em>Initializer Change</em>}' class.
@@ -747,7 +728,7 @@ public interface HistoryPackage extends EPackage {
 	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getInitializerChange()
 	 * @generated
 	 */
-	int INITIALIZER_CHANGE = 24;
+	int INITIALIZER_CHANGE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
@@ -1353,22 +1334,13 @@ public interface HistoryPackage extends EPackage {
 	int OPERATION_INSTANCE__PARAMETERS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_INSTANCE__VARIABLES = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Operation Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_INSTANCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int OPERATION_INSTANCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1377,7 +1349,7 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACEHOLDER_INSTANCE__NAME = NAMED_ELEMENT__NAME;
+	int PARAMETER_INSTANCE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1386,7 +1358,7 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACEHOLDER_INSTANCE__VALUE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int PARAMETER_INSTANCE__VALUE = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute list.
@@ -1395,7 +1367,7 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACEHOLDER_INSTANCE__DATA_VALUE = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PARAMETER_INSTANCE__DATA_VALUE = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Reference Value</b></em>' containment reference list.
@@ -1404,52 +1376,7 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PLACEHOLDER_INSTANCE__REFERENCE_VALUE = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Placeholder Instance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACEHOLDER_INSTANCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_INSTANCE__NAME = PLACEHOLDER_INSTANCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_INSTANCE__VALUE = PLACEHOLDER_INSTANCE__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Data Value</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_INSTANCE__DATA_VALUE = PLACEHOLDER_INSTANCE__DATA_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Reference Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_INSTANCE__REFERENCE_VALUE = PLACEHOLDER_INSTANCE__REFERENCE_VALUE;
+	int PARAMETER_INSTANCE__REFERENCE_VALUE = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Instance</em>' class.
@@ -1458,7 +1385,7 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_INSTANCE_FEATURE_COUNT = PLACEHOLDER_INSTANCE_FEATURE_COUNT + 0;
+	int PARAMETER_INSTANCE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Element</b></em>' reference.
@@ -1477,51 +1404,6 @@ public interface HistoryPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_REFERENCE_FEATURE_COUNT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_INSTANCE__NAME = PLACEHOLDER_INSTANCE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_INSTANCE__VALUE = PLACEHOLDER_INSTANCE__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Data Value</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_INSTANCE__DATA_VALUE = PLACEHOLDER_INSTANCE__DATA_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Reference Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_INSTANCE__REFERENCE_VALUE = PLACEHOLDER_INSTANCE__REFERENCE_VALUE;
-
-	/**
-	 * The number of structural features of the '<em>Variable Instance</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE_INSTANCE_FEATURE_COUNT = PLACEHOLDER_INSTANCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
@@ -1560,13 +1442,32 @@ public interface HistoryPackage extends EPackage {
 	int MIGRATION_CHANGE__CHANGES = CHANGE_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Language</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MIGRATION_CHANGE__LANGUAGE = CHANGE_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Migration Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MIGRATION_CHANGE_FEATURE_COUNT = CHANGE_FEATURE_COUNT + 2;
+	int MIGRATION_CHANGE_FEATURE_COUNT = CHANGE_FEATURE_COUNT + 3;
+
+	/**
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.eclipse.emf.edapt.history.Language
+	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getLanguage()
+	 * @generated
+	 */
+	int LANGUAGE = 23;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.History <em>History</em>}'.
@@ -2014,60 +1915,6 @@ public interface HistoryPackage extends EPackage {
 	EReference getOperationInstance_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.history.OperationInstance#getVariables <em>Variables</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Variables</em>'.
-	 * @see org.eclipse.emf.edapt.history.OperationInstance#getVariables()
-	 * @see #getOperationInstance()
-	 * @generated
-	 */
-	EReference getOperationInstance_Variables();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.PlaceholderInstance <em>Placeholder Instance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Placeholder Instance</em>'.
-	 * @see org.eclipse.emf.edapt.history.PlaceholderInstance
-	 * @generated
-	 */
-	EClass getPlaceholderInstance();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.history.PlaceholderInstance#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see org.eclipse.emf.edapt.history.PlaceholderInstance#getValue()
-	 * @see #getPlaceholderInstance()
-	 * @generated
-	 */
-	EAttribute getPlaceholderInstance_Value();
-
-	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.edapt.history.PlaceholderInstance#getDataValue <em>Data Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>Data Value</em>'.
-	 * @see org.eclipse.emf.edapt.history.PlaceholderInstance#getDataValue()
-	 * @see #getPlaceholderInstance()
-	 * @generated
-	 */
-	EAttribute getPlaceholderInstance_DataValue();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.history.PlaceholderInstance#getReferenceValue <em>Reference Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Reference Value</em>'.
-	 * @see org.eclipse.emf.edapt.history.PlaceholderInstance#getReferenceValue()
-	 * @see #getPlaceholderInstance()
-	 * @generated
-	 */
-	EReference getPlaceholderInstance_ReferenceValue();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.ParameterInstance <em>Parameter Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2076,6 +1923,39 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getParameterInstance();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.history.ParameterInstance#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see org.eclipse.emf.edapt.history.ParameterInstance#getValue()
+	 * @see #getParameterInstance()
+	 * @generated
+	 */
+	EAttribute getParameterInstance_Value();
+
+	/**
+	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.edapt.history.ParameterInstance#getDataValue <em>Data Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute list '<em>Data Value</em>'.
+	 * @see org.eclipse.emf.edapt.history.ParameterInstance#getDataValue()
+	 * @see #getParameterInstance()
+	 * @generated
+	 */
+	EAttribute getParameterInstance_DataValue();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.history.ParameterInstance#getReferenceValue <em>Reference Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Reference Value</em>'.
+	 * @see org.eclipse.emf.edapt.history.ParameterInstance#getReferenceValue()
+	 * @see #getParameterInstance()
+	 * @generated
+	 */
+	EReference getParameterInstance_ReferenceValue();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.ModelReference <em>Model Reference</em>}'.
@@ -2097,16 +1977,6 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getModelReference_Element();
-
-	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.VariableInstance <em>Variable Instance</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable Instance</em>'.
-	 * @see org.eclipse.emf.edapt.history.VariableInstance
-	 * @generated
-	 */
-	EClass getVariableInstance();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.NamedElement <em>Named Element</em>}'.
@@ -2172,6 +2042,17 @@ public interface HistoryPackage extends EPackage {
 	EReference getMigrationChange_Changes();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.history.MigrationChange#getLanguage <em>Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Language</em>'.
+	 * @see org.eclipse.emf.edapt.history.MigrationChange#getLanguage()
+	 * @see #getMigrationChange()
+	 * @generated
+	 */
+	EAttribute getMigrationChange_Language();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.InitializerChange <em>Initializer Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2191,6 +2072,16 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInitializerChange_Changes();
+
+	/**
+	 * Returns the meta object for enum '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Language</em>'.
+	 * @see org.eclipse.emf.edapt.history.Language
+	 * @generated
+	 */
+	EEnum getLanguage();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2585,48 +2476,6 @@ public interface HistoryPackage extends EPackage {
 		EReference OPERATION_INSTANCE__PARAMETERS = eINSTANCE.getOperationInstance_Parameters();
 
 		/**
-		 * The meta object literal for the '<em><b>Variables</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference OPERATION_INSTANCE__VARIABLES = eINSTANCE.getOperationInstance_Variables();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.PlaceholderInstanceImpl <em>Placeholder Instance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.history.impl.PlaceholderInstanceImpl
-		 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getPlaceholderInstance()
-		 * @generated
-		 */
-		EClass PLACEHOLDER_INSTANCE = eINSTANCE.getPlaceholderInstance();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACEHOLDER_INSTANCE__VALUE = eINSTANCE.getPlaceholderInstance_Value();
-
-		/**
-		 * The meta object literal for the '<em><b>Data Value</b></em>' attribute list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PLACEHOLDER_INSTANCE__DATA_VALUE = eINSTANCE.getPlaceholderInstance_DataValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Reference Value</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACEHOLDER_INSTANCE__REFERENCE_VALUE = eINSTANCE.getPlaceholderInstance_ReferenceValue();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.ParameterInstanceImpl <em>Parameter Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2635,6 +2484,30 @@ public interface HistoryPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PARAMETER_INSTANCE = eINSTANCE.getParameterInstance();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_INSTANCE__VALUE = eINSTANCE.getParameterInstance_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Value</b></em>' attribute list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PARAMETER_INSTANCE__DATA_VALUE = eINSTANCE.getParameterInstance_DataValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Reference Value</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PARAMETER_INSTANCE__REFERENCE_VALUE = eINSTANCE.getParameterInstance_ReferenceValue();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.ModelReferenceImpl <em>Model Reference</em>}' class.
@@ -2653,16 +2526,6 @@ public interface HistoryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MODEL_REFERENCE__ELEMENT = eINSTANCE.getModelReference_Element();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.VariableInstanceImpl <em>Variable Instance</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.history.impl.VariableInstanceImpl
-		 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getVariableInstance()
-		 * @generated
-		 */
-		EClass VARIABLE_INSTANCE = eINSTANCE.getVariableInstance();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.NamedElementImpl <em>Named Element</em>}' class.
@@ -2719,6 +2582,14 @@ public interface HistoryPackage extends EPackage {
 		EReference MIGRATION_CHANGE__CHANGES = eINSTANCE.getMigrationChange_Changes();
 
 		/**
+		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MIGRATION_CHANGE__LANGUAGE = eINSTANCE.getMigrationChange_Language();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.InitializerChangeImpl <em>Initializer Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2735,6 +2606,16 @@ public interface HistoryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INITIALIZER_CHANGE__CHANGES = eINSTANCE.getInitializerChange_Changes();
+
+		/**
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.eclipse.emf.edapt.history.Language
+		 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getLanguage()
+		 * @generated
+		 */
+		EEnum LANGUAGE = eINSTANCE.getLanguage();
 
 	}
 

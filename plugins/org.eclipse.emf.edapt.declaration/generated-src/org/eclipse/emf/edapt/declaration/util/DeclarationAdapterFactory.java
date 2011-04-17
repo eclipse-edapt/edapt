@@ -79,14 +79,6 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 				return createIdentifiedElementAdapter();
 			}
 			@Override
-			public Adapter caseDescribedElement(DescribedElement object) {
-				return createDescribedElementAdapter();
-			}
-			@Override
-			public Adapter caseLabeledElement(LabeledElement object) {
-				return createLabeledElementAdapter();
-			}
-			@Override
 			public Adapter caseLibrary(Library object) {
 				return createLibraryAdapter();
 			}
@@ -95,24 +87,12 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 				return createOperationAdapter();
 			}
 			@Override
-			public Adapter casePlaceholder(Placeholder object) {
-				return createPlaceholderAdapter();
-			}
-			@Override
 			public Adapter caseParameter(Parameter object) {
 				return createParameterAdapter();
 			}
 			@Override
-			public Adapter caseVariable(Variable object) {
-				return createVariableAdapter();
-			}
-			@Override
 			public Adapter caseConstraint(Constraint object) {
 				return createConstraintAdapter();
-			}
-			@Override
-			public Adapter caseTypedElement(TypedElement object) {
-				return createTypedElementAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -149,34 +129,6 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.DescribedElement <em>Described Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.declaration.DescribedElement
-	 * @generated
-	 */
-	public Adapter createDescribedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.LabeledElement <em>Labeled Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.declaration.LabeledElement
-	 * @generated
-	 */
-	public Adapter createLabeledElementAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -205,20 +157,6 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.Placeholder <em>Placeholder</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.declaration.Placeholder
-	 * @generated
-	 */
-	public Adapter createPlaceholderAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -233,20 +171,6 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.Variable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.declaration.Variable
-	 * @generated
-	 */
-	public Adapter createVariableAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -257,20 +181,6 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConstraintAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.declaration.TypedElement <em>Typed Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eclipse.emf.edapt.declaration.TypedElement
-	 * @generated
-	 */
-	public Adapter createTypedElementAdapter() {
 		return null;
 	}
 

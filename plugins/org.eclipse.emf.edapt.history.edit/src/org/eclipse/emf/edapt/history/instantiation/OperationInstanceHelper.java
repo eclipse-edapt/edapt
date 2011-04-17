@@ -20,9 +20,9 @@ import org.eclipse.emf.edapt.common.IExtentProvider;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
-import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.declaration.Parameter;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.OperationInstance;
@@ -66,8 +66,8 @@ public class OperationInstanceHelper {
 		List<OperationInstance> result = new ArrayList<OperationInstance>();
 
 		// iterate over all registered operations
-		Collection<Operation> operations = org.eclipse.emf.edapt.declaration.OperationRegistry
-				.getInstance().getOperations();
+		Collection<Operation> operations = OperationRegistry.getInstance()
+				.getOperations();
 		for (Operation operation : operations) {
 
 			if (operation.refines()) {
@@ -111,8 +111,8 @@ public class OperationInstanceHelper {
 	private boolean isApplicable(OperationInstance operationInstance) {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(getExtent());
-		OperationImplementation operationBase = OperationInstanceConverter.convert(
-				operationInstance, repository.getMetamodel());
+		OperationImplementation operationBase = OperationInstanceConverter
+				.convert(operationInstance, repository.getMetamodel());
 
 		List<String> messages = operationBase.checkRestriction(
 				operationInstance.getOperation().getMainParameter().getName(),
@@ -172,14 +172,15 @@ public class OperationInstanceHelper {
 			OperationInstance operationInstance) {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(getExtent());
-		OperationImplementation operationBase = OperationInstanceConverter.convert(
-				operationInstance, repository.getMetamodel());
+		OperationImplementation operationBase = OperationInstanceConverter
+				.convert(operationInstance, repository.getMetamodel());
 		List<String> messages = operationBase.checkPreconditions(repository
 				.getMetamodel());
 
 		List<Constraint> violatedConstraints = new ArrayList<Constraint>();
 		for (String message : messages) {
-			Constraint constraint = createConstraint(message);
+			Constraint constraint = getConstraint(operationInstance
+					.getOperation(), message);
 			violatedConstraints.add(constraint);
 		}
 		OperationInstanceConverter.convert(operationBase, operationInstance);
@@ -188,10 +189,13 @@ public class OperationInstanceHelper {
 	}
 
 	/** Create a constraint with a certain message. */
-	private Constraint createConstraint(String message) {
-		Constraint constraint = DeclarationFactory.eINSTANCE.createConstraint();
-		constraint.setLabel(message);
-		return constraint;
+	private Constraint getConstraint(Operation operation, String message) {
+		for (Constraint constraint : operation.getConstraints()) {
+			if (message.equals(constraint.getDescription())) {
+				return constraint;
+			}
+		}
+		return null;
 	}
 
 	/**

@@ -28,7 +28,6 @@ import org.eclipse.emf.edapt.declaration.Operation;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.history.OperationInstance#getParameters <em>Parameters</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.history.OperationInstance#getVariables <em>Variables</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,21 +50,6 @@ public interface OperationInstance extends NamedElement {
 	 * @generated
 	 */
 	EList<ParameterInstance> getParameters();
-
-	/**
-	 * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.edapt.history.VariableInstance}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * List of instance of parameters (only needed during runtime and is therefore not persisted)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Variables</em>' containment reference list.
-	 * @see org.eclipse.emf.edapt.history.HistoryPackage#getOperationInstance_Variables()
-	 * @model containment="true" transient="true"
-	 * @generated
-	 */
-	EList<VariableInstance> getVariables();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -108,28 +92,5 @@ public interface OperationInstance extends NamedElement {
 	 * @generated
 	 */
 	Object getParameterValue(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Helper method to determine the instantiated variable with a certain name
-	 * <!-- end-model-doc -->
-	 * @model nameRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return OperationInstance_static.getVariable(this, name);'"
-	 * @generated
-	 */
-	VariableInstance getVariable(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Helper method to determine the value of a variable with a certain name
-	 * <!-- end-model-doc -->
-	 * @model nameRequired="true"
-	 * @generated
-	 */
-	Object getVariableValue(String name);
 
 } // OperationInstance

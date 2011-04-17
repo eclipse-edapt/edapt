@@ -37,7 +37,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class ParameterItemProvider
-	extends PlaceholderItemProvider
+	extends IdentifiedElementItemProvider
 	implements	
 		IEditingDomainItemProvider,	
 		IStructuredItemContentProvider,	
@@ -65,35 +65,15 @@ public class ParameterItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDescriptionPropertyDescriptor(object);
 			addRequiredPropertyDescriptor(object);
-			addChoiceExpressionPropertyDescriptor(object);
 			addMainPropertyDescriptor(object);
+			addManyPropertyDescriptor(object);
+			addClassifierPropertyDescriptor(object);
+			addClassifierNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
-	/**
-	 * This adds a property descriptor for the Description feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DescribedElement_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DescribedElement_description_feature", "_UI_DescribedElement_type"),
-				 DeclarationPackage.Literals.DESCRIBED_ELEMENT__DESCRIPTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
 	/**
 	 * This adds a property descriptor for the Required feature.
 	 * <!-- begin-user-doc -->
@@ -117,28 +97,6 @@ public class ParameterItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Choice Expression feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addChoiceExpressionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Parameter_choiceExpression_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_choiceExpression_feature", "_UI_Parameter_type"),
-				 DeclarationPackage.Literals.PARAMETER__CHOICE_EXPRESSION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Main feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -156,6 +114,72 @@ public class ParameterItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Many feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addManyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_many_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_many_feature", "_UI_Parameter_type"),
+				 DeclarationPackage.Literals.PARAMETER__MANY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Classifier feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassifierPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_classifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_classifier_feature", "_UI_Parameter_type"),
+				 DeclarationPackage.Literals.PARAMETER__CLASSIFIER,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Classifier Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addClassifierNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Parameter_classifierName_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Parameter_classifierName_feature", "_UI_Parameter_type"),
+				 DeclarationPackage.Literals.PARAMETER__CLASSIFIER_NAME,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -197,10 +221,10 @@ public class ParameterItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Parameter.class)) {
-			case DeclarationPackage.PARAMETER__DESCRIPTION:
 			case DeclarationPackage.PARAMETER__REQUIRED:
-			case DeclarationPackage.PARAMETER__CHOICE_EXPRESSION:
 			case DeclarationPackage.PARAMETER__MAIN:
+			case DeclarationPackage.PARAMETER__MANY:
+			case DeclarationPackage.PARAMETER__CLASSIFIER_NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

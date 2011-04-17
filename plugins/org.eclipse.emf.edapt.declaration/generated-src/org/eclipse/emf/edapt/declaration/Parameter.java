@@ -11,6 +11,8 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
+import org.eclipse.emf.ecore.EClassifier;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -26,8 +28,10 @@ package org.eclipse.emf.edapt.declaration;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getChoiceExpression <em>Choice Expression</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,7 +39,7 @@ package org.eclipse.emf.edapt.declaration;
  * @model
  * @generated
  */
-public interface Parameter extends Placeholder, DescribedElement {
+public interface Parameter extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' container reference.
 	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
@@ -94,35 +98,6 @@ public interface Parameter extends Placeholder, DescribedElement {
 	void setRequired(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Choice Expression</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Choice Expression</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The choice expression determines the possible values for the parameter
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Choice Expression</em>' attribute.
-	 * @see #setChoiceExpression(String)
-	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_ChoiceExpression()
-	 * @model
-	 * @generated
-	 */
-	String getChoiceExpression();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getChoiceExpression <em>Choice Expression</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Choice Expression</em>' attribute.
-	 * @see #getChoiceExpression()
-	 * @generated
-	 */
-	void setChoiceExpression(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Main</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -146,5 +121,80 @@ public interface Parameter extends Placeholder, DescribedElement {
 	 * @generated
 	 */
 	void setMain(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Many</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Whether the type is multi-valued
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Many</em>' attribute.
+	 * @see #setMany(boolean)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Many()
+	 * @model
+	 * @generated
+	 */
+	boolean isMany();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Many</em>' attribute.
+	 * @see #isMany()
+	 * @generated
+	 */
+	void setMany(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Classifier for which the type stands (the value of this reference is derived from the type's name)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Classifier</em>' reference.
+	 * @see #setClassifier(EClassifier)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Classifier()
+	 * @model required="true" transient="true" volatile="true" derived="true"
+	 * @generated
+	 */
+	EClassifier getClassifier();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Classifier</em>' reference.
+	 * @see #getClassifier()
+	 * @generated
+	 */
+	void setClassifier(EClassifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Classifier Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Name of the classifier for which the type stands
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Classifier Name</em>' attribute.
+	 * @see #setClassifierName(String)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_ClassifierName()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getClassifierName();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Classifier Name</em>' attribute.
+	 * @see #getClassifierName()
+	 * @generated
+	 */
+	void setClassifierName(String value);
 
 } // Parameter

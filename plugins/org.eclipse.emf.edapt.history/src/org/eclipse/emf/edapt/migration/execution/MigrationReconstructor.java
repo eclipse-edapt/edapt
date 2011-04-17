@@ -37,6 +37,7 @@ import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.Create;
 import org.eclipse.emf.edapt.history.Delete;
+import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Move;
 import org.eclipse.emf.edapt.history.OperationChange;
@@ -274,8 +275,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return;
 		}
 		if (originalChange instanceof OperationChange
-				|| (originalChange instanceof MigrationChange && !((MigrationChange) originalChange)
-						.getMigration().startsWith("class:"))
+				|| (originalChange instanceof MigrationChange && ((MigrationChange) originalChange)
+						.getLanguage() != Language.JAVA)
 				|| originalChange instanceof Delete) {
 			started = false;
 			trigger = originalChange;
@@ -411,9 +412,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 		@Override
 		public Object caseMigrationChange(MigrationChange change) {
 			String migration = change.getMigration();
-			if (migration.startsWith("class:")) {
+			if (change.getLanguage() == Language.JAVA) {
 				try {
-					migration = migration.substring(6);
 					Class<?> c = classLoader.load(migration);
 					customMigration = (CustomMigration) c.newInstance();
 					customMigration.migrateBefore(model, model.getMetamodel());

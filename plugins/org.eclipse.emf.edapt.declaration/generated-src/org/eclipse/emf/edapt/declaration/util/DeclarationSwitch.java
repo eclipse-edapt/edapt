@@ -98,18 +98,6 @@ public class DeclarationSwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DeclarationPackage.DESCRIBED_ELEMENT: {
-				DescribedElement describedElement = (DescribedElement)theEObject;
-				T result = caseDescribedElement(describedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case DeclarationPackage.LABELED_ELEMENT: {
-				LabeledElement labeledElement = (LabeledElement)theEObject;
-				T result = caseLabeledElement(labeledElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case DeclarationPackage.LIBRARY: {
 				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
@@ -120,48 +108,20 @@ public class DeclarationSwitch<T> {
 				Operation operation = (Operation)theEObject;
 				T result = caseOperation(operation);
 				if (result == null) result = caseIdentifiedElement(operation);
-				if (result == null) result = caseDescribedElement(operation);
-				if (result == null) result = caseLabeledElement(operation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case DeclarationPackage.PLACEHOLDER: {
-				Placeholder placeholder = (Placeholder)theEObject;
-				T result = casePlaceholder(placeholder);
-				if (result == null) result = caseTypedElement(placeholder);
-				if (result == null) result = caseIdentifiedElement(placeholder);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DeclarationPackage.PARAMETER: {
 				Parameter parameter = (Parameter)theEObject;
 				T result = caseParameter(parameter);
-				if (result == null) result = casePlaceholder(parameter);
-				if (result == null) result = caseDescribedElement(parameter);
-				if (result == null) result = caseTypedElement(parameter);
 				if (result == null) result = caseIdentifiedElement(parameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case DeclarationPackage.VARIABLE: {
-				Variable variable = (Variable)theEObject;
-				T result = caseVariable(variable);
-				if (result == null) result = casePlaceholder(variable);
-				if (result == null) result = caseTypedElement(variable);
-				if (result == null) result = caseIdentifiedElement(variable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case DeclarationPackage.CONSTRAINT: {
 				Constraint constraint = (Constraint)theEObject;
 				T result = caseConstraint(constraint);
-				if (result == null) result = caseLabeledElement(constraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case DeclarationPackage.TYPED_ELEMENT: {
-				TypedElement typedElement = (TypedElement)theEObject;
-				T result = caseTypedElement(typedElement);
+				if (result == null) result = caseIdentifiedElement(constraint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -181,36 +141,6 @@ public class DeclarationSwitch<T> {
 	 * @generated
 	 */
 	public T caseIdentifiedElement(IdentifiedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Described Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Described Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseDescribedElement(DescribedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Labeled Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Labeled Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseLabeledElement(LabeledElement object) {
 		return null;
 	}
 
@@ -245,21 +175,6 @@ public class DeclarationSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Placeholder</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Placeholder</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePlaceholder(Placeholder object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -275,21 +190,6 @@ public class DeclarationSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariable(Variable object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -301,21 +201,6 @@ public class DeclarationSwitch<T> {
 	 * @generated
 	 */
 	public T caseConstraint(Constraint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Typed Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Typed Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTypedElement(TypedElement object) {
 		return null;
 	}
 

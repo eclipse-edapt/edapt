@@ -82,7 +82,6 @@ public class OperationInstanceItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(HistoryPackage.Literals.OPERATION_INSTANCE__PARAMETERS);
-			childrenFeatures.add(HistoryPackage.Literals.OPERATION_INSTANCE__VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -138,7 +137,6 @@ public class OperationInstanceItemProvider
 
 		switch (notification.getFeatureID(OperationInstance.class)) {
 			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-			case HistoryPackage.OPERATION_INSTANCE__VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -160,11 +158,6 @@ public class OperationInstanceItemProvider
 			(createChildParameter
 				(HistoryPackage.Literals.OPERATION_INSTANCE__PARAMETERS,
 				 HistoryFactory.eINSTANCE.createParameterInstance()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(HistoryPackage.Literals.OPERATION_INSTANCE__VARIABLES,
-				 HistoryFactory.eINSTANCE.createVariableInstance()));
 	}
 
 }

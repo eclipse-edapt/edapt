@@ -243,17 +243,9 @@ public class HistorySwitch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case HistoryPackage.PLACEHOLDER_INSTANCE: {
-				PlaceholderInstance placeholderInstance = (PlaceholderInstance)theEObject;
-				T result = casePlaceholderInstance(placeholderInstance);
-				if (result == null) result = caseNamedElement(placeholderInstance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case HistoryPackage.PARAMETER_INSTANCE: {
 				ParameterInstance parameterInstance = (ParameterInstance)theEObject;
 				T result = caseParameterInstance(parameterInstance);
-				if (result == null) result = casePlaceholderInstance(parameterInstance);
 				if (result == null) result = caseNamedElement(parameterInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -261,14 +253,6 @@ public class HistorySwitch<T> {
 			case HistoryPackage.MODEL_REFERENCE: {
 				ModelReference modelReference = (ModelReference)theEObject;
 				T result = caseModelReference(modelReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case HistoryPackage.VARIABLE_INSTANCE: {
-				VariableInstance variableInstance = (VariableInstance)theEObject;
-				T result = caseVariableInstance(variableInstance);
-				if (result == null) result = casePlaceholderInstance(variableInstance);
-				if (result == null) result = caseNamedElement(variableInstance);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -562,21 +546,6 @@ public class HistorySwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Placeholder Instance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Placeholder Instance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePlaceholderInstance(PlaceholderInstance object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Parameter Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -603,21 +572,6 @@ public class HistorySwitch<T> {
 	 * @generated
 	 */
 	public T caseModelReference(ModelReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable Instance</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable Instance</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVariableInstance(VariableInstance object) {
 		return null;
 	}
 

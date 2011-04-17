@@ -66,7 +66,6 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 			case DeclarationPackage.LIBRARY: return createLibrary();
 			case DeclarationPackage.OPERATION: return createOperation();
 			case DeclarationPackage.PARAMETER: return createParameter();
-			case DeclarationPackage.VARIABLE: return createVariable();
 			case DeclarationPackage.CONSTRAINT: return createConstraint();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -101,16 +100,6 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
 		return parameter;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Variable createVariable() {
-		VariableImpl variable = new VariableImpl();
-		return variable;
 	}
 
 	/**

@@ -290,19 +290,6 @@
       </eAnnotations>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getVariable" eType="#//VariableInstance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return OperationInstance_static.getVariable(this, name);"/>
-        <details key="documentation" value="Helper method to determine the instantiated variable with a certain name"/>
-      </eAnnotations>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getVariableValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Helper method to determine the value of a variable with a certain name"/>
-      </eAnnotations>
-      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="getOperation" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Operation">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Helper method to determine the instantiated operation"/>
@@ -318,22 +305,14 @@
         <details key="documentation" value="List of instances of parameters"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
-        eType="#//VariableInstance" transient="true" containment="true">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="List of instance of parameters (only needed during runtime and is therefore not persisted)"/>
-      </eAnnotations>
-    </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PlaceholderInstance" abstract="true"
-      eSuperTypes="#//NamedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterInstance" eSuperTypes="#//NamedElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="A base class for instances of parameters and variables"/>
+      <details key="documentation" value="An instance of a parameter, i.e. the parameter is assigned a value"/>
     </eAnnotations>
-    <eOperations name="getPlaceholder" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Placeholder">
+    <eOperations name="getParameter" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Parameter">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="body" value="return PlaceholderInstance_static.getPlaceholder(this);"/>
-        <details key="documentation" value="Helper method to determine the instantiated placeholder"/>
+        <details key="documentation" value="Helper method to determine the instantiated parameter"/>
       </eAnnotations>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"
@@ -355,16 +334,6 @@
       </eAnnotations>
     </eStructuralFeatures>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterInstance" eSuperTypes="#//PlaceholderInstance">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An instance of a parameter, i.e. the parameter is assigned a value"/>
-    </eAnnotations>
-    <eOperations name="getParameter" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Parameter">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Helper method to determine the instantiated parameter"/>
-      </eAnnotations>
-    </eOperations>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ModelReference">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Reference to the metamodel"/>
@@ -375,16 +344,6 @@
         <details key="documentation" value="Element of the metamodel which is referenced"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VariableInstance" eSuperTypes="#//PlaceholderInstance">
-    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-      <details key="documentation" value="An instance of a helper variable, i.e. the variable is assigned a value"/>
-    </eAnnotations>
-    <eOperations name="getVariable" eType="ecore:EClass ../../org.eclipse.emf.edapt.declaration/model/declaration.ecore#//Variable">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Helper method to determine the instantiated variable"/>
-      </eAnnotations>
-    </eOperations>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedElement" abstract="true">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -417,6 +376,8 @@
         <details key="documentation" value="A sequence of primitive changes"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//Language"
+        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitializerChange" abstract="true" eSuperTypes="#//ContentChange">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -428,5 +389,9 @@
         <details key="documentation" value="The value changes that are performed as part of the content change"/>
       </eAnnotations>
     </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Language">
+    <eLiterals name="Groovy"/>
+    <eLiterals name="Java" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

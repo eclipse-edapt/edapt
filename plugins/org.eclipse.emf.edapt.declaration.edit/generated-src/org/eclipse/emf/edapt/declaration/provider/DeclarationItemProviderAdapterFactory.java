@@ -149,29 +149,6 @@ public class DeclarationItemProviderAdapterFactory extends DeclarationAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.edapt.declaration.Variable} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected VariableItemProvider variableItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link org.eclipse.emf.edapt.declaration.Variable}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createVariableAdapter() {
-		if (variableItemProvider == null) {
-			variableItemProvider = new VariableItemProvider(this);
-		}
-
-		return variableItemProvider;
-	}
-
-	/**
 	 * This keeps track of the one adapter used for all {@link org.eclipse.emf.edapt.declaration.Constraint} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,7 +273,6 @@ public class DeclarationItemProviderAdapterFactory extends DeclarationAdapterFac
 		if (libraryItemProvider != null) libraryItemProvider.dispose();
 		if (operationItemProvider != null) operationItemProvider.dispose();
 		if (parameterItemProvider != null) parameterItemProvider.dispose();
-		if (variableItemProvider != null) variableItemProvider.dispose();
 		if (constraintItemProvider != null) constraintItemProvider.dispose();
 	}
 

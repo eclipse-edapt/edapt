@@ -67,37 +67,15 @@ public class OperationItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addDescriptionPropertyDescriptor(object);
-			addLabelPropertyDescriptor(object);
 			addDeprecatedPropertyDescriptor(object);
-			addDeletingPropertyDescriptor(object);
 			addBeforePropertyDescriptor(object);
 			addAfterPropertyDescriptor(object);
+			addImplementationPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
-	/**
-	 * This adds a property descriptor for the Description feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DescribedElement_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DescribedElement_description_feature", "_UI_DescribedElement_type"),
-				 DeclarationPackage.Literals.DESCRIBED_ELEMENT__DESCRIPTION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
 	/**
 	 * This adds a property descriptor for the Label feature.
 	 * <!-- begin-user-doc -->
@@ -109,9 +87,9 @@ public class OperationItemProvider
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_LabeledElement_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_LabeledElement_label_feature", "_UI_LabeledElement_type"),
-				 DeclarationPackage.Literals.LABELED_ELEMENT__LABEL,
+				 getString("_UI_Operation_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_label_feature", "_UI_Operation_type"),
+				 DeclarationPackage.Literals.OPERATION__LABEL,
 				 true,
 				 false,
 				 false,
@@ -133,28 +111,6 @@ public class OperationItemProvider
 				 getString("_UI_Operation_deprecated_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_deprecated_feature", "_UI_Operation_type"),
 				 DeclarationPackage.Literals.OPERATION__DEPRECATED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Deleting feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addDeletingPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_deleting_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_deleting_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__DELETING,
 				 true,
 				 false,
 				 false,
@@ -208,6 +164,28 @@ public class OperationItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Implementation feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addImplementationPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Operation_implementation_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_implementation_feature", "_UI_Operation_type"),
+				 DeclarationPackage.Literals.OPERATION__IMPLEMENTATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -221,7 +199,6 @@ public class OperationItemProvider
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DeclarationPackage.Literals.OPERATION__PARAMETERS);
 			childrenFeatures.add(DeclarationPackage.Literals.OPERATION__CONSTRAINTS);
-			childrenFeatures.add(DeclarationPackage.Literals.OPERATION__VARIABLES);
 		}
 		return childrenFeatures;
 	}
@@ -258,7 +235,7 @@ public class OperationItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Operation)object).getLabel();
+		String label = ((Operation)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Operation_type") :
 			getString("_UI_Operation_type") + " " + label;
@@ -276,17 +253,15 @@ public class OperationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operation.class)) {
-			case DeclarationPackage.OPERATION__DESCRIPTION:
-			case DeclarationPackage.OPERATION__LABEL:
 			case DeclarationPackage.OPERATION__DEPRECATED:
-			case DeclarationPackage.OPERATION__DELETING:
 			case DeclarationPackage.OPERATION__BEFORE:
 			case DeclarationPackage.OPERATION__AFTER:
+			case DeclarationPackage.OPERATION__IMPLEMENTATION:
+			case DeclarationPackage.OPERATION__LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DeclarationPackage.OPERATION__PARAMETERS:
 			case DeclarationPackage.OPERATION__CONSTRAINTS:
-			case DeclarationPackage.OPERATION__VARIABLES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -313,11 +288,6 @@ public class OperationItemProvider
 			(createChildParameter
 				(DeclarationPackage.Literals.OPERATION__CONSTRAINTS,
 				 DeclarationFactory.eINSTANCE.createConstraint()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DeclarationPackage.Literals.OPERATION__VARIABLES,
-				 DeclarationFactory.eINSTANCE.createVariable()));
 	}
 
 }
