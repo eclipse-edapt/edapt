@@ -8,7 +8,8 @@ Bundle-Activator: org.eclipse.emf.edapt.history.provider.HistoryEditPlugin$Imple
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.history.instantiation,
+Export-Package: org.eclipse.emf.edapt.history.TODELETE,
+ org.eclipse.emf.edapt.history.instantiation,
  org.eclipse.emf.edapt.history.provider,
  org.eclipse.emf.edapt.history.provider.util,
  org.eclipse.emf.edapt.history.reconstruction,

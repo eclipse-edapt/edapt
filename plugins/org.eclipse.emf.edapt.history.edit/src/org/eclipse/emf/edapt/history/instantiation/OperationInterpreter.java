@@ -10,15 +10,17 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
+import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.OperationInstance;
+import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
 
 /**
- * Interpreter for an operation
+ * Interpreter for an operation.
  * 
  * @author herrmama
  * @author $Author$
@@ -27,31 +29,20 @@ import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
  */
 public class OperationInterpreter {
 
-	/**
-	 * Instance of the operation
-	 */
+	/** Instance of the operation */
 	private final OperationInstance operationInstance;
 
-	/**
-	 * Metamodel extent
-	 */
+	/** Metamodel extent */
 	private final MetamodelExtent extent;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param operationInstance
-	 * @param extent
-	 */
+	/** Constructor. */
 	public OperationInterpreter(OperationInstance operationInstance,
 			MetamodelExtent extent) {
 		this.operationInstance = operationInstance;
 		this.extent = extent;
 	}
 
-	/**
-	 * Execute the operation
-	 */
+	/** Execute the operation. */
 	public void execute() {
 		Repository repository = OperationInstanceConverter
 				.createEmptyRepository(extent);
@@ -61,8 +52,7 @@ public class OperationInterpreter {
 			operation.checkAndExecute(repository.getMetamodel(), repository
 					.getModel());
 		} catch (MigrationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			LoggingUtils.logError(HistoryEditPlugin.getPlugin(), e);
 		}
 	}
 }

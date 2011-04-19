@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.history.reconstruction;
+package org.eclipse.emf.edapt.history.TODELETE;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.history.reconstruction.MigratorCodeGenerator;
+import org.eclipse.emf.edapt.history.TODELETE.MigratorCodeGenerator;
 
 
 /**
