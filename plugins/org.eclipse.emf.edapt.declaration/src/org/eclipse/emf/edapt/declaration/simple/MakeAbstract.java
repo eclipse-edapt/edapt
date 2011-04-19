@@ -15,13 +15,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 3FD675D9B09AFDC3A388E3C53BDF5A44
+ * @levd.rating YELLOW Hash: F1B800B5BE3D5AD4D920562EFA551982
  */
 @EdaptOperation(identifier = "makeAbstract", label = "Make Class Abstract", description = "In the metamodel, a class is made abstract. In a model, instances of this class are migrated to a chosen subclass.")
 public class MakeAbstract extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to be made abstract")
+	@EdaptParameter(main = true, description = "The class to be made abstract")
 	public EClass eClass;
 
 	/** {@description} */

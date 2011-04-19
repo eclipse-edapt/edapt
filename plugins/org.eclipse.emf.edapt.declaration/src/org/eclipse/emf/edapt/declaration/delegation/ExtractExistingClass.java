@@ -22,13 +22,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 0BD821ACD15CD343869907BE7AC483BC
+ * @levd.rating YELLOW Hash: 9BE91618A7A7C150DB2214DC0F44D460
  */
 @EdaptOperation(identifier = "extractExistingClass", label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
 public class ExtractExistingClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be extracted")
+	@EdaptParameter(main = true, description = "The features to be extracted")
 	public List<EStructuralFeature> toReplace;
 
 	/** {@description} */

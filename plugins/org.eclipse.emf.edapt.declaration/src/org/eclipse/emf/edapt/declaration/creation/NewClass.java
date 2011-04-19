@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: FDCAEC97E4B560A32E95704B1CF5F2B5
+ * @levd.rating YELLOW Hash: 59FCBF0598A87DC1A936CD318E046407
  */
 @EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
 public class NewClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The package in which the class is created")
+	@EdaptParameter(main = true, description = "The package in which the class is created")
 	public EPackage ePackage;
 
 	/** {@description} */

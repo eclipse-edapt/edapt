@@ -19,13 +19,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 42A82BAE6F43849AD058D8C5172F0992
+ * @levd.rating YELLOW Hash: B1A7CCFB373BE8799ACF7F5731B2DBE0
  */
 @EdaptOperation(identifier = "collectFeature", label = "Collect Feature over Reference", description = "In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly.")
 public class CollectFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be moved")
+	@EdaptParameter(main = true, description = "The feature to be moved")
 	public EStructuralFeature feature;
 
 	/** {@description} */

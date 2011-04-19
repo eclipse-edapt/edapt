@@ -23,13 +23,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2F1B93877EE363F51AA809E3E676134B
+ * @levd.rating YELLOW Hash: 5E8456131AD8B5ECB67B587434BD0319
  */
 @EdaptOperation(identifier = "subClassesToEnumeration", label = "Sub Classes to Enumeration", description = "In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal.")
 public class SubClassesToEnumeration extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The context class")
+	@EdaptParameter(main = true, description = "The context class")
 	public EClass contextClass;
 
 	/** {@description} */

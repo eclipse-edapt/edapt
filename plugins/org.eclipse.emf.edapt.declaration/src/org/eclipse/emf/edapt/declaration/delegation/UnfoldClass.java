@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: DE09AB830178C6B272915D04BCC2178A
+ * @levd.rating YELLOW Hash: 4CA6F29E7CB0A37BF98EE4CE7538FB14
  */
 @EdaptOperation(identifier = "unfoldClass", label = "Unfold Class", description = "In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly.")
 public class UnfoldClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to the class to be unfolded")
+	@EdaptParameter(main = true, description = "The reference to the class to be unfolded")
 	public EReference reference;
 
 	/** {@description} */

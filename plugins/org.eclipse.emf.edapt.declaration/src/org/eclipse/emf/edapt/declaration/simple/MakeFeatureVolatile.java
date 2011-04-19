@@ -17,13 +17,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C1231ED8975F37CF56A345BDE1F7257A
+ * @levd.rating YELLOW Hash: CBF0265BD4DA4AD17DAE8E4798A4A969
  */
 @EdaptOperation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
 public class MakeFeatureVolatile extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be made volatile")
+	@EdaptParameter(main = true, description = "The feature to be made volatile")
 	public EStructuralFeature feature;
 
 	/** {@description} */

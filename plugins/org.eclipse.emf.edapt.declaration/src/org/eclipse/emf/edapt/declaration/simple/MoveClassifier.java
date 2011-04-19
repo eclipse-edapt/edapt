@@ -15,13 +15,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 89E66E29B745D24F31DEDA478BA02CD1
+ * @levd.rating YELLOW Hash: 9817C7692F6D9C48627C869E0F05ACD1
  */
 @EdaptOperation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
 public class MoveClassifier extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The classifier to be moved")
+	@EdaptParameter(main = true, description = "The classifier to be moved")
 	public EClassifier classifier;
 
 	/** {@description} */

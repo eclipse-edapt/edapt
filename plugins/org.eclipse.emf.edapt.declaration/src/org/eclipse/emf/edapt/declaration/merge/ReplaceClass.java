@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 660494C2C7FA68226DD25F3B244A8EA0
+ * @levd.rating YELLOW Hash: AD880841703DF03917845FAAE2966A81
  */
 @EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to be replaced")
+	@EdaptParameter(main = true, description = "The class to be replaced")
 	public EClass toReplace;
 
 	/** {@description} */

@@ -17,14 +17,14 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 198372C125F0736D508A6CDA5205E899
+ * @levd.rating YELLOW Hash: E22D36550F17066C79E826C7AF3E2E53
  */
 @Deprecated
 @EdaptOperation(identifier = "replaceClassBySibling", label = "Replace Class by Sibling", description = "In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class.")
 public class ReplaceClassBySibling extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to be replaced")
+	@EdaptParameter(main = true, description = "The class to be replaced")
 	public EClass toReplace;
 
 	/** {@description} */

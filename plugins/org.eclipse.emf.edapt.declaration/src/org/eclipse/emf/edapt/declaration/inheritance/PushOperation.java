@@ -17,13 +17,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 248D92BE2937E58B4C99A056F66F91D1
+ * @levd.rating YELLOW Hash: 8E76CC4F76113825C1D9EBE03217232D
  */
 @EdaptOperation(identifier = "pushOperation", label = "Push down Operation", description = "In the metamodel, an operation is pushed down to its sub classes. In the model, nothing needs to be done.")
 public class PushOperation extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The operation to be pushed down")
+	@EdaptParameter(main = true, description = "The operation to be pushed down")
 	public EOperation operation;
 
 	/** {@inheritDoc} */

@@ -21,14 +21,14 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6CFB3401227FD956918314EDBF752F75
+ * @levd.rating YELLOW Hash: AEA7257BB7C780DD2D8AF058E3AAEDCF
  */
 @Deprecated
 @EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
 public class ExtractSuperClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class from which the features are extracted")
+	@EdaptParameter(main = true, description = "The class from which the features are extracted")
 	public EClass subClass;
 
 	/** {@description} */

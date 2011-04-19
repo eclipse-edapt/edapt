@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 62A9B578125183C946B4EE0AAC78F84D
+ * @levd.rating YELLOW Hash: 321908B493C6F89CF4E9001958F610A5
  */
 @EdaptOperation(identifier = "partitionComposite", label = "Introduce Composite Pattern", description = "In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not.")
 public class PartitionComposite extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class which is refined")
+	@EdaptParameter(main = true, description = "The class which is refined")
 	public EClass eClass;
 
 	/** {@description} */

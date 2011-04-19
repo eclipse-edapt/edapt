@@ -22,7 +22,7 @@ import java.lang.annotation.Target;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 19C2D62729A372E3B20FB72EC0FE66D8
+ * @levd.rating YELLOW Hash: FFB953C12521EC7B7A3C1D41A96020BE
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
@@ -33,4 +33,7 @@ public @interface EdaptParameter {
 	
 	/** Optional parameter. */
 	boolean optional() default false;
+	
+	/** Main parameter. */
+	boolean main() default false;
 }

@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 21CDAD471D56915CAA9459F5319540F8
+ * @levd.rating YELLOW Hash: 46DEE928672A2762CB56899D0FE31BD0
  */
 @EdaptOperation(identifier = "generalizeSuperType", label = "Generalize Super Type", description = "In the metamodel, the super type of a class is replaced by its super types. In the model, the values of the features that the class inherits from that super type (excluding its super types) are deleted.")
 public class GeneralizeSuperType extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class of which the super type is replaced")
+	@EdaptParameter(main = true, description = "The class of which the super type is replaced")
 	public EClass eClass;
 
 	/** {@description} */

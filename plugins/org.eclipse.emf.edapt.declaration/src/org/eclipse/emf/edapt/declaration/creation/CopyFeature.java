@@ -17,13 +17,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F44C6B4B57D022EE0CA3FD4220364CF2
+ * @levd.rating YELLOW Hash: 431444D5692052D25F8B50E6DD96D147
  */
 @EdaptOperation(identifier = "copyFeature", label = "Copy Feature", description = "In the metamodel, a feature is copied, giving it a new name. In the model, the values are copied, accordingly.")
 public class CopyFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be copied")
+	@EdaptParameter(main = true, description = "The feature to be copied")
 	public EStructuralFeature feature;
 
 	/** {@description} */

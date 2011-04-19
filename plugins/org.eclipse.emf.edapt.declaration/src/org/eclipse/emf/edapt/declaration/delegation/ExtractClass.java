@@ -22,13 +22,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 62D3F92D106E86F9EB6DBC148BF82DCC
+ * @levd.rating YELLOW Hash: 2BE8789A7D7964902800B739C586BC94
  */
 @EdaptOperation(identifier = "extractClass", label = "Extract Class", description = "In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")
 public class ExtractClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The context class from which the features are extracted")
+	@EdaptParameter(main = true, description = "The context class from which the features are extracted")
 	public EClass contextClass;
 
 	/** {@description} */

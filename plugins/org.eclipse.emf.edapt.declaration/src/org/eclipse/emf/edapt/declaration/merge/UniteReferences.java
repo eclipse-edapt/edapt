@@ -22,13 +22,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7181262A5102CFC39F8B327407AD1E85
+ * @levd.rating YELLOW Hash: 514E450E3A14F894257AFFBF734652DF
  */
 @EdaptOperation(identifier = "uniteReferences", label = "Unite References", description = "In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly.")
 public class UniteReferences extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The references which are united")
+	@EdaptParameter(main = true, description = "The references which are united")
 	public List<EReference> references;
 
 	/** {@description} */

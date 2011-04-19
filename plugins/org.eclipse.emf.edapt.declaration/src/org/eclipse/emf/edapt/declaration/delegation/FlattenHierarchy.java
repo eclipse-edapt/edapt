@@ -19,13 +19,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7ED5759C2B66D6B244B7B042A699C522
+ * @levd.rating YELLOW Hash: 2F44DFF417042C3D5FE0C9C9C6B8902D
  */
 @EdaptOperation(identifier = "flattenHierarchy", label = "Flatten Containment Hierarchy", description = "In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly.")
 public class FlattenHierarchy extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to denote the root node")
+	@EdaptParameter(main = true, description = "The reference to denote the root node")
 	public EReference rootReference;
 
 	/** {@description} */

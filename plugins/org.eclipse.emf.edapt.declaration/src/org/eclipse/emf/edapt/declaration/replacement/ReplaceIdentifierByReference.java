@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 712501B06AA87E76B4242253B7CCAEF8
+ * @levd.rating YELLOW Hash: D4099D73296AEA558BC062DF33AD66D5
  */
 @EdaptOperation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
 public class ReplaceIdentifierByReference extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The referencing attribute")
+	@EdaptParameter(main = true, description = "The referencing attribute")
 	public EAttribute referencingAttribute;
 
 	/** {@description} */

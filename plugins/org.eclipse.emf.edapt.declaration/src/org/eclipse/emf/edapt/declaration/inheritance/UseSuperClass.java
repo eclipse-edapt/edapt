@@ -19,13 +19,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BC10339F5E99A229E386A88FD00EBBA2
+ * @levd.rating YELLOW Hash: 1DD5D7BD6B9280DF56B69120623A2E4E
  */
 @EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
 public class UseSuperClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to which the super class is added")
+	@EdaptParameter(main = true, description = "The class to which the super class is added")
 	public EClass subClass;
 
 	/** {@description} */

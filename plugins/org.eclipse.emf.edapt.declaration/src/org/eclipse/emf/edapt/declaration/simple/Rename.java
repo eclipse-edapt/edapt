@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 57B6C7BBDBE7E21A3C911CC2D2E22886
+ * @levd.rating YELLOW Hash: E13181E607AED01BF2E3F4FE062F569B
  */
 @EdaptOperation(identifier = "rename", label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
 public class Rename extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The metamodel element to be renamed")
+	@EdaptParameter(main = true, description = "The metamodel element to be renamed")
 	public ENamedElement element;
 
 	/** {@description} */

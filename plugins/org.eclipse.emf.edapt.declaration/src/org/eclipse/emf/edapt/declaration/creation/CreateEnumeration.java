@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7973FA3C738EB85F933281E71E4950C0
+ * @levd.rating YELLOW Hash: 9B5D3DB01D377ECF78A6160AA94F1BD1
  */
 @EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.")
 public class CreateEnumeration extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The package in which the enumeration is created")
+	@EdaptParameter(main = true, description = "The package in which the enumeration is created")
 	public EPackage ePackage;
 
 	/** {@description} */

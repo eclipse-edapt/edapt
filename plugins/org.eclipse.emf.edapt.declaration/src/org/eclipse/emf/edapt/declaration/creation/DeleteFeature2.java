@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 53C6F9FF51EFBE6CFA8DE28DCC4923BA
+ * @levd.rating YELLOW Hash: EC9969F8F3F4191DB05869AB26EA6796
  */
 @EdaptOperation(identifier = "deleteFeature2", label = "Delete Feature", description = "In the metamodel, a feature is deleted. In the model, its values are deleted, too.")
 public class DeleteFeature2 extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be deleted")
+	@EdaptParameter(main = true, description = "The feature to be deleted")
 	public EStructuralFeature feature;
 
 	/** {@inheritDoc} */

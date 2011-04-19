@@ -20,13 +20,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4E40BB4F1A65D29F9CC272E57A1ADC5B
+ * @levd.rating YELLOW Hash: 3786A9B7666DDCE8867BE87A43066803
  */
 @EdaptOperation(identifier = "combineFeature", label = "Combine Features over References", description = "In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly.")
 public class CombineFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be combined")
+	@EdaptParameter(main = true, description = "The features to be combined")
 	public List<EStructuralFeature> features;
 
 	/** {@description} */

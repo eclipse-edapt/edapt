@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6C40EEE5A4968612255B935FD797CA3F
+ * @levd.rating YELLOW Hash: B38C02821017F9D5B8560A3C5C3DD4B5
  */
 @EdaptOperation(identifier = "pullOperation", label = "Pull up Operation", description = "In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done.")
 public class PullOperation extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The operations to be pulled up")
+	@EdaptParameter(main = true, description = "The operations to be pulled up")
 	public List<EOperation> operations;
 
 	/** {@description} */

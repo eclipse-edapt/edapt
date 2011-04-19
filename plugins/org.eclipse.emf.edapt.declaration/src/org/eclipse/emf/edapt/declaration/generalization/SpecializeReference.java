@@ -19,13 +19,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D9997933A1CB46CE36D6C8EC98798EFA
+ * @levd.rating YELLOW Hash: 06CD6AB4B386554B62F64EF5019B7203
  */
 @EdaptOperation(identifier = "specializeReference", label = "Specialize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed.")
 public class SpecializeReference extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to be generalized")
+	@EdaptParameter(main = true, description = "The reference to be generalized")
 	public EReference reference;
 
 	/** {@description} */

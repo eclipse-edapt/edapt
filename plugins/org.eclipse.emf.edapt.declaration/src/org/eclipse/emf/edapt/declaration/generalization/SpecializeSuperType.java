@@ -17,13 +17,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 87E079BD6E282566CD0FB93D1F4D8823
+ * @levd.rating YELLOW Hash: C73857ED78F90A15BAB6BB5EEE65FA26
  */
 @EdaptOperation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
 public class SpecializeSuperType extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class whose super type is specialized")
+	@EdaptParameter(main = true, description = "The class whose super type is specialized")
 	public EClass eClass;
 
 	/** {@description} */

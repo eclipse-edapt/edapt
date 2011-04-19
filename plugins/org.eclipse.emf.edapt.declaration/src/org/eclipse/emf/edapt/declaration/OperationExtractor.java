@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EcorePackage;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 21E320ACD0FC25CBAF53AEB619B02CA6
+ * @levd.rating YELLOW Hash: 0B14258B95FF6C0FD3501BBDF6F468E9
  */
 public class OperationExtractor {
 
@@ -79,7 +79,7 @@ public class OperationExtractor {
 		if (parameterAnnotation != null) {
 			Parameter parameter = DeclarationFactory.eINSTANCE
 					.createParameter();
-			if (operation.getMainParameter() == null) {
+			if (parameterAnnotation.main()) {
 				parameter.setMain(true);
 			}
 			operation.getParameters().add(parameter);

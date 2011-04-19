@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D68A02319E0DAA41F0865F923FDF02D0
+ * @levd.rating YELLOW Hash: ABABAC799DC45386B834F56E7B1760F7
  */
 @EdaptOperation(identifier = "removeSuperType", label = "Remove Super Type", description = "In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted.")
 public class RemoveSuperType extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class from which the super type is removed")
+	@EdaptParameter(main = true, description = "The class from which the super type is removed")
 	public EClass eClass;
 
 	/** {@description} */

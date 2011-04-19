@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5D8673ECDF911A8AB4FF4CEB83B225B9
+ * @levd.rating YELLOW Hash: 6D7A1EE075C2BF5122AD639334D22622
  */
 @EdaptOperation(identifier = "newOppositeReference", label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.")
 public class NewOppositeReference extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference for which the opposite is created")
+	@EdaptParameter(main = true, description = "The reference for which the opposite is created")
 	public EReference reference;
 
 	/** {@description} */

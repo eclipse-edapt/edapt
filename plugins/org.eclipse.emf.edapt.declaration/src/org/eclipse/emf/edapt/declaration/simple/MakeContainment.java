@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: A4D3DF7219F59C09880044DC6A695CDD
+ * @levd.rating YELLOW Hash: B74CBF847E481CFC73934807D5AA01A3
  */
 @EdaptOperation(identifier = "makeContainment", label = "Make Reference Containment", description = "In the metamodel, a reference is made containment. In the model, its values are replaced by copies.")
 public class MakeContainment extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference")
+	@EdaptParameter(main = true, description = "The reference")
 	public EReference reference;
 
 	/** {@description} */

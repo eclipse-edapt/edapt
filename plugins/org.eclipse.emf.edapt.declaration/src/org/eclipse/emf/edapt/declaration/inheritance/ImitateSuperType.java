@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: CA9266BA5F399A6B93B4AF9202494D60
+ * @levd.rating YELLOW Hash: 74170865CBAF4803DAB09DE795B54ABF
  */
 @EdaptOperation(identifier = "imitateSuperType", label = "Unfold Superclass", description = "In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly.")
 public class ImitateSuperType extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The subclass")
+	@EdaptParameter(main = true, description = "The subclass")
 	public EClass subClass;
 
 	/** {@description} */

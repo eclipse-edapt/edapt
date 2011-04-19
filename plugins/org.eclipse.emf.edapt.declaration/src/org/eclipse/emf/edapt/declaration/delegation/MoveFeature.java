@@ -17,13 +17,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 956942844407341F12882C4FEFC2C852
+ * @levd.rating YELLOW Hash: 261303FAD548FEF5FC9F79DCC0B88F27
  */
 @EdaptOperation(identifier = "moveFeature", label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.")
 public class MoveFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be moved")
+	@EdaptParameter(main = true, description = "The feature to be moved")
 	public EStructuralFeature feature;
 
 	/** {@description} */

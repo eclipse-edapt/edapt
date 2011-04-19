@@ -2,10 +2,10 @@ package org.eclipse.emf.edapt.declaration.generalization;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -15,18 +15,24 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7D3E70DE45475CD86B7C0CE70A6C3083
+ * @levd.rating YELLOW Hash: 42FA2FA593134BCDC8FFE0DCCAFC3BC2
  */
 @EdaptOperation(identifier = "generalizeReference", label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
-public class GeneralizeReference extends OperationImplementation {
+public class GeneralizeReference extends GeneralizeTypedElement {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to be generalized")
+	@EdaptParameter(main = true, description = "The reference to be generalized")
 	public EReference reference;
 
 	/** {@description} */
 	@EdaptParameter(description = "The new type of the reference")
 	public EClass type;
+	
+	/** {@inheritDoc} */
+	@Override
+	protected EStructuralFeature getTypedElement() {
+		return reference;
+	}
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "type", description = "The type must be the same or more general")
@@ -35,27 +41,11 @@ public class GeneralizeReference extends OperationImplementation {
 		return type.isSuperTypeOf(referenceType);
 	}
 
-	/** {@description} */
-	@EdaptParameter(description = "The new lower bound of the reference")
-	public int lowerBound;
-
-	/** {@description} */
-	@EdaptParameter(description = "The new upper bound of the reference")
-	public int upperBound;
-
-	/** {@description} */
-	@EdaptConstraint(description = "The multiplicity must be the same or more general")
-	public boolean checkSameOrExtendedMultiplicity() {
-		return lowerBound <= reference.getLowerBound()
-				&& (upperBound >= reference.getUpperBound() || upperBound == -1);
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
+		super.initialize(metamodel);
 		type = reference.getEReferenceType();
-		lowerBound = reference.getLowerBound();
-		upperBound = reference.getUpperBound();
 	}
 
 	/** {@inheritDoc} */
@@ -68,7 +58,6 @@ public class GeneralizeReference extends OperationImplementation {
 				type.getEStructuralFeatures().add(reference.getEOpposite());
 			}
 		}
-		reference.setLowerBound(lowerBound);
-		reference.setUpperBound(upperBound);
+		super.execute(metamodel, model);
 	}
 }

@@ -23,13 +23,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1778B2AFA692987008001F1C2596B954
+ * @levd.rating YELLOW Hash: 7F5E5E3ACDF093A538D59014F969B364
  */
 @EdaptOperation(identifier = "inlineClass", label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.")
 public class InlineClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to the class to be inlined")
+	@EdaptParameter(main = true, description = "The reference to the class to be inlined")
 	public EReference reference;
 
 	/** {@description} */

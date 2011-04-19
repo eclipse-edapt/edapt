@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7629B959A0A6F4CE3209089AD6E5CF20
+ * @levd.rating YELLOW Hash: 827E297EE5BBD2768DD6FA3CC630975B
  */
 @EdaptOperation(identifier = "extractSubClass", label = "Extract Subclass", description = "In the metamodel, a feature is extracted into a new subclass and the feature is made mandatory. In the model, all instances of the superclass that have the feature set are migrated to the new subclass.")
 public class ExtractSubClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The superclass from which the feature is extracted")
+	@EdaptParameter(main = true, description = "The superclass from which the feature is extracted")
 	public EClass superClass;
 
 	/** {@description} */

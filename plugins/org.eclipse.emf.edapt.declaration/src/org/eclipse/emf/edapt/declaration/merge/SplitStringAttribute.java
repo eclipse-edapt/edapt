@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 23DE7ACCB41ECB26C370462E76FF4A20
+ * @levd.rating YELLOW Hash: F1CBD7492BAC14EDB9E5EFEBA5B10CEF
  */
 @EdaptOperation(identifier = "splitStringAttribute", label = "Split String Attribute", description = "In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression.")
 public class SplitStringAttribute extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature whose values are split")
+	@EdaptParameter(main = true, description = "The feature whose values are split")
 	public EAttribute toSplit;
 	
 	/** {@description} */

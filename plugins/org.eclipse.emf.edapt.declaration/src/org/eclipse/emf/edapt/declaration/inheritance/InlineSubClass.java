@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2CC0776BB65406CC399834E3B02CA0AA
+ * @levd.rating YELLOW Hash: F68EFAD9047D85BBB05F8215A441EA75
  */
 @EdaptOperation(identifier = "inlineSubClass", label = "Inline Sub Class", description = "In the metamodel, the sub class is deleted. In the model, all instances of this sub class are migrated to its super class.")
 public class InlineSubClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to be inlined")
+	@EdaptParameter(main = true, description = "The class to be inlined")
 	public EClass subClass;
 
 	/** {@description} */

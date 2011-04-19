@@ -20,13 +20,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 1540C2E72D60300B4FE0EC171B9B4FA0
+ * @levd.rating YELLOW Hash: 1266620D095C774DDCCC00358C29DF9A
  */
 @EdaptOperation(identifier = "propagateFeature", label = "Propagate Feature over References", description = "In the metamodel, a feature is propagated opposite to a number of references. More specifically, the feature is created in each of the classes which are sources of the references. In the model, the values of that feature are moved accordingly.")
 public class PropagateFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be propagated")
+	@EdaptParameter(main = true, description = "The feature to be propagated")
 	public EStructuralFeature mainFeature;
 
 	/** {@description} */

@@ -15,13 +15,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F25891C739560944E86B52B17CEFDDE4
+ * @levd.rating YELLOW Hash: 598D06D7715B64F8255C7415CFD7A889
  */
 @EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
 public class NewAttribute extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class in which the attribute is created")
+	@EdaptParameter(main = true, description = "The class in which the attribute is created")
 	public EClass eClass;
 
 	/** {@description} */

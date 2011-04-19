@@ -20,13 +20,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 51B1808200761319018DBDDEE8FE2BFD
+ * @levd.rating YELLOW Hash: BA714ACAD2E5D8EA524A7B9C8B193CC5
  */
 @EdaptOperation(identifier = "partitionReference", label = "Partition Reference", description = "In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly.")
 public class PartitionReference extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference to be partitioned")
+	@EdaptParameter(main = true, description = "The reference to be partitioned")
 	public EReference reference;
 
 	/** {@description} */

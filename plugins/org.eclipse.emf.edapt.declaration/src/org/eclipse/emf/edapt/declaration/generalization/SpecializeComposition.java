@@ -20,13 +20,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 82B7FD2BD16A1581A5EEA9EC34774F99
+ * @levd.rating YELLOW Hash: 11B42DF0D50CAB1E0EC09C67B1B44FD3
  */
 @EdaptOperation(identifier = "specializeComposition", label = "Specialize Composition", description = "In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type.")
 public class SpecializeComposition extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The containment reference to be specialized")
+	@EdaptParameter(main = true, description = "The containment reference to be specialized")
 	public EReference reference;
 
 	/** {@description} */

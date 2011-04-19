@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C8EA390B3F9333B944D4C4DC0EFDB3AA
+ * @levd.rating YELLOW Hash: 0F0C0760E0177F6ADE11C5D0605AC876
  */
 @EdaptOperation(identifier = "replaceLiteral", label = "Replace Literal", description = "In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly.")
 public class ReplaceLiteral extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The enum literal to replace")
+	@EdaptParameter(main = true, description = "The enum literal to replace")
 	public EEnumLiteral toReplace;
 
 	/** {@description} */

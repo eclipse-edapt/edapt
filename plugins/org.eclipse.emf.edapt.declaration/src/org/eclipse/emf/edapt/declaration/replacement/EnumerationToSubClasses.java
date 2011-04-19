@@ -24,13 +24,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: EEB92915415C0571661B6DAB5CB92E5A
+ * @levd.rating YELLOW Hash: B87A7DE2A314DE43D1692BA830B2B2A9
  */
 @EdaptOperation(identifier = "enumerationToSubClasses", label = "Enumeration to Sub Classes", description = "In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute.")
 public class EnumerationToSubClasses extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The enumeration attribute")
+	@EdaptParameter(main = true, description = "The enumeration attribute")
 	public EAttribute enumAttribute;
 
 	/** {@description} */

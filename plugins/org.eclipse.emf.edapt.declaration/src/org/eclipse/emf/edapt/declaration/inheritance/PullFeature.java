@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F4568060003EF8258AAE48C911FE3C18
+ * @levd.rating YELLOW Hash: FC690ADFB80A59003AEE3C617E13A17A
  */
 @EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be pulled up")
+	@EdaptParameter(main = true, description = "The features to be pulled up")
 	public List<EStructuralFeature> features;
 
 	/** {@description} */

@@ -21,13 +21,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BACCD946CB617D55D5337E1F62998443
+ * @levd.rating YELLOW Hash: E4E53225C0587233ACB4456803A7E86B
  */
 @EdaptOperation(identifier = "replaceEnum", label = "Replace Enumeration", description = "In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals.")
 public class ReplaceEnum extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The enumeration to be replaced")
+	@EdaptParameter(main = true, description = "The enumeration to be replaced")
 	public EEnum toReplace;
 
 	/** {@description} */

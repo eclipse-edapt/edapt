@@ -14,13 +14,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D845958825F255D16E6CED57BC8B4301
+ * @levd.rating YELLOW Hash: 051B5FCE94C950F2ED717FC924675CBC
  */
 @EdaptOperation(identifier = "dropOpposite", label = "Drop Opposite Relationship", description = "In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done.")
 public class DropOpposite extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference whose opposite relationship should be dropped")
+	@EdaptParameter(main = true, description = "The reference whose opposite relationship should be dropped")
 	public EReference reference;
 
 	/** {@description} */

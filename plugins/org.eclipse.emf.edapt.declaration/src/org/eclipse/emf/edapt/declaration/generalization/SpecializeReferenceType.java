@@ -16,13 +16,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 207BAEA7E881DB369874E1ED9D964815
+ * @levd.rating YELLOW Hash: DA2C6BD1E7C516C51B2901404CB9485E
  */
 @EdaptOperation(identifier = "specializeReferenceType", label = "Specialize Reference Type", description = "In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed.")
 public class SpecializeReferenceType extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference whose type is specialized")
+	@EdaptParameter(main = true, description = "The reference whose type is specialized")
 	public EReference reference;
 
 	/** {@description} */

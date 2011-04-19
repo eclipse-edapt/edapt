@@ -20,13 +20,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: AC78176861ABEB791CA7CAAAACDE7F56
+ * @levd.rating YELLOW Hash: 4BC927F0EC381FE31F91728A6AD62908
  */
 @EdaptOperation(identifier = "inlineSuperClass", label = "Inline Super Class", description = "In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly.")
 public class InlineSuperClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The super class to be inlined")
+	@EdaptParameter(main = true, description = "The super class to be inlined")
 	public EClass superClass;
 
 	/** {@description} */

@@ -19,13 +19,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: EBE7BC8577F9954A838123F34916852E
+ * @levd.rating YELLOW Hash: 76925F1A56F6C2BA07D6EB92B4DB0ED2
  */
 @EdaptOperation(identifier = "dropContainment", label = "Drop Containment", description = "In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class.")
 public class DropContainment extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference whose containment is dropped")
+	@EdaptParameter(main = true, description = "The reference whose containment is dropped")
 	public EReference reference;
 
 	/** {@description} */

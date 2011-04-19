@@ -15,13 +15,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: CB8254F4F8FDDD8D1C7B628B6D467D1F
+ * @levd.rating YELLOW Hash: B6554315B875D79FD055CEB104DAEE02
  */
 @EdaptOperation(identifier = "deleteClass", label = "Delete Class", description = "In the metamodel, a class that is no longer used is deleted. In the model, nothing is changed.")
 public class DeleteClass extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class to be deleted")
+	@EdaptParameter(main = true, description = "The class to be deleted")
 	public EClass eClass;
 
 	/** {@description} */

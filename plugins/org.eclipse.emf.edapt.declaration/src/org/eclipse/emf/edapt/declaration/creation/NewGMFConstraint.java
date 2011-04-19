@@ -1,13 +1,10 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EModelElement;
-import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
-import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.declaration.common.AnnotateModelElement;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 
@@ -17,20 +14,10 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 90F610E3128C1FBDDC38CA75DD9D5091
+ * @levd.rating YELLOW Hash: 960EDA620641B97CAA70F1949FC9EEBC
  */
 @EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.")
-public class NewGMFConstraint extends OperationImplementation {
-
-	/** {@description} */
-	@EdaptParameter(description = "The metamodel element in which context the constraint is created")
-	public EModelElement element;
-
-	/** {@description} */
-	@EdaptConstraint(restricts = "element", description = "The element must not be an annotation.")
-	public boolean checkElement(EModelElement element) {
-		return (!(element instanceof EAnnotation) && !(element instanceof EStringToStringMapEntryImpl));
-	}
+public class NewGMFConstraint extends AnnotateModelElement {
 
 	/** {@description} */
 	@EdaptParameter(description = "The OCL expression of the constraint")

@@ -18,13 +18,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6910513FA4A211E67A32812FF98988BC
+ * @levd.rating YELLOW Hash: 04D33B590F9BB8E3F630C8D6A02EBECE
  */
 @EdaptOperation(identifier = "merge", label = "Merge Reference into Another", description = "In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference.")
 public class Merge extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The reference that is deleted")
+	@EdaptParameter(main = true, description = "The reference that is deleted")
 	public EReference toMerge;
 
 	/** {@description} */

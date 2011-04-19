@@ -16,14 +16,14 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 432E1E10C309240783FB3E58A2B29113
+ * @levd.rating YELLOW Hash: 1B0F9E96639F314E70F6EEFF7437E475
  */
 @Deprecated
 @EdaptOperation(identifier = "replaceFeature", label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.")
 public class ReplaceFeature extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The feature to be replaced")
+	@EdaptParameter(main = true, description = "The feature to be replaced")
 	public EStructuralFeature toReplace;
 
 	/** {@description} */

@@ -15,13 +15,13 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4F758E02C07489D6A3E61FFAE36592E0
+ * @levd.rating YELLOW Hash: C882BF3B8DC326F912DAECBC380A1238
  */
 @EdaptOperation(identifier = "newReference", label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.")
 public class NewReference extends OperationImplementation {
 
 	/** {@description} */
-	@EdaptParameter(description = "The class in which the reference is created")
+	@EdaptParameter(main = true, description = "The class in which the reference is created")
 	public EClass eClass;
 
 	/** {@description} */
