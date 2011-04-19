@@ -8,6 +8,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.history,
+ org.eclipse.emf.edapt.history.TODELETE,
  org.eclipse.emf.edapt.history.impl,
  org.eclipse.emf.edapt.history.reconstruction,
  org.eclipse.emf.edapt.history.recorder,

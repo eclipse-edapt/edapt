@@ -11,174 +11,63 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
+import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Create;
-import org.eclipse.emf.edapt.history.InitializerChange;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.OperationChange;
 
 /**
- * Reconstructor for the metamodel adaptation code of a certain {@link MigrationChange}
+ * Reconstructor for the metamodel adaptation code of a certain {@link MigrationChange}.
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-public class MigrationChangeReconstructor extends AdaptationCodeReconstructorBase {
+public class MigrationChangeReconstructor extends ReconstructorBase {
 	
-	/**
-	 * Source change
-	 */
-	private MigrateableChange sourceChange;
+	/** Source change */
+	private final MigrateableChange sourceChange;
 	
-	/**
-	 * Target change
-	 */
-	private MigrateableChange targetChange;
+	/** Target change */
+	private final MigrateableChange targetChange;
 	
-	/**
-	 * Whether generation is enabled
-	 */
-	private boolean enabled = false;
-	
-	/**
-	 * Whether generation is started
-	 */
-	private boolean started = false;
-	
-	/**
-	 * Trigger to restart generation
-	 */
-	private Change trigger = null;
-
-	/**
-	 * Whether the metamodel is consistent before or after the changes
-	 */
+	/** Whether the metamodel is consistent before or after the changes. */
 	private boolean consistent = true;
+
+	/** The extent of the reconstructed metamodel. */
+	private MetamodelExtent extent;
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param sourceChange
-	 * @param targetChange
-	 */
+	/** Constructor */
 	public MigrationChangeReconstructor(MigrateableChange sourceChange, MigrateableChange targetChange) {
 		this.sourceChange = sourceChange;
 		this.targetChange = targetChange;
 	}
+	
+	/** {@inheritDoc} */
+	@Override
+	public void init(Mapping mapping, MetamodelExtent extent) {
+		this.extent = extent;
+	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void startChange(Change originalChange) {
-		checkEnabled(originalChange);
-		if(isEnabled()) {
-			if(isStarted() && !(originalChange instanceof Create)) {
-				adaptationSwitch.doSwitch(originalChange);
+		if(originalChange == sourceChange) {
+			if(!extent.isConsistent()) {
+				consistent = false;
 			}
-			checkPause(originalChange);
 		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public void endChange(Change originalChange) {
-		if(isEnabled()) {
-			checkResume(originalChange);
-			if(isStarted() && (originalChange instanceof Create)) {
-				adaptationSwitch.doSwitch(originalChange);
-			}
-		}
-		checkDisabled(originalChange);
-	}
-
-	/**
-	 * Check whether to pause migration generator
-	 * 
-	 * @param originalChange
-	 */
-	private void checkResume(Change originalChange) {
-		if(originalChange == trigger) {
-			started = true;
-			trigger = null;
-		}
-	}
-
-	/**
-	 * Check whether to resume migration generator
-	 * 
-	 * @param originalChange
-	 */
-	private void checkPause(Change originalChange) {
-		if(trigger != null) {
-			return;
-		}
-		if(originalChange instanceof OperationChange || originalChange instanceof InitializerChange) {
-			started = false;
-			trigger = originalChange;
-		}
-	}
-
-	/**
-	 * Whether generation is started
-	 * 
-	 * @return true if generation is started, false otherwise
-	 */
-	private boolean isStarted() {
-		return started;
-	}
-
-	/**
-	 * Check whether to activate migration generator
-	 * 
-	 * @param originalChange
-	 */
-	private void checkEnabled(Change originalChange) {
-		if(originalChange == sourceChange) {
-			enabled = true;
-			if(!extent.isConsistent()) {
-				consistent = false;
-			}
-			started = true;
-		}
-	}
-	
-	/**
-	 * Check whether to deactivate migration generator
-	 * 
-	 * @param originalChange
-	 */
-	private void checkDisabled(Change originalChange) {
 		if(originalChange == targetChange) {
-			enabled = false;
 			if(!extent.isConsistent()) {
 				consistent = false;
 			}
-			started = false;
 		}
-	}
-
-	/**
-	 * Whether generation is enabled
-	 * 
-	 * @return true if generation is enabled, false otherwise
-	 */
-	private boolean isEnabled() {
-		return enabled;
-	}
-
-	/**
-	 * Get code
-	 * 
-	 * @return Code
-	 */
-	public String getCode() {
-		return code.toString();
 	}
 
 	/** Returns consistentBefore. */

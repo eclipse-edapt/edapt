@@ -55,5 +55,11 @@
            </parameter>
         </describer>
      </content-type>
+  </extension>
+  <extension
+        point="org.eclipse.emf.edapt.migrators2">
+     <migrator
+           path="model/history.history">
+     </migrator>
   </extension>    
 </plugin>

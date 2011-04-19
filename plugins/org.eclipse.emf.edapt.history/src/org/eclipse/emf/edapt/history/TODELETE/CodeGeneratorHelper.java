@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.history.reconstruction;
+package org.eclipse.emf.edapt.history.TODELETE;
 
 import java.util.ArrayList;
 import java.util.Collection;
