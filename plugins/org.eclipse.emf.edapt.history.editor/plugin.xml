@@ -327,13 +327,13 @@
         point="org.eclipse.ui.commands">
      <command
            categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateMigratorHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.TODELETE.GenerateMigratorHandler"
            id="org.eclipse.emf.edapt.GenerateMigrator"
            name="Generate Migrator">
      </command>
      <command
            categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.GenerateSpecialMigratorHandler"
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.TODELETE.GenerateSpecialMigratorHandler"
            id="org.eclipse.emf.edapt.GenerateSpecialMigrator"
            name="Generate Special Migrator">
      </command>

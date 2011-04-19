@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.history.presentation.action;
+package org.eclipse.emf.edapt.history.presentation.TODELETE;
 
 import java.util.List;
 
@@ -19,11 +19,12 @@ import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.history.TODELETE.MigrationChangeReconstructor;
 import org.eclipse.emf.edapt.history.presentation.AttachMigrationCommand;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
+import org.eclipse.emf.edapt.history.presentation.action.SubsequentChangesHandler;
 import org.eclipse.emf.edapt.history.presentation.util.SpecialEditorInput;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;

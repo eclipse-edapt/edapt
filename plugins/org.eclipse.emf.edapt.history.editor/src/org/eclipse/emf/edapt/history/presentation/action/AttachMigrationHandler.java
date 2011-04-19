@@ -54,18 +54,9 @@ public class AttachMigrationHandler extends
 		final MigrationChangeReconstructor reconstructor = reconstruct(
 				sourceChange, targetChange);
 		if (isConsistent(reconstructor)) {
-			OpenNewClassWizardAction action = new OpenNewClassWizardAction();
-			IFile file = URIUtils.getFile(release.eResource().getURI());
-			IProject project = file.getProject();
-			NewClassWizardPage page = new NewClassWizardPage();
-			page.init(new StructuredSelection(project));
-			page.setSuperClass(CustomMigration.class.getName(), true);
-			action.setConfiguredWizardPage(page);
-			action.run();
-			IJavaElement element = action.getCreatedElement();
+			IJavaElement element = createCustomMigration(release);
 			if (element != null) {
-				attachMigration(changes, "class:" + element.getElementName(),
-						domain);
+				attachMigration(changes, element.getElementName(), domain);
 			}
 		}
 		return null;
@@ -99,6 +90,20 @@ public class AttachMigrationHandler extends
 		}
 
 		return true;
+	}
+
+	/** Create a class that implements a custom migration. */
+	private IJavaElement createCustomMigration(Release release) {
+		OpenNewClassWizardAction action = new OpenNewClassWizardAction();
+		IFile file = URIUtils.getFile(release.eResource().getURI());
+		IProject project = file.getProject();
+		NewClassWizardPage page = new NewClassWizardPage();
+		page.init(new StructuredSelection(project));
+		page.setSuperClass(CustomMigration.class.getName(), true);
+		action.setConfiguredWizardPage(page);
+		action.run();
+		IJavaElement element = action.getCreatedElement();
+		return element;
 	}
 
 	/** Attach a custom migration to the changes. */
