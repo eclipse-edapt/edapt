@@ -20,71 +20,49 @@ import org.eclipse.emf.edapt.migration.Instance;
 
 
 /**
- * A list automatically updating the model
+ * A list automatically updating the model.
  * 
  * @author herrmama
- * 
- * @param <E> 
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating YELLOW Hash: 5ADE31BFBF6A91E602D57A9F0C075DBF
  */
 public class UpdatingList<E> extends BasicEList<E> {
 
-	/**
-	 * Serial ID
-	 */
+	/** Serial ID */
 	private static final long serialVersionUID = -4463041349924185459L;
 
-	/**
-	 * Feature
-	 */
+	/** Feature */
 	private EStructuralFeature feature;
 	
-	/**
-	 * Instance
-	 */
+	/** Instance */
 	private Instance instance;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param instance
-	 * @param feature
-	 */
+	/** Constructor */
 	public UpdatingList(Instance instance, EStructuralFeature feature) {
 		this(instance, feature, new ArrayList<E>());
 	}
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param instance
-	 * @param feature
-	 * @param values
-	 */
+	/** Constructor */
 	public UpdatingList(Instance instance, EStructuralFeature feature, Collection<E> values) {
 		super(values);
 		this.instance = instance;
 		this.feature = feature;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void didAdd(int index, Object object) {
 		instance.add(feature, index, object);
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void didRemove(int index, Object object) {
 		instance.remove(feature, index);
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	protected boolean isUnique() {
 		return feature.isUnique();

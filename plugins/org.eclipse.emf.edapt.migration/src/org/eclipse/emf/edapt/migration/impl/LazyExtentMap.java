@@ -26,35 +26,27 @@ import org.eclipse.emf.edapt.migration.Type;
 
 
 /**
- * An extent of a model that is built lazily
+ * An extent of a model that is built lazily.
  * 
  * @author herrmama
- *
+ * @author $Author$
+ * @version $Rev$
+ * @levd.rating YELLOW Hash: 65DEE09316B7F5F9429D1B92F91B6282
  */
 public class LazyExtentMap implements Map<EClass, Set<Instance>> {
 
-	/**
-	 * Delegate map
-	 */
+	/** Delegate map */
 	private HashMap<EClass, Set<Instance>> delegate;
 	
-	/**
-	 * Model
-	 */
-	private Model model;
+	/** Model */
+	private final Model model;
 	
-	/**
-	 * Constructor
-	 * 
-	 * @param model
-	 */
+	/** Constructor */
 	public LazyExtentMap(Model model) {
 		this.model = model;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Set<Instance> get(Object arg0) {
 		if(delegate == null) {
 			init();
@@ -62,9 +54,7 @@ public class LazyExtentMap implements Map<EClass, Set<Instance>> {
 		return delegate.get(arg0);
 	}
 	
-	/**
-	 * Initialize the map
-	 */
+	/** Initialize the map. */
 	private void init() {
 		delegate = new HashMap<EClass, Set<Instance>>();
 		for(Type type : model.getTypes()) {
@@ -84,111 +74,81 @@ public class LazyExtentMap implements Map<EClass, Set<Instance>> {
 
 	// strictly delegating methods
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public void clear() {
 		delegate.clear();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public Object clone() {
 		return delegate.clone();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public boolean containsKey(Object arg0) {
 		return delegate.containsKey(arg0);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public boolean containsValue(Object arg0) {
 		return delegate.containsValue(arg0);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Set<Entry<EClass, Set<Instance>>> entrySet() {
 		return delegate.entrySet();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public boolean equals(Object arg0) {
 		return delegate.equals(arg0);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public int hashCode() {
 		return delegate.hashCode();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public boolean isEmpty() {
 		return delegate.isEmpty();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Set<EClass> keySet() {
 		return delegate.keySet();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Set<Instance> put(EClass arg0, Set<Instance> arg1) {
 		return delegate.put(arg0, arg1);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public void putAll(Map<? extends EClass, ? extends Set<Instance>> arg0) {
 		delegate.putAll(arg0);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Set<Instance> remove(Object arg0) {
 		return delegate.remove(arg0);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public int size() {
 		return delegate.size();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	public String toString() {
 		return delegate.toString();
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	public Collection<Set<Instance>> values() {
 		return delegate.values();
 	}
