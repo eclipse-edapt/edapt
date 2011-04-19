@@ -62,7 +62,8 @@
     </changes>
   </releases>
   <releases date="2008-11-23T22:49:28.078+0100">
-    <changes xsi:type="history:MigrationChange" migration="class:org.eclipse.emf.edapt.tests.migration.custom.ComponentSignatureCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.ComponentSignatureCustomMigration"
+        language="Java">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="component.ecore#/" referenceName="eClassifiers"
             element="component.ecore#//InPort">
