@@ -56,7 +56,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.declaration.provider.DeclarationItemProviderAdapterFactory;
-import org.eclipse.emf.edapt.history.presentation.ExtendedAdapterFactoryContentProvider;
 import org.eclipse.emf.edapt.history.provider.HistoryItemProviderAdapterFactory;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
@@ -893,7 +892,7 @@ public class HistoryEditor
 	 * This is the method used by the framework to install your own controls.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * @generated
 	 */
 	@Override
 	public void createPages() {
@@ -910,7 +909,7 @@ public class HistoryEditor
 			selectionViewer = new TreeViewer(tree);
 			setCurrentViewer(selectionViewer);
 
-			selectionViewer.setContentProvider(new ExtendedAdapterFactoryContentProvider(adapterFactory));
+			selectionViewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 			selectionViewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 			selectionViewer.setInput(editingDomain.getResourceSet());
 			selectionViewer.setSelection(new StructuredSelection(editingDomain.getResourceSet().getResources().get(0)), true);
@@ -1113,7 +1112,7 @@ public class HistoryEditor
 						getActionBarContributor().shareGlobalActions(this, actionBars);
 					}
 				};
-			propertySheetPage.setPropertySourceProvider(new ExtendedAdapterFactoryContentProvider(adapterFactory));
+			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
 		}
 
 		return propertySheetPage;

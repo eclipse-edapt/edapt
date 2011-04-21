@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.history.presentation.action;
+package org.eclipse.emf.edapt.history.presentation.TODELETE;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.edapt.common.LoggingUtils;

@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.tests.history.recorder;
+package org.eclipse.emf.edapt.tests;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.history.instantiation.MigratorImporter;
 import org.eclipse.emf.edapt.history.reconstruction.IntegrityChecker;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
-import org.eclipse.emf.edapt.tests.history.lifecycle.TestBase;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 

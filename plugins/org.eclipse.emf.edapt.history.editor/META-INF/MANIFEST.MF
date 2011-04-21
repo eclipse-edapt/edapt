@@ -11,22 +11,17 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.history.instantiation.ui,
  org.eclipse.emf.edapt.history.presentation,
  org.eclipse.emf.edapt.history.presentation.action,
- org.eclipse.emf.edapt.history.presentation.util,
  org.eclipse.emf.edapt.history.reconstruction.ui,
  org.eclipse.emf.edapt.history.recorder.ui
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.history.edit;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,
- org.eclipse.jface.text,
- org.eclipse.ui.editors,
  org.eclipse.emf.edapt.common.ui,
- org.codehaus.groovy.eclipse.ui;bundle-version="1.5.7",
- org.eclipse.ui.forms,
  org.eclipse.core.expressions,
  org.eclipse.emf.edapt.migration,
- org.eclipse.jdt.core,
- org.junit4,
  org.eclipse.emf.compare.diff;bundle-version="1.0.1",
  org.eclipse.emf.compare.match;bundle-version="1.0.1",
- org.eclipse.jdt.ui;bundle-version="3.5.2"
+ org.eclipse.jdt.ui,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.forms
 Bundle-ActivationPolicy: lazy

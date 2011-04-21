@@ -15,11 +15,11 @@ import java.util.Set;
 
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
 import org.eclipse.emf.edapt.common.ui.TitleMessageDialogBase;
+import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
-import org.eclipse.jface.viewers.IStructuredContentProvider;
-import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
@@ -43,7 +43,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	/**
 	 * Set of releases
 	 */
-	private final Set<Integer> releases;
+	private final Set<Release> releases;
 	
 	/**
 	 * Combo viewer to display releases
@@ -53,12 +53,12 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	/**
 	 * Chosen release
 	 */
-	private Integer release;
+	private Release release;
 
 	/**
 	 * Constructor
 	 */
-	public ReleaseDialog(Set<Integer> releases) {
+	public ReleaseDialog(Set<Release> releases) {
 		super("Choose metamodel release for model",
 				"The release of the metamodel to which the model conforms cannot be uniquely determined.\n" +
 				"This dialog allows to choose the release from the possibilities.");
@@ -83,11 +83,11 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		releaseCombo = new ComboViewer(composite);
 		releaseCombo.getCombo().setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
-		releaseCombo.setContentProvider(new ContentProvider());
+		releaseCombo.setContentProvider(new ArrayContentProvider());
 		releaseCombo.setLabelProvider(new LabelProvider());
 		releaseCombo.setComparator(new ViewerComparator());
 		
-		releaseCombo.setInput(new Object());
+		releaseCombo.setInput(releases);
 		releaseCombo.getCombo().select(0);
 		
 		return parent;
@@ -105,37 +105,8 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	/**
 	 * Gets the chosen release.
 	 */
-	public int getRelease() {
+	public Release getRelease() {
 		return release;
-	}
-	
-	/**
-	 * Content provider
-	 */
-	private class ContentProvider implements IStructuredContentProvider {
-		
-		/**
-		 * {@inheritDoc}
-		 */
-		public Object[] getElements(Object inputElement) {
-			return releases.toArray();
-		}
-
-		/**
-		 * {@inheritDoc}
-		 */
-		public void dispose() {
-			// not required
-		}
-
-		/**
-		 * {@inheritDoc}
-		 */
-		public void inputChanged(Viewer viewer, Object oldInput,
-				Object newInput) {
-			// not required
-		}
-
 	}
 	
 	/**
@@ -154,8 +125,8 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		 * {@inheritDoc}
 		 */
 		public String getText(Object element) {
-			Integer release = (Integer) element;
-			return release.toString();
+			Release release = (Release) element;
+			return release.getLabel() + " (" + release.getNumber() + ")";
 		}
 
 		/**

@@ -8,8 +8,7 @@ Bundle-Activator: org.eclipse.emf.edapt.history.provider.HistoryEditPlugin$Imple
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.history.TODELETE,
- org.eclipse.emf.edapt.history.instantiation,
+Export-Package: org.eclipse.emf.edapt.history.instantiation,
  org.eclipse.emf.edapt.history.provider,
  org.eclipse.emf.edapt.history.provider.util,
  org.eclipse.emf.edapt.history.reconstruction,
@@ -24,6 +23,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.compare.diff;bundle-version="1.0.1",
  org.eclipse.emf.compare.match;bundle-version="1.0.1",
  org.eclipse.emf.edapt.migration,
- org.eclipse.jdt.core,
- org.junit4
+ org.junit
 Bundle-ActivationPolicy: lazy

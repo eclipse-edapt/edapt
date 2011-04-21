@@ -23,10 +23,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.TODELETE.OldMigrator;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -48,21 +49,21 @@ public class MigrateHandler extends MigratorHandlerBase {
 
 	/** Perform the migration. */
 	@Override
-	protected void run(final List<URI> modelURIs, final OldMigrator migrator,
-			int release) {
+	protected void run(final List<URI> modelURIs, final Migrator migrator,
+			Release release) {
 		try {
 			final Metamodel metamodel = migrator.getMetamodel(release);
 			final List<URI> backupURIs = BackupUtils.backup(modelURIs,
 					metamodel);
-			final int sourceRelease = release;
+			final Release sourceRelease = release;
 
 			IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
 				/** {@inheritDoc} */
 				public void run(IProgressMonitor monitor) {
 					try {
-						migrator.migrate(modelURIs, sourceRelease,
-								Integer.MAX_VALUE, monitor);
+						migrator.migrate(modelURIs, sourceRelease, null,
+								monitor);
 					} catch (MigrationException e) {
 						LoggingUtils.logError(
 								MigrationUIActivator.getDefault(), e);

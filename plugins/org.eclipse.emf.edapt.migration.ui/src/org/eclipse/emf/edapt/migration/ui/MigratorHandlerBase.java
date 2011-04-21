@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,26 +20,16 @@ import java.util.Set;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edapt.common.FileUtils;
-import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.TODELETE.MigratorCodeGenerator;
-import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
+import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.ReleaseUtil;
-import org.eclipse.emf.edapt.migration.TODELETE.OldMigrator;
-import org.eclipse.emf.edapt.migration.TODELETE.OldMigratorRegistry;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
@@ -61,12 +49,6 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	/** File with model. */
 	private List<IFile> selectedFiles;
 
-	/** Folder with migrator. */
-	private IFolder migratorFolder;
-
-	/** File with history. */
-	private IFile historyFile;
-
 	/** {@inheritDoc} */
 	public Object execute(ExecutionEvent event) {
 		updateSelection(HandlerUtil.getCurrentSelection(event));
@@ -77,13 +59,13 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	/** Run the action. */
 	protected void run() {
 		final List<URI> modelURIs = getURIs();
-		final OldMigrator migrator = getMigrator(modelURIs);
+		final Migrator migrator = getMigrator(modelURIs);
 		if (migrator == null) {
 			return;
 		}
 
-		int release = getRelease(modelURIs, migrator);
-		if (release < 0) {
+		Release release = getRelease(modelURIs, migrator);
+		if (release == null) {
 			return;
 		}
 
@@ -91,14 +73,14 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Run the action. */
-	protected abstract void run(List<URI> modelURIs, OldMigrator migrator,
-			int release);
+	protected abstract void run(List<URI> modelURIs, Migrator migrator,
+			Release release);
 
 	/** Get the migrator for a model. */
-	protected OldMigrator getMigrator(final List<URI> modelURIs) {
+	protected Migrator getMigrator(final List<URI> modelURIs) {
 
-		OldMigratorRegistry.getInstance().setOracle(new InteractiveOracle());
-		OldMigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
+		MigratorRegistry.getInstance().setOracle(new InteractiveOracle());
+		MigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
 
 		String nsURI = ReleaseUtil.getNamespaceURI(modelURIs.get(0));
 
@@ -108,53 +90,13 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 			return null;
 		}
 
-		OldMigrator migrator = null;
-		if (migratorFolder != null) {
-			migrator = getFolderMigrator(nsURI);
-		}
-		if (migrator == null && historyFile != null) {
-			return getHistoryMigrator(nsURI);
-		}
-		if (migrator == null) {
-			return getRegistryMigrator(nsURI);
-		}
+		Migrator migrator = getRegistryMigrator(nsURI);
 		return migrator;
 	}
 
-	/** Load the migrator from a folder. */
-	private OldMigrator getFolderMigrator(String nsURI) {
-		try {
-			OldMigrator migrator = new OldMigrator(URIUtils.getURI(migratorFolder));
-			if (migrator.getNsURIs().contains(nsURI)) {
-				return migrator;
-			}
-		} catch (MigrationException e) {
-			LoggingUtils.logError(MigrationUIActivator.getDefault(),
-					"Not a valid migrator", e);
-		}
-		return null;
-	}
-
-	/** Load the migrator from a history file. */
-	private OldMigrator getHistoryMigrator(String nsURI) {
-		try {
-			OldMigrator migrator = generateMigrator();
-			if (migrator.getNsURIs().contains(nsURI)) {
-				return migrator;
-			}
-		} catch (IOException e) {
-			LoggingUtils.logError(MigrationUIActivator.getDefault(),
-					"Not a valid history file", e);
-		} catch (MigrationException e) {
-			LoggingUtils.logError(MigrationUIActivator.getDefault(),
-					"Not a valid migrator", e);
-		}
-		return null;
-	}
-
 	/** Search for a migrator in the registry. */
-	private OldMigrator getRegistryMigrator(String nsURI) {
-		final OldMigrator migrator = OldMigratorRegistry.getInstance().getMigrator(
+	private Migrator getRegistryMigrator(String nsURI) {
+		final Migrator migrator = MigratorRegistry.getInstance().getMigrator(
 				nsURI);
 		if (migrator == null) {
 			MessageDialog.openError(Display.getDefault().getActiveShell(),
@@ -165,45 +107,14 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 		return migrator;
 	}
 
-	/** Generate the migrator. */
-	private OldMigrator generateMigrator() throws MigrationException, IOException {
-		History history = loadHistory();
-		URI historyURI = history.eResource().getURI();
-
-		URI migratorURI = URI.createFileURI(".migrator").resolve(historyURI);
-		IFolder migratorFolder = URIUtils.getFolder(migratorURI);
-		if (migratorFolder.exists()) {
-			try {
-				migratorFolder.delete(true, new NullProgressMonitor());
-			} catch (CoreException e) {
-				LoggingUtils.logError(MigrationUIActivator.getDefault(),
-						"Migrator folder could not be deleted", e);
-			}
-		}
-
-		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-				migratorURI);
-		reconstructor.addReconstructor(new MigratorCodeGenerator(migratorURI));
-		reconstructor.reconstruct(history.getLastRelease(), false);
-
-		return new OldMigrator(migratorURI);
-	}
-
-	/** Load the history. */
-	private History loadHistory() throws IOException {
-		URI historyURI = URIUtils.getURI(historyFile);
-		History history = ResourceUtils.loadElement(historyURI);
-		return history;
-	}
-
 	/** Infer the release of a model. */
-	protected int getRelease(final List<URI> modelURIs, final OldMigrator migrator) {
-		Set<Integer> releases = new HashSet<Integer>(migrator
+	protected Release getRelease(final List<URI> modelURIs, final Migrator migrator) {
+		Set<Release> releases = new HashSet<Release>(migrator
 				.getRelease(modelURIs.get(0)));
-		int release = -1;
+		Release release = null;
 		if (releases.size() > 1) {
-			for (Iterator<Integer> i = releases.iterator(); i.hasNext();) {
-				Integer r = i.next();
+			for (Iterator<Release> i = releases.iterator(); i.hasNext();) {
+				Release r = i.next();
 				Metamodel metamodel = migrator.getMetamodel(r);
 				try {
 					Model model = Persistency.loadModel(modelURIs, metamodel);
@@ -217,7 +128,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 		if (releases.size() > 1) {
 			ReleaseDialog dialog = new ReleaseDialog(releases);
 			if (dialog.open() != IDialogConstants.OK_ID) {
-				return -1;
+				return null;
 			}
 			release = dialog.getRelease();
 		} else {
@@ -237,24 +148,8 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 
 	/** Update the selection. */
 	private void updateSelection(ISelection selection) {
-		List<IResource> resources = SelectionUtils
+		selectedFiles = SelectionUtils
 				.getSelectedElements(selection);
-		migratorFolder = null;
-		historyFile = null;
-		selectedFiles = new ArrayList<IFile>();
-		for (IResource resource : resources) {
-			if (resource instanceof IFolder) {
-				migratorFolder = (IFolder) resource;
-			} else if (resource instanceof IFile) {
-				File file = resource.getProjectRelativePath().toFile();
-				String extension = FileUtils.getExtension(file);
-				if (extension != null && "history".equals(extension)) {
-					historyFile = (IFile) resource;
-				} else {
-					selectedFiles.add((IFile) resource);
-				}
-			}
-		}
 	}
 
 	/** Get the selected files. */

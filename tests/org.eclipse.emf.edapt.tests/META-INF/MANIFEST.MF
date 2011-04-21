@@ -15,7 +15,6 @@ Require-Bundle: org.junit4,
  org.eclipse.emf.edapt.declaration.editor
 Export-Package: org.eclipse.emf.edapt.tests.declaration.registry,
  org.eclipse.emf.edapt.tests.history.lifecycle,
- org.eclipse.emf.edapt.tests.history.recorder,
  org.eclipse.emf.edapt.tests.migration,
  org.eclipse.emf.edapt.tests.util
 Bundle-Vendor: %providerName

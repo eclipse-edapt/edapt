@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
@@ -55,7 +54,6 @@ import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 
 /**
  * A recontructor that perform the migration of models from a source release to
@@ -140,14 +138,12 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (originalRelease == targetRelease) {
 			disable();
 			saveModel();
-			GroovyEvaluator.getInstance().unsetModel();
 			throw new FinishedException();
 		}
 		if (originalRelease == sourceRelease) {
 			enable();
 			started = true;
 			model = loadModel();
-			GroovyEvaluator.getInstance().setModel(model);
 			try {
 				model.checkConformance();
 			} catch (MigrationException e) {
@@ -429,9 +425,6 @@ public class MigrationReconstructor extends ReconstructorBase {
 				} catch (MigrationException e) {
 					throwWrappedMigrationException(e);
 				}
-			} else {
-				GroovyEvaluator.getInstance().evaluate(
-						new ByteArrayInputStream(migration.getBytes()));
 			}
 
 			return change;

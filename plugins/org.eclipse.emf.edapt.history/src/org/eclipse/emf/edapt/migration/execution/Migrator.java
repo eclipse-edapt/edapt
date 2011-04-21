@@ -35,7 +35,6 @@ import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.ReleaseUtil;
-import org.eclipse.emf.edapt.migration.TODELETE.GroovyEvaluator;
 
 /**
  * Migrator to migrate a model from a previous to the current release.
@@ -151,7 +150,6 @@ public class Migrator {
 			performMigration(modelURIs, sourceRelease, targetRelease, monitor);
 
 		} finally {
-			GroovyEvaluator.getInstance().unsetModel();
 			monitor.done();
 		}
 	}
