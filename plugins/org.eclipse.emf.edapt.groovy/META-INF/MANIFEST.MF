@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Groovy
+Bundle-SymbolicName: org.eclipse.emf.edapt.groovy
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.emf.edapt.groovy.GroovyActivator
+Require-Bundle: org.eclipse.ui,org.eclipse.core.runtime,
+ org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
