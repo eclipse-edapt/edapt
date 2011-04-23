@@ -28,7 +28,8 @@ import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.migration.ReleaseUtils;
 import org.eclipse.emf.edapt.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
@@ -39,7 +40,7 @@ import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 420363CE78BAACD039471DF2B9D073DE
+ * @levd.rating YELLOW Hash: 9C993A99FE6AB6932EB6F98CCAE84555
  */
 public abstract class MigrationTestBase extends TestCase {
 
@@ -188,7 +189,7 @@ public abstract class MigrationTestBase extends TestCase {
 			URI expectedTargetMetamodelURI, int expectedDifferences)
 			throws MigrationException, IOException {
 
-		String nsURI = ReleaseUtil.getNamespaceURI(modelURI);
+		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 
 		Migrator migrator = MigratorRegistry.getInstance().getMigrator(nsURI);
 		Assert.assertNotNull(migrator);

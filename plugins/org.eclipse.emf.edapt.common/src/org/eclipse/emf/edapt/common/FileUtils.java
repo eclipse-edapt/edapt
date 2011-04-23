@@ -25,7 +25,9 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 
 /**
@@ -198,6 +200,15 @@ public final class FileUtils {
 			}
 			file.delete();
 		}
+	}
+
+	/**
+	 * Get a file from the workspace. The path must be workspace-relative. This
+	 * method always returns a file. However, this does not necessarily exist.
+	 */
+	public static IFile getFile(String fullPath) {
+		return ResourcesPlugin.getWorkspace().getRoot().getFile(
+				new Path(fullPath));
 	}
 
 }

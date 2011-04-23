@@ -27,7 +27,7 @@ import org.eclipse.emf.edapt.migration.IOracle;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationPlugin;
 import org.eclipse.emf.edapt.migration.RandomOracle;
-import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.ReleaseUtils;
 import org.osgi.framework.Bundle;
 
 /**
@@ -122,7 +122,7 @@ public class MigratorRegistry {
 
 	/** Get a migrator for a certain model. */
 	public Migrator getMigrator(URI modelURI) {
-		String nsURI = ReleaseUtil.getNamespaceURI(modelURI);
+		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return getMigrator(nsURI);
 	}
 

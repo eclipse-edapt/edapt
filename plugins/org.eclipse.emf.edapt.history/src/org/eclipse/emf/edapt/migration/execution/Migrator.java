@@ -12,6 +12,7 @@
 package org.eclipse.emf.edapt.migration.execution;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -26,15 +27,20 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.history.Delete;
 import org.eclipse.emf.edapt.history.History;
+import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
+import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.migration.ReleaseUtils;
 
 /**
  * Migrator to migrate a model from a previous to the current release.
@@ -42,7 +48,7 @@ import org.eclipse.emf.edapt.migration.ReleaseUtil;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating RED Rev:
+ * @levd.rating YELLOW Hash: B6F49196D15E37A963EB83E9543D5770
  */
 public class Migrator {
 
@@ -56,7 +62,9 @@ public class Migrator {
 	private final IClassLoader classLoader;
 
 	/** Constructor. */
-	public Migrator(URI historyURI, IClassLoader classLoader) throws MigrationException {
+	public Migrator(URI historyURI, IClassLoader classLoader)
+			throws MigrationException {
+		HistoryPackage.eINSTANCE.getHistory();
 		try {
 			history = ResourceUtils.loadElement(historyURI);
 		} catch (IOException e) {
@@ -168,7 +176,8 @@ public class Migrator {
 			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 					URI.createFileURI("test"));
 			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
-					modelURIs, sourceRelease, targetRelease, monitor, classLoader);
+					modelURIs, sourceRelease, targetRelease, monitor,
+					classLoader);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
@@ -182,14 +191,14 @@ public class Migrator {
 		int size = 0;
 		boolean inRelease = false;
 		for (Release release : history.getReleases()) {
+			if (inRelease) {
+				size += release.getChanges().size();
+			}
 			if (release == sourceRelease) {
 				inRelease = true;
 			}
 			if (release == targetRelease) {
 				break;
-			}
-			if (inRelease) {
-				size += release.getChanges().size();
 			}
 		}
 		return size;
@@ -197,7 +206,7 @@ public class Migrator {
 
 	/** Get the release of a model based on {@link URI}. */
 	public Set<Release> getRelease(URI modelURI) {
-		String nsURI = ReleaseUtil.getNamespaceURI(modelURI);
+		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return releaseMap.get(nsURI);
 	}
 
@@ -206,7 +215,8 @@ public class Migrator {
 		return releaseMap.keySet();
 	}
 
-	/** Returns the metamodel for a release.
+	/**
+	 * Returns the metamodel for a release.
 	 * 
 	 * Note: This metamodel should not be changed, as it is cached.
 	 */
@@ -215,5 +225,72 @@ public class Migrator {
 				URI.createFileURI("test"));
 		reconstructor.reconstruct(release, false);
 		return Persistency.loadMetamodel(reconstructor.getResourceSet());
+	}
+
+	/** Main method to perform migrations. */
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+
+		List<URI> modelURIs = new ArrayList<URI>();
+		URI historyURI = null;
+		int releaseNumber = -1;
+
+		char c = 0;
+
+		for (String arg : args) {
+			if (arg.startsWith("-")) {
+				c = arg.charAt(1);
+			} else {
+				if (c == 0) {
+					URI modelURI = URIUtils.getURI(unquote(arg));
+					modelURIs.add(modelURI);
+				} else if (c == 'h') {
+					historyURI = URIUtils.getURI(unquote(arg));
+				} else if (c == 'r') {
+					releaseNumber = Integer.parseInt(arg);
+				} else if (c == 'l') {
+					try {
+						Class cl = Class.forName(arg);
+						OperationRegistry.getInstance().registerLibrary(cl);
+					} catch (ClassNotFoundException e) {
+						System.err.println("Library not found: " + arg);
+					}
+				} else if (c == 'o') {
+					try {
+						Class cl = Class.forName(arg);
+						OperationRegistry.getInstance().registerOperation(cl);
+					} catch (ClassNotFoundException e) {
+						System.err.println("Operation not found: " + arg);
+					}
+				}
+			}
+		}
+
+		try {
+			Migrator migrator = new Migrator(historyURI, new ClassLoaderFacade(
+					Thread.currentThread().getContextClassLoader()));
+
+			Set<Release> releases = migrator.getRelease(modelURIs.get(0));
+			Release release = null;
+			if (releaseNumber != -1) {
+				release = HistoryUtils.getRelease(releases, releaseNumber);
+			} else {
+				release = releases.iterator().next();
+			}
+
+			migrator.migrate(modelURIs, release, null,
+					new PrintStreamProgressMonitor(System.out));
+		} catch (MigrationException e) {
+			System.err.println(e.getMessage());
+			System.err.println(e.getCause().getMessage());
+		}
+	}
+
+	/** Unquote a string that starts and ends with a quote. */
+	private static String unquote(String string) {
+		if (string.startsWith("\"") && string.endsWith("\"")) {
+			return string.substring(1, string.length() - 1);
+		}
+		return string;
 	}
 }

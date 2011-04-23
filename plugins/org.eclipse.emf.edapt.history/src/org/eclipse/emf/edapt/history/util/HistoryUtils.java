@@ -11,6 +11,7 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.util;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -23,7 +24,7 @@ import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
-
+import org.eclipse.emf.edapt.history.Release;
 
 /**
  * Helper methods to deal with the metamodel history
@@ -124,5 +125,15 @@ public final class HistoryUtils {
 			EcoreUtil.setAnnotation(p, HISTORY_ANNOTATION_SOURCE,
 					HISTORY_ANNOTATION_KEY, relativeURI.toString());
 		}
+	}
+
+	/** Get a release with a certain number. */
+	public static Release getRelease(Collection<Release> releases, int number) {
+		for (Release release : releases) {
+			if (release.getNumber() == number) {
+				return release;
+			}
+		}
+		return null;
 	}
 }

@@ -27,7 +27,7 @@ import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationFactory;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.ReleaseUtils;
 
 
 /**
@@ -207,7 +207,7 @@ public class OldMigrator {
 
 	/** Get the release of a model based on {@link URI}. */
 	public Set<Integer> getRelease(URI modelURI) {
-		String nsURI = ReleaseUtil.getNamespaceURI(modelURI);
+		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return releaseMap.get(nsURI);
 	}
 

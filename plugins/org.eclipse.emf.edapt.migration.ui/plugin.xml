@@ -146,4 +146,30 @@
             sequence="M1+M3+R">
       </key>
    </extension>
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate"
+            delegateName="Perform Migration"
+            id="org.eclipse.emf.edapt.migration.launching"
+            modes="run,debug"
+            name="Edapt Migration">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationTabGroup"
+            id="org.eclipse.emf.edapt.migration.ui.migrationTabGroups"
+            type="org.eclipse.emf.edapt.migration.launching">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.emf.edapt.migration.launching"
+            icon="icons/History.gif"
+            id="org.eclipse.emf.edapt.migration.launchConfigurationTypeImage">
+      </launchConfigurationTypeImage>
+   </extension>
 </plugin>

@@ -38,12 +38,12 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: AA6566F4A08EAD2A2649F1D179DD5283
+ * @levd.rating YELLOW Hash: 680A9E3F1CAE7963EB55E8E8749FF9E6
  */
-public final class ReleaseUtil {
+public final class ReleaseUtils {
 
 	/** Constructor. */
-	private ReleaseUtil() {
+	private ReleaseUtils() {
 		// hidden, since this class only provides static helper methods
 	}
 

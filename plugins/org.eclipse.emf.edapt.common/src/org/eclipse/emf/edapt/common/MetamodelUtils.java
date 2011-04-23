@@ -327,6 +327,7 @@ public final class MetamodelUtils {
 	 * Copy a metamodel element. Do not copy opposites in case this might lead
 	 * to an inconsistency.
 	 */
+	@SuppressWarnings("unchecked")
 	public static <V extends EModelElement> V copy(V modelElement) {
 		Copier copier = new Copier() {
 			@Override

@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.migration.test;
+package org.eclipse.emf.edapt.migration;
 
 import java.io.PrintStream;
 

@@ -9,8 +9,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edapt.common,
  org.eclipse.emf.edapt.common.ui,
  org.eclipse.core.expressions,
- org.eclipse.emf.edapt.migration,
- org.eclipse.emf.edapt.history
+ org.eclipse.emf.edapt.history,
+ org.eclipse.debug.core,
+ org.eclipse.jdt.launching,
+ org.eclipse.debug.ui,
+ org.eclipse.jdt.debug.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.migration.ui

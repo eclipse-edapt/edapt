@@ -225,7 +225,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (isEnabled()) {
 			if (isStarted()) {
 				migrationSwitch.doSwitch(change);
-				if (customMigration == null) {
+				if(change.eContainer() instanceof Release) {
 					monitor.worked(1);
 					try {
 						model.checkConformance();
@@ -251,6 +251,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 								.getMetamodel());
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
+					} finally {
+						customMigration = null;
 					}
 				}
 			}

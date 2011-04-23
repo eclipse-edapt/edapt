@@ -27,7 +27,7 @@ import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.ReleaseUtil;
+import org.eclipse.emf.edapt.migration.ReleaseUtils;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -82,7 +82,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 		MigratorRegistry.getInstance().setOracle(new InteractiveOracle());
 		MigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
 
-		String nsURI = ReleaseUtil.getNamespaceURI(modelURIs.get(0));
+		String nsURI = ReleaseUtils.getNamespaceURI(modelURIs.get(0));
 
 		if (nsURI == null) {
 			MessageDialog.openError(Display.getDefault().getActiveShell(),

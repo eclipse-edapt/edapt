@@ -20,6 +20,7 @@ import org.eclipse.emf.edapt.common.IExtentProvider;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
+import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.OperationRegistry;
@@ -181,6 +182,10 @@ public class OperationInstanceHelper {
 		for (String message : messages) {
 			Constraint constraint = getConstraint(operationInstance
 					.getOperation(), message);
+			if(constraint == null) {
+				constraint = DeclarationFactory.eINSTANCE.createConstraint();
+				constraint.setDescription(message);
+			}
 			violatedConstraints.add(constraint);
 		}
 		OperationInstanceConverter.convert(operationBase, operationInstance);
