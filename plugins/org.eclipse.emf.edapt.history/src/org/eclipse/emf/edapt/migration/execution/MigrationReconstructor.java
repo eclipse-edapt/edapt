@@ -225,7 +225,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (isEnabled()) {
 			if (isStarted()) {
 				migrationSwitch.doSwitch(change);
-				if(change.eContainer() instanceof Release) {
+				if (change.eContainer() instanceof Release) {
 					monitor.worked(1);
 					try {
 						model.checkConformance();
@@ -440,10 +440,15 @@ public class MigrationReconstructor extends ReconstructorBase {
 
 			OperationImplementation operation = OperationInstanceConverter
 					.convert(operationInstance, model.getMetamodel());
-			try {
-				operation.checkAndExecute(model.getMetamodel(), model);
-			} catch (MigrationException e) {
-				throwWrappedMigrationException(e);
+			if (operation == null) {
+				throwWrappedMigrationException("Operation could not be found: "
+						+ operationInstance.getName(), null);
+			} else {
+				try {
+					operation.checkAndExecute(model.getMetamodel(), model);
+				} catch (MigrationException e) {
+					throwWrappedMigrationException(e);
+				}
 			}
 
 			return change;

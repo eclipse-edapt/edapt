@@ -51,15 +51,15 @@ public class OperationInstanceConverter {
 			Operation operation = operationInstance.getOperation();
 			Parameter mainParameter = operation.getMainParameter();
 
-			OperationImplementation operationBase = (OperationImplementation) operation
+			OperationImplementation operationImpl = (OperationImplementation) operation
 					.getImplementation().newInstance();
 
 			ParameterInstance mainParameterInstance = operationInstance
 					.getParameter(mainParameter.getName());
-			transfer(mainParameterInstance, operationBase);
+			transfer(mainParameterInstance, operationImpl);
 
 			try {
-				operationBase.initialize(metamodel);
+				operationImpl.initialize(metamodel);
 			} catch (RuntimeException e) {
 				// ignore RuntimeException to make more robust
 			}
@@ -67,10 +67,10 @@ public class OperationInstanceConverter {
 			for (ParameterInstance parameterInstance : operationInstance
 					.getParameters()) {
 				if (parameterInstance != mainParameterInstance) {
-					transfer(parameterInstance, operationBase);
+					transfer(parameterInstance, operationImpl);
 				}
 			}
-			return operationBase;
+			return operationImpl;
 		} catch (Exception e) {
 			return null;
 		}
