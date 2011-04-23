@@ -115,13 +115,31 @@ public interface DeclarationPackage extends EPackage {
 	int LIBRARY = 1;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__NAME = IDENTIFIED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__DESCRIPTION = IDENTIFIED_ELEMENT__DESCRIPTION;
+
+	/**
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__OPERATIONS = 0;
+	int LIBRARY__OPERATIONS = IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
@@ -130,7 +148,25 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY__IMPLEMENTATION = 1;
+	int LIBRARY__IMPLEMENTATION = IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__LABEL = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int LIBRARY__LIBRARIES = IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Library</em>' class.
@@ -139,7 +175,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIBRARY_FEATURE_COUNT = 2;
+	int LIBRARY_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl <em>Operation</em>}' class.
@@ -462,6 +498,28 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getLibrary_Implementation();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Label</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Library#getLabel()
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	EAttribute getLibrary_Label();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Libraries</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Library#getLibraries()
+	 * @see #getLibrary()
+	 * @generated
+	 */
+	EReference getLibrary_Libraries();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -740,6 +798,22 @@ public interface DeclarationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute LIBRARY__IMPLEMENTATION = eINSTANCE.getLibrary_Implementation();
+
+		/**
+		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute LIBRARY__LABEL = eINSTANCE.getLibrary_Label();
+
+		/**
+		 * The meta object literal for the '<em><b>Libraries</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference LIBRARY__LIBRARIES = eINSTANCE.getLibrary_Libraries();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl <em>Operation</em>}' class.

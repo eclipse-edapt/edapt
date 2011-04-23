@@ -28,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,7 +37,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Library extends EObject {
+public interface Library extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.declaration.Operation}.
@@ -81,6 +83,47 @@ public interface Library extends EObject {
 	 * @generated
 	 */
 	void setImplementation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Label</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Label for an element
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Label</em>' attribute.
+	 * @see #setLabel(String)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Label()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getLabel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Label</em>' attribute.
+	 * @see #getLabel()
+	 * @generated
+	 */
+	void setLabel(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Libraries</b></em>' containment reference list.
+	 * The list contents are of type {@link org.eclipse.emf.edapt.declaration.Library}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Libraries</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Libraries</em>' containment reference list.
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Libraries()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Library> getLibraries();
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -22,6 +22,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -41,12 +42,14 @@ import org.eclipse.emf.edapt.declaration.Operation;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl#getOperations <em>Operations</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl#getImplementation <em>Implementation</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl#getLabel <em>Label</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl#getLibraries <em>Libraries</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class LibraryImpl extends EObjectImpl implements Library {
+public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	/**
 	 * The cached value of the '{@link #getOperations() <em>Operations</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -76,6 +79,36 @@ public class LibraryImpl extends EObjectImpl implements Library {
 	 * @ordered
 	 */
 	protected String implementation = IMPLEMENTATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String LABEL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLabel() <em>Label</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLabel()
+	 * @generated
+	 * @ordered
+	 */
+	protected String label = LABEL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getLibraries() <em>Libraries</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLibraries()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Library> libraries;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -127,6 +160,39 @@ public class LibraryImpl extends EObjectImpl implements Library {
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.LIBRARY__IMPLEMENTATION, oldImplementation, implementation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLabel() {
+		return label;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setLabel(String newLabel) {
+		String oldLabel = label;
+		label = newLabel;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.LIBRARY__LABEL, oldLabel, label));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<Library> getLibraries() {
+		if (libraries == null) {
+			libraries = new EObjectContainmentEList<Library>(Library.class, this, DeclarationPackage.LIBRARY__LIBRARIES);
+		}
+		return libraries;
 	}
 
 	/**
@@ -185,6 +251,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 		switch (featureID) {
 			case DeclarationPackage.LIBRARY__OPERATIONS:
 				return ((InternalEList<?>)getOperations()).basicRemove(otherEnd, msgs);
+			case DeclarationPackage.LIBRARY__LIBRARIES:
+				return ((InternalEList<?>)getLibraries()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -201,6 +269,10 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return getOperations();
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
 				return getImplementation();
+			case DeclarationPackage.LIBRARY__LABEL:
+				return getLabel();
+			case DeclarationPackage.LIBRARY__LIBRARIES:
+				return getLibraries();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -221,6 +293,13 @@ public class LibraryImpl extends EObjectImpl implements Library {
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
 				setImplementation((String)newValue);
 				return;
+			case DeclarationPackage.LIBRARY__LABEL:
+				setLabel((String)newValue);
+				return;
+			case DeclarationPackage.LIBRARY__LIBRARIES:
+				getLibraries().clear();
+				getLibraries().addAll((Collection<? extends Library>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -239,6 +318,12 @@ public class LibraryImpl extends EObjectImpl implements Library {
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
 				setImplementation(IMPLEMENTATION_EDEFAULT);
 				return;
+			case DeclarationPackage.LIBRARY__LABEL:
+				setLabel(LABEL_EDEFAULT);
+				return;
+			case DeclarationPackage.LIBRARY__LIBRARIES:
+				getLibraries().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -255,6 +340,10 @@ public class LibraryImpl extends EObjectImpl implements Library {
 				return operations != null && !operations.isEmpty();
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
 				return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT.equals(implementation);
+			case DeclarationPackage.LIBRARY__LABEL:
+				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+			case DeclarationPackage.LIBRARY__LIBRARIES:
+				return libraries != null && !libraries.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -271,6 +360,8 @@ public class LibraryImpl extends EObjectImpl implements Library {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (implementation: ");
 		result.append(implementation);
+		result.append(", label: ");
+		result.append(label);
 		result.append(')');
 		return result.toString();
 	}

@@ -22,8 +22,6 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.declaration.Library;
-import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.migration.MigrationPlugin;
 
 /**
@@ -33,7 +31,7 @@ import org.eclipse.emf.edapt.migration.MigrationPlugin;
  * @author herrmama
  * @author $Author: mherrmannsd $
  * @version $Rev: 117 $
- * @levd.rating YELLOW Hash: E68C22AD7159B33EC894EBC386C70D0E
+ * @levd.rating YELLOW Hash: 64D54C351FFB8987B3B73DF9220A7BF7
  */
 public class OperationRegistry {
 
@@ -50,7 +48,7 @@ public class OperationRegistry {
 	private Map<Operation, List<Operation>> afterOperations;
 
 	/** List of registered operation containers. */
-	private List<Library> libraries;
+	private Library rootLibrary;
 
 	/** Private default constructor. */
 	private OperationRegistry() {
@@ -121,8 +119,10 @@ public class OperationRegistry {
 		operations = new HashMap<String, Operation>();
 		beforeOperations = new HashMap<Operation, List<Operation>>();
 		afterOperations = new HashMap<Operation, List<Operation>>();
-
-		libraries = new ArrayList<Library>();
+		rootLibrary = DeclarationFactory.eINSTANCE.createLibrary();
+		rootLibrary.setName("root");
+		rootLibrary.setLabel("Root library");
+		rootLibrary.setDescription("Root library of the operation registry");
 
 		if (Platform.isRunning()) {
 			IExtensionRegistry extensionRegistry = Platform
@@ -132,23 +132,33 @@ public class OperationRegistry {
 
 			for (int i = 0, n = configurationElements.length; i < n; i++) {
 				IConfigurationElement configurationElement = configurationElements[i];
-				registerOperation(configurationElement);
+				register(configurationElement);
 			}
 		}
 	}
 
-	/** Register an operation based on its definition in the plugin.xml. */
+	/** Register a configuration element. */
 	@SuppressWarnings("unchecked")
-	private void registerOperation(IConfigurationElement configurationElement) {
+	private void register(IConfigurationElement configurationElement) {
 		try {
-			Class c = configurationElement.createExecutableExtension("class")
-					.getClass();
-			Operation operation = new OperationExtractor().extractOperation(c);
-			if (operation != null) {
-				initOperation(operation);
+			Class c = configurationElement.createExecutableExtension(
+					"class").getClass();
+			if ("operation".equals(configurationElement.getName())) {
+				registerOperation(c);
+			} else if ("library".equals(configurationElement.getName())) {
+				registerLibrary(c);
 			}
 		} catch (CoreException e) {
 			// do not register operations that are declared erroneously.
+		}
+	}
+
+	/** Register the implementation of an operation. */
+	public void registerOperation(Class<? extends OperationImplementation> c) {
+		Operation operation = new OperationExtractor().extractOperation(c);
+		if (operation != null) {
+			initOperation(operation);
+			rootLibrary.getOperations().add(operation);
 		}
 	}
 
@@ -163,6 +173,25 @@ public class OperationRegistry {
 					"Duplicate operation name: " + name);
 		}
 		operations.put(name, operation);
+	}
+
+	/** Register the implementation of a library. */
+	public void registerLibrary(Class<? extends LibraryImplementation> c) {
+		Library library = new LibraryExtractor().extractLibrary(c);
+		if (library != null) {
+			initLibrary(library);
+			rootLibrary.getLibraries().add(library);
+		}
+	}
+
+	/** Register the operations provided by a library. */
+	private void initLibrary(Library library) {
+		for (Operation operation : library.getOperations()) {
+			initOperation(operation);
+		}
+		for (Library subLibrary : library.getLibraries()) {
+			initLibrary(subLibrary);
+		}
 	}
 
 	/** Getter for instance. */
@@ -183,8 +212,13 @@ public class OperationRegistry {
 		return operations.get(name);
 	}
 
-	/** Get the list of registered operation containers. */
-	public List<Library> getLibraries() {
-		return libraries;
+	/** Get the root libraries. */
+	public List<Library> getRootLibraries() {
+		return new ArrayList<Library>(rootLibrary.getLibraries());
+	}
+	
+	/** Get the root operations. */
+	public List<Operation> getRootOperations() {
+		return new ArrayList<Operation>(rootLibrary.getOperations());
 	}
 }

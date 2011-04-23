@@ -101,6 +101,7 @@ public class DeclarationSwitch<T> {
 			case DeclarationPackage.LIBRARY: {
 				Library library = (Library)theEObject;
 				T result = caseLibrary(library);
+				if (result == null) result = caseIdentifiedElement(library);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}

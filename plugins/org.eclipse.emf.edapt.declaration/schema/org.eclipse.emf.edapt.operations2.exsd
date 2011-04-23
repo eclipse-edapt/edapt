@@ -18,7 +18,10 @@
       </annotation>
       <complexType>
          <sequence minOccurs="1" maxOccurs="unbounded">
-            <element ref="operation"/>
+            <choice>
+               <element ref="library"/>
+               <element ref="operation"/>
+            </choice>
          </sequence>
          <attribute name="point" type="string" use="required">
             <annotation>
@@ -56,6 +59,21 @@
                </documentation>
                <appInfo>
                   <meta.attribute kind="java" basedOn="org.eclipse.emf.edapt.migration.declaration.incubator.OperationBase:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="library">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="org.eclipse.emf.edapt.declaration.LibraryImplementation:"/>
                </appInfo>
             </annotation>
          </attribute>

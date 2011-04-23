@@ -193,6 +193,24 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getLibrary_Label() {
+		return (EAttribute)libraryEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getLibrary_Libraries() {
+		return (EReference)libraryEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getOperation() {
 		return operationEClass;
 	}
@@ -394,6 +412,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		libraryEClass = createEClass(LIBRARY);
 		createEReference(libraryEClass, LIBRARY__OPERATIONS);
 		createEAttribute(libraryEClass, LIBRARY__IMPLEMENTATION);
+		createEAttribute(libraryEClass, LIBRARY__LABEL);
+		createEReference(libraryEClass, LIBRARY__LIBRARIES);
 
 		operationEClass = createEClass(OPERATION);
 		createEReference(operationEClass, OPERATION__LIBRARY);
@@ -446,6 +466,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		libraryEClass.getESuperTypes().add(this.getIdentifiedElement());
 		operationEClass.getESuperTypes().add(this.getIdentifiedElement());
 		parameterEClass.getESuperTypes().add(this.getIdentifiedElement());
 		constraintEClass.getESuperTypes().add(this.getIdentifiedElement());
@@ -458,6 +479,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLibrary_Operations(), this.getOperation(), this.getOperation_Library(), "operations", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Implementation(), ecorePackage.getEString(), "implementation", null, 1, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLibrary_Label(), ecorePackage.getEString(), "label", null, 1, 1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getLibrary_Libraries(), this.getLibrary(), null, "libraries", null, 0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		EOperation op = addEOperation(libraryEClass, this.getOperation(), "getOperation", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 0, 1, IS_UNIQUE, IS_ORDERED);

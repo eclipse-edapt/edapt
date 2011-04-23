@@ -41,7 +41,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * @generated
  */
 public class LibraryItemProvider
-	extends ItemProviderAdapter
+	extends IdentifiedElementItemProvider
 	implements	
 		IEditingDomainItemProvider,	
 		IStructuredItemContentProvider,	
@@ -70,6 +70,7 @@ public class LibraryItemProvider
 			super.getPropertyDescriptors(object);
 
 			addImplementationPropertyDescriptor(object);
+			addLabelPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -97,6 +98,28 @@ public class LibraryItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Label feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLabelPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Library_label_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Library_label_feature", "_UI_Library_type"),
+				 DeclarationPackage.Literals.LIBRARY__LABEL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -109,6 +132,7 @@ public class LibraryItemProvider
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(DeclarationPackage.Literals.LIBRARY__OPERATIONS);
+			childrenFeatures.add(DeclarationPackage.Literals.LIBRARY__LIBRARIES);
 		}
 		return childrenFeatures;
 	}
@@ -145,7 +169,7 @@ public class LibraryItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Library)object).getImplementation();
+		String label = ((Library)object).getName();
 		return label == null || label.length() == 0 ?
 			getString("_UI_Library_type") :
 			getString("_UI_Library_type") + " " + label;
@@ -164,9 +188,11 @@ public class LibraryItemProvider
 
 		switch (notification.getFeatureID(Library.class)) {
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
+			case DeclarationPackage.LIBRARY__LABEL:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DeclarationPackage.LIBRARY__OPERATIONS:
+			case DeclarationPackage.LIBRARY__LIBRARIES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -188,17 +214,11 @@ public class LibraryItemProvider
 			(createChildParameter
 				(DeclarationPackage.Literals.LIBRARY__OPERATIONS,
 				 DeclarationFactory.eINSTANCE.createOperation()));
-	}
 
-	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ResourceLocator getResourceLocator() {
-		return DeclarationEditPlugin.INSTANCE;
+		newChildDescriptors.add
+			(createChildParameter
+				(DeclarationPackage.Literals.LIBRARY__LIBRARIES,
+				 DeclarationFactory.eINSTANCE.createLibrary()));
 	}
 
 }

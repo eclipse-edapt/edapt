@@ -1392,5 +1392,39 @@
       <changes xsi:type="history:Set" element="declaration.ecore#//Operation/getConstraint/name"
           featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </changes>
+    <changes xsi:type="history:Add" element="declaration.ecore#//Library" featureName="eSuperTypes"
+        referenceValue="declaration.ecore#//IdentifiedElement"/>
+    <changes xsi:type="history:Create" target="declaration.ecore#//Library" referenceName="eStructuralFeatures"
+        element="declaration.ecore#//Library/label">
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label"
+          featureName="name" dataValue="label"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label"
+          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </changes>
+    <changes xsi:type="history:Create" target="declaration.ecore#//Library/label"
+        referenceName="eAnnotations" element="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:Create" target="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+        referenceName="details" element="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="key" dataValue="documentation"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/label/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Label for an element"/>
+    </changes>
+    <changes xsi:type="history:Create" target="declaration.ecore#//Library" referenceName="eStructuralFeatures"
+        element="declaration.ecore#//Library/libraries">
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/libraries"
+          featureName="name" dataValue="libraries"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/libraries"
+          featureName="eType" referenceValue="declaration.ecore#//Library"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/libraries"
+          featureName="containment" dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/libraries"
+          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+    </changes>
   </releases>
 </history:History>
