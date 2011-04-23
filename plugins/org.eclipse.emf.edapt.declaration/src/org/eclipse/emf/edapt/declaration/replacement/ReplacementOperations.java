@@ -1,6 +1,6 @@
 package org.eclipse.emf.edapt.declaration.replacement;
 
-import org.eclipse.emf.edapt.declaration.EdaptOperation;
+import org.eclipse.emf.edapt.declaration.EdaptLibrary;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
@@ -9,9 +9,9 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 969FA528908C0A717DF22D1164845650
+ * @levd.rating YELLOW Hash: 6A0D61944E5ABAC1F5D08882E7E3DBBB
  */
-@EdaptOperation(label = "Replacement Operations", description = "Replacement " +
+@EdaptLibrary(label = "Replacement Operations", description = "Replacement " +
 		"operations replace one metamodeling construct by another, equivalent " +
 		"construct.")
 public class ReplacementOperations extends LibraryImplementation {
