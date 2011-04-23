@@ -77,7 +77,7 @@ import org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 0011F751FB2B0D5FB84332255D364569
+ * @levd.rating YELLOW Hash: 3F38CE5FD3EE3E6D990141AF90D7B613
  */
 class MigrationLaunchConfigurationMainTab extends
 		AbstractLaunchConfigurationTab {
@@ -399,6 +399,7 @@ class MigrationLaunchConfigurationMainTab extends
 					IPath path = resource.getFullPath();
 					modelURIs.add(path.toString());
 					modelViewer.refresh();
+					updateLaunchConfigurationDialog();
 				}
 			}
 		}
@@ -416,6 +417,7 @@ class MigrationLaunchConfigurationMainTab extends
 					.getSelectedElements(modelViewer.getSelection());
 			modelURIs.removeAll(elements);
 			modelViewer.refresh();
+			updateLaunchConfigurationDialog();
 		}
 	}
 
