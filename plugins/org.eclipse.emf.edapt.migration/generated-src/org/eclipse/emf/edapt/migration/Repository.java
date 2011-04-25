@@ -11,7 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->

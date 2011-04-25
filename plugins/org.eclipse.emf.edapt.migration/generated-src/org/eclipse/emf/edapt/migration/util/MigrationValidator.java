@@ -21,15 +21,14 @@ import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.eclipse.emf.edapt.migration.*;
 import org.eclipse.emf.edapt.migration.AbstractResource;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
@@ -46,7 +45,6 @@ import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
 import org.eclipse.emf.edapt.migration.impl.SlotImpl;
-import org.eclipse.ocl.ParserException;
 
 
 /**

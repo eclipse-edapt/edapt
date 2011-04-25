@@ -402,29 +402,6 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	public void setEOpposite(EReference reference, EReference opposite) {
-		if(reference.getEOpposite() != null) {
-			reference.getEOpposite().setEOpposite(null);
-		}
-		if(opposite != null) {
-			for(Instance instance : this.getAllInstances(opposite.getEContainingClass())) {
-				EList<Instance> inverseList = ((InstanceImpl) instance).getInverseList(reference);
-				if(!inverseList.isEmpty()) {
-					ReferenceSlot referenceSlot = ((InstanceImpl) instance).getCreateReferenceSlot(opposite);
-					referenceSlot.getValues().clear();
-					referenceSlot.getValues().addAll(inverseList);
-				}
-			}
-			opposite.setEOpposite(reference);
-		}
-		reference.setEOpposite(opposite);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
 	public void validate() throws MigrationException {
 		BasicDiagnostic chain = new BasicDiagnostic();
 		for(ModelResource modelResource : this.getResources()) {

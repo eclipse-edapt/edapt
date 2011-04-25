@@ -41,7 +41,6 @@ import org.eclipse.emf.edapt.migration.Repository;
 import org.eclipse.emf.edapt.migration.Slot;
 import org.eclipse.emf.edapt.migration.Type;
 import org.eclipse.emf.edapt.migration.util.MigrationValidator;
-import org.eclipse.ocl.ParserException;
 
 
 /**
@@ -769,10 +768,6 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(modelEClass, null, "delete", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getInstance(), "instance", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(modelEClass, null, "setEOpposite", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEReference(), "opposite", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		op = addEOperation(modelEClass, null, "validate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEException(op, this.getMigrationException());
 
@@ -1004,6 +999,10 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(metamodelEClass, ecorePackage.getEClass(), "getEAllSubTypes", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEClass(), "eClass", 1, 1, IS_UNIQUE, IS_ORDERED);
 
+		op = addEOperation(metamodelEClass, null, "setEOpposite", 0, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, ecorePackage.getEReference(), "opposite", 1, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(metamodelResourceEClass, MetamodelResource.class, "MetamodelResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMetamodelResource_RootPackages(), ecorePackage.getEPackage(), null, "rootPackages", null, 0, -1, MetamodelResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1032,7 +1031,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";																																
+		String source = "http://www.eclipse.org/emf/2002/Ecore";																															
 		addAnnotation
 		  (instanceEClass, 
 		   source, 
@@ -1050,7 +1049,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validType noDanglingReference validOpposite"
-		   });																																	
+		   });																																		
 	}
 
 } //MigrationPackageImpl

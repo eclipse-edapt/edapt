@@ -68,13 +68,6 @@
       </eAnnotations>
       <eParameters name="instance" lowerBound="1" eType="#//Instance"/>
     </eOperations>
-    <eOperations name="setEOpposite">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Set the opposite of a reference, adapting opposite values in the model"/>
-      </eAnnotations>
-      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-      <eParameters name="opposite" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-    </eOperations>
     <eOperations name="validate" eExceptions="#//MigrationException">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Validate the model"/>
@@ -595,6 +588,13 @@
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
+    <eOperations name="setEOpposite">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Set the opposite of a reference, adapting opposite values in the model"/>
+      </eAnnotations>
+      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+      <eParameters name="opposite" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="resources" upperBound="-1"
         eType="#//MetamodelResource" containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -656,7 +656,7 @@
       <details key="documentation" value="Exception that encapsulates constraint violations"/>
     </eAnnotations>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="MigrationException" instanceClassName="org.eclipse.emf.edapt.migration.execution.MigrationException"
+  <eClassifiers xsi:type="ecore:EDataType" name="MigrationException" instanceClassName="org.eclipse.emf.edapt.migration.MigrationException"
       serializable="false">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Exception indicating a failure to parse or validate OCL constraints"/>

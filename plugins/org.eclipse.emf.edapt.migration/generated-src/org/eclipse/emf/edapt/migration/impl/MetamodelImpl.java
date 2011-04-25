@@ -43,10 +43,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
+import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MetamodelResource;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
+import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.migration.ReferenceSlot;
 import org.eclipse.emf.edapt.migration.Repository;
 
 
@@ -292,6 +295,35 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			subTypes.addAll(getEAllSubTypes(subType));
 		}
 		return subTypes;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated Not
+	 */
+	public void setEOpposite(EReference reference, EReference opposite) {
+		if (reference.getEOpposite() != null) {
+			reference.getEOpposite().setEOpposite(null);
+		}
+		if (opposite != null) {
+			Model model = getRepository().getModel();
+			if (model != null) {
+				for (Instance instance : model.getAllInstances(opposite
+						.getEContainingClass())) {
+					EList<Instance> inverseList = ((InstanceImpl) instance)
+							.getInverseList(reference);
+					if (!inverseList.isEmpty()) {
+						ReferenceSlot referenceSlot = ((InstanceImpl) instance)
+								.getCreateReferenceSlot(opposite);
+						referenceSlot.getValues().clear();
+						referenceSlot.getValues().addAll(inverseList);
+					}
+				}
+			}
+			opposite.setEOpposite(reference);
+		}
+		reference.setEOpposite(opposite);
 	}
 
 	/**

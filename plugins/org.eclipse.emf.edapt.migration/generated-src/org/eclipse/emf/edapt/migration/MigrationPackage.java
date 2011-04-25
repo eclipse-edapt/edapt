@@ -1047,7 +1047,7 @@ public interface MigrationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @return the meta object for data type '<em>Exception</em>'.
 	 * @see org.eclipse.emf.edapt.migration.MigrationException
-	 * @model instanceClass="org.eclipse.emf.edapt.migration.execution.MigrationException" serializeable="false"
+	 * @model instanceClass="org.eclipse.emf.edapt.migration.MigrationException" serializeable="false"
 	 * @generated
 	 */
 	EDataType getMigrationException();

@@ -218,6 +218,17 @@ public interface Metamodel {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
+	 * Set the opposite of a reference, adapting opposite values in the model
+	 * <!-- end-model-doc -->
+	 * @model referenceRequired="true" oppositeRequired="true"
+	 * @generated
+	 */
+	void setEOpposite(EReference reference, EReference opposite);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
 	 * Resolve a package of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
 	 * @model nameRequired="true"

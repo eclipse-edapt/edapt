@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.edapt.migration.*;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.DiagnosticException;
 import org.eclipse.emf.edapt.migration.Instance;

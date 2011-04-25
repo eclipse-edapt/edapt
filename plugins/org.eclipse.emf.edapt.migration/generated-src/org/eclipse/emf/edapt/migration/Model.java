@@ -16,7 +16,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EReference;
 
 
 /**
@@ -238,17 +237,6 @@ public interface Model {
 	 * @generated
 	 */
 	void delete(Instance instance);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Set the opposite of a reference, adapting opposite values in the model
-	 * <!-- end-model-doc -->
-	 * @model referenceRequired="true" oppositeRequired="true"
-	 * @generated
-	 */
-	void setEOpposite(EReference reference, EReference opposite);
 
 	/**
 	 * <!-- begin-user-doc -->
