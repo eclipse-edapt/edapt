@@ -52,8 +52,10 @@ import org.eclipse.emf.edapt.history.reconstruction.ResolverBase;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
+import org.eclipse.emf.edapt.migration.MigrationFactory;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.migration.Repository;
 
 /**
  * A recontructor that perform the migration of models from a source release to
@@ -79,7 +81,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private MetamodelExtent extent;
 
 	/** Internal representation of the model during migration. */
-	private Model model;
+	private Repository repository;
 
 	/** Whether migration is active. */
 	private boolean enabled = false;
@@ -143,9 +145,9 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (originalRelease == sourceRelease) {
 			enable();
 			started = true;
-			model = loadModel();
+			repository = loadRepository();
 			try {
-				model.checkConformance();
+				repository.getModel().checkConformance();
 			} catch (MigrationException e) {
 				throwWrappedMigrationException(e);
 			}
@@ -153,31 +155,23 @@ public class MigrationReconstructor extends ReconstructorBase {
 	}
 
 	/** Load the model before migration. */
-	private Model loadModel() {
+	private Repository loadRepository() {
 		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
 			Model model = Persistency.loadModel(modelURIs, metamodel);
 			model.checkConformance();
-			return model;
+			Repository repository = MigrationFactory.eINSTANCE
+					.createRepository();
+			repository.setMetamodel(metamodel);
+			repository.setModel(model);
+			return repository;
 		} catch (IOException e) {
 			throwWrappedMigrationException("Model could not be loaded", e);
 		} catch (MigrationException e) {
 			throwWrappedMigrationException(e);
 		}
 		return null;
-	}
-
-	/** Save the model after migration. */
-	private void saveModel() {
-		try {
-			model.checkConformance();
-			Persistency.saveModel(model);
-		} catch (IOException e) {
-			throwWrappedMigrationException("Model could not be saved", e);
-		} catch (MigrationException e) {
-			throwWrappedMigrationException(e);
-		}
 	}
 
 	/** Load the metamodel. */
@@ -219,6 +213,19 @@ public class MigrationReconstructor extends ReconstructorBase {
 		return Persistency.loadMetamodel(resourceSet);
 	}
 
+	/** Save the model after migration. */
+	private void saveModel() {
+		try {
+			Model model = repository.getModel();
+			model.checkConformance();
+			Persistency.saveModel(model);
+		} catch (IOException e) {
+			throwWrappedMigrationException("Model could not be saved", e);
+		} catch (MigrationException e) {
+			throwWrappedMigrationException(e);
+		}
+	}
+
 	/** {@inheritDoc} */
 	@Override
 	public void startChange(Change change) {
@@ -228,7 +235,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 				if (change.eContainer() instanceof Release) {
 					monitor.worked(1);
 					try {
-						model.checkConformance();
+						repository.getModel().checkConformance();
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
 					}
@@ -247,8 +254,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 				if (change instanceof MigrationChange
 						&& customMigration != null) {
 					try {
-						customMigration.migrateAfter(model, model
-								.getMetamodel());
+						customMigration.migrateAfter(repository.getModel(),
+								repository.getMetamodel());
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
 					} finally {
@@ -337,7 +344,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 			EStructuralFeature feature = set.getFeature();
 			Object value = set.getValue();
 			if (feature == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
-				model.setEOpposite((EReference) resolve(element),
+				repository.getMetamodel().setEOpposite(
+						(EReference) resolve(element),
 						(EReference) resolve((EObject) value));
 			} else if (feature instanceof EReference) {
 				set(resolve(element), feature, resolve((EObject) value));
@@ -414,7 +422,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 				try {
 					Class<?> c = classLoader.load(migration);
 					customMigration = (CustomMigration) c.newInstance();
-					customMigration.migrateBefore(model, model.getMetamodel());
+					customMigration.migrateBefore(repository.getModel(),
+							repository.getMetamodel());
 				} catch (ClassNotFoundException e) {
 					throwWrappedMigrationException(
 							"Custom migration could not be loaded", e);
@@ -439,13 +448,14 @@ public class MigrationReconstructor extends ReconstructorBase {
 					.copyResolve(change.getOperation(), true);
 
 			OperationImplementation operation = OperationInstanceConverter
-					.convert(operationInstance, model.getMetamodel());
+					.convert(operationInstance, repository.getMetamodel());
 			if (operation == null) {
 				throwWrappedMigrationException("Operation could not be found: "
 						+ operationInstance.getName(), null);
 			} else {
 				try {
-					operation.checkAndExecute(model.getMetamodel(), model);
+					operation.checkAndExecute(repository.getMetamodel(),
+							repository.getModel());
 				} catch (MigrationException e) {
 					throwWrappedMigrationException(e);
 				}
@@ -465,7 +475,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			EObject sourceParent = sourceElement.eContainer();
 			if (sourceParent == null) {
 				EPackage sourcePackage = (EPackage) sourceElement;
-				for (EPackage targetPackage : model.getMetamodel()
+				for (EPackage targetPackage : repository.getMetamodel()
 						.getEPackages()) {
 					if (targetPackage.getNsURI().equals(
 							sourcePackage.getNsURI())) {
