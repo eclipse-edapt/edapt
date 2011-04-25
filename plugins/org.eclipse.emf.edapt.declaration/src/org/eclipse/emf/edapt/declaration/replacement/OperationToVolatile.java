@@ -5,7 +5,7 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 7410BB3D533DC49F49357CC0F10B1528
+ * @levd.rating YELLOW Hash: BF27B6965D9A89E8000263BF9AC8CB88
  */
 @EdaptOperation(identifier = "operationToVolatile", label = "Operation to Volatile Feature", description = "In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done.")
 public class OperationToVolatile extends OperationImplementation {
@@ -49,10 +49,10 @@ public class OperationToVolatile extends OperationImplementation {
 
 		EStructuralFeature feature = null;
 		if (type instanceof EClass) {
-			feature = MetamodelUtils.newEReference(eClass, name, (EClass) type,
+			feature = MetamodelFactory.newEReference(eClass, name, (EClass) type,
 					operation.getLowerBound(), operation.getUpperBound());
 		} else {
-			feature = MetamodelUtils.newEAttribute(eClass, name,
+			feature = MetamodelFactory.newEAttribute(eClass, name,
 					(EDataType) type, operation.getLowerBound(), operation
 							.getUpperBound());
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
@@ -20,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BA714ACAD2E5D8EA524A7B9C8B193CC5
+ * @levd.rating YELLOW Hash: 68F716BB2693886FD361F0707D989606
  */
 @EdaptOperation(identifier = "partitionReference", label = "Partition Reference", description = "In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly.")
 public class PartitionReference extends OperationImplementation {
@@ -55,7 +56,7 @@ public class PartitionReference extends OperationImplementation {
 		for (EClass subClass : metamodel.getESubTypes(type)) {
 			String name = subClass.getName().substring(0, 1).toLowerCase()
 					+ subClass.getName().substring(1);
-			EReference subReference = MetamodelUtils.newEReference(
+			EReference subReference = MetamodelFactory.newEReference(
 					contextClass, name, subClass, 0, -1, reference
 							.isContainment());
 			subReferences.add(subReference);

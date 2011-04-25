@@ -13,18 +13,12 @@ package org.eclipse.emf.edapt.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EOperation;
@@ -32,10 +26,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.ETypedElement;
-import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
@@ -50,32 +41,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
  */
 public final class MetamodelUtils {
 
-	/**
-	 * Name for generic types
-	 */
+	/** Name for generic types. */
 	final static String GENERIC = "Generic";
 
-	/**
-	 * Constructor
-	 */
+	/** Constructor. */
 	private MetamodelUtils() {
 		// hidden, since this class only provides static helper methods
 	}
 
-	/**
-	 * Check whether a reference is of generic type.
-	 * 
-	 * @param reference
-	 * @return true if the reference is of generic type, false otherwise
-	 */
+	/** Check whether a reference is of generic type. */
 	public static boolean isGenericReference(EReference reference) {
 		return reference.getEReferenceType() == EcorePackage.eINSTANCE
 				.getEGenericType();
 	}
 
-	/**
-	 * Get the corresponding reference which is not generic.
-	 */
+	/** Get the corresponding reference which is not generic. */
 	public static EReference getNonGenericReference(EReference genericReference) {
 		EClass c = genericReference.getEContainingClass();
 		String referenceName = genericReference.getName().replace(GENERIC, "");
@@ -85,9 +65,7 @@ public final class MetamodelUtils {
 
 	}
 
-	/**
-	 * Get the corresponding reference which is generic.
-	 */
+	/** Get the corresponding reference which is generic. */
 	public static EReference getGenericReference(EReference reference) {
 		String name = reference.getName();
 		name = name.charAt(0) + GENERIC + name.substring(1);
@@ -95,9 +73,7 @@ public final class MetamodelUtils {
 				.getEStructuralFeature(name);
 	}
 
-	/**
-	 * Get operations of a class having a certain name.
-	 */
+	/** Get operations of a class having a certain name. */
 	public static List<EOperation> getOperations(EClass eClass, String name) {
 		List<EOperation> operations = new ArrayList<EOperation>();
 		for (EOperation operation : eClass.getEOperations()) {
@@ -108,9 +84,7 @@ public final class MetamodelUtils {
 		return operations;
 	}
 
-	/**
-	 * Get the operation of a class with a certain signature.
-	 */
+	/** Get the operation of a class with a certain signature. */
 	public static EOperation getOperation(EClass eClass, String name,
 			EClassifier... parameterTypes) {
 		List<EOperation> operations = getOperations(eClass, name);
@@ -149,178 +123,6 @@ public final class MetamodelUtils {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * Create a new package in a package.
-	 */
-	public static EPackage newEPackage(EPackage ePackage, String name,
-			String nsPrefix, String nsURI) {
-		EPackage subPackage = EcoreFactory.eINSTANCE.createEPackage();
-		subPackage.setName(name);
-		subPackage.setNsPrefix(nsPrefix);
-		subPackage.setNsURI(nsURI);
-		ePackage.getESubpackages().add(subPackage);
-		return subPackage;
-	}
-
-	/** Create a new class in a package. */
-	public static EClass newEClass(EPackage ePackage, String name,
-			Collection<EClass> superClasses, boolean abstr) {
-		EClass eClass = EcoreFactory.eINSTANCE.createEClass();
-		eClass.setName(name);
-		eClass.getESuperTypes().addAll(superClasses);
-		eClass.setAbstract(abstr);
-		ePackage.getEClassifiers().add(eClass);
-		return eClass;
-	}
-
-	/** Create a new class in a package. */
-	public static EClass newEClass(EPackage ePackage, String name,
-			Collection<EClass> superClasses) {
-		return newEClass(ePackage, name, superClasses, false);
-	}
-
-	/** Create a new class in a package. */
-	public static EClass newEClass(EPackage ePackage, String name,
-			EClass superClass) {
-		return newEClass(ePackage, name, Collections.singletonList(superClass));
-	}
-
-	/** Create a new class in a package. */
-	public static EClass newEClass(EPackage ePackage, String name) {
-		return newEClass(ePackage, name, Collections.<EClass> emptyList());
-	}
-
-	/**
-	 * Create a new enumeration in a package.
-	 */
-	public static EEnum newEEnum(EPackage ePackage, String name) {
-		EEnum eEnum = EcoreFactory.eINSTANCE.createEEnum();
-		eEnum.setName(name);
-		ePackage.getEClassifiers().add(eEnum);
-		return eEnum;
-	}
-
-	/**
-	 * Create a new data type in a package.
-	 */
-	public static EDataType newEDataType(EPackage ePackage, String name,
-			String className) {
-		EDataType eDataType = EcoreFactory.eINSTANCE.createEDataType();
-		eDataType.setName(name);
-		eDataType.setInstanceTypeName(className);
-		ePackage.getEClassifiers().add(eDataType);
-		return eDataType;
-	}
-
-	/**
-	 * Create a new attribute in a class.
-	 */
-	public static EAttribute newEAttribute(EClass eClass, String name,
-			EDataType type, int lowerBound, int upperBound, String defaultValue) {
-		EAttribute eAttribute = EcoreFactory.eINSTANCE.createEAttribute();
-		initTypedElement(eAttribute, name, type, lowerBound, upperBound);
-		eAttribute.setDefaultValueLiteral(defaultValue);
-		eClass.getEStructuralFeatures().add(eAttribute);
-		return eAttribute;
-	}
-	
-	/** Create a new attribute in a class. */
-	public static EAttribute newEAttribute(EClass eClass, String name,
-			EDataType type) {
-		return newEAttribute(eClass, name, type, 0, 1, null);
-	}
-
-
-	/** Create a new attribute in a class. */
-	public static EAttribute newEAttribute(EClass eClass, String name,
-			EDataType type, int lowerBound, int upperBound) {
-		return newEAttribute(eClass, name, type, lowerBound, upperBound, null);
-	}
-	/**
-	 * Initialize a feature.
-	 */
-	private static void initTypedElement(ETypedElement eTypedElement,
-			String name, EClassifier type, int lowerBound, int upperBound) {
-		eTypedElement.setName(name);
-		eTypedElement.setEType(type);
-		eTypedElement.setLowerBound(lowerBound);
-		eTypedElement.setUpperBound(upperBound);
-	}
-
-	/** Create a new reference in a class. */
-	public static EReference newEReference(EClass eClass, String name,
-			EClass type, int lowerBound, int upperBound, boolean containment) {
-		EReference eReference = EcoreFactory.eINSTANCE.createEReference();
-		initTypedElement(eReference, name, type, lowerBound, upperBound);
-		eReference.setContainment(containment);
-		eClass.getEStructuralFeatures().add(eReference);
-		return eReference;
-	}
-
-
-	/** Create a new reference in a class. */
-	public static EReference newEReference(EClass eClass, String name,
-			EClass type, int lowerBound, int upperBound) {
-		return newEReference(eClass, name, type, lowerBound, upperBound, false);
-	}
-	
-	/**
-	 * Create a new literal in an enumeration.
-	 */
-	public static EEnumLiteral newEEnumLiteral(EEnum eEnum, String name) {
-		EEnumLiteral eEnumLiteral = EcoreFactory.eINSTANCE.createEEnumLiteral();
-		eEnumLiteral.setName(name);
-		eEnum.getELiterals().add(eEnumLiteral);
-		return eEnumLiteral;
-	}
-
-	/**
-	 * Create a new operation in a class.
-	 */
-	public static EOperation newEOperation(EClass eClass, String name,
-			EClassifier type, int lowerBound, int upperBound) {
-		EOperation eOperation = EcoreFactory.eINSTANCE.createEOperation();
-		initTypedElement(eOperation, name, type, lowerBound, upperBound);
-		eClass.getEOperations().add(eOperation);
-		return eOperation;
-
-	}
-
-	/**
-	 * Create a new parameter in an operation.
-	 */
-	public static EParameter newEParameter(EOperation eOperation, String name,
-			EClassifier type, int lowerBound, int upperBound) {
-		EParameter eParameter = EcoreFactory.eINSTANCE.createEParameter();
-		initTypedElement(eParameter, name, type, lowerBound, upperBound);
-		eOperation.getEParameters().add(eParameter);
-		return eParameter;
-	}
-
-	/**
-	 * Create a new annotation in an element.
-	 */
-	public static EAnnotation newEAnnotation(EModelElement eModelElement,
-			String source) {
-		EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
-		eAnnotation.setSource(source);
-		eModelElement.getEAnnotations().add(eAnnotation);
-		return eAnnotation;
-	}
-
-	/**
-	 * Create a new entry in an annotation.
-	 */
-	public static EStringToStringMapEntryImpl newEStringToStringMapEntry(
-			EAnnotation eAnnotation, String key, String value) {
-		EStringToStringMapEntryImpl entry = (EStringToStringMapEntryImpl) EcoreFactory.eINSTANCE
-				.create(EcorePackage.eINSTANCE.getEStringToStringMapEntry());
-		entry.setKey(key);
-		entry.setValue(value);
-		eAnnotation.getDetails().add(entry);
-		return entry;
 	}
 
 	/**
@@ -428,5 +230,4 @@ public final class MetamodelUtils {
 
 		return features;
 	}
-
 }

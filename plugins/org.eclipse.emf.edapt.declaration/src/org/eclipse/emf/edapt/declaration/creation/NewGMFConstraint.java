@@ -1,7 +1,7 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.common.AnnotateModelElement;
@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 960EDA620641B97CAA70F1949FC9EEBC
+ * @levd.rating YELLOW Hash: D3D3B72BCE45BCA4EDE3D09DA3E2894C
  */
 @EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.")
 public class NewGMFConstraint extends AnnotateModelElement {
@@ -30,10 +30,10 @@ public class NewGMFConstraint extends AnnotateModelElement {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EAnnotation annotation = MetamodelUtils.newEAnnotation(element,
+		EAnnotation annotation = MetamodelFactory.newEAnnotation(element,
 				"http://www.eclipse.org/gmf/2005/constraints");
-		MetamodelUtils.newEStringToStringMapEntry(annotation, "ocl", ocl);
-		MetamodelUtils.newEStringToStringMapEntry(annotation, "description",
+		MetamodelFactory.newEStringToStringMapEntry(annotation, "ocl", ocl);
+		MetamodelFactory.newEStringToStringMapEntry(annotation, "description",
 				description);
 	}
 }

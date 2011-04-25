@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6943F2A0DB1F9AB35685A9C56E0FCB84
+ * @levd.rating YELLOW Hash: B8DB4998514788FC73F9E379BC561FDE
  */
 @EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
 public class ExtractSuperClass2 extends OperationImplementation {
@@ -112,7 +112,7 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model)
 			throws MigrationException {
 		// metamodel adaptation
-		EClass superClass = MetamodelUtils.newEClass(ePackage, superClassName,
+		EClass superClass = MetamodelFactory.newEClass(ePackage, superClassName,
 				superSuperClasses, abstr);
 		for (EClass subClass : subClasses) {
 			subClass.getESuperTypes().add(superClass);

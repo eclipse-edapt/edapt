@@ -6,7 +6,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: D4099D73296AEA558BC062DF33AD66D5
+ * @levd.rating YELLOW Hash: 71EF4E6C3C56A7C17068FE58DCA3D8F0
  */
 @EdaptOperation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
 public class ReplaceIdentifierByReference extends OperationImplementation {
@@ -50,7 +50,7 @@ public class ReplaceIdentifierByReference extends OperationImplementation {
 
 		// metamodel adaptation
 		EClass referencingClass = referencingAttribute.getEContainingClass();
-		EReference referencingReference = MetamodelUtils.newEReference(
+		EReference referencingReference = MetamodelFactory.newEReference(
 				referencingClass, referencingAttribute.getName(),
 				referencedClass, referencingAttribute.getLowerBound(),
 				referencingAttribute.getUpperBound());

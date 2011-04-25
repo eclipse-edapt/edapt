@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2F44DFF417042C3D5FE0C9C9C6B8902D
+ * @levd.rating YELLOW Hash: EBBFFC0379B87F347211CB5AF166D379
  */
 @EdaptOperation(identifier = "flattenHierarchy", label = "Flatten Containment Hierarchy", description = "In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly.")
 public class FlattenHierarchy extends OperationImplementation {
@@ -73,7 +73,7 @@ public class FlattenHierarchy extends OperationImplementation {
 		// metamodel adaptation
 		metamodel.delete(rootReference);
 		metamodel.delete(childrenReference);
-		EReference containerReference = MetamodelUtils.newEReference(rootClass,
+		EReference containerReference = MetamodelFactory.newEReference(rootClass,
 				referenceName, nodeClass, 0, -1, true);
 
 		// model migration

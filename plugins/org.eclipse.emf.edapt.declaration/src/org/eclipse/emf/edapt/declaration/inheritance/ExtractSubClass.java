@@ -3,7 +3,7 @@ package org.eclipse.emf.edapt.declaration.inheritance;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 827E297EE5BBD2768DD6FA3CC630975B
+ * @levd.rating YELLOW Hash: FF35E810834285266B8BB66E934575D7
  */
 @EdaptOperation(identifier = "extractSubClass", label = "Extract Subclass", description = "In the metamodel, a feature is extracted into a new subclass and the feature is made mandatory. In the model, all instances of the superclass that have the feature set are migrated to the new subclass.")
 public class ExtractSubClass extends OperationImplementation {
@@ -54,7 +54,7 @@ public class ExtractSubClass extends OperationImplementation {
 
 		// metamodel adaptation
 		EPackage ePackage = superClass.getEPackage();
-		EClass subClass = MetamodelUtils.newEClass(ePackage, className,
+		EClass subClass = MetamodelFactory.newEClass(ePackage, className,
 				superClass);
 		subClass.getEStructuralFeatures().add(feature);
 		feature.setLowerBound(1);

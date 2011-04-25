@@ -6,7 +6,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 514E450E3A14F894257AFFBF734652DF
+ * @levd.rating YELLOW Hash: F7479C6CE1ED48B166FD63B9297C2359
  */
 @EdaptOperation(identifier = "uniteReferences", label = "Unite References", description = "In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly.")
 public class UniteReferences extends OperationImplementation {
@@ -63,7 +63,7 @@ public class UniteReferences extends OperationImplementation {
 			metamodel.delete(reference);
 		}
 		EClass type = TypeUtils.leastCommonAncestor(referenceTypes);
-		EReference unitedReference = MetamodelUtils
+		EReference unitedReference = MetamodelFactory
 				.newEReference(contextClass, unitedReferenceName, type, 0, -1,
 						mainReference.isContainment());
 

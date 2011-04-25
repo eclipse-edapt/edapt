@@ -2,7 +2,7 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6D7A1EE075C2BF5122AD639334D22622
+ * @levd.rating YELLOW Hash: C643742FE6A451C96426FB8DC2696DCC
  */
 @EdaptOperation(identifier = "newOppositeReference", label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.")
 public class NewOppositeReference extends OperationImplementation {
@@ -73,9 +73,9 @@ public class NewOppositeReference extends OperationImplementation {
 		EClass type = reference.getEContainingClass();
 
 		// metamodel adaptation
-		EReference opposite = MetamodelUtils.newEReference(eClass, name, type,
+		EReference opposite = MetamodelFactory.newEReference(eClass, name, type,
 				lowerBound, upperBound, false);
-		model.setEOpposite(reference, opposite);
+		metamodel.setEOpposite(reference, opposite);
 		opposite.setChangeable(changeable);
 	}
 }

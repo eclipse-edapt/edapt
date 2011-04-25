@@ -3,7 +3,7 @@ package org.eclipse.emf.edapt.declaration.merge;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: F1CBD7492BAC14EDB9E5EFEBA5B10CEF
+ * @levd.rating YELLOW Hash: 178845EC818964963C16FEBB3FF1EBD1
  */
 @EdaptOperation(identifier = "splitStringAttribute", label = "Split String Attribute", description = "In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression.")
 public class SplitStringAttribute extends OperationImplementation {
@@ -57,7 +57,7 @@ public class SplitStringAttribute extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		EAttribute newAttribute = MetamodelUtils.newEAttribute(context,
+		EAttribute newAttribute = MetamodelFactory.newEAttribute(context,
 				attributeName, EcorePackage.Literals.ESTRING);
 
 		// model migration

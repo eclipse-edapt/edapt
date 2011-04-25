@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C68D26A41682D9B331AF3654913D89B9
+ * @levd.rating YELLOW Hash: 92A023B7F2C535962246670FFB2B5BCF
  */
 @EdaptOperation(identifier = "extractAndGroupAttribute", label = "Extract and Group Attribute", description = "In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute.")
 public class ExtractAndGroupAttribute extends OperationImplementation {
@@ -62,15 +62,15 @@ public class ExtractAndGroupAttribute extends OperationImplementation {
 		EClass contextClass = extractedAttribute.getEContainingClass();
 
 		// metamodel adaptation
-		EClass extractedClass = MetamodelUtils.newEClass(contextPackage,
+		EClass extractedClass = MetamodelFactory.newEClass(contextPackage,
 				extractedClassName);
 		extractedClass.getEStructuralFeatures().add(extractedAttribute);
 		extractedAttribute.setLowerBound(1);
 
-		EReference reference = MetamodelUtils.newEReference(contextClass,
+		EReference reference = MetamodelFactory.newEReference(contextClass,
 				referenceName, extractedClass, 0, 1, false);
 
-		EReference containerReference = MetamodelUtils.newEReference(
+		EReference containerReference = MetamodelFactory.newEReference(
 				containerClass, containerReferenceName, extractedClass, 0, -1,
 				true);
 

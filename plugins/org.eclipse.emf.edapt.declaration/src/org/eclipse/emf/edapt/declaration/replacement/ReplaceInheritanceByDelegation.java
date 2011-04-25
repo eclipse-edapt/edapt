@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.ReferenceSlot;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BD58D7D2DB4DE2DBB70574225F9B804C
+ * @levd.rating YELLOW Hash: D7F34E82CD011CB2D815D0AC50B31E10
  */
 @EdaptOperation(identifier = "replaceInheritanceByDelegation", label = "Inheritance to Delegation", description = "In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class.")
 public class ReplaceInheritanceByDelegation extends OperationImplementation {
@@ -49,7 +49,7 @@ public class ReplaceInheritanceByDelegation extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
 		subClass.getESuperTypes().remove(superClass);
-		EReference delegation = MetamodelUtils.newEReference(subClass,
+		EReference delegation = MetamodelFactory.newEReference(subClass,
 				referenceName, superClass, 1, 1, true);
 
 		// model migration

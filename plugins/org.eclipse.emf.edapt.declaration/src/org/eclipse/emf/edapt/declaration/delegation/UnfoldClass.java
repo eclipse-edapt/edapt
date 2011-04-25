@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4CA6F29E7CB0A37BF98EE4CE7538FB14
+ * @levd.rating YELLOW Hash: 57B0E83E61455DC81C6811837D750C9F
  */
 @EdaptOperation(identifier = "unfoldClass", label = "Unfold Class", description = "In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly.")
 public class UnfoldClass extends OperationImplementation {
@@ -84,7 +84,7 @@ public class UnfoldClass extends OperationImplementation {
 							+ contextClass.getName());
 					r.getEReferenceType().getEStructuralFeatures().add(
 							foldedOpposite);
-					model.setEOpposite(foldedOpposite,
+					metamodel.setEOpposite(foldedOpposite,
 							(EReference) unfoldedFeature);
 				}
 			}

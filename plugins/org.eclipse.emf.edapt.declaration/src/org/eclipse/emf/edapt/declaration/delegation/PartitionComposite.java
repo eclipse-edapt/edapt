@@ -3,7 +3,7 @@ package org.eclipse.emf.edapt.declaration.delegation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 321908B493C6F89CF4E9001958F610A5
+ * @levd.rating YELLOW Hash: 88F24A76D1FB6FF020F1346C7D5B20A4
  */
 @EdaptOperation(identifier = "partitionComposite", label = "Introduce Composite Pattern", description = "In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not.")
 public class PartitionComposite extends OperationImplementation {
@@ -63,10 +63,10 @@ public class PartitionComposite extends OperationImplementation {
 		// metamodel adaptation
 		eClass.setAbstract(true);
 		EPackage ePackage = eClass.getEPackage();
-		EClass compositeClass = MetamodelUtils.newEClass(ePackage,
+		EClass compositeClass = MetamodelFactory.newEClass(ePackage,
 				compositeName, eClass);
 		compositeClass.getEStructuralFeatures().add(childReference);
-		EClass leafClass = MetamodelUtils.newEClass(ePackage, leafName, eClass);
+		EClass leafClass = MetamodelFactory.newEClass(ePackage, leafName, eClass);
 
 		// model migration
 		for (Instance instance : model.getInstances(eClass)) {

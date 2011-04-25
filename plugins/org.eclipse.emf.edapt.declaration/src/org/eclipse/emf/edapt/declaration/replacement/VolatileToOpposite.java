@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 4E766E5148083D1C66A11EC05E4FBDBB
+ * @levd.rating YELLOW Hash: 5B7747DFD5031268253054D789641EE5
  */
 @EdaptOperation(identifier = "volatileToOpposite", label = "Volatile to Opposite Reference", description = "In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set.")
 public class VolatileToOpposite extends OperationImplementation {
@@ -59,6 +59,6 @@ public class VolatileToOpposite extends OperationImplementation {
 		reference.setTransient(false);
 		reference.setDerived(false);
 		reference.setChangeable(changeable);
-		model.setEOpposite(opposite, reference);
+		metamodel.setEOpposite(opposite, reference);
 	}
 }

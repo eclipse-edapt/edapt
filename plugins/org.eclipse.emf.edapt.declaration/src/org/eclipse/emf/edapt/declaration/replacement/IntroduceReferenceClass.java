@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2C440268D63ACFF071AFB7AB8A07E54E
+ * @levd.rating YELLOW Hash: EFEF0E6FC56A2B1350A5596C8D6C8060
  */
 @EdaptOperation(identifier = "introduceReferenceClass", label = "Association to Class", description = "In the metamodel, a reference is replaced by a reference class. More specifically, the reference class is now contained by the source class. In the model, links conforming to the reference are replaced by instances of the reference class.")
 public class IntroduceReferenceClass extends OperationImplementation {
@@ -71,10 +71,10 @@ public class IntroduceReferenceClass extends OperationImplementation {
 		EClass targetClass = reference.getEReferenceType();
 
 		EPackage contextPackage = sourceClass.getEPackage();
-		EClass referenceClass = MetamodelUtils.newEClass(contextPackage,
+		EClass referenceClass = MetamodelFactory.newEClass(contextPackage,
 				className);
 
-		model.setEOpposite(reference, null);
+		metamodel.setEOpposite(reference, null);
 		reference.setEType(referenceClass);
 		opposite.setEType(referenceClass);
 
@@ -105,16 +105,16 @@ public class IntroduceReferenceClass extends OperationImplementation {
 
 		// metamodel adaptation
 		if (sourceReferenceName != null) {
-			EReference sourceReference = MetamodelUtils.newEReference(
+			EReference sourceReference = MetamodelFactory.newEReference(
 					referenceClass, sourceReferenceName, sourceClass, 1, 1,
 					false);
-			model.setEOpposite(reference, sourceReference);
+			metamodel.setEOpposite(reference, sourceReference);
 		}
 		if (targetReferenceName != null) {
-			EReference targetReference = MetamodelUtils.newEReference(
+			EReference targetReference = MetamodelFactory.newEReference(
 					referenceClass, targetReferenceName, targetClass, 1, 1,
 					false);
-			model.setEOpposite(opposite, targetReference);
+			metamodel.setEOpposite(opposite, targetReference);
 		}
 	}
 

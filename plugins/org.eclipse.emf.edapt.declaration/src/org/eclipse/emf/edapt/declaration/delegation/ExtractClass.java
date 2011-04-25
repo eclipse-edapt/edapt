@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 2BE8789A7D7964902800B739C586BC94
+ * @levd.rating YELLOW Hash: 44324B73162D34755BBA2FE77E49FFB7
  */
 @EdaptOperation(identifier = "extractClass", label = "Extract Class", description = "In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly.")
 public class ExtractClass extends OperationImplementation {
@@ -80,8 +80,8 @@ public class ExtractClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EClass extractedClass = MetamodelUtils.newEClass(ePackage, className);
-		EReference reference = MetamodelUtils.newEReference(contextClass,
+		EClass extractedClass = MetamodelFactory.newEClass(ePackage, className);
+		EReference reference = MetamodelFactory.newEReference(contextClass,
 				referenceName, extractedClass, 1, 1, true);
 		extractedClass.getEStructuralFeatures().addAll(features);
 		for (EStructuralFeature feature : features) {

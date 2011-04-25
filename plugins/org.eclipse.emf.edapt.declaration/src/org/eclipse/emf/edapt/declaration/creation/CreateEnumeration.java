@@ -5,7 +5,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 9B5D3DB01D377ECF78A6160AA94F1BD1
+ * @levd.rating YELLOW Hash: ADB8637E3A95FC42136E39A8C7780D05
  */
 @EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.")
 public class CreateEnumeration extends OperationImplementation {
@@ -38,10 +38,10 @@ public class CreateEnumeration extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EEnum eEnum = MetamodelUtils.newEEnum(ePackage, name);
+		EEnum eEnum = MetamodelFactory.newEEnum(ePackage, name);
 		int i = 0;
 		for (String literal : literals) {
-			EEnumLiteral eLiteral = MetamodelUtils.newEEnumLiteral(eEnum,
+			EEnumLiteral eLiteral = MetamodelFactory.newEEnumLiteral(eEnum,
 					literal);
 			eLiteral.setValue(i);
 			i++;

@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: AEA7257BB7C780DD2D8AF058E3AAEDCF
+ * @levd.rating YELLOW Hash: 68BC1516474ED2F7B4140879BE5EB8E8
  */
 @Deprecated
 @EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
@@ -75,7 +75,7 @@ public class ExtractSuperClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EClass superClass = MetamodelUtils.newEClass(ePackage, superClassName);
+		EClass superClass = MetamodelFactory.newEClass(ePackage, superClassName);
 		superClass.setAbstract(abstr);
 		superClass.getEStructuralFeatures().addAll(toExtract);
 		superClass.getESuperTypes().addAll(superSuperClasses);

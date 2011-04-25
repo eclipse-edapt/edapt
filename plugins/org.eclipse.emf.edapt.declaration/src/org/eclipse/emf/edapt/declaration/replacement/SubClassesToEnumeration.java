@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
@@ -23,7 +24,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 5E8456131AD8B5ECB67B587434BD0319
+ * @levd.rating YELLOW Hash: 0D892606BB497749BBDA3AF7AFC8BEF4
  */
 @EdaptOperation(identifier = "subClassesToEnumeration", label = "Sub Classes to Enumeration", description = "In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal.")
 public class SubClassesToEnumeration extends OperationImplementation {
@@ -79,8 +80,8 @@ public class SubClassesToEnumeration extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		EEnum enumeration = MetamodelUtils.newEEnum(ePackage, enumName);
-		EAttribute attribute = MetamodelUtils.newEAttribute(contextClass,
+		EEnum enumeration = MetamodelFactory.newEEnum(ePackage, enumName);
+		EAttribute attribute = MetamodelFactory.newEAttribute(contextClass,
 				attributeName, enumeration, 1, 1);
 
 		contextClass.setAbstract(false);
@@ -88,7 +89,7 @@ public class SubClassesToEnumeration extends OperationImplementation {
 		List<EClass> subClasses = new ArrayList<EClass>();
 		int i = 0;
 		for (EClass subClass : metamodel.getESubTypes(contextClass)) {
-			EEnumLiteral literal = MetamodelUtils.newEEnumLiteral(enumeration,
+			EEnumLiteral literal = MetamodelFactory.newEEnumLiteral(enumeration,
 					subClass.getName());
 			literal.setValue(i);
 			subClasses.add(subClass);

@@ -2,7 +2,7 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: C882BF3B8DC326F912DAECBC380A1238
+ * @levd.rating YELLOW Hash: 7252A31E5F7AA61F0831544115F0E8DF
  */
 @EdaptOperation(identifier = "newReference", label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.")
 public class NewReference extends OperationImplementation {
@@ -51,10 +51,10 @@ public class NewReference extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EReference reference = MetamodelUtils.newEReference(eClass, name, type,
+		EReference reference = MetamodelFactory.newEReference(eClass, name, type,
 				lowerBound, upperBound, containment);
 		if (opposite != null) {
-			model.setEOpposite(reference, opposite);
+			metamodel.setEOpposite(reference, opposite);
 		}
 	}
 }

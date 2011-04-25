@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 9BE91618A7A7C150DB2214DC0F44D460
+ * @levd.rating YELLOW Hash: F8B92BCDD44F0BB6EB73DCBACB549241
  */
 @EdaptOperation(identifier = "extractExistingClass", label = "Fold Class", description = "In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class.")
 public class ExtractExistingClass extends OperationImplementation {
@@ -74,7 +74,7 @@ public class ExtractExistingClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 		EClass contextClass = toReplace.get(0).getEContainingClass();
 
-		EReference reference = MetamodelUtils.newEReference(contextClass,
+		EReference reference = MetamodelFactory.newEReference(contextClass,
 				referenceName, extractedClass, 1, 1, true);
 		for (EStructuralFeature feature : toReplace) {
 			metamodel.delete(feature);

@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
@@ -24,7 +25,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: B87A7DE2A314DE43D1692BA830B2B2A9
+ * @levd.rating YELLOW Hash: 71F5CC81FB2D51EC10F15485AAE5C533
  */
 @EdaptOperation(identifier = "enumerationToSubClasses", label = "Enumeration to Sub Classes", description = "In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute.")
 public class EnumerationToSubClasses extends OperationImplementation {
@@ -75,7 +76,7 @@ public class EnumerationToSubClasses extends OperationImplementation {
 		// metamodel adaptation
 		List<EClass> subClasses = new ArrayList<EClass>();
 		for (EEnumLiteral literal : enumeration.getELiterals()) {
-			EClass subClass = MetamodelUtils.newEClass(ePackage, literal
+			EClass subClass = MetamodelFactory.newEClass(ePackage, literal
 					.getName(), contextClass);
 			subClasses.add(subClass);
 		}

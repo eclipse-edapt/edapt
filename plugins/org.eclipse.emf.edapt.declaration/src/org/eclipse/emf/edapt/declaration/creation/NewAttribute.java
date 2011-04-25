@@ -2,7 +2,7 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 598D06D7715B64F8255C7415CFD7A889
+ * @levd.rating YELLOW Hash: 5547A4335432A8EF326CE624209E3E1A
  */
 @EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
 public class NewAttribute extends OperationImplementation {
@@ -47,7 +47,7 @@ public class NewAttribute extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		MetamodelUtils.newEAttribute(eClass, name, type, lowerBound,
+		MetamodelFactory.newEAttribute(eClass, name, type, lowerBound,
 				upperBound, defaultValue);
 	}
 }

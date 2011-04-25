@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 59FCBF0598A87DC1A936CD318E046407
+ * @levd.rating YELLOW Hash: B4ECD85FB33C65D8EBD5CF185592C12F
  */
 @EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
 public class NewClass extends OperationImplementation {
@@ -42,6 +42,6 @@ public class NewClass extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		MetamodelUtils.newEClass(ePackage, name, superClasses, abstr);
+		MetamodelFactory.newEClass(ePackage, name, superClasses, abstr);
 	}
 }
