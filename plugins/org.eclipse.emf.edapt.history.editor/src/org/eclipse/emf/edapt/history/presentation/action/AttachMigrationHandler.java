@@ -14,9 +14,6 @@ package org.eclipse.emf.edapt.history.presentation.action;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
@@ -24,17 +21,13 @@ import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.presentation.AttachMigrationCommand;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
-import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jdt.core.IJavaElement;
-import org.eclipse.jdt.ui.actions.OpenNewClassWizardAction;
-import org.eclipse.jdt.ui.wizards.NewClassWizardPage;
 import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Action to combine a sequence of primitives changes into a composite one
+ * Action to combine a sequence of primitives changes into a composite one.
  * 
  * @author herrmama
  * @author $Author$
@@ -54,7 +47,7 @@ public class AttachMigrationHandler extends
 		final MigrationChangeReconstructor reconstructor = reconstruct(
 				sourceChange, targetChange);
 		if (isConsistent(reconstructor)) {
-			IJavaElement element = createCustomMigration(release);
+			IJavaElement element = JavaUIUtils.createCustomMigration(release);
 			if (element != null) {
 				attachMigration(changes, element.getElementName(), domain);
 			}
@@ -90,20 +83,6 @@ public class AttachMigrationHandler extends
 		}
 
 		return true;
-	}
-
-	/** Create a class that implements a custom migration. */
-	private IJavaElement createCustomMigration(Release release) {
-		OpenNewClassWizardAction action = new OpenNewClassWizardAction();
-		IFile file = URIUtils.getFile(release.eResource().getURI());
-		IProject project = file.getProject();
-		NewClassWizardPage page = new NewClassWizardPage();
-		page.init(new StructuredSelection(project));
-		page.setSuperClass(CustomMigration.class.getName(), true);
-		action.setConfiguredWizardPage(page);
-		action.run();
-		IJavaElement element = action.getCreatedElement();
-		return element;
 	}
 
 	/** Attach a custom migration to the changes. */

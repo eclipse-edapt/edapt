@@ -91,6 +91,16 @@
            id="org.eclipse.emf.edapt.CheckBreaking"
            name="Check for Breaking Changes">
      </command>
+     <command
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.CreateMigrationHandler"
+           id="org.eclipse.emf.edapt.CreateMigration"
+           name="Create Custom Migration">
+     </command>
+     <command
+           defaultHandler="org.eclipse.emf.edapt.history.presentation.action.SetMigrationHandler"
+           id="org.eclipse.emf.edapt.ChangeMigration"
+           name="Change Custom Migration">
+     </command>
      <category
            id="org.eclipse.emf.edapt"
            name="Edapt">
@@ -221,6 +231,48 @@
                     <iterate>
                        <instanceof
                              value="org.eclipse.emf.edapt.history.History">
+                       </instanceof>
+                    </iterate>
+                 </with>
+              </visibleWhen>
+           </command>
+           <command
+                 commandId="org.eclipse.emf.edapt.CreateMigration"
+                 style="push">
+              <visibleWhen
+                    checkEnabled="false">
+                 <with
+                       variable="selection">
+                    <count
+                          value="1">
+                    </count>
+                    <iterate>
+                       <or>
+                          <instanceof
+                                value="org.eclipse.emf.edapt.history.Release">
+                          </instanceof>
+                          <test
+                                forcePluginActivation="true"
+                                property="org.eclipse.emf.edapt.history.editor.containerIsRelease">
+                          </test>
+                       </or>
+                    </iterate>
+                 </with>
+              </visibleWhen>
+           </command>
+           <command
+                 commandId="org.eclipse.emf.edapt.ChangeMigration"
+                 style="push">
+              <visibleWhen
+                    checkEnabled="false">
+                 <with
+                       variable="selection">
+                    <count
+                          value="1">
+                    </count>
+                    <iterate>
+                       <instanceof
+                             value="org.eclipse.emf.edapt.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
