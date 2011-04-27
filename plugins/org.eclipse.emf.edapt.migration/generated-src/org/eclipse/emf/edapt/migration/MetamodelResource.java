@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EPackage;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.migration.MetamodelResource#getRootPackages <em>Root Packages</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}</li>
  * </ul>
  * </p>
  *
@@ -53,5 +54,33 @@ public interface MetamodelResource extends AbstractResource {
 	 * @generated
 	 */
 	EList<EPackage> getRootPackages();
+
+	/**
+	 * Returns the value of the '<em><b>Metamodel</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.Metamodel#getResources <em>Resources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Metamodel</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Metamodel</em>' container reference.
+	 * @see #setMetamodel(Metamodel)
+	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getMetamodelResource_Metamodel()
+	 * @see org.eclipse.emf.edapt.migration.Metamodel#getResources
+	 * @model opposite="resources" transient="false"
+	 * @generated
+	 */
+	Metamodel getMetamodel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Metamodel</em>' container reference.
+	 * @see #getMetamodel()
+	 * @generated
+	 */
+	void setMetamodel(Metamodel value);
 
 } // MetamodelResource

@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
@@ -124,7 +125,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	@Override
 	public EList<Object> getValues() {
 		if (values == null) {
-			values = new EDataTypeUniqueEList<Object>(Object.class, this, MigrationPackage.ATTRIBUTE_SLOT__VALUES);
+			values = new EDataTypeEList<Object>(Object.class, this, MigrationPackage.ATTRIBUTE_SLOT__VALUES);
 		}
 		return values;
 	}

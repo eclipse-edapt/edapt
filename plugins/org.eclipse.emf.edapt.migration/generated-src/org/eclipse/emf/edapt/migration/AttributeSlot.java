@@ -79,7 +79,7 @@ public interface AttributeSlot extends Slot {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getAttributeSlot_Values()
-	 * @model
+	 * @model unique="false"
 	 * @generated
 	 */
 	EList<Object> getValues();

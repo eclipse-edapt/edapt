@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 
 
@@ -125,6 +126,7 @@ public interface Model {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.migration.ModelResource}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.ModelResource#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
@@ -136,7 +138,8 @@ public interface Model {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getModel_Resources()
-	 * @model containment="true"
+	 * @see org.eclipse.emf.edapt.migration.ModelResource#getModel
+	 * @model opposite="model" containment="true"
 	 * @generated
 	 */
 	EList<ModelResource> getResources();
@@ -303,5 +306,16 @@ public interface Model {
 	 * @generated
 	 */
 	Instance newInstance(String className);
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Create a new instance of a certain class
+	 * <!-- end-model-doc -->
+	 * @model required="true" uriDataType="org.eclipse.emf.edapt.migration.URI" uriRequired="true"
+	 * @generated
+	 */
+	ModelResource newResource(URI uri);
 
 } // Model

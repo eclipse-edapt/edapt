@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -30,7 +31,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -214,7 +214,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 */
 	public EList<ModelResource> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<ModelResource>(ModelResource.class, this, MigrationPackage.MODEL__RESOURCES);
+			resources = new EObjectContainmentWithInverseEList<ModelResource>(ModelResource.class, this, MigrationPackage.MODEL__RESOURCES, MigrationPackage.MODEL_RESOURCE__MODEL);
 		}
 		return resources;
 	}
@@ -495,6 +495,19 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public ModelResource newResource(URI uri) {
+		ModelResource resource = MigrationFactory.eINSTANCE
+				.createModelResource();
+		resource.setUri(uri);
+		getResources().add(resource);
+		return resource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -503,6 +516,8 @@ public class ModelImpl extends EObjectImpl implements Model {
 		switch (featureID) {
 			case MigrationPackage.MODEL__TYPES:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
+			case MigrationPackage.MODEL__RESOURCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResources()).basicAdd(otherEnd, msgs);
 			case MigrationPackage.MODEL__REPOSITORY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);

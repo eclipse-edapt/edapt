@@ -286,13 +286,22 @@ public interface MigrationPackage extends EPackage {
 	int MODEL_RESOURCE__ROOT_INSTANCES = ABSTRACT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Model</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_RESOURCE__MODEL = ABSTRACT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Model Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_RESOURCE_FEATURE_COUNT = ABSTRACT_RESOURCE_FEATURE_COUNT + 1;
+	int MODEL_RESOURCE_FEATURE_COUNT = ABSTRACT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>EClass</b></em>' reference.
@@ -539,13 +548,22 @@ public interface MigrationPackage extends EPackage {
 	int METAMODEL_RESOURCE__ROOT_PACKAGES = ABSTRACT_RESOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METAMODEL_RESOURCE__METAMODEL = ABSTRACT_RESOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Metamodel Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int METAMODEL_RESOURCE_FEATURE_COUNT = ABSTRACT_RESOURCE_FEATURE_COUNT + 1;
+	int METAMODEL_RESOURCE_FEATURE_COUNT = ABSTRACT_RESOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '<em>Set</em>' data type.
@@ -956,6 +974,17 @@ public interface MigrationPackage extends EPackage {
 	EReference getModelResource_RootInstances();
 
 	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.migration.ModelResource#getModel <em>Model</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Model</em>'.
+	 * @see org.eclipse.emf.edapt.migration.ModelResource#getModel()
+	 * @see #getModelResource()
+	 * @generated
+	 */
+	EReference getModelResource_Model();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.AbstractResource <em>Abstract Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -996,6 +1025,17 @@ public interface MigrationPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMetamodelResource_RootPackages();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Metamodel</em>'.
+	 * @see org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel()
+	 * @see #getMetamodelResource()
+	 * @generated
+	 */
+	EReference getMetamodelResource_Metamodel();
 
 	/**
 	 * Returns the meta object for data type '{@link java.util.Set <em>Set</em>}'.
@@ -1357,6 +1397,14 @@ public interface MigrationPackage extends EPackage {
 		EReference MODEL_RESOURCE__ROOT_INSTANCES = eINSTANCE.getModelResource_RootInstances();
 
 		/**
+		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_RESOURCE__MODEL = eINSTANCE.getModelResource_Model();
+
+		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.impl.AbstractResourceImpl <em>Abstract Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1391,6 +1439,14 @@ public interface MigrationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference METAMODEL_RESOURCE__ROOT_PACKAGES = eINSTANCE.getMetamodelResource_RootPackages();
+
+		/**
+		 * The meta object literal for the '<em><b>Metamodel</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference METAMODEL_RESOURCE__METAMODEL = eINSTANCE.getMetamodelResource_Metamodel();
 
 		/**
 		 * The meta object literal for the '<em>Set</em>' data type.

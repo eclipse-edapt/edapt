@@ -36,6 +36,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -113,7 +114,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 */
 	public EList<MetamodelResource> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<MetamodelResource>(MetamodelResource.class, this, MigrationPackage.METAMODEL__RESOURCES);
+			resources = new EObjectContainmentWithInverseEList<MetamodelResource>(MetamodelResource.class, this, MigrationPackage.METAMODEL__RESOURCES, MigrationPackage.METAMODEL_RESOURCE__METAMODEL);
 		}
 		return resources;
 	}
@@ -331,9 +332,12 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case MigrationPackage.METAMODEL__RESOURCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResources()).basicAdd(otherEnd, msgs);
 			case MigrationPackage.METAMODEL__REPOSITORY:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);

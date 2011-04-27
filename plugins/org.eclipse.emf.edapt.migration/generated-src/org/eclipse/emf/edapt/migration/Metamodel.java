@@ -50,6 +50,7 @@ public interface Metamodel {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.migration.MetamodelResource}.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
@@ -61,7 +62,8 @@ public interface Metamodel {
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getMetamodel_Resources()
-	 * @model containment="true"
+	 * @see org.eclipse.emf.edapt.migration.MetamodelResource#getMetamodel
+	 * @model opposite="metamodel" containment="true"
 	 * @generated
 	 */
 	EList<MetamodelResource> getResources();

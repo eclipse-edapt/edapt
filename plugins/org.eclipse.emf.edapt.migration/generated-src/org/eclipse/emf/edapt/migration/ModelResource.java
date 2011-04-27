@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.migration.ModelResource#getRootInstances <em>Root Instances</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.ModelResource#getModel <em>Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,5 +53,33 @@ public interface ModelResource extends AbstractResource {
 	 * @generated
 	 */
 	EList<Instance> getRootInstances();
+
+	/**
+	 * Returns the value of the '<em><b>Model</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.Model#getResources <em>Resources</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Model</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Model</em>' container reference.
+	 * @see #setModel(Model)
+	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getModelResource_Model()
+	 * @see org.eclipse.emf.edapt.migration.Model#getResources
+	 * @model opposite="resources" transient="false"
+	 * @generated
+	 */
+	Model getModel();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.ModelResource#getModel <em>Model</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Model</em>' container reference.
+	 * @see #getModel()
+	 * @generated
+	 */
+	void setModel(Model value);
 
 } // ModelResource
