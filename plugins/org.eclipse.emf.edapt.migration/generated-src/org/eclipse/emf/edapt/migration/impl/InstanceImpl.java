@@ -726,7 +726,10 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 			EAttribute attribute = (EAttribute) feature;
 			AttributeSlot attributeSlot = this
 					.getCreateAttributeSlot(attribute);
-			attributeSlot.getValues().add(index, value);
+			if (!attribute.isUnique()
+					|| !attributeSlot.getValues().contains(value)) {
+				attributeSlot.getValues().add(index, value);
+			}
 		} else {
 			EReference reference = (EReference) feature;
 			Instance target = (Instance) value;
