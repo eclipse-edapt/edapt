@@ -107,15 +107,19 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Classloader to load {@link CustomMigration}s. */
 	private final IClassLoader classLoader;
 
+	/** Validation level. */
+	private final ValidationLevel level;
+
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor,
-			IClassLoader classLoader) {
+			IClassLoader classLoader, ValidationLevel level) {
 		this.modelURIs = modelURIs;
 		this.sourceRelease = sourceRelease;
 		this.targetRelease = targetRelease;
 		this.monitor = monitor;
 		this.classLoader = classLoader;
+		this.level = level;
 	}
 
 	/** {@inheritDoc} */
@@ -141,37 +145,57 @@ public class MigrationReconstructor extends ReconstructorBase {
 			disable();
 			saveModel();
 			throw new FinishedException();
-		}
-		if (originalRelease == sourceRelease) {
+		} else if (originalRelease == sourceRelease) {
 			enable();
 			started = true;
-			repository = loadRepository();
-			try {
-				repository.getModel().checkConformance();
-			} catch (MigrationException e) {
-				throwWrappedMigrationException(e);
-			}
+			loadRepository();
+		} else if(isEnabled()) {
+			checkConformanceIfMoreThan(ValidationLevel.RELEASE);
+		}
+	}
+
+	/**
+	 * Check the conformance of the model to the metamodel if the validation
+	 * level is greater or equal to a certain level.
+	 */
+	private void checkConformanceIfMoreThan(ValidationLevel level) {
+		if (this.level.compareTo(level) >= 0) {
+			checkConformance();
+		}
+	}
+
+	/**
+	 * Check the conformance of the model to the metamodel if the validation
+	 * level is equal to a certain level.
+	 */
+	private void checkConformanceIfEquals(ValidationLevel level) {
+		if (this.level.compareTo(level) == 0) {
+			checkConformance();
+		}
+	}
+
+	/** Helper method to check the conformance of the model. */
+	private void checkConformance() {
+		try {
+			repository.getModel().checkConformance();
+		} catch (MigrationException e) {
+			throwWrappedMigrationException(e);
 		}
 	}
 
 	/** Load the model before migration. */
-	private Repository loadRepository() {
+	private void loadRepository() {
 		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
 			Model model = Persistency.loadModel(modelURIs, metamodel);
-			model.checkConformance();
-			Repository repository = MigrationFactory.eINSTANCE
-					.createRepository();
+			repository = MigrationFactory.eINSTANCE.createRepository();
 			repository.setMetamodel(metamodel);
 			repository.setModel(model);
-			return repository;
+			checkConformanceIfMoreThan(ValidationLevel.HISTORY);
 		} catch (IOException e) {
 			throwWrappedMigrationException("Model could not be loaded", e);
-		} catch (MigrationException e) {
-			throwWrappedMigrationException(e);
 		}
-		return null;
 	}
 
 	/** Load the metamodel. */
@@ -217,12 +241,10 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private void saveModel() {
 		try {
 			Model model = repository.getModel();
-			model.checkConformance();
+			checkConformanceIfMoreThan(ValidationLevel.HISTORY);
 			Persistency.saveModel(model);
 		} catch (IOException e) {
 			throwWrappedMigrationException("Model could not be saved", e);
-		} catch (MigrationException e) {
-			throwWrappedMigrationException(e);
 		}
 	}
 
@@ -234,11 +256,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 				migrationSwitch.doSwitch(change);
 				if (change.eContainer() instanceof Release) {
 					monitor.worked(1);
-					try {
-						repository.getModel().checkConformance();
-					} catch (MigrationException e) {
-						throwWrappedMigrationException(e);
-					}
+					checkConformanceIfMoreThan(ValidationLevel.CHANGE);
 				}
 			}
 			checkPause(change);
@@ -256,6 +274,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 					try {
 						customMigration.migrateAfter(repository.getModel(),
 								repository.getMetamodel());
+						checkConformanceIfEquals(ValidationLevel.CUSTOM_MIGRATION);
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
 					} finally {

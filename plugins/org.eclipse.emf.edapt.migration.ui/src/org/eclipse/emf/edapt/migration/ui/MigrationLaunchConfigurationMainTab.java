@@ -22,6 +22,7 @@ import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDel
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.HISTORY;
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.MODELS;
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.RELEASE;
+import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.VALIDATION;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +47,7 @@ import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.ClassLoaderFacade;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.ArrayContentProvider;
@@ -96,6 +98,9 @@ class MigrationLaunchConfigurationMainTab extends
 
 	/** Combo box to select the release. */
 	private ComboViewer releaseCombo;
+	
+	/** Combo box to set the validation level. */
+	private ComboViewer validationCombo;
 
 	/** Text field to edit the JVM arguments. */
 	private Text vmArgsText;
@@ -109,6 +114,7 @@ class MigrationLaunchConfigurationMainTab extends
 		createHistoryGroup(tabControl);
 		createModelGroup(tabControl);
 		createReleaseGroup(tabControl);
+		createValidationGroup(tabControl);
 		createVMArgsGroup(tabControl);
 	}
 
@@ -146,12 +152,12 @@ class MigrationLaunchConfigurationMainTab extends
 
 	/** Create the group to select the release to which the models conform. */
 	private void createReleaseGroup(Composite parent) {
-		Group releaseGroup = createGroupControl(parent, "Release", 2);
+		Group releaseGroup = createGroupControl(parent, "Source Release", 2);
 		autoCheck = new Button(releaseGroup, SWT.CHECK);
 		autoCheck.setText("Auto");
 		autoCheck.addSelectionListener(new AutoCheckListener());
 
-		releaseCombo = new ComboViewer(releaseGroup, SWT.None);
+		releaseCombo = new ComboViewer(releaseGroup);
 		releaseCombo.getCombo().setLayoutData(
 				new GridData(GridData.FILL_HORIZONTAL));
 		releaseCombo.setContentProvider(new ArrayContentProvider());
@@ -160,8 +166,9 @@ class MigrationLaunchConfigurationMainTab extends
 			public String getText(Object element) {
 				Release release = (Release) element;
 				String text = "Release " + release.getNumber();
-				if (release.getLabel() != null) {
-					text += ": " + release.getLabel();
+				String label = release.getLabel();
+				if (label != null && label.length() > 0) {
+					text += ": " + label;
 				}
 				return text;
 			}
@@ -174,7 +181,30 @@ class MigrationLaunchConfigurationMainTab extends
 				return r1.getNumber() - r2.getNumber();
 			}
 		});
-		releaseCombo.addSelectionChangedListener(new ReleaseComboListener());
+		releaseCombo.addSelectionChangedListener(new ComboListener());
+	}
+
+	/** Create the group to set the level of the validation. */
+	private void createValidationGroup(Composite parent) {
+		Group validationGroup = createGroupControl(parent, "Validation", 1);
+
+		validationCombo = new ComboViewer(validationGroup);
+		validationCombo.getCombo().setLayoutData(
+				new GridData(GridData.FILL_HORIZONTAL));
+		validationCombo.setContentProvider(new ArrayContentProvider());
+		validationCombo.setLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				ValidationLevel level = (ValidationLevel) element;
+				String text = level.toString();
+				text = text.replace('_', ' ');
+				text = text.toLowerCase();
+				text = text.substring(0, 1).toUpperCase() + text.substring(1);
+				return text;
+			}
+		});
+		validationCombo.setInput(ValidationLevel.values());
+		validationCombo.addSelectionChangedListener(new ComboListener());
 	}
 
 	/** Get the releases to which the models may conform. */
@@ -257,6 +287,12 @@ class MigrationLaunchConfigurationMainTab extends
 			}
 		}
 
+		// validation
+		String validation = getAttribute(configuration, VALIDATION,
+				ValidationLevel.CUSTOM_MIGRATION.toString());
+		validationCombo.setSelection(new StructuredSelection(ValidationLevel
+				.valueOf(validation)));
+
 		// VM arguments
 		vmArgsText.setText(getAttribute(configuration,
 				IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, ""));
@@ -293,6 +329,11 @@ class MigrationLaunchConfigurationMainTab extends
 				configuration.setAttribute(RELEASE, release.getNumber());
 			}
 		}
+
+		// validation
+		ValidationLevel level = SelectionUtils
+				.getSelectedElement(validationCombo.getSelection());
+		configuration.setAttribute(VALIDATION, level.toString());
 
 		// VM arguments
 		configuration.setAttribute(
@@ -340,6 +381,20 @@ class MigrationLaunchConfigurationMainTab extends
 		return true;
 	}
 
+	/** Refresh the release combo and preserve the selected release. */
+	public void refreshReleaseCombo() {
+		Release release = SelectionUtils.getSelectedElement(releaseCombo
+				.getSelection());
+		Set<Release> releases = getReleases();
+		releaseCombo.setInput(releases);
+		if (release != null) {
+			release = HistoryUtils.getRelease(releases, release.getNumber());
+			if (release != null) {
+				releaseCombo.setSelection(new StructuredSelection(release));
+			}
+		}
+	}
+
 	/** Listener that updates the dialog after text fields where modified. */
 	private class TextModifyListener implements ModifyListener {
 		/** {@inheritDoc} */
@@ -371,6 +426,7 @@ class MigrationLaunchConfigurationMainTab extends
 					IFile resource = (IFile) result[0];
 					IPath path = resource.getFullPath();
 					historyText.setText(path.toString());
+					refreshReleaseCombo();
 				}
 			}
 		}
@@ -399,6 +455,9 @@ class MigrationLaunchConfigurationMainTab extends
 					IPath path = resource.getFullPath();
 					modelURIs.add(path.toString());
 					modelViewer.refresh();
+					if (modelURIs.size() == 1) {
+						refreshReleaseCombo();
+					}
 					updateLaunchConfigurationDialog();
 				}
 			}
@@ -415,8 +474,12 @@ class MigrationLaunchConfigurationMainTab extends
 		public void widgetSelected(SelectionEvent e) {
 			List<String> elements = SelectionUtils
 					.getSelectedElements(modelViewer.getSelection());
+			String modelURI = modelURIs.get(0);
 			modelURIs.removeAll(elements);
 			modelViewer.refresh();
+			if (elements.contains(modelURI)) {
+				refreshReleaseCombo();
+			}
 			updateLaunchConfigurationDialog();
 		}
 	}
@@ -439,7 +502,7 @@ class MigrationLaunchConfigurationMainTab extends
 	 * This listener is attached to the combo box and toggles an update of the
 	 * configuration dialog.
 	 */
-	private class ReleaseComboListener implements ISelectionChangedListener {
+	private class ComboListener implements ISelectionChangedListener {
 		/** {@inheritDoc} */
 		@Override
 		public void selectionChanged(SelectionChangedEvent event) {

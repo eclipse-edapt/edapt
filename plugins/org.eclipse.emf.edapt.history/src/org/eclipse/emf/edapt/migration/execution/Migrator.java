@@ -13,6 +13,7 @@ package org.eclipse.emf.edapt.migration.execution;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -60,6 +61,9 @@ public class Migrator {
 
 	/** Classloader to load {@link CustomMigration}s. */
 	private final IClassLoader classLoader;
+
+	/** Validation level. */
+	private ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
 
 	/** Constructor. */
 	public Migrator(URI historyURI, IClassLoader classLoader)
@@ -177,7 +181,7 @@ public class Migrator {
 					URI.createFileURI("test"));
 			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
 					modelURIs, sourceRelease, targetRelease, monitor,
-					classLoader);
+					classLoader, level);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
@@ -207,7 +211,8 @@ public class Migrator {
 	/** Get the release of a model based on {@link URI}. */
 	public Set<Release> getRelease(URI modelURI) {
 		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
-		return releaseMap.get(nsURI);
+		return releaseMap.containsKey(nsURI) ? releaseMap.get(nsURI)
+				: Collections.<Release> emptySet();
 	}
 
 	/** Get set of namespace URIs. */
@@ -227,6 +232,11 @@ public class Migrator {
 		return Persistency.loadMetamodel(reconstructor.getResourceSet());
 	}
 
+	/** Set the validation level. */
+	public void setLevel(ValidationLevel level) {
+		this.level = level;
+	}
+
 	/** Main method to perform migrations. */
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
@@ -234,6 +244,7 @@ public class Migrator {
 		List<URI> modelURIs = new ArrayList<URI>();
 		URI historyURI = null;
 		int releaseNumber = -1;
+		ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
 
 		char c = 0;
 
@@ -248,6 +259,8 @@ public class Migrator {
 					historyURI = URIUtils.getURI(unquote(arg));
 				} else if (c == 'r') {
 					releaseNumber = Integer.parseInt(arg);
+				} else if (c == 'v') {
+					level = ValidationLevel.valueOf(arg);
 				} else if (c == 'l') {
 					try {
 						Class cl = Class.forName(arg);
@@ -269,6 +282,7 @@ public class Migrator {
 		try {
 			Migrator migrator = new Migrator(historyURI, new ClassLoaderFacade(
 					Thread.currentThread().getContextClassLoader()));
+			migrator.setLevel(level);
 
 			Set<Release> releases = migrator.getRelease(modelURIs.get(0));
 			Release release = null;
