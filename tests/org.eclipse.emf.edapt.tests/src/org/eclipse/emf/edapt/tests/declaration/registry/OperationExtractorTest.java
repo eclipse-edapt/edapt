@@ -31,7 +31,7 @@ public class OperationExtractorTest extends TestCase {
 		OperationExtractor extractor = new OperationExtractor();
 		Collection<Operation> operations = OperationRegistry.getInstance()
 				.getOperations();
-		Assert.assertEquals(70, operations.size());
+		Assert.assertEquals(71, operations.size());
 		for (Operation operation : operations) {
 			Class<?> c = operation.getImplementation();
 			Operation extracted = extractor.extractOperation(c);

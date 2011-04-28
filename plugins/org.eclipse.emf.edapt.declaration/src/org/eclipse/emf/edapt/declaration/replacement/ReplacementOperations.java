@@ -9,7 +9,7 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 6A0D61944E5ABAC1F5D08882E7E3DBBB
+ * @levd.rating YELLOW Hash: EE232451B9D42D697448390198CD6531
  */
 @EdaptLibrary(label = "Replacement Operations", description = "Replacement " +
 		"operations replace one metamodeling construct by another, equivalent " +
@@ -27,5 +27,6 @@ public class ReplacementOperations extends LibraryImplementation {
 		addOperation(SubClassesToEnumeration.class);
 		addOperation(SuppressedSetVisibilityToNotChangeable.class);
 		addOperation(VolatileToOpposite.class);
+		addOperation(ClassToAssociation.class);
 	}
 }
