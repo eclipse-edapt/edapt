@@ -22,9 +22,12 @@ import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.DialogUtils;
 import org.eclipse.emf.edapt.declaration.Library;
+import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.migration.execution.MigratorCommandLine;
 import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
 import org.eclipse.jdt.launching.JavaLaunchDelegate;
 
@@ -52,12 +55,6 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	 * model files.
 	 */
 	public static final String MODELS = ID + ".models";
-
-	/**
-	 * Key for the launch configuration attribute to specify whether the source
-	 * release should be determined automatically.
-	 */
-	public static final String AUTOMATIC = ID + ".automatic";
 
 	/**
 	 * Key for the launch configuration attribute to specify the source release
@@ -133,70 +130,46 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	}
 
 	/** {@inheritDoc} */
+	@SuppressWarnings("unchecked")
 	@Override
 	public String getProgramArguments(ILaunchConfiguration configuration)
 			throws CoreException {
 
-		// models
-		String argument = "";
+		List<URI> modelURIs = new ArrayList<URI>();
 		List<IFile> modelFiles = getModelFiles(configuration);
 		for (IFile modelFile : modelFiles) {
-			String modelFilename = modelFile.getLocation().toString();
-			modelFilename = quoteSpace(modelFilename);
-			argument += modelFilename + " ";
+			modelURIs.add(URIUtils.getURI(modelFile.getLocation().toString()));
 		}
 
-		// history
 		String historyFilename = configuration.getAttribute(HISTORY, "");
 		IFile file = FileUtils.getFile(historyFilename);
-		historyFilename = file.getLocation().toString();
-		historyFilename = quoteSpace(historyFilename);
-		argument += "-h " + historyFilename + " ";
+		URI historyURI = URIUtils.getURI(file.getLocation().toString());
 
-		// release
-		boolean automatic = configuration.getAttribute(AUTOMATIC, true);
-		if (!automatic) {
-			int release = configuration.getAttribute(RELEASE, 0);
-			argument += "-r " + release + " ";
-		}
+		int releaseNumber = configuration.getAttribute(RELEASE, -1);
+		ValidationLevel level = ValidationLevel.valueOf(configuration
+				.getAttribute(VALIDATION, ValidationLevel.CUSTOM_MIGRATION
+						.toString()));
 
-		// validation
-		String level = configuration.getAttribute(VALIDATION,
-				ValidationLevel.CUSTOM_MIGRATION.toString());
-		argument += "-v " + level + " ";
-
-		// libraries
 		OperationRegistry registry = OperationRegistry.getInstance();
-		List<Library> libraries = registry.getRootLibraries();
-		if (!libraries.isEmpty()) {
-			argument += "-l ";
-			for (Library library : libraries) {
-				argument += library.getName() + " ";
-			}
+		List<Class<? extends LibraryImplementation>> libraries = new ArrayList<Class<? extends LibraryImplementation>>();
+		for (Library library : registry.getRootLibraries()) {
+			libraries.add(library.getImplementation());
 		}
 
-		// operations
-		List<Operation> operations = registry.getRootOperations();
-		if (!operations.isEmpty()) {
-			argument += "-o ";
-			for (Operation operation : operations) {
-				argument += operation.getImplementation().getName() + " ";
-			}
+		List<Class<? extends OperationImplementation>> operations = new ArrayList<Class<? extends OperationImplementation>>();
+		for (Operation operation : registry.getRootOperations()) {
+			operations.add(operation.getImplementation());
 		}
+
+		MigratorCommandLine commandLine = new MigratorCommandLine(historyURI,
+				modelURIs, releaseNumber, level, libraries, operations);
+		String argument = commandLine.getCommandLine();
 
 		// VM arguments
 		String vmArguments = configuration.getAttribute(ARGUMENTS, "");
 		argument += " " + vmArguments;
 
 		return argument;
-	}
-
-	/** Quote a string that contains a space. */
-	private String quoteSpace(String string) {
-		if (string.contains(" ")) {
-			string = "\"" + string + "\"";
-		}
-		return string;
 	}
 
 	/** Get the model files from the launch configuration. */

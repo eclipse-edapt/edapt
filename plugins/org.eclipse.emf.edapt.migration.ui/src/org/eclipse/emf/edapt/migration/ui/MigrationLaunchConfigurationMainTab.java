@@ -18,7 +18,6 @@ $Id$
 package org.eclipse.emf.edapt.migration.ui;
 
 import static org.eclipse.emf.edapt.migration.ui.LaunchUtils.getAttribute;
-import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.AUTOMATIC;
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.HISTORY;
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.MODELS;
 import static org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate.RELEASE;
@@ -98,7 +97,7 @@ class MigrationLaunchConfigurationMainTab extends
 
 	/** Combo box to select the release. */
 	private ComboViewer releaseCombo;
-	
+
 	/** Combo box to set the validation level. */
 	private ComboViewer validationCombo;
 
@@ -271,13 +270,13 @@ class MigrationLaunchConfigurationMainTab extends
 		modelViewer.refresh();
 
 		// release
-		autoCheck.setSelection(getAttribute(configuration, AUTOMATIC, true));
+		int releaseNumber = getAttribute(configuration, RELEASE, -1);
+		autoCheck.setSelection(releaseNumber == -1);
 		if (autoCheck.getSelection()) {
 			releaseCombo.getCombo().setEnabled(false);
 		} else {
 			Set<Release> releases = getReleases();
 			releaseCombo.setInput(releases);
-			int releaseNumber = getAttribute(configuration, RELEASE, -1);
 			if (releaseNumber >= 0) {
 				Release release = HistoryUtils.getRelease(releases,
 						releaseNumber);
@@ -321,8 +320,9 @@ class MigrationLaunchConfigurationMainTab extends
 		configuration.setAttribute(MODELS, modelURIs);
 
 		// release
-		configuration.setAttribute(AUTOMATIC, autoCheck.getSelection());
-		if (!autoCheck.getSelection()) {
+		if (autoCheck.getSelection()) {
+			configuration.setAttribute(RELEASE, -1);
+		} else {
 			Release release = SelectionUtils.getSelectedElement(releaseCombo
 					.getSelection());
 			if (release != null) {
