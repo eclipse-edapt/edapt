@@ -12,7 +12,6 @@
 package org.eclipse.emf.edapt.migration.execution;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,8 +27,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.history.Delete;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
@@ -238,51 +235,17 @@ public class Migrator {
 	}
 
 	/** Main method to perform migrations. */
-	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
-		List<URI> modelURIs = new ArrayList<URI>();
-		URI historyURI = null;
-		int releaseNumber = -1;
-		ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
-
-		char c = 0;
-
-		for (String arg : args) {
-			if (arg.startsWith("-")) {
-				c = arg.charAt(1);
-			} else {
-				if (c == 0) {
-					URI modelURI = URIUtils.getURI(unquote(arg));
-					modelURIs.add(modelURI);
-				} else if (c == 'h') {
-					historyURI = URIUtils.getURI(unquote(arg));
-				} else if (c == 'r') {
-					releaseNumber = Integer.parseInt(arg);
-				} else if (c == 'v') {
-					level = ValidationLevel.valueOf(arg);
-				} else if (c == 'l') {
-					try {
-						Class cl = Class.forName(arg);
-						OperationRegistry.getInstance().registerLibrary(cl);
-					} catch (ClassNotFoundException e) {
-						System.err.println("Library not found: " + arg);
-					}
-				} else if (c == 'o') {
-					try {
-						Class cl = Class.forName(arg);
-						OperationRegistry.getInstance().registerOperation(cl);
-					} catch (ClassNotFoundException e) {
-						System.err.println("Operation not found: " + arg);
-					}
-				}
-			}
-		}
+		MigratorCommandLine commandLine = new MigratorCommandLine(args);
+		List<URI> modelURIs = commandLine.getModelURIs();
+		int releaseNumber = commandLine.getReleaseNumber();
 
 		try {
-			Migrator migrator = new Migrator(historyURI, new ClassLoaderFacade(
-					Thread.currentThread().getContextClassLoader()));
-			migrator.setLevel(level);
+			Migrator migrator = new Migrator(commandLine.getHistoryURI(),
+					new ClassLoaderFacade(Thread.currentThread()
+							.getContextClassLoader()));
+			migrator.setLevel(commandLine.getLevel());
 
 			Set<Release> releases = migrator.getRelease(modelURIs.get(0));
 			Release release = null;
@@ -298,13 +261,5 @@ public class Migrator {
 			System.err.println(e.getMessage());
 			System.err.println(e.getCause().getMessage());
 		}
-	}
-
-	/** Unquote a string that starts and ends with a quote. */
-	private static String unquote(String string) {
-		if (string.startsWith("\"") && string.endsWith("\"")) {
-			return string.substring(1, string.length() - 1);
-		}
-		return string;
 	}
 }
