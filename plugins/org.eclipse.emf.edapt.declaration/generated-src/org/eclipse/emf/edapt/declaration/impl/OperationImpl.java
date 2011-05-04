@@ -138,7 +138,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	 * @generated
 	 * @ordered
 	 */
-	protected Class<?> implementation;
+	protected Class implementation;
 
 	/**
 	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -333,7 +333,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Class<?> getImplementation() {
+	public Class getImplementation() {
 		return implementation;
 	}
 
@@ -342,8 +342,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImplementation(Class<?> newImplementation) {
-		Class<?> oldImplementation = implementation;
+	public void setImplementation(Class newImplementation) {
+		Class oldImplementation = implementation;
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__IMPLEMENTATION, oldImplementation, implementation));
@@ -511,7 +511,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 				setAfter((String)newValue);
 				return;
 			case DeclarationPackage.OPERATION__IMPLEMENTATION:
-				setImplementation((Class<?>)newValue);
+				setImplementation((Class)newValue);
 				return;
 			case DeclarationPackage.OPERATION__LABEL:
 				setLabel((String)newValue);
@@ -547,7 +547,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 				setAfter(AFTER_EDEFAULT);
 				return;
 			case DeclarationPackage.OPERATION__IMPLEMENTATION:
-				setImplementation((Class<?>)null);
+				setImplementation((Class)null);
 				return;
 			case DeclarationPackage.OPERATION__LABEL:
 				setLabel(LABEL_EDEFAULT);

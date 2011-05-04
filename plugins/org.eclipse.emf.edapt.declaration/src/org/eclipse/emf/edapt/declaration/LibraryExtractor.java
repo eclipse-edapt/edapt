@@ -8,7 +8,7 @@ import java.util.List;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 682566BC52CA883426EE57689EABB728
+ * @levd.rating YELLOW Hash: 4F3CC1B1FE235350B7F5897890546186
  */
 public class LibraryExtractor {
 
@@ -18,6 +18,7 @@ public class LibraryExtractor {
 		if (libraryAnnotation != null) {
 			Library library = DeclarationFactory.eINSTANCE.createLibrary();
 			library.setName(c.getName());
+			library.setImplementation(c);
 			library.setLabel(libraryAnnotation.label());
 			library.setDescription(libraryAnnotation.description());
 			try {

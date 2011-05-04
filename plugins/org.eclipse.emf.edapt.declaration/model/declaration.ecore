@@ -31,11 +31,6 @@
       </eAnnotations>
       <eParameters name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Helper method to access the code implementing the operations declared in the library"/>
-      </eAnnotations>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
         eType="#//Operation" containment="true" eOpposite="#//Operation/library">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -43,7 +38,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementation" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Relative path to the code implementing the operations of the library"/>
       </eAnnotations>
@@ -102,11 +97,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="before" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="after" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementation" lowerBound="1"
-        transient="true">
-      <eGenericType eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass">
-        <eTypeArguments/>
-      </eGenericType>
-    </eStructuralFeatures>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"
+        transient="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="label" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Label for an element"/>

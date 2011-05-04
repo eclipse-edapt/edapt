@@ -67,12 +67,12 @@ public interface Library extends IdentifiedElement {
 	 * Relative path to the code implementing the operations of the library
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Implementation</em>' attribute.
-	 * @see #setImplementation(String)
+	 * @see #setImplementation(Class)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Implementation()
 	 * @model required="true"
 	 * @generated
 	 */
-	String getImplementation();
+	Class getImplementation();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}' attribute.
@@ -82,7 +82,7 @@ public interface Library extends IdentifiedElement {
 	 * @see #getImplementation()
 	 * @generated
 	 */
-	void setImplementation(String value);
+	void setImplementation(Class value);
 
 	/**
 	 * Returns the value of the '<em><b>Label</b></em>' attribute.
@@ -135,16 +135,5 @@ public interface Library extends IdentifiedElement {
 	 * @generated
 	 */
 	Operation getOperation(String name);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Helper method to access the code implementing the operations declared in the library
-	 * <!-- end-model-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	String getCode();
 
 } // Library

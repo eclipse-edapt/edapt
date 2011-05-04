@@ -202,7 +202,7 @@ public interface Operation extends IdentifiedElement {
 	 * @model required="true" transient="true"
 	 * @generated
 	 */
-	Class<?> getImplementation();
+	Class getImplementation();
 
 	/**
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}' attribute.
@@ -212,7 +212,7 @@ public interface Operation extends IdentifiedElement {
 	 * @see #getImplementation()
 	 * @generated
 	 */
-	void setImplementation(Class<?> value);
+	void setImplementation(Class value);
 
 	/**
 	 * Returns the value of the '<em><b>Label</b></em>' attribute.

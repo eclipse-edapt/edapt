@@ -11,23 +11,17 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.emf.edapt.common.FileUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.declaration.DeclarationPackage;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.Operation;
@@ -61,16 +55,6 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	protected EList<Operation> operations;
 
 	/**
-	 * The default value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String IMPLEMENTATION_EDEFAULT = null;
-
-	/**
 	 * The cached value of the '{@link #getImplementation() <em>Implementation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,7 +62,7 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	 * @generated
 	 * @ordered
 	 */
-	protected String implementation = IMPLEMENTATION_EDEFAULT;
+	protected Class implementation;
 
 	/**
 	 * The default value of the '{@link #getLabel() <em>Label</em>}' attribute.
@@ -146,7 +130,7 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getImplementation() {
+	public Class getImplementation() {
 		return implementation;
 	}
 
@@ -155,8 +139,8 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImplementation(String newImplementation) {
-		String oldImplementation = implementation;
+	public void setImplementation(Class newImplementation) {
+		Class oldImplementation = implementation;
 		implementation = newImplementation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.LIBRARY__IMPLEMENTATION, oldImplementation, implementation));
@@ -207,23 +191,6 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public String getCode() {
-		URI relativeURI = URI.createFileURI(this.getImplementation());
-		URI declarationURI = this.eResource().getURI();
-		URI codeURI = relativeURI.resolve(declarationURI);
-		try {
-			InputStream in = URIUtils.getURL(codeURI).openStream();
-			return FileUtils.getContents(in);
-		} catch (IOException e) {
-			return null;
-		}
 	}
 
 	/**
@@ -291,7 +258,7 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 				getOperations().addAll((Collection<? extends Operation>)newValue);
 				return;
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
-				setImplementation((String)newValue);
+				setImplementation((Class)newValue);
 				return;
 			case DeclarationPackage.LIBRARY__LABEL:
 				setLabel((String)newValue);
@@ -316,7 +283,7 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 				getOperations().clear();
 				return;
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
-				setImplementation(IMPLEMENTATION_EDEFAULT);
+				setImplementation((Class)null);
 				return;
 			case DeclarationPackage.LIBRARY__LABEL:
 				setLabel(LABEL_EDEFAULT);
@@ -339,7 +306,7 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 			case DeclarationPackage.LIBRARY__OPERATIONS:
 				return operations != null && !operations.isEmpty();
 			case DeclarationPackage.LIBRARY__IMPLEMENTATION:
-				return IMPLEMENTATION_EDEFAULT == null ? implementation != null : !IMPLEMENTATION_EDEFAULT.equals(implementation);
+				return implementation != null;
 			case DeclarationPackage.LIBRARY__LABEL:
 				return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
 			case DeclarationPackage.LIBRARY__LIBRARIES:

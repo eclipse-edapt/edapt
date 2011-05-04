@@ -112,10 +112,10 @@
             featureName="value" dataValue="Container for a set of coupled evolution operations"/>
       </changes>
       <changes xsi:type="history:Create" target="declaration.ecore#//Library" referenceName="eOperations"
-          element="declaration.ecore#//Library/getCode">
-        <changes xsi:type="history:Set" element="declaration.ecore#//Library/getCode"
+          element="#//@releases.1/@changes.57/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.57/@element"
             featureName="name" dataValue="getCode"/>
-        <changes xsi:type="history:Set" element="declaration.ecore#//Library/getCode"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.57/@element"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
       <changes xsi:type="history:Create" target="declaration.ecore#//Library" referenceName="eStructuralFeatures"
@@ -910,21 +910,21 @@
       <element xsi:type="ecore:EStringToStringMapEntry" key="body" value="return Operation_static.getVariable(this, name);"/>
     </changes>
     <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="declaration.ecore#//Library/getCode"
-          referenceName="eAnnotations" element="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.57/@element"
+          referenceName="eAnnotations" element="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="declaration.ecore#//Library/getCode/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.57/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Helper method to access the code implementing the operations declared in the library"/>
       </changes>
       <operation name="document">
         <parameters name="element">
-          <referenceValue element="declaration.ecore#//Library/getCode"/>
+          <referenceValue element="#//@releases.1/@changes.57/@element"/>
         </parameters>
         <parameters name="documentation">
           <dataValue>Helper method to access the code implementing the operations declared in the library</dataValue>
@@ -1425,6 +1425,26 @@
           featureName="containment" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="declaration.ecore#//Library/libraries"
           featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="declaration.ecore#//Library/implementation"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"
+          oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <operation name="changeAttributeType">
+        <parameters name="attribute">
+          <referenceValue element="declaration.ecore#//Library/implementation"/>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EJavaClass"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Delete" target="declaration.ecore#//Library" referenceName="eOperations">
+      <element xsi:type="ecore:EOperation" name="getCode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Helper method to access the code implementing the operations declared in the library"/>
+        </eAnnotations>
+      </element>
     </changes>
   </releases>
 </history:History>
