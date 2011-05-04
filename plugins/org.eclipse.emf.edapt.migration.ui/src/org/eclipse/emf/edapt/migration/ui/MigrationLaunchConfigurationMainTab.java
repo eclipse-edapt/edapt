@@ -43,7 +43,6 @@ import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.ClassLoaderFacade;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
@@ -214,11 +213,14 @@ class MigrationLaunchConfigurationMainTab extends
 			Migrator migrator = new Migrator(historyURI, new ClassLoaderFacade(
 					Thread.currentThread().getContextClassLoader()));
 			file = FileUtils.getFile(modelURIs.get(0));
-			URI modelURI = URIUtils.getURI(file);
-			return migrator.getRelease(modelURI);
-		} catch (MigrationException e) {
-			return Collections.emptySet();
+			if (!modelURIs.isEmpty()) {
+				URI modelURI = URIUtils.getURI(file);
+				return migrator.getRelease(modelURI);
+			}
+		} catch (Exception e) {
+			// ignore
 		}
+		return Collections.emptySet();
 	}
 
 	/**
@@ -265,24 +267,21 @@ class MigrationLaunchConfigurationMainTab extends
 		historyText.setText(getAttribute(configuration, HISTORY, ""));
 
 		// models
-		modelURIs.addAll(getAttribute(configuration, MODELS, Collections
-				.<String> emptyList()));
+		modelURIs.clear();
+		modelURIs.addAll(getAttribute(configuration, MODELS,
+				Collections.<String> emptyList()));
 		modelViewer.refresh();
 
 		// release
 		int releaseNumber = getAttribute(configuration, RELEASE, -1);
 		autoCheck.setSelection(releaseNumber == -1);
-		if (autoCheck.getSelection()) {
-			releaseCombo.getCombo().setEnabled(false);
-		} else {
-			Set<Release> releases = getReleases();
-			releaseCombo.setInput(releases);
-			if (releaseNumber >= 0) {
-				Release release = HistoryUtils.getRelease(releases,
-						releaseNumber);
-				if (release != null) {
-					releaseCombo.setSelection(new StructuredSelection(release));
-				}
+		releaseCombo.getCombo().setEnabled(!autoCheck.getSelection());
+		Set<Release> releases = getReleases();
+		releaseCombo.setInput(releases);
+		if (releaseNumber >= 0) {
+			Release release = HistoryUtils.getRelease(releases, releaseNumber);
+			if (release != null) {
+				releaseCombo.setSelection(new StructuredSelection(release));
 			}
 		}
 
@@ -337,8 +336,8 @@ class MigrationLaunchConfigurationMainTab extends
 
 		// VM arguments
 		configuration.setAttribute(
-				IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS, vmArgsText
-						.getText());
+				IJavaLaunchConfigurationConstants.ATTR_VM_ARGUMENTS,
+				vmArgsText.getText());
 	}
 
 	/** {@inheritDoc} */
@@ -417,8 +416,7 @@ class MigrationLaunchConfigurationMainTab extends
 			FilteredResourcesSelectionDialog dialog = new FilteredResourcesSelectionDialog(
 					getShell(), false, workspaceRoot, IResource.DEPTH_INFINITE
 							| IResource.FILE);
-			dialog
-					.setInitialPattern(("*." + HistoryUtils.HISTORY_FILE_EXTENSION));
+			dialog.setInitialPattern(("*." + HistoryUtils.HISTORY_FILE_EXTENSION));
 
 			if (dialog.open() == Window.OK) {
 				Object result[] = dialog.getResult();
