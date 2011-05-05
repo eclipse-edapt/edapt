@@ -31,7 +31,7 @@ import org.eclipse.emf.edapt.migration.MigrationPlugin;
  * @author herrmama
  * @author $Author: mherrmannsd $
  * @version $Rev: 117 $
- * @levd.rating YELLOW Hash: 64D54C351FFB8987B3B73DF9220A7BF7
+ * @levd.rating YELLOW Hash: 5D6B6EEEA0BB217D3762F008E642AA6F
  */
 public class OperationRegistry {
 
@@ -128,7 +128,7 @@ public class OperationRegistry {
 			IExtensionRegistry extensionRegistry = Platform
 					.getExtensionRegistry();
 			IConfigurationElement[] configurationElements = extensionRegistry
-					.getConfigurationElementsFor("org.eclipse.emf.edapt.operations2");
+					.getConfigurationElementsFor("org.eclipse.emf.edapt.operations");
 
 			for (int i = 0, n = configurationElements.length; i < n; i++) {
 				IConfigurationElement configurationElement = configurationElements[i];
