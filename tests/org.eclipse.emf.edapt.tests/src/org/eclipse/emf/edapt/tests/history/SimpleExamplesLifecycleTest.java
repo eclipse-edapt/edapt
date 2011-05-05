@@ -9,36 +9,44 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.tests.history.lifecycle;
+package org.eclipse.emf.edapt.tests.history;
 
 /**
- * Lifecycle test for GMF metamodels
+ * Lifecycle test for simple metamodels
  * 
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-public class GMFLifecycleTest extends LifecycleTestBase {
+public class SimpleExamplesLifecycleTest extends LifecycleTestBase {
 
 	/**
-	 * Test full lifecycle of the gmfgen example
+	 * Test full lifecycle of the filesystem example
 	 */
-	public void testGMFGenLifecycle() throws Exception {
-		testLifecycle("gmfgen", 5);
+	public void testFilesystemLifecycle() throws Exception {
+		testLifecycle("filesystem");
+	}
+	
+	/**
+	 * Test full lifecycle of the component example
+	 */
+	public void testComponentLifecycle() throws Exception {
+		testLifecycle("component");
 	}
 
 	/**
-	 * Test full lifecycle of the gmfgraph example
+	 * Test full lifecycle of sprinkle's example
 	 */
-	public void testGMFGraphLifecycle() throws Exception {
-		testLifecycle("gmfgraph");
+	public void testSprinkleLifecycle() throws Exception {
+		testLifecycle("sprinkle");
 	}
 
 	/**
-	 * Test full lifecycle of the gmfgraph example
+	 * Test full lifecycle of the statemachine example
 	 */
-	public void testGMFMapLifecycle() throws Exception {
-		testLifecycle("mappings");
+	public void testStatemachineLifecycle() throws Exception {
+		testLifecycle("statemachine");
 	}
+
 }

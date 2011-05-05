@@ -1,4 +1,4 @@
-package org.eclipse.emf.edapt.tests.declaration.registry;
+package org.eclipse.emf.edapt.tests.declaration;
 
 import java.util.ArrayList;
 import java.util.Collection;

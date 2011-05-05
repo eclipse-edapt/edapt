@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.tests.history.lifecycle;
+package org.eclipse.emf.edapt.tests.history;
 
 import java.util.Arrays;
 import java.util.Collection;
