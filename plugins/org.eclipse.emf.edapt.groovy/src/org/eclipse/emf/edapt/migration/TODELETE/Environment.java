@@ -65,7 +65,7 @@ public class Environment {
 				}
 			} else {
 				header = FileUtils.getContents(new File(
-						"../org.eclipse.emf.edapt.migration/groovy/header.groovy"));
+						"../org.eclipse.emf.edapt.groovy/groovy/header.groovy"));
 			}
 		}
 		return header;

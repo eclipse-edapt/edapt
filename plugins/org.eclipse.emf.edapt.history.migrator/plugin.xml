@@ -13,6 +13,6 @@
  -->
 
 <plugin>
-<extension point="org.eclipse.emf.edapt.migrators">
+<extension point="org.eclipse.emf.edapt.migrators2">
 <migrator path="migrator/"/></extension>
 </plugin>
