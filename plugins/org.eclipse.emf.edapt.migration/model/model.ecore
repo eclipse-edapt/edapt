@@ -643,6 +643,7 @@
         <details key="documentation" value="Uniform Resource Identifier (URI) of this resource"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Set" instanceClassName="java.util.Set"
       serializable="false">

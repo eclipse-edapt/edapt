@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.URI;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.migration.AbstractResource#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.AbstractResource#getEncoding <em>Encoding</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,5 +63,31 @@ public interface AbstractResource {
 	 * @generated
 	 */
 	void setUri(URI value);
+
+	/**
+	 * Returns the value of the '<em><b>Encoding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Encoding</em>' attribute.
+	 * @see #setEncoding(String)
+	 * @see org.eclipse.emf.edapt.migration.MigrationPackage#getAbstractResource_Encoding()
+	 * @model
+	 * @generated
+	 */
+	String getEncoding();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.AbstractResource#getEncoding <em>Encoding</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Encoding</em>' attribute.
+	 * @see #getEncoding()
+	 * @generated
+	 */
+	void setEncoding(String value);
 
 } // AbstractResource

@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 224885B562FA00F13CB391D095844148
+ * @levd.rating YELLOW Hash: 720C3C5139B4CD8FAF1E3A7DDA551344
  */
 public class ForwardConverter {
 
@@ -105,6 +105,10 @@ public class ForwardConverter {
 			ModelResource modelResource = MigrationFactory.eINSTANCE
 					.createModelResource();
 			modelResource.setUri(resource.getURI());
+			if (resource instanceof XMLResource) {
+				XMLResource xmlResource = (XMLResource) resource;
+				modelResource.setEncoding(xmlResource.getEncoding());
+			}
 			model.getResources().add(modelResource);
 			for (EObject element : resource.getContents()) {
 				modelResource.getRootInstances().add(resolve(element));

@@ -190,9 +190,11 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInstance(Instance instance, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment((EObject)instance, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)instance, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID((EObject)instance, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)instance, diagnostics, context);
@@ -297,9 +299,11 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSlot(Slot slot, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment((EObject)slot, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)slot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID((EObject)slot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)slot, diagnostics, context);
@@ -386,9 +390,11 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAttributeSlot(AttributeSlot attributeSlot, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment((EObject)attributeSlot, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)attributeSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID((EObject)attributeSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)attributeSlot, diagnostics, context);
@@ -404,9 +410,11 @@ public class MigrationValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateReferenceSlot(ReferenceSlot referenceSlot, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment((EObject)referenceSlot, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained((EObject)referenceSlot, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID((EObject)referenceSlot, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique((EObject)referenceSlot, diagnostics, context);

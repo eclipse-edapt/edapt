@@ -65,26 +65,20 @@ import org.eclipse.ocl.helper.OCLHelper;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getSlots <em>
- * Slots</em>}</li>
- * <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getType <em>Type
- * </em>}</li>
- * <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getReferences
- * <em>References</em>}</li>
- * <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getUri <em>Uri
- * </em>}</li>
- * <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getUuid <em>Uuid
- * </em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getSlots <em>Slots</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getReferences <em>References</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getUri <em>Uri</em>}</li>
+ *   <li>{@link org.eclipse.emf.edapt.migration.impl.InstanceImpl#getUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class InstanceImpl extends EObjectImpl implements Instance {
 	/**
-	 * The cached value of the '{@link #getSlots() <em>Slots</em>}' containment
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getSlots() <em>Slots</em>}' containment reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSlots()
 	 * @generated
 	 * @ordered
@@ -92,9 +86,8 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	protected EList<Slot> slots;
 
 	/**
-	 * The cached value of the '{@link #getReferences() <em>References</em>}'
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getReferences() <em>References</em>}' reference list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getReferences()
 	 * @generated
 	 * @ordered
@@ -124,7 +117,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	/**
 	 * The default value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getUuid()
 	 * @generated
 	 * @ordered
@@ -134,7 +126,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	/**
 	 * The cached value of the '{@link #getUuid() <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @see #getUuid()
 	 * @generated
 	 * @ordered
@@ -143,7 +134,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected InstanceImpl() {
@@ -152,7 +142,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -162,83 +151,66 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<Slot> getSlots() {
 		if (slots == null) {
-			slots = new EObjectContainmentWithInverseEList<Slot>(Slot.class,
-					this, MigrationPackage.INSTANCE__SLOTS,
-					MigrationPackage.SLOT__INSTANCE);
+			slots = new EObjectContainmentWithInverseEList<Slot>(Slot.class, this, MigrationPackage.INSTANCE__SLOTS, MigrationPackage.SLOT__INSTANCE);
 		}
 		return slots;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public Type getType() {
-		if (eContainerFeatureID() != MigrationPackage.INSTANCE__TYPE)
-			return null;
-		return (Type) eContainer();
+		if (eContainerFeatureID() != MigrationPackage.INSTANCE__TYPE) return null;
+		return (Type)eContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetType(Type newType, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject) newType,
-				MigrationPackage.INSTANCE__TYPE, msgs);
+		msgs = eBasicSetContainer((InternalEObject)newType, MigrationPackage.INSTANCE__TYPE, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setType(Type newType) {
-		if (newType != eInternalContainer()
-				|| (eContainerFeatureID() != MigrationPackage.INSTANCE__TYPE && newType != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject) newType))
-				throw new IllegalArgumentException(
-						"Recursive containment not allowed for " + toString());
+		if (newType != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.INSTANCE__TYPE && newType != null)) {
+			if (EcoreUtil.isAncestor(this, (EObject)newType))
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
 			if (newType != null)
-				msgs = ((InternalEObject) newType).eInverseAdd(this,
-						MigrationPackage.TYPE__INSTANCES, Type.class, msgs);
+				msgs = ((InternalEObject)newType).eInverseAdd(this, MigrationPackage.TYPE__INSTANCES, Type.class, msgs);
 			msgs = basicSetType(newType, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MigrationPackage.INSTANCE__TYPE, newType, newType));
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.INSTANCE__TYPE, newType, newType));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<ReferenceSlot> getReferences() {
 		if (references == null) {
-			references = new EObjectWithInverseResolvingEList.ManyInverse<ReferenceSlot>(
-					ReferenceSlot.class, this,
-					MigrationPackage.INSTANCE__REFERENCES,
-					MigrationPackage.REFERENCE_SLOT__VALUES);
+			references = new EObjectWithInverseResolvingEList.ManyInverse<ReferenceSlot>(ReferenceSlot.class, this, MigrationPackage.INSTANCE__REFERENCES, MigrationPackage.REFERENCE_SLOT__VALUES);
 		}
 		return references;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public URI getUri() {
@@ -247,20 +219,17 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUri(URI newUri) {
 		URI oldUri = uri;
 		uri = newUri;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MigrationPackage.INSTANCE__URI, oldUri, uri));
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.INSTANCE__URI, oldUri, uri));
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getUuid() {
@@ -269,15 +238,13 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setUuid(String newUuid) {
 		String oldUuid = uuid;
 		uuid = newUuid;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					MigrationPackage.INSTANCE__UUID, oldUuid, uuid));
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.INSTANCE__UUID, oldUuid, uuid));
 	}
 
 	/**
@@ -1034,7 +1001,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -1042,169 +1008,154 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getSlots())
-					.basicAdd(otherEnd, msgs);
-		case MigrationPackage.INSTANCE__TYPE:
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			return basicSetType((Type) otherEnd, msgs);
-		case MigrationPackage.INSTANCE__REFERENCES:
-			return ((InternalEList<InternalEObject>) (InternalEList<?>) getReferences())
-					.basicAdd(otherEnd, msgs);
+			case MigrationPackage.INSTANCE__SLOTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getSlots()).basicAdd(otherEnd, msgs);
+			case MigrationPackage.INSTANCE__TYPE:
+				if (eInternalContainer() != null)
+					msgs = eBasicRemoveFromContainer(msgs);
+				return basicSetType((Type)otherEnd, msgs);
+			case MigrationPackage.INSTANCE__REFERENCES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReferences()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			return ((InternalEList<?>) getSlots()).basicRemove(otherEnd, msgs);
-		case MigrationPackage.INSTANCE__TYPE:
-			return basicSetType(null, msgs);
-		case MigrationPackage.INSTANCE__REFERENCES:
-			return ((InternalEList<?>) getReferences()).basicRemove(otherEnd,
-					msgs);
+			case MigrationPackage.INSTANCE__SLOTS:
+				return ((InternalEList<?>)getSlots()).basicRemove(otherEnd, msgs);
+			case MigrationPackage.INSTANCE__TYPE:
+				return basicSetType(null, msgs);
+			case MigrationPackage.INSTANCE__REFERENCES:
+				return ((InternalEList<?>)getReferences()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(
 			NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-		case MigrationPackage.INSTANCE__TYPE:
-			return eInternalContainer().eInverseRemove(this,
-					MigrationPackage.TYPE__INSTANCES, Type.class, msgs);
+			case MigrationPackage.INSTANCE__TYPE:
+				return eInternalContainer().eInverseRemove(this, MigrationPackage.TYPE__INSTANCES, Type.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			return getSlots();
-		case MigrationPackage.INSTANCE__TYPE:
-			return getType();
-		case MigrationPackage.INSTANCE__REFERENCES:
-			return getReferences();
-		case MigrationPackage.INSTANCE__URI:
-			return getUri();
-		case MigrationPackage.INSTANCE__UUID:
-			return getUuid();
+			case MigrationPackage.INSTANCE__SLOTS:
+				return getSlots();
+			case MigrationPackage.INSTANCE__TYPE:
+				return getType();
+			case MigrationPackage.INSTANCE__REFERENCES:
+				return getReferences();
+			case MigrationPackage.INSTANCE__URI:
+				return getUri();
+			case MigrationPackage.INSTANCE__UUID:
+				return getUuid();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			getSlots().clear();
-			getSlots().addAll((Collection<? extends Slot>) newValue);
-			return;
-		case MigrationPackage.INSTANCE__TYPE:
-			setType((Type) newValue);
-			return;
-		case MigrationPackage.INSTANCE__REFERENCES:
-			getReferences().clear();
-			getReferences().addAll(
-					(Collection<? extends ReferenceSlot>) newValue);
-			return;
-		case MigrationPackage.INSTANCE__URI:
-			setUri((URI) newValue);
-			return;
-		case MigrationPackage.INSTANCE__UUID:
-			setUuid((String) newValue);
-			return;
+			case MigrationPackage.INSTANCE__SLOTS:
+				getSlots().clear();
+				getSlots().addAll((Collection<? extends Slot>)newValue);
+				return;
+			case MigrationPackage.INSTANCE__TYPE:
+				setType((Type)newValue);
+				return;
+			case MigrationPackage.INSTANCE__REFERENCES:
+				getReferences().clear();
+				getReferences().addAll((Collection<? extends ReferenceSlot>)newValue);
+				return;
+			case MigrationPackage.INSTANCE__URI:
+				setUri((URI)newValue);
+				return;
+			case MigrationPackage.INSTANCE__UUID:
+				setUuid((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			getSlots().clear();
-			return;
-		case MigrationPackage.INSTANCE__TYPE:
-			setType((Type) null);
-			return;
-		case MigrationPackage.INSTANCE__REFERENCES:
-			getReferences().clear();
-			return;
-		case MigrationPackage.INSTANCE__URI:
-			setUri(URI_EDEFAULT);
-			return;
-		case MigrationPackage.INSTANCE__UUID:
-			setUuid(UUID_EDEFAULT);
-			return;
+			case MigrationPackage.INSTANCE__SLOTS:
+				getSlots().clear();
+				return;
+			case MigrationPackage.INSTANCE__TYPE:
+				setType((Type)null);
+				return;
+			case MigrationPackage.INSTANCE__REFERENCES:
+				getReferences().clear();
+				return;
+			case MigrationPackage.INSTANCE__URI:
+				setUri(URI_EDEFAULT);
+				return;
+			case MigrationPackage.INSTANCE__UUID:
+				setUuid(UUID_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case MigrationPackage.INSTANCE__SLOTS:
-			return slots != null && !slots.isEmpty();
-		case MigrationPackage.INSTANCE__TYPE:
-			return getType() != null;
-		case MigrationPackage.INSTANCE__REFERENCES:
-			return references != null && !references.isEmpty();
-		case MigrationPackage.INSTANCE__URI:
-			return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT
-					.equals(uri);
-		case MigrationPackage.INSTANCE__UUID:
-			return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT
-					.equals(uuid);
+			case MigrationPackage.INSTANCE__SLOTS:
+				return slots != null && !slots.isEmpty();
+			case MigrationPackage.INSTANCE__TYPE:
+				return getType() != null;
+			case MigrationPackage.INSTANCE__REFERENCES:
+				return references != null && !references.isEmpty();
+			case MigrationPackage.INSTANCE__URI:
+				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+			case MigrationPackage.INSTANCE__UUID:
+				return UUID_EDEFAULT == null ? uuid != null : !UUID_EDEFAULT.equals(uuid);
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
-			return super.toString();
+		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (uri: ");

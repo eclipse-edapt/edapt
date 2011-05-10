@@ -4058,5 +4058,34 @@
         referenceValue="model.ecore#//ModelResource" oldReferenceValue="model.ecore#//Instance"/>
     <changes xsi:type="history:Set" element="model.ecore#//AttributeSlot/values" featureName="unique"
         dataValue="false" oldDataValue="true"/>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="model.ecore#//AbstractResource" referenceName="eStructuralFeatures"
+          element="model.ecore#//AbstractResource/encoding">
+        <changes xsi:type="history:Set" element="model.ecore#//AbstractResource/encoding"
+            featureName="name" dataValue="encoding"/>
+        <changes xsi:type="history:Set" element="model.ecore#//AbstractResource/encoding"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="model.ecore#//AbstractResource"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>encoding</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue xsi:nil="true"/>
+        </parameters>
+      </operation>
+    </changes>
   </releases>
 </history:History>

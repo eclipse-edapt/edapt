@@ -564,6 +564,15 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAbstractResource_Encoding() {
+		return (EAttribute)abstractResourceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getMetamodelResource() {
 		return metamodelResourceEClass;
 	}
@@ -708,6 +717,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		abstractResourceEClass = createEClass(ABSTRACT_RESOURCE);
 		createEAttribute(abstractResourceEClass, ABSTRACT_RESOURCE__URI);
+		createEAttribute(abstractResourceEClass, ABSTRACT_RESOURCE__ENCODING);
 
 		// Create data types
 		setEDataType = createEDataType(SET);
@@ -1033,6 +1043,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 
 		initEClass(abstractResourceEClass, AbstractResource.class, "AbstractResource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAbstractResource_Uri(), this.getURI(), "uri", null, 1, 1, AbstractResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAbstractResource_Encoding(), ecorePackage.getEString(), "encoding", null, 0, 1, AbstractResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize data types
 		initEDataType(setEDataType, Set.class, "Set", !IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);

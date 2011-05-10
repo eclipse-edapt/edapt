@@ -35,7 +35,7 @@ import org.eclipse.emf.edapt.common.TwoWayIdentityHashMap;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 664151E7974D86980BA91AB394BD4B6E
+ * @levd.rating YELLOW Hash: 505F0D3E0BF01E7B21A8F8CAE80B57F6
  */
 public class BackwardConverter {
 
@@ -72,6 +72,9 @@ public class BackwardConverter {
 			}
 			if (resource instanceof XMLResource) {
 				XMLResource xmlResource = (XMLResource) resource;
+				if (modelResource.getEncoding() != null) {
+					xmlResource.setEncoding(modelResource.getEncoding());
+				}
 				for (Iterator<EObject> i = resource.getAllContents(); i
 						.hasNext();) {
 					EObject eObject = i.next();

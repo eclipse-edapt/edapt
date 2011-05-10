@@ -249,13 +249,22 @@ public interface MigrationPackage extends EPackage {
 	int ABSTRACT_RESOURCE__URI = 0;
 
 	/**
+	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_RESOURCE__ENCODING = 1;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_RESOURCE_FEATURE_COUNT = 1;
+	int ABSTRACT_RESOURCE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.impl.ModelResourceImpl <em>Model Resource</em>}' class.
@@ -275,6 +284,15 @@ public interface MigrationPackage extends EPackage {
 	 * @ordered
 	 */
 	int MODEL_RESOURCE__URI = ABSTRACT_RESOURCE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_RESOURCE__ENCODING = ABSTRACT_RESOURCE__ENCODING;
 
 	/**
 	 * The feature id for the '<em><b>Root Instances</b></em>' reference list.
@@ -537,6 +555,15 @@ public interface MigrationPackage extends EPackage {
 	 * @ordered
 	 */
 	int METAMODEL_RESOURCE__URI = ABSTRACT_RESOURCE__URI;
+
+	/**
+	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int METAMODEL_RESOURCE__ENCODING = ABSTRACT_RESOURCE__ENCODING;
 
 	/**
 	 * The feature id for the '<em><b>Root Packages</b></em>' reference list.
@@ -1006,6 +1033,17 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getAbstractResource_Uri();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.AbstractResource#getEncoding <em>Encoding</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Encoding</em>'.
+	 * @see org.eclipse.emf.edapt.migration.AbstractResource#getEncoding()
+	 * @see #getAbstractResource()
+	 * @generated
+	 */
+	EAttribute getAbstractResource_Encoding();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.MetamodelResource <em>Metamodel Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1421,6 +1459,14 @@ public interface MigrationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ABSTRACT_RESOURCE__URI = eINSTANCE.getAbstractResource_Uri();
+
+		/**
+		 * The meta object literal for the '<em><b>Encoding</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ABSTRACT_RESOURCE__ENCODING = eINSTANCE.getAbstractResource_Encoding();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.impl.MetamodelResourceImpl <em>Metamodel Resource</em>}' class.
