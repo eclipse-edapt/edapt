@@ -18,6 +18,7 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -149,7 +150,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 			enable();
 			started = true;
 			loadRepository();
-		} else if(isEnabled()) {
+		} else if (isEnabled()) {
 			checkConformanceIfMoreThan(ValidationLevel.RELEASE);
 		}
 	}
@@ -367,7 +368,14 @@ public class MigrationReconstructor extends ReconstructorBase {
 						(EReference) resolve(element),
 						(EReference) resolve((EObject) value));
 			} else if (feature instanceof EReference) {
-				set(resolve(element), feature, resolve((EObject) value));
+				EObject resolve = resolve((EObject) value);
+				if(resolve instanceof EClass) {
+					if("EGenericType".equals(((EClass) resolve).getName())) {
+						System.out.println();
+						resolve((EObject) value);
+					}
+				}
+				set(resolve(element), feature, resolve);
 			} else {
 				set(resolve(element), feature, value);
 			}
@@ -427,8 +435,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 		/** {@inheritDoc} */
 		@Override
 		public Object caseMove(Move move) {
-			move(resolve(move.getElement()), resolve(move.getTarget()), move
-					.getReference());
+			move(resolve(move.getElement()), resolve(move.getTarget()),
+					move.getReference());
 
 			return move;
 		}
@@ -491,6 +499,9 @@ public class MigrationReconstructor extends ReconstructorBase {
 		/** Find an element in the metamodel created for migration. */
 		@SuppressWarnings("unchecked")
 		private EObject find(EObject sourceElement) {
+			if(sourceElement == EcorePackage.eINSTANCE) {
+				return sourceElement;
+			}
 			EObject sourceParent = sourceElement.eContainer();
 			if (sourceParent == null) {
 				EPackage sourcePackage = (EPackage) sourceElement;
@@ -504,6 +515,9 @@ public class MigrationReconstructor extends ReconstructorBase {
 				return sourcePackage;
 			}
 			EObject targetParent = find(sourceParent);
+			if(targetParent == sourceParent) {
+				return sourceElement;
+			}
 			EReference reference = sourceElement.eContainmentFeature();
 			if (reference.isMany()) {
 				List<EObject> targetChildren = (List<EObject>) targetParent

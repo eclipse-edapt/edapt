@@ -1,10 +1,12 @@
 package org.eclipse.emf.edapt.migration.execution;
 
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.BACKUP;
 import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.HISTORY;
 import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.LIBRARY;
 import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.OPERATION;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.RELEASE;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VALIDATION;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +33,16 @@ public class MigratorCommandLine {
 	private URI historyURI = null;
 
 	/** The source release number. */
-	private int releaseNumber = -1;
+	private int sourceReleaseNumber = -1;
+
+	/** The target release number. */
+	private int targetReleaseNumber = -1;
 
 	/** The validation level. */
 	private ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
+
+	/** Whether a backup should be created before migration. */
+	private boolean backup = false;
 
 	/** The implementations of the operations. */
 	private final List<Class<? extends OperationImplementation>> operations = new ArrayList<Class<? extends OperationImplementation>>();
@@ -44,13 +52,16 @@ public class MigratorCommandLine {
 
 	/** Constructor that sets all the arguments. */
 	public MigratorCommandLine(URI historyURI, List<URI> modelURIs,
-			int releaseNumber, ValidationLevel level,
+			int sourceReleaseNumber, int targetReleaseNumber,
+			ValidationLevel level, boolean backup,
 			List<Class<? extends LibraryImplementation>> libraries,
 			List<Class<? extends OperationImplementation>> operations) {
 		this.historyURI = historyURI;
 		this.modelURIs.addAll(modelURIs);
-		this.releaseNumber = releaseNumber;
+		this.sourceReleaseNumber = sourceReleaseNumber;
+		this.targetReleaseNumber = targetReleaseNumber;
 		this.level = level;
+		this.backup = backup;
 		this.libraries.addAll(libraries);
 		this.operations.addAll(operations);
 	}
@@ -64,6 +75,9 @@ public class MigratorCommandLine {
 		for (String arg : args) {
 			if (arg.startsWith("-")) {
 				option = MigratorCommandLineOption.getOption(arg.charAt(1));
+				if (option == MigratorCommandLineOption.BACKUP) {
+					backup = true;
+				}
 			} else {
 				if (option == null) {
 					URI modelURI = URIUtils.getURI(unquote(arg));
@@ -73,10 +87,13 @@ public class MigratorCommandLine {
 					case HISTORY:
 						historyURI = URIUtils.getURI(unquote(arg));
 						break;
-					case RELEASE:
-						releaseNumber = Integer.parseInt(arg);
+					case SOURCE_RELEASE:
+						sourceReleaseNumber = Integer.parseInt(arg);
 						break;
-					case VALIDATION:
+					case TARGET_RELEASE:
+						targetReleaseNumber = Integer.parseInt(arg);
+						break;
+					case VALIDATION_LEVEL:
 						level = ValidationLevel.valueOf(arg);
 						break;
 					case LIBRARY:
@@ -118,12 +135,22 @@ public class MigratorCommandLine {
 		argument += HISTORY.toOptionPrefix() + historyFilename + " ";
 
 		// release
-		if (releaseNumber != -1) {
-			argument += RELEASE.toOptionPrefix() + releaseNumber + " ";
+		if (sourceReleaseNumber != -1) {
+			argument += SOURCE_RELEASE.toOptionPrefix() + sourceReleaseNumber
+					+ " ";
+		}
+		if (targetReleaseNumber != -1) {
+			argument += TARGET_RELEASE.toOptionPrefix() + targetReleaseNumber
+					+ " ";
 		}
 
 		// validation
-		argument += VALIDATION.toOptionPrefix() + level.toString() + " ";
+		argument += VALIDATION_LEVEL.toOptionPrefix() + level.toString() + " ";
+
+		// backup
+		if (backup) {
+			argument += BACKUP.toOptionPrefix() + " ";
+		}
 
 		// libraries
 		if (!libraries.isEmpty()) {
@@ -155,13 +182,31 @@ public class MigratorCommandLine {
 	}
 
 	/** Get the source release number. */
-	public int getReleaseNumber() {
-		return releaseNumber;
+	public int getSourceReleaseNumber() {
+		return sourceReleaseNumber;
+	}
+
+	/** Get the target release number. */
+	public int getTargetReleaseNumber() {
+		return targetReleaseNumber;
 	}
 
 	/** Get the validation level. */
 	public ValidationLevel getLevel() {
 		return level;
+	}
+
+	/** Check whether a backup should be created before migration. */
+	public boolean isBackup() {
+		return backup;
+	}
+
+	public List<Class<? extends OperationImplementation>> getOperations() {
+		return operations;
+	}
+
+	public List<Class<? extends LibraryImplementation>> getLibraries() {
+		return libraries;
 	}
 
 	/** Unquote a string that starts and ends with a quote. */

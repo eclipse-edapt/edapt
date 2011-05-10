@@ -12,14 +12,15 @@
 package org.eclipse.emf.edapt.migration.execution;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
@@ -27,12 +28,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.declaration.LibraryImplementation;
+import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.history.Delete;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
@@ -153,8 +158,8 @@ public class Migrator {
 		}
 
 		try {
-			monitor.beginTask("Migrate", numberOfSteps(sourceRelease,
-					targetRelease));
+			monitor.beginTask("Migrate",
+					numberOfSteps(sourceRelease, targetRelease));
 
 			performMigration(modelURIs, sourceRelease, targetRelease, monitor);
 
@@ -212,6 +217,22 @@ public class Migrator {
 				: Collections.<Release> emptySet();
 	}
 
+	/** Get the release with a certain number. */
+	public Release getRelease(int number) {
+		if (number < 0 || number >= history.getReleases().size()) {
+			return null;
+		}
+		return history.getReleases().get(number);
+	}
+
+	/** Get all releases. */
+	public List<Release> getReleases() {
+		List<Release> releases = new ArrayList<Release>();
+		releases.addAll(history.getReleases());
+		releases.remove(history.getLastRelease());
+		return releases;
+	}
+
 	/** Get set of namespace URIs. */
 	public Set<String> getNsURIs() {
 		return releaseMap.keySet();
@@ -239,23 +260,45 @@ public class Migrator {
 
 		MigratorCommandLine commandLine = new MigratorCommandLine(args);
 		List<URI> modelURIs = commandLine.getModelURIs();
-		int releaseNumber = commandLine.getReleaseNumber();
+		int sourceReleaseNumber = commandLine.getSourceReleaseNumber();
+		int targetReleaseNumber = commandLine.getTargetReleaseNumber();
 
 		try {
+			for (Class<? extends LibraryImplementation> library : commandLine
+					.getLibraries()) {
+				OperationRegistry.getInstance().registerLibrary(library);
+			}
+			for (Class<? extends OperationImplementation> operation : commandLine
+					.getOperations()) {
+				OperationRegistry.getInstance().registerOperation(operation);
+			}
+
 			Migrator migrator = new Migrator(commandLine.getHistoryURI(),
 					new ClassLoaderFacade(Thread.currentThread()
 							.getContextClassLoader()));
 			migrator.setLevel(commandLine.getLevel());
 
 			Set<Release> releases = migrator.getRelease(modelURIs.get(0));
-			Release release = null;
-			if (releaseNumber != -1) {
-				release = HistoryUtils.getRelease(releases, releaseNumber);
+			Release sourceRelease = null;
+			if (sourceReleaseNumber != -1) {
+				sourceRelease = HistoryUtils.getRelease(releases,
+						sourceReleaseNumber);
 			} else {
-				release = releases.iterator().next();
+				sourceRelease = releases.iterator().next();
 			}
 
-			migrator.migrate(modelURIs, release, null,
+			if (commandLine.isBackup()) {
+				Metamodel metamodel = migrator.getMetamodel(sourceRelease);
+				try {
+					BackupUtils.backup(modelURIs, metamodel);
+				} catch (IOException e) {
+					System.err.println(e.getMessage());
+				}
+			}
+
+			Release targetRelease = migrator.getRelease(targetReleaseNumber);
+
+			migrator.migrate(modelURIs, sourceRelease, targetRelease,
 					new PrintStreamProgressMonitor(System.out));
 		} catch (MigrationException e) {
 			System.err.println(e.getMessage());

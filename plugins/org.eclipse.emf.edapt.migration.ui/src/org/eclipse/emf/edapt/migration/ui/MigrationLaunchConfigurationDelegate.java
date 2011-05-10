@@ -1,5 +1,13 @@
 package org.eclipse.emf.edapt.migration.ui;
 
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.BACKUP;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.HISTORY;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.MODELS;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
+import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VM_ARGUMENTS;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -14,6 +22,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.ILaunchConfiguration;
+import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.core.ILaunchesListener2;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.FileUtils;
@@ -41,42 +50,12 @@ import org.eclipse.jdt.launching.JavaLaunchDelegate;
  */
 public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 
-	/** Prefix for launch configuration attributes. */
-	public static final String ID = "org.eclipse.emf.edapt.migration";
-
-	/**
-	 * Key for the launch configuration attribute to specify the path to the
-	 * history file.
-	 */
-	public static final String HISTORY = ID + ".history";
-
-	/**
-	 * Key for the launch configuration attribute to specify the paths for the
-	 * model files.
-	 */
-	public static final String MODELS = ID + ".models";
-
-	/**
-	 * Key for the launch configuration attribute to specify the source release
-	 * of the migration.
-	 */
-	public static final String RELEASE = ID + ".release";
-
-	/**
-	 * Key for the launch configuration attribute to specify the validation
-	 * level of the migration.
-	 */
-	public static final String VALIDATION = ID + ".validation";
-
-	/** Key for the launch configuration attribute to specify JVM arguments. */
-	public static final String ARGUMENTS = ID + ".arguments";
-
 	/** {@inheritDoc} */
 	@Override
 	public boolean preLaunchCheck(ILaunchConfiguration configuration,
 			String mode, IProgressMonitor monitor) throws CoreException {
 
-		String historyFilename = configuration.getAttribute(HISTORY,
+		String historyFilename = configuration.getAttribute(HISTORY.id(),
 				(String) null);
 		if (historyFilename == null) {
 			DialogUtils.openErrorDialogAsync("Error",
@@ -103,7 +82,7 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		List<IFile> modelFiles = getModelFiles(configuration);
 		for (IFile modelFile : modelFiles) {
 			if (!modelFile.exists()) {
-				DialogUtils.openErrorDialogAsync("Error", "History "
+				DialogUtils.openErrorDialogAsync("Error", "Model "
 						+ modelFile.getLocation().toString()
 						+ " does not exist.");
 				return false;
@@ -113,13 +92,29 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		return super.preLaunchCheck(configuration, mode, monitor);
 	}
 
+	/** Get the model files from the launch configuration. */
+	@SuppressWarnings("unchecked")
+	private List<IFile> getModelFiles(ILaunchConfiguration configuration)
+			throws CoreException {
+		List<IFile> files = new ArrayList<IFile>();
+		List<String> modelURIs = configuration.getAttribute(MODELS.id(),
+				Collections.emptyList());
+		for (String modelURI : modelURIs) {
+			IFile file = FileUtils.getFile(modelURI);
+			files.add(file);
+		}
+		return files;
+	}
+
 	/** {@inheritDoc} */
 	@Override
 	public void launch(final ILaunchConfiguration configuration, String mode,
 			final ILaunch launch, final IProgressMonitor monitor)
 			throws CoreException {
-		DebugPlugin.getDefault().getLaunchManager().addLaunchListener(
-				new LaunchTerminationListener(configuration, launch, monitor));
+		ILaunchManager launchManager = DebugPlugin.getDefault()
+				.getLaunchManager();
+		launchManager.addLaunchListener(new LaunchTerminationListener(
+				configuration, launch, monitor));
 		super.launch(configuration, mode, launch, monitor);
 	}
 
@@ -130,60 +125,97 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	}
 
 	/** {@inheritDoc} */
-	@SuppressWarnings("unchecked")
 	@Override
 	public String getProgramArguments(ILaunchConfiguration configuration)
 			throws CoreException {
 
-		List<URI> modelURIs = new ArrayList<URI>();
-		List<IFile> modelFiles = getModelFiles(configuration);
-		for (IFile modelFile : modelFiles) {
-			modelURIs.add(URIUtils.getURI(modelFile.getLocation().toString()));
-		}
-
-		String historyFilename = configuration.getAttribute(HISTORY, "");
-		IFile file = FileUtils.getFile(historyFilename);
-		URI historyURI = URIUtils.getURI(file.getLocation().toString());
-
-		int releaseNumber = configuration.getAttribute(RELEASE, -1);
-		ValidationLevel level = ValidationLevel.valueOf(configuration
-				.getAttribute(VALIDATION, ValidationLevel.CUSTOM_MIGRATION
-						.toString()));
-
-		OperationRegistry registry = OperationRegistry.getInstance();
-		List<Class<? extends LibraryImplementation>> libraries = new ArrayList<Class<? extends LibraryImplementation>>();
-		for (Library library : registry.getRootLibraries()) {
-			libraries.add(library.getImplementation());
-		}
-
-		List<Class<? extends OperationImplementation>> operations = new ArrayList<Class<? extends OperationImplementation>>();
-		for (Operation operation : registry.getRootOperations()) {
-			operations.add(operation.getImplementation());
-		}
+		List<URI> modelURIs = getModelURIs(configuration);
+		URI historyURI = getHistoryURI(configuration);
+		int sourceReleaseNumber = getSourceReleaseNumber(configuration);
+		int targetReleaseNumber = getTargetReleaseNumber(configuration);
+		ValidationLevel level = getValidationLevel(configuration);
+		boolean backup = isBackup(configuration);
+		List<Class<? extends LibraryImplementation>> libraries = getLibraries();
+		List<Class<? extends OperationImplementation>> operations = getOperations();
 
 		MigratorCommandLine commandLine = new MigratorCommandLine(historyURI,
-				modelURIs, releaseNumber, level, libraries, operations);
+				modelURIs, sourceReleaseNumber, targetReleaseNumber, level,
+				backup, libraries, operations);
 		String argument = commandLine.getCommandLine();
 
 		// VM arguments
-		String vmArguments = configuration.getAttribute(ARGUMENTS, "");
+		String vmArguments = configuration.getAttribute(VM_ARGUMENTS.id(), "");
 		argument += " " + vmArguments;
 
 		return argument;
 	}
 
-	/** Get the model files from the launch configuration. */
-	@SuppressWarnings("unchecked")
-	private List<IFile> getModelFiles(ILaunchConfiguration configuration)
+	/** Gets the list of model URIs from the launch configuration. */
+	private List<URI> getModelURIs(ILaunchConfiguration configuration)
 			throws CoreException {
-		List<IFile> files = new ArrayList<IFile>();
-		List<String> modelURIs = configuration.getAttribute(MODELS, Collections
-				.emptyList());
-		for (String modelURI : modelURIs) {
-			IFile file = FileUtils.getFile(modelURI);
-			files.add(file);
+		List<URI> modelURIs = new ArrayList<URI>();
+		List<IFile> modelFiles = getModelFiles(configuration);
+		for (IFile modelFile : modelFiles) {
+			modelURIs.add(URIUtils.getURI(modelFile.getLocation().toString()));
 		}
-		return files;
+		return modelURIs;
+	}
+
+	/** Gets the URI of the history model from the launch configuration. */
+	private URI getHistoryURI(ILaunchConfiguration configuration)
+			throws CoreException {
+		String historyFilename = configuration.getAttribute(HISTORY.id(), "");
+		IFile file = FileUtils.getFile(historyFilename);
+		URI historyURI = URIUtils.getURI(file.getLocation().toString());
+		return historyURI;
+	}
+
+	/** Gets the source release number from the launch configuration. */
+	private int getSourceReleaseNumber(ILaunchConfiguration configuration)
+			throws CoreException {
+		return configuration.getAttribute(SOURCE_RELEASE.id(), -1);
+	}
+
+	/** Gets the target release number from the launch configuration. */
+	private int getTargetReleaseNumber(ILaunchConfiguration configuration)
+			throws CoreException {
+		return configuration.getAttribute(TARGET_RELEASE.id(), -1);
+	}
+
+	/** Gets the validation level from the launch configuration. */
+	private ValidationLevel getValidationLevel(
+			ILaunchConfiguration configuration) throws CoreException {
+		return ValidationLevel.valueOf(configuration.getAttribute(
+				VALIDATION_LEVEL.id(),
+				ValidationLevel.CUSTOM_MIGRATION.toString()));
+	}
+
+	/** Gets the desire for backup from the launch configuration. */
+	private boolean isBackup(ILaunchConfiguration configuration)
+			throws CoreException {
+		return configuration.getAttribute(BACKUP.id(), false);
+	}
+
+	/** Gets the currently registered library implementations. */
+	@SuppressWarnings("unchecked")
+	private List<Class<? extends LibraryImplementation>> getLibraries() {
+		OperationRegistry registry = OperationRegistry.getInstance();
+		List<Class<? extends LibraryImplementation>> libraries = new ArrayList<Class<? extends LibraryImplementation>>();
+		for (Library library : registry.getRootLibraries()) {
+			libraries.add(library.getImplementation());
+		}
+		return libraries;
+	}
+
+	/** Gets the currently registered operation implementations. */
+	@SuppressWarnings("unchecked")
+	private List<Class<? extends OperationImplementation>> getOperations() {
+		OperationRegistry registry = OperationRegistry.getInstance();
+		List<Class<? extends OperationImplementation>> operations = new ArrayList<Class<? extends OperationImplementation>>();
+		for (Operation operation : registry.getRootOperations()) {
+			operations.add(operation.getImplementation());
+		}
+		return operations;
 	}
 
 	/**
@@ -246,8 +278,8 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 
 		/** Refresh the migrated models when the migration is terminated. */
 		private void refreshModels() {
-			DebugPlugin.getDefault().getLaunchManager().removeLaunchListener(
-					this);
+			DebugPlugin.getDefault().getLaunchManager()
+					.removeLaunchListener(this);
 			IWorkspaceRunnable operation = new IWorkspaceRunnable() {
 				public void run(IProgressMonitor monitor) throws CoreException {
 					try {
