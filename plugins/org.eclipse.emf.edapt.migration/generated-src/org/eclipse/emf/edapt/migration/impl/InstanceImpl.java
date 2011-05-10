@@ -776,7 +776,9 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	public void remove(EStructuralFeature feature, Object value) {
 		SlotImpl slot = (SlotImpl) this.getSlot(feature);
 		int index = slot != null ? slot.getValues().indexOf(value) : 0;
-		this.remove(feature, index);
+		if (index >= 0) {
+			this.remove(feature, index);
+		}
 	}
 
 	/**
