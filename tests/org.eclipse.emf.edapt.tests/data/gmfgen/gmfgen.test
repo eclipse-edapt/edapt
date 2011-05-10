@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/migration/test/0.3" name="GMF Generator Metamodel" history="gmfgen.history">
   <cases name="GMF Generator Model" model="gmfgen_r0.xmi" expectedModel="gmfgen_r1.xmi" expectedDifferences="5"/>
+  <cases name="Test Model for GMFGen CR 228913" model="228913-copier.gmfgen" expectedModel="228913-copier_2.gmfgen" expectedDifferences="5"/>
+  <cases name="Test Model for GMFGen CR 138440" model="patch_138440.gmfgen" expectedModel="patch_138440_2.gmfgen" expectedDifferences="2"/>
+  <cases name="Test Model for GMFGen CR 161380" model="patch_161380.gmfgen" expectedModel="patch_161380_2.gmfgen" expectedDifferences="8"/>
+  <cases name="Test Model for GMFGen CR 226149" model="test226149.gmfgen" expectedModel="test226149_2.gmfgen" expectedDifferences="4"/>
+  <cases name="Test Model for GMFGen FeatureLabelModelFacet" model="testFeatureLabelModelFacet.gmfgen" expectedModel="testFeatureLabelModelFacet_2.gmfgen" expectedDifferences="8"/>
+  <cases name="Test Model for GMFGen GenAuditRootDefaultAndNested" model="testGenAuditRootDefaultAndNested.gmfgen" expectedModel="testGenAuditRootDefaultAndNested_2.gmfgen"/>
+  <cases name="Test Model for GMFGen GenAuditRootNoDefaultButNested" model="testGenAuditRootNoDefaultButNested.gmfgen" expectedModel="testGenAuditRootNoDefaultButNested_2.gmfgen" expectedDifferences="7"/>
+  <cases name="Test Model for GMFGen GenAudits" model="testGenAudits.gmfgen" expectedModel="testGenAudits_2.gmfgen" expectedDifferences="28"/>
+  <cases name="Test Model for GMFGen GenAuditsCorrectCategories" model="testGenAuditsCorrectCategories.gmfgen" expectedModel="testGenAuditsCorrectCategories_2.gmfgen"/>
+  <cases name="Test Model for GMFGen GenDiagram" model="testGenDiagram.gmfgen" expectedModel="testGenDiagram_2.gmfgen"/>
+  <cases name="Test Model for GMFGen GenEditorAuditRootNoDefaultButNested" model="testGenEditorAuditRootNoDefaultButNested.gmfgen" expectedModel="testGenEditorAuditRootNoDefaultButNested_2.gmfgen" expectedDifferences="6"/>
+  <cases name="Test Model for GMFGen RequiredPluginsMoved" model="testRequiredPluginsMoved.gmfgen" expectedModel="testRequiredPluginsMoved_2.gmfgen" expectedDifferences="2"/>
 </test:TestSuiteDefinition>

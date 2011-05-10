@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmfgen:GenEditorGenerator xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gmfgen="http://www.eclipse.org/gmf/2006/GenModel">
+  <audits>
+    <categories
+        id="container1"
+        name="Container 1"
+        path="//@audits/@categories.0"
+        audits="//@audits/@rules.0 //@audits/@rules.1 //@audits/@rules.2"/>
+    <rules
+        name="Rule 1"
+        description=""
+        contextSelectorLocalClassName="SaveMe1"
+        id="rule1"
+        category="//@audits/@categories.0">
+      <rule
+          body="a.*"
+          language="regexp"/>
+      <target
+          xsi:type="gmfgen:GenDomainAttributeTarget">
+        <attribute
+            href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore/ENamedElement/name"/>
+      </target>
+    </rules>
+    <rules
+        name="Rule 2"
+        contextSelectorLocalClassName="SaveMe2"
+        id="rule2"
+        category="//@audits/@categories.0">
+      <rule
+          body="b.*"
+          language="regexp"/>
+      <target
+          xsi:type="gmfgen:GenDomainAttributeTarget">
+        <attribute
+            href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore/ENamedElement/name"/>
+      </target>
+    </rules>
+    <rules
+        name="Rule 3"
+        contextSelectorLocalClassName="SaveMe1"
+        id="rule3"
+        category="//@audits/@categories.0">
+      <rule
+          body="c.*"
+          language="regexp"/>
+      <target
+          xsi:type="gmfgen:GenDomainAttributeTarget">
+        <attribute
+            href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore/ENamedElement/name"/>
+      </target>
+    </rules>
+  </audits>
+  <domainGenModel
+      href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#/"/>
+</gmfgen:GenEditorGenerator>
