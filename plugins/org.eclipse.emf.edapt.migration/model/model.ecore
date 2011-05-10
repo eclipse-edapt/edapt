@@ -33,11 +33,23 @@
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
+    <eOperations name="getAllInstances" upperBound="-1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get all instances of a class, including all sub classes"/>
+      </eAnnotations>
+      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="getInstances" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get all instances of a class, excluding sub classes"/>
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="getInstances" upperBound="-1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get all instances of a class, excluding sub classes"/>
+      </eAnnotations>
+      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getType" eType="#//Type">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -62,6 +74,12 @@
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
+    <eOperations name="newInstance" lowerBound="1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Create a new instance of a certain class"/>
+      </eAnnotations>
+      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="delete">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Delete an instance from the model, including all the contained instances"/>
@@ -83,27 +101,9 @@
         <details key="documentation" value="Commit the changes to the repository, i.e. check conformance and consistency"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="getAllInstances" upperBound="-1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get all instances of a class, including all sub classes"/>
-      </eAnnotations>
-      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getInstances" upperBound="-1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get all instances of a class, excluding sub classes"/>
-      </eAnnotations>
-      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="newInstance" lowerBound="1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Create a new instance of a certain class"/>
-      </eAnnotations>
-      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
     <eOperations name="newResource" lowerBound="1" eType="#//ModelResource">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Create a new instance of a certain class"/>
+        <details key="documentation" value="Create a new model resource"/>
       </eAnnotations>
       <eParameters name="uri" lowerBound="1" eType="#//URI"/>
     </eOperations>
@@ -185,13 +185,21 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="An instance of a class"/>
     </eAnnotations>
+    <eOperations name="getSlot" eType="#//Slot">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the slot that conforms to the feature"/>
+      </eAnnotations>
+      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+    </eOperations>
     <eOperations name="get">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the value of the feature"/>
       </eAnnotations>
       <eGenericType eTypeParameter="#//Instance/get/V"/>
       <eTypeParameters name="V"/>
-      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel"/>
+      </eParameters>
     </eOperations>
     <eOperations name="get">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -203,20 +211,26 @@
     </eOperations>
     <eOperations name="getInverse" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the inverse value of the reference"/>
+        <details key="documentation" value="Get the instances that refer to this instance through a reference"/>
       </eAnnotations>
       <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     </eOperations>
-    <eOperations name="getSlot" eType="#//Slot">
+    <eOperations name="getInverse" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the slot that conforms to the feature"/>
+        <details key="documentation" value="Get the instances which refer to this instance through a reference (given by its name)"/>
       </eAnnotations>
-      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
+      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getEClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the class to which the instance conforms"/>
       </eAnnotations>
+    </eOperations>
+    <eOperations name="isSet" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Check whether the value of a feature is set"/>
+      </eAnnotations>
+      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     </eOperations>
     <eOperations name="set">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -231,12 +245,6 @@
       </eAnnotations>
       <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-    </eOperations>
-    <eOperations name="isSet" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Check whether the value of a feature is set"/>
-      </eAnnotations>
-      <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
     </eOperations>
     <eOperations name="unset">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -261,6 +269,21 @@
       <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
       <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
     </eOperations>
+    <eOperations name="add">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Add an element to the value of a feature which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
+    <eOperations name="add">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Add an element at a certain position to the value of a feature which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
     <eOperations name="remove">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Remove an element from the value of the feature"/>
@@ -275,11 +298,24 @@
       <eParameters name="feature" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EStructuralFeature"/>
       <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
+    <eOperations name="remove">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Remove an element from the value of a feature which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+    </eOperations>
     <eOperations name="migrate">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Change the type of instance to a different class"/>
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </eOperations>
+    <eOperations name="migrate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Change the type of instance to a different class which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="instanceOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -287,34 +323,21 @@
       </eAnnotations>
       <eParameters name="eClass" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
+    <eOperations name="instanceOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Check whether the instance is of a certain type (or its sub types)"/>
+      </eAnnotations>
+      <eParameters name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eOperations name="getContainer" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the elements by which the instance is contained"/>
+        <details key="documentation" value="Get the element by which the instance is contained"/>
       </eAnnotations>
     </eOperations>
     <eOperations name="getContents" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the elements which are contained by the instance"/>
       </eAnnotations>
-    </eOperations>
-    <eOperations name="validate" lowerBound="1">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Validate the elements rooted at the instance"/>
-      </eAnnotations>
-    </eOperations>
-    <eOperations name="validate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Validate the elements rooted at the instance (added all the violations to a diagnostic)"/>
-      </eAnnotations>
-      <eParameters name="chain" eType="#//DiagnosticChain"/>
-    </eOperations>
-    <eOperations name="evaluate" eExceptions="#//MigrationException">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Evaluate an OCL constraint with the instance as context"/>
-      </eAnnotations>
-      <eGenericType eTypeParameter="#//Instance/evaluate/V"/>
-      <eTypeParameters name="V"/>
-      <eParameters name="expression" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getContainerReference" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -331,74 +354,53 @@
         <details key="documentation" value="Find out whether the instance is a proxy, i.e. has its URI set"/>
       </eAnnotations>
     </eOperations>
-    <eOperations name="migrate">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Change the type of instance to a different class"/>
-      </eAnnotations>
-      <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getInverse" upperBound="-1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the inverse value of the reference"/>
-      </eAnnotations>
-      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getLink" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the value of the feature which is given by its name"/>
-      </eAnnotations>
-      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="getLinks" upperBound="-1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the value of the feature which is given by its name"/>
-      </eAnnotations>
-      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="instanceOf" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Check whether the instance is of a certain type (or its sub types)"/>
-      </eAnnotations>
-      <eParameters name="className" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    </eOperations>
-    <eOperations name="add">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Add an element to the value of the feature"/>
-      </eAnnotations>
-      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-    </eOperations>
-    <eOperations name="remove">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Remove an element from the value of the feature"/>
-      </eAnnotations>
-      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-    </eOperations>
-    <eOperations name="add">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Add an element at a certain position to the value of the feature"/>
-      </eAnnotations>
-      <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="index" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-      <eParameters name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
-    </eOperations>
-    <eOperations name="getLink" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the value of the feature which is given by its name"/>
-      </eAnnotations>
-      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-    </eOperations>
-    <eOperations name="getLinks" upperBound="-1" eType="#//Instance">
-      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the value of the feature which is given by its name"/>
-      </eAnnotations>
-      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
-    </eOperations>
     <eOperations name="copy" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the value of the feature which is given by its name"/>
+        <details key="documentation" value="Copy this instance, including its contents"/>
       </eAnnotations>
+    </eOperations>
+    <eOperations name="getLink" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the value of a single-valued reference which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getLinks" upperBound="-1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the value of a multi-valued reference which is given by its name"/>
+      </eAnnotations>
+      <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
+    <eOperations name="getLink" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the value of a single-valued reference"/>
+      </eAnnotations>
+      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </eOperations>
+    <eOperations name="getLinks" upperBound="-1" eType="#//Instance">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Get the values of a multi-valued reference"/>
+      </eAnnotations>
+      <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
+    </eOperations>
+    <eOperations name="validate" lowerBound="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Validate the elements rooted at the instance"/>
+      </eAnnotations>
+    </eOperations>
+    <eOperations name="validate" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Validate the elements rooted at the instance and add all the violations to a diagnostic"/>
+      </eAnnotations>
+      <eParameters name="chain" eType="#//DiagnosticChain"/>
+    </eOperations>
+    <eOperations name="evaluate" eExceptions="#//MigrationException">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Evaluate an OCL constraint with the instance as context"/>
+      </eAnnotations>
+      <eGenericType eTypeParameter="#//Instance/evaluate/V"/>
+      <eTypeParameters name="V"/>
+      <eParameters name="expression" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="slots" upperBound="-1"
         eType="#//Slot" containment="true" eOpposite="#//Slot/instance">
@@ -549,31 +551,31 @@
     </eOperations>
     <eOperations name="setDefaultPackage">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Resolve an attribute of the metamodel by its fully qualified name"/>
+        <details key="documentation" value="Set the package used as default to resolve metamodel elements"/>
       </eAnnotations>
       <eParameters name="packageName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getEEnum" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnum">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Resolve a data type of the metamodel by its fully qualified name"/>
+        <details key="documentation" value="Resolve an enumeration of the metamodel by its fully qualified name"/>
       </eAnnotations>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getEEnumLiteral" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EEnumLiteral">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Resolve a data type of the metamodel by its fully qualified name"/>
+        <details key="documentation" value="Resolve an enumeration literal of the metamodel by its fully qualified name"/>
       </eAnnotations>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="delete">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Delete an instance from the model, including all the contained instances"/>
+        <details key="documentation" value="Delete an element from the metamodel"/>
       </eAnnotations>
       <eParameters name="metamodelElement" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EModelElement"/>
     </eOperations>
     <eOperations name="getInverse" upperBound="-1">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the inverse value of the reference"/>
+        <details key="documentation" value="Get the metamodel elements that refer to a certain metamodel elements through a reference"/>
       </eAnnotations>
       <eGenericType eTypeParameter="#//Metamodel/getInverse/V"/>
       <eTypeParameters name="V"/>
@@ -582,13 +584,13 @@
     </eOperations>
     <eOperations name="getESubTypes" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the inverse value of the reference"/>
+        <details key="documentation" value="Get all direct sub types of a class"/>
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>
     <eOperations name="getEAllSubTypes" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-        <details key="documentation" value="Get the inverse value of the reference"/>
+        <details key="documentation" value="Get all direct and indirect sub types of a class"/>
       </eAnnotations>
       <eParameters name="eClass" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
     </eOperations>

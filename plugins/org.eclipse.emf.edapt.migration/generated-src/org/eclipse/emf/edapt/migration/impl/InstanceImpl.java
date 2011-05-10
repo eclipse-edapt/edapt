@@ -334,7 +334,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 			}
 		} else {
 			if (newValue instanceof List<?>) {
-				throw new RuntimeException(
+				throw new IllegalArgumentException(
 						"Single value expected, but list found");
 			}
 			Object oldValue = this.get(feature);
@@ -457,7 +457,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 		Metamodel metamodel = getType().getModel().getMetamodel();
 		EClass eClass = metamodel.getEClass(className);
 		if (eClass == null) {
-			throw new RuntimeException("Class " + className + " not found.");
+			throw new IllegalArgumentException("Class " + className + " not found.");
 		}
 		return eClass;
 	}
@@ -476,7 +476,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 		EReference reference = getType().getModel().getMetamodel()
 				.getEReference(referenceName);
 		if (reference == null) {
-			throw new RuntimeException("Reference " + referenceName + " not found.");
+			throw new IllegalArgumentException("Reference " + referenceName + " not found.");
 		}
 		return reference;
 	}
@@ -868,7 +868,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
 				featureName);
 		if (feature == null) {
-			throw new RuntimeException("Feature " + featureName + " not found.");
+			throw new IllegalArgumentException("Feature " + featureName + " not found.");
 		}
 		return feature;
 	}

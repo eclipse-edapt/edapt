@@ -4089,5 +4089,304 @@
     </changes>
     <changes xsi:type="history:Set" element="model.ecore#//Instance/getInverse" featureName="upperBound"
         dataValue="-1" oldDataValue="1"/>
+    <changes xsi:type="history:Create" target="model.ecore#//Instance/get/feature"
+        referenceName="eAnnotations" element="model.ecore#//Instance/get/feature/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/get/feature/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the instances that refer to this instance through a reference"
+          oldDataValue="Get the inverse value of the reference"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the instances that refer to this instance through a reference</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getInverse"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the element by which the instance is contained"
+          oldDataValue="Get the elements by which the instance is contained"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the element by which the instance is contained</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getContainer"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/validate.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Validate the elements rooted at the instance and add all the violations to a diagnostic"
+          oldDataValue="Validate the elements rooted at the instance (added all the violations to a diagnostic)"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Validate the elements rooted at the instance and add all the violations to a diagnostic</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/validate.1"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/migrate.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Change the type of instance to a different class which is given by its name"
+          oldDataValue="Change the type of instance to a different class"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Change the type of instance to a different class which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/migrate.1"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getInverse.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the instances which refer to this instance through a reference (given by its name)"
+          oldDataValue="Get the inverse value of the reference"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the instances which refer to this instance through a reference (given by its name)</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getInverse.1"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of a single-valued reference which is given by its name"
+          oldDataValue="Get the value of the feature which is given by its name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the value of a single-valued reference which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getLink"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of a multi-valued reference which is given by its name"
+          oldDataValue="Get the value of the feature which is given by its name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the value of a multi-valued reference which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getLinks"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.2/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Add an element to the value of a feature which is given by its name"
+          oldDataValue="Add an element to the value of the feature"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Add an element to the value of a feature which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/add.2"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/remove.2/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Remove an element from the value of a feature which is given by its name"
+          oldDataValue="Remove an element from the value of the feature"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Remove an element from the value of a feature which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/remove.2"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/add.3/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Add an element at a certain position to the value of a feature which is given by its name"
+          oldDataValue="Add an element at a certain position to the value of the feature"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Add an element at a certain position to the value of a feature which is given by its name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/add.3"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLink.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the value of a single-valued reference"
+          oldDataValue="Get the value of the feature which is given by its name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the value of a single-valued reference</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getLink.1"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/getLinks.1/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the values of a multi-valued reference"
+          oldDataValue="Get the value of the feature which is given by its name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the values of a multi-valued reference</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/getLinks.1"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Copy this instance" oldDataValue="Get the value of the feature which is given by its name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Copy this instance</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/copy"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Instance/copy/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Copy this instance, including its contents"
+          oldDataValue="Copy this instance"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Copy this instance, including its contents</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Instance/copy"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/setDefaultPackage/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Set the package used as default to resolve metamodel elements"
+          oldDataValue="Resolve an attribute of the metamodel by its fully qualified name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Set the package used as default to resolve metamodel elements</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/setDefaultPackage"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnum/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Resolve an enumeration of the metamodel by its fully qualified name"
+          oldDataValue="Resolve a data type of the metamodel by its fully qualified name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Resolve an enumeration of the metamodel by its fully qualified name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getEEnum"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEEnumLiteral/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Resolve an enumeration literal of the metamodel by its fully qualified name"
+          oldDataValue="Resolve a data type of the metamodel by its fully qualified name"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Resolve an enumeration literal of the metamodel by its fully qualified name</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getEEnumLiteral"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/delete/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Delete an element from the metamodel" oldDataValue="Delete an instance from the model, including all the contained instances"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Delete an element from the metamodel</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/delete"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getInverse/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the metamodel elements that refer to a certain metamodel elements through a reference"
+          oldDataValue="Get the inverse value of the reference"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the metamodel elements that refer to a certain metamodel elements through a reference</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getInverse"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get the sub types of a class" oldDataValue="Get the inverse value of the reference"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get the sub types of a class</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getESubTypes"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getEAllSubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get all direct and indirect sub types of a class"
+          oldDataValue="Get the inverse value of the reference"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get all direct and indirect sub types of a class</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getEAllSubTypes"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Metamodel/getESubTypes/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Get all direct sub types of a class" oldDataValue="Get the sub types of a class"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Get all direct sub types of a class</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Metamodel/getESubTypes"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="model.ecore#//Model/newResource/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Create a new model resource" oldDataValue="Create a new instance of a certain class"/>
+      <operation name="document">
+        <parameters name="documentation">
+          <dataValue>Create a new model resource</dataValue>
+        </parameters>
+        <parameters name="element">
+          <referenceValue element="model.ecore#//Model/newResource"/>
+        </parameters>
+      </operation>
+    </changes>
   </releases>
 </history:History>

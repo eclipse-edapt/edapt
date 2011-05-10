@@ -179,6 +179,7 @@ public interface Instance {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature
+	 * @param feature Get the value of the feature
 	 * <!-- end-model-doc -->
 	 * @model featureRequired="true"
 	 * @generated

@@ -483,7 +483,12 @@ public class ModelImpl extends EObjectImpl implements Model {
 	}
 
 	private EClass checkAndGetClass(String className) {
-		return getMetamodel().getEClass(className);
+		EClass eClass = getMetamodel().getEClass(className);
+		if (eClass == null) {
+			throw new IllegalArgumentException("Class " + className
+					+ " not found.");
+		}
+		return eClass;
 	}
 
 	/**

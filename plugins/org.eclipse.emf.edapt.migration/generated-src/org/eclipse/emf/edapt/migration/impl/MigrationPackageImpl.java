@@ -1067,7 +1067,7 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		   source, 
 		   new String[] {
 			 "constraints", "validContainment validType"
-		   });																																										
+		   });																																											
 		addAnnotation
 		  (slotEClass, 
 		   source, 
