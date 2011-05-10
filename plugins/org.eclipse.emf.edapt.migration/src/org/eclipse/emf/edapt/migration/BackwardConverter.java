@@ -11,8 +11,6 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration;
 
-import java.util.Iterator;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -24,7 +22,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.ReversableMap;
 import org.eclipse.emf.edapt.common.TwoWayIdentityHashMap;
@@ -45,49 +43,50 @@ public class BackwardConverter {
 	/** Convert model graph to EMF elements. */
 	public ResourceSet convert(Model model) {
 		model.getMetamodel().refreshCaches();
-		ResourceSet resourceSet = new ResourceSetImpl();
-		ResourceUtils.register(model.getMetamodel().getEPackages(), resourceSet
-				.getPackageRegistry());
 
 		mapping = new TwoWayIdentityHashMap<Instance, EObject>();
 
-		// create an EMF model element for each node
+		initObjects(model);
+		ResourceSet resourceSet = initResources(model);
+		initProperties(model);
+
+		return resourceSet;
+	}
+
+	/** Create an EMF model element for each node. */
+	private void initObjects(Model model) {
 		for (Type type : model.getTypes()) {
 			createObjects(type);
 		}
+	}
 
-		// initialize the EMF model elements based on the edges
-		for (Type type : model.getTypes()) {
-			for (Instance element : type.getInstances()) {
-				initObject(element);
-			}
-		}
-
-		// determine root EMF model elements
+	/** Determine root EMF model elements. */
+	private ResourceSet initResources(Model model) {
+		ResourceSet resourceSet = new ResourceSetImpl();
+		ResourceUtils.register(model.getMetamodel().getEPackages(), resourceSet
+				.getPackageRegistry());
 		for (ModelResource modelResource : model.getResources()) {
 			Resource resource = resourceSet.createResource(modelResource
 					.getUri());
 			for (Instance element : modelResource.getRootInstances()) {
 				resource.getContents().add(resolve(element));
 			}
-			if (resource instanceof XMLResource) {
-				XMLResource xmlResource = (XMLResource) resource;
-				if (modelResource.getEncoding() != null) {
-					xmlResource.setEncoding(modelResource.getEncoding());
-				}
-				for (Iterator<EObject> i = resource.getAllContents(); i
-						.hasNext();) {
-					EObject eObject = i.next();
-					Instance instance = mapping.reverseGet(eObject);
-					String uuid = instance.getUuid();
-					if (uuid != null) {
-						xmlResource.setID(eObject, uuid);
-					}
+		}
+		return resourceSet;
+	}
+
+	/** Initialize the EMF model elements based on the edges. */
+	private void initProperties(Model model) {
+		for (Type type : model.getTypes()) {
+			for (Instance instance : type.getInstances()) {
+				initObject(instance);
+				String uuid = instance.getUuid();
+				if (uuid != null) {
+					EObject eObject = resolve(instance);
+					EcoreUtils.setUUID(eObject, uuid);
 				}
 			}
 		}
-
-		return resourceSet;
 	}
 
 	/** Initialize an EMF model element based on the edges outgoing from a node. */

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edapt.common.EcoreUtils;
 
 /**
  * Convert an EMF model to a model graph.
@@ -34,7 +35,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 720C3C5139B4CD8FAF1E3A7DDA551344
+ * @levd.rating YELLOW Hash: 53452BD2610B0C191D9E7AFA0A7895E8
  */
 public class ForwardConverter {
 
@@ -59,10 +60,6 @@ public class ForwardConverter {
 	/** Create a node for each EMF model element */
 	private void initElements(ResourceSet resourceSet) {
 		for (Resource resource : resourceSet.getResources()) {
-			XMLResource xmlResource = null;
-			if (resource instanceof XMLResource) {
-				xmlResource = (XMLResource) resource;
-			}
 			for (TreeIterator<EObject> i = resource.getAllContents(); i
 					.hasNext();) {
 				EObject eObject = i.next();
@@ -70,10 +67,8 @@ public class ForwardConverter {
 					i.prune();
 				} else {
 					Instance instance = newInstance(eObject, eObject.eIsProxy());
-					if (xmlResource != null) {
-						String uuid = xmlResource.getID(eObject);
-						instance.setUuid(uuid);
-					}
+					String uuid = EcoreUtils.getUUID(eObject);
+					instance.setUuid(uuid);
 				}
 			}
 		}
