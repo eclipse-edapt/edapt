@@ -1,0 +1,43 @@
+// JGraLab - The Java graph laboratory
+//   Version : unknown
+//   Revision: unknown
+
+TGraph 2;
+Schema de.uni_koblenz.statemachine.StateMachineSchema;
+GraphClass StateMachine;
+VertexClass State { name: String };
+EdgeClass Transition from State (0,*) role src to State (0,*) role dst { action: String,  trigger: String };
+Graph "73305464-76e460d3-e317b61e-1924fbde" 85 StateMachine (500 500 11 21);
+Package ;
+1 State <-5 14> "CloseWait";
+2 State <-1 6 7 -9 -10 -21> "Closed";
+3 State <-8 -13 -17 21> "TimeWait";
+4 State <-3 4 5 -19> "Established";
+5 State <-6 10 11 12 -20> "Listen";
+6 State <13 -15> "FinWait2";
+7 State <9 -14> "LastAck";
+8 State <-2 -12 18 19 20> "SynReceived";
+9 State <8 -16> "Closing";
+10 State <1 2 3 -7 -11> "SynSent";
+11 State <-4 15 16 17 -18> "FinWait1";
+1 Transition "--" "close";
+2 Transition "SYN_ACK" "SYN";
+3 Transition "ACK" "SYN_ACK";
+4 Transition "FIN" "close";
+5 Transition "ACK" "FIN";
+6 Transition "--" "listen";
+7 Transition "SYN" "connect";
+8 Transition "--" "ACK";
+9 Transition "--" "ACK";
+10 Transition "--" "close";
+11 Transition "SYN" "send";
+12 Transition "SYN_ACK" "SYN";
+13 Transition "ACK" "FIN";
+14 Transition "FIN" "close";
+15 Transition "--" "ACK";
+16 Transition "ACK" "FIN";
+17 Transition "ACK" "FIN_ACK";
+18 Transition "FIN" "close";
+19 Transition "--" "ACK";
+20 Transition "--" "RST";
+21 Transition "--" "TimeoutException";
