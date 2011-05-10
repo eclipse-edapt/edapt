@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.emf.edapt.migration.launching">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/ttc_helloworld"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+</listAttribute>
+<booleanAttribute key="org.eclipse.emf.edapt.migration.backup" value="false"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/helloworld/solution/24TopologyChangingMigration/graph1.history"/>
+<listAttribute key="org.eclipse.emf.edapt.migration.models">
+<listEntry value="/helloworld/solution/24TopologyChangingMigration/Graph1.xmi"/>
+</listAttribute>
+<intAttribute key="org.eclipse.emf.edapt.migration.sourceRelease" value="-1"/>
+<intAttribute key="org.eclipse.emf.edapt.migration.targetRelease" value="-1"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.validationLevel" value="CUSTOM_MIGRATION"/>
+<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ttc_helloworld"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=""/>
+</launchConfiguration>

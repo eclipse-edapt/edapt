@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2011-04-25T14:33:20.091+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="graph1.ecore#/">
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="name"
+            dataValue="graph1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsURI"
+            dataValue="graph1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsPrefix"
+            dataValue="graph1"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Node">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Node" featureName="name"
+            dataValue="Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Node" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Node/name">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Node/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Node/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Edge">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge" featureName="name"
+            dataValue="Edge"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Edge" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Edge/src">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/src" featureName="name"
+            dataValue="src"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/src" featureName="eType"
+            referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Edge" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Edge/trg">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/trg" featureName="name"
+            dataValue="trg"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/trg" featureName="eType"
+            referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Graph">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph" featureName="name"
+            dataValue="Graph"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Graph/nodes">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/nodes" featureName="name"
+            dataValue="nodes"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/nodes" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/nodes" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/nodes" featureName="eType"
+            referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Graph/edges">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/edges" featureName="name"
+            dataValue="edges"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/edges" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/edges" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/edges" featureName="eType"
+            referenceValue="graph1.ecore#//Edge"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2011-04-25T14:33:57.497+0200" label="">
+    <changes xsi:type="history:MigrationChange" migration="InsertTransitiveEdges"
+        language="Java"/>
+  </releases>
+  <releases/>
+</history:History>

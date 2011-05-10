@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2011-04-25T15:39:05.916+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="graph1.ecore#/">
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="name"
+            dataValue="graph1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsURI"
+            dataValue="graph1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsPrefix"
+            dataValue="graph1"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Node">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Node" featureName="name"
+            dataValue="Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Node" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//GraphComponent/text">
+        <changes xsi:type="history:Set" element="graph1.ecore#//GraphComponent/text"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//GraphComponent/text"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Edge">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge" featureName="name"
+            dataValue="Edge"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Edge" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Edge/src">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/src" featureName="name"
+            dataValue="src"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/src" featureName="eType"
+            referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Edge" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Edge/trg">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/trg" featureName="name"
+            dataValue="trg"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Edge/trg" featureName="eType"
+            referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//Graph">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph" featureName="name"
+            dataValue="Graph"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.1/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.0/@element"
+            featureName="name" dataValue="nodes"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.0/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.0/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.0/@element"
+            featureName="eType" referenceValue="graph1.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.1/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.1/@element"
+            featureName="name" dataValue="edges"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.1/@element"
+            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.1/@element"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.1/@element"
+            featureName="eType" referenceValue="graph1.ecore#//Edge"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2011-04-25T15:41:02.239+0200">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="graph1.ecore#/" referenceName="eClassifiers"
+          element="graph1.ecore#//GraphComponent">
+        <changes xsi:type="history:Set" element="graph1.ecore#//GraphComponent" featureName="name"
+            dataValue="GraphComponent"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//GraphComponent" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Add" element="graph1.ecore#//Node" featureName="eSuperTypes"
+          referenceValue="graph1.ecore#//GraphComponent"/>
+      <changes xsi:type="history:Add" element="graph1.ecore#//Edge" featureName="eSuperTypes"
+          referenceValue="graph1.ecore#//GraphComponent"/>
+      <operation name="extractSuperClass2">
+        <parameters name="subClasses">
+          <referenceValue element="graph1.ecore#//Node"/>
+          <referenceValue element="graph1.ecore#//Edge"/>
+        </parameters>
+        <parameters name="toExtract"/>
+        <parameters name="ePackage">
+          <referenceValue element="graph1.ecore#/"/>
+        </parameters>
+        <parameters name="superClassName">
+          <dataValue>GraphComponent</dataValue>
+        </parameters>
+        <parameters name="abstr">
+          <dataValue>true</dataValue>
+        </parameters>
+        <parameters name="superSuperClasses"/>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="nodes" upperBound="-1" eType="ecore:EClass graph1.ecore#//Node"
+            containment="true"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EReference" name="edges" upperBound="-1" eType="ecore:EClass graph1.ecore#//Edge"
+            containment="true"/>
+      </changes>
+      <changes xsi:type="history:Create" target="graph1.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//Graph/gcs">
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/gcs" featureName="name"
+            dataValue="gcs"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/gcs" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/gcs" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="graph1.ecore#//Graph/gcs" featureName="eType"
+            referenceValue="graph1.ecore#//GraphComponent"/>
+      </changes>
+      <operation name="uniteReferences">
+        <parameters name="references">
+          <referenceValue element="#//@releases.1/@changes.1/@changes.0/@element"/>
+          <referenceValue element="#//@releases.1/@changes.1/@changes.1/@element"/>
+        </parameters>
+        <parameters name="unitedReferenceName">
+          <dataValue>gcs</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Move" target="graph1.ecore#//GraphComponent" referenceName="eStructuralFeatures"
+          element="graph1.ecore#//GraphComponent/text" source="graph1.ecore#//Node"/>
+      <operation name="pullFeature">
+        <parameters name="features">
+          <referenceValue element="graph1.ecore#//GraphComponent/text"/>
+        </parameters>
+        <parameters name="targetClass">
+          <referenceValue element="graph1.ecore#//GraphComponent"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="graph1.ecore#//GraphComponent/text"
+          featureName="name" dataValue="text" oldDataValue="name"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="graph1.ecore#//GraphComponent/text"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>text</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="name" dataValue="graph2"
+        oldDataValue="graph1"/>
+    <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsURI" dataValue="graph2"
+        oldDataValue="graph1"/>
+    <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsPrefix"
+        dataValue="graph2" oldDataValue="graph1"/>
+    <changes xsi:type="history:MigrationChange" migration="MoveResult" language="Java"/>
+  </releases>
+  <releases/>
+</history:History>

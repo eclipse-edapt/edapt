@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2011-04-25T13:59:56.780+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="helloworld.ecore#/">
+        <changes xsi:type="history:Set" element="helloworld.ecore#/" featureName="name"
+            dataValue="helloworld"/>
+        <changes xsi:type="history:Set" element="helloworld.ecore#/" featureName="nsURI"
+            dataValue="helloworld"/>
+        <changes xsi:type="history:Set" element="helloworld.ecore#/" featureName="nsPrefix"
+            dataValue="helloworld"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworld.ecore#/" referenceName="eClassifiers"
+          element="helloworld.ecore#//Greeting">
+        <changes xsi:type="history:Set" element="helloworld.ecore#//Greeting"
+            featureName="name" dataValue="Greeting"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworld.ecore#//Greeting"
+          referenceName="eStructuralFeatures" element="helloworld.ecore#//Greeting/text">
+        <changes xsi:type="history:Set" element="helloworld.ecore#//Greeting/text"
+            featureName="name" dataValue="text"/>
+        <changes xsi:type="history:Set" element="helloworld.ecore#//Greeting/text"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2011-04-25T14:01:49.410+0200" label="">
+    <changes xsi:type="history:MigrationChange" migration="ConstantTransformation"
+        language="Java"/>
+  </releases>
+  <releases/>
+</history:History>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2011-04-25T22:57:33.954+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="helloworldext.ecore#/">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#/" featureName="name"
+            dataValue="helloworldext"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#/" featureName="nsURI"
+            dataValue="helloworldext"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#/" featureName="nsPrefix"
+            dataValue="helloworldext"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#/" referenceName="eClassifiers"
+          element="helloworldext.ecore#//GreetingMessage">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//GreetingMessage"
+            featureName="name" dataValue="GreetingMessage"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#//GreetingMessage"
+          referenceName="eStructuralFeatures" element="helloworldext.ecore#//GreetingMessage/text">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//GreetingMessage/text"
+            featureName="name" dataValue="text"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//GreetingMessage/text"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#/" referenceName="eClassifiers"
+          element="helloworldext.ecore#//Person">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Person" featureName="name"
+            dataValue="Person"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#//Person" referenceName="eStructuralFeatures"
+          element="helloworldext.ecore#//Person/name">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Person/name"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Person/name"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#/" referenceName="eClassifiers"
+          element="helloworldext.ecore#//Greeting">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting" featureName="name"
+            dataValue="Greeting"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#//Greeting" referenceName="eStructuralFeatures"
+          element="helloworldext.ecore#//Greeting/greetingMessage">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/greetingMessage"
+            featureName="name" dataValue="greetingMessage"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/greetingMessage"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/greetingMessage"
+            featureName="eType" referenceValue="helloworldext.ecore#//GreetingMessage"/>
+      </changes>
+      <changes xsi:type="history:Create" target="helloworldext.ecore#//Greeting" referenceName="eStructuralFeatures"
+          element="helloworldext.ecore#//Greeting/person">
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/person"
+            featureName="name" dataValue="person"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/person"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="helloworldext.ecore#//Greeting/person"
+            featureName="eType" referenceValue="helloworldext.ecore#//Person"/>
+      </changes>
+    </changes>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="result.ecore#/">
+        <changes xsi:type="history:Set" element="result.ecore#/" featureName="name"
+            dataValue="result"/>
+        <changes xsi:type="history:Set" element="result.ecore#/" featureName="nsURI"
+            dataValue="result"/>
+        <changes xsi:type="history:Set" element="result.ecore#/" featureName="nsPrefix"
+            dataValue="result"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#/" referenceName="eAnnotations"
+          element="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%">
+        <changes xsi:type="history:Set" element="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%"
+            featureName="source" dataValue="http://www.eclipse.org/edapt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%"
+          referenceName="details" element="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0">
+        <changes xsi:type="history:Set" element="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0"
+            featureName="key" dataValue="historyURI"/>
+        <changes xsi:type="history:Set" element="result.ecore#//%http:%2F%2Fwww.eclipse.org%2Fedapt%/@details.0"
+            featureName="value" dataValue="helloworldext.history"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#/" referenceName="eClassifiers"
+          element="result.ecore#//IntResult">
+        <changes xsi:type="history:Set" element="result.ecore#//IntResult" featureName="name"
+            dataValue="IntResult"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#//IntResult" referenceName="eStructuralFeatures"
+          element="result.ecore#//IntResult/result">
+        <changes xsi:type="history:Set" element="result.ecore#//IntResult/result"
+            featureName="name" dataValue="result"/>
+        <changes xsi:type="history:Set" element="result.ecore#//IntResult/result"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#/" referenceName="eClassifiers"
+          element="result.ecore#//StringResult">
+        <changes xsi:type="history:Set" element="result.ecore#//StringResult" featureName="name"
+            dataValue="StringResult"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#//StringResult" referenceName="eStructuralFeatures"
+          element="result.ecore#//StringResult/result">
+        <changes xsi:type="history:Set" element="result.ecore#//StringResult/result"
+            featureName="name" dataValue="result"/>
+        <changes xsi:type="history:Set" element="result.ecore#//StringResult/result"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#/" referenceName="eClassifiers"
+          element="result.ecore#//BoolResult">
+        <changes xsi:type="history:Set" element="result.ecore#//BoolResult" featureName="name"
+            dataValue="BoolResult"/>
+      </changes>
+      <changes xsi:type="history:Create" target="result.ecore#//BoolResult" referenceName="eStructuralFeatures"
+          element="result.ecore#//BoolResult/result">
+        <changes xsi:type="history:Set" element="result.ecore#//BoolResult/result"
+            featureName="name" dataValue="result"/>
+        <changes xsi:type="history:Set" element="result.ecore#//BoolResult/result"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2011-04-25T22:58:17.125+0200" label="">
+    <changes xsi:type="history:MigrationChange" migration="ModelToTextTransformation"
+        language="Java"/>
+  </releases>
+  <releases/>
+</history:History>
