@@ -468,7 +468,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	public EList<Instance> getAllInstances(String className) {
-		EClass eClass = getMetamodel().getEClass(className);
+		EClass eClass = checkAndGetClass(className);
 		return getAllInstances(eClass);
 	}
 
@@ -478,8 +478,12 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	public EList<Instance> getInstances(String className) {
-		EClass eClass = getMetamodel().getEClass(className);
+		EClass eClass = checkAndGetClass(className);
 		return getInstances(eClass);
+	}
+
+	private EClass checkAndGetClass(String className) {
+		return getMetamodel().getEClass(className);
 	}
 
 	/**
@@ -488,7 +492,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * @generated NOT
 	 */
 	public Instance newInstance(String className) {
-		EClass eClass = getMetamodel().getEClass(className);
+		EClass eClass = checkAndGetClass(className);
 		return newInstance(eClass);
 	}
 

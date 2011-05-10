@@ -449,9 +449,17 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public void migrate(String className) {
+		EClass eClass = checkAndGetClass(className);
+		migrate(eClass);
+	}
+
+	private EClass checkAndGetClass(String className) {
 		Metamodel metamodel = getType().getModel().getMetamodel();
 		EClass eClass = metamodel.getEClass(className);
-		migrate(eClass);
+		if (eClass == null) {
+			throw new RuntimeException("Class " + className + " not found.");
+		}
+		return eClass;
 	}
 
 	/**
@@ -460,9 +468,17 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public <V> V getInverse(String referenceName) {
+		EReference reference = checkAndGetReference(referenceName);
+		return getInverse(reference);
+	}
+
+	private EReference checkAndGetReference(String referenceName) {
 		EReference reference = getType().getModel().getMetamodel()
 				.getEReference(referenceName);
-		return getInverse(reference);
+		if (reference == null) {
+			throw new RuntimeException("Reference " + referenceName + " not found.");
+		}
+		return reference;
 	}
 
 	/**
@@ -489,8 +505,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public boolean instanceOf(String className) {
-		EClass eClass = getType().getModel().getMetamodel()
-				.getEClass(className);
+		EClass eClass = checkAndGetClass(className);
 		return instanceOf(eClass);
 	}
 
@@ -500,8 +515,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public void add(String featureName, Object value) {
-		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
-				featureName);
+		EStructuralFeature feature = checkAndGetFeature(featureName);
 		add(feature, value);
 	}
 
@@ -511,8 +525,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public void remove(String featureName, Object value) {
-		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
-				featureName);
+		EStructuralFeature feature = checkAndGetFeature(featureName);
 		remove(feature, value);
 	}
 
@@ -522,8 +535,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public void add(String featureName, int index, Object value) {
-		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
-				featureName);
+		EStructuralFeature feature = checkAndGetFeature(featureName);
 		add(feature, index, value);
 	}
 
@@ -862,12 +874,17 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public <V> V get(String featureName) {
+		EStructuralFeature feature = checkAndGetFeature(featureName);
+		return this.get(feature);
+	}
+
+	private EStructuralFeature checkAndGetFeature(String featureName) {
 		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
 				featureName);
 		if (feature == null) {
 			throw new RuntimeException("Feature " + featureName + " not found.");
 		}
-		return this.get(feature);
+		return feature;
 	}
 
 	/**
@@ -876,11 +893,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	public void set(String featureName, Object value) {
-		EStructuralFeature feature = this.getEClass().getEStructuralFeature(
-				featureName);
-		if (feature == null) {
-			throw new RuntimeException("Feature " + featureName + " not found.");
-		}
+		EStructuralFeature feature = checkAndGetFeature(featureName);
 		this.set(feature, value);
 	}
 
@@ -978,7 +991,6 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @param index
 	 */
 	private void removeDeleteAttribute(EAttribute attribute, int index) {
-
 		AttributeSlot attributeSlot = (AttributeSlot) this.getSlot(attribute);
 		attributeSlot.getValues().remove(index);
 		if (attributeSlot.getValues().isEmpty()) {
