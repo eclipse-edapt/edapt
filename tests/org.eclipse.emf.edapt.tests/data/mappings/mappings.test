@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/migration/test/0.3" name="GMF Mapping Definition Metamodel" history="mappings.history">
   <cases name="GMF Mapping Definition Model" model="mappings_r0.xmi" expectedModel="mappings_r1.xmi"/>
+  <cases name="Test Model for CR 138440" model="patch_138440.gmfmap" expectedModel="patch_138440_2.gmfmap"/>
+  <cases name="Test Model for CR 161380" model="patch_161380.gmfmap" expectedModel="patch_161380_2.gmfmap" expectedDifferences="7"/>
+  <cases name="Test Model" model="test227505.gmfmap" expectedModel="test227505_2.gmfmap"/>
+  <cases name="Test to ensure that the order of Label Mappings is not changed" model="testNotChangingOrderOfLabelMappings.gmfmap" expectedModel="testNotChangingOrderOfLabelMappings_2.gmfmap" expectedDifferences="7"/>
 </test:TestSuiteDefinition>

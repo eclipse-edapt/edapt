@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gmfmap:Mapping xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:gmfmap="http://www.eclipse.org/gmf/2005/mappings">
+  <nodes>
+    <containmentFeature
+        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
+    <ownedChild>
+      <domainMetaElement
+          href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+      <domainInitializer
+          xsi:type="gmfmap:FeatureSeqInitializer">
+        <initializers
+            body="'a String'">
+          <feature
+              xsi:type="ecore:EAttribute"
+              href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+        </initializers>
+      </domainInitializer>
+      <diagramNode
+          href="../../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Node"/>
+    </ownedChild>
+  </nodes>
+  <diagram>
+    <diagramCanvas
+        href="../../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Surface"/>
+    <domainModel
+        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+    <domainMetaElement
+        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
+  </diagram>
+</gmfmap:Mapping>
