@@ -27,6 +27,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -39,8 +40,10 @@ import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.CustomMigration;
+import org.eclipse.emf.edapt.migration.MaterializingBackwardConverter;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
+import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
@@ -139,33 +142,47 @@ public class Migrator {
 	 * 
 	 * @param modelURIs
 	 * @param sourceRelease
-	 *            Release to which the model conforms (0 is the first release)
+	 *            Release to which the model conforms
 	 * @param targetRelease
-	 *            Release to which the model should be migrated (use
-	 *            Integer.MAX_VALUE for the newest release)
+	 *            Release to which the model should be migrated (use null for
+	 *            the newest release)
 	 * @param monitor
 	 *            Progress monitor
 	 */
-	public void migrate(List<URI> modelURIs, Release sourceRelease,
+	public void migrateAndSave(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
-
-		if (targetRelease == null) {
-			targetRelease = getLatestRelease();
-		}
-		if (sourceRelease == targetRelease) {
-			return;
-		}
-
+		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
 		try {
-			monitor.beginTask("Migrate",
-					numberOfSteps(sourceRelease, targetRelease));
-
-			performMigration(modelURIs, sourceRelease, targetRelease, monitor);
-
-		} finally {
-			monitor.done();
+			Persistency.saveModel(model);
+		} catch (IOException e) {
+			throw new MigrationException("Model could not be saved", e);
 		}
+	}
+
+	/**
+	 * Migrate a model based on a set of {@link URI}s and load it afterwards.
+	 * 
+	 * @param modelURIs
+	 *            The set of {@link URI}
+	 * @param sourceRelease
+	 *            Release to which the model conforms
+	 * @param targetRelease
+	 *            Release to which the model should be migrated (use null for
+	 *            the newest release)
+	 * @param monitor
+	 *            Progress monitor
+	 * @return The model in a {@link ResourceSet}
+	 */
+	public ResourceSet migrateAndLoad(List<URI> modelURIs,
+			Release sourceRelease, Release targetRelease,
+			IProgressMonitor monitor) throws MigrationException {
+		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
+		if (model == null) {
+			return null;
+		}
+		MaterializingBackwardConverter converter = new MaterializingBackwardConverter();
+		return converter.convert(model);
 	}
 
 	/** Get the latest release. */
@@ -174,11 +191,33 @@ public class Migrator {
 		return releases.get(releases.size() - 2);
 	}
 
-	/** Apply the migrator to a model. */
-	private void performMigration(List<URI> modelURIs, Release sourceRelease,
+	/**
+	 * Migrate a model based on a set of {@link URI}s.
+	 * 
+	 * @param modelURIs
+	 *            The set of {@link URI}
+	 * @param sourceRelease
+	 *            Release to which the model conforms
+	 * @param targetRelease
+	 *            Release to which the model should be migrated (use null for
+	 *            the newest release)
+	 * @param monitor
+	 *            Progress monitor
+	 * @return The model in the generic structure
+	 */
+	private Model migrate(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
 		try {
+			if (targetRelease == null) {
+				targetRelease = getLatestRelease();
+			}
+			if (sourceRelease == targetRelease) {
+				return null;
+			}
+
+			monitor.beginTask("Migrate",
+					numberOfSteps(sourceRelease, targetRelease));
 			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 					URI.createFileURI("test"));
 			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
@@ -187,8 +226,13 @@ public class Migrator {
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
+
+			Model model = migrationReconstructor.getModel();
+			return model;
 		} catch (WrappedMigrationException e) {
 			throw e.getCause();
+		} finally {
+			monitor.done();
 		}
 	}
 
@@ -298,7 +342,7 @@ public class Migrator {
 
 			Release targetRelease = migrator.getRelease(targetReleaseNumber);
 
-			migrator.migrate(modelURIs, sourceRelease, targetRelease,
+			migrator.migrateAndSave(modelURIs, sourceRelease, targetRelease,
 					new PrintStreamProgressMonitor(System.out));
 		} catch (MigrationException e) {
 			System.err.println(e.getMessage());

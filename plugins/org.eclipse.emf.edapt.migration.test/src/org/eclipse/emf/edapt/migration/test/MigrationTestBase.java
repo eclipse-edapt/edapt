@@ -107,7 +107,7 @@ public abstract class MigrationTestBase extends TestCase {
 		Release release = getMinimumRelease(releases);
 		URI targetModelURI = rename(migrator, modelURI, release);
 
-		migrator.migrate(Collections.singletonList(targetModelURI), release,
+		migrator.migrateAndSave(Collections.singletonList(targetModelURI), release,
 				null, new PrintStreamProgressMonitor(System.out));
 
 		Metamodel expectedMetamodel = Persistency

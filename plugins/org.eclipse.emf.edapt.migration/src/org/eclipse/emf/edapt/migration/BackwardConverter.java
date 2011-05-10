@@ -12,16 +12,18 @@
 package org.eclipse.emf.edapt.migration;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.ReversableMap;
@@ -33,7 +35,7 @@ import org.eclipse.emf.edapt.common.TwoWayIdentityHashMap;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 505F0D3E0BF01E7B21A8F8CAE80B57F6
+ * @levd.rating YELLOW Hash: BCACB5C6AEB849186F2F0F9F6F95ECB4
  */
 public class BackwardConverter {
 
@@ -60,6 +62,24 @@ public class BackwardConverter {
 		}
 	}
 
+	/** Create all EMF model elements of a certain type. */
+	private void createObjects(Type type) {
+		EClass sourceClass = type.getEClass();
+		EClass targetClass = resolveEClass(sourceClass);
+		for (Instance element : type.getInstances()) {
+			EObject eObject = EcoreUtil.create(targetClass);
+			if (element.isProxy()) {
+				((InternalEObject) eObject).eSetProxyURI(element.getUri());
+			}
+			mapping.put(element, eObject);
+		}
+	}
+
+	/** Resolve the class to which an instance should be converted. */
+	protected EClass resolveEClass(EClass eClass) {
+		return eClass;
+	}
+
 	/** Determine root EMF model elements. */
 	private ResourceSet initResources(Model model) {
 		ResourceSet resourceSet = new ResourceSetImpl();
@@ -79,7 +99,7 @@ public class BackwardConverter {
 	private void initProperties(Model model) {
 		for (Type type : model.getTypes()) {
 			for (Instance instance : type.getInstances()) {
-				initObject(instance);
+				initProperties(instance);
 				String uuid = instance.getUuid();
 				if (uuid != null) {
 					EObject eObject = resolve(instance);
@@ -91,26 +111,40 @@ public class BackwardConverter {
 
 	/** Initialize an EMF model element based on the edges outgoing from a node. */
 	@SuppressWarnings("unchecked")
-	private void initObject(Instance element) {
+	private void initProperties(Instance element) {
 		EObject eObject = resolve(element);
 		for (Slot slot : element.getSlots()) {
-			EStructuralFeature feature = slot.getEFeature();
-			if (ignore(feature)) {
+			EStructuralFeature sourceFeature = slot.getEFeature();
+			EStructuralFeature targetFeature = resolveFeature(sourceFeature);
+			if (ignore(sourceFeature)) {
 				continue;
 			}
 			if (slot instanceof AttributeSlot) {
-				AttributeSlot attributeSlot = (AttributeSlot) slot;
-				EAttribute attribute = attributeSlot.getEAttribute();
-				eObject.eSet(attribute, element.get(attribute));
+				if (sourceFeature.getEType() instanceof EEnum) {
+					AttributeSlot attributeSlot = (AttributeSlot) slot;
+					if (sourceFeature.isMany()) {
+						EList values = (EList) eObject.eGet(targetFeature);
+						for (Object value : attributeSlot.getValues()) {
+							values.add(resolveLiteral((EEnumLiteral) value));
+						}
+					} else {
+						if (!attributeSlot.getValues().isEmpty()) {
+							eObject.eSet(targetFeature,
+									resolveLiteral((EEnumLiteral) attributeSlot
+											.getValues().get(0)));
+						}
+					}
+				} else {
+					eObject.eSet(targetFeature, element.get(sourceFeature));
+				}
 			} else {
 				ReferenceSlot referenceSlot = (ReferenceSlot) slot;
-				EReference reference = referenceSlot.getEReference();
-				if (reference.isMany()) {
-					EList values = (EList) eObject.eGet(reference);
+				if (sourceFeature.isMany()) {
+					EList values = (EList) eObject.eGet(targetFeature);
 					int index = 0;
 					for (Instance value : referenceSlot.getValues()) {
 						EObject valueEObject = resolve(value);
-						if (reference.isUnique()
+						if (sourceFeature.isUnique()
 								&& values.contains(valueEObject)) {
 							values.move(index, valueEObject);
 						} else {
@@ -120,12 +154,22 @@ public class BackwardConverter {
 					}
 				} else {
 					if (!referenceSlot.getValues().isEmpty()) {
-						eObject.eSet(reference, resolve(referenceSlot
+						eObject.eSet(targetFeature, resolve(referenceSlot
 								.getValues().get(0)));
 					}
 				}
 			}
 		}
+	}
+
+	/** Resolve the feature to which a value should be transferred. */
+	protected EStructuralFeature resolveFeature(EStructuralFeature feature) {
+		return feature;
+	}
+
+	/** Resolve the literal value of an enumeration. */
+	protected Enumerator resolveLiteral(EEnumLiteral literal) {
+		return literal;
 	}
 
 	/**
@@ -143,19 +187,6 @@ public class BackwardConverter {
 						feature)
 				|| EcorePackage.eINSTANCE.getEOperation_EExceptions().equals(
 						feature);
-	}
-
-	/** Create all EMF model elements of a certain type. */
-	private void createObjects(Type type) {
-		EClass eClass = type.getEClass();
-		for (Instance element : type.getInstances()) {
-			EObject eObject = eClass.getEPackage().getEFactoryInstance()
-					.create(eClass);
-			if (element.isProxy()) {
-				((InternalEObject) eObject).eSetProxyURI(element.getUri());
-			}
-			mapping.put(element, eObject);
-		}
 	}
 
 	/** Get the EMF model element corresponding to a node. */

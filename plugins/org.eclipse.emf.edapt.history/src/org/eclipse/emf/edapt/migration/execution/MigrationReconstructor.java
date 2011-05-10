@@ -144,7 +144,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	public void endRelease(Release originalRelease) {
 		if (originalRelease == targetRelease) {
 			disable();
-			saveModel();
+			checkConformanceIfMoreThan(ValidationLevel.HISTORY);
 			throw new FinishedException();
 		} else if (originalRelease == sourceRelease) {
 			enable();
@@ -238,17 +238,6 @@ public class MigrationReconstructor extends ReconstructorBase {
 		return Persistency.loadMetamodel(resourceSet);
 	}
 
-	/** Save the model after migration. */
-	private void saveModel() {
-		try {
-			Model model = repository.getModel();
-			checkConformanceIfMoreThan(ValidationLevel.HISTORY);
-			Persistency.saveModel(model);
-		} catch (IOException e) {
-			throwWrappedMigrationException("Model could not be saved", e);
-		}
-	}
-
 	/** {@inheritDoc} */
 	@Override
 	public void startChange(Change change) {
@@ -337,6 +326,14 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Wrap and throw a {@link MigrationException}. */
 	private void throwWrappedMigrationException(MigrationException me) {
 		throw new WrappedMigrationException(me);
+	}
+	
+	/** Get the model. */
+	public Model getModel() {
+		if(repository == null) {
+			return null;
+		}
+		return repository.getModel();
 	}
 
 	/** Switch that performs the migration attached to a change. */

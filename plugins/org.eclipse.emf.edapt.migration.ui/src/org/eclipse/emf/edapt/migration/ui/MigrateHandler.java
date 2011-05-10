@@ -62,7 +62,7 @@ public class MigrateHandler extends MigratorHandlerBase {
 				/** {@inheritDoc} */
 				public void run(IProgressMonitor monitor) {
 					try {
-						migrator.migrate(modelURIs, sourceRelease, null,
+						migrator.migrateAndSave(modelURIs, sourceRelease, null,
 								monitor);
 					} catch (MigrationException e) {
 						LoggingUtils.logError(
