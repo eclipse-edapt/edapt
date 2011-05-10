@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
+import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
@@ -104,7 +105,7 @@ public abstract class MigrationTestBase extends TestCase {
 
 		Set<Release> releases = migrator.getRelease(modelURI);
 		Assert.assertTrue(releases.size() >= 1);
-		Release release = getMinimumRelease(releases);
+		Release release = HistoryUtils.getMinimumRelease(releases);
 		URI targetModelURI = rename(migrator, modelURI, release);
 
 		migrator.migrateAndSave(Collections.singletonList(targetModelURI), release,
@@ -122,21 +123,6 @@ public abstract class MigrationTestBase extends TestCase {
 
 		ModelAssert
 				.assertDifference(expectedModel, actualModel, expectedNumber);
-	}
-
-	/** Get the minimum release of a set of releases. */
-	private Release getMinimumRelease(Set<Release> releases) {
-		Release minRelease = null;
-		for (Release release : releases) {
-			if (minRelease == null) {
-				minRelease = release;
-			} else {
-				if (release.getNumber() < minRelease.getNumber()) {
-					minRelease = release;
-				}
-			}
-		}
-		return minRelease;
 	}
 
 	/**

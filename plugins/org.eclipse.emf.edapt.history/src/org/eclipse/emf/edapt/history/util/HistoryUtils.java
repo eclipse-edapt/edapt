@@ -14,6 +14,7 @@ package org.eclipse.emf.edapt.history.util;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -135,5 +136,20 @@ public final class HistoryUtils {
 			}
 		}
 		return null;
+	}
+	
+	/** Get the minimum release of a set of releases. */
+	public static Release getMinimumRelease(Set<Release> releases) {
+		Release minRelease = null;
+		for (Release release : releases) {
+			if (minRelease == null) {
+				minRelease = release;
+			} else {
+				if (release.getNumber() < minRelease.getNumber()) {
+					minRelease = release;
+				}
+			}
+		}
+		return minRelease;
 	}
 }
