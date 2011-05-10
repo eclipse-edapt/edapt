@@ -1,5 +1,7 @@
 package org.eclipse.emf.edapt.tests.migration.custom;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.migration.CustomMigration;
@@ -50,9 +52,8 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 		return null;
 	}
 
-	public void containment2Association(EReference reference) {
+	public void containment2Association(EReference reference, Model model) {
 
-		Model model = container.getType().getModel();
 		for (Instance instance : model.getAllInstances(reference
 				.getEContainingClass())) {
 			Instance valueExpression = instance.get(reference);
@@ -74,8 +75,11 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 	public void migrateAfter(Model model, Metamodel metamodel)
 			throws MigrationException {
 
-		container = model.getInstances("gmfgen.GenExpressionProviderContainer")
-				.get(0);
+		List<Instance> containers = model
+				.getInstances("gmfgen.GenExpressionProviderContainer");
+		if (!containers.isEmpty()) {
+			container = containers.get(0);
+		}
 
 		EReference[] references = new EReference[] {
 				metamodel
@@ -87,7 +91,7 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 				metamodel.getEReference("gmfgen.GenFeatureValueSpec.value") };
 
 		for (EReference reference : references) {
-			containment2Association(reference);
+			containment2Association(reference, model);
 		}
 
 		for (Instance instance : model
