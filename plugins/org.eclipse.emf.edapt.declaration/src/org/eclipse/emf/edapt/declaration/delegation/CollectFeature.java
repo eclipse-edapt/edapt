@@ -41,8 +41,8 @@ public class CollectFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "reference", description = "The feature must belong to the reference's type")
 	public boolean checkFeatureBelongsToReferenceType(EReference reference) {
-		return reference.getEReferenceType().getEStructuralFeatures().contains(
-				feature);
+		return reference.getEReferenceType().getEStructuralFeatures()
+				.contains(feature);
 	}
 
 	/** {@inheritDoc} */
@@ -61,12 +61,17 @@ public class CollectFeature extends OperationImplementation {
 			if (reference.isMany()) {
 				for (Instance source : target.getLinks(reference)) {
 					List sourceValue = source.unset(feature);
-					((List) target.get(feature)).addAll(sourceValue);
+					target.<List> get(feature).addAll(sourceValue);
 				}
 			} else {
 				Instance source = target.get(reference);
 				if (source != null) {
-					target.set(feature, source.unset(feature));
+					if (feature.isMany()) {
+						target.<List> get(feature).addAll(
+								source.<List> unset(feature));
+					} else {
+						target.set(feature, source.unset(feature));
+					}
 				}
 			}
 		}
