@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/migration/test/0.3" name="GMF Graphical Definition Metamodel" history="gmfgraph.history">
   <cases name="GMF Graphical Definition Model" model="gmfgraph_r0.xmi" expectedModel="gmfgraph_r1.xmi"/>
-  <cases name="Mindmap Model" model="mindmap.xmi" expectedModel="mindmap2.xmi"/>
-  <cases name="Taipan Model" model="taipan.xmi" expectedModel="taipan2.xmi"/>
+  <cases name="Mindmap Model" model="mindmap.gmfgraph" expectedModel="mindmap2.gmfgraph"/>
+  <cases name="Taipan Model" model="taipan.gmfgraph" expectedModel="taipan2.gmfgraph"/>
+  <cases name="Basic Model" model="basic.gmfgraph" expectedModel="basic2.gmfgraph"/>
+  <cases name="Custom Figures Model" model="customFigures.gmfgraph" expectedModel="customFigures2.gmfgraph" expectedDifferences="4"/>
+  <cases name="Multi File Model" model="multifile_main.gmfgraph" expectedModel="multifile_main2.gmfgraph" expectedDifferences="16"/>
+  <cases name="Test Model for GMFGraph" model="test_main.gmfgraph" expectedModel="test_main2.gmfgraph" expectedDifferences="2"/>
 </test:TestSuiteDefinition>
