@@ -48,20 +48,27 @@ public final class FileUtils {
 	/** Get contents of an Eclipse resource file as string. */
 	public static String getContents(IFile file) {
 		try {
-			return getContents(file.getContents());
+			InputStream input = file.getContents();
+			String contents = getContents(input);
+			input.close();
+			return contents;
 		} catch (CoreException e) {
+			LoggingUtils.logError(CommonActivator.getDefault(), e);
+			return null;
+		} catch (IOException e) {
 			LoggingUtils.logError(CommonActivator.getDefault(), e);
 			return null;
 		}
 	}
-	
+
 	/** Read contents of an input stream to a string. */
 	public static String getContents(InputStream in) {
 		try {
 			StringBuffer buffer = new StringBuffer();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			BufferedReader reader = new BufferedReader(
+					new InputStreamReader(in));
 			String line;
-			while((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null) {
 				buffer.append(line);
 				buffer.append('\n');
 			}
@@ -69,16 +76,16 @@ public final class FileUtils {
 		} catch (Exception e) {
 			LoggingUtils.logError(CommonActivator.getDefault(), e);
 			return null;
-		}		
+		}
 	}
-	
+
 	/** Get contents of a Java file as string. */
 	public static String getContents(File file) {
 		try {
 			StringBuffer buffer = new StringBuffer();
 			BufferedReader reader = new BufferedReader(new FileReader(file));
 			String line;
-			while((line = reader.readLine()) != null) {
+			while ((line = reader.readLine()) != null) {
 				buffer.append(line);
 				buffer.append('\n');
 			}
@@ -94,63 +101,63 @@ public final class FileUtils {
 	 * a folder.
 	 */
 	public static IFile resolveFile(IContainer container, String name) {
-		if(container instanceof IProject) {
+		if (container instanceof IProject) {
 			return ((IProject) container).getFile(name);
-		}
-		else if(container instanceof IFolder) {
+		} else if (container instanceof IFolder) {
 			return ((IFolder) container).getFile(name);
 		}
 		return null;
 	}
-	
+
 	/** Move a file. */
 	public static void move(File source, File target) {
 		source.renameTo(target);
 	}
-	
+
 	/** Move a file. */
 	public static void move(URI source, URI target) {
 		move(URIUtils.getJavaFile(source), URIUtils.getJavaFile(target));
 	}
-	
+
 	/** Delete a file. */
 	public static void delete(File target) {
 		target.delete();
 	}
-	
+
 	/** Delete a file. */
 	public static void delete(URI target) {
 		delete(URIUtils.getJavaFile(target));
 	}
-	
+
 	/** Copy a file. */
 	public static void copy(File source, File target) throws IOException {
 		FileInputStream in = new FileInputStream(source);
 		FileOutputStream out = new FileOutputStream(target);
-		
+
 		byte[] buffer = new byte[1024];
 		int len;
-		
-		while((len = in.read(buffer)) != -1) {
+
+		while ((len = in.read(buffer)) != -1) {
 			out.write(buffer, 0, len);
 		}
-		
+
 		in.close();
 		out.close();
 	}
-	
+
 	/** Copy a file. */
 	public static void copy(URI source, URI target) throws IOException {
 		copy(URIUtils.getJavaFile(source), URIUtils.getJavaFile(target));
 	}
-	
+
 	/** Create a file. */
-	public static void createFile(String name, String contents) throws IOException {
+	public static void createFile(String name, String contents)
+			throws IOException {
 		FileWriter writer = new FileWriter(name);
 		writer.write(contents);
 		writer.close();
 	}
-	
+
 	/** Create a directory. */
 	public static void createDir(String name) {
 		new File(name).mkdir();
@@ -207,8 +214,8 @@ public final class FileUtils {
 	 * method always returns a file. However, this does not necessarily exist.
 	 */
 	public static IFile getFile(String fullPath) {
-		return ResourcesPlugin.getWorkspace().getRoot().getFile(
-				new Path(fullPath));
+		return ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(new Path(fullPath));
 	}
 
 }
