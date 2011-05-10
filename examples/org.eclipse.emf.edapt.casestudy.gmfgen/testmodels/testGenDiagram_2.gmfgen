@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<gmfgen:GenDiagram xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:gmfgen="http://www.eclipse.org/gmf/2006/GenModel"
-    xsi:schemaLocation="http://www.eclipse.org/gmf/2006/GenModel ../../../plugin/org.eclipse.gmf.codegen/models/gmfgen_2007.ecore"/>
