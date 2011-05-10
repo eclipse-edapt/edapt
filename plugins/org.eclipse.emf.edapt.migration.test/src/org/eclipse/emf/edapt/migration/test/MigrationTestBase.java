@@ -40,7 +40,7 @@ import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 9C993A99FE6AB6932EB6F98CCAE84555
+ * @levd.rating YELLOW Hash: 028BD5369E87644723FF537FB5E55E4D
  */
 public abstract class MigrationTestBase extends TestCase {
 
