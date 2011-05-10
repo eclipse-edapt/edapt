@@ -201,12 +201,10 @@
       <eTypeParameters name="V"/>
       <eParameters name="featureName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getInverse">
+    <eOperations name="getInverse" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the inverse value of the reference"/>
       </eAnnotations>
-      <eGenericType eTypeParameter="#//Instance/getInverse/V"/>
-      <eTypeParameters name="V"/>
       <eParameters name="reference" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EReference"/>
     </eOperations>
     <eOperations name="getSlot" eType="#//Slot">
@@ -339,12 +337,10 @@
       </eAnnotations>
       <eParameters name="className" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
-    <eOperations name="getInverse">
+    <eOperations name="getInverse" upperBound="-1" eType="#//Instance">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Get the inverse value of the reference"/>
       </eAnnotations>
-      <eGenericType eTypeParameter="#//Instance/getInverse.1/V"/>
-      <eTypeParameters name="V"/>
       <eParameters name="referenceName" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </eOperations>
     <eOperations name="getLink" eType="#//Instance">

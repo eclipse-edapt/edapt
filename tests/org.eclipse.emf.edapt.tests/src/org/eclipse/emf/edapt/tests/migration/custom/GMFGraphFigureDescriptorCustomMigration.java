@@ -9,20 +9,17 @@ import org.eclipse.emf.edapt.migration.Model;
 public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 
 	public Instance getToplevel(Instance handle) {
-		if (handle.instanceOf("gmfgraph.FigureAccessor")) {
-			handle = handle.getInverse("gmfgraph.CustomFigure.customChildren");
-		}
-		while (handle.getInverse("gmfgraph.RealFigure.children") != null) {
-			handle = handle.getInverse("gmfgraph.RealFigure.children");
+		while (handle.getContainer().instanceOf("gmfgraph.Figure")) {
+			handle = handle.getContainer();
 		}
 		return handle;
 	}
 
-	public Instance getOrCreateDescriptor(Instance toplevel) {
-		Instance descriptor = toplevel.getInverse("gmfgraph.FigureDescriptor.actualFigure");
-		if(descriptor == null) {
-			descriptor = toplevel.getType().getModel().newInstance("gmfgraph.FigureDescriptor");
-			Instance gallery = toplevel.getInverse("gmfgraph.FigureGallery.figures");
+	public Instance getOrCreateDescriptor(Instance toplevel, Model model) {
+		Instance descriptor = toplevel.getContainer();
+		if(!descriptor.instanceOf("gmfgraph.FigureDescriptor")) {
+			Instance gallery = descriptor;
+			descriptor = model.newInstance("gmfgraph.FigureDescriptor");
 			descriptor.set("actualFigure", toplevel);
 			gallery.remove("figures", toplevel);
 			gallery.add("descriptors", descriptor);
@@ -49,8 +46,8 @@ public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 		}
 		Instance access = findAccess(descriptor, figure);
 		if (access == null) {
-			access = descriptor.getType().getModel().newInstance(
-					"gmfgraph.ChildAccess");
+			access = descriptor.getType().getModel()
+					.newInstance("gmfgraph.ChildAccess");
 			access.set("figure", figure);
 			descriptor.add("accessors", access);
 		}
@@ -66,7 +63,7 @@ public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 			Instance handle = element.getLink("figure");
 			if (handle != null) {
 				Instance toplevel = getToplevel(handle);
-				Instance descriptor = getOrCreateDescriptor(toplevel);
+				Instance descriptor = getOrCreateDescriptor(toplevel, model);
 				element.set("figure", descriptor);
 				if (toplevel != handle) {
 					Instance access = getOrCreateAccess(descriptor, handle);

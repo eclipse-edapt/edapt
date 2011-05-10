@@ -1,7 +1,5 @@
 package org.eclipse.emf.edapt.tests.migration.custom;
 
-import java.util.List;
-
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -11,7 +9,8 @@ import org.eclipse.emf.edapt.migration.Model;
 public class SprinklePortCustomMigration extends CustomMigration {
 
 	@Override
-	public void migrateAfter(Model model, Metamodel metamodel) throws MigrationException {
+	public void migrateAfter(Model model, Metamodel metamodel)
+			throws MigrationException {
 
 		metamodel.setDefaultPackage("sprinkle");
 
@@ -35,16 +34,14 @@ public class SprinklePortCustomMigration extends CustomMigration {
 
 		// do inputs
 		for (Instance port : model.getInstances("Port")) {
-			if (!port.<List<Instance>> getInverse("Connection.destination")
-					.isEmpty()) {
+			if (!port.getInverse("Connection.destination").isEmpty()) {
 				port.migrate("Input");
 			}
 		}
 
 		// do outputs
 		for (Instance port : model.getInstances("Port")) {
-			if (!port.<List<Instance>> getInverse("Connection.source")
-					.isEmpty()) {
+			if (!port.getInverse("Connection.source").isEmpty()) {
 				port.migrate("Output");
 			}
 		}

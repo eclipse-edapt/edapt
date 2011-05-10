@@ -27,8 +27,8 @@ public class StateMachineEventCustomMigration extends CustomMigration {
 			if (triggerLabel != null) {
 				Instance stateMachine = getStateMachine(transition);
 				Instance event = stateMachine
-						.evaluate("event->any (e | e.name = '"
-								+ triggerLabel + "')");
+						.evaluate("event->any (e | e.name = '" + triggerLabel
+								+ "')");
 				if (event == null) {
 					event = model.newInstance("Event");
 					event.set("name", triggerLabel);
@@ -41,10 +41,10 @@ public class StateMachineEventCustomMigration extends CustomMigration {
 
 	public Instance getStateMachine(Instance transition) {
 		Instance state = transition.getLink("source");
-		while (state.getInverse("CompositeState.state") != null) {
-			state = state.getInverse("CompositeState.state");
+		while (state != null && !state.instanceOf("StateMachine")) {
+			state = state.getContainer();
 		}
-		return state.getInverse("StateMachine.root");
+		return state;
 	}
 
 }

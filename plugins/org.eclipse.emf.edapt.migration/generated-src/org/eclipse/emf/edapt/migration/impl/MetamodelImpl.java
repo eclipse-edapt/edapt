@@ -36,10 +36,9 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.impl.EStructuralFeatureImpl;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edapt.common.EcoreUtils;
@@ -312,13 +311,12 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 			if (model != null) {
 				for (Instance instance : model.getAllInstances(opposite
 						.getEContainingClass())) {
-					EList<Instance> inverseList = ((InstanceImpl) instance)
-							.getInverseList(reference);
-					if (!inverseList.isEmpty()) {
+					EList<Instance> inverse = instance.getInverse(reference);
+					if (!inverse.isEmpty()) {
 						ReferenceSlot referenceSlot = ((InstanceImpl) instance)
 								.getCreateReferenceSlot(opposite);
 						referenceSlot.getValues().clear();
-						referenceSlot.getValues().addAll(inverseList);
+						referenceSlot.getValues().addAll(inverse);
 					}
 				}
 			}

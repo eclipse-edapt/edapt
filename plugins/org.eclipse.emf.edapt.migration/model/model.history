@@ -4087,5 +4087,7 @@
         </parameters>
       </operation>
     </changes>
+    <changes xsi:type="history:Set" element="model.ecore#//Instance/getInverse" featureName="upperBound"
+        dataValue="-1" oldDataValue="1"/>
   </releases>
 </history:History>

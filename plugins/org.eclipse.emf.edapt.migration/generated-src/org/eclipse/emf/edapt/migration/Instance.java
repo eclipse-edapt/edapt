@@ -205,7 +205,7 @@ public interface Instance {
 	 * @model referenceRequired="true"
 	 * @generated
 	 */
-	<V> V getInverse(EReference reference);
+	EList<Instance> getInverse(EReference reference);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -447,7 +447,7 @@ public interface Instance {
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
-	<V> V getInverse(String referenceName);
+	EList<Instance> getInverse(String referenceName);
 
 	/**
 	 * <!-- begin-user-doc -->

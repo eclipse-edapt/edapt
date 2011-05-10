@@ -849,11 +849,8 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		g1 = createEGenericType(t1);
 		initEOperation(op, g1);
 
-		op = addEOperation(instanceEClass, null, "getInverse", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "V");
+		op = addEOperation(instanceEClass, this.getInstance(), "getInverse", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEReference(), "reference", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		initEOperation(op, g1);
 
 		op = addEOperation(instanceEClass, this.getSlot(), "getSlot", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEStructuralFeature(), "feature", 1, 1, IS_UNIQUE, IS_ORDERED);
@@ -925,11 +922,8 @@ public class MigrationPackageImpl extends EPackageImpl implements MigrationPacka
 		op = addEOperation(instanceEClass, null, "migrate", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "className", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(instanceEClass, null, "getInverse", 0, 1, IS_UNIQUE, IS_ORDERED);
-		t1 = addETypeParameter(op, "V");
+		op = addEOperation(instanceEClass, this.getInstance(), "getInverse", 0, -1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);
-		g1 = createEGenericType(t1);
-		initEOperation(op, g1);
 
 		op = addEOperation(instanceEClass, this.getInstance(), "getLink", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "referenceName", 1, 1, IS_UNIQUE, IS_ORDERED);

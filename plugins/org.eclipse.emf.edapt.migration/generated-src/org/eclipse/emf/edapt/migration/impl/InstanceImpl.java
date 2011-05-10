@@ -467,7 +467,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * 
 	 * @generated NOT
 	 */
-	public <V> V getInverse(String referenceName) {
+	public EList<Instance> getInverse(String referenceName) {
 		EReference reference = checkAndGetReference(referenceName);
 		return getInverse(reference);
 	}
@@ -638,21 +638,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 	 * @generated NOT
 	 */
 	@SuppressWarnings("unchecked")
-	public <V> V getInverse(EReference reference) {
-		EList<Instance> instances = this.getInverseList(reference);
-		if (reference.isContainment()) {
-			return (V) (instances.isEmpty() ? null : instances.get(0));
-		}
-		return (V) instances;
-	}
-
-	/**
-	 * Get the instances that are linked to an instances via a reference
-	 * 
-	 * @param reference
-	 * @return Instances
-	 */
-	EList<Instance> getInverseList(EReference reference) {
+	public EList<Instance> getInverse(EReference reference) {
 		List<ReferenceSlot> slots = this.getReferences();
 		EList<Instance> instances = new BasicEList<Instance>();
 		for (ReferenceSlot slot : slots) {
