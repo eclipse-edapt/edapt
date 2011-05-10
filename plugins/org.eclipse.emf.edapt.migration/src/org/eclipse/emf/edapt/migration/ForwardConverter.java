@@ -147,11 +147,17 @@ public class ForwardConverter {
 									.contains(valueInstance)) {
 						ReferenceSlot referenceSlot = (ReferenceSlot) element
 								.getSlot(reference);
-						referenceSlot.getValues().move(index, valueInstance);
+						try {
+							referenceSlot.getValues()
+									.move(index, valueInstance);
+							index++;
+						} catch (IndexOutOfBoundsException e) {
+							// ignore missing inverse link
+						}
 					} else {
 						element.add(reference, index, valueInstance);
+						index++;
 					}
-					index++;
 				}
 			} else {
 				if (value != null) {
