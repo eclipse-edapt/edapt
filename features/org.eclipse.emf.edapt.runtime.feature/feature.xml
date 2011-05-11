@@ -107,12 +107,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </url>
 
    <plugin
-         id="org.codehaus.groovy"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
-
-   <plugin
          id="org.eclipse.emf.edapt.common"
          download-size="0"
          install-size="0"
@@ -128,6 +122,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="org.eclipse.emf.edapt.migration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.emf.edapt.history"
          download-size="0"
          install-size="0"
          version="0.0.0"
