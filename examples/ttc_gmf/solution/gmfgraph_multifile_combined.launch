@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.emf.edapt.migration.launching">
+<booleanAttribute key="org.eclipse.emf.edapt.migration.backup" value="false"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/ttc_gmf/solution/gmfgraph.history"/>
+<listAttribute key="org.eclipse.emf.edapt.migration.models">
+<listEntry value="/ttc_gmf/models/multifile_combined_original.gmfgraph"/>
+</listAttribute>
+<intAttribute key="org.eclipse.emf.edapt.migration.sourceRelease" value="-1"/>
+<intAttribute key="org.eclipse.emf.edapt.migration.targetRelease" value="-1"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.validationLevel" value="CUSTOM_MIGRATION"/>
+<booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ttc_gmf"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=""/>
+</launchConfiguration>
