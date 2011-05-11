@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IType;
 
 /**
  * Handler to create an empty migration.
@@ -32,9 +32,9 @@ public class CreateMigrationHandler extends EditingDomainHandlerBase {
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
 		EObject element = HandlerUtils.getSelectedElement(event);
-		IJavaElement javaElement = JavaUIUtils.createCustomMigration(element);
-		if (javaElement != null) {
-			createMigration(element, javaElement.getElementName(), domain);
+		IType javaType = JavaUIUtils.createCustomMigration(element);
+		if (javaType != null) {
+			createMigration(element, javaType.getFullyQualifiedName(), domain);
 		}
 		return null;
 	}

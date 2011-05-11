@@ -8,7 +8,6 @@ import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jdt.core.JavaCore;
@@ -44,7 +43,7 @@ public final class JavaUIUtils {
 	}
 
 	/** Create a class that implements a custom migration. */
-	public static IJavaElement createCustomMigration(EObject element) {
+	public static IType createCustomMigration(EObject element) {
 		OpenNewClassWizardAction action = new OpenNewClassWizardAction();
 		IProject project = getProject(element);
 		NewClassWizardPage page = new NewClassWizardPage();
@@ -52,8 +51,8 @@ public final class JavaUIUtils {
 		page.setSuperClass(CustomMigration.class.getName(), true);
 		action.setConfiguredWizardPage(page);
 		action.run();
-		IJavaElement javaElement = action.getCreatedElement();
-		return javaElement;
+		IType type = (IType) action.getCreatedElement();
+		return type;
 	}
 
 	/** Get the project in which a certain model element is stored. */
@@ -77,7 +76,7 @@ public final class JavaUIUtils {
 	}
 
 	/** Select the custom migration to which a migration change refers. */
-	public static IJavaElement selectCustomMigration(MigrationChange change) {
+	public static IType selectCustomMigration(MigrationChange change) {
 		IProject project = getProject(change);
 		try {
 			IJavaSearchScope searchScope = null;
