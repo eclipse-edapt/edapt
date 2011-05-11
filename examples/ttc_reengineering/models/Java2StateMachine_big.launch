@@ -8,9 +8,9 @@
 </listAttribute>
 <booleanAttribute key="org.eclipse.emf.edapt.migration.automatic" value="false"/>
 <booleanAttribute key="org.eclipse.emf.edapt.migration.backup" value="false"/>
-<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/reengineering/solution/java.history"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/ttc_reengineering/solution/java.history"/>
 <listAttribute key="org.eclipse.emf.edapt.migration.models">
-<listEntry value="/reengineering/models/3_big-model.xmi"/>
+<listEntry value="/ttc_reengineering/models/3_big-model.xmi"/>
 </listAttribute>
 <intAttribute key="org.eclipse.emf.edapt.migration.release" value="0"/>
 <intAttribute key="org.eclipse.emf.edapt.migration.sourceRelease" value="0"/>
