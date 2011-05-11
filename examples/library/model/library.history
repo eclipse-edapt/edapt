@@ -164,7 +164,7 @@
       </operation>
     </changes>
     <changes xsi:type="history:MigrationChange" migration="library.util.WriterCustomMigration"
-        language="Java">
+       >
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
             element="library.ecore#//Writer">
