@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.edapt.runtime.feature"
       label="Edapt Runtime Feature (Incubation)"
-      version="0.3.0"
+      version="0.3.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/edapt">
@@ -105,6 +105,15 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <url>
       <discovery label="Edapt project site" url="http://www.eclipse.org/edapt"/>
    </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.ocl.ecore"/>
+   </requires>
 
    <plugin
          id="org.eclipse.emf.edapt.common"

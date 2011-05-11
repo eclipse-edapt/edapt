@@ -242,19 +242,16 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		}
 
 		/** {@inheritDoc} */
-		@Override
 		public void launchesRemoved(ILaunch[] launches) {
 			refreshModelsWhenTerminated();
 		}
 
 		/** {@inheritDoc} */
-		@Override
 		public void launchesChanged(ILaunch[] launches) {
 			refreshModelsWhenTerminated();
 		}
 
 		/** {@inheritDoc} */
-		@Override
 		public void launchesAdded(ILaunch[] launches) {
 			refreshModelsWhenTerminated();
 		}
@@ -267,7 +264,6 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 		}
 
 		/** {@inheritDoc} */
-		@Override
 		public void launchesTerminated(ILaunch[] launches) {
 			for (ILaunch l : launches) {
 				if (l == launch) {

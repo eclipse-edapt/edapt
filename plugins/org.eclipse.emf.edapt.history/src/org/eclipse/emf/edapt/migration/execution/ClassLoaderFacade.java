@@ -32,7 +32,6 @@ public class ClassLoaderFacade implements IClassLoader {
 
 	/** {@inheritDoc} */
 	@SuppressWarnings("unchecked")
-	@Override
 	public <T> Class<T> load(String name) throws ClassNotFoundException {
 		return (Class<T>) loader.loadClass(name);
 	}

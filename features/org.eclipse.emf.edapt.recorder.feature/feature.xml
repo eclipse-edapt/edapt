@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.edapt.recorder.feature"
-      label="Edapt Feature (Incubation)"
-      version="0.3.0"
+      label="Edapt Recorder Feature (Incubation)"
+      version="0.3.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/edapt">
@@ -108,6 +108,32 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <requires>
       <import feature="org.eclipse.emf.edapt.runtime.feature" version="0.3.0"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore.editor"/>
+      <import plugin="org.eclipse.emf.edapt.common"/>
+      <import plugin="org.eclipse.emf.edapt.declaration"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.ecore.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.emf.edapt.history"/>
+      <import plugin="org.eclipse.emf.compare.diff" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.compare.match" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="org.junit"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.pde.ui" version="3.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.edapt.migration"/>
+      <import plugin="org.eclipse.debug.core"/>
+      <import plugin="org.eclipse.jdt.launching"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.jdt.debug.ui"/>
    </requires>
 
    <plugin

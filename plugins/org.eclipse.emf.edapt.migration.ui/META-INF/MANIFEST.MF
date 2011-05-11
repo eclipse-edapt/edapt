@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.migration.ui;singleton:=true
-Bundle-Version: 0.3.0
+Bundle-Version: 0.3.0.qualifier
 Bundle-Activator: org.eclipse.emf.edapt.migration.ui.MigrationUIActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -13,8 +13,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.debug.core,
  org.eclipse.jdt.launching,
  org.eclipse.debug.ui,
- org.eclipse.jdt.debug.ui,
- org.eclipse.pde.ui;bundle-version="3.5.1"
+ org.eclipse.jdt.debug.ui
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.eclipse.emf.edapt.migration.ui

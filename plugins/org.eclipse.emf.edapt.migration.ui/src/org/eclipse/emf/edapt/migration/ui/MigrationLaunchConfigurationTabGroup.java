@@ -21,7 +21,6 @@ public class MigrationLaunchConfigurationTabGroup extends
 		AbstractLaunchConfigurationTabGroup {
 
 	/** {@inheritDoc} */
-	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		setTabs(new ILaunchConfigurationTab[] {
 				new MigrationLaunchConfigurationMainTab(), new JavaJRETab(),

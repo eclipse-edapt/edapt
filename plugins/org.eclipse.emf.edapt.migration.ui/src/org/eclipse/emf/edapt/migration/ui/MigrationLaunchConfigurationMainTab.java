@@ -118,6 +118,7 @@ class MigrationLaunchConfigurationMainTab extends
 	/** Migrator for current history. */
 	private Migrator migrator;
 
+	/** Check box to toggle whether a backup should be made before migration. */
 	private Button backupCheck;
 
 	/** {@inheritDoc} */
@@ -546,6 +547,7 @@ class MigrationLaunchConfigurationMainTab extends
 	 * is modified.
 	 */
 	private class HistoryTextModifyListener extends TextModifyListener {
+		/** {@inheritDoc} */
 		@Override
 		public void modifyText(ModifyEvent e) {
 			migrator = null;
@@ -560,7 +562,6 @@ class MigrationLaunchConfigurationMainTab extends
 	 * dialog if activated.
 	 */
 	private class BrowseButtonListener extends SelectionAdapter {
-
 		/** {@inheritDoc} */
 		@Override
 		public void widgetSelected(SelectionEvent e) {
@@ -675,7 +676,6 @@ class MigrationLaunchConfigurationMainTab extends
 	 */
 	private class ComboListener implements ISelectionChangedListener {
 		/** {@inheritDoc} */
-		@Override
 		public void selectionChanged(SelectionChangedEvent event) {
 			updateLaunchConfigurationDialog();
 		}
