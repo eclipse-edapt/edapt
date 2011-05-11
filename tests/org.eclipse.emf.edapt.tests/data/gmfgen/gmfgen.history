@@ -10657,7 +10657,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenGeneratorCustomMigration"/>
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenGeneratorCustomMigration"/>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditRoot" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//GenAuditRoot/categories">
@@ -10841,7 +10841,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenPathCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenPathCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditContainer"
             referenceName="eStructuralFeatures" element="gmfgen.ecore#//GenAuditContainer/path">
@@ -12867,7 +12867,7 @@
     </changes>
     <changes xsi:type="history:Set" element="gmfgen.ecore#//GenAuditContext/root"
         featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenUniquenessCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenUniquenessCustomMigration">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//GenAuditContext" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//GenAuditContext/id">
         <changes xsi:type="history:Set" element="gmfgen.ecore#//GenAuditContext/id"
@@ -13324,7 +13324,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenValueExpressionCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGenValueExpressionCustomMigration">
       <changes xsi:type="history:Create" target="gmfgen.ecore#//ValueExpression" referenceName="eStructuralFeatures"
           element="gmfgen.ecore#//ValueExpression/provider">
         <changes xsi:type="history:Set" element="gmfgen.ecore#//ValueExpression/provider"

@@ -56,7 +56,6 @@ import org.eclipse.emf.edit.command.DeleteCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 
-
 /**
  * Facility to perform operations based on a history
  * 
@@ -210,8 +209,8 @@ public class HistoryInterpreter extends ReconstructorBase {
 					}
 				};
 			} else {
-				command = new AttachMigrationCommand(changes, migrationChange
-						.getMigration(), migrationChange.getLanguage());
+				command = new AttachMigrationCommand(changes,
+						migrationChange.getMigration());
 			}
 			execute(command);
 			migrationCombiner = null;
@@ -246,8 +245,8 @@ public class HistoryInterpreter extends ReconstructorBase {
 							.map(create.getElement(), ((List<EObject>) target
 									.eGet(reference)).get(index));
 				} else {
-					externalMapping.map(create.getElement(), (EObject) target
-							.eGet(reference));
+					externalMapping.map(create.getElement(),
+							(EObject) target.eGet(reference));
 				}
 			}
 		}
@@ -308,8 +307,9 @@ public class HistoryInterpreter extends ReconstructorBase {
 			EObject element = externalMapping.getTarget(remove.getElement());
 			Object value = externalMapping.resolveTarget(remove.getValue());
 
-			RemoveCommand command = new RemoveCommand(listener
-					.getEditingDomain(), element, remove.getFeature(), value);
+			RemoveCommand command = new RemoveCommand(
+					listener.getEditingDomain(), element, remove.getFeature(),
+					value);
 			return command;
 		}
 
@@ -348,8 +348,8 @@ public class HistoryInterpreter extends ReconstructorBase {
 		public Command caseCreate(Create create) {
 			EObject target = externalMapping.getTarget(create.getTarget());
 			EClass type = create.getElement().eClass();
-			EObject element = type.getEPackage().getEFactoryInstance().create(
-					type);
+			EObject element = type.getEPackage().getEFactoryInstance()
+					.create(type);
 			externalMapping.map(create.getElement(), element);
 			extent.addToExtent(element);
 
@@ -369,8 +369,8 @@ public class HistoryInterpreter extends ReconstructorBase {
 		public Command caseDelete(Delete delete) {
 			EObject element = externalMapping.getTarget(delete.getElement());
 
-			DeleteCommand command = new DeleteCommand(listener
-					.getEditingDomain(), Arrays.asList(element));
+			DeleteCommand command = new DeleteCommand(
+					listener.getEditingDomain(), Arrays.asList(element));
 			return command;
 		}
 

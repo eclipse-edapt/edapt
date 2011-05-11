@@ -376,8 +376,6 @@
         <details key="documentation" value="A sequence of primitive changes"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" eType="#//Language"
-        defaultValueLiteral=""/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitializerChange" abstract="true" eSuperTypes="#//ContentChange">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -389,9 +387,5 @@
         <details key="documentation" value="The value changes that are performed as part of the content change"/>
       </eAnnotations>
     </eStructuralFeatures>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="Language">
-    <eLiterals name="Groovy"/>
-    <eLiterals name="Java" value="1"/>
   </eClassifiers>
 </ecore:EPackage>

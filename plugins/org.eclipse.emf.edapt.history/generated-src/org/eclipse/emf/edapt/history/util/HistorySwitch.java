@@ -15,7 +15,30 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.history.*;
+import org.eclipse.emf.edapt.history.Add;
+import org.eclipse.emf.edapt.history.Change;
+import org.eclipse.emf.edapt.history.CompositeChange;
+import org.eclipse.emf.edapt.history.ContentChange;
+import org.eclipse.emf.edapt.history.Create;
+import org.eclipse.emf.edapt.history.Delete;
+import org.eclipse.emf.edapt.history.History;
+import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.InitializerChange;
+import org.eclipse.emf.edapt.history.MigrateableChange;
+import org.eclipse.emf.edapt.history.MigrationChange;
+import org.eclipse.emf.edapt.history.ModelReference;
+import org.eclipse.emf.edapt.history.Move;
+import org.eclipse.emf.edapt.history.NamedElement;
+import org.eclipse.emf.edapt.history.NoChange;
+import org.eclipse.emf.edapt.history.NonDelete;
+import org.eclipse.emf.edapt.history.OperationChange;
+import org.eclipse.emf.edapt.history.OperationInstance;
+import org.eclipse.emf.edapt.history.ParameterInstance;
+import org.eclipse.emf.edapt.history.PrimitiveChange;
+import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.history.Remove;
+import org.eclipse.emf.edapt.history.Set;
+import org.eclipse.emf.edapt.history.ValueChange;
 
 
 /**

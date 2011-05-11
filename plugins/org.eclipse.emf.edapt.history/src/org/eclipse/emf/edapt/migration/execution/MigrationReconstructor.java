@@ -37,7 +37,6 @@ import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.Create;
 import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Move;
 import org.eclipse.emf.edapt.history.OperationChange;
@@ -289,8 +288,6 @@ public class MigrationReconstructor extends ReconstructorBase {
 			return;
 		}
 		if (originalChange instanceof OperationChange
-				|| (originalChange instanceof MigrationChange && ((MigrationChange) originalChange)
-						.getLanguage() != Language.JAVA)
 				|| originalChange instanceof Delete) {
 			started = false;
 			trigger = originalChange;
@@ -327,10 +324,10 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private void throwWrappedMigrationException(MigrationException me) {
 		throw new WrappedMigrationException(me);
 	}
-	
+
 	/** Get the model. */
 	public Model getModel() {
-		if(repository == null) {
+		if (repository == null) {
 			return null;
 		}
 		return repository.getModel();
@@ -366,8 +363,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 						(EReference) resolve((EObject) value));
 			} else if (feature instanceof EReference) {
 				EObject resolve = resolve((EObject) value);
-				if(resolve instanceof EClass) {
-					if("EGenericType".equals(((EClass) resolve).getName())) {
+				if (resolve instanceof EClass) {
+					if ("EGenericType".equals(((EClass) resolve).getName())) {
 						System.out.println();
 						resolve((EObject) value);
 					}
@@ -441,25 +438,23 @@ public class MigrationReconstructor extends ReconstructorBase {
 		/** {@inheritDoc} */
 		@Override
 		public Object caseMigrationChange(MigrationChange change) {
-			String migration = change.getMigration();
-			if (change.getLanguage() == Language.JAVA) {
-				try {
-					Class<?> c = classLoader.load(migration);
-					customMigration = (CustomMigration) c.newInstance();
-					customMigration.migrateBefore(repository.getModel(),
-							repository.getMetamodel());
-				} catch (ClassNotFoundException e) {
-					throwWrappedMigrationException(
-							"Custom migration could not be loaded", e);
-				} catch (InstantiationException e) {
-					throwWrappedMigrationException(
-							"Custom migration could not be instantiated", e);
-				} catch (IllegalAccessException e) {
-					throwWrappedMigrationException(
-							"Custom migration could not be accessed", e);
-				} catch (MigrationException e) {
-					throwWrappedMigrationException(e);
-				}
+			try {
+				String migration = change.getMigration();
+				Class<?> c = classLoader.load(migration);
+				customMigration = (CustomMigration) c.newInstance();
+				customMigration.migrateBefore(repository.getModel(),
+						repository.getMetamodel());
+			} catch (ClassNotFoundException e) {
+				throwWrappedMigrationException(
+						"Custom migration could not be loaded", e);
+			} catch (InstantiationException e) {
+				throwWrappedMigrationException(
+						"Custom migration could not be instantiated", e);
+			} catch (IllegalAccessException e) {
+				throwWrappedMigrationException(
+						"Custom migration could not be accessed", e);
+			} catch (MigrationException e) {
+				throwWrappedMigrationException(e);
 			}
 
 			return change;
@@ -496,7 +491,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		/** Find an element in the metamodel created for migration. */
 		@SuppressWarnings("unchecked")
 		private EObject find(EObject sourceElement) {
-			if(sourceElement == EcorePackage.eINSTANCE) {
+			if (sourceElement == EcorePackage.eINSTANCE) {
 				return sourceElement;
 			}
 			EObject sourceParent = sourceElement.eContainer();
@@ -512,7 +507,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 				return sourcePackage;
 			}
 			EObject targetParent = find(sourceParent);
-			if(targetParent == sourceParent) {
+			if (targetParent == sourceParent) {
 				return sourceElement;
 			}
 			EReference reference = sourceElement.eContainmentFeature();

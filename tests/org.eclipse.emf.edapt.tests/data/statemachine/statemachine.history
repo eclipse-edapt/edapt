@@ -114,7 +114,7 @@
     </changes>
   </releases>
   <releases date="2008-11-23T23:00:44.812+0100">
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.StateMachineEventCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.StateMachineEventCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
             element="statemachine.ecore#//Event"/>

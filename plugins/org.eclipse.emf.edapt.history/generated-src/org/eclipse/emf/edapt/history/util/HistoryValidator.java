@@ -20,7 +20,31 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
-import org.eclipse.emf.edapt.history.*;
+import org.eclipse.emf.edapt.history.Add;
+import org.eclipse.emf.edapt.history.Change;
+import org.eclipse.emf.edapt.history.CompositeChange;
+import org.eclipse.emf.edapt.history.ContentChange;
+import org.eclipse.emf.edapt.history.Create;
+import org.eclipse.emf.edapt.history.Delete;
+import org.eclipse.emf.edapt.history.History;
+import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.HistoryPlugin;
+import org.eclipse.emf.edapt.history.InitializerChange;
+import org.eclipse.emf.edapt.history.MigrateableChange;
+import org.eclipse.emf.edapt.history.MigrationChange;
+import org.eclipse.emf.edapt.history.ModelReference;
+import org.eclipse.emf.edapt.history.Move;
+import org.eclipse.emf.edapt.history.NamedElement;
+import org.eclipse.emf.edapt.history.NoChange;
+import org.eclipse.emf.edapt.history.NonDelete;
+import org.eclipse.emf.edapt.history.OperationChange;
+import org.eclipse.emf.edapt.history.OperationInstance;
+import org.eclipse.emf.edapt.history.ParameterInstance;
+import org.eclipse.emf.edapt.history.PrimitiveChange;
+import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.history.Remove;
+import org.eclipse.emf.edapt.history.Set;
+import org.eclipse.emf.edapt.history.ValueChange;
 
 
 /**
@@ -141,8 +165,6 @@ public class HistoryValidator extends EObjectValidator {
 				return validateMigrationChange((MigrationChange)value, diagnostics, context);
 			case HistoryPackage.INITIALIZER_CHANGE:
 				return validateInitializerChange((InitializerChange)value, diagnostics, context);
-			case HistoryPackage.LANGUAGE:
-				return validateLanguage((Language)value, diagnostics, context);
 			default:
 				return true;
 		}
@@ -172,9 +194,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateChange(Change change, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(change, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(change, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(change, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(change, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(change, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(change, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(change, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(change, diagnostics, context);
@@ -211,9 +235,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validatePrimitiveChange(PrimitiveChange primitiveChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(primitiveChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(primitiveChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(primitiveChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(primitiveChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(primitiveChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(primitiveChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(primitiveChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(primitiveChange, diagnostics, context);
@@ -228,9 +254,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNoChange(NoChange noChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(noChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(noChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(noChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(noChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(noChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(noChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(noChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(noChange, diagnostics, context);
@@ -245,9 +273,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateContentChange(ContentChange contentChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(contentChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(contentChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(contentChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(contentChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(contentChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(contentChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(contentChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(contentChange, diagnostics, context);
@@ -262,9 +292,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateNonDelete(NonDelete nonDelete, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(nonDelete, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(nonDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(nonDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(nonDelete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(nonDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(nonDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(nonDelete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(nonDelete, diagnostics, context);
@@ -279,9 +311,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCreate(Create create, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(create, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(create, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(create, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(create, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(create, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(create, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(create, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(create, diagnostics, context);
@@ -296,9 +330,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMove(Move move, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(move, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(move, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(move, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(move, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(move, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(move, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(move, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(move, diagnostics, context);
@@ -313,9 +349,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateDelete(Delete delete, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(delete, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(delete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(delete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(delete, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(delete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(delete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(delete, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(delete, diagnostics, context);
@@ -330,9 +368,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateValueChange(ValueChange valueChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(valueChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(valueChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(valueChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(valueChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(valueChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(valueChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(valueChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(valueChange, diagnostics, context);
@@ -347,9 +387,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateSet(Set set, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(set, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(set, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(set, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(set, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(set, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(set, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(set, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(set, diagnostics, context);
@@ -364,9 +406,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateAdd(Add add, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(add, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(add, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(add, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(add, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(add, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(add, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(add, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(add, diagnostics, context);
@@ -381,9 +425,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateRemove(Remove remove, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(remove, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(remove, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(remove, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(remove, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(remove, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(remove, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(remove, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(remove, diagnostics, context);
@@ -398,9 +444,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateCompositeChange(CompositeChange compositeChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(compositeChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(compositeChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(compositeChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(compositeChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(compositeChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(compositeChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(compositeChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(compositeChange, diagnostics, context);
@@ -415,9 +463,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateOperationChange(OperationChange operationChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(operationChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(operationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(operationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(operationChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(operationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(operationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(operationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(operationChange, diagnostics, context);
@@ -468,9 +518,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMigrateableChange(MigrateableChange migrateableChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(migrateableChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(migrateableChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(migrateableChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(migrateableChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(migrateableChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(migrateableChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(migrateableChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(migrateableChange, diagnostics, context);
@@ -485,9 +537,11 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateMigrationChange(MigrationChange migrationChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(migrationChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(migrationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(migrationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(migrationChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(migrationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(migrationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(migrationChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(migrationChange, diagnostics, context);
@@ -502,24 +556,17 @@ public class HistoryValidator extends EObjectValidator {
 	 * @generated
 	 */
 	public boolean validateInitializerChange(InitializerChange initializerChange, DiagnosticChain diagnostics, Map<Object, Object> context) {
+		if (!validate_NoCircularContainment(initializerChange, diagnostics, context)) return false;
 		boolean result = validate_EveryMultiplicityConforms(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryDataValueConforms(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryReferenceIsContained(initializerChange, diagnostics, context);
+		if (result || diagnostics != null) result &= validate_EveryBidirectionalReferenceIsPaired(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryProxyResolves(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_UniqueID(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryKeyUnique(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validate_EveryMapEntryUnique(initializerChange, diagnostics, context);
 		if (result || diagnostics != null) result &= validateChange_Breaking(initializerChange, diagnostics, context);
 		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean validateLanguage(Language language, DiagnosticChain diagnostics, Map<Object, Object> context) {
-		return true;
 	}
 
 	/**

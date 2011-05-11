@@ -2858,11 +2858,11 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGraphTypedFigureCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGraphTypedFigureCustomMigration">
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//FigureAccessor/typedFigure"
           featureName="lowerBound" dataValue="1" oldDataValue="0"/>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGraphFigureDescriptorCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.GMFGraphFigureDescriptorCustomMigration">
       <changes xsi:type="history:CompositeChange">
         <changes xsi:type="history:Create" target="gmfgraph.ecore#/" referenceName="eClassifiers"
             element="gmfgraph.ecore#//ChildAccess">

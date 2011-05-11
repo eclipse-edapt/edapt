@@ -14,7 +14,6 @@ package org.eclipse.emf.edapt.history.presentation.action;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
@@ -87,9 +86,9 @@ public class AttachMigrationHandler extends
 
 	/** Attach a custom migration to the changes. */
 	private MigrationChange attachMigration(List<MigrateableChange> changes,
-			String migrationCode, EditingDomain domain) {
+			String migration, EditingDomain domain) {
 		AttachMigrationCommand command = new AttachMigrationCommand(changes,
-				migrationCode, Language.JAVA);
+				migration);
 		domain.getCommandStack().execute(command);
 		return command.getMigrationChange();
 	}

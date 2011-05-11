@@ -10,7 +10,6 @@ import org.eclipse.emf.edapt.common.ui.HandlerUtils;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edit.command.CommandParameter;
@@ -54,7 +53,6 @@ public class CreateMigrationHandler extends EditingDomainHandlerBase {
 
 		MigrationChange change = HistoryFactory.eINSTANCE
 				.createMigrationChange();
-		change.setLanguage(Language.JAVA);
 		change.setMigration(elementName);
 		Command command = new CreateChildCommand(domain, release,
 				HistoryPackage.eINSTANCE.getRelease_Changes(), change, index,

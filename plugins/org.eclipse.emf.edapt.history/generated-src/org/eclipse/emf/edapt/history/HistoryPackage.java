@@ -13,7 +13,6 @@ package org.eclipse.emf.edapt.history;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -1442,32 +1441,13 @@ public interface HistoryPackage extends EPackage {
 	int MIGRATION_CHANGE__CHANGES = CHANGE_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Language</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MIGRATION_CHANGE__LANGUAGE = CHANGE_FEATURE_COUNT + 2;
-
-	/**
 	 * The number of structural features of the '<em>Migration Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MIGRATION_CHANGE_FEATURE_COUNT = CHANGE_FEATURE_COUNT + 3;
-
-	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.eclipse.emf.edapt.history.Language
-	 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getLanguage()
-	 * @generated
-	 */
-	int LANGUAGE = 23;
+	int MIGRATION_CHANGE_FEATURE_COUNT = CHANGE_FEATURE_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.History <em>History</em>}'.
@@ -2042,17 +2022,6 @@ public interface HistoryPackage extends EPackage {
 	EReference getMigrationChange_Changes();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.history.MigrationChange#getLanguage <em>Language</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Language</em>'.
-	 * @see org.eclipse.emf.edapt.history.MigrationChange#getLanguage()
-	 * @see #getMigrationChange()
-	 * @generated
-	 */
-	EAttribute getMigrationChange_Language();
-
-	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.history.InitializerChange <em>Initializer Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2072,16 +2041,6 @@ public interface HistoryPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getInitializerChange_Changes();
-
-	/**
-	 * Returns the meta object for enum '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Language</em>'.
-	 * @see org.eclipse.emf.edapt.history.Language
-	 * @generated
-	 */
-	EEnum getLanguage();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2582,14 +2541,6 @@ public interface HistoryPackage extends EPackage {
 		EReference MIGRATION_CHANGE__CHANGES = eINSTANCE.getMigrationChange_Changes();
 
 		/**
-		 * The meta object literal for the '<em><b>Language</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MIGRATION_CHANGE__LANGUAGE = eINSTANCE.getMigrationChange_Language();
-
-		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.impl.InitializerChangeImpl <em>Initializer Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2606,16 +2557,6 @@ public interface HistoryPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INITIALIZER_CHANGE__CHANGES = eINSTANCE.getInitializerChange_Changes();
-
-		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.history.Language <em>Language</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.eclipse.emf.edapt.history.Language
-		 * @see org.eclipse.emf.edapt.history.impl.HistoryPackageImpl#getLanguage()
-		 * @generated
-		 */
-		EEnum LANGUAGE = eINSTANCE.getLanguage();
 
 	}
 

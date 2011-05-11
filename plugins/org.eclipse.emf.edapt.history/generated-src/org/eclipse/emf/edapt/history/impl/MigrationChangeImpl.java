@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 
@@ -36,7 +35,6 @@ import org.eclipse.emf.edapt.history.MigrationChange;
  * <ul>
  *   <li>{@link org.eclipse.emf.edapt.history.impl.MigrationChangeImpl#getMigration <em>Migration</em>}</li>
  *   <li>{@link org.eclipse.emf.edapt.history.impl.MigrationChangeImpl#getChanges <em>Changes</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.history.impl.MigrationChangeImpl#getLanguage <em>Language</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,26 +70,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 	 * @ordered
 	 */
 	protected EList<MigrateableChange> changes;
-
-	/**
-	 * The default value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLanguage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Language LANGUAGE_EDEFAULT = Language.GROOVY;
-
-	/**
-	 * The cached value of the '{@link #getLanguage() <em>Language</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLanguage()
-	 * @generated
-	 * @ordered
-	 */
-	protected Language language = LANGUAGE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,27 +128,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Language getLanguage() {
-		return language;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLanguage(Language newLanguage) {
-		Language oldLanguage = language;
-		language = newLanguage == null ? LANGUAGE_EDEFAULT : newLanguage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.MIGRATION_CHANGE__LANGUAGE, oldLanguage, language));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -192,8 +149,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 				return getMigration();
 			case HistoryPackage.MIGRATION_CHANGE__CHANGES:
 				return getChanges();
-			case HistoryPackage.MIGRATION_CHANGE__LANGUAGE:
-				return getLanguage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -214,9 +169,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 				getChanges().clear();
 				getChanges().addAll((Collection<? extends MigrateableChange>)newValue);
 				return;
-			case HistoryPackage.MIGRATION_CHANGE__LANGUAGE:
-				setLanguage((Language)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -235,9 +187,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 			case HistoryPackage.MIGRATION_CHANGE__CHANGES:
 				getChanges().clear();
 				return;
-			case HistoryPackage.MIGRATION_CHANGE__LANGUAGE:
-				setLanguage(LANGUAGE_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -254,8 +203,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 				return MIGRATION_EDEFAULT == null ? migration != null : !MIGRATION_EDEFAULT.equals(migration);
 			case HistoryPackage.MIGRATION_CHANGE__CHANGES:
 				return changes != null && !changes.isEmpty();
-			case HistoryPackage.MIGRATION_CHANGE__LANGUAGE:
-				return language != LANGUAGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -272,8 +219,6 @@ public class MigrationChangeImpl extends ChangeImpl implements MigrationChange {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (migration: ");
 		result.append(migration);
-		result.append(", language: ");
-		result.append(language);
 		result.append(')');
 		return result.toString();
 	}

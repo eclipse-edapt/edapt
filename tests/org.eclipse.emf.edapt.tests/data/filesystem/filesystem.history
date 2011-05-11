@@ -155,7 +155,7 @@
     <changes xsi:type="history:Set" element="filesystem.ecore#//Group/members" featureName="name"
         dataValue="members" oldDataValue="users"/>
     <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.FileSystemRightsCustomMigration"
-        language="Java">
+       >
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="filesystem.ecore#/" referenceName="eClassifiers"
             element="filesystem.ecore#//Rights">

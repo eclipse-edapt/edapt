@@ -13,7 +13,6 @@ package org.eclipse.emf.edapt.history.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -30,7 +29,6 @@ import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.InitializerChange;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.ModelReference;
@@ -216,13 +214,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * @generated
 	 */
 	private EClass initializerChangeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum languageEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -788,15 +779,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMigrationChange_Language() {
-		return (EAttribute)migrationChangeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getInitializerChange() {
 		return initializerChangeEClass;
 	}
@@ -808,15 +790,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 	 */
 	public EReference getInitializerChange_Changes() {
 		return (EReference)initializerChangeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EEnum getLanguage() {
-		return languageEEnum;
 	}
 
 	/**
@@ -922,13 +895,9 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		migrationChangeEClass = createEClass(MIGRATION_CHANGE);
 		createEAttribute(migrationChangeEClass, MIGRATION_CHANGE__MIGRATION);
 		createEReference(migrationChangeEClass, MIGRATION_CHANGE__CHANGES);
-		createEAttribute(migrationChangeEClass, MIGRATION_CHANGE__LANGUAGE);
 
 		initializerChangeEClass = createEClass(INITIALIZER_CHANGE);
 		createEReference(initializerChangeEClass, INITIALIZER_CHANGE__CHANGES);
-
-		// Create enums
-		languageEEnum = createEEnum(LANGUAGE);
 	}
 
 	/**
@@ -1066,12 +1035,6 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		op = addEOperation(operationInstanceEClass, ecorePackage.getEJavaObject(), "getParameterValue", 0, 1, IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
 
-		op = addEOperation(operationInstanceEClass, null, "getVariable", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-
-		op = addEOperation(operationInstanceEClass, ecorePackage.getEJavaObject(), "getVariableValue", 0, 1, IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED);
-
 		addEOperation(operationInstanceEClass, theDeclarationPackage.getOperation(), "getOperation", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		op = addEOperation(operationInstanceEClass, null, "setParameterValue", 0, 1, IS_UNIQUE, IS_ORDERED);
@@ -1096,15 +1059,9 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		initEClass(migrationChangeEClass, MigrationChange.class, "MigrationChange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMigrationChange_Migration(), ecorePackage.getEString(), "migration", null, 1, 1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMigrationChange_Changes(), this.getMigrateableChange(), null, "changes", null, 0, -1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getMigrationChange_Language(), this.getLanguage(), "language", "", 0, 1, MigrationChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(initializerChangeEClass, InitializerChange.class, "InitializerChange", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInitializerChange_Changes(), this.getValueChange(), null, "changes", null, 0, -1, InitializerChange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(languageEEnum, Language.class, "Language");
-		addEEnumLiteral(languageEEnum, Language.GROOVY);
-		addEEnumLiteral(languageEEnum, Language.JAVA);
 
 		// Create resource
 		createResource(eNS_URI);
@@ -1133,7 +1090,7 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		   source, 
 		   new String[] {
 			 "text", ""
-		   });																																								
+		   });																																						
 	}
 
 } //HistoryPackageImpl

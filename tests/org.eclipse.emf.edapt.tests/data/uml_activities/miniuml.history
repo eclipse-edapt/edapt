@@ -951,7 +951,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.UMLActivityEdgeCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.UMLActivityEdgeCustomMigration">
       <changes xsi:type="history:Set" element="miniuml.ecore#//ActivityEdge" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:OperationChange">

@@ -158,7 +158,7 @@
     </changes>
   </releases>
   <releases date="2008-11-23T22:57:16.328+0100">
-    <changes xsi:type="history:MigrationChange" language="Java" migration="org.eclipse.emf.edapt.tests.migration.custom.SprinklePortCustomMigration">
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.SprinklePortCustomMigration">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="sprinkle.ecore#/" referenceName="eClassifiers"
             element="sprinkle.ecore#//Input">

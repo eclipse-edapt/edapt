@@ -14,7 +14,6 @@ package org.eclipse.emf.edapt.history.presentation;
 import java.util.List;
 
 import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.Language;
 import org.eclipse.emf.edapt.history.MigrateableChange;
 import org.eclipse.emf.edapt.history.MigrationChange;
 import org.eclipse.emf.edapt.history.Release;
@@ -42,17 +41,12 @@ public class AttachMigrationCommand extends ChangeCommand {
 	/** Resulting migration change. */
 	private MigrationChange migrationChange;
 
-	/** The language in which the custom migration is specified. */
-	private final Language language;
-
 	/** Constructor */
-	public AttachMigrationCommand(List<MigrateableChange> changes, String code,
-			Language language) {
+	public AttachMigrationCommand(List<MigrateableChange> changes, String code) {
 		super(changes.get(0).eContainer());
 		this.release = (Release) changes.get(0).eContainer();
 		this.changes = changes;
 		this.code = code;
-		this.language = language;
 	}
 
 	/** {@inheritDoc} */
@@ -60,7 +54,6 @@ public class AttachMigrationCommand extends ChangeCommand {
 	protected void doExecute() {
 		migrationChange = HistoryFactory.eINSTANCE.createMigrationChange();
 		migrationChange.setMigration(code);
-		migrationChange.setLanguage(language);
 		release.getChanges().add(release.getChanges().indexOf(changes.get(0)),
 				migrationChange);
 		migrationChange.getChanges().addAll(changes);

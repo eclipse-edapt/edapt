@@ -1866,8 +1866,7 @@
       <changes xsi:type="history:Set" element="#//@releases.2/@changes.17/@changes.1/@element"
           featureName="eType" referenceValue="history.ecore#//ValueChange"/>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.history.util.BidirectionalChangesCustomMigration"
-        language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.history.util.BidirectionalChangesCustomMigration"/>
     <changes xsi:type="history:Set" element="history.ecore#//Release/date" featureName="derived"
         dataValue="false" oldDataValue="true"/>
     <changes xsi:type="history:Set" element="#//@releases.3/@changes.32/@element"
@@ -2686,72 +2685,6 @@
         <details key="get" value=""/>
         <details key="set" value=""/>
       </element>
-    </changes>
-    <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#/" referenceName="eClassifiers"
-          element="history.ecore#//Language">
-        <changes xsi:type="history:Set" element="history.ecore#//Language" featureName="name"
-            dataValue="Language"/>
-      </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//Language" referenceName="eLiterals"
-          element="history.ecore#//Language/Groovy">
-        <changes xsi:type="history:Set" element="history.ecore#//Language/Groovy"
-            featureName="name" dataValue="Groovy"/>
-        <changes xsi:type="history:Set" element="history.ecore#//Language/Groovy"
-            featureName="literal" dataValue="Groovy"/>
-      </changes>
-      <changes xsi:type="history:Create" target="history.ecore#//Language" referenceName="eLiterals"
-          element="history.ecore#//Language/Java">
-        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="name"
-            dataValue="Java"/>
-        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="literal"
-            dataValue="Java"/>
-        <changes xsi:type="history:Set" element="history.ecore#//Language/Java" featureName="value"
-            dataValue="1" oldDataValue="0"/>
-      </changes>
-      <operation name="createEnumeration">
-        <parameters name="ePackage">
-          <referenceValue element="history.ecore#/"/>
-        </parameters>
-        <parameters name="name">
-          <dataValue>Language</dataValue>
-        </parameters>
-        <parameters name="literals">
-          <dataValue>Groovy</dataValue>
-          <dataValue>Java</dataValue>
-        </parameters>
-      </operation>
-    </changes>
-    <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="history.ecore#//MigrationChange"
-          referenceName="eStructuralFeatures" element="history.ecore#//MigrationChange/language">
-        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
-            featureName="name" dataValue="language"/>
-        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
-            featureName="defaultValueLiteral" dataValue=""/>
-        <changes xsi:type="history:Set" element="history.ecore#//MigrationChange/language"
-            featureName="eType" referenceValue="history.ecore#//Language"/>
-      </changes>
-      <operation name="newAttribute">
-        <parameters name="eClass">
-          <referenceValue element="history.ecore#//MigrationChange"/>
-        </parameters>
-        <parameters name="name">
-          <dataValue>language</dataValue>
-        </parameters>
-        <parameters name="type">
-          <referenceValue element="history.ecore#//Language"/>
-        </parameters>
-        <parameters name="lowerBound">
-          <dataValue>0</dataValue>
-        </parameters>
-        <parameters name="upperBound">
-          <dataValue>1</dataValue>
-        </parameters>
-        <parameters name="defaultValue">
-          <dataValue></dataValue>
-        </parameters>
-      </operation>
     </changes>
   </releases>
 </history:History>
