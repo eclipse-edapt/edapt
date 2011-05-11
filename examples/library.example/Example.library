@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<library:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:library="http://library/v1" name="Example">
+  <books xsi:type="library:GuideBook" title="Germany" pages="608" author="Joanna Egert-Romanowskiej"/>
+  <books xsi:type="library:GuideBook" title="Austria" pages="384" author="Joanna Egert-Romanowskiej"/>
+  <books xsi:type="library:SpecialistBook" title="EMF: Eclipse Modeling Framework (2nd Edition)" pages="744" author="Ed Merks"/>
+</library:Library>
