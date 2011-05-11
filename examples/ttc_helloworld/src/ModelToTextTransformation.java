@@ -13,7 +13,7 @@ public class ModelToTextTransformation extends HelloWorldCustomMigration {
 			String greetingText = greeting.getLink("greetingMessage").get(
 					"text");
 			Object personName = greeting.getLink("person").get("name");
-			String text = greetingText + " " + personName;
+			String text = greetingText + " " + personName + "!";
 			saveResult(resource, text);
 		}
 	}
