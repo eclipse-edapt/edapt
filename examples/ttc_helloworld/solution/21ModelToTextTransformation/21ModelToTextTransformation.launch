@@ -7,7 +7,7 @@
 <listEntry value="4"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.emf.edapt.migration.backup" value="false"/>
-<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/ttc_helloworld/solution/21ModelToTextTransformation/ttc_helloworldext.history"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/ttc_helloworld/solution/21ModelToTextTransformation/helloworldext.history"/>
 <listAttribute key="org.eclipse.emf.edapt.migration.models">
 <listEntry value="/ttc_helloworld/solution/21ModelToTextTransformation/Greetingext.xmi"/>
 </listAttribute>
