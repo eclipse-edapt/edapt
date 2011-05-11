@@ -126,7 +126,7 @@
         oldDataValue="graph1"/>
     <changes xsi:type="history:Set" element="graph1.ecore#/" featureName="nsPrefix"
         dataValue="graph3" oldDataValue="graph1"/>
-    <changes xsi:type="history:MigrationChange" migration="MoveResult" language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="MoveResult"/>
   </releases>
   <releases/>
 </history:History>

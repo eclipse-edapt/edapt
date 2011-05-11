@@ -28,7 +28,7 @@
   </releases>
   <releases date="2011-04-25T14:01:49.410+0200" label="">
     <changes xsi:type="history:MigrationChange" migration="ConstantTransformation"
-        language="Java"/>
+       />
   </releases>
   <releases/>
 </history:History>

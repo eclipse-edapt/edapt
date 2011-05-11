@@ -63,7 +63,7 @@
   </releases>
   <releases date="2011-04-25T14:09:24.212+0200" label="">
     <changes xsi:type="history:MigrationChange" migration="ConstantTransformationReferences"
-        language="Java"/>
+       />
   </releases>
   <releases/>
 </history:History>

@@ -73,7 +73,7 @@
     </changes>
   </releases>
   <releases date="2011-04-25T14:33:57.497+0200" label="">
-    <changes xsi:type="history:MigrationChange" migration="ReverseEdges" language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="ReverseEdges"/>
   </releases>
   <releases/>
 </history:History>

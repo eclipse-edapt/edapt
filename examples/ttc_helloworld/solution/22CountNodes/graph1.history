@@ -131,7 +131,7 @@
     </changes>
   </releases>
   <releases date="2011-04-25T14:30:45.394+0200" label="">
-    <changes xsi:type="history:MigrationChange" migration="CountNodes" language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="CountNodes"/>
   </releases>
   <releases/>
 </history:History>

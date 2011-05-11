@@ -131,7 +131,7 @@
     </changes>
   </releases>
   <releases date="2011-04-25T14:33:57.497+0200" label="">
-    <changes xsi:type="history:MigrationChange" migration="CountDanglingEdges" language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="CountDanglingEdges"/>
   </releases>
   <releases/>
 </history:History>

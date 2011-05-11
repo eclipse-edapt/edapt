@@ -121,7 +121,7 @@
   </releases>
   <releases date="2011-04-25T22:58:17.125+0200" label="">
     <changes xsi:type="history:MigrationChange" migration="ModelToTextTransformation"
-        language="Java"/>
+       />
   </releases>
   <releases/>
 </history:History>
