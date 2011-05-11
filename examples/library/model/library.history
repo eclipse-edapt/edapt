@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2011-01-05T08:19:30.749+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="library.ecore#/">
+        <changes xsi:type="history:Set" element="library.ecore#/" featureName="name"
+            dataValue="library"/>
+        <changes xsi:type="history:Set" element="library.ecore#/" featureName="nsURI"
+            dataValue="http://library/v1"/>
+        <changes xsi:type="history:Set" element="library.ecore#/" featureName="nsPrefix"
+            dataValue="library"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+          element="library.ecore#//Library">
+        <changes xsi:type="history:Set" element="library.ecore#//Library" featureName="name"
+            dataValue="Library"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Library" referenceName="eStructuralFeatures"
+          element="#//@releases.1/@changes.0/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="name" dataValue="name"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="unique" dataValue="false" oldDataValue="true"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.0/@element"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+          element="library.ecore#//Book">
+        <changes xsi:type="history:Set" element="library.ecore#//Book" featureName="name"
+            dataValue="Book"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book" featureName="abstract"
+            dataValue="true" oldDataValue="false"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Library" referenceName="eStructuralFeatures"
+          element="library.ecore#//Library/books">
+        <changes xsi:type="history:Set" element="library.ecore#//Library/books" featureName="name"
+            dataValue="books"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Library/books" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Library/books" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Library/books" featureName="eType"
+            referenceValue="library.ecore#//Book"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Book" referenceName="eStructuralFeatures"
+          element="library.ecore#//Book/title">
+        <changes xsi:type="history:Set" element="library.ecore#//Book/title" featureName="name"
+            dataValue="title"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/title" featureName="unique"
+            dataValue="false" oldDataValue="true"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/title" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/title" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Book" referenceName="eStructuralFeatures"
+          element="library.ecore#//Book/pages">
+        <changes xsi:type="history:Set" element="library.ecore#//Book/pages" featureName="name"
+            dataValue="pages"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/pages" featureName="unique"
+            dataValue="false" oldDataValue="true"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/pages" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/pages" featureName="unsettable"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/pages" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Book" referenceName="eStructuralFeatures"
+          element="library.ecore#//Writer/name">
+        <changes xsi:type="history:Set" element="library.ecore#//Writer/name" featureName="name"
+            dataValue="author"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Writer/name" featureName="unique"
+            dataValue="false" oldDataValue="true"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Writer/name" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Writer/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.1/@changes.4/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="name" dataValue="GuideBook"/>
+        <changes xsi:type="history:Add" element="#//@releases.1/@changes.1/@changes.4/@element"
+            featureName="eSuperTypes" referenceValue="library.ecore#//Book"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+          element="#//@releases.1/@changes.1/@changes.6/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.1/@changes.6/@element"
+            featureName="name" dataValue="SpecialistBook"/>
+        <changes xsi:type="history:Add" element="#//@releases.1/@changes.1/@changes.6/@element"
+            featureName="eSuperTypes" referenceValue="library.ecore#//Book"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2011-01-05T08:23:25.148+0100" label="v2">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Delete" target="library.ecore#//Library" referenceName="eStructuralFeatures">
+        <element xsi:type="ecore:EAttribute" name="name" unique="false" lowerBound="1"
+            eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <operation name="deleteFeature2">
+        <parameters name="feature">
+          <referenceValue element="#//@releases.1/@changes.0/@changes.0/@element"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+          element="library.ecore#//BookCategory">
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory" featureName="name"
+            dataValue="BookCategory"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//Book" referenceName="eStructuralFeatures"
+          element="library.ecore#//Book/category">
+        <changes xsi:type="history:Set" element="library.ecore#//Book/category" featureName="name"
+            dataValue="category"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/category" featureName="lowerBound"
+            dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="library.ecore#//Book/category" featureName="eType"
+            referenceValue="library.ecore#//BookCategory"/>
+      </changes>
+      <changes xsi:type="history:Set" element="library.ecore#//Book" featureName="abstract"
+          dataValue="false" oldDataValue="true"/>
+      <changes xsi:type="history:Create" target="library.ecore#//BookCategory" referenceName="eLiterals"
+          element="library.ecore#//BookCategory/GuideBook">
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory/GuideBook"
+            featureName="name" dataValue="GuideBook"/>
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory/GuideBook"
+            featureName="literal" dataValue="GuideBook"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="library.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="GuideBook" eSuperTypes="library.ecore#//Book"/>
+      </changes>
+      <changes xsi:type="history:Create" target="library.ecore#//BookCategory" referenceName="eLiterals"
+          element="library.ecore#//BookCategory/SpecialistBook">
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory/SpecialistBook"
+            featureName="name" dataValue="SpecialistBook"/>
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory/SpecialistBook"
+            featureName="literal" dataValue="SpecialistBook"/>
+        <changes xsi:type="history:Set" element="library.ecore#//BookCategory/SpecialistBook"
+            featureName="value" dataValue="1" oldDataValue="0"/>
+      </changes>
+      <changes xsi:type="history:Delete" target="library.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="SpecialistBook" eSuperTypes="library.ecore#//Book"/>
+      </changes>
+      <operation name="subClassesToEnumeration">
+        <parameters name="contextClass">
+          <referenceValue element="library.ecore#//Book"/>
+        </parameters>
+        <parameters name="attributeName">
+          <dataValue>category</dataValue>
+        </parameters>
+        <parameters name="ePackage">
+          <referenceValue element="library.ecore#/"/>
+        </parameters>
+        <parameters name="enumName">
+          <dataValue>BookCategory</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:MigrationChange" migration="library.util.WriterCustomMigration"
+        language="Java">
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="library.ecore#/" referenceName="eClassifiers"
+            element="library.ecore#//Writer">
+          <changes xsi:type="history:Set" element="library.ecore#//Writer" featureName="name"
+              dataValue="Writer"/>
+        </changes>
+        <operation name="newClass">
+          <parameters name="ePackage">
+            <referenceValue element="library.ecore#/"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>Writer</dataValue>
+          </parameters>
+          <parameters name="superClasses"/>
+          <parameters name="abstr">
+            <dataValue>false</dataValue>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="library.ecore#//Library" referenceName="eStructuralFeatures"
+            element="library.ecore#//Library/writers">
+          <changes xsi:type="history:Set" element="library.ecore#//Library/writers"
+              featureName="name" dataValue="writers"/>
+          <changes xsi:type="history:Set" element="library.ecore#//Library/writers"
+              featureName="upperBound" dataValue="-1" oldDataValue="1"/>
+          <changes xsi:type="history:Set" element="library.ecore#//Library/writers"
+              featureName="containment" dataValue="true" oldDataValue="false"/>
+          <changes xsi:type="history:Set" element="library.ecore#//Library/writers"
+              featureName="eType" referenceValue="library.ecore#//Writer"/>
+        </changes>
+        <operation name="newReference">
+          <parameters name="eClass">
+            <referenceValue element="library.ecore#//Library"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>writers</dataValue>
+          </parameters>
+          <parameters name="type">
+            <referenceValue element="library.ecore#//Writer"/>
+          </parameters>
+          <parameters name="lowerBound">
+            <dataValue>0</dataValue>
+          </parameters>
+          <parameters name="upperBound">
+            <dataValue>-1</dataValue>
+          </parameters>
+          <parameters name="containment">
+            <dataValue>true</dataValue>
+          </parameters>
+          <parameters name="opposite"/>
+        </operation>
+      </changes>
+      <changes xsi:type="history:Move" target="library.ecore#//Writer" referenceName="eStructuralFeatures"
+          element="library.ecore#//Writer/name" source="library.ecore#//Book"/>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Set" element="library.ecore#//Writer/name" featureName="name"
+            dataValue="name" oldDataValue="author"/>
+        <operation name="rename">
+          <parameters name="element">
+            <referenceValue element="library.ecore#//Writer/name"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>name</dataValue>
+          </parameters>
+        </operation>
+      </changes>
+      <changes xsi:type="history:OperationChange">
+        <changes xsi:type="history:Create" target="library.ecore#//Book" referenceName="eStructuralFeatures"
+            element="library.ecore#//Book/author">
+          <changes xsi:type="history:Set" element="library.ecore#//Book/author" featureName="name"
+              dataValue="author"/>
+          <changes xsi:type="history:Set" element="library.ecore#//Book/author" featureName="lowerBound"
+              dataValue="1" oldDataValue="0"/>
+          <changes xsi:type="history:Set" element="library.ecore#//Book/author" featureName="eType"
+              referenceValue="library.ecore#//Writer"/>
+        </changes>
+        <operation name="newReference">
+          <parameters name="eClass">
+            <referenceValue element="library.ecore#//Book"/>
+          </parameters>
+          <parameters name="name">
+            <dataValue>author</dataValue>
+          </parameters>
+          <parameters name="type">
+            <referenceValue element="library.ecore#//Writer"/>
+          </parameters>
+          <parameters name="lowerBound">
+            <dataValue>1</dataValue>
+          </parameters>
+          <parameters name="upperBound">
+            <dataValue>1</dataValue>
+          </parameters>
+          <parameters name="containment">
+            <dataValue>false</dataValue>
+          </parameters>
+          <parameters name="opposite"/>
+        </operation>
+      </changes>
+    </changes>
+    <changes xsi:type="history:Set" element="library.ecore#/" featureName="nsURI"
+        dataValue="http://library/v2" oldDataValue="http://library/v1"/>
+  </releases>
+  <releases/>
+</history:History>
