@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ASCII"?>
+<gmfgraph:Canvas xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gmfgraph="http://www.eclipse.org/gmf/2005/GraphicalDefinition" xsi:schemaLocation="http://www.eclipse.org/gmf/2005/GraphicalDefinition metamodels/gmfgraph_1.23.ecore" name="statemachine">
+  <figures name="Default">
+    <figures xsi:type="gmfgraph:RoundedRectangle" referencingElements="State" name="StateFigure">
+      <layout xsi:type="gmfgraph:GridLayout"/>
+      <children xsi:type="gmfgraph:Label" referencingElements="StateName" name="StateNameFigure" text="&lt;...>">
+        <layoutData xsi:type="gmfgraph:GridLayoutData"/>
+      </children>
+    </figures>
+    <figures xsi:type="gmfgraph:PolylineConnection" referencingElements="Transition" name="TransitionFigure" targetDecoration="TransitionTargetDecoration">
+      <children xsi:type="gmfgraph:Label" referencingElements="TransitionTrigger" name="TransitionTriggerFigure" text="&lt;...>"/>
+      <children xsi:type="gmfgraph:Label" referencingElements="TransitionEffect" name="TransitionEffectFigure" text="&lt;...>"/>
+      <children xsi:type="gmfgraph:PolylineDecoration" name="TransitionTargetDecoration">
+        <template x="-2" y="2"/>
+        <template/>
+        <template x="-2" y="-2"/>
+      </children>
+    </figures>
+  </figures>
+  <nodes name="State" figure="StateFigure"/>
+  <connections name="Transition" figure="TransitionFigure"/>
+  <labels name="StateName" figure="StateNameFigure"/>
+  <labels name="TransitionTrigger" figure="TransitionTriggerFigure"/>
+  <labels name="TransitionEffect" figure="TransitionEffectFigure"/>
+</gmfgraph:Canvas>
