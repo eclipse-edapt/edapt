@@ -79,10 +79,11 @@ public class OperationExtractor {
 		if (parameterAnnotation != null) {
 			Parameter parameter = DeclarationFactory.eINSTANCE
 					.createParameter();
+			operation.getParameters().add(parameter);
 			if (parameterAnnotation.main()) {
 				parameter.setMain(true);
+				operation.getParameters().move(0, parameter);
 			}
-			operation.getParameters().add(parameter);
 
 			parameter.setName(field.getName());
 			parameter.setDescription(parameterAnnotation.description());
