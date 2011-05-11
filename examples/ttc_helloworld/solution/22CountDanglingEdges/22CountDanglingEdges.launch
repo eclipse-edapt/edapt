@@ -7,9 +7,9 @@
 <listEntry value="4"/>
 </listAttribute>
 <booleanAttribute key="org.eclipse.emf.edapt.migration.backup" value="false"/>
-<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/helloworld/solution/22CountDanglingEdges/graph1.history"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.history" value="/ttc_helloworld/solution/22CountDanglingEdges/graph1.history"/>
 <listAttribute key="org.eclipse.emf.edapt.migration.models">
-<listEntry value="/helloworld/solution/22CountDanglingEdges/Graph1.xmi"/>
+<listEntry value="/ttc_helloworld/solution/22CountDanglingEdges/Graph1.xmi"/>
 </listAttribute>
 <intAttribute key="org.eclipse.emf.edapt.migration.sourceRelease" value="0"/>
 <intAttribute key="org.eclipse.emf.edapt.migration.targetRelease" value="-1"/>
