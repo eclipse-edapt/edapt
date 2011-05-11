@@ -4311,7 +4311,7 @@
     </changes>
   </releases>
   <releases date="2011-04-26T17:12:31.630+0200" label="">
-    <changes xsi:type="history:MigrationChange" migration="ExtractStates" language="Java">
+    <changes xsi:type="history:MigrationChange" migration="ExtractStates">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="StateMachine.ecore#//State" referenceName="eStructuralFeatures"
             element="#//@releases.1/@changes.4/@changes.0/@element">
@@ -4345,7 +4345,7 @@
         </operation>
       </changes>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="ExtractTransitions" language="Java">
+    <changes xsi:type="history:MigrationChange" migration="ExtractTransitions">
       <changes xsi:type="history:OperationChange">
         <changes xsi:type="history:Create" target="StateMachine.ecore#//Transition"
             referenceName="eStructuralFeatures" element="#//@releases.1/@changes.5/@changes.0/@element">
@@ -4379,8 +4379,8 @@
         </operation>
       </changes>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="ExtractTriggers" language="Java"/>
-    <changes xsi:type="history:MigrationChange" migration="ExtractActions" language="Java"/>
+    <changes xsi:type="history:MigrationChange" migration="ExtractTriggers"/>
+    <changes xsi:type="history:MigrationChange" migration="ExtractActions"/>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="StateMachine.ecore#//State" referenceName="eStructuralFeatures">
         <element xsi:type="ecore:EReference" name="class" lowerBound="1" eType="ecore:EClass java.ecore#/2/Class"/>
