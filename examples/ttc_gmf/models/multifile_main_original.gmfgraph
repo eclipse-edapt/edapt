@@ -20,7 +20,7 @@
     </figures>
     <figures xsi:type="gmfgraph:Rectangle" name="TutorialFigure" referencingElements="TutorialNode">
       <children xsi:type="gmfgraph:Label" name="Tag" text="&lt;&lt;Tutorial>>"/>
-      <children xsi:type="gmfgraph:Label" name="TitleLabel" text="" referencingElements="TitleLabel"/>
+      <children xsi:type="gmfgraph:Label" name="TitleLabel" text="" referencingElements="TutorialLabel"/>
     </figures>
   </figures>
   <nodes name="ScheduleNode" figure="ThickFigure"/>
