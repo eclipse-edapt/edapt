@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeEList;
-import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.edapt.migration.AttributeSlot;
 import org.eclipse.emf.edapt.migration.MigrationPackage;
 
@@ -204,16 +203,25 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (values: ");
-		result.append(values);
-		result.append(')');
+		StringBuffer result = new StringBuffer();
+		result.append(getEAttribute().getName());
+		result.append(" = ");
+		result.append('[');
+		boolean first = true;
+		for(Object value : getValues()) {
+			if(!first) {
+				result.append(", ");
+			}
+			result.append(value.toString());
+			first = false;
+		}
+		result.append(']');
 		return result.toString();
 	}
 

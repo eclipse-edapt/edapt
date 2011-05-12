@@ -232,4 +232,25 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 		return super.eIsSet(featureID);
 	}
 
+	/** {@inheritDoc} */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer();
+		result.append(getEReference().getName());
+		result.append(" = ");
+		result.append('[');
+		boolean first = true;
+		for(Instance value : getValues()) {
+			if(!first) {
+				result.append(", ");
+			}
+			result.append(value.toString());
+			first = false;
+		}
+		result.append(']');
+		return result.toString();
+
+	}
 } //ReferenceSlotImpl
