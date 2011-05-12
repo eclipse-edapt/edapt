@@ -21,7 +21,6 @@ public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
 			throws MigrationException {
-
 		for (Instance handle : model.getAllInstances("gmfgraph.FigureHandle")) {
 			List<Instance> elements = handle.unset(reference);
 			if (!elements.isEmpty()) {
