@@ -13,22 +13,20 @@ package org.eclipse.emf.edapt.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 
 /**
@@ -71,58 +69,6 @@ public final class MetamodelUtils {
 		name = name.charAt(0) + GENERIC + name.substring(1);
 		return (EReference) reference.getEContainingClass()
 				.getEStructuralFeature(name);
-	}
-
-	/** Get operations of a class having a certain name. */
-	public static List<EOperation> getOperations(EClass eClass, String name) {
-		List<EOperation> operations = new ArrayList<EOperation>();
-		for (EOperation operation : eClass.getEOperations()) {
-			if (name.equals(operation.getName())) {
-				operations.add(operation);
-			}
-		}
-		return operations;
-	}
-
-	/** Get the operation of a class with a certain signature. */
-	public static EOperation getOperation(EClass eClass, String name,
-			EClassifier... parameterTypes) {
-		List<EOperation> operations = getOperations(eClass, name);
-		// if we have only one operation with that name, then we're finished
-		if (operations.size() == 1) {
-			return operations.get(0);
-		}
-		// remove operations having a different number of parameters
-		for (Iterator<EOperation> i = operations.iterator(); i.hasNext();) {
-			EOperation operation = i.next();
-			if (operation.getEParameters().size() != parameterTypes.length) {
-				i.remove();
-			}
-		}
-		if (operations.size() == 1) {
-			return operations.get(0);
-		}
-		// compare the parameter types
-		for (EOperation operation : operations) {
-			boolean found = true;
-			int i = 0;
-			for (EParameter parameter : operation.getEParameters()) {
-				if (parameter.isMany()) {
-					if (parameterTypes[i] != EcorePackage.eINSTANCE.getEEList()) {
-						found = false;
-					}
-				} else {
-					if (parameterTypes[i] != parameter.getEType()) {
-						found = false;
-					}
-				}
-				i++;
-			}
-			if (found) {
-				return operation;
-			}
-		}
-		return null;
 	}
 
 	/**
@@ -230,4 +176,44 @@ public final class MetamodelUtils {
 
 		return features;
 	}
+
+	/**
+	 * Create a copy of a set of packages that is independent of generated
+	 * packages.
+	 */
+	public static ResourceSet createIndependentMetamodelCopy(
+			Collection<EPackage> rootPackages, URI metamodelURI) {
+		final ResourceSet resourceSet = new ResourceSetImpl();
+		Resource resource = resourceSet.createResource(metamodelURI);
+
+		Copier copier = new Copier() {
+			@Override
+			protected void copyReference(EReference reference, EObject object,
+					EObject copyEObject) {
+				if (MetamodelUtils.getGenericReference(reference) != null) {
+					object.eGet(reference);
+				}
+				super.copyReference(reference, object, copyEObject);
+			}
+
+			@Override
+			public EObject get(Object key) {
+				EObject value = super.get(key);
+				if (value == null && key instanceof EObject) {
+					EObject element = (EObject) key;
+					if (element.eResource() != null) {
+						URI uri = EcoreUtil.getURI(element);
+						EObject loaded = resourceSet.getEObject(uri, true);
+						return loaded;
+					}
+				}
+				return value;
+			}
+		};
+		Collection<EPackage> copy = copier.copyAll(rootPackages);
+		resource.getContents().addAll(copy);
+		copier.copyReferences();
+		return resourceSet;
+	}
+
 }

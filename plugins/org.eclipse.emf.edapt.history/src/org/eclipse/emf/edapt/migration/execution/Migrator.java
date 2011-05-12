@@ -11,6 +11,7 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -153,7 +155,7 @@ public class Migrator {
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
 		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
-		if(model == null) {
+		if (model == null) {
 			throw new MigrationException("Model is up-to-date", null);
 		}
 		try {
@@ -285,16 +287,18 @@ public class Migrator {
 		return releaseMap.keySet();
 	}
 
-	/**
-	 * Returns the metamodel for a release.
-	 * 
-	 * Note: This metamodel should not be changed, as it is cached.
-	 */
+	/** Returns the metamodel for a release. */
 	public Metamodel getMetamodel(Release release) {
 		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 				URI.createFileURI("test"));
 		reconstructor.reconstruct(release, false);
-		return Persistency.loadMetamodel(reconstructor.getResourceSet());
+		URI metamodelURI = URI.createFileURI(new File("metamodel."
+				+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
+		List<EPackage> rootPackages = ResourceUtils.getRootElements(
+				reconstructor.getResourceSet(), EPackage.class);
+		ResourceSet resourceSet = MetamodelUtils
+				.createIndependentMetamodelCopy(rootPackages, metamodelURI);
+		return Persistency.loadMetamodel(resourceSet);
 	}
 
 	/** Set the validation level. */

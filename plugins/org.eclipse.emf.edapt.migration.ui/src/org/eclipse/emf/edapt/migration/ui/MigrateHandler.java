@@ -33,6 +33,7 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.FileEditorInput;
@@ -118,9 +119,10 @@ public class MigrateHandler extends MigratorHandlerBase {
 				IEditorDescriptor descriptor = PlatformUI.getWorkbench()
 						.getEditorRegistry().getDefaultEditor(fileString);
 
-				PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-						.getActivePage().openEditor(new FileEditorInput(file),
-								descriptor.getId());
+				IWorkbenchPage activePage = PlatformUI.getWorkbench()
+						.getActiveWorkbenchWindow().getActivePage();
+				activePage.openEditor(new FileEditorInput(file),
+						descriptor.getId());
 			}
 		} catch (PartInitException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);

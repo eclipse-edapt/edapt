@@ -37,7 +37,7 @@ public class MigrationTest extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Migration Test");
 
-		addMigrationTestSuites(suite, new File("data/mappings"));
+		addMigrationTestSuites(suite, new File("data"));
 
 		return suite;
 	}

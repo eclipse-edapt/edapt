@@ -24,11 +24,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
@@ -200,40 +196,11 @@ public class MigrationReconstructor extends ReconstructorBase {
 
 	/** Load the metamodel. */
 	private Metamodel loadMetamodel() {
-		final ResourceSet resourceSet = new ResourceSetImpl();
 		URI metamodelURI = URI.createFileURI(new File("metamodel."
 				+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
-		Resource resource = resourceSet.createResource(metamodelURI);
-
 		Collection<EPackage> rootPackages = extent.getRootPackages();
-		Copier copier = new Copier() {
-			@Override
-			protected void copyReference(EReference reference, EObject object,
-					EObject copyEObject) {
-				if (MetamodelUtils.getGenericReference(reference) != null) {
-					object.eGet(reference);
-				}
-				super.copyReference(reference, object, copyEObject);
-			}
-
-			@Override
-			public EObject get(Object key) {
-				EObject value = super.get(key);
-				if (value == null && key instanceof EObject) {
-					EObject element = (EObject) key;
-					if (element.eResource() != null) {
-						URI uri = EcoreUtil.getURI(element);
-						EObject loaded = resourceSet.getEObject(uri, true);
-						return loaded;
-					}
-				}
-				return value;
-			}
-		};
-		Collection<EPackage> copy = copier.copyAll(rootPackages);
-		resource.getContents().addAll(copy);
-		copier.copyReferences();
-
+		ResourceSet resourceSet = MetamodelUtils
+				.createIndependentMetamodelCopy(rootPackages, metamodelURI);
 		return Persistency.loadMetamodel(resourceSet);
 	}
 
