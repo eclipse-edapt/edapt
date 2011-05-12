@@ -1,3 +1,6 @@
+import java.util.List;
+
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
@@ -6,33 +9,58 @@ import org.eclipse.emf.edapt.migration.Model;
 
 public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 
+	private EReference reference;
+
+	@Override
+	public void migrateBefore(Model model, Metamodel metamodel)
+			throws MigrationException {
+		reference = metamodel
+				.getEReference("gmfgraph.FigureHandle.referencingElements");
+	}
+
+	@Override
+	public void migrateAfter(Model model, Metamodel metamodel)
+			throws MigrationException {
+
+		for (Instance handle : model.getAllInstances("gmfgraph.FigureHandle")) {
+			List<Instance> elements = handle.unset(reference);
+			if (!elements.isEmpty()) {
+				Instance toplevel = getToplevel(handle);
+				Instance descriptor = getOrCreateDescriptor(toplevel, model);
+				for (Instance element : elements) {
+					element.set("figure", descriptor);
+				}
+				if (toplevel != handle) {
+					Instance access = getOrCreateAccess(descriptor, handle);
+					for (Instance element : elements) {
+						if (element.instanceOf("gmfgraph.DiagramLabel")
+								|| element.instanceOf("gmfgraph.Compartment")) {
+							element.set("accessor", access);
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public Instance getToplevel(Instance handle) {
-		while (handle.getContainer().instanceOf("gmfgraph.Figure")) {
+		while (handle.getContainer().instanceOf("gmfgraph.FigureHandle")) {
 			handle = handle.getContainer();
 		}
 		return handle;
 	}
 
 	public Instance getOrCreateDescriptor(Instance toplevel, Model model) {
-		Instance descriptor = toplevel.getContainer();
-		if(!descriptor.instanceOf("gmfgraph.FigureDescriptor")) {
-			Instance gallery = descriptor;
-			descriptor = model.newInstance("gmfgraph.FigureDescriptor");
-			descriptor.set("actualFigure", toplevel);
-			gallery.remove("figures", toplevel);
-			gallery.add("descriptors", descriptor);
-			descriptor.set("name", toplevel.get("name"));
+		Instance gallery = toplevel.getContainer();
+		if (gallery.instanceOf("gmfgraph.FigureDescriptor")) {
+			return gallery;
 		}
+		Instance descriptor = model.newInstance("gmfgraph.FigureDescriptor");
+		descriptor.set("actualFigure", toplevel);
+		gallery.remove("figures", toplevel);
+		gallery.add("descriptors", descriptor);
+		descriptor.set("name", toplevel.get("name"));
 		return descriptor;
-	}
-
-	public Instance findAccess(Instance descriptor, Instance figure) {
-		for (Instance access : descriptor.getLinks("accessors")) {
-			if (access.get("figure") == figure) {
-				return access;
-			}
-		}
-		return null;
 	}
 
 	public Instance getOrCreateAccess(Instance descriptor, Instance handle) {
@@ -52,26 +80,12 @@ public class GMFGraphFigureDescriptorCustomMigration extends CustomMigration {
 		return access;
 	}
 
-	@Override
-	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
-
-		for (Instance element : model
-				.getAllInstances("gmfgraph.DiagramElement")) {
-			Instance handle = element.getLink("figure");
-			if (handle != null) {
-				Instance toplevel = getToplevel(handle);
-				Instance descriptor = getOrCreateDescriptor(toplevel, model);
-				element.set("figure", descriptor);
-				if (toplevel != handle) {
-					Instance access = getOrCreateAccess(descriptor, handle);
-					if (element.instanceOf("gmfgraph.DiagramLabel")) {
-						element.set("accessor", access);
-					} else if (element.instanceOf("gmfgraph.Compartment")) {
-						element.set("accessor", access);
-					}
-				}
+	public Instance findAccess(Instance descriptor, Instance figure) {
+		for (Instance access : descriptor.getLinks("accessors")) {
+			if (access.get("figure") == figure) {
+				return access;
 			}
 		}
+		return null;
 	}
 }

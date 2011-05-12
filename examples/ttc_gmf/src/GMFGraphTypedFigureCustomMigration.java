@@ -13,6 +13,8 @@ public class GMFGraphTypedFigureCustomMigration extends CustomMigration {
 				tf = model.newInstance("gmfgraph.CustomFigure");
 				tf.set("qualifiedClassName", "org.eclipse.draw2d.IFigure");
 				fa.set("typedFigure", tf);
+			} else {
+				tf.set("name", null);
 			}
 		}
 	}

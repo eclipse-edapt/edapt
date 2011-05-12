@@ -341,10 +341,10 @@
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgraph.ecore#/" referenceName="eClassifiers"
-          element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
+          element="#//@releases.1/@changes.51/@changes.2/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element"
             featureName="name" dataValue="FigureHandle"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element"
             featureName="interface" dataValue="true" oldDataValue="false"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgraph.ecore#//DiagramElement"
@@ -354,32 +354,32 @@
         <changes xsi:type="history:Set" element="gmfgraph.ecore#//DiagramElement/figure"
             featureName="lowerBound" dataValue="1" oldDataValue="0"/>
         <changes xsi:type="history:Set" element="gmfgraph.ecore#//DiagramElement/figure"
-            featureName="eType" referenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
+            featureName="eType" referenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
-          referenceName="eAnnotations" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.51/@changes.2/@element"
+          referenceName="eAnnotations" element="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
-          referenceName="details" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
+          referenceName="details" element="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="key" dataValue="documentation"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Entry in the figure's hierarchy to reference from diagram element"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
-          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.51/@changes.2/@element"
+          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.50/@changes.7/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@element"
             featureName="name" dataValue="referencingElements"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@element"
             featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@element"
             featureName="eType" referenceValue="gmfgraph.ecore#//DiagramElement"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.7/@element"
             featureName="eOpposite" referenceValue="gmfgraph.ecore#//DiagramElement/figure"/>
         <changes xsi:type="history:Set" element="gmfgraph.ecore#//DiagramElement/figure"
-            featureName="eOpposite" referenceValue="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"/>
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.50/@changes.7/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgraph.ecore#/" referenceName="eClassifiers"
           element="gmfgraph.ecore#//CustomClass">
@@ -465,7 +465,7 @@
         <changes xsi:type="history:Set" element="gmfgraph.ecore#//FigureAccessor"
             featureName="name" dataValue="FigureAccessor"/>
         <changes xsi:type="history:Add" element="gmfgraph.ecore#//FigureAccessor"
-            featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
+            featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
       </changes>
       <changes xsi:type="history:Create" target="gmfgraph.ecore#//FigureAccessor"
           referenceName="eStructuralFeatures" element="gmfgraph.ecore#//FigureAccessor/accessor">
@@ -1320,7 +1320,7 @@
         <changes xsi:type="history:Add" element="gmfgraph.ecore#//Figure" featureName="eSuperTypes"
             referenceValue="#//@releases.1/@changes.37/@changes.4/@element"/>
         <changes xsi:type="history:Add" element="gmfgraph.ecore#//Figure" featureName="eSuperTypes"
-            referenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
+            referenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
         <changes xsi:type="history:Add" element="gmfgraph.ecore#//Figure" featureName="eSuperTypes"
             referenceValue="gmfgraph.ecore#//Identity"/>
       </changes>
@@ -2346,7 +2346,7 @@
           featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//Font" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
+      <changes xsi:type="history:Set" element="#//@releases.1/@changes.51/@changes.2/@element"
           featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//LayoutData" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
@@ -2858,13 +2858,11 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="GMFGraphTypedFigureCustomMigration"
-       >
+    <changes xsi:type="history:MigrationChange" migration="GMFGraphTypedFigureCustomMigration">
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//FigureAccessor/typedFigure"
           featureName="lowerBound" dataValue="1" oldDataValue="0"/>
     </changes>
-    <changes xsi:type="history:MigrationChange" migration="GMFGraphFigureDescriptorCustomMigration"
-       >
+    <changes xsi:type="history:MigrationChange" migration="GMFGraphFigureDescriptorCustomMigration">
       <changes xsi:type="history:CompositeChange">
         <changes xsi:type="history:Create" target="gmfgraph.ecore#/" referenceName="eClassifiers"
             element="gmfgraph.ecore#//ChildAccess">
@@ -3012,40 +3010,33 @@
         <changes xsi:type="history:Set" element="gmfgraph.ecore#//DiagramLabel/container"
             featureName="eType" referenceValue="gmfgraph.ecore#//ChildAccess"/>
       </changes>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Delete" target="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"
-            referenceName="eStructuralFeatures">
-          <changes xsi:type="history:Remove" element="gmfgraph.ecore#//DiagramElement/figure"
-              featureName="eOpposite" referenceValue="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"/>
-          <element xsi:type="ecore:EReference" name="referencingElements" upperBound="-1"
-              eType="ecore:EClass gmfgraph.ecore#//DiagramElement" eOpposite="gmfgraph.ecore#//DiagramElement/figure"/>
-        </changes>
-        <operation name="deleteFeature">
-          <parameters name="feature">
-            <referenceValue element="#//@releases.1/@changes.50/@changes.7/@changes.0/@element"/>
-          </parameters>
-        </operation>
+      <changes xsi:type="history:Delete" target="#//@releases.1/@changes.51/@changes.2/@element"
+          referenceName="eStructuralFeatures">
+        <changes xsi:type="history:Remove" element="gmfgraph.ecore#//DiagramElement/figure"
+            featureName="eOpposite" referenceValue="#//@releases.1/@changes.50/@changes.7/@element"/>
+        <element xsi:type="ecore:EReference" name="referencingElements" upperBound="-1"
+            eType="ecore:EClass gmfgraph.ecore#//DiagramElement" eOpposite="gmfgraph.ecore#//DiagramElement/figure"/>
       </changes>
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//DiagramElement/figure"
-          featureName="eType" referenceValue="gmfgraph.ecore#//FigureDescriptor" oldReferenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Remove" element="gmfgraph.ecore#//FigureAccessor"
-            featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
-        <changes xsi:type="history:Remove" element="gmfgraph.ecore#//Figure" featureName="eSuperTypes"
-            referenceValue="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
-        <changes xsi:type="history:Delete" target="gmfgraph.ecore#/" referenceName="eClassifiers">
-          <element xsi:type="ecore:EClass" name="FigureHandle" abstract="true" interface="true">
-            <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-              <details key="documentation" value="Entry in the figure's hierarchy to reference from diagram element"/>
-            </eAnnotations>
-          </element>
-        </changes>
-        <operation name="inlineSuperClass">
-          <parameters name="superClass">
-            <referenceValue element="#//@releases.1/@changes.50/@changes.9/@changes.2/@element"/>
-          </parameters>
-        </operation>
+          featureName="eType" referenceValue="gmfgraph.ecore#//FigureDescriptor" oldReferenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Remove" element="gmfgraph.ecore#//FigureAccessor"
+          featureName="eSuperTypes" referenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
+      <changes xsi:type="history:Remove" element="gmfgraph.ecore#//Figure" featureName="eSuperTypes"
+          referenceValue="#//@releases.1/@changes.51/@changes.2/@element"/>
+      <changes xsi:type="history:Delete" target="gmfgraph.ecore#/" referenceName="eClassifiers">
+        <element xsi:type="ecore:EClass" name="FigureHandle" abstract="true" interface="true">
+          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+            <details key="documentation" value="Entry in the figure's hierarchy to reference from diagram element"/>
+          </eAnnotations>
+        </element>
       </changes>
+      <operation name="inlineSuperClass">
+        <parameters name="superClass">
+          <referenceValue element="#//@releases.1/@changes.51/@changes.2/@element"/>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:Set" element="gmfgraph.ecore#/" featureName="nsURI"
         dataValue="http://www.eclipse.org/gmf/2006/GraphicalDefinition" oldDataValue="http://www.eclipse.org/gmf/2005/GraphicalDefinition"/>
