@@ -15,12 +15,12 @@
       <foregroundColor xsi:type="gmfgraph:ConstantColor" value="cyan"/>
     </figures>
     <figures xsi:type="gmfgraph:Rectangle" name="ResourceFigure" referencingElements="ResourceNode">
-      <children xsi:type="gmfgraph:Label" name="ResourceNameLabel"/>
-      <children xsi:type="gmfgraph:Label" name="ResourceLocationLabel"/>
+      <children xsi:type="gmfgraph:Label" name="ResourceNameLabel" referencingElements="ResourceName"/>
+      <children xsi:type="gmfgraph:Label" name="ResourceLocationLabel" referencingElements="ResourceLocation"/>
     </figures>
     <figures xsi:type="gmfgraph:Rectangle" name="TutorialFigure" referencingElements="TutorialNode">
       <children xsi:type="gmfgraph:Label" name="Tag" text="&lt;&lt;Tutorial>>"/>
-      <children xsi:type="gmfgraph:Label" name="TitleLabel" text=""/>
+      <children xsi:type="gmfgraph:Label" name="TitleLabel" text="" referencingElements="TitleLabel"/>
     </figures>
   </figures>
   <nodes name="ScheduleNode" figure="ThickFigure"/>
