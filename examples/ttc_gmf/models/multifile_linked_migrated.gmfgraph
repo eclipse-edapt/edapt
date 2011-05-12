@@ -56,13 +56,8 @@
           xsi:type="gmfgraph:Label"
           name="Label"/>
     </actualFigure>
-  </descriptors>
-  <descriptors
-      name="DotLineNoDecorations">
-    <actualFigure
-        xsi:type="gmfgraph:PolylineConnection"
-        name="DotLineNoDecorations"
-        lineKind="LINE_DOT"/>
+    <accessors
+        figure="//@descriptors.0/@actualFigure/@children.2"/>
   </descriptors>
   <descriptors
       name="DashLineNoDecorations">
@@ -70,5 +65,12 @@
         xsi:type="gmfgraph:PolylineConnection"
         name="DashLineNoDecorations"
         lineKind="LINE_DASH"/>
+  </descriptors>
+  <descriptors
+      name="DotLineNoDecorations">
+    <actualFigure
+        xsi:type="gmfgraph:PolylineConnection"
+        name="DotLineNoDecorations"
+        lineKind="LINE_DOT"/>
   </descriptors>
 </gmfgraph:FigureGallery>

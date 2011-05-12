@@ -134,6 +134,8 @@
       name="PresenterName">
     <figure
         href="multifile_linked_migrated.gmfgraph#ActorFigure"/>
+    <accessor
+        href="multifile_linked_migrated.gmfgraph#//@descriptors.0/@accessors.0"/>
   </labels>
   <labels
       name="ResourceName"
