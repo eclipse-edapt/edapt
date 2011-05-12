@@ -6,29 +6,29 @@
     xmlns:gmfmap="http://www.eclipse.org/gmf/2005/mappings">
   <nodes>
     <containmentFeature
-        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
+        href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage/eClassifiers"/>
     <ownedChild>
       <domainMetaElement
-          href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+          href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
       <domainInitializer
           xsi:type="gmfmap:FeatureSeqInitializer">
         <initializers
             body="'a String'">
           <feature
               xsi:type="ecore:EAttribute"
-              href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
+              href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//ENamedElement/name"/>
         </initializers>
       </domainInitializer>
       <diagramNode
-          href="../../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Node"/>
+          href="../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Node"/>
     </ownedChild>
   </nodes>
   <diagram>
     <diagramCanvas
-        href="../../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Surface"/>
+        href="../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Surface"/>
     <domainModel
-        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
+        href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#/"/>
     <domainMetaElement
-        href="../../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
+        href="../../../plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
   </diagram>
 </gmfmap:Mapping>
