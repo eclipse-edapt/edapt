@@ -153,6 +153,9 @@ public class Migrator {
 			Release targetRelease, IProgressMonitor monitor)
 			throws MigrationException {
 		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
+		if(model == null) {
+			throw new MigrationException("Model is up-to-date", null);
+		}
 		try {
 			Persistency.saveModel(model);
 		} catch (IOException e) {
