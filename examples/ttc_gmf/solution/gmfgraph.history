@@ -2233,7 +2233,7 @@
       </changes>
     </changes>
   </releases>
-  <releases date="2009-02-08T19:53:06.109+0100" label="2.0">
+  <releases date="2009-02-08T19:53:06.109+0100" label="2.1">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" target="gmfgraph.ecore#/" referenceName="eClassifiers"
           element="gmfgraph.ecore#//ScalablePolygon">
@@ -3041,19 +3041,17 @@
     <changes xsi:type="history:Set" element="gmfgraph.ecore#/" featureName="nsURI"
         dataValue="http://www.eclipse.org/gmf/2006/GraphicalDefinition" oldDataValue="http://www.eclipse.org/gmf/2005/GraphicalDefinition"/>
     <changes xsi:type="history:NoChange" description="1.30"/>
-  </releases>
-  <releases date="2009-02-08T19:57:43.359+0100" label="2.1">
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" target="gmfgraph.ecore#//ChildAccess/owner"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.2/@changes.1/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.2/@changes.1/@element"
+          referenceName="eAnnotations" element="#//@releases.1/@changes.56/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.56/@changes.1/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.2/@changes.1/@element"
-          referenceName="details" element="#//@releases.2/@changes.2/@changes.1/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.2/@changes.1/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.56/@changes.1/@element"
+          referenceName="details" element="#//@releases.1/@changes.56/@changes.1/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.56/@changes.1/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.2/@changes.1/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.56/@changes.1/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
       <changes xsi:type="history:Set" element="gmfgraph.ecore#//ChildAccess/owner"
