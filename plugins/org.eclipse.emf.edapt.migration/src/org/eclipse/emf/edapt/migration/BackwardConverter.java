@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.edapt.common.EcoreUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.ReversableMap;
@@ -35,7 +36,7 @@ import org.eclipse.emf.edapt.common.TwoWayIdentityHashMap;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: BCACB5C6AEB849186F2F0F9F6F95ECB4
+ * @levd.rating YELLOW Hash: 4D9E84B44F84E9C760AB3E79983988B4
  */
 public class BackwardConverter {
 
@@ -88,6 +89,12 @@ public class BackwardConverter {
 		for (ModelResource modelResource : model.getResources()) {
 			Resource resource = resourceSet.createResource(modelResource
 					.getUri());
+			if (resource instanceof XMLResource) {
+				XMLResource xmlResource = (XMLResource) resource;
+				if (modelResource.getEncoding() != null) {
+					xmlResource.setEncoding(modelResource.getEncoding());
+				}
+			}
 			for (Instance element : modelResource.getRootInstances()) {
 				resource.getContents().add(resolve(element));
 			}
