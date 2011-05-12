@@ -24,8 +24,8 @@
   </figures>
   <figures xsi:type="gmfgraph:PolylineConnection" name="DashLineNoDecorations" lineKind="LINE_DASH">
    <referencingElements xsi:type="gmfgraph:Connection" href="multifile_main_original.gmfgraph#PresenterLink"/>
-  <figures/>
+  </figures>
   <figures xsi:type="gmfgraph:PolylineConnection" name="DotLineNoDecorations" lineKind="LINE_DOT">
    <referencingElements xsi:type="gmfgraph:Connection" href="multifile_main_original.gmfgraph#AssignTimeLink"/>
-  <figures/>
+  </figures>
 </gmfgraph:FigureGallery>
