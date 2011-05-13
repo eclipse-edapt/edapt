@@ -62,38 +62,27 @@ public final class FileUtils {
 	}
 
 	/** Read contents of an input stream to a string. */
-	public static String getContents(InputStream in) {
-		try {
-			StringBuffer buffer = new StringBuffer();
-			BufferedReader reader = new BufferedReader(
-					new InputStreamReader(in));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				buffer.append(line);
-				buffer.append('\n');
-			}
-			return buffer.toString();
-		} catch (Exception e) {
-			LoggingUtils.logError(CommonActivator.getDefault(), e);
-			return null;
+	public static String getContents(InputStream in) throws IOException {
+		StringBuffer buffer = new StringBuffer();
+		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		String line;
+		while ((line = reader.readLine()) != null) {
+			buffer.append(line);
+			buffer.append('\n');
 		}
+		return buffer.toString();
 	}
 
 	/** Get contents of a Java file as string. */
-	public static String getContents(File file) {
-		try {
-			StringBuffer buffer = new StringBuffer();
-			BufferedReader reader = new BufferedReader(new FileReader(file));
-			String line;
-			while ((line = reader.readLine()) != null) {
-				buffer.append(line);
-				buffer.append('\n');
-			}
-			return buffer.toString();
-		} catch (Exception e) {
-			LoggingUtils.logError(CommonActivator.getDefault(), e);
-			return null;
+	public static String getContents(File file) throws IOException {
+		StringBuffer buffer = new StringBuffer();
+		BufferedReader reader = new BufferedReader(new FileReader(file));
+		String line;
+		while ((line = reader.readLine()) != null) {
+			buffer.append(line);
+			buffer.append('\n');
 		}
+		return buffer.toString();
 	}
 
 	/**
