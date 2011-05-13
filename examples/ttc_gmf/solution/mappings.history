@@ -200,13 +200,13 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//ChildReference">
-        <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference" featureName="name"
-            dataValue="ChildReference"/>
-        <changes xsi:type="history:Add" element="mappings.ecore#//ChildReference" featureName="eSuperTypes"
-            referenceValue="mappings.ecore#//NodeReference"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference"
+            featureName="name" dataValue="ChildReference"/>
+        <changes xsi:type="history:Add" element="mappings.ecore#//ChildReference"
+            featureName="eSuperTypes" referenceValue="mappings.ecore#//NodeReference"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -224,8 +224,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
             featureName="value" dataValue="Either 'ownedChild' or 'referencedChild' NodeMapping must be set"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -243,8 +243,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
             featureName="value" dataValue="'Children Feature' must be owned by 'Domain Meta Element' or its super type of this reference parent Node Mapping"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -262,8 +262,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2/@details.1"
             featureName="value" dataValue="'Containment Feature' must be owned by 'Domain Meta Element' or its super type of this reference parent Node Mapping"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.3">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.3">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.3"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -324,8 +324,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/children"
             featureName="eType" referenceValue="mappings.ecore#//ChildReference"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ChildReference/compartment">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ChildReference/compartment">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/compartment"
             featureName="name" dataValue="compartment"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/compartment"
@@ -342,16 +342,16 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Mapping" referenceName="eStructuralFeatures"
           element="mappings.ecore#//Mapping/diagram">
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram" featureName="name"
-            dataValue="diagram"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram" featureName="lowerBound"
-            dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram" featureName="containment"
-            dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram" featureName="resolveProxies"
-            dataValue="false" oldDataValue="true"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram" featureName="eType"
-            referenceValue="mappings.ecore#//CanvasMapping"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram"
+            featureName="name" dataValue="diagram"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram"
+            featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/diagram"
+            featureName="eType" referenceValue="mappings.ecore#//CanvasMapping"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//CanvasMapping" referenceName="eStructuralFeatures"
           element="mappings.ecore#//CanvasMapping/diagramCanvas">
@@ -547,11 +547,11 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//LinkConstraints">
-        <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints" featureName="name"
-            dataValue="LinkConstraints"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints"
+            featureName="name" dataValue="LinkConstraints"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints" referenceName="eAnnotations"
-          element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints"
+          referenceName="eAnnotations" element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -562,8 +562,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Groups constraints on the link source and target end"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints" referenceName="eAnnotations"
-          element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints"
+          referenceName="eAnnotations" element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -583,8 +583,8 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//ValueExpression">
-        <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression" featureName="name"
-            dataValue="ValueExpression"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression"
+            featureName="name" dataValue="ValueExpression"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//Constraint">
@@ -676,8 +676,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//Constraint/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%/@details.0"
             featureName="value" dataValue="Constraint"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//LinkConstraints/sourceEnd">
+      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//LinkConstraints/sourceEnd">
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/sourceEnd"
             featureName="name" dataValue="sourceEnd"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/sourceEnd"
@@ -742,8 +742,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/sourceEnd/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%.1/@details.2"
             featureName="value" dataValue="linkMapping.linkMetaFeature.eType"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//LinkConstraints/targetEnd">
+      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//LinkConstraints/targetEnd">
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/targetEnd"
             featureName="name" dataValue="targetEnd"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/targetEnd"
@@ -808,8 +808,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/targetEnd/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%.1/@details.2"
             featureName="value" dataValue="let lm:LinkMapping=linkMapping in if lm.sourceMetaFeature.oclIsUndefined() then (if lm.containmentFeature.oclIsUndefined() then lm.linkMetaFeature.eContainingClass else lm.containmentFeature.eContainingClass endif) else lm.sourceMetaFeature.oclAsType(ecore::EReference).eReferenceType endif"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression" referenceName="eAnnotations"
-          element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression"
+          referenceName="eAnnotations" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
@@ -820,8 +820,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%/@details.0"
             featureName="value" dataValue="ValueSpec"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression" referenceName="eAnnotations"
-          element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression"
+          referenceName="eAnnotations" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -832,8 +832,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Expression as a textual statement which results in a value when evaluated in a context"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ValueExpression/body">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ValueExpression/body">
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/body"
             featureName="name" dataValue="body"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/body"
@@ -865,8 +865,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/body/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%/@details.0"
             featureName="value" dataValue="body"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ValueExpression/langName">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ValueExpression/langName">
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/langName"
             featureName="name" dataValue="langName"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/langName"
@@ -1146,13 +1146,13 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//ToolOwner" referenceName="eStructuralFeatures"
           element="mappings.ecore#//ToolOwner/tool">
-        <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner/tool" featureName="name"
-            dataValue="tool"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner/tool" featureName="eType"
-            referenceValue="platform:/plugin/org.eclipse.gmf.tooldef/models/tooldef.ecore#//AbstractTool"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner/tool"
+            featureName="name" dataValue="tool"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner/tool"
+            featureName="eType" referenceValue="platform:/plugin/org.eclipse.gmf.tooldef/models/tooldef.ecore#//AbstractTool"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ToolOwner/tool" referenceName="eAnnotations"
-          element="mappings.ecore#//ToolOwner/tool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ToolOwner/tool"
+          referenceName="eAnnotations" element="mappings.ecore#//ToolOwner/tool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner/tool/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -1202,8 +1202,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//NodeReference/child"
             featureName="eType" referenceValue="mappings.ecore#//NodeMapping"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ChildReference/parentNode">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ChildReference/parentNode">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/parentNode"
             featureName="name" dataValue="parentNode"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/parentNode"
@@ -1211,8 +1211,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/parentNode"
             featureName="eType" referenceValue="mappings.ecore#//NodeMapping"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ChildReference/ownedChild">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ChildReference/ownedChild">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/ownedChild"
             featureName="name" dataValue="ownedChild"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/ownedChild"
@@ -1220,8 +1220,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/ownedChild"
             featureName="eType" referenceValue="mappings.ecore#//NodeMapping"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ChildReference/referencedChild">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ChildReference/referencedChild">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/referencedChild"
             featureName="name" dataValue="referencedChild"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/referencedChild"
@@ -1439,8 +1439,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkMapping/linkMetaFeature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
             featureName="value" dataValue="'Target Feature' must be owned by the link 'Domain Element' or its super type"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//LinkConstraints/linkMapping">
+      <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//LinkConstraints/linkMapping">
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
             featureName="name" dataValue="linkMapping"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
@@ -1496,20 +1496,20 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//AuditContainer">
-        <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer" featureName="name"
-            dataValue="AuditContainer"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer"
+            featureName="name" dataValue="AuditContainer"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Mapping" referenceName="eStructuralFeatures"
           element="mappings.ecore#//Mapping/audits">
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits" featureName="name"
-            dataValue="audits"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits" featureName="containment"
-            dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits" featureName="eType"
-            referenceValue="mappings.ecore#//AuditContainer"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits"
+            featureName="name" dataValue="audits"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/audits"
+            featureName="eType" referenceValue="mappings.ecore#//AuditContainer"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eAnnotations"
-          element="mappings.ecore#//AuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eAnnotations" element="mappings.ecore#//AuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -1520,8 +1520,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Container for audit rules representing a hierarchical organization of audits in the constraint category hierarchy of emft.validation framework"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/id">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/id">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/id"
             featureName="name" dataValue="id"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/id"
@@ -1560,8 +1560,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/id/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
             featureName="value" dataValue="Audit container with the same ID already exists"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/name">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/name">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/name"
             featureName="name" dataValue="name"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/name"
@@ -1579,8 +1579,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/name/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="A human readable name for the category of audits organized in this container"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/description">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/description">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/description"
             featureName="name" dataValue="description"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/description"
@@ -1598,8 +1598,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/description/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="The detailed description of this audit container"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/childContainers">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/childContainers">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/childContainers"
             featureName="name" dataValue="childContainers"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/childContainers"
@@ -1609,8 +1609,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/childContainers"
             featureName="eType" referenceValue="mappings.ecore#//AuditContainer"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/parentContainer">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/parentContainer">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/parentContainer"
             featureName="name" dataValue="parentContainer"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/parentContainer"
@@ -1726,17 +1726,17 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//AuditRule" referenceName="eStructuralFeatures"
           element="mappings.ecore#//AuditRule/rule">
-        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule" featureName="name"
-            dataValue="rule"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule" featureName="lowerBound"
-            dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule" featureName="containment"
-            dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule" featureName="eType"
-            referenceValue="mappings.ecore#//Constraint"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule"
+            featureName="name" dataValue="rule"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule"
+            featureName="eType" referenceValue="mappings.ecore#//Constraint"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditRule/rule" referenceName="eAnnotations"
-          element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditRule/rule"
+          referenceName="eAnnotations" element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -1747,8 +1747,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="A boolean type condition which if not satisfied indicates this audit rule violation. It is evaluated in the context of the target"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditRule/rule" referenceName="eAnnotations"
-          element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditRule/rule"
+          referenceName="eAnnotations" element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
@@ -1815,8 +1815,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditRule/container"
             featureName="eType" referenceValue="mappings.ecore#//AuditContainer"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//AuditContainer/audits">
+      <changes xsi:type="history:Create" target="mappings.ecore#//AuditContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//AuditContainer/audits">
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/audits"
             featureName="name" dataValue="audits"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//AuditContainer/audits"
@@ -1856,17 +1856,17 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//MetricContainer">
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricContainer" featureName="name"
-            dataValue="MetricContainer"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricContainer"
+            featureName="name" dataValue="MetricContainer"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Mapping" referenceName="eStructuralFeatures"
           element="mappings.ecore#//Mapping/metrics">
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics" featureName="name"
-            dataValue="metrics"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics" featureName="containment"
-            dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics" featureName="eType"
-            referenceValue="mappings.ecore#//MetricContainer"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics"
+            featureName="name" dataValue="metrics"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Mapping/metrics"
+            featureName="eType" referenceValue="mappings.ecore#//MetricContainer"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//MetricRule">
@@ -1875,8 +1875,8 @@
         <changes xsi:type="history:Add" element="mappings.ecore#//MetricRule" featureName="eSuperTypes"
             referenceValue="mappings.ecore#//RuleBase"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricContainer" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//MetricContainer/metrics">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricContainer"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//MetricContainer/metrics">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricContainer/metrics"
             featureName="name" dataValue="metrics"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricContainer/metrics"
@@ -1909,15 +1909,15 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule" referenceName="eStructuralFeatures"
           element="mappings.ecore#//MetricRule/key">
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key" featureName="name"
-            dataValue="key"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key" featureName="lowerBound"
-            dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key" featureName="eType"
-            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key"
+            featureName="name" dataValue="key"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/key" referenceName="eAnnotations"
-          element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/key"
+          referenceName="eAnnotations" element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -1928,8 +1928,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Unique key identifying this metric an abbreviation for this metric"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/key" referenceName="eAnnotations"
-          element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/key"
+          referenceName="eAnnotations" element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/key/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -1949,17 +1949,17 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule" referenceName="eStructuralFeatures"
           element="mappings.ecore#//MetricRule/rule">
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule" featureName="name"
-            dataValue="rule"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule" featureName="lowerBound"
-            dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule" featureName="containment"
-            dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule" featureName="eType"
-            referenceValue="mappings.ecore#//ValueExpression"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule"
+            featureName="name" dataValue="rule"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule"
+            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule"
+            featureName="containment" dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule"
+            featureName="eType" referenceValue="mappings.ecore#//ValueExpression"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule" referenceName="eAnnotations"
-          element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule"
+          referenceName="eAnnotations" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
@@ -1970,8 +1970,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Expression that calculates the value of this metric which is of EDataType that encapsulates java.lang.Number subclasses or their primitives"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule" referenceName="eAnnotations"
-          element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule"
+          referenceName="eAnnotations" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
@@ -1989,8 +1989,8 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%/@details.1"
             featureName="value" dataValue="target"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule" referenceName="eAnnotations"
-          element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%.1">
+      <changes xsi:type="history:Create" target="mappings.ecore#//MetricRule/rule"
+          referenceName="eAnnotations" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%.1">
         <changes xsi:type="history:Set" element="mappings.ecore#//MetricRule/rule/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%.1"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
@@ -2538,20 +2538,20 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Severity" referenceName="eLiterals"
           element="mappings.ecore#//Severity/ERROR">
-        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR" featureName="name"
-            dataValue="ERROR"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR" featureName="value"
-            dataValue="2" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR" featureName="literal"
-            dataValue="ERROR"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR"
+            featureName="name" dataValue="ERROR"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Severity/ERROR"
+            featureName="literal" dataValue="ERROR"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//Language">
         <changes xsi:type="history:Set" element="mappings.ecore#//Language" featureName="name"
             dataValue="Language"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression" referenceName="eStructuralFeatures"
-          element="mappings.ecore#//ValueExpression/language">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ValueExpression"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//ValueExpression/language">
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/language"
             featureName="name" dataValue="language"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//ValueExpression/language"
@@ -2591,12 +2591,12 @@
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Language" referenceName="eLiterals"
           element="mappings.ecore#//Language/regexp">
-        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp" featureName="name"
-            dataValue="regexp"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp" featureName="value"
-            dataValue="2" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp" featureName="literal"
-            dataValue="regexp"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp"
+            featureName="name" dataValue="regexp"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp"
+            featureName="value" dataValue="2" oldDataValue="0"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//Language/regexp"
+            featureName="literal" dataValue="regexp"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//Language" referenceName="eLiterals"
           element="mappings.ecore#//Language/nregexp">
@@ -2611,8 +2611,8 @@
   </releases>
   <releases date="2009-02-10T00:03:13.187+0100" label="2.0">
     <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -2632,8 +2632,8 @@
       </changes>
     </changes>
     <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference" referenceName="eAnnotations"
-          element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5">
+      <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
+          referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints"/>
       </changes>
@@ -2675,9 +2675,10 @@
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
           source="mappings.ecore#//FeatureValueSpec"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/initializers"
-          featureName="eType" referenceValue="mappings.ecore#//FeatureInitializer" oldReferenceValue="mappings.ecore#//FeatureValueSpec"/>
-      <changes xsi:type="history:Add" element="mappings.ecore#//FeatureValueSpec" featureName="eSuperTypes"
-          referenceValue="mappings.ecore#//FeatureInitializer"/>
+          featureName="eType" referenceValue="mappings.ecore#//FeatureInitializer"
+          oldReferenceValue="mappings.ecore#//FeatureValueSpec"/>
+      <changes xsi:type="history:Add" element="mappings.ecore#//FeatureValueSpec"
+          featureName="eSuperTypes" referenceValue="mappings.ecore#//FeatureInitializer"/>
       <operation name="extractSuperClass">
         <parameters name="subClass">
           <referenceValue element="mappings.ecore#//FeatureValueSpec"/>
@@ -2698,8 +2699,8 @@
         <parameters name="superSuperClasses"/>
       </operation>
     </changes>
-    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer" featureName="interface"
-        dataValue="true" oldDataValue="false"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer"
+        featureName="interface" dataValue="true" oldDataValue="false"/>
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
@@ -2948,8 +2949,8 @@
             featureName="value" dataValue="The 'MappingEntry' whose domain model element is to be intialized by this initializer"/>
       </changes>
     </changes>
-    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/gmf/2005/mappings/2.0"
-        oldDataValue="http://www.eclipse.org/gmf/2005/mappings"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
+        dataValue="http://www.eclipse.org/gmf/2005/mappings/2.0" oldDataValue="http://www.eclipse.org/gmf/2005/mappings"/>
     <changes xsi:type="history:NoChange" description="1.46"/>
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//MappingEntry" referenceName="eStructuralFeatures"
@@ -3006,21 +3007,21 @@
     </changes>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Move" target="mappings.ecore#//FeatureLabelMapping"
-          referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/editPattern"
-          source="mappings.ecore#//LabelMapping"/>
-      <operation name="pushFeature">
-        <parameters name="feature">
-          <referenceValue element="mappings.ecore#//FeatureLabelMapping/editPattern"/>
-        </parameters>
-      </operation>
-    </changes>
-    <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Move" target="mappings.ecore#//FeatureLabelMapping"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/viewPattern"
           source="mappings.ecore#//LabelMapping"/>
       <operation name="pushFeature">
         <parameters name="feature">
           <referenceValue element="mappings.ecore#//FeatureLabelMapping/viewPattern"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Move" target="mappings.ecore#//FeatureLabelMapping"
+          referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/editPattern"
+          source="mappings.ecore#//LabelMapping"/>
+      <operation name="pushFeature">
+        <parameters name="feature">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/editPattern"/>
         </parameters>
       </operation>
     </changes>
@@ -3073,16 +3074,16 @@
           featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//RuleBase" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//NeedsContainment" featureName="abstract"
-          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//NeedsContainment"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//ElementInitializer"
           featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//MenuOwner" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//Measurable" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//AppearanceSteward" featureName="abstract"
-          dataValue="true" oldDataValue="false"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//AppearanceSteward"
+          featureName="abstract" dataValue="true" oldDataValue="false"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//ToolOwner" featureName="abstract"
           dataValue="true" oldDataValue="false"/>
     </changes>
@@ -3297,8 +3298,8 @@
           oldDataValue="Pattern to produce text for inplace editor, depends on edit method; if not specified then viewPattern should be used"/>
     </changes>
     <changes xsi:type="history:NoChange" description="1.53"/>
-    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/gmf/2006/mappings"
-        oldDataValue="http://www.eclipse.org/gmf/2005/mappings/2.0"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
+        dataValue="http://www.eclipse.org/gmf/2006/mappings" oldDataValue="http://www.eclipse.org/gmf/2005/mappings/2.0"/>
     <changes xsi:type="history:NoChange" description="1.54"/>
   </releases>
   <releases date="2009-02-10T00:07:59.640+0100" label="2.1">
@@ -3385,8 +3386,8 @@
           featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
     </changes>
     <changes xsi:type="history:NoChange" description="1.55"/>
-    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer" featureName="interface"
-        dataValue="false" oldDataValue="true"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer"
+        featureName="interface" dataValue="false" oldDataValue="true"/>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureValueSpec"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureValueSpec/value">
@@ -3432,8 +3433,8 @@
       </changes>
     </changes>
     <changes xsi:type="history:NoChange" description="1.56"/>
-    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI" dataValue="http://www.eclipse.org/gmf/2008/mappings"
-        oldDataValue="http://www.eclipse.org/gmf/2006/mappings"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
+        dataValue="http://www.eclipse.org/gmf/2008/mappings" oldDataValue="http://www.eclipse.org/gmf/2006/mappings"/>
     <changes xsi:type="history:NoChange" description="1.57"/>
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
