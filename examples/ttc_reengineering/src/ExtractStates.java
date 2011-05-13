@@ -10,6 +10,12 @@ import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.ModelResource;
 
 public class ExtractStates extends CustomMigration {
+	
+	@Override
+	public void migrateBefore(Model model, Metamodel metamodel)
+			throws MigrationException {
+		PrintTime.start = System.currentTimeMillis();
+	}
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)

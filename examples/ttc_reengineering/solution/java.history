@@ -4402,6 +4402,7 @@
         </parameters>
       </operation>
     </changes>
+    <changes xsi:type="history:MigrationChange" migration="PrintTime"/>
   </releases>
   <releases/>
 </history:History>
