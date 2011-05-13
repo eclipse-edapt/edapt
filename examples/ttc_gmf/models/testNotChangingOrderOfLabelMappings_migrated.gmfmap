@@ -26,7 +26,8 @@
       </labelMappings>
       <labelMappings
           xsi:type="gmfmap:FeatureLabelMapping"
-          viewPattern="{0}:{1}">
+          viewPattern="{0}:{1}"
+          editPattern="{0}:{1}">
         <diagramLabel
             href="../../../plugin/org.eclipse.gmf.graphdef/models/basic.gmfgraph#Label"/>
         <features
