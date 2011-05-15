@@ -29,12 +29,9 @@ public class ExtractTransitions extends ReengineeringCustomMigration {
 					List<Instance> sourceStates = sourceClass
 							.getInverse("statemachine.State.class");
 					if (!sourceStates.isEmpty()) {
-						Instance transition = model
-								.newInstance("statemachine.Transition");
-						transition.set("src", sourceStates.get(0));
-						transition.set("dst", targetState);
-						transition.set("reference", reference);
-						stateMachine.add("transitions", transition);
+						Instance sourceState = sourceStates.get(0);
+						createTransition(model, stateMachine, sourceState,
+								targetState, reference);
 					}
 				}
 			}
@@ -58,5 +55,15 @@ public class ExtractTransitions extends ReengineeringCustomMigration {
 			}
 		}
 		return false;
+	}
+
+	/** Create a transition from a source to the target state. */
+	private void createTransition(Model model, Instance stateMachine,
+			Instance sourceState, Instance targetState, Instance reference) {
+		Instance transition = model.newInstance("statemachine.Transition");
+		transition.set("src", sourceState);
+		transition.set("dst", targetState);
+		transition.set("reference", reference);
+		stateMachine.add("transitions", transition);
 	}
 }
