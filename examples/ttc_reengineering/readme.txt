@@ -1,5 +1,5 @@
-The Edapt Solution for the Hello World Case
-===========================================
+The Edapt Solution for the Reengineering Case
+=============================================
 
 Constituents of the Solution
 ----------------------------
