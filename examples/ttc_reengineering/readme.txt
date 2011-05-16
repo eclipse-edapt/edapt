@@ -38,7 +38,7 @@ The history model can be inspected using the following functions:
   version after the operation selected in the history model.
 - The integrity of the history model can be checked by selecting
   "Edapt->Check Integrity" on the history element.
-- Custom migration can be inspected by selecting "Edapt->Edit Custom Migration"
+- Custom migrations can be inspected by selecting "Edapt->Edit Custom Migration"
   in the context menu on the custom migration.
   
   
