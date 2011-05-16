@@ -2723,6 +2723,8 @@
     </changes>
     <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer"
         featureName="interface" dataValue="true" oldDataValue="false"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
+        featureName="changeable" dataValue="false" oldDataValue="true"/>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
@@ -2787,8 +2789,6 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-        featureName="changeable" dataValue="false" oldDataValue="true"/>
     <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"
         featureName="value" dataValue="feature &lt;> null implies not featureSeqInitializer.initializers->exists(i| i &lt;> self and feature = self.feature)"
         oldDataValue="feature.eContainingClass.isSuperTypeOf(featureSeqInitializer.mappingEntry.getDomainContext())"/>
