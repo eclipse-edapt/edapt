@@ -1,5 +1,5 @@
-The Edapt Solution for the Hello World Case
-===========================================
+The Edapt Solution for the GMF Model Migration Case
+===================================================
 
 Constituents of the Solution
 ----------------------------
@@ -7,25 +7,32 @@ Constituents of the Solution
 The solution has the following directory structure:
 
 - description: contains the descriptions of the case and the solution
-- material: contains the material that comes with the case
-- solution: contains the solution; for each task there is a sub directory with
-  * the metamodel(s) required for the transformation
-  * the history model which specifies the transformation
-  * a test model for the transformation
-  * a launch configuration that applies the history model on the test model
+- models: contains the test models that come with the case
+- solution: contains the solutions to all the tasks
+  * the metamodels required for the migrations
+  * the history models which specify the migrations
+  * launch configurations that apply the history model on the test models of 
+    the GMF Graph metamodel
 
 
-Running the Transformations
----------------------------
-  
-To perform the transformation, you just right-click on the launch configuration 
-and select "Run As -> <LaunchConfigName>" in the context menu. Alternatively you
-can select "Run -> Run Configurations ..." in the menu and select the appropriate
-launch configuration.
+Running the Solution
+--------------------
+
+There are different ways to execute the history models of both metamodels:
+
+- GMF Graph: To perform the transformation, you just right-click on the launch 
+  configuration and select "Run As -> <LaunchConfigName>" in the context menu. 
+  Alternatively you can select "Run -> Run Configurations ..." in the menu and 
+  select the appropriate launch configuration.
+- GMF Map: You need to start a second runtime Eclipse workbench by choosing 
+  "Run -> Eclipse". In the runtime Eclipse workbench, you can migrate a GMF
+  Map model by selecting "Edapt -> Migrate Model" in the context menu. The 
+  runtime Eclipse workbench is necessary to be able to resolve the other 
+  metamodels to which the GMF Map metamodel refers.
 
 
-Inspecting the Transformations
-------------------------------
+Inspecting the Solution
+-----------------------
 
 The history model is best inspected by opening the corresponding ecore file. 
 As explained in the solution paper, the history is shown below the current 
