@@ -6,14 +6,15 @@ Constituents of the Solution
 
 The solution has the following directory structure:
 
-- description: contains the descriptions of the case and the solution
-- solution: contains the solution to the case consisting of
-  * the metamodels required for the transformation
-  * the history model which specifies the transformation
 - src: Java implementations of custom migrations
+- description: contains the descriptions of the case and the solution
 - models: contains the test models and launch configurations
   * the test models are the models that come with the case
   * a launch configuration that applies the history model on the test model
+- reference: the migrated models which are provided as a reference
+- solution: contains the solution to the case consisting of
+  * the metamodels required for the transformation
+  * the history model which specifies the transformation
 
 
 Running the Transformations
