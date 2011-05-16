@@ -38,7 +38,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.forms.widgets.FormText;
+import org.eclipse.ui.forms.widgets.ScrolledFormText;
 import org.eclipse.ui.part.ViewPart;
 
 
@@ -61,7 +61,7 @@ public class ChangeDocumentationView extends ViewPart implements
 	/**
 	 * Text widget to display documentation
 	 */
-	private FormText text;
+	private ScrolledFormText text;
 
 	/**
 	 * {@inheritDoc}
@@ -75,7 +75,7 @@ public class ChangeDocumentationView extends ViewPart implements
 		composite.setBackground(white);
 		composite.setLayout(layout);
 
-		text = new FormText(composite, SWT.None);
+		text = new ScrolledFormText(composite, true);
 		text.setBackground(white);
 		text.setLayoutData(new GridData(GridData.FILL_BOTH));
 
@@ -255,7 +255,7 @@ public class ChangeDocumentationView extends ViewPart implements
 	 * Unset the documentation
 	 */
 	private void unsetText() {
-		text.setText("", false, false);
+		text.setText("");
 	}
 
 	/**
@@ -313,12 +313,12 @@ public class ChangeDocumentationView extends ViewPart implements
 				Object element = structuredSelection.getFirstElement();
 				if (element instanceof Change) {
 					Change change = (Change) element;
-					text.setText(getDocumentation(change), true, false);
+					text.setText(getDocumentation(change));
 					return;
 				} else if (element instanceof OperationInstance) {
 					OperationInstance operationInstance = (OperationInstance) element;
 					Operation operation = operationInstance.getOperation();
-					text.setText(getDocumentation(operation), true, false);
+					text.setText(getDocumentation(operation));
 					return;
 				}
 			}
