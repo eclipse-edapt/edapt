@@ -16,8 +16,8 @@ The solution has the following directory structure:
   * a launch configuration that applies the history model on the test model
 
 
-Running the Transformations
----------------------------
+Running the Solution
+--------------------
   
 To perform a transformation, you just need to right-click on the launch configuration 
 and select "Run As -> <LaunchConfigName>" in the context menu. Alternatively you
@@ -25,8 +25,8 @@ can select "Run -> Run Configurations ..." in the menu and select the appropriat
 launch configuration.
 
 
-Inspecting the Transformations
-------------------------------
+Inspecting the Solution
+-----------------------
 
 The history model is best inspected by opening the corresponding ecore file. 
 As explained in the solution paper, the history is shown below the current 
