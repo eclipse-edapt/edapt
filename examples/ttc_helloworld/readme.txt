@@ -6,6 +6,7 @@ Constituents of the Solution
 
 The solution has the following directory structure:
 
+- src: Java implementations of custom migrations
 - description: contains the descriptions of the case and the solution
 - material: contains the material that comes with the case
 - solution: contains the solution; for each task there is a sub directory with
@@ -18,7 +19,7 @@ The solution has the following directory structure:
 Running the Transformations
 ---------------------------
   
-To perform the transformation, you just right-click on the launch configuration 
+To perform a transformation, you just need to right-click on the launch configuration 
 and select "Run As -> <LaunchConfigName>" in the context menu. Alternatively you
 can select "Run -> Run Configurations ..." in the menu and select the appropriate
 launch configuration.
