@@ -13,7 +13,7 @@
 </listAttribute>
 <intAttribute key="org.eclipse.emf.edapt.migration.sourceRelease" value="0"/>
 <intAttribute key="org.eclipse.emf.edapt.migration.targetRelease" value="-1"/>
-<stringAttribute key="org.eclipse.emf.edapt.migration.validationLevel" value="CHANGE"/>
+<stringAttribute key="org.eclipse.emf.edapt.migration.validationLevel" value="NONE"/>
 <booleanAttribute key="org.eclipse.jdt.launching.DEFAULT_CLASSPATH" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ttc_reengineering"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=""/>
