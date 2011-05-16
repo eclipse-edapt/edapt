@@ -1080,15 +1080,15 @@
             featureName="value" dataValue="Denotes the feature for which this value expression is specified. Its containing EClass is the context for evaluation."/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
-          referenceName="eAnnotations" element="#//@releases.1/@changes.7/@changes.10/@element">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.7/@changes.10/@element"
+          referenceName="eAnnotations" element="#//@releases.1/@changes.13/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.13/@element"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.7/@changes.10/@element"
-          referenceName="details" element="#//@releases.1/@changes.7/@changes.10/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.7/@changes.10/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.13/@element"
+          referenceName="details" element="#//@releases.1/@changes.13/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.13/@element/@details.0"
             featureName="key" dataValue="def"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.7/@changes.10/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.13/@element/@details.0"
             featureName="value" dataValue="type"/>
       </changes>
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
@@ -2610,7 +2610,7 @@
     </changes>
   </releases>
   <releases date="2009-02-10T00:03:13.187+0100" label="2.0">
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
           referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4"
@@ -2630,8 +2630,19 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.4/@details.1"
             featureName="value" dataValue="Side-affixed children can not be pure labels"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//ChildReference"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>let child:NodeMapping=(if ownedChild.oclIsUndefined() then referencedChild else ownedChild endif) in (((child.labelMappings->size() = 1) and child.labelMappings->forAll( soleLabel: LabelMapping | soleLabel.diagramLabel = child.diagramNode)) implies (child.diagramNode.affixedParentSide = gmfgraph::Direction::NSEW))</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>Side-affixed children can not be pure labels</dataValue>
+        </parameters>
+      </operation>
     </changes>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ChildReference"
           referenceName="eAnnotations" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5">
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5"
@@ -2651,6 +2662,17 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ChildReference/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.5/@details.1"
             featureName="value" dataValue="Side-affixed children can not be placed in compartments"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//ChildReference"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>let child:NodeMapping=(if ownedChild.oclIsUndefined() then referencedChild else ownedChild endif) in ((not compartment.oclIsUndefined()) implies (child.diagramNode.affixedParentSide = gmfgraph::Direction::NSEW))</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>Side-affixed children can not be placed in compartments</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.44"/>
     <changes xsi:type="history:CompositeChange">
@@ -2701,7 +2723,7 @@
     </changes>
     <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer"
         featureName="interface" dataValue="true" oldDataValue="false"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
@@ -2714,6 +2736,26 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.0"
             featureName="value" dataValue="feature &lt;> null implies feature.eContainingClass.isSuperTypeOf(featureSeqInitializer.elementClass)"/>
       </changes>
+      <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
+          referenceName="details" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1">
+        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
+            featureName="key" dataValue="description"/>
+        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
+            featureName="value" dataValue="The 'feature' of 'FeatureInitializer' must be available in 'Meta Class' of the initialized element"/>
+      </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureInitializer/feature"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>feature &lt;> null implies feature.eContainingClass.isSuperTypeOf(featureSeqInitializer.elementClass)</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>The 'feature' of 'FeatureInitializer' must be available in 'Meta Class' of the initialized element</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2"
@@ -2733,32 +2775,46 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.2/@details.1"
             featureName="value" dataValue="The 'feature' of 'FeatureInitializer' must be changeable"/>
       </changes>
-      <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
-          referenceName="details" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1">
-        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
-            featureName="key" dataValue="description"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
-            featureName="value" dataValue="The 'feature' of 'FeatureInitializer' must be available in 'Meta Class' of the initialized element"/>
-      </changes>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"
-          featureName="value" dataValue="feature &lt;> null implies not featureSeqInitializer.initializers->exists(i| i &lt;> self and feature = self.feature)"
-          oldDataValue="feature.eContainingClass.isSuperTypeOf(featureSeqInitializer.mappingEntry.getDomainContext())"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
-          featureName="value" dataValue="The feature is already initialized by another 'FeatureInitializer' in the sequence"
-          oldDataValue="Initialized 'Feature' must be owned by 'Domain Element' or its super type"/>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureInitializer/feature"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>feature &lt;> null implies feature.changeable</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>The 'feature' of 'FeatureInitializer' must be changeable</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
+        featureName="changeable" dataValue="false" oldDataValue="true"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"
+        featureName="value" dataValue="feature &lt;> null implies not featureSeqInitializer.initializers->exists(i| i &lt;> self and feature = self.feature)"
+        oldDataValue="feature.eContainingClass.isSuperTypeOf(featureSeqInitializer.mappingEntry.getDomainContext())"/>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
+        featureName="value" dataValue="The feature is already initialized by another 'FeatureInitializer' in the sequence"
+        oldDataValue="Initialized 'Feature' must be owned by 'Domain Element' or its super type"/>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="The feature for which is to be initialized by this initializer"
           oldDataValue="Denotes the feature for which this value expression is specified. Its containing EClass is the context for evaluation."/>
-      <changes xsi:type="history:Delete" target="mappings.ecore#//FeatureInitializer/feature"
-          referenceName="eAnnotations">
-        <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmf/2005/constraints/meta">
-          <details key="def" value="type"/>
-        </element>
-      </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureInitializer/feature"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>The feature for which is to be initialized by this initializer</dataValue>
+        </parameters>
+      </operation>
     </changes>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:Delete" target="mappings.ecore#//FeatureInitializer/feature"
+        referenceName="eAnnotations">
+      <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/gmf/2005/constraints/meta">
+        <details key="def" value="type"/>
+      </element>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//ReferenceNewElementSpec">
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec"
@@ -2766,15 +2822,54 @@
         <changes xsi:type="history:Add" element="mappings.ecore#//ReferenceNewElementSpec"
             featureName="eSuperTypes" referenceValue="mappings.ecore#//FeatureInitializer"/>
       </changes>
+      <operation name="newClass">
+        <parameters name="ePackage">
+          <referenceValue element="mappings.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>ReferenceNewElementSpec</dataValue>
+        </parameters>
+        <parameters name="superClasses">
+          <referenceValue element="mappings.ecore#//FeatureInitializer"/>
+        </parameters>
+        <parameters name="abstr">
+          <dataValue>false</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
             featureName="name" dataValue="creatingInitializer"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
-            featureName="changeable" dataValue="false" oldDataValue="true"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
             featureName="eType" referenceValue="mappings.ecore#//ReferenceNewElementSpec"/>
       </changes>
+      <operation name="newReference">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>creatingInitializer</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="mappings.ecore#//ReferenceNewElementSpec"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="containment">
+          <dataValue>false</dataValue>
+        </parameters>
+        <parameters name="opposite"/>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
+        featureName="changeable" dataValue="false" oldDataValue="true"/>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ReferenceNewElementSpec"
           referenceName="eAnnotations" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"
@@ -2794,6 +2889,19 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
             featureName="value" dataValue="FeatureInitializer for single element EReference can't contain multiple element initializers"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//ReferenceNewElementSpec"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>feature.many = false implies not (newElementInitializers->size() > 1)</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>FeatureInitializer for single element EReference can't contain multiple element initializers</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ReferenceNewElementSpec"
           referenceName="eAnnotations" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
@@ -2813,6 +2921,19 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
             featureName="value" dataValue="'feature' of 'ReferenceNewElementSpec' must refer to containment ecore::EReference"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//ReferenceNewElementSpec"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>let r: ecore::EReference = feature.oclAsType(ecore::EReference) in feature &lt;> null implies r.containment</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>'feature' of 'ReferenceNewElementSpec' must refer to containment ecore::EReference</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ReferenceNewElementSpec"
           referenceName="eStructuralFeatures" element="mappings.ecore#//ReferenceNewElementSpec/newElementInitializers">
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/newElementInitializers"
@@ -2830,36 +2951,59 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ReferenceNewElementSpec/newElementInitializers"
             featureName="eType" referenceValue="mappings.ecore#//FeatureSeqInitializer"/>
       </changes>
+      <operation name="newReference">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//ReferenceNewElementSpec"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>newElementInitializers</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>-1</dataValue>
+        </parameters>
+        <parameters name="containment">
+          <dataValue>true</dataValue>
+        </parameters>
+        <parameters name="opposite">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:CompositeChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureValueSpec"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.4/@changes.2/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.4/@changes.2/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.9/@changes.2/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.9/@changes.2/@element"
             featureName="source" dataValue="http://www.eclipse.org/gmf/2005/constraints/meta"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.4/@changes.2/@element"
-          referenceName="details" element="#//@releases.2/@changes.4/@changes.2/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.4/@changes.2/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.9/@changes.2/@element"
+          referenceName="details" element="#//@releases.2/@changes.9/@changes.2/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.9/@changes.2/@element/@details.0"
             featureName="key" dataValue="def"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.4/@changes.2/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.9/@changes.2/@element/@details.0"
             featureName="value" dataValue="type"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.4/@changes.2/@element"
-          referenceName="details" element="#//@releases.2/@changes.4/@changes.2/@element/@details.1">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.4/@changes.2/@element/@details.1"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.9/@changes.2/@element"
+          referenceName="details" element="#//@releases.2/@changes.9/@changes.2/@element/@details.1">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.9/@changes.2/@element/@details.1"
             featureName="key" dataValue="ocl"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.4/@changes.2/@element/@details.1"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.9/@changes.2/@element/@details.1"
             featureName="value" dataValue="feature"/>
       </changes>
     </changes>
-    <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer"
-          referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureSeqInitializer/elementClass">
-        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass"
-            featureName="name" dataValue="elementClass"/>
-        <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass"
-            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
-      </changes>
+    <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer"
+        referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureSeqInitializer/elementClass">
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass"
+          featureName="name" dataValue="elementClass"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EClass"/>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer/elementClass"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%"
@@ -2879,6 +3023,19 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.1"
             featureName="value" dataValue="'elementClass' must be the same as or sub-type of the containing 'GenReferenceNewElementSpec' reference type"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer/elementClass"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>not creatingInitializer.feature.oclIsUndefined() implies creatingInitializer.feature.oclAsType(ecore::EReference).eReferenceType.isSuperTypeOf(elementClass)</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>'elementClass' must be the same as or sub-type of the containing 'GenReferenceNewElementSpec' reference type</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer/elementClass"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1"
@@ -2898,9 +3055,30 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/elementClass/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%.1/@details.1"
             featureName="value" dataValue="'elementClass' must be a concrete EClass which is the same or sub-type of the containing 'GenReferenceNewElementSpec' reference type"/>
       </changes>
+      <operation name="newGMFConstraint">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer/elementClass"/>
+        </parameters>
+        <parameters name="ocl">
+          <dataValue>not creatingInitializer.feature.oclIsUndefined() implies not (elementClass.interface or elementClass.abstract)</dataValue>
+        </parameters>
+        <parameters name="description">
+          <dataValue>'elementClass' must be a concrete EClass which is the same or sub-type of the containing 'GenReferenceNewElementSpec' reference type</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Feature sequence initializer to initialize a sequence of features"
           oldDataValue="Feature sequence initializer"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Feature sequence initializer to initialize a sequence of features</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//ElementInitializer/mappingEntry"
@@ -2935,7 +3113,7 @@
           referenceName="eAnnotations" element="mappings.ecore#//FeatureSeqInitializer/initializers/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%2Fmeta%"
           source="mappings.ecore#//MappingEntry/domainInitializer"/>
     </changes>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//ElementInitializer/mappingEntry"
           referenceName="eAnnotations" element="mappings.ecore#//ElementInitializer/mappingEntry/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//ElementInitializer/mappingEntry/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
@@ -2948,11 +3126,19 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//ElementInitializer/mappingEntry/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="The 'MappingEntry' whose domain model element is to be intialized by this initializer"/>
       </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//ElementInitializer/mappingEntry"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>The 'MappingEntry' whose domain model element is to be intialized by this initializer</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
         dataValue="http://www.eclipse.org/gmf/2005/mappings/2.0" oldDataValue="http://www.eclipse.org/gmf/2005/mappings"/>
     <changes xsi:type="history:NoChange" description="1.46"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//MappingEntry" referenceName="eStructuralFeatures"
           element="mappings.ecore#//MappingEntry/relatedDiagrams">
         <changes xsi:type="history:Set" element="mappings.ecore#//MappingEntry/relatedDiagrams"
@@ -2962,6 +3148,29 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//MappingEntry/relatedDiagrams"
             featureName="eType" referenceValue="mappings.ecore#//CanvasMapping"/>
       </changes>
+      <operation name="newReference">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//MappingEntry"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>relatedDiagrams</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="mappings.ecore#//CanvasMapping"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>-1</dataValue>
+        </parameters>
+        <parameters name="containment">
+          <dataValue>false</dataValue>
+        </parameters>
+        <parameters name="opposite"/>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//MappingEntry/relatedDiagrams"
           referenceName="eAnnotations" element="mappings.ecore#//MappingEntry/relatedDiagrams/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//MappingEntry/relatedDiagrams/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
@@ -2974,6 +3183,14 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//MappingEntry/relatedDiagrams/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Diagrams that may be associated with this diagram element. It's up to client application to define what this association means (e.g. open diagram)"/>
       </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//MappingEntry/relatedDiagrams"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Diagrams that may be associated with this diagram element. It's up to client application to define what this association means (e.g. open diagram)</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.47"/>
     <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/feature/%http:%2F%2Fwww.eclipse.org%2Fgmf%2F2005%2Fconstraints%/@details.0"
@@ -3025,7 +3242,7 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureLabelMapping"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
@@ -3038,14 +3255,42 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Label based on feature(s) from domain model"/>
       </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Label based on feature(s) from domain model</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/viewPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Pattern for java.text.MessageFormat to produce label text"
           oldDataValue="Pattern for java.text.MessageFormat to produce label on diagram"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/viewPattern"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Pattern for java.text.MessageFormat to produce label text</dataValue>
+        </parameters>
+      </operation>
     </changes>
-    <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
-        featureName="value" dataValue="Label definition; text is taken from the graph model; no editing support; user may contribute custom parser"
-        oldDataValue="Label on diagram; either features or text should be specified"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
+          featureName="value" dataValue="Label definition; text is taken from the graph model; no editing support; user may contribute custom parser"
+          oldDataValue="Label on diagram; either features or text should be specified"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//LabelMapping"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Label definition; text is taken from the graph model; no editing support; user may contribute custom parser</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//DesignLabelMapping">
         <changes xsi:type="history:Set" element="mappings.ecore#//DesignLabelMapping"
@@ -3053,6 +3298,22 @@
         <changes xsi:type="history:Add" element="mappings.ecore#//DesignLabelMapping"
             featureName="eSuperTypes" referenceValue="mappings.ecore#//LabelMapping"/>
       </changes>
+      <operation name="newClass">
+        <parameters name="ePackage">
+          <referenceValue element="mappings.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>DesignLabelMapping</dataValue>
+        </parameters>
+        <parameters name="superClasses">
+          <referenceValue element="mappings.ecore#//LabelMapping"/>
+        </parameters>
+        <parameters name="abstr">
+          <dataValue>false</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//DesignLabelMapping"
           referenceName="eAnnotations" element="mappings.ecore#//DesignLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//DesignLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
@@ -3065,6 +3326,14 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//DesignLabelMapping/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Label based on DescriptionStyle from notation model"/>
       </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//DesignLabelMapping"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Label based on DescriptionStyle from notation model</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.49"/>
     <changes xsi:type="history:CompositeChange">
@@ -3088,90 +3357,182 @@
           dataValue="true" oldDataValue="false"/>
     </changes>
     <changes xsi:type="history:NoChange" description="1.50"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
-          element="#//@releases.1/@changes.32/@changes.1/@element">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element"
+          element="#//@releases.1/@changes.54/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element"
             featureName="name" dataValue="LabelEditMethod"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.32/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.32/@changes.1/@element/MESSAGE_FORMAT">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/MESSAGE_FORMAT"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.54/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.54/@changes.1/@element/MESSAGE_FORMAT">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/MESSAGE_FORMAT"
             featureName="name" dataValue="MESSAGE_FORMAT"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/MESSAGE_FORMAT"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/MESSAGE_FORMAT"
             featureName="literal" dataValue="MESSAGE_FORMAT"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.32/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.32/@changes.1/@element/REGEXP">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/REGEXP"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.54/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.54/@changes.1/@element/REGEXP">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/REGEXP"
             featureName="name" dataValue="REGEXP"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/REGEXP"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/REGEXP"
             featureName="value" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/REGEXP"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/REGEXP"
             featureName="literal" dataValue="REGEXP"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.32/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.32/@changes.1/@element/NATIVE">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/NATIVE"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.54/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.54/@changes.1/@element/NATIVE">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/NATIVE"
             featureName="name" dataValue="NATIVE"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/NATIVE"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/NATIVE"
             featureName="value" dataValue="2" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.32/@changes.1/@element/NATIVE"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.54/@changes.1/@element/NATIVE"
             featureName="literal" dataValue="NATIVE"/>
       </changes>
+      <operation name="createEnumeration">
+        <parameters name="ePackage">
+          <referenceValue element="mappings.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>LabelEditMethod</dataValue>
+        </parameters>
+        <parameters name="literals">
+          <dataValue>MESSAGE_FORMAT</dataValue>
+          <dataValue>REGEXP</dataValue>
+          <dataValue>NATIVE</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
-          element="#//@releases.1/@changes.33/@changes.1/@element">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element"
+          element="#//@releases.1/@changes.55/@changes.1/@element">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element"
             featureName="name" dataValue="LabelViewMethod"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.33/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.33/@changes.1/@element/MESSAGE_FORMAT">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/MESSAGE_FORMAT"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.55/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.55/@changes.1/@element/MESSAGE_FORMAT">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/MESSAGE_FORMAT"
             featureName="name" dataValue="MESSAGE_FORMAT"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/MESSAGE_FORMAT"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/MESSAGE_FORMAT"
             featureName="literal" dataValue="MESSAGE_FORMAT"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.33/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.33/@changes.1/@element/PRINTF">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/PRINTF"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.55/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.55/@changes.1/@element/PRINTF">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/PRINTF"
             featureName="name" dataValue="PRINTF"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/PRINTF"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/PRINTF"
             featureName="value" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/PRINTF"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/PRINTF"
             featureName="literal" dataValue="PRINTF"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.1/@changes.33/@changes.1/@element"
-          referenceName="eLiterals" element="#//@releases.1/@changes.33/@changes.1/@element/NATIVE">
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/NATIVE"
+      <changes xsi:type="history:Create" target="#//@releases.1/@changes.55/@changes.1/@element"
+          referenceName="eLiterals" element="#//@releases.1/@changes.55/@changes.1/@element/NATIVE">
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/NATIVE"
             featureName="name" dataValue="NATIVE"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/NATIVE"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/NATIVE"
             featureName="value" dataValue="2" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="#//@releases.1/@changes.33/@changes.1/@element/NATIVE"
+        <changes xsi:type="history:Set" element="#//@releases.1/@changes.55/@changes.1/@element/NATIVE"
             featureName="literal" dataValue="NATIVE"/>
       </changes>
+      <operation name="createEnumeration">
+        <parameters name="ePackage">
+          <referenceValue element="mappings.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>LabelViewMethod</dataValue>
+        </parameters>
+        <parameters name="literals">
+          <dataValue>MESSAGE_FORMAT</dataValue>
+          <dataValue>PRINTF</dataValue>
+          <dataValue>NATIVE</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureLabelMapping"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/editMethod">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editMethod"
             featureName="name" dataValue="editMethod"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editMethod"
-            featureName="eType" referenceValue="#//@releases.1/@changes.32/@changes.1/@element"/>
+            featureName="eType" referenceValue="#//@releases.1/@changes.54/@changes.1/@element"/>
       </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>editMethod</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="#//@releases.1/@changes.54/@changes.1/@element"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue xsi:nil="true"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureLabelMapping"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/viewMethod">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/viewMethod"
             featureName="name" dataValue="viewMethod"/>
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/viewMethod"
-            featureName="eType" referenceValue="#//@releases.1/@changes.33/@changes.1/@element"/>
+            featureName="eType" referenceValue="#//@releases.1/@changes.55/@changes.1/@element"/>
       </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>viewMethod</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="#//@releases.1/@changes.55/@changes.1/@element"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue xsi:nil="true"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/viewPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Pattern to produce label on diagram, depends on view method"
           oldDataValue="Pattern for java.text.MessageFormat to produce label text"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/viewPattern"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Pattern to produce label on diagram, depends on view method</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Pattern to produce text for inplace editor, depends on edit method; if not specified then viewPattern should be used"
           oldDataValue="Pattern for java.text.MessageFormat to produce text for inplace editor; if not specified then viewPattern should be used"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/editPattern"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Pattern to produce text for inplace editor, depends on edit method; if not specified then viewPattern should be used</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.51"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#/" referenceName="eClassifiers"
           element="mappings.ecore#//LabelTextAccessMethod">
         <changes xsi:type="history:Set" element="mappings.ecore#//LabelTextAccessMethod"
@@ -3211,11 +3572,25 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//LabelTextAccessMethod/PRINTF"
             featureName="literal" dataValue="PRINTF"/>
       </changes>
+      <operation name="createEnumeration">
+        <parameters name="ePackage">
+          <referenceValue element="mappings.ecore#/"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>LabelTextAccessMethod</dataValue>
+        </parameters>
+        <parameters name="literals">
+          <dataValue>MESSAGE_FORMAT</dataValue>
+          <dataValue>NATIVE</dataValue>
+          <dataValue>REGEXP</dataValue>
+          <dataValue>PRINTF</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editMethod"
           featureName="eType" referenceValue="mappings.ecore#//LabelTextAccessMethod"
-          oldReferenceValue="#//@releases.1/@changes.32/@changes.1/@element"/>
+          oldReferenceValue="#//@releases.1/@changes.54/@changes.1/@element"/>
       <changes xsi:type="history:Delete" target="mappings.ecore#/" referenceName="eClassifiers">
         <element xsi:type="ecore:EEnum" name="LabelEditMethod">
           <eLiterals name="MESSAGE_FORMAT"/>
@@ -3225,15 +3600,15 @@
       </changes>
       <operation name="replaceEnum">
         <parameters name="toReplace">
-          <referenceValue element="#//@releases.1/@changes.32/@changes.1/@element"/>
+          <referenceValue element="#//@releases.1/@changes.54/@changes.1/@element"/>
         </parameters>
         <parameters name="replaceBy">
           <referenceValue element="mappings.ecore#//LabelTextAccessMethod"/>
         </parameters>
         <parameters name="literalsToReplace">
-          <referenceValue element="#//@releases.1/@changes.32/@changes.1/@element/MESSAGE_FORMAT"/>
-          <referenceValue element="#//@releases.1/@changes.32/@changes.1/@element/REGEXP"/>
-          <referenceValue element="#//@releases.1/@changes.32/@changes.1/@element/NATIVE"/>
+          <referenceValue element="#//@releases.1/@changes.54/@changes.1/@element/MESSAGE_FORMAT"/>
+          <referenceValue element="#//@releases.1/@changes.54/@changes.1/@element/REGEXP"/>
+          <referenceValue element="#//@releases.1/@changes.54/@changes.1/@element/NATIVE"/>
         </parameters>
         <parameters name="literalsReplaceBy">
           <referenceValue element="mappings.ecore#//LabelTextAccessMethod/MESSAGE_FORMAT"/>
@@ -3245,7 +3620,7 @@
     <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/viewMethod"
           featureName="eType" referenceValue="mappings.ecore#//LabelTextAccessMethod"
-          oldReferenceValue="#//@releases.1/@changes.33/@changes.1/@element"/>
+          oldReferenceValue="#//@releases.1/@changes.55/@changes.1/@element"/>
       <changes xsi:type="history:Delete" target="mappings.ecore#/" referenceName="eClassifiers">
         <element xsi:type="ecore:EEnum" name="LabelViewMethod">
           <eLiterals name="MESSAGE_FORMAT"/>
@@ -3255,15 +3630,15 @@
       </changes>
       <operation name="replaceEnum">
         <parameters name="toReplace">
-          <referenceValue element="#//@releases.1/@changes.33/@changes.1/@element"/>
+          <referenceValue element="#//@releases.1/@changes.55/@changes.1/@element"/>
         </parameters>
         <parameters name="replaceBy">
           <referenceValue element="mappings.ecore#//LabelTextAccessMethod"/>
         </parameters>
         <parameters name="literalsToReplace">
-          <referenceValue element="#//@releases.1/@changes.33/@changes.1/@element/MESSAGE_FORMAT"/>
-          <referenceValue element="#//@releases.1/@changes.33/@changes.1/@element/PRINTF"/>
-          <referenceValue element="#//@releases.1/@changes.33/@changes.1/@element/NATIVE"/>
+          <referenceValue element="#//@releases.1/@changes.55/@changes.1/@element/MESSAGE_FORMAT"/>
+          <referenceValue element="#//@releases.1/@changes.55/@changes.1/@element/PRINTF"/>
+          <referenceValue element="#//@releases.1/@changes.55/@changes.1/@element/NATIVE"/>
         </parameters>
         <parameters name="literalsReplaceBy">
           <referenceValue element="mappings.ecore#//LabelTextAccessMethod/MESSAGE_FORMAT"/>
@@ -3273,7 +3648,7 @@
       </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.52"/>
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureLabelMapping"
           referenceName="eStructuralFeatures" element="mappings.ecore#//FeatureLabelMapping/editorPattern">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editorPattern"
@@ -3281,6 +3656,28 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editorPattern"
             featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       </changes>
+      <operation name="newAttribute">
+        <parameters name="eClass">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>editorPattern</dataValue>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </parameters>
+        <parameters name="lowerBound">
+          <dataValue>0</dataValue>
+        </parameters>
+        <parameters name="upperBound">
+          <dataValue>1</dataValue>
+        </parameters>
+        <parameters name="defaultValue">
+          <dataValue xsi:nil="true"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureLabelMapping/editorPattern"
           referenceName="eAnnotations" element="mappings.ecore#//FeatureLabelMapping/editorPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%">
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editorPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%"
@@ -3293,9 +3690,27 @@
         <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editorPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
             featureName="value" dataValue="Pattern to produce text for inplace editor, depends on view method; if not specified then viewPattern should be used"/>
       </changes>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/editorPattern"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Pattern to produce text for inplace editor, depends on view method; if not specified then viewPattern should be used</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureLabelMapping/editPattern/%http:%2F%2Fwww.eclipse.org%2Femf%2F2002%2FGenModel%/@details.0"
           featureName="value" dataValue="Pattern to extract values from input text, depends on edit method; if not specified then viewPattern should be used"
           oldDataValue="Pattern to produce text for inplace editor, depends on edit method; if not specified then viewPattern should be used"/>
+      <operation name="document">
+        <parameters name="element">
+          <referenceValue element="mappings.ecore#//FeatureLabelMapping/editPattern"/>
+        </parameters>
+        <parameters name="documentation">
+          <dataValue>Pattern to extract values from input text, depends on edit method; if not specified then viewPattern should be used</dataValue>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.53"/>
     <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
@@ -3303,85 +3718,120 @@
     <changes xsi:type="history:NoChange" description="1.54"/>
   </releases>
   <releases date="2009-02-10T00:07:59.640+0100" label="2.1">
-    <changes xsi:type="history:CompositeChange">
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//CompartmentMapping/parentNode"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.8/@changes.5/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.5/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.13/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.13/@changes.0/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.8/@changes.5/@element"
-          referenceName="details" element="#//@releases.2/@changes.8/@changes.5/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.5/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.13/@changes.0/@element"
+          referenceName="details" element="#//@releases.2/@changes.13/@changes.0/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.13/@changes.0/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.5/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.13/@changes.0/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
+          featureName="changeable" dataValue="true" oldDataValue="false"/>
+      <operation name="notChangeableToSuppressedSetVisibility">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//CompartmentMapping/parentNode"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.8/@changes.6/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.6/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.14/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.14/@changes.0/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.8/@changes.6/@element"
-          referenceName="details" element="#//@releases.2/@changes.8/@changes.6/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.6/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.14/@changes.0/@element"
+          referenceName="details" element="#//@releases.2/@changes.14/@changes.0/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.14/@changes.0/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.6/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.14/@changes.0/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
+          featureName="changeable" dataValue="true" oldDataValue="false"/>
+      <operation name="notChangeableToSuppressedSetVisibility">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//LinkConstraints/linkMapping"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.8/@changes.7/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.7/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.15/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.15/@changes.0/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.8/@changes.7/@element"
-          referenceName="details" element="#//@releases.2/@changes.8/@changes.7/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.7/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.15/@changes.0/@element"
+          referenceName="details" element="#//@releases.2/@changes.15/@changes.0/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.15/@changes.0/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.7/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.15/@changes.0/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
+          featureName="changeable" dataValue="true" oldDataValue="false"/>
+      <operation name="notChangeableToSuppressedSetVisibility">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//LinkConstraints/linkMapping"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//LabelMapping/mapEntry"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.8/@changes.8/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.8/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.16/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.16/@changes.0/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.8/@changes.8/@element"
-          referenceName="details" element="#//@releases.2/@changes.8/@changes.8/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.8/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.16/@changes.0/@element"
+          referenceName="details" element="#//@releases.2/@changes.16/@changes.0/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.16/@changes.0/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.8/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.16/@changes.0/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
+          featureName="changeable" dataValue="true" oldDataValue="false"/>
+      <operation name="notChangeableToSuppressedSetVisibility">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//LabelMapping/mapEntry"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Create" target="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
-          referenceName="eAnnotations" element="#//@releases.2/@changes.8/@changes.9/@element">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.9/@element"
+          referenceName="eAnnotations" element="#//@releases.2/@changes.17/@changes.0/@element">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.17/@changes.0/@element"
             featureName="source" dataValue="http://www.eclipse.org/emf/2002/GenModel"/>
       </changes>
-      <changes xsi:type="history:Create" target="#//@releases.2/@changes.8/@changes.9/@element"
-          referenceName="details" element="#//@releases.2/@changes.8/@changes.9/@element/@details.0">
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.9/@element/@details.0"
+      <changes xsi:type="history:Create" target="#//@releases.2/@changes.17/@changes.0/@element"
+          referenceName="details" element="#//@releases.2/@changes.17/@changes.0/@element/@details.0">
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.17/@changes.0/@element/@details.0"
             featureName="key" dataValue="suppressedSetVisibility"/>
-        <changes xsi:type="history:Set" element="#//@releases.2/@changes.8/@changes.9/@element/@details.0"
+        <changes xsi:type="history:Set" element="#//@releases.2/@changes.17/@changes.0/@element/@details.0"
             featureName="value" dataValue="true"/>
       </changes>
-      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
-          featureName="changeable" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
-          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-          featureName="changeable" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
-          featureName="changeable" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
-          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
-          featureName="changeable" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
-          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
           featureName="changeable" dataValue="true" oldDataValue="false"/>
+      <operation name="notChangeableToSuppressedSetVisibility">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
+          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
+          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
+          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
+          featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
       <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
           featureName="resolveProxies" dataValue="false" oldDataValue="true"/>
     </changes>
@@ -3436,47 +3886,80 @@
     <changes xsi:type="history:Set" element="mappings.ecore#/" featureName="nsURI"
         dataValue="http://www.eclipse.org/gmf/2008/mappings" oldDataValue="http://www.eclipse.org/gmf/2006/mappings"/>
     <changes xsi:type="history:NoChange" description="1.57"/>
-    <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
-      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
-          featureName="changeable" dataValue="false" oldDataValue="true"/>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="mappings.ecore#//CompartmentMapping/parentNode"
           referenceName="eAnnotations">
         <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedSetVisibility" value="true"/>
         </element>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//CompartmentMapping/parentNode"
+          featureName="changeable" dataValue="false" oldDataValue="true"/>
+      <operation name="suppressedSetVisibilityToNotChangeable">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//CompartmentMapping/parentNode"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
           referenceName="eAnnotations">
         <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedSetVisibility" value="true"/>
         </element>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"
+          featureName="changeable" dataValue="false" oldDataValue="true"/>
+      <operation name="suppressedSetVisibilityToNotChangeable">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//FeatureInitializer/featureSeqInitializer"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="mappings.ecore#//LinkConstraints/linkMapping"
           referenceName="eAnnotations">
         <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedSetVisibility" value="true"/>
         </element>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LinkConstraints/linkMapping"
+          featureName="changeable" dataValue="false" oldDataValue="true"/>
+      <operation name="suppressedSetVisibilityToNotChangeable">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//LinkConstraints/linkMapping"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="mappings.ecore#//LabelMapping/mapEntry"
           referenceName="eAnnotations">
         <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedSetVisibility" value="true"/>
         </element>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//LabelMapping/mapEntry"
+          featureName="changeable" dataValue="false" oldDataValue="true"/>
+      <operation name="suppressedSetVisibilityToNotChangeable">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//LabelMapping/mapEntry"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:OperationChange">
       <changes xsi:type="history:Delete" target="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
           referenceName="eAnnotations">
         <element xsi:type="ecore:EAnnotation" source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="suppressedSetVisibility" value="true"/>
         </element>
       </changes>
+      <changes xsi:type="history:Set" element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"
+          featureName="changeable" dataValue="false" oldDataValue="true"/>
+      <operation name="suppressedSetVisibilityToNotChangeable">
+        <parameters name="reference">
+          <referenceValue element="mappings.ecore#//FeatureSeqInitializer/creatingInitializer"/>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:NoChange" description="1.58"/>
   </releases>
