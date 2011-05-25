@@ -6,5 +6,11 @@
    <feature url="features/org.eclipse.emf.edapt.runtime.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.runtime.feature" version="0.3.0.qualifier">
       <category name="org.eclipse.emf.edapt"/>
    </feature>
+   <feature url="features/org.eclipse.emf.edapt.recorder.sdk.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.recorder.sdk.feature" version="0.3.0.qualifier">
+      <category name="org.eclipse.emf.edapt"/>
+   </feature>
+   <feature url="features/org.eclipse.emf.edapt.runtime.sdk.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.runtime.sdk.feature" version="0.3.0.qualifier">
+      <category name="org.eclipse.emf.edapt"/>
+   </feature>
    <category-def name="org.eclipse.emf.edapt" label="Edapt"/>
 </site>
