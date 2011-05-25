@@ -218,7 +218,7 @@ litigation.
          version="0.0.0"/>
 
    <includes
-         id="org.eclipse.emf.edapt.recorder.sdk.feature"
+         id="org.eclipse.emf.edapt.recorder.source.feature"
          version="0.0.0"/>
 
 </feature>
