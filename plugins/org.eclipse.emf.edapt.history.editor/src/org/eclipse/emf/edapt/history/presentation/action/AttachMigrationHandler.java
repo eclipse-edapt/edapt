@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.history.presentation.AttachMigrationCommand;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jdt.core.IJavaElement;
+import org.eclipse.jdt.core.IType;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
@@ -46,9 +46,10 @@ public class AttachMigrationHandler extends
 		final MigrationChangeReconstructor reconstructor = reconstruct(
 				sourceChange, targetChange);
 		if (isConsistent(reconstructor)) {
-			IJavaElement element = JavaUIUtils.createCustomMigration(release);
+			IType element = JavaUIUtils.createCustomMigration(release);
 			if (element != null) {
-				attachMigration(changes, element.getElementName(), domain);
+				attachMigration(changes, element.getFullyQualifiedName(),
+						domain);
 			}
 		}
 		return null;
