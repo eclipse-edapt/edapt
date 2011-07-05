@@ -119,7 +119,11 @@ public class CompositeChangeItemProvider
 	@Override
 	public String getText(Object object) {
 		CompositeChange element = (CompositeChange) object;
-		return "Composite Change";
+		String label = "Composite Change";
+		if (element.getDescription() != null) {
+			label += ": " + this.crop(element.getDescription());
+		}
+		return label;
 	}
 
 	/**

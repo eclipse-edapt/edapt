@@ -88,7 +88,7 @@ public class NoChangeItemProvider
 		NoChange element = (NoChange) object;
 		String label = "No Change";
 		if (element.getDescription() != null) {
-			label += " " + this.crop(element.getDescription());
+			label += ": " + this.crop(element.getDescription());
 		}
 		return label;
 	}
