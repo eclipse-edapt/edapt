@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectValidator;
+import org.eclipse.emf.edapt.history.*;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.CompositeChange;

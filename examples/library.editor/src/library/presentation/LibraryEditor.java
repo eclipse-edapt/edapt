@@ -1879,42 +1879,52 @@ public class LibraryEditor extends MultiPageEditorPart implements
 		final Migrator migrator = MigratorRegistry.getInstance().getMigrator(
 				nsURI);
 		if (migrator != null) {
-			if (MessageDialog
-					.openQuestion(Display.getDefault().getActiveShell(),
-							"Migration necessary",
-							"A migration of the model is necessary. Do you want to proceed?")) {
-				final Release release = migrator.getRelease(resourceURI)
-						.iterator().next();
-				IRunnableWithProgress runnable = new IRunnableWithProgress() {
-
-					public void run(IProgressMonitor monitor)
-							throws InvocationTargetException {
-						try {
-							ResourceSet resourceSet = migrator.migrateAndLoad(
-									Collections.singletonList(resourceURI),
-									release, null, monitor);
-							editingDomain.getResourceSet().getResources()
-									.addAll(resourceSet.getResources());
-						} catch (MigrationException e) {
-							throw new InvocationTargetException(e);
-						}
-					}
-
-				};
-				try {
-					new ProgressMonitorDialog(Display.getCurrent()
-							.getActiveShell()).run(false, false, runnable);
-				} catch (InvocationTargetException e) {
-					MessageDialog
-							.openError(
-									Display.getDefault().getActiveShell(),
-									"Migration error",
-									"An error occured during migration of the model. More information on the error can be found in the error log.");
-					LibraryEditorPlugin.getPlugin().log(e.getCause());
-				} catch (InterruptedException e) {
-					LibraryEditorPlugin.getPlugin().log(e);
+			final Release release = migrator.getRelease(resourceURI).iterator()
+					.next();
+			if (!release.isLatestRelease()) {
+				if (MessageDialog
+						.openQuestion(Display.getDefault().getActiveShell(),
+								"Migration necessary",
+								"A migration of the model is necessary. Do you want to proceed?")) {
+					performMigration(migrator, resourceURI, release);
 				}
 			}
+		} else {
+			MessageDialog.openError(Display.getDefault().getActiveShell(),
+					"Error", "No migrator found");
+		}
+	}
+
+	private void performMigration(final Migrator migrator,
+			final URI resourceURI, final Release release) {
+		IRunnableWithProgress runnable = new IRunnableWithProgress() {
+
+			public void run(IProgressMonitor monitor)
+					throws InvocationTargetException {
+				try {
+					ResourceSet resourceSet = migrator.migrateAndLoad(
+							Collections.singletonList(resourceURI), release,
+							null, monitor);
+					editingDomain.getResourceSet().getResources()
+							.addAll(resourceSet.getResources());
+				} catch (MigrationException e) {
+					throw new InvocationTargetException(e);
+				}
+			}
+
+		};
+		try {
+			new ProgressMonitorDialog(Display.getCurrent().getActiveShell())
+					.run(false, false, runnable);
+		} catch (InvocationTargetException e) {
+			MessageDialog
+					.openError(
+							Display.getDefault().getActiveShell(),
+							"Migration error",
+							"An error occured during migration of the model. More information on the error can be found in the error log.");
+			LibraryEditorPlugin.getPlugin().log(e.getCause());
+		} catch (InterruptedException e) {
+			LibraryEditorPlugin.getPlugin().log(e);
 		}
 	}
 }

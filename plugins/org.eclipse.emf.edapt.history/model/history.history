@@ -2686,5 +2686,19 @@
         <details key="set" value=""/>
       </element>
     </changes>
+    <changes xsi:type="history:Create" target="history.ecore#//History" referenceName="eOperations"
+        element="history.ecore#//History/getLatestRelease"/>
+    <changes xsi:type="history:Set" element="history.ecore#//History/getLatestRelease"
+        featureName="name" dataValue="getLatestRelease"/>
+    <changes xsi:type="history:Set" element="history.ecore#//History/getLatestRelease"
+        featureName="eType" referenceValue="history.ecore#//Release"/>
+    <changes xsi:type="history:Create" target="history.ecore#//Release" referenceName="eOperations"
+        element="history.ecore#//Release/isLatestRelease"/>
+    <changes xsi:type="history:Set" element="history.ecore#//Release/isLatestRelease"
+        featureName="name" dataValue="isLatestRelease"/>
+    <changes xsi:type="history:Set" element="history.ecore#//Release/isLatestRelease"
+        featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <changes xsi:type="history:Set" element="history.ecore#//Release/isLatestRelease"
+        featureName="lowerBound" dataValue="1" oldDataValue="0"/>
   </releases>
 </history:History>

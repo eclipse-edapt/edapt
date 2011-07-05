@@ -25,6 +25,7 @@
         <details key="documentation" value="Helper method to determine the root packages created by the history"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="getLatestRelease" eType="#//Release"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
         eType="#//Release" containment="true" eOpposite="#//Release/history">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -61,6 +62,7 @@
         <details key="documentation" value="Helper method to get the number of the release"/>
       </eAnnotations>
     </eOperations>
+    <eOperations name="isLatestRelease" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The date when the version is released"/>

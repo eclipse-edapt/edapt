@@ -15,6 +15,7 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edapt.history.*;
 import org.eclipse.emf.edapt.history.Add;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.CompositeChange;

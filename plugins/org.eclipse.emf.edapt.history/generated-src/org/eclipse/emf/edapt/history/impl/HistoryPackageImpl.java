@@ -961,6 +961,8 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 
 		addEOperation(historyEClass, ecorePackage.getEPackage(), "getRootPackages", 0, -1, IS_UNIQUE, IS_ORDERED);
 
+		addEOperation(historyEClass, this.getRelease(), "getLatestRelease", 0, 1, IS_UNIQUE, IS_ORDERED);
+
 		initEClass(releaseEClass, Release.class, "Release", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getRelease_Date(), ecorePackage.getEDate(), "date", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getRelease_Changes(), this.getChange(), null, "changes", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -976,6 +978,8 @@ public class HistoryPackageImpl extends EPackageImpl implements HistoryPackage {
 		addEOperation(releaseEClass, ecorePackage.getEBoolean(), "isLastRelease", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		addEOperation(releaseEClass, ecorePackage.getEInt(), "getNumber", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+		addEOperation(releaseEClass, ecorePackage.getEBoolean(), "isLatestRelease", 1, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(changeEClass, Change.class, "Change", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getChange_Breaking(), ecorePackage.getEBoolean(), "breaking", null, 0, 1, Change.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

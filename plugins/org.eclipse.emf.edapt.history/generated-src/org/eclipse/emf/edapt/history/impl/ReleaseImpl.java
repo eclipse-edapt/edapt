@@ -128,6 +128,15 @@ public class ReleaseImpl extends EObjectImpl implements Release {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public boolean isLatestRelease() {
+		return this.getHistory().getLatestRelease() == this;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Date getDate() {

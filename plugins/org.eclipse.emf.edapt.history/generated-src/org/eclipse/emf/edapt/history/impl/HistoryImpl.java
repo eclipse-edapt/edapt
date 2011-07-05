@@ -134,6 +134,19 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated NOT
+	 */
+	public Release getLatestRelease() {
+		EList<Release> releases = this.getReleases();
+		if(releases.size() < 2) {
+			return null;
+		}
+		return releases.get(releases.size() - 2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")

@@ -72,27 +72,26 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	 * @generated
 	 */
 	protected void addMigrationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_MigrationChange_migration_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_MigrationChange_migration_feature",
-						"_UI_MigrationChange_type"),
-				HistoryPackage.Literals.MIGRATION_CHANGE__MIGRATION, true,
-				false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-				null));
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MigrationChange_migration_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MigrationChange_migration_feature", "_UI_MigrationChange_type"),
+				 HistoryPackage.Literals.MIGRATION_CHANGE__MIGRATION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to
-	 * deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand},
-	 * {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in
-	 * {@link #createCommand}. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
+	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
+	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -100,36 +99,32 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 			Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(HistoryPackage.Literals.MIGRATION_CHANGE__CHANGES);
+			childrenFeatures.add(HistoryPackage.Literals.MIGRATION_CHANGE__CHANGES);
 		}
 		return childrenFeatures;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper
-		// feature to use for
+		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
 	}
 
 	/**
-	 * This returns MigrationChange.gif. <!-- begin-user-doc --> <!--
+	 * This returns MigrationChange.gif.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/MigrationChange"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MigrationChange"));
 	}
 
 	/**
@@ -146,11 +141,10 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	}
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to
-	 * update any cached children and by creating a viewer notification, which
-	 * it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!--
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,14 +152,12 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MigrationChange.class)) {
-		case HistoryPackage.MIGRATION_CHANGE__MIGRATION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
-			return;
-		case HistoryPackage.MIGRATION_CHANGE__CHANGES:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
-			return;
+			case HistoryPackage.MIGRATION_CHANGE__MIGRATION:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+			case HistoryPackage.MIGRATION_CHANGE__CHANGES:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+				return;
 		}
 		super.notifyChanged(notification);
 	}

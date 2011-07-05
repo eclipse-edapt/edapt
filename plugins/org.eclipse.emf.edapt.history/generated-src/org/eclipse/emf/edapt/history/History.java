@@ -94,4 +94,12 @@ public interface History extends EObject {
 	 */
 	EList<EPackage> getRootPackages();
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	Release getLatestRelease();
+
 } // History
