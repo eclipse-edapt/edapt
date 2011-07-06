@@ -54,7 +54,7 @@ import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.Repository;
 
 /**
- * A recontructor that perform the migration of models from a source release to
+ * A reconstructor that perform the migration of models from a source release to
  * a target release.
  * 
  * @author herrmama
@@ -160,16 +160,6 @@ public class MigrationReconstructor extends ReconstructorBase {
 		}
 	}
 
-	/**
-	 * Check the conformance of the model to the metamodel if the validation
-	 * level is equal to a certain level.
-	 */
-	private void checkConformanceIfEquals(ValidationLevel level) {
-		if (this.level.compareTo(level) == 0) {
-			checkConformance();
-		}
-	}
-
 	/** Helper method to check the conformance of the model. */
 	private void checkConformance() {
 		try {
@@ -210,10 +200,6 @@ public class MigrationReconstructor extends ReconstructorBase {
 		if (isEnabled()) {
 			if (isStarted()) {
 				migrationSwitch.doSwitch(change);
-				if (change.eContainer() instanceof Release) {
-					monitor.worked(1);
-					checkConformanceIfMoreThan(ValidationLevel.CHANGE);
-				}
 			}
 			checkPause(change);
 		}
@@ -230,12 +216,16 @@ public class MigrationReconstructor extends ReconstructorBase {
 					try {
 						customMigration.migrateAfter(repository.getModel(),
 								repository.getMetamodel());
-						checkConformanceIfEquals(ValidationLevel.CUSTOM_MIGRATION);
+						monitor.worked(1);
+						checkConformanceIfMoreThan(ValidationLevel.CUSTOM_MIGRATION);
 					} catch (MigrationException e) {
 						throwWrappedMigrationException(e);
 					} finally {
 						customMigration = null;
 					}
+				} else if (change.eContainer() instanceof Release) {
+					monitor.worked(1);
+					checkConformanceIfMoreThan(ValidationLevel.CHANGE);
 				}
 			}
 		}
