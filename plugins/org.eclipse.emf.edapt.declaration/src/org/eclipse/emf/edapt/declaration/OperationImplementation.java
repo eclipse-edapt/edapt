@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.migration.Instance;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
@@ -34,7 +33,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: 13908D128DFD7FCD897E9738AA6EADDF
+ * @levd.rating YELLOW Hash: 5FB96EACDB26E7565E2138DE56E5E4CB
  */
 public abstract class OperationImplementation {
 
@@ -62,7 +61,7 @@ public abstract class OperationImplementation {
 	}
 
 	/** Check whether all required parameters are set. */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({ "rawtypes" })
 	private Collection<? extends String> checkRequiredParameters() {
 		List<String> result = new ArrayList<String>();
 		for (Field field : getClass().getFields()) {
@@ -110,7 +109,7 @@ public abstract class OperationImplementation {
 	}
 
 	/** Check whether a restriction on a parameter value is fulfilled. */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	private void checkRestriction(Method method, EdaptConstraint constraint,
 			Metamodel metamodel, List<String> result) {
 		try {
@@ -221,12 +220,13 @@ public abstract class OperationImplementation {
 		if (feature instanceof EReference) {
 			EReference reference = (EReference) feature;
 			if (reference.isContainment()) {
+				Model model = instance.getType().getModel();
 				if (reference.isMany()) {
-					for (EObject v : (List<EObject>) value) {
-						EcoreUtil.delete(v);
+					for (Instance v : (List<Instance>) value) {
+						model.delete(v);
 					}
 				} else if (value != null) {
-					EcoreUtil.delete((EObject) value);
+					model.delete((Instance) value);
 				}
 			}
 		}
