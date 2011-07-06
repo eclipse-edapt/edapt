@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: AD880841703DF03917845FAAE2966A81
+ * @levd.rating YELLOW Hash: 688AD53AE7A43304C0A691E7DB8D79B3
  */
 @EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
 public class ReplaceClass extends OperationImplementation {
@@ -35,7 +35,7 @@ public class ReplaceClass extends OperationImplementation {
 	public EClass replaceBy;
 
 	/** {@description} */
-	@EdaptParameter(description = "The features to be replaced")
+	@EdaptParameter(optional = true, description = "The features to be replaced")
 	public List<EStructuralFeature> featuresToReplace;
 
 	/** {@description} */
@@ -46,7 +46,7 @@ public class ReplaceClass extends OperationImplementation {
 	}
 
 	/** {@description} */
-	@EdaptParameter(description = "The features by which they are replaced (in the same order)")
+	@EdaptParameter(optional = true, description = "The features by which they are replaced (in the same order)")
 	public List<EStructuralFeature> featuresReplaceBy;
 
 	/** {@description} */
