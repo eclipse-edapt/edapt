@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: B8DB4998514788FC73F9E379BC561FDE
+ * @levd.rating YELLOW Hash: 2C836E834EA6BBBA7A6F87C202441642
  */
 @EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
 public class ExtractSuperClass2 extends OperationImplementation {
@@ -64,18 +64,22 @@ public class ExtractSuperClass2 extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features must not have opposite references")
-	public boolean checkSameOpposite() {
-		return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-				|| hasValue(toExtract, EcorePackage.eINSTANCE
-						.getEReference_EOpposite(), null);
+	public boolean checkReferencesOpposite() {
+		if (toExtract.size() > 1) {
+			return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
+					|| hasValue(toExtract,
+							EcorePackage.eINSTANCE.getEReference_EOpposite(),
+							null);
+		}
+		return true;
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features have to be all containment references or not")
 	public boolean checkSameContainment() {
 		return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-				|| hasSameValue(toExtract, EcorePackage.eINSTANCE
-						.getEReference_Containment());
+				|| hasSameValue(toExtract,
+						EcorePackage.eINSTANCE.getEReference_Containment());
 	}
 
 	/** {@description} */
@@ -95,8 +99,8 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The features' types have to be the same")
 	public boolean checkSameType() {
-		return hasSameValue(toExtract, EcorePackage.eINSTANCE
-				.getETypedElement_EType());
+		return hasSameValue(toExtract,
+				EcorePackage.eINSTANCE.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */
@@ -112,8 +116,8 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model)
 			throws MigrationException {
 		// metamodel adaptation
-		EClass superClass = MetamodelFactory.newEClass(ePackage, superClassName,
-				superSuperClasses, abstr);
+		EClass superClass = MetamodelFactory.newEClass(ePackage,
+				superClassName, superSuperClasses, abstr);
 		for (EClass subClass : subClasses) {
 			subClass.getESuperTypes().add(superClass);
 			subClass.getESuperTypes().removeAll(superSuperClasses);

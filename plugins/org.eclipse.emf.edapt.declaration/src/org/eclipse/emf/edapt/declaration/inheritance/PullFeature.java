@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.migration.Model;
  * @author herrmama
  * @author $Author$
  * @version $Rev$
- * @levd.rating YELLOW Hash: FC690ADFB80A59003AEE3C617E13A17A
+ * @levd.rating YELLOW Hash: 294397E02180B9715AEEFB4A82A48B5A
  */
 @EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
 public class PullFeature extends OperationImplementation {
@@ -38,8 +38,8 @@ public class PullFeature extends OperationImplementation {
 	@EdaptConstraint(restricts = "targetClass", description = "The features' classes must have a common super type")
 	public boolean checkTargetClassCommonSuperType(EClass targetClass) {
 		for (EStructuralFeature feature : features) {
-			if (!feature.getEContainingClass().getESuperTypes().contains(
-					targetClass)) {
+			if (!feature.getEContainingClass().getESuperTypes()
+					.contains(targetClass)) {
 				return false;
 			}
 		}
@@ -50,8 +50,11 @@ public class PullFeature extends OperationImplementation {
 	@EdaptConstraint(description = "The features must not have opposite references")
 	public boolean checkReferencesOpposite() {
 		EcorePackage mmm = EcorePackage.eINSTANCE;
-		return !isOfType(features, mmm.getEReference())
-				|| hasValue(features, mmm.getEReference_EOpposite(), null);
+		if (features.size() > 1) {
+			return !isOfType(features, mmm.getEReference())
+					|| hasValue(features, mmm.getEReference_EOpposite(), null);
+		}
+		return true;
 	}
 
 	/** {@description} */
