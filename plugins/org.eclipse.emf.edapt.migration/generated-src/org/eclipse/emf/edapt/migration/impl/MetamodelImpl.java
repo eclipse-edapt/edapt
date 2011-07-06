@@ -300,7 +300,7 @@ public class MetamodelImpl extends EObjectImpl implements Metamodel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated Not
+	 * @generated NOT
 	 */
 	public void setEOpposite(EReference reference, EReference opposite) {
 		if (reference.getEOpposite() != null) {
