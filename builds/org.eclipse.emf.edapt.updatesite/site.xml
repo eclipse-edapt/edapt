@@ -13,4 +13,6 @@
       <category name="org.eclipse.emf.edapt"/>
    </feature>
    <category-def name="org.eclipse.emf.edapt" label="Edapt"/>
+   <property name="p2.mirrorsURL" 
+          value="http://www.eclipse.org/downloads/download.php?file=edapt/update-site&amp;format=xml&amp;protocol=http"/>
 </site>
