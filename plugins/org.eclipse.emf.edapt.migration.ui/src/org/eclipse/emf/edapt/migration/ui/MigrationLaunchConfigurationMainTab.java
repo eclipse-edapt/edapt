@@ -179,8 +179,8 @@ class MigrationLaunchConfigurationMainTab extends
 				return getSourceReleases().toArray();
 			}
 		});
-		sourceReleaseCheck
-				.addSelectionListener(new SourceReleaseCheckListener());
+		sourceReleaseCheck.addSelectionListener(new ReleaseCheckListener(
+				sourceReleaseCheck, sourceReleaseCombo));
 	}
 
 	/** Create the group to select the target release of the migration. */
@@ -194,8 +194,8 @@ class MigrationLaunchConfigurationMainTab extends
 				return getTargetReleases().toArray();
 			}
 		});
-		targetReleaseCheck
-				.addSelectionListener(new TargetReleaseCheckListener());
+		targetReleaseCheck.addSelectionListener(new ReleaseCheckListener(
+				targetReleaseCheck, targetReleaseCombo));
 	}
 
 	/** Create the button to set the automatic detection of a release. */
@@ -293,6 +293,7 @@ class MigrationLaunchConfigurationMainTab extends
 		Group group = createGroupControl(parent, BACKUP, 1);
 		backupCheck = createCheckButton(group,
 				"Create a backup of the models before migration");
+		backupCheck.addSelectionListener(new CheckListener());
 	}
 
 	/**
@@ -638,18 +639,11 @@ class MigrationLaunchConfigurationMainTab extends
 		}
 	}
 
-	/**
-	 * This listener is attached to the auto check box and toggles automatic
-	 * detection of the release.
-	 */
-	private class SourceReleaseCheckListener extends SelectionAdapter {
-
+	/** This listener is attached to a check button. */
+	private class CheckListener extends SelectionAdapter {
 		/** {@inheritDoc} */
 		@Override
 		public void widgetSelected(SelectionEvent e) {
-			sourceReleaseCombo.getCombo().setEnabled(
-					!sourceReleaseCheck.getSelection());
-			refreshSourceReleaseCombo();
 			updateLaunchConfigurationDialog();
 		}
 	}
@@ -658,15 +652,27 @@ class MigrationLaunchConfigurationMainTab extends
 	 * This listener is attached to the auto check box and toggles automatic
 	 * detection of the release.
 	 */
-	private class TargetReleaseCheckListener extends SelectionAdapter {
+	private class ReleaseCheckListener extends CheckListener {
+
+		/** The check button to activate automatic detection of a release. */
+		private final Button releaseCheck;
+		
+		/** The combo viewer to select a release. */
+		private final ComboViewer releaseCombo;
+
+		/** Constructor. */
+		public ReleaseCheckListener(Button releaseCheck,
+				ComboViewer releaseCombo) {
+			this.releaseCheck = releaseCheck;
+			this.releaseCombo = releaseCombo;
+		}
 
 		/** {@inheritDoc} */
 		@Override
 		public void widgetSelected(SelectionEvent e) {
-			targetReleaseCombo.getCombo().setEnabled(
-					!targetReleaseCheck.getSelection());
-			refreshTargetReleaseCombo();
-			updateLaunchConfigurationDialog();
+			releaseCombo.getCombo().setEnabled(!releaseCheck.getSelection());
+			refreshReleaseCombo(releaseCheck, releaseCombo);
+			super.widgetSelected(e);
 		}
 	}
 
