@@ -35,6 +35,6 @@ public class BundleClassLoader implements IClassLoader {
 	/** {@inheritDoc} */
 	@SuppressWarnings("unchecked")
 	public <T> Class<T> load(String name) throws ClassNotFoundException {
-		return bundle.loadClass(name);
+		return (Class<T>) bundle.loadClass(name);
 	}
 }
