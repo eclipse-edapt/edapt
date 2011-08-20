@@ -21,8 +21,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.Change;
@@ -102,25 +100,6 @@ public class EditingDomainListener {
 
 		try {
 			historyResource.load(null);
-			((XMLResource) historyResource).getDefaultSaveOptions().put(
-					XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl() {
-						@Override
-						public URI deresolve(URI uri) {
-							if (uri.isPlatform()
-									&& !uri.segment(1)
-											.equals(baseURI.segment(1))) {
-								if (uri.isPlatformResource()) {
-									uri = uri.replacePrefix(URI
-											.createPlatformResourceURI("/",
-													false),
-											URI.createPlatformPluginURI("/",
-													false));
-								}
-								return uri;
-							}
-							return super.deresolve(uri);
-						}
-					});
 			EcoreUtil.resolveAll(historyResource);
 			return true;
 		} catch (IOException e) {
