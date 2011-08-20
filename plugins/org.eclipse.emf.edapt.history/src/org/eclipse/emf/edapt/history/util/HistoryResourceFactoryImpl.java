@@ -23,7 +23,7 @@ public class HistoryResourceFactoryImpl extends EcoreResourceFactoryImpl {
 	public Resource createResource(URI uri) {
 		XMLResource resource = (XMLResource) super.createResource(uri);
 		resource.getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER,
-				new PluginAwareURIHandler());
+				new PluginAwareURIHandlerImpl());
 		return resource;
 	}
 
@@ -32,7 +32,7 @@ public class HistoryResourceFactoryImpl extends EcoreResourceFactoryImpl {
 	 * "platform:/plugin" and not by a relative path, as is the standard
 	 * behavior of EMF.
 	 */
-	private static class PluginAwareURIHandler extends URIHandlerImpl {
+	private static class PluginAwareURIHandlerImpl extends URIHandlerImpl {
 		/** {@inheritDoc} */
 		@Override
 		public URI deresolve(URI uri) {
