@@ -21,16 +21,16 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.URIHandlerImpl;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryFactory;
 import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.history.recorder.HistoryGenerator;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edit.domain.EditingDomain;
-
 
 /**
  * Listener for an {@link EcoreEditor}
@@ -44,9 +44,6 @@ public class EditingDomainListener {
 
 	/** Resource with metamodel history. */
 	private Resource historyResource;
-
-	// /** Resource with metamodel. */
-	// private final Resource metamodelResource;
 
 	/** Listener which transforms the commands executed to sequences of changes. */
 	private CommandStackListener commandStackListener;
@@ -66,8 +63,8 @@ public class EditingDomainListener {
 	/** Start the listener. */
 	public void beginListening() {
 		if (!isListening()) {
-			commandStackListener = new CommandStackListener(editingDomain
-					.getCommandStack(), historyResource);
+			commandStackListener = new CommandStackListener(
+					editingDomain.getCommandStack(), historyResource);
 			commandStackListener.beginListening();
 
 			listening = true;
@@ -105,6 +102,25 @@ public class EditingDomainListener {
 
 		try {
 			historyResource.load(null);
+			((XMLResource) historyResource).getDefaultSaveOptions().put(
+					XMLResource.OPTION_URI_HANDLER, new URIHandlerImpl() {
+						@Override
+						public URI deresolve(URI uri) {
+							if (uri.isPlatform()
+									&& !uri.segment(1)
+											.equals(baseURI.segment(1))) {
+								if (uri.isPlatformResource()) {
+									uri = uri.replacePrefix(URI
+											.createPlatformResourceURI("/",
+													false),
+											URI.createPlatformPluginURI("/",
+													false));
+								}
+								return uri;
+							}
+							return super.deresolve(uri);
+						}
+					});
 			EcoreUtil.resolveAll(historyResource);
 			return true;
 		} catch (IOException e) {
