@@ -11,12 +11,10 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtensionRegistry;
@@ -92,11 +90,10 @@ public class MigratorRegistry {
 		IContributor contributor = configurationElement.getContributor();
 		String bundleName = contributor.getName();
 		Bundle bundle = Platform.getBundle(bundleName);
-
-		URL migratorURL = bundle.getResource(migrationPath);
-
+		URI migratorURI = URI.createPlatformPluginURI("/" + bundleName + "/"
+				+ migrationPath, true);
 		try {
-			registerMigrator(migratorURL, new BundleClassLoader(bundle));
+			registerMigrator(migratorURI, new BundleClassLoader(bundle));
 		} catch (MigrationException e) {
 			LoggingUtils.logError(MigrationPlugin.getPlugin(), e);
 		}
@@ -105,11 +102,6 @@ public class MigratorRegistry {
 	/** Register a migrator by its URL. */
 	public void registerMigrator(URL migratorURL, IClassLoader loader)
 			throws MigrationException {
-		try {
-			migratorURL = FileLocator.toFileURL(migratorURL);
-		} catch (IOException e) {
-			throw new MigrationException(e);
-		}
 		Migrator migrator = new Migrator(URIUtils.getURI(migratorURL), loader);
 		for (String nsURI : migrator.getNsURIs()) {
 			migrators.put(nsURI, migrator);
