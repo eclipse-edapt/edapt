@@ -16,10 +16,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ResourceUtils;
@@ -31,7 +34,7 @@ import org.eclipse.emf.edapt.history.util.HistoryUtils;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
- * Listener for an {@link EcoreEditor}
+ * Listener for an {@link EditingDomain}.
  * 
  * @author herrmama
  * @author $Author$
@@ -52,6 +55,35 @@ public class EditingDomainListener {
 	/** Flag to indicate whether listener is active or not. */
 	private boolean listening;
 
+	/** Listener which listens to resource loading events. */
+	private final Adapter resourceListener = new EContentAdapter() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			Object notifier = notification.getNotifier();
+			if (notifier instanceof Resource) {
+				if (notification.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
+					Resource resource = (Resource) notifier;
+					if (!isRecorded(resource)) {
+						notifyListeners(resource);
+					}
+				}
+			} else if (notifier instanceof ResourceSet) {
+				if (notification.getFeatureID(ResourceSet.class) == ResourceSet.RESOURCE_SET__RESOURCES) {
+					super.notifyChanged(notification);
+				}
+			}
+		}
+
+		/** {@inheritDoc} */
+		@Override
+		protected void setTarget(Resource target) {
+			basicSetTarget(target);
+		}
+	};
+
+	/** Listeners that get notified when a new resource is loaded. */
+	private final List<IResourceLoadListener> listeners = new ArrayList<IResourceLoadListener>();
+
 	/** Constructor. */
 	public EditingDomainListener(EditingDomain editingDomain) {
 		this.editingDomain = editingDomain;
@@ -64,6 +96,7 @@ public class EditingDomainListener {
 			commandStackListener = new CommandStackListener(
 					editingDomain.getCommandStack(), historyResource);
 			commandStackListener.beginListening();
+			editingDomain.getResourceSet().eAdapters().add(resourceListener);
 
 			listening = true;
 		} else {
@@ -75,6 +108,7 @@ public class EditingDomainListener {
 	public void endListening() {
 		if (isListening()) {
 			commandStackListener.endListening();
+			editingDomain.getResourceSet().eAdapters().remove(resourceListener);
 
 			listening = false;
 		} else {
@@ -183,5 +217,22 @@ public class EditingDomainListener {
 	/** Returns extent. */
 	public MetamodelExtent getExtent() {
 		return commandStackListener.getExtent();
+	}
+
+	/** Add a listener. */
+	public void addResourceListener(IResourceLoadListener listener) {
+		listeners.add(listener);
+	}
+
+	/** Remove a listener. */
+	public void removeResourceListener(IResourceLoadListener listener) {
+		listeners.remove(listener);
+	}
+
+	/** Notify the listeners. */
+	private void notifyListeners(Resource resource) {
+		for (IResourceLoadListener listener : listeners) {
+			listener.resourceLoaded(resource);
+		}
 	}
 }

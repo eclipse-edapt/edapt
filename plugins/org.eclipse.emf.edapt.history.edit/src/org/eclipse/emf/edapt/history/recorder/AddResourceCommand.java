@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 /**
- * Command ot add a metamodel resource to the history.
+ * Command to add a metamodel resource to the history.
  * 
  * @author herrmama
  * @author $Author$

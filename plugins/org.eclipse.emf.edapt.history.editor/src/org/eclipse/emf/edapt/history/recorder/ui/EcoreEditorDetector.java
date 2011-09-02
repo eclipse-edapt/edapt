@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
@@ -22,16 +23,19 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.ui.EcoreUIUtils;
 import org.eclipse.emf.edapt.common.ui.PartAdapter;
 import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.history.recorder.AddResourceCommand;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
+import org.eclipse.emf.edapt.history.recorder.IResourceLoadListener;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IPropertyListener;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-
 
 /**
  * Detect when an {@link EcoreEditor} is opened and attach an
@@ -112,7 +116,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * Validate and start the listener.
 	 */
 	private void validateListener(EcoreEditor editor,
-			EditingDomainListener listener) {
+			final EditingDomainListener listener) {
 		mapping.put(editor, listener);
 		editor.addPropertyListener(this);
 		hackAdapterFactory(editor);
@@ -121,6 +125,27 @@ public class EcoreEditorDetector extends PartAdapter implements
 			listener.endListening();
 		}
 		listener.beginListening();
+		listener.addResourceListener(new IResourceLoadListener() {
+
+			public void resourceLoaded(Resource resource) {
+				addHistory(listener, resource);
+			}
+		});
+	}
+
+
+	/** Ask the user whether a resource should be added to the history. */
+	private void addHistory(final EditingDomainListener listener,
+			Resource resource) {
+		boolean addHistory = MessageDialog.openQuestion(Display.getDefault()
+				.getActiveShell(), "Resource loaded",
+				"A resource has been loaded. "
+						+ "Do you want to add it to the history?");
+		if (addHistory) {
+			CommandStack commandStack = listener.getEditingDomain()
+					.getCommandStack();
+			commandStack.execute(new AddResourceCommand(listener, resource));
+		}
 	}
 
 	/**
