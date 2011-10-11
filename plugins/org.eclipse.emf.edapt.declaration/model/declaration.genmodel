@@ -5,65 +5,52 @@
     editDirectory="/org.eclipse.emf.edapt.declaration.edit/generated-src" editorDirectory="/org.eclipse.emf.edapt.declaration.editor/generated-src"
     modelPluginID="org.eclipse.emf.edapt.declaration" templateDirectory="" modelName="Declaration"
     modelPluginClass="DeclarationPlugin" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+    complianceLevel="5.0" copyrightFields="false">
   <foreignModel>declaration.ecore</foreignModel>
   <genPackages prefix="Declaration" basePackage="org.eclipse.emf.edapt" disposableProviderFactory="true"
       multipleEditorPages="false" generateModelWizard="false" ecorePackage="declaration.ecore#/">
     <genClasses image="false" ecoreClass="declaration.ecore#//IdentifiedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//IdentifiedElement/name"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="declaration.ecore#//DescribedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//DescribedElement/description"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="declaration.ecore#//LabeledElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//LabeledElement/label"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//IdentifiedElement/description"/>
     </genClasses>
     <genClasses ecoreClass="declaration.ecore#//Library">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference declaration.ecore#//Library/operations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Library/implementation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Library/label"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference declaration.ecore#//Library/libraries"/>
       <genOperations ecoreOperation="declaration.ecore#//Library/getOperation">
         <genParameters ecoreParameter="declaration.ecore#//Library/getOperation/name"/>
       </genOperations>
-      <genOperations ecoreOperation="declaration.ecore#//Library/getCode"/>
     </genClasses>
-    <genClasses ecoreClass="declaration.ecore#//Operation" labelFeature="#//declaration/LabeledElement/label">
+    <genClasses ecoreClass="declaration.ecore#//Operation">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference declaration.ecore#//Operation/library"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference declaration.ecore#//Operation/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference declaration.ecore#//Operation/constraints"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference declaration.ecore#//Operation/variables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/deprecated"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/deleting"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/before"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/after"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/implementation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Operation/label"/>
       <genOperations ecoreOperation="declaration.ecore#//Operation/getParameter">
         <genParameters ecoreParameter="declaration.ecore#//Operation/getParameter/name"/>
       </genOperations>
-      <genOperations ecoreOperation="declaration.ecore#//Operation/getVariable">
-        <genParameters ecoreParameter="declaration.ecore#//Operation/getVariable/name"/>
-      </genOperations>
       <genOperations ecoreOperation="declaration.ecore#//Operation/getMainParameter"/>
       <genOperations ecoreOperation="declaration.ecore#//Operation/refines"/>
-    </genClasses>
-    <genClasses image="false" ecoreClass="declaration.ecore#//Placeholder">
-      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute declaration.ecore#//Placeholder/initExpression"/>
+      <genOperations ecoreOperation="declaration.ecore#//Operation/getConstraint">
+        <genParameters ecoreParameter="declaration.ecore#//Operation/getConstraint/name"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="declaration.ecore#//Parameter">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference declaration.ecore#//Parameter/operation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Parameter/required"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Parameter/choiceExpression"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Parameter/main"/>
-    </genClasses>
-    <genClasses ecoreClass="declaration.ecore#//Variable">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference declaration.ecore#//Variable/operation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Parameter/many"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference declaration.ecore#//Parameter/classifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//Parameter/classifierName"/>
     </genClasses>
     <genClasses ecoreClass="declaration.ecore#//Constraint">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference declaration.ecore#//Constraint/operation"/>
-      <genFeatures createChild="false" propertyMultiLine="true" ecoreFeature="ecore:EAttribute declaration.ecore#//Constraint/booleanExpression"/>
-    </genClasses>
-    <genClasses ecoreClass="declaration.ecore#//TypedElement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//TypedElement/many"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference declaration.ecore#//TypedElement/classifier"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute declaration.ecore#//TypedElement/classifierName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference declaration.ecore#//Constraint/restricts"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
