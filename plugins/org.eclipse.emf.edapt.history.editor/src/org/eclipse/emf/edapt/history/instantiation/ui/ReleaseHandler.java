@@ -30,7 +30,6 @@ import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
-
 /**
  * Action to release an new version.
  * 
@@ -74,7 +73,8 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 			if (dialog.open() == IDialogConstants.OK_ID) {
 				String target = dialog.getTarget();
 				if (dialog.isUpdate()) {
-					updateNamespaceURI(domain, rootPackages, source, target);
+					updateNamespaceURI(domain, rootPackages,
+							dialog.getSource(), target);
 					if (isNsURIChanged(extent, history.getLastRelease())) {
 						addRelease(domain, listener, target);
 					} else {

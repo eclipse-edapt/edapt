@@ -23,7 +23,7 @@ import org.eclipse.swt.widgets.Text;
 
 
 /**
- * A dialog to support the update of package namespaces when releasing
+ * A dialog to support the update of package namespaces when releasing.
  * 
  * @author herrmama
  * @author $Author$
@@ -31,37 +31,26 @@ import org.eclipse.swt.widgets.Text;
  * @levd.rating RED Rev:
  */
 public class ReleaseDialog extends TitleMessageDialogBase {
-
-	/**
-	 * Widget for target label
-	 */
-	private Text targetText;
-
-	/**
-	 * Widget for update of namespace URIs
-	 */
-	private Button updateButton;
 	
-	/**
-	 * Label to be replaced
-	 */
+	/** Label to be replaced. */
 	private String source;
 
-	/**
-	 * Label by which it is replaced
-	 */
+	/** Widget for source label. */
+	private Text sourceText;
+
+	/** Label by which it is replaced. */
 	private String target;
 
-	/**
-	 * Whether the namespace URIs should be updated
-	 */
+	/** Widget for target label. */
+	private Text targetText;
+
+	/** Widget for update of namespace URIs. */
+	private Button updateButton;
+
+	/** Whether the namespace URIs should be updated. */
 	private boolean update;
 
-	/**
-	 * Constructor
-	 * 
-	 * @param source
-	 */
+	/** Constructor. */
 	public ReleaseDialog(String source) {
 		super("Update namespace URI of packages",
 				"In the namespace URI of each package, a label is replaced by another one.\n" +
@@ -70,9 +59,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		this.source = source;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
@@ -85,7 +72,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		Label sourceLabel = new Label(composite, SWT.None);
 		sourceLabel.setText("Label to match:");
 		
-		Text sourceText = new Text(composite, SWT.BORDER);
+		sourceText = new Text(composite, SWT.BORDER);
 		sourceText.setText(source);
 		sourceText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
@@ -104,26 +91,26 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		return parent;
 	}
 	
-	/**
-	 * {@inheritDoc}
-	 */
+	/** {@inheritDoc} */
 	@Override
 	protected void okPressed() {
+		source = sourceText.getText();
 		target = targetText.getText();
 		update = updateButton.getSelection();
 		super.okPressed();
 	}
+
+	/** Returns source lagel. */
+	public String getSource() {
+		return source;
+	}
 	
-	/**
-	 * Returns target label
-	 */
+	/** Returns target label. */
 	public String getTarget() {
 		return target;
 	}
 
-	/**
-	 * Returns update flag 
-	 */
+	/** Returns update flag. */
 	public boolean isUpdate() {
 		return update;
 	}
