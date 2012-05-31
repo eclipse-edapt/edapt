@@ -22,11 +22,8 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.IDebugger;
-import org.eclipse.emf.edapt.migration.IOracle;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.MigrationPlugin;
-import org.eclipse.emf.edapt.migration.RandomOracle;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
 import org.osgi.framework.Bundle;
 
@@ -39,7 +36,7 @@ import org.osgi.framework.Bundle;
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-public class MigratorRegistry {
+public final class MigratorRegistry {
 
 	/** Singleton instance. */
 	private static MigratorRegistry migratorRegistry;
@@ -47,19 +44,12 @@ public class MigratorRegistry {
 	/** Registered migrators identified by unversioned namespace URI. */
 	private final Map<String, Migrator> migrators;
 
-	/** Registered oracle. */
-	private IOracle oracle;
-
-	/** Registered debugger. */
-	private IDebugger debugger;
-
 	/** Private default constructor. */
 	private MigratorRegistry() {
 		migrators = new HashMap<String, Migrator>();
 		if (Platform.isRunning()) {
 			registerExtensionMigrators();
 		}
-		oracle = new RandomOracle();
 	}
 
 	/** Getter for instance. */
@@ -123,25 +113,5 @@ public class MigratorRegistry {
 	public Migrator getMigrator(URI modelURI) {
 		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return getMigrator(nsURI);
-	}
-
-	/** Returns the oracle. */
-	public IOracle getOracle() {
-		return oracle;
-	}
-
-	/** Sets oracle. */
-	public void setOracle(IOracle oracle) {
-		this.oracle = oracle;
-	}
-
-	/** Returns debugger. */
-	public IDebugger getDebugger() {
-		return debugger;
-	}
-
-	/** Sets debugger. */
-	public void setDebugger(IDebugger debugger) {
-		this.debugger = debugger;
 	}
 }

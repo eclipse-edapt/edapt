@@ -201,10 +201,12 @@ public class MigratorCommandLine {
 		return backup;
 	}
 
+	/** Get the operation implementations. */
 	public List<Class<? extends OperationImplementation>> getOperations() {
 		return operations;
 	}
 
+	/** Get the library implementations. */
 	public List<Class<? extends LibraryImplementation>> getLibraries() {
 		return libraries;
 	}

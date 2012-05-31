@@ -25,6 +25,7 @@ import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.migration.MigratorOptions;
 import org.eclipse.emf.edapt.migration.Model;
 import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
@@ -79,8 +80,8 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	/** Get the migrator for a model. */
 	protected Migrator getMigrator(final List<URI> modelURIs) {
 
-		MigratorRegistry.getInstance().setOracle(new InteractiveOracle());
-		MigratorRegistry.getInstance().setDebugger(new InteractiveDebugger());
+		MigratorOptions.getInstance().setOracle(new InteractiveOracle());
+		MigratorOptions.getInstance().setDebugger(new InteractiveDebugger());
 
 		String nsURI = ReleaseUtils.getNamespaceURI(modelURIs.get(0));
 
