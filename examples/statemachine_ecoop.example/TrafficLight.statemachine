@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ASCII"?>
+<statemachine:CompositeState xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:statemachine="http://statemachine/r0" name="trafficLight">
+  <state name="off">
+    <outgoing target="//@state.1" trigger="turnOn"/>
+  </state>
+  <state xsi:type="statemachine:CompositeState" name="on" incoming="//@state.0/@outgoing.0 //@state.1/@outgoing.0">
+    <effect>init</effect>
+    <outgoing target="//@state.1" trigger="turnOff"/>
+    <state name="red" incoming="//@state.1/@state.2/@outgoing.0">
+      <effect>beep</effect>
+      <outgoing target="//@state.1/@state.1" trigger="request"/>
+    </state>
+    <state name="wait" incoming="//@state.1/@state.0/@outgoing.0">
+      <effect>setTimer</effect>
+      <outgoing target="//@state.1/@state.2" trigger="timeOut"/>
+    </state>
+    <state name="green" incoming="//@state.1/@state.1/@outgoing.0">
+      <effect>setTimer</effect>
+      <outgoing target="//@state.1/@state.0" trigger="timeOut"/>
+    </state>
+  </state>
+</statemachine:CompositeState>
