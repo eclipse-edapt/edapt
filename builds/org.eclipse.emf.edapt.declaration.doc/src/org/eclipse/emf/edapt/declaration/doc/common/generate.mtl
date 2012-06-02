@@ -1,0 +1,147 @@
+[comment encoding = UTF-8 /]
+[module generate('http://www.eclipse.org/emf/edapt/declaration/0.3')]
+
+
+[template public generateElement(aLibrary : Library)]
+
+[if (aLibrary.eContainer().oclIsUndefined())]
+	[php('operations')/]
+
+	[comment @main /]
+	[file ('pages/operations.html', false, 'Cp1252')]
+<div id="maincontent">
+<div id="midcolumn">
+<h1>Operations</h1>
+
+<p>
+The right hand side provides a list of operations which we found useful in our examples. 
+These operations are organized in groups. This list is by no means complete.
+ We pretty much developed these operations in a demand-driven way. 
+ If you have an idea for a new operation, do not hesitate to contact us. 
+ In addition, there may still be problems in the operations which are not used very often. 
+ Please let us know about problems when applying the operations so that we can fix them.
+</p>
+
+<p>
+Each of the operations is documented. 
+The documentation consists of a description of the operation itself, a description of each of its parameters and a description of each of its constraints. 
+This information is also directly available in the operation browser by pressing F1 while selecting one of the elements.
+</p>
+
+</div>
+
+<div id="rightcolumn">
+<div class="sideitem">
+<div class="modal">
+<h6>Contents</h6>
+	<ul>
+		[for (library : Library | aLibrary.libraries)]
+		  <li><a href="[library.name/].php">[library.label/]</a></li>
+			[lib(library)/]			
+		[/for]
+	</ul>
+</div>
+</div>
+</div>
+
+</div>
+	[/file]
+[/if]
+
+[/template]
+
+[template public lib(library : Library)]
+	[php(library.name)/]
+	[file ('pages/'.concat(library.name).concat('.html'), false, 'Cp1252')]
+<div id="maincontent">
+<div id="midcolumn">
+<h1>[library.label/]</h1>
+
+<p>
+[library.description/]
+</p>
+
+[for (operation : Operation | library.operations)]
+
+[if (not operation.deprecated)]
+<h2 id="[operation.name/]">[operation.label/]</h2>
+<p>
+[operation.description/]
+</p>
+
+<p><h5>Parameters:</h5>
+<ul>
+[for (parameter : Parameter | operation.parameters)]
+	<li><tt>[parameter.name/]</tt>: [parameter.description/]</li>
+[/for]
+</ul>
+</p>
+
+[if (operation.constraints->size() > 0)]
+<p>
+<h5>Constraints:</h5>
+<ul>
+[for (constraint : Constraint | operation.constraints)]
+	<li>[constraint.description/]</li>
+[/for]
+</ul>
+</p>
+[/if]
+
+[/if]
+[/for]
+
+
+
+</div>
+
+<div id="rightcolumn">
+<div class="sideitem">
+<div class="modal">
+<h6>Contents</h6>
+	<ul>
+		[for (lib : Library | library.eContainer(Library).libraries)]
+		  <li><a href="[lib.name/].php">[lib.label/]</a></li>
+			[if (lib = library)]
+				<ul>
+[for (operation : Operation | library.operations)]
+[if (not operation.deprecated)]
+	<li><a href="#[operation.name/]">[operation.label/]</a></li>
+[/if]
+[/for]
+				</ul>
+			[/if]
+		[/for]
+	</ul>
+</div>
+</div>
+</div>
+
+</div>
+	[/file]
+[/template]
+
+[template public php(filename : String)]
+		[file (filename.concat('.php'), false, 'Cp1252')]
+<?php  																														
+require_once($_SERVER['['/]'DOCUMENT_ROOT'] . "/eclipse.org-common/system/app.class.php");	require_once($_SERVER['['/]'DOCUMENT_ROOT'] . "/eclipse.org-common/system/nav.class.php"); 	require_once($_SERVER['['/]'DOCUMENT_ROOT'] . "/eclipse.org-common/system/menu.class.php"); 	$App 	= new App();	$Nav	= new Nav();	$Menu 	= new Menu();		include($App->getProjectCommon());    # All on the same line to unclutter the user's desktop'
+/*******************************************************************************
+ * Copyright (c) 2009 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    
+ *******************************************************************************/
+
+	$pageTitle 		= "Edapt - Operations";
+
+	$html  = file_get_contents('pages/[filename/].html');
+	# Generate the web page
+	$App->generatePage($theme, $Menu, $Nav, $pageAuthor, $pageKeywords, $pageTitle, $html);
+?>
+	[/file]
+
+[/template]

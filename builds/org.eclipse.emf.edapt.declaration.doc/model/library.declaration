@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="ASCII"?>
+<declaration:Library xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:declaration="http://www.eclipse.org/emf/edapt/declaration/0.3" name="org.eclipse.emf.edapt.declaration.BaseLibrary" description="Library of predefined operations" implementation="org.eclipse.emf.edapt.declaration.BaseLibrary" label="Base Library">
+  <libraries name="org.eclipse.emf.edapt.declaration.creation.StructuralPrimitives" description="Structural primitives create or delete metamodel elements." implementation="org.eclipse.emf.edapt.declaration.creation.StructuralPrimitives" label="Structural Primitives">
+    <operations name="copyFeature" description="In the metamodel, a feature is copied, giving it a new name. In the model, the values are copied, accordingly." label="Copy Feature">
+      <parameters name="feature" description="The feature to be copied" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="name" description="The name of the copy" classifierName="EString"/>
+    </operations>
+    <operations name="newAttribute" description="In the metamodel, a new attribute is created. Nothing is changed in the model." label="Create Attribute">
+      <parameters name="eClass" description="The class in which the attribute is created" main="true" classifierName="EClass"/>
+      <parameters name="name" description="The name of the new attribute" classifierName="EString"/>
+      <parameters name="type" description="The type of the new attribute" classifierName="EDataType"/>
+      <parameters name="lowerBound" description="The lower bound of the new attribute" classifierName="EInt"/>
+      <parameters name="upperBound" description="The upper bound of the new reference" classifierName="EInt"/>
+      <parameters name="defaultValue" description="The default value literal" classifierName="EString"/>
+    </operations>
+    <operations name="newClass" description="In the metamodel, a new class is created. Nothing is changed in the model." label="Create Class">
+      <parameters name="ePackage" description="The package in which the class is created" main="true" classifierName="EPackage"/>
+      <parameters name="name" description="The name of the new class" classifierName="EString"/>
+      <parameters name="superClasses" description="The super classes of the new class" many="true" classifierName="EClass"/>
+      <parameters name="abstr" description="Whether the class is abstract" classifierName="EBooleanObject"/>
+    </operations>
+    <operations name="createEnumeration" description="In the metamodel, an enumeration is created. In the model, nothing needs to be changed." label="Create Enumeration">
+      <parameters name="ePackage" description="The package in which the enumeration is created" main="true" classifierName="EPackage"/>
+      <parameters name="name" description="The name of the new enumeration" classifierName="EString"/>
+      <parameters name="literals" description="The names of the literals of the new enumeration" many="true" classifierName="EString"/>
+    </operations>
+    <operations name="newGMFConstraint" description="In the metamodel, a new constraint is introduced. Nothing is changed in the model." label="Create GMF Constraint">
+      <parameters name="element" description="The metamodel element to be annotated" main="true" classifierName="EModelElement"/>
+      <parameters name="ocl" description="The OCL expression of the constraint" classifierName="EString"/>
+      <parameters name="description" description="The description of the constraint" classifierName="EString"/>
+      <constraints name="checkElement" description="The element must not be an annotation." restricts="//@libraries.0/@operations.4/@parameters.0"/>
+    </operations>
+    <operations name="newOppositeReference" description="In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set." label="Create Opposite Reference">
+      <parameters name="reference" description="The reference for which the opposite is created" main="true" classifierName="EReference"/>
+      <parameters name="name" description="The name of the opposite reference" classifierName="EString"/>
+      <parameters name="lowerBound" description="The lower bound of the opposite reference" classifierName="EInt"/>
+      <parameters name="upperBound" description="The upper bound of the opposite reference" classifierName="EInt"/>
+      <parameters name="changeable" description="Whether the opposite reference is changeable" classifierName="EBooleanObject"/>
+      <constraints name="checkCrossReferenceManyValued" description="In case of a cross reference, the upper bound of the opposite reference must be -1."/>
+      <constraints name="checkReference" description="The reference must not already have an opposite" restricts="//@libraries.0/@operations.5/@parameters.0"/>
+      <constraints name="checkContainmentSingleValued" description="In case of a containment reference, the upper bound of the opposite reference must be 1."/>
+    </operations>
+    <operations name="newReference" description="In the metamodel, a new reference is created. Nothing is changed in the model." label="Create Reference">
+      <parameters name="eClass" description="The class in which the reference is created" main="true" classifierName="EClass"/>
+      <parameters name="name" description="The name of the new reference" classifierName="EString"/>
+      <parameters name="type" description="The type of the new reference" classifierName="EClass"/>
+      <parameters name="lowerBound" description="The lower bound of the new reference" classifierName="EInt"/>
+      <parameters name="upperBound" description="The upper bound of the new reference" classifierName="EInt"/>
+      <parameters name="containment" description="Whether the new reference is a containment reference" classifierName="EBooleanObject"/>
+      <parameters name="opposite" description="The opposite reference of the new reference" classifierName="EReference"/>
+    </operations>
+    <operations name="deleteClass" description="In the metamodel, a class that is no longer used is deleted. In the model, nothing is changed." label="Delete Class">
+      <parameters name="eClass" description="The class to be deleted" main="true" classifierName="EClass"/>
+      <constraints name="checkEClass" description="The class must not be the target of a reference" restricts="//@libraries.0/@operations.7/@parameters.0"/>
+      <constraints name="checkClassNoSubTypes" description="The class must not have sub classes" restricts="//@libraries.0/@operations.7/@parameters.0"/>
+      <constraints name="checkClassNoSuperTypes" description="The class must not have super classes" restricts="//@libraries.0/@operations.7/@parameters.0"/>
+    </operations>
+    <operations name="deleteFeature" description="In the metamodel, a feature is deleted. In the model, its values are deleted, too." deprecated="true" label="Delete Feature">
+      <parameters name="feature" description="The feature to be deleted" main="true" classifierName="EStructuralFeature"/>
+    </operations>
+    <operations name="deleteFeature2" description="In the metamodel, a feature is deleted. In the model, its values are deleted, too." label="Delete Feature">
+      <parameters name="feature" description="The feature to be deleted" main="true" classifierName="EStructuralFeature"/>
+    </operations>
+    <operations name="deleteOppositeReference" description="In the metamodel, the opposite of a reference is deleted. In the model, its values are deleted, too." label="Delete Opposite Reference">
+      <parameters name="reference" description="The reference whose opposite should be deleted" main="true" classifierName="EReference"/>
+      <constraints name="checkReferenceOpposite" description="The reference needs to define an opposite" restricts="//@libraries.0/@operations.10/@parameters.0"/>
+    </operations>
+    <operations name="deletePackage" description="In the metamodel, an empty package is deleted." label="Delete Package">
+      <parameters name="ePackage" description="The package to be deleted" main="true" classifierName="EPackage"/>
+      <constraints name="checkPackageNoClassifiers" description="The package must not contain classifiers" restricts="//@libraries.0/@operations.11/@parameters.0"/>
+      <constraints name="checkPackageNoSubPackages" description="The package must not contain subpackages" restricts="//@libraries.0/@operations.11/@parameters.0"/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.simple.NonStructuralPrimitives" description="Non-structural primitive operations modify a single, existing metamodel element, i.e. change properties of a metamodel element." implementation="org.eclipse.emf.edapt.declaration.simple.NonStructuralPrimitives" label="Non-structural Primitives">
+    <operations name="changeAttributeType" description="In the metamodel, the type of an attribute is changed. In the model, the values are migrated based on EMF's default serialization." label="Change Attribute Type">
+      <parameters name="attribute" description="The attribute whose type is changed" main="true" classifierName="EAttribute"/>
+      <parameters name="type" description="The new type of the attribute" classifierName="EDataType"/>
+    </operations>
+    <operations name="document" description="In the metamodel, a metamodel element is documented. Nothing is changed in the model." label="Document Metamodel Element">
+      <parameters name="element" description="The metamodel element to be annotated" main="true" classifierName="EModelElement"/>
+      <parameters name="documentation" description="The comment for documentation" classifierName="EString"/>
+      <constraints name="checkElement" description="The element must not be an annotation." restricts="//@libraries.1/@operations.1/@parameters.0"/>
+    </operations>
+    <operations name="dropContainment" description="In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class." label="Drop Containment">
+      <parameters name="reference" description="The reference whose containment is dropped" main="true" classifierName="EReference"/>
+      <parameters name="containerClass" description="The container class in which the containment reference is created" classifierName="EClass"/>
+      <parameters name="containerReferenceName" description="The name of the new containment reference" classifierName="EString"/>
+      <constraints name="checkReferenceContainment" description="The reference must be containment" restricts="//@libraries.1/@operations.2/@parameters.0"/>
+    </operations>
+    <operations name="dropOpposite" description="In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done." label="Drop Opposite Relationship">
+      <parameters name="reference" description="The reference whose opposite relationship should be dropped" main="true" classifierName="EReference"/>
+      <constraints name="checkReferenceOpposite" description="Reference must have an opposite" restricts="//@libraries.1/@operations.3/@parameters.0"/>
+    </operations>
+    <operations name="makeAbstract" description="In the metamodel, a class is made abstract. In a model, instances of this class are migrated to a chosen subclass." label="Make Class Abstract">
+      <parameters name="eClass" description="The class to be made abstract" main="true" classifierName="EClass"/>
+      <parameters name="subClass" description="The subclass to which instances are migrated" classifierName="EClass"/>
+      <constraints name="checkClassAbstract" description="The class is already abstract" restricts="//@libraries.1/@operations.4/@parameters.0"/>
+      <constraints name="checkSubClass" description="The class has to be a super type of the sub class" restricts="//@libraries.1/@operations.4/@parameters.1"/>
+    </operations>
+    <operations name="makeFeatureVolatile" description="In the metamodel, a feature is made volatile. In the model, its values have to be deleted." label="Make Feature Volatile">
+      <parameters name="feature" description="The feature to be made volatile" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="trans" description="Whether the feature is transient" classifierName="EBooleanObject"/>
+      <parameters name="derived" description="Whether the feature is derived" classifierName="EBooleanObject"/>
+      <parameters name="changeable" description="Whether the feature is changeable" classifierName="EBooleanObject"/>
+      <constraints name="checkFeatureNotVolatile" description="Feature must not be volatile" restricts="//@libraries.1/@operations.5/@parameters.0"/>
+    </operations>
+    <operations name="makeContainment" description="In the metamodel, a reference is made containment. In the model, its values are replaced by copies." label="Make Reference Containment">
+      <parameters name="reference" description="The reference" main="true" classifierName="EReference"/>
+      <constraints name="checkReferenceNotContainment" description="The reference must not already be containment." restricts="//@libraries.1/@operations.6/@parameters.0"/>
+    </operations>
+    <operations name="moveClassifier" description="In the metamodel, a classifier is moved to a different package. In the model, nothing is changed." label="Move Classifier">
+      <parameters name="classifier" description="The classifier to be moved" main="true" classifierName="EClassifier"/>
+      <parameters name="targetPackage" description="The package to which the classifier is moved" classifierName="EPackage"/>
+      <constraints name="checkUniqueClassifierNameInTargetPackage" description="A classifier with the same name exists in the target package"/>
+      <constraints name="checkClassifierNotInTargetPackage" description="The classifier must not be already part of the target package"/>
+    </operations>
+    <operations name="rename" description="In the metamodel, an element is renamed. In the model, nothing is changed." label="Rename">
+      <parameters name="element" description="The metamodel element to be renamed" main="true" classifierName="ENamedElement"/>
+      <parameters name="name" description="The new name" classifierName="EString"/>
+      <constraints name="checkUniqueName" description="The name must not be already defined by the children of the element's parent."/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.generalization.GeneralizationOperations" description="Generalization operations generalize feature or super type declarations, whereas specialization operations specialize them." implementation="org.eclipse.emf.edapt.declaration.generalization.GeneralizationOperations" label="Generalization / Specialization Operations">
+    <operations name="generalizeAttribute" description="In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed." label="Generalize Attribute">
+      <parameters name="attribute" description="The attribute to be generalized" main="true" classifierName="EAttribute"/>
+      <parameters name="lowerBound" description="The new lower bound" classifierName="EInt"/>
+      <parameters name="upperBound" description="The new upper bound" classifierName="EInt"/>
+      <constraints name="checkSameOrExtendedMultiplicity" description="The multiplicity must be the same or more general"/>
+    </operations>
+    <operations name="generalizeReference" description="In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed." label="Generalize Reference">
+      <parameters name="reference" description="The reference to be generalized" main="true" classifierName="EReference"/>
+      <parameters name="type" description="The new type of the reference" classifierName="EClass"/>
+      <parameters name="lowerBound" description="The new lower bound" classifierName="EInt"/>
+      <parameters name="upperBound" description="The new upper bound" classifierName="EInt"/>
+      <constraints name="checkType" description="The type must be the same or more general" restricts="//@libraries.2/@operations.1/@parameters.1"/>
+      <constraints name="checkSameOrExtendedMultiplicity" description="The multiplicity must be the same or more general"/>
+    </operations>
+    <operations name="generalizeSuperType" description="In the metamodel, the super type of a class is replaced by its super types. In the model, the values of the features that the class inherits from that super type (excluding its super types) are deleted." label="Generalize Super Type">
+      <parameters name="eClass" description="The class of which the super type is replaced" main="true" classifierName="EClass"/>
+      <parameters name="superType" description="The super type to be replaced by its super types" classifierName="EClass"/>
+      <constraints name="checkSuperType" description="The super type to remove actually has to be a super type" restricts="//@libraries.2/@operations.2/@parameters.1"/>
+    </operations>
+    <operations name="removeSuperType" description="In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted." label="Remove Super Type">
+      <parameters name="eClass" description="The class from which the super type is removed" main="true" classifierName="EClass"/>
+      <parameters name="superType" description="The super type to be removed" classifierName="EClass"/>
+      <constraints name="checkSuperType" description="The super type to be removed actually has to be a super type of the class" restricts="//@libraries.2/@operations.3/@parameters.1"/>
+    </operations>
+    <operations name="removeSuperfluousSuperType" description="In the metamodel, a super type is removed from a class that is already inherited from another super class. In the model, nothing is changed, as this super type is superfluous." label="Remove Superfluous Super Type">
+      <parameters name="eClass" description="The class from which the super type is removed" main="true" classifierName="EClass"/>
+      <parameters name="superType" description="The super type to be removed" classifierName="EClass"/>
+      <constraints name="checkSuperType" description="The super type to be removed actually has to be a super type" restricts="//@libraries.2/@operations.4/@parameters.1"/>
+      <constraints name="checkSuperTypeSubsumed" description="The super type to be removed must be subsumed by one of the other super types" restricts="//@libraries.2/@operations.4/@parameters.1"/>
+    </operations>
+    <operations name="specializeComposition" description="In the metamodel, the type of a containment reference is specialized by a new sub class. In the model, the values of this reference are migrated to the new type." label="Specialize Composition">
+      <parameters name="reference" description="The containment reference to be specialized" main="true" classifierName="EReference"/>
+      <parameters name="ePackage" description="The package in which the sub class is created" classifierName="EPackage"/>
+      <parameters name="name" description="The name of the sub class" classifierName="EString"/>
+      <constraints name="checkReference" description="The reference has to be a containment reference" restricts="//@libraries.2/@operations.5/@parameters.0"/>
+    </operations>
+    <operations name="specializeReference" description="In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed." label="Specialize Reference">
+      <parameters name="reference" description="The reference to be generalized" main="true" classifierName="EReference"/>
+      <parameters name="type" description="The new type of the reference" classifierName="EClass"/>
+      <parameters name="lowerBound" description="The new lower bound of the reference" classifierName="EInt"/>
+      <parameters name="upperBound" description="The new upper bound of the reference" classifierName="EInt"/>
+      <constraints name="checkReferenceMultiplicityRestricted" description="The multiplicity must be the same or more special"/>
+      <constraints name="checkType" description="The type must be the same or more special" restricts="//@libraries.2/@operations.6/@parameters.1"/>
+    </operations>
+    <operations name="specializeReferenceType" description="In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed." label="Specialize Reference Type">
+      <parameters name="reference" description="The reference whose type is specialized" main="true" classifierName="EReference"/>
+      <parameters name="type" description="The new type of the reference" classifierName="EClass"/>
+      <constraints name="checkType" description="The new type of the reference must be a subclass of its old type" restricts="//@libraries.2/@operations.7/@parameters.1"/>
+      <constraints name="checkReference" description="The old type of the reference must be abstract" restricts="//@libraries.2/@operations.7/@parameters.0"/>
+      <constraints name="checkOldTypeSingleSubType" description="The old type must not have any other subclass" restricts="//@libraries.2/@operations.7/@parameters.0"/>
+    </operations>
+    <operations name="specializeSuperType" description="In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified." label="Specialize Super Type">
+      <parameters name="eClass" description="The class whose super type is specialized" main="true" classifierName="EClass"/>
+      <parameters name="toReplace" description="The super type which is replaced" classifierName="EClass"/>
+      <parameters name="replaceBy" description="The sub class by which is replaced" classifierName="EClass"/>
+      <constraints name="checkToReplaceSuperType" description="The super type to be replaced must be a super type of the class" restricts="//@libraries.2/@operations.8/@parameters.1"/>
+      <constraints name="checkToReplaceSubType" description="The replacing super type must be a sub type of the replaced super type"/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.inheritance.InheritanceOperations" description="Inheritance operations move features along the inheritance hierarchy." implementation="org.eclipse.emf.edapt.declaration.inheritance.InheritanceOperations" label="Inheritance Operations">
+    <operations name="extractSubClass" description="In the metamodel, a feature is extracted into a new subclass and the feature is made mandatory. In the model, all instances of the superclass that have the feature set are migrated to the new subclass." label="Extract Subclass">
+      <parameters name="superClass" description="The superclass from which the feature is extracted" main="true" classifierName="EClass"/>
+      <parameters name="feature" description="The feature to be extracted" classifierName="EStructuralFeature"/>
+      <parameters name="className" description="The name of the new subclass" classifierName="EString"/>
+      <constraints name="checkFeature" description="The feature has to belong to the super class" restricts="//@libraries.3/@operations.0/@parameters.1"/>
+      <constraints name="checkSuperClassNoSubTypes" description="The super class may not have a sub class" restricts="//@libraries.3/@operations.0/@parameters.0"/>
+    </operations>
+    <operations name="extractSuperClass" description="In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed." deprecated="true" label="Extract Super Class">
+      <parameters name="subClass" description="The class from which the features are extracted" main="true" classifierName="EClass"/>
+      <parameters name="toExtract" description="The features to be extracted" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="ePackage" description="The package in which the super class is created" classifierName="EPackage"/>
+      <parameters name="superClassName" description="The name of the super class" classifierName="EString"/>
+      <parameters name="abstr" description="Whether the super class is abstract" classifierName="EBooleanObject"/>
+      <parameters name="superSuperClasses" description="The super classes of the sub class which become super classes of the super class" many="true" classifierName="EClass"/>
+      <constraints name="checkToExtractSameClass" description="The features to be extracted must belong to sub class" restricts="//@libraries.3/@operations.1/@parameters.1"/>
+      <constraints name="checkSuperSuperClasses" description="The super classes to be extracted must be a containsAll of the subclass's super types" restricts="//@libraries.3/@operations.1/@parameters.5"/>
+    </operations>
+    <operations name="extractSuperClass2" description="In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed." label="Extract Super Class">
+      <parameters name="subClasses" description="The classes from which the super class is extracted" main="true" many="true" classifierName="EClass"/>
+      <parameters name="toExtract" description="The features to be extracted" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="ePackage" description="The package in which the super class is created" classifierName="EPackage"/>
+      <parameters name="superClassName" description="The name of the super class" classifierName="EString"/>
+      <parameters name="abstr" description="Whether the super class is abstract" classifierName="EBooleanObject"/>
+      <parameters name="superSuperClasses" description="The super classes of the sub class which become super classes of the super class" many="true" classifierName="EClass"/>
+      <constraints name="checkSuperSuperClasses" description="The sub classes must have the super classes as common super classes" restricts="//@libraries.3/@operations.2/@parameters.5"/>
+      <constraints name="checkReferencesOpposite" description="The features must not have opposite references"/>
+      <constraints name="checkSameContainment" description="The features have to be all containment references or not"/>
+      <constraints name="checkSameClass" description="The features have to be all attributes or references"/>
+      <constraints name="checkSameMultiplicity" description="The features' multiplicities have to be the same"/>
+      <constraints name="checkSameType" description="The features' types have to be the same"/>
+    </operations>
+    <operations name="useSuperClass" description="In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping." label="Fold Super Class">
+      <parameters name="subClass" description="The class to which the super class is added" main="true" classifierName="EClass"/>
+      <parameters name="superClass" description="The new super class" classifierName="EClass"/>
+      <parameters name="toReplace" description="The features to be replaced" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="replaceBy" description="The features by which they are replaced (in the same order)" many="true" classifierName="EStructuralFeature"/>
+      <constraints name="checkFeaturesSameMultiplicity" description="The features must be of the same multiplicity"/>
+      <constraints name="checkFeaturesSameType" description="The features must be of the same type"/>
+      <constraints name="checkToReplaceInSubClass" description="The features to be replaced must belong to the sub class" restricts="//@libraries.3/@operations.3/@parameters.2"/>
+      <constraints name="checkReplaceByInSuperClass" description="The features to replace must be available in the super class" restricts="//@libraries.3/@operations.3/@parameters.3"/>
+      <constraints name="checkFeaturesSameSize" description="The number of features to be replaced and to replace them must be the same"/>
+    </operations>
+    <operations name="inlineSubClass" description="In the metamodel, the sub class is deleted. In the model, all instances of this sub class are migrated to its super class." label="Inline Sub Class">
+      <parameters name="subClass" description="The class to be inlined" main="true" classifierName="EClass"/>
+      <constraints name="checkSubClass" description="The super class must not be abstract" restricts="//@libraries.3/@operations.4/@parameters.0"/>
+      <constraints name="checkSubClassSingleSuperType" description="The sub class must have exactly one super type" restricts="//@libraries.3/@operations.4/@parameters.0"/>
+      <constraints name="checkSubClassNoFeatures" description="The sub class must not have features" restricts="//@libraries.3/@operations.4/@parameters.0"/>
+      <constraints name="checkSubClassNoSubTypes" description="The sub class must not have sub types" restricts="//@libraries.3/@operations.4/@parameters.0"/>
+    </operations>
+    <operations name="inlineSuperClass" description="In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly." label="Inline Super Class">
+      <parameters name="superClass" description="The super class to be inlined" main="true" classifierName="EClass"/>
+      <constraints name="checkSuperClassAbstract" description="The super class must be abstract" restricts="//@libraries.3/@operations.5/@parameters.0"/>
+    </operations>
+    <operations name="pullFeature" description="In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly." label="Pull up Feature">
+      <parameters name="features" description="The features to be pulled up" main="true" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="targetClass" description="The super class to which the features are pulled" classifierName="EClass"/>
+      <constraints name="checkTargetClassCommonSuperType" description="The features' classes must have a common super type" restricts="//@libraries.3/@operations.6/@parameters.1"/>
+      <constraints name="checkFeaturesSameMultiplicity" description="The features' multiplicities have to be the same"/>
+      <constraints name="checkReferencesOpposite" description="The features must not have opposite references"/>
+      <constraints name="checkReferencesContainment" description="The features have to be all containment references or not"/>
+      <constraints name="checkFeaturesSameType" description="The features' types have to be the same"/>
+    </operations>
+    <operations name="pullOperation" description="In the metamodel, a number of operations are pulled up into a common super class. In the model, nothing needs to be done." label="Pull up Operation">
+      <parameters name="operations" description="The operations to be pulled up" main="true" many="true" classifierName="EOperation"/>
+      <parameters name="targetClass" description="The super class to which the operations are pulled" classifierName="EClass"/>
+      <constraints name="checkOperationsSameMultiplicity" description="The operations' multiplicities have to be the same"/>
+      <constraints name="checkTargetClass" description="The operations' classes must have a common super type" restricts="//@libraries.3/@operations.7/@parameters.1"/>
+      <constraints name="checkOperationsSameType" description="The operations' types have to be the same"/>
+    </operations>
+    <operations name="pushFeature" description="In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly." label="Push down Feature">
+      <parameters name="feature" description="The feature to be pushed down" main="true" classifierName="EStructuralFeature"/>
+      <constraints name="checkFeature" description="If the feature has an opposite, then the super class may only have one sub type." restricts="//@libraries.3/@operations.8/@parameters.0"/>
+    </operations>
+    <operations name="pushOperation" description="In the metamodel, an operation is pushed down to its sub classes. In the model, nothing needs to be done." label="Push down Operation">
+      <parameters name="operation" description="The operation to be pushed down" main="true" classifierName="EOperation"/>
+    </operations>
+    <operations name="replaceFeature" description="In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly." deprecated="true" label="Replace Feature">
+      <parameters name="toReplace" description="The feature to be replaced" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="replaceBy" description="The feature by which it is replaced" classifierName="EStructuralFeature"/>
+      <constraints name="checkFeaturesSameMultiplicity" description="The features must be of the same cardinality"/>
+      <constraints name="checkFeaturesInCompatibleClasses" description="The feature to replace must be defined in a sub class of the one with the feature by which it is replaced" restricts="//@libraries.3/@operations.10/@parameters.1"/>
+      <constraints name="checkFeaturesSameType" description="The features must be of the same type"/>
+    </operations>
+    <operations name="imitateSuperType" description="In the metamodel, a superclass is removed from a subclass, while all its features are copied into the subclass. In the model, values are changed accordingly." label="Unfold Superclass">
+      <parameters name="subClass" description="The subclass" main="true" classifierName="EClass"/>
+      <parameters name="superClass" description="The superclass" classifierName="EClass"/>
+      <constraints name="checkSuperClass" description="The super class has to be a super type of the sub class" restricts="//@libraries.3/@operations.11/@parameters.1"/>
+      <constraints name="checkSuperClassNoReferenceTarget" description="The super class must not be target of a reference"/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.delegation.DelegationOperations" description="Delegation operations move features along the delegation structure." implementation="org.eclipse.emf.edapt.declaration.delegation.DelegationOperations" label="Delegation Operations">
+    <operations name="collectFeature" description="In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly." label="Collect Feature over Reference">
+      <parameters name="feature" description="The feature to be moved" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="reference" description="The reference opposite to which the feature is moved" classifierName="EReference"/>
+      <constraints name="checkFeatureBelongsToReferenceType" description="The feature must belong to the reference's type" restricts="//@libraries.4/@operations.0/@parameters.1"/>
+      <constraints name="checkReferenceMultiplicity" description="Both feature and reference must be multi-valued or the reference must be single-valued" restricts="//@libraries.4/@operations.0/@parameters.1"/>
+    </operations>
+    <operations name="combineFeature" description="In the metamodel, a number of features are combined in to a single feature by moving it over references to the same class. In the model, the values of the features are moved accordingly." label="Combine Features over References">
+      <parameters name="features" description="The features to be combined" main="true" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="references" description="The references over which the features are moved (in the same order)" many="true" classifierName="EReference"/>
+      <constraints name="checkFeatureSize" description="There must be an equal number of features and references"/>
+      <constraints name="checkReferenceSameType" description="All references must have the same class as type"/>
+      <constraints name="checkFeatureParent" description="Each feature has to belong to its reference's class"/>
+    </operations>
+    <operations name="extractClass" description="In the metamodel, a number of features are extracted to a new class. This new class is accessible from the context class through a new containment reference. In the model, the values of the features are extracted to a new instance accordingly." label="Extract Class">
+      <parameters name="contextClass" description="The context class from which the features are extracted" main="true" classifierName="EClass"/>
+      <parameters name="features" description="The features to be extracted" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="ePackage" description="The package in which the extracted class is created" classifierName="EPackage"/>
+      <parameters name="className" description="The name of the extracted class" classifierName="EString"/>
+      <parameters name="referenceName" description="The name of the new containment reference from context to extracted class" classifierName="EString"/>
+      <constraints name="checkFeatures" description="The features have to belong to the same class" restricts="//@libraries.4/@operations.2/@parameters.1"/>
+      <constraints name="checkUniqueClassifierName" description="A classifier with the same name already exists"/>
+      <constraints name="checkUniqueFeatureName" description="A feature with the same name already exists"/>
+    </operations>
+    <operations name="extractAndGroupAttribute" description="In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute." label="Extract and Group Attribute">
+      <parameters name="extractedAttribute" description="The attribute to be extracted" main="true" classifierName="EAttribute"/>
+      <parameters name="contextPackage" description="The package in which the extracted class is created" classifierName="EPackage"/>
+      <parameters name="extractedClassName" description="The name of the extracted class" classifierName="EString"/>
+      <parameters name="referenceName" description="The reference from the context class to the extracted class" classifierName="EString"/>
+      <parameters name="containerClass" description="The container class for the extracted class" classifierName="EClass"/>
+      <parameters name="containerReferenceName" description="The name of the containment reference from the container class to the extracted class" classifierName="EString"/>
+      <constraints name="checkExtractedAttribute" description="The extracted attribute must be single-valued" restricts="//@libraries.4/@operations.3/@parameters.0"/>
+    </operations>
+    <operations name="flattenHierarchy" description="In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly." label="Flatten Containment Hierarchy">
+      <parameters name="rootReference" description="The reference to denote the root node" main="true" classifierName="EReference"/>
+      <parameters name="childrenReference" description="The reference to denote the children nodes" classifierName="EReference"/>
+      <parameters name="referenceName" description="The reference which replaces the containment hierarchy" classifierName="EString"/>
+      <constraints name="checkRootReferenceSingleValueContainment" description="The root reference must be a single-valued containment reference." restricts="//@libraries.4/@operations.4/@parameters.0"/>
+      <constraints name="checkChildrenReferenceInNodeClass" description="The children reference must be defined by the node class." restricts="//@libraries.4/@operations.4/@parameters.1"/>
+      <constraints name="checkChildrenReferenceManyValuedContainment" description="The children reference must be a multi-valued containment reference." restricts="//@libraries.4/@operations.4/@parameters.1"/>
+      <constraints name="checkChildrenReferenceType" description="The type of the children reference must be the node class."/>
+    </operations>
+    <operations name="extractExistingClass" description="In the metamodel, a number of features are extracted into an existing class. More specifically, a containment reference to the extracted class is created and the features are replaced by features of the extracted class. In the model, the values of the features are moved accordingly to a new instance of the extracted class." label="Fold Class">
+      <parameters name="toReplace" description="The features to be extracted" main="true" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="extractedClass" description="The extracted class" classifierName="EClass"/>
+      <parameters name="replaceBy" description="The features of the extracted class by which they are replaced (in the same order)" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="referenceName" description="The name of the containment reference" classifierName="EString"/>
+      <constraints name="checkFeaturesSameMultiplicity" description="The features must be of the same multiplicity"/>
+      <constraints name="checkFeaturesSameType" description="The features must be of the same type"/>
+      <constraints name="checkReplaceBy" description="The features to replace must be defined in the extracted class" restricts="//@libraries.4/@operations.5/@parameters.2"/>
+      <constraints name="checkFeaturesSize" description="The replaced and replacing features must be of the same size"/>
+    </operations>
+    <operations name="inlineClass" description="In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly." label="Inline Class">
+      <parameters name="reference" description="The reference to the class to be inlined" main="true" classifierName="EReference"/>
+      <constraints name="checkInlinedClassNotTargetedByReference" description="The class to be inlined must not be a type of another reference"/>
+      <constraints name="checkReference" description="The reference must not have an opposite" restricts="//@libraries.4/@operations.6/@parameters.0"/>
+      <constraints name="checkReferenceContainment" description="The reference must be containment" restricts="//@libraries.4/@operations.6/@parameters.0"/>
+      <constraints name="checkReferenceSingleValued" description="The multiplicity of the reference must be single-valued" restricts="//@libraries.4/@operations.6/@parameters.0"/>
+      <constraints name="checkInlinedClassNoSubTypes" description="The class to be inlined must not have sub classes"/>
+    </operations>
+    <operations name="partitionComposite" description="In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not." label="Introduce Composite Pattern">
+      <parameters name="eClass" description="The class which is refined" main="true" classifierName="EClass"/>
+      <parameters name="compositeName" description="The name of the composite class" classifierName="EString"/>
+      <parameters name="leafName" description="The name of the leaf class" classifierName="EString"/>
+      <parameters name="childReference" description="The reference for composite elements" classifierName="EReference"/>
+      <constraints name="checkChildReferenceContainment" description="The child reference must be a containment reference" restricts="//@libraries.4/@operations.7/@parameters.3"/>
+      <constraints name="checkChildReferenceParentClass" description="The child reference must be defined by the class" restricts="//@libraries.4/@operations.7/@parameters.3"/>
+      <constraints name="checkEClassNoSubTypes" description="The class must not have sub classes" restricts="//@libraries.4/@operations.7/@parameters.0"/>
+    </operations>
+    <operations name="moveFeature" description="In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly." label="Move Feature along Reference">
+      <parameters name="feature" description="The feature to be moved" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="reference" description="The reference along which the feature is moved" classifierName="EReference"/>
+      <constraints name="checkReferenceOppositeSingleValued" description="The multiplicity of its opposite reference must be single-valued"/>
+      <constraints name="checkFeatureNameUniqueInTargetClass" description="A feature with that name already exists in the target class"/>
+      <constraints name="checkReferenceSingleValued" description="The multiplicity of the reference must be single-valued and obligatory"/>
+      <constraints name="checkReferenceInSameClass" description="The reference must be available in the same class as the feature" restricts="//@libraries.4/@operations.8/@parameters.1"/>
+    </operations>
+    <operations name="propagateFeature" description="In the metamodel, a feature is propagated opposite to a number of references. More specifically, the feature is created in each of the classes which are sources of the references. In the model, the values of that feature are moved accordingly." label="Propagate Feature over References">
+      <parameters name="mainFeature" description="The feature to be propagated" main="true" classifierName="EStructuralFeature"/>
+      <parameters name="references" description="The references opposite to which the feature is propagated" many="true" classifierName="EReference"/>
+      <constraints name="checkReferencesType" description="Every reference has to target the class with the feature" restricts="//@libraries.4/@operations.9/@parameters.1"/>
+    </operations>
+    <operations name="unfoldClass" description="In the metamodel, a class reachable through a single-valued containment reference is unfolded. More specifically, its features are copied to the source class of the reference which is deleted. In the model, the values of these features are moved accordingly." label="Unfold Class">
+      <parameters name="reference" description="The reference to the class to be unfolded" main="true" classifierName="EReference"/>
+      <constraints name="checkReference" description="The reference must not have an opposite" restricts="//@libraries.4/@operations.10/@parameters.0"/>
+      <constraints name="checkReferenceContainment" description="The reference must be containment" restricts="//@libraries.4/@operations.10/@parameters.0"/>
+      <constraints name="checkReferenceManyValued" description="The multiplicity of the reference must be single-valued" restricts="//@libraries.4/@operations.10/@parameters.0"/>
+      <constraints name="checkUnfoldedClassNoSubTypes" description="The class to be unfolded must not have sub classes" restricts="//@libraries.4/@operations.10/@parameters.0"/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.replacement.ReplacementOperations" description="Replacement operations replace one metamodeling construct by another, equivalent construct." implementation="org.eclipse.emf.edapt.declaration.replacement.ReplacementOperations" label="Replacement Operations">
+    <operations name="introduceReferenceClass" description="In the metamodel, a reference is replaced by a reference class. More specifically, the reference class is now contained by the source class. In the model, links conforming to the reference are replaced by instances of the reference class." label="Association to Class">
+      <parameters name="reference" description="The reference to be replaced by a reference class" main="true" classifierName="EReference"/>
+      <parameters name="className" description="The name of the reference class" classifierName="EString"/>
+      <parameters name="sourceReferenceName" description="The name of the opposite reference to the source class" classifierName="EString"/>
+      <parameters name="targetReferenceName" description="The name of the opposite reference to the target class" classifierName="EString"/>
+      <constraints name="checkReferenceOpposite" description="Reference has to have an opposite"/>
+      <constraints name="checkReferenceNotContainment" description="Reference is not allowed to be containment"/>
+      <constraints name="checkOppositeNotContainment" description="Opposite reference is not allowed to be containment"/>
+    </operations>
+    <operations name="org.eclipse.emf.edapt.declaration.replacement.ClassToAssociation" description="" label="Class to Association">
+      <parameters name="eClass" description="Class to be replaced by an association" main="true" classifierName="EClass"/>
+      <parameters name="sourceReference" description="Reference to the source class of the association" classifierName="EReference"/>
+      <parameters name="targetReference" description="Reference to the target class of the association" classifierName="EReference"/>
+      <parameters name="associationName" description="Name of the new association" classifierName="EString"/>
+      <constraints name="checkClassSubClasses" description="The class must not have any sub types." restricts="//@libraries.5/@operations.1/@parameters.0"/>
+      <constraints name="checkSourceReference" description="The source reference must be single-valued and not containment." restricts="//@libraries.5/@operations.1/@parameters.1"/>
+      <constraints name="checkSourceReferenceInClass" description="The source reference must be defined in the class" restricts="//@libraries.5/@operations.1/@parameters.1"/>
+      <constraints name="checkTargetReference" description="The target reference must be single-valued and not containment." restricts="//@libraries.5/@operations.1/@parameters.2"/>
+      <constraints name="checkTargetReferenceInClass" description="The source reference must be defined in the class" restricts="//@libraries.5/@operations.1/@parameters.2"/>
+      <constraints name="checkReferences" description="The class may only be targeted by one containment reference and the opposite of source and target reference."/>
+    </operations>
+    <operations name="enumerationToSubClasses" description="In the metamodel, an enumeration attribute of a class is replaced by subclasses. The class is made abstract, and a subclass is created for each literal of the enumeration. The enumeration attribute is deleted and also the enumeration, if not used otherwise. In the model, instances the class are migrated to the appropriate subclass according to the value of the enumeration attribute." label="Enumeration to Sub Classes">
+      <parameters name="enumAttribute" description="The enumeration attribute" main="true" classifierName="EAttribute"/>
+      <parameters name="ePackage" description="The package in which the subclasses are created" classifierName="EPackage"/>
+      <constraints name="checkContextClassConcrete" description="The context class must be concrete"/>
+      <constraints name="checkContextClassNoSubTypes" description="The context class must not have sub types"/>
+      <constraints name="checkAttributeTypeEnum" description="The type of the attribute must be an enumeration"/>
+    </operations>
+    <operations name="replaceIdentifierByReference" description="In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element." label="Identifier to Reference">
+      <parameters name="referencingAttribute" description="The referencing attribute" main="true" classifierName="EAttribute"/>
+      <parameters name="referencedAttribute" description="The referenced attribute" classifierName="EAttribute"/>
+      <constraints name="checkAttributesSameType" description="Referencing and referenced attribute must be of the same type"/>
+    </operations>
+    <operations name="replaceInheritanceByDelegation" description="In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class." label="Inheritance to Delegation">
+      <parameters name="subClass" description="The class from which the super class is removed" main="true" classifierName="EClass"/>
+      <parameters name="superClass" description="The super class to be removed" classifierName="EClass"/>
+      <parameters name="referenceName" description="The name of the reference to the super class" classifierName="EString"/>
+      <constraints name="checkSuperClass" description="The super class must be a super type of the sub class" restricts="//@libraries.5/@operations.4/@parameters.1"/>
+    </operations>
+    <operations name="notChangeableToSuppressedSetVisibility" description="In the metamodel, a reference is made changeable, and at the same time its setter is suppressed. Nothing is changed in the model." label="Not Changeable to Suppressed Set Visibility">
+      <parameters name="reference" description="The reference to be made changeable" main="true" classifierName="EReference"/>
+    </operations>
+    <operations name="operationToVolatile" description="In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done." label="Operation to Volatile Feature">
+      <parameters name="operation" description="The operation to be transformed" main="true" classifierName="EOperation"/>
+      <constraints name="checkCustomPreconditions" description="The operation must not have parameters"/>
+    </operations>
+    <operations name="subClassesToEnumeration" description="In the metamodel, the subclasses of a class are replaced by an enumeration. An enumeration with literals for all subclasses is created and an enumeration attribute is created in the class. Finally, all subclasses are deleted, and the class is made concrete. In the model, instances of a subclass are migrated to the class, setting the enumeration attribute to the appropriate literal." label="Sub Classes to Enumeration">
+      <parameters name="contextClass" description="The context class" main="true" classifierName="EClass"/>
+      <parameters name="attributeName" description="The name of the enumeration attribute" classifierName="EString"/>
+      <parameters name="ePackage" description="The package in which the enumeration is created" classifierName="EPackage"/>
+      <parameters name="enumName" description="The name of the enumeration" classifierName="EString"/>
+      <constraints name="checkContextClassSubTypes" description="The context class must have sub types"/>
+      <constraints name="checkContextClassAbstract" description="The context class must be abstract"/>
+      <constraints name="checkContextClassSubTypesNoSubTypes" description="The sub types must not have sub types again"/>
+    </operations>
+    <operations name="suppressedSetVisibilityToNotChangeable" description="In the metamodel, the setter of a reference is made visible again, and at the same time it is made non-changeable. Nothing is changed in the model." label="Suppressed Set Visibility to Not Changeable">
+      <parameters name="reference" description="The reference whose setter is made visible again" main="true" classifierName="EReference"/>
+      <constraints name="checkSuppressedSetVisibilityNotPresent" description="Suppressed Set Visibility must be present"/>
+    </operations>
+    <operations name="volatileToOpposite" description="In the metamodel, a reference is changed from being volatile to an opposite. In the model, the opposite direction needs to be set." label="Volatile to Opposite Reference">
+      <parameters name="reference" description="The reference which is changed from volatile to opposite" main="true" classifierName="EReference"/>
+      <parameters name="opposite" description="The reference which is going to be the opposite" classifierName="EReference"/>
+      <parameters name="changeable" description="Whether the reference is going to be changeable" classifierName="EBooleanObject"/>
+      <constraints name="checkOppositeCompatible" description="Reference and opposite must be compatible with each other" restricts="//@libraries.5/@operations.9/@parameters.1"/>
+      <constraints name="checkReferenceVolatile" description="Reference must be volatile"/>
+      <constraints name="checkReferenceNoOpposite" description="Reference must not already have an opposite"/>
+    </operations>
+  </libraries>
+  <libraries name="org.eclipse.emf.edapt.declaration.merge.MergeOperations" description="Merge operations merge several metamodel elements of the same type into a single element, whereas split operations split a metamodel element into several elements of the same type." implementation="org.eclipse.emf.edapt.declaration.merge.MergeOperations" label="Merge Operations">
+    <operations name="merge" description="In the metamodel, a reference is deleted. In the model, the values of this reference are merged to a compatible reference." label="Merge Reference into Another">
+      <parameters name="toMerge" description="The reference that is deleted" main="true" classifierName="EReference"/>
+      <parameters name="mergeTo" description="The reference to which the values are merged" classifierName="EReference"/>
+      <constraints name="checkReferencesDifferent" description="The references must be different from each other" restricts="//@libraries.6/@operations.0/@parameters.1"/>
+      <constraints name="checkMergeToMany" description="The reference to merge to must be multi-valued" restricts="//@libraries.6/@operations.0/@parameters.1"/>
+      <constraints name="checkMergeToAvailableInContextClass" description="The reference to merge to must be available in the context class"/>
+      <constraints name="checkReferenceTypesCompatible" description="The types of the references must be compatible"/>
+    </operations>
+    <operations name="partitionReference" description="In the metamodel, a reference is partitioned into a number of references according to its type. A sub reference is created for each subclass of the reference's type. Finally, the original reference is deleted. In the model, the value of the reference is partitioned accordingly." label="Partition Reference">
+      <parameters name="reference" description="The reference to be partitioned" main="true" classifierName="EReference"/>
+      <constraints name="checkReferenceMany" description="The reference must be multi-valued" restricts="//@libraries.6/@operations.1/@parameters.0"/>
+      <constraints name="checkReferenceTypeAbstract" description="The type of the reference must be abstract" restricts="//@libraries.6/@operations.1/@parameters.0"/>
+    </operations>
+    <operations name="replaceClass" description="In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features." label="Replace Class">
+      <parameters name="toReplace" description="The class to be replaced" main="true" classifierName="EClass"/>
+      <parameters name="replaceBy" description="The class by which it is replaced" classifierName="EClass"/>
+      <parameters name="featuresToReplace" description="The features to be replaced" many="true" classifierName="EStructuralFeature"/>
+      <parameters name="featuresReplaceBy" description="The features by which they are replaced (in the same order)" many="true" classifierName="EStructuralFeature"/>
+      <constraints name="checkFeaturesSameSize" description="The replaced and replacing features have to be of the same size"/>
+      <constraints name="checkFeaturesToReplace" description="The replace features must be defined in the replaced class" restricts="//@libraries.6/@operations.2/@parameters.2"/>
+      <constraints name="checkFeaturesReplaceBy" description="The replacing features must be defined in the replacing class" restricts="//@libraries.6/@operations.2/@parameters.3"/>
+      <constraints name="checkCoverFeatureDifference" description="The replace features must cover all features from the difference between the class to replace and the class by which it is replaced"/>
+      <constraints name="checkToReplaceNoSubTypes" description="The class to be replaced must not have sub types"/>
+    </operations>
+    <operations name="replaceClassBySibling" description="In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class." deprecated="true" label="Replace Class by Sibling">
+      <parameters name="toReplace" description="The class to be replaced" main="true" classifierName="EClass"/>
+      <parameters name="replaceBy" description="The class by which it is replaced" classifierName="EClass"/>
+      <constraints name="checkSameSuperClasses" description="The super classes of replaced and replacing class must be the same" restricts="//@libraries.6/@operations.3/@parameters.1"/>
+      <constraints name="checkToReplaceNoFeatures" description="The replaced class must not have any features" restricts="//@libraries.6/@operations.3/@parameters.0"/>
+      <constraints name="checkReplaceBySingleSuperClass" description="The replacing class must have exactly one super class" restricts="//@libraries.6/@operations.3/@parameters.1"/>
+      <constraints name="checkToReplaceSingleSuperClass" description="The replaced class must have exactly one super class" restricts="//@libraries.6/@operations.3/@parameters.0"/>
+    </operations>
+    <operations name="replaceEnum" description="In the metamodel, an enumeration is replaced by another one. More specifically, the enumeration is deleted and the other enumeration used instead. In the model, the values of this enumeration are replaced based on a mapping of literals." label="Replace Enumeration">
+      <parameters name="toReplace" description="The enumeration to be replaced" main="true" classifierName="EEnum"/>
+      <parameters name="replaceBy" description="The enumeration by which it is replaced" classifierName="EEnum"/>
+      <parameters name="literalsToReplace" description="The literals to be replaced" many="true" classifierName="EEnumLiteral"/>
+      <parameters name="literalsReplaceBy" description="The literals by which they are replaced (in the same order)" many="true" classifierName="EEnumLiteral"/>
+      <constraints name="checkLiteralsReplaceBy" description="The replacing literals must belong to the replacing enumeration" restricts="//@libraries.6/@operations.4/@parameters.3"/>
+      <constraints name="checkLiteralsSameSize" description="The replacing and replaced literals must be of the same size"/>
+      <constraints name="checkLiteralsToReplaceCommonEnumeration" description="The replaced literals must belong to the replaced enumeration" restricts="//@libraries.6/@operations.4/@parameters.2"/>
+    </operations>
+    <operations name="replaceLiteral" description="In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly." label="Replace Literal">
+      <parameters name="toReplace" description="The enum literal to replace" main="true" classifierName="EEnumLiteral"/>
+      <parameters name="replaceBy" description="The enum literal by which it is replaced" classifierName="EEnumLiteral"/>
+      <constraints name="checkReplaceBy" description="The enum literal by which it is replace must belong to the same enum." restricts="//@libraries.6/@operations.5/@parameters.1"/>
+    </operations>
+    <operations name="splitStringAttribute" description="In the metamodel, a new String-typed attribute is created. In the model, the value of another String-typed attribute is split among the two attributes by means of a regular expression." label="Split String Attribute">
+      <parameters name="toSplit" description="The feature whose values are split" main="true" classifierName="EAttribute"/>
+      <parameters name="context" description="The class in which the new feature is created" classifierName="EClass"/>
+      <parameters name="attributeName" description="The name of the new attribute" classifierName="EString"/>
+      <parameters name="pattern" description="The regular expression" classifierName="EString"/>
+      <constraints name="checkContext" description="The class with the new attribute must be a subclass of the class with the attribute to be split" restricts="//@libraries.6/@operations.6/@parameters.1"/>
+      <constraints name="checkAttributeTypeString" description="The type of the attribute to split has to be String" restricts="//@libraries.6/@operations.6/@parameters.0"/>
+    </operations>
+    <operations name="uniteReferences" description="In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly." label="Unite References">
+      <parameters name="references" description="The references which are united" main="true" many="true" classifierName="EReference"/>
+      <parameters name="unitedReferenceName" description="The name of the single reference which unites all the references" classifierName="EString"/>
+      <constraints name="checkReferencesSameClass" description="The references have to belong to the same class"/>
+      <constraints name="checkReferencesSameContainment" description="The references must be all either cross or containment references"/>
+    </operations>
+  </libraries>
+</declaration:Library>
