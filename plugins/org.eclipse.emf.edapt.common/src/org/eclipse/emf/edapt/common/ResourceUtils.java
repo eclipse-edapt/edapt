@@ -71,7 +71,17 @@ public final class ResourceUtils {
 	 */
 	public static ResourceSet loadResourceSet(List<URI> modelURIs,
 			List<EPackage> ePackages) throws IOException {
-		ResourceSet resourceSet = new ResourceSetImpl();
+		return loadResourceSet(modelURIs, ePackages,
+				new ResourceSetFactoryImpl());
+	}
+
+	/**
+	 * Load EMF model based on a set of {@link URI} and root packages.
+	 */
+	public static ResourceSet loadResourceSet(List<URI> modelURIs,
+			List<EPackage> ePackages, IResourceSetFactory resourceSetFactory)
+			throws IOException {
+		ResourceSet resourceSet = resourceSetFactory.createResourceSet();
 		register(ePackages, resourceSet.getPackageRegistry());
 
 		Map<String, Object> options = new HashMap<String, Object>();
@@ -133,12 +143,14 @@ public final class ResourceUtils {
 	 * Load EMF model based on file name (use the packages already added to the
 	 * registry).
 	 */
-	public static ResourceSet loadResourceSet(String fileName) throws IOException {
+	public static ResourceSet loadResourceSet(String fileName)
+			throws IOException {
 		return loadResourceSet(fileName, new ArrayList<EPackage>());
 	}
 
 	/** Save model based on {@link ResourceSet}. */
-	public static void saveResourceSet(ResourceSet resourceSet) throws IOException {
+	public static void saveResourceSet(ResourceSet resourceSet)
+			throws IOException {
 		Map<String, Object> options = new HashMap<String, Object>();
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.FALSE);
 		for (Resource resource : resourceSet.getResources()) {
@@ -220,17 +232,19 @@ public final class ResourceUtils {
 
 	/** Decide whether a resource is a platform resource. */
 	public static boolean isPlatformResource(Resource resource) {
-		return resource != null && PLATFORM_SCHEME.equals(resource.getURI().scheme());
+		return resource != null
+				&& PLATFORM_SCHEME.equals(resource.getURI().scheme());
 	}
 
 	/** Resolve all referenced resources within a {@link ResourceSet}. */
 	public static void resolveAll(ResourceSet resourceSet) {
 		Set<Resource> resolved = new HashSet<Resource>();
 		boolean newFound = true;
-		while(newFound) {
+		while (newFound) {
 			newFound = false;
-			for(Resource r : new ArrayList<Resource>(resourceSet.getResources())) {
-				if(!resolved.contains(r)) {
+			for (Resource r : new ArrayList<Resource>(
+					resourceSet.getResources())) {
+				if (!resolved.contains(r)) {
 					newFound = true;
 					org.eclipse.emf.ecore.util.EcoreUtil.resolveAll(r);
 					resolved.add(r);

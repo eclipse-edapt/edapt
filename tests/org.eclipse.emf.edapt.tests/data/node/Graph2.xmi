@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<node:Graph xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:node="node/v1" xsi:schemaLocation="node/v1 node2.ecore">
+  <children name="Node2"/>
+</node:Graph>

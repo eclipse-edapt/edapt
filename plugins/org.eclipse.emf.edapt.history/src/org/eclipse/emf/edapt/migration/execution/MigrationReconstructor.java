@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.common.ResourceUtils;
@@ -106,16 +107,21 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Validation level. */
 	private final ValidationLevel level;
 
+	/** Factory to create {@link ResourceSet}s for custom serialization. */
+	private IResourceSetFactory resourceSetFactory;
+
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
 			Release targetRelease, IProgressMonitor monitor,
-			IClassLoader classLoader, ValidationLevel level) {
+			IClassLoader classLoader, ValidationLevel level,
+			IResourceSetFactory resourceSetFactory) {
 		this.modelURIs = modelURIs;
 		this.sourceRelease = sourceRelease;
 		this.targetRelease = targetRelease;
 		this.monitor = monitor;
 		this.classLoader = classLoader;
 		this.level = level;
+		this.resourceSetFactory = resourceSetFactory;
 	}
 
 	/** {@inheritDoc} */
@@ -174,7 +180,8 @@ public class MigrationReconstructor extends ReconstructorBase {
 		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
-			Model model = Persistency.loadModel(modelURIs, metamodel);
+			Model model = Persistency.loadModel(modelURIs, metamodel,
+					resourceSetFactory);
 			repository = MigrationFactory.eINSTANCE.createRepository();
 			repository.setMetamodel(metamodel);
 			repository.setModel(model);

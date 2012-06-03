@@ -109,16 +109,18 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	}
 
 	/** Infer the release of a model. */
-	protected Release getRelease(final List<URI> modelURIs, final Migrator migrator) {
-		Set<Release> releases = new HashSet<Release>(migrator
-				.getRelease(modelURIs.get(0)));
+	protected Release getRelease(final List<URI> modelURIs,
+			final Migrator migrator) {
+		Set<Release> releases = new HashSet<Release>(
+				migrator.getRelease(modelURIs.get(0)));
 		Release release = null;
 		if (releases.size() > 1) {
 			for (Iterator<Release> i = releases.iterator(); i.hasNext();) {
 				Release r = i.next();
 				Metamodel metamodel = migrator.getMetamodel(r);
 				try {
-					Model model = Persistency.loadModel(modelURIs, metamodel);
+					Model model = Persistency.loadModel(modelURIs, metamodel,
+							migrator.getResourceSetFactory());
 					model.checkConformance();
 				} catch (Exception e) {
 					i.remove();
@@ -149,8 +151,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 
 	/** Update the selection. */
 	private void updateSelection(ISelection selection) {
-		selectedFiles = SelectionUtils
-				.getSelectedElements(selection);
+		selectedFiles = SelectionUtils.getSelectedElements(selection);
 	}
 
 	/** Get the selected files. */

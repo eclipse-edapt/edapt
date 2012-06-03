@@ -21,8 +21,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-
 
 /**
  * Helper class for loading and saving models.
@@ -33,9 +33,9 @@ import org.eclipse.emf.edapt.common.ResourceUtils;
  * @levd.rating YELLOW Hash: 7340771F1DE173BDAA2534B8901681B1
  */
 public class Persistency {
-	
+
 	/** Load metamodel based on {@link URI}. */
-	public static Metamodel loadMetamodel(URI metamodelURI) throws IOException {		
+	public static Metamodel loadMetamodel(URI metamodelURI) throws IOException {
 		ResourceSet resourceSet = ResourceUtils.loadResourceSet(metamodelURI);
 
 		return loadMetamodel(resourceSet);
@@ -45,12 +45,13 @@ public class Persistency {
 	public static Metamodel loadMetamodel(ResourceSet resourceSet) {
 		ResourceUtils.resolveAll(resourceSet);
 		Metamodel metamodel = MigrationFactory.eINSTANCE.createMetamodel();
-		for(Resource resource : resourceSet.getResources()) {
-			MetamodelResource metamodelResource = MigrationFactory.eINSTANCE.createMetamodelResource();
+		for (Resource resource : resourceSet.getResources()) {
+			MetamodelResource metamodelResource = MigrationFactory.eINSTANCE
+					.createMetamodelResource();
 			metamodelResource.setUri(resource.getURI());
 			metamodel.getResources().add(metamodelResource);
-			for(EObject element : resource.getContents()) {
-				if(element instanceof EPackage) {
+			for (EObject element : resource.getContents()) {
+				if (element instanceof EPackage) {
 					EPackage ePackage = (EPackage) element;
 					metamodelResource.getRootPackages().add(ePackage);
 				}
@@ -64,43 +65,51 @@ public class Persistency {
 	public static Metamodel loadMetamodel(String fileName) throws IOException {
 		return loadMetamodel(URI.createFileURI(fileName));
 	}
-	
+
 	/** Save metamodel based on {@link URI}. */
 	public static void saveMetamodel(Metamodel metamodel) throws IOException {
 		ResourceSet resourceSet = new ResourceSetImpl();
-		
-		for(MetamodelResource metamodelResource : metamodel.getResources()) {
-			Resource resource = resourceSet.createResource(metamodelResource.getUri());
-			resource.getContents().addAll(metamodelResource.getRootPackages());		
+
+		for (MetamodelResource metamodelResource : metamodel.getResources()) {
+			Resource resource = resourceSet.createResource(metamodelResource
+					.getUri());
+			resource.getContents().addAll(metamodelResource.getRootPackages());
 		}
-		
+
 		ResourceUtils.saveResourceSet(resourceSet);
 	}
-	
+
 	/** Load model based on {@link URI} for model and metamodel. */
-	public static Model loadModel(URI modelURI, URI metamodelURI) throws IOException {
+	public static Model loadModel(URI modelURI, URI metamodelURI,
+			IResourceSetFactory resourceSetFactory) throws IOException {
 		Metamodel metamodel = loadMetamodel(metamodelURI);
-		Model model = loadModel(modelURI, metamodel);
+		Model model = loadModel(modelURI, metamodel, resourceSetFactory);
 		return model;
 	}
-	
+
 	/** Load model based on {@link URI} and metamodel. */
-	public static Model loadModel(URI modelURI, Metamodel metamodel) throws IOException {
-		return loadModel(Collections.singletonList(modelURI), metamodel);
+	public static Model loadModel(URI modelURI, Metamodel metamodel,
+			IResourceSetFactory resourceSetFactory) throws IOException {
+		return loadModel(Collections.singletonList(modelURI), metamodel,
+				resourceSetFactory);
 	}
-	
+
 	/** Load model based on a set of {@link URI} and metamodel. */
-	public static Model loadModel(List<URI> modelURIs, Metamodel metamodel) throws IOException {
-		ResourceSet resourceSet = ResourceUtils.loadResourceSet(modelURIs, metamodel.getEPackages());
+	public static Model loadModel(List<URI> modelURIs, Metamodel metamodel,
+			IResourceSetFactory resourceSetFactory) throws IOException {
+		ResourceSet resourceSet = ResourceUtils.loadResourceSet(modelURIs,
+				metamodel.getEPackages(), resourceSetFactory);
 		ForwardConverter fConverter = new ForwardConverter();
 		Model model = fConverter.convert(resourceSet);
 		model.setMetamodel(metamodel);
 		return model;
-	}	
-	
+	}
+
 	/** Load model based on file name and metamodel. */
-	public static Model loadModel(String fileName, Metamodel metamodel) throws IOException {		
-		return loadModel(URI.createFileURI(fileName), metamodel);
+	public static Model loadModel(String fileName, Metamodel metamodel,
+			IResourceSetFactory resourceSetFactory) throws IOException {
+		return loadModel(URI.createFileURI(fileName), metamodel,
+				resourceSetFactory);
 	}
 
 	/** Save model based on {@link URI}. */

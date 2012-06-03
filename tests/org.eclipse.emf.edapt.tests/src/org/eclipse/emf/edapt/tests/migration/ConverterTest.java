@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.BackwardConverter;
@@ -45,24 +46,26 @@ import org.eclipse.emf.edapt.migration.BackupUtils.URIMapper;
  * @levd.rating RED Rev:
  */
 public class ConverterTest extends TestCase {
-	
+
 	/**
 	 * Mapping between two models
 	 */
 	private Map<EObject, EObject> mapping;
 
 	/**
-	 * Test whether both converters maintain the order of multi-valued references
+	 * Test whether both converters maintain the order of multi-valued
+	 * references
 	 */
 	public void testOrder() throws IOException, MigrationException {
-		
+
 		URI contextURI = URIUtils.getURI("data/node");
 		URI metamodelURI = contextURI.appendSegment("node.ecore");
 		URI model1URI = contextURI.appendSegment("split.xmi");
 		URI model2URI = contextURI.appendSegment("split_2.xmi");
-		
+
 		Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
-		Model model = Persistency.loadModel(model1URI, metamodel);	
+		Model model = Persistency.loadModel(model1URI, metamodel,
+				new ResourceSetFactoryImpl());
 		model.validate();
 
 		URIMapper mapper = new URIMapper() {
@@ -70,23 +73,28 @@ public class ConverterTest extends TestCase {
 			public URI map(URI uri) {
 				String name = uri.trimFileExtension().lastSegment() + "_2";
 				String extension = uri.fileExtension();
-				return uri.trimSegments(1).appendSegment(name).appendFileExtension(extension);
+				return uri.trimSegments(1).appendSegment(name)
+						.appendFileExtension(extension);
 			}
-			
+
 		};
 
-		for(ModelResource resource : model.getResources()) {
+		for (ModelResource resource : model.getResources()) {
 			resource.setUri(mapper.map(resource.getUri()));
 		}
-		
-		Persistency.saveModel(model);		
-		
-		Resource model1 = ResourceUtils.loadResourceSet(model1URI, metamodel.getEPackages()).getResources().get(0);
-		Resource model2 = ResourceUtils.loadResourceSet(model2URI, metamodel.getEPackages()).getResources().get(0);
-		
+
+		Persistency.saveModel(model);
+
+		Resource model1 = ResourceUtils
+				.loadResourceSet(model1URI, metamodel.getEPackages())
+				.getResources().get(0);
+		Resource model2 = ResourceUtils
+				.loadResourceSet(model2URI, metamodel.getEPackages())
+				.getResources().get(0);
+
 		EObject root1 = model1.getContents().get(0);
 		EObject root2 = model2.getContents().get(0);
-		
+
 		checkOrder(root1, root2);
 	}
 
@@ -94,7 +102,7 @@ public class ConverterTest extends TestCase {
 	 * Check whether the order is maintained
 	 */
 	private void checkOrder(EObject root1, EObject root2) {
-		mapping = new IdentityHashMap<EObject, EObject>();		
+		mapping = new IdentityHashMap<EObject, EObject>();
 		checkContainment(root1, root2);
 		checkCrossReference(root1);
 	}
@@ -104,36 +112,38 @@ public class ConverterTest extends TestCase {
 	 */
 	@SuppressWarnings("unchecked")
 	private void checkContainment(EObject element1, EObject element2) {
-		
+
 		Assert.assertNotSame(element1, element2);
-		
+
 		EClass type = element1.eClass();
-		
+
 		EStructuralFeature feature = type.getEStructuralFeature("name");
 		Assert.assertEquals(element1.eGet(feature), element2.eGet(feature));
-		
+
 		Assert.assertNull(mapping.put(element1, element2));
-		
-		for(EReference containment : type.getEAllContainments()) {
-			if(containment.isMany()) {
-				List<EObject> list1 = ((List<EObject>) element1.eGet(containment));
-				List<EObject> list2 = ((List<EObject>) element2.eGet(containment));
-				
+
+		for (EReference containment : type.getEAllContainments()) {
+			if (containment.isMany()) {
+				List<EObject> list1 = ((List<EObject>) element1
+						.eGet(containment));
+				List<EObject> list2 = ((List<EObject>) element2
+						.eGet(containment));
+
 				Assert.assertEquals(list1.size(), list2.size());
-				
-				for(int i = 0, n = list1.size(); i < n; i++) {
+
+				for (int i = 0, n = list1.size(); i < n; i++) {
 					EObject child1 = list1.get(i);
-					EObject child2 = list2.get(i);					
+					EObject child2 = list2.get(i);
 					checkContainment(child1, child2);
 				}
-			}
-			else {
+			} else {
 				EObject child1 = (EObject) element1.eGet(containment);
 				EObject child2 = (EObject) element2.eGet(containment);
-				
-				Assert.assertTrue(child1 != null && child2 != null || child1 == null && child2 == null);
-				
-				if(child1 != null) {
+
+				Assert.assertTrue(child1 != null && child2 != null
+						|| child1 == null && child2 == null);
+
+				if (child1 != null) {
 					checkContainment(child1, child2);
 				}
 			}
@@ -146,37 +156,36 @@ public class ConverterTest extends TestCase {
 	@SuppressWarnings("unchecked")
 	private void checkCrossReference(EObject element1) {
 		EObject element2 = mapping.get(element1);
-		
+
 		EClass type = element1.eClass();
 		EStructuralFeature feature = type.getEStructuralFeature("name");
 		Assert.assertEquals(element1.eGet(feature), element2.eGet(feature));
-		
-		for(EReference reference : type.getEAllReferences()) {
-			if(reference.isContainment()) {
+
+		for (EReference reference : type.getEAllReferences()) {
+			if (reference.isContainment()) {
 				continue;
 			}
-			
-			if(reference.isMany()) {
+
+			if (reference.isMany()) {
 				List<EObject> list1 = ((List<EObject>) element1.eGet(reference));
 				List<EObject> list2 = ((List<EObject>) element2.eGet(reference));
-				
+
 				Assert.assertEquals(list1.size(), list2.size());
-				
-				for(int i = 0, n = list1.size(); i < n; i++) {
+
+				for (int i = 0, n = list1.size(); i < n; i++) {
 					EObject target1 = list1.get(i);
-					EObject target2 = list2.get(i);					
+					EObject target2 = list2.get(i);
 					Assert.assertSame(mapping.get(target1), target2);
 				}
-			}
-			else {
+			} else {
 				EObject target1 = (EObject) element1.eGet(reference);
 				EObject target2 = (EObject) element2.eGet(reference);
-				
+
 				Assert.assertSame(mapping.get(target1), target2);
 			}
 		}
-		
-		for(EObject child1 : element1.eContents()) {
+
+		for (EObject child1 : element1.eContents()) {
 			checkCrossReference(child1);
 		}
 	}

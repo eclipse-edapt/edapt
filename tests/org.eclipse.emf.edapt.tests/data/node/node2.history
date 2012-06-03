@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2012-06-02T17:57:34.857+0200" label="v1">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="node2.ecore#/">
+        <changes xsi:type="history:Set" element="node2.ecore#/" featureName="name"
+            dataValue="node"/>
+        <changes xsi:type="history:Set" element="node2.ecore#/" featureName="nsURI"
+            dataValue="node/v1"/>
+        <changes xsi:type="history:Set" element="node2.ecore#/" featureName="nsPrefix"
+            dataValue="node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="node2.ecore#/" referenceName="eClassifiers"
+          element="node2.ecore#//Graph">
+        <changes xsi:type="history:Set" element="node2.ecore#//Graph" featureName="name"
+            dataValue="Graph"/>
+      </changes>
+      <changes xsi:type="history:Create" target="node2.ecore#/" referenceName="eClassifiers"
+          element="node2.ecore#//Node">
+        <changes xsi:type="history:Set" element="node2.ecore#//Node" featureName="name"
+            dataValue="Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="node2.ecore#//Graph" referenceName="eStructuralFeatures"
+          element="node2.ecore#//Graph/children">
+        <changes xsi:type="history:Set" element="node2.ecore#//Graph/children" featureName="name"
+            dataValue="children"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Graph/children" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Graph/children" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Graph/children" featureName="eType"
+            referenceValue="node2.ecore#//Node"/>
+      </changes>
+      <changes xsi:type="history:Create" target="node2.ecore#//Node" referenceName="eStructuralFeatures"
+          element="node2.ecore#//Node/name">
+        <changes xsi:type="history:Set" element="node2.ecore#//Node/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Node/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="node2.ecore#//Node" referenceName="eStructuralFeatures"
+          element="node2.ecore#//Node/links">
+        <changes xsi:type="history:Set" element="node2.ecore#//Node/links" featureName="name"
+            dataValue="refs"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Node/links" featureName="upperBound"
+            dataValue="-1" oldDataValue="1"/>
+        <changes xsi:type="history:Set" element="node2.ecore#//Node/links" featureName="eType"
+            referenceValue="node2.ecore#//Node"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2012-06-02T17:57:54.660+0200" label="v2">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="node2.ecore#//Node/links" featureName="name"
+          dataValue="links" oldDataValue="refs"/>
+      <operation name="rename">
+        <parameters name="element">
+          <referenceValue element="node2.ecore#//Node/links"/>
+        </parameters>
+        <parameters name="name">
+          <dataValue>links</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="node2.ecore#/" featureName="nsURI" dataValue="node/v2"
+        oldDataValue="node/v1"/>
+  </releases>
+  <releases/>
+</history:History>

@@ -29,8 +29,8 @@ import org.eclipse.emf.edapt.migration.MigrationPlugin;
  * a Eclipse extension.
  * 
  * @author herrmama
- * @author $Author: mherrmannsd $
- * @version $Rev: 117 $
+ * @author $Author$
+ * @version $Rev$
  * @levd.rating YELLOW Hash: 5D6B6EEEA0BB217D3762F008E642AA6F
  */
 public class OperationRegistry {
@@ -134,6 +134,8 @@ public class OperationRegistry {
 				IConfigurationElement configurationElement = configurationElements[i];
 				register(configurationElement);
 			}
+		} else {
+			registerLibrary(BaseLibrary.class);
 		}
 	}
 
@@ -141,8 +143,8 @@ public class OperationRegistry {
 	@SuppressWarnings("unchecked")
 	private void register(IConfigurationElement configurationElement) {
 		try {
-			Class c = configurationElement.createExecutableExtension(
-					"class").getClass();
+			Class c = configurationElement.createExecutableExtension("class")
+					.getClass();
 			if ("operation".equals(configurationElement.getName())) {
 				registerOperation(c);
 			} else if ("library".equals(configurationElement.getName())) {
@@ -216,7 +218,7 @@ public class OperationRegistry {
 	public List<Library> getRootLibraries() {
 		return new ArrayList<Library>(rootLibrary.getLibraries());
 	}
-	
+
 	/** Get the root operations. */
 	public List<Operation> getRootOperations() {
 		return new ArrayList<Operation>(rootLibrary.getOperations());

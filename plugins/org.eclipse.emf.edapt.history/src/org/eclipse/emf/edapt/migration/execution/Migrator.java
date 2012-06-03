@@ -29,7 +29,9 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
+import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
@@ -68,6 +70,9 @@ public class Migrator {
 
 	/** Classloader to load {@link CustomMigration}s. */
 	private final IClassLoader classLoader;
+
+	/** Factory to create {@link ResourceSet}s for custom serialization. */
+	private IResourceSetFactory resourceSetFactory = new ResourceSetFactoryImpl();
 
 	/** Validation level. */
 	private ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
@@ -227,7 +232,7 @@ public class Migrator {
 					URI.createFileURI("test"));
 			MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
 					modelURIs, sourceRelease, targetRelease, monitor,
-					classLoader, level);
+					classLoader, level, resourceSetFactory);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
@@ -355,5 +360,17 @@ public class Migrator {
 			System.err.println(e.getMessage());
 			System.err.println(e.getCause().getMessage());
 		}
+	}
+
+	/** Set the factory to create {@link ResourceSet}s for custom serialization. */
+	public void setResourceSetFactory(IResourceSetFactory resourceSetFactory) {
+		if (resourceSetFactory != null) {
+			this.resourceSetFactory = resourceSetFactory;
+		}
+	}
+
+	/** Get the factory to create {@link ResourceSet}s for custom serialization. */
+	public IResourceSetFactory getResourceSetFactory() {
+		return resourceSetFactory;
 	}
 }
