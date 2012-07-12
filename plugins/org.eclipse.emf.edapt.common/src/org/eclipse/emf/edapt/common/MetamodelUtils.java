@@ -77,6 +77,7 @@ public final class MetamodelUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <V extends EModelElement> V copy(V modelElement) {
+		@SuppressWarnings("serial")
 		Copier copier = new Copier() {
 			@Override
 			protected void copyReference(EReference eReference,
@@ -186,6 +187,7 @@ public final class MetamodelUtils {
 		final ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.createResource(metamodelURI);
 
+		@SuppressWarnings("serial")
 		Copier copier = new Copier() {
 			@Override
 			protected void copyReference(EReference reference, EObject object,
