@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edapt</groupId>
+  <artifactId>plugins</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>edapt</groupId>
+    <artifactId>root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../builds/org.eclipse.emf.edapt.releng</relativePath>  
+  </parent>
+  <modules>
+    <module>org.eclipse.emf.edapt.common</module>
+    <module>org.eclipse.emf.edapt.common.ui</module>
+    <module>org.eclipse.emf.edapt.declaration</module>
+    <module>org.eclipse.emf.edapt.declaration.edit</module>
+    <module>org.eclipse.emf.edapt.declaration.editor</module>
+    <module>org.eclipse.emf.edapt.history</module>
+    <module>org.eclipse.emf.edapt.history.edit</module>
+    <module>org.eclipse.emf.edapt.history.editor</module>
+    <module>org.eclipse.emf.edapt.migration</module>
+    <module>org.eclipse.emf.edapt.migration.test</module>
+    <module>org.eclipse.emf.edapt.migration.ui</module>
+  </modules>
+</project>
