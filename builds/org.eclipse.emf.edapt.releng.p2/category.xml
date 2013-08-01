@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eclipse.emf.edapt.runtime.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.runtime.feature" version="0.3.0.qualifier"/>
+   <feature url="features/org.eclipse.emf.edapt.recorder.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.recorder.feature" version="0.3.0.qualifier"/>
+</site>
