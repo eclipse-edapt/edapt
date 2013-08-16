@@ -17,4 +17,4 @@
 #
 # SSH Authentication: 
 # 		Add -o IdentityFile=/Users/Christophe/.ssh/id_rsa
-scp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository $HUDSON_USER@build.eclipse.org:downloads/edapt/p2
+# scp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository $HUDSON_USER@build.eclipse.org:downloads/edapt/p2
