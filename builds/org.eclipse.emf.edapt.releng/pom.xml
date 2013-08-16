@@ -37,5 +37,7 @@
 	</build>
 	<modules>
 		<module>../../plugins</module>
+		<module>../../features</module>
+		<module>../org.eclipse.emf.edapt.releng.p2</module>
 	</modules>
 </project>
