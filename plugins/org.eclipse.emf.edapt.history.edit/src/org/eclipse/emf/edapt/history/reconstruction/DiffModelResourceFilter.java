@@ -11,8 +11,10 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.ResourceDependencyChange;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.ResourceDependencyChange;
 
 /**
  * A filter for diff models that filters out changes which span resources
@@ -28,10 +30,11 @@ public class DiffModelResourceFilter implements IDiffModelFilter {
 	public static final DiffModelResourceFilter INSTANCE = new DiffModelResourceFilter();
 
 	/** {@inheritDoc} */
-	public boolean select(DiffElement element) {
-		if (element instanceof ResourceDependencyChange) {
-			return false;
-		}
-		return true;
-	}
+	// CB Migrate
+//	public boolean select(DiffElement element) {
+//		if (element instanceof ResourceDependencyChange) {
+//			return false;
+//		}
+//		return true;
+//	}
 }

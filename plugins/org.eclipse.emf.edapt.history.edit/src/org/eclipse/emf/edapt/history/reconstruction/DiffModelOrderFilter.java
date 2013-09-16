@@ -11,8 +11,8 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.ReferenceOrderChange;
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.ReferenceOrderChange;
 
 /**
  * A filter for diff models that filters out changes of the order.
@@ -28,7 +28,9 @@ public class DiffModelOrderFilter implements IDiffModelFilter {
 	public static final DiffModelOrderFilter INSTANCE = new DiffModelOrderFilter();
 
 	/** {@inheritDoc} */
-	public boolean select(DiffElement element) {
-		return !(element instanceof ReferenceOrderChange);
-	}
+	
+	// CB Migrate
+//	public boolean select(DiffElement element) {
+//		return !(element instanceof ReferenceOrderChange);
+//	}
 }

@@ -122,8 +122,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.ui.ide"/>
       <import plugin="org.eclipse.emf.ecore.xmi"/>
       <import plugin="org.eclipse.emf.edapt.history"/>
-      <import plugin="org.eclipse.emf.compare.diff"/>
-      <import plugin="org.eclipse.emf.compare.match"/>
       <import plugin="org.junit"/>
       <import plugin="org.eclipse.core.expressions"/>
       <import plugin="org.eclipse.jdt.ui"/>
@@ -135,6 +133,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <import plugin="org.eclipse.jdt.launching"/>
       <import plugin="org.eclipse.debug.ui"/>
       <import plugin="org.eclipse.jdt.debug.ui"/>
+      <import plugin="org.eclipse.emf.compare"/>
    </requires>
 
    <plugin

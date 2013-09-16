@@ -56,21 +56,26 @@ public class CheckIntegrityHandler extends AbstractHandler {
 			String title = "Integrity check of history failed";
 			String message = "This dialog shows the differences between the current metamodel version"
 					+ "and the one reconstructed from the history";
-
-			ModelDialog diffDialog = new ModelDialog(checker.getDiffModel(),
-					title, message);
-			if (diffDialog.open() == IDialogConstants.OK_ID) {
-				CommandStack commandStack = editor.getEditingDomain()
-						.getCommandStack();
-
-				RepairMetamodelIntegrityCommand metamodelCommand = new RepairMetamodelIntegrityCommand(
-						history.getRootPackages(), checker.getDiffModel());
-				commandStack.execute(metamodelCommand);
-
-				RepairHistoryIntegrityCommand integrityCommand = new RepairHistoryIntegrityCommand(
-						metamodelCommand);
-				commandStack.execute(integrityCommand);
-			}
+			
+			
+			// CB Migrate
+			
+			System.out.println("CB Migrate model dialog to repair integrity of the model");
+//			ModelDialog diffDialog = new ModelDialog(checker.getDiffModel(),
+//					title, message);
+//			
+//			if (diffDialog.open() == IDialogConstants.OK_ID) {
+//				CommandStack commandStack = editor.getEditingDomain()
+//						.getCommandStack();
+//
+//				RepairMetamodelIntegrityCommand metamodelCommand = new RepairMetamodelIntegrityCommand(
+//						history.getRootPackages(), checker.getDiffModel());
+//				commandStack.execute(metamodelCommand);
+//
+//				RepairHistoryIntegrityCommand integrityCommand = new RepairHistoryIntegrityCommand(
+//						metamodelCommand);
+//				commandStack.execute(integrityCommand);
+//			}
 		}
 
 		return null;

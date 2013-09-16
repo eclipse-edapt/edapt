@@ -14,10 +14,12 @@ package org.eclipse.emf.edapt.history.reconstruction;
 import java.util.Collections;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
-import org.eclipse.emf.compare.diff.service.DiffService;
-import org.eclipse.emf.compare.match.metamodel.MatchResourceSet;
-import org.eclipse.emf.compare.match.service.MatchService;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+//import org.eclipse.emf.compare.diff.service.DiffService;
+//import org.eclipse.emf.compare.match.metamodel.MatchResourceSet;
+//import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.history.History;
@@ -45,7 +47,9 @@ public class IntegrityChecker {
 	 * Difference model between the reconstructed and current version of the
 	 * metamodel.
 	 */
-	private DiffResourceSet diffResourceSet;
+	
+	// CB Migrate
+//	private DiffResourceSet diffResourceSet;
 
 	/** Constructor. */
 	public IntegrityChecker(History history) {
@@ -58,35 +62,49 @@ public class IntegrityChecker {
 	 * @return true if check succeeds
 	 */
 	public boolean check() {
-		try {
+		
+		
+		
+		 
+		
+		
+//		try {
 			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 					URI.createFileURI("reconstructed"));
 			reconstructor.reconstruct(history.getLastRelease(), false);
 
 			Resource originalResource = HistoryUtils.getRootResource(history
 					.eResource().getResourceSet());
-
-			MatchResourceSet matchResourceSet = MatchService
-					.doResourceSetMatch(originalResource.getResourceSet(),
-							reconstructor.getResourceSet(), Collections
-									.<String, Object> emptyMap());
-			diffResourceSet = DiffService.doDiff(matchResourceSet);
-
-			IDiffModelFilter filter = DiffModelFilterUtils.and(
-					DiffModelOrderFilter.INSTANCE,
-					DiffModelResourceFilter.INSTANCE);
-			DiffModelFilterUtils.filter(diffResourceSet, filter);
-
-			return ModelAssert.numberOfChanges(diffResourceSet) == 0;
-		} catch (InterruptedException e) {
-			LoggingUtils.logError(HistoryEditPlugin.getPlugin(),
-					e);
-			return false;
-		}
+			
+			
+			
+			
+			// Migrate, this 
+//			MatchResourceSet matchResourceSet = MatchService
+//					.doResourceSetMatch(originalResource.getResourceSet(),
+//							reconstructor.getResourceSet(), Collections
+//									.<String, Object> emptyMap());
+//			diffResourceSet = DiffService.doDiff(matchResourceSet);
+//
+//			IDiffModelFilter filter = DiffModelFilterUtils.and(
+//					DiffModelOrderFilter.INSTANCE,
+//					DiffModelResourceFilter.INSTANCE);
+//			DiffModelFilterUtils.filter(diffResourceSet, filter);
+//
+//			return ModelAssert.numberOfChanges(diffResourceSet) == 0;
+//		} catch (InterruptedException e) {
+//			LoggingUtils.logError(HistoryEditPlugin.getPlugin(),
+//					e);
+//			return false;
+//		}
+			
+			
+			// CB Remove later. 
+			return true;
 	}
 
 	/** Returns diffModel. */
-	public DiffResourceSet getDiffModel() {
-		return diffResourceSet;
-	}
+//	public DiffResourceSet getDiffModel() {
+//		return diffResourceSet;
+//	}
 }

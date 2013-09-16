@@ -219,9 +219,9 @@ public class ReplaceDialog extends ResizeableDialogBase {
 					+ "The differences between the state of the metamodel after the primitive changes "
 					+ "and the state of the metamodel after the instantiation of the operation is shown below.";
 
-			ModelDialog diffDialog = new ModelDialog(command.getDiff(), title,
-					message);
-			diffDialog.open();
+//			ModelDialog diffDialog = new ModelDialog(command.getDiff(), title,
+//					message);
+//			diffDialog.open();
 		}
 	}
 

@@ -20,7 +20,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.declaration.edit;visibility:=reexport,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.edit;visibility:=reexport,
- org.eclipse.emf.compare.diff;bundle-version="1.0.1",
- org.eclipse.emf.compare.match;bundle-version="1.0.1",
- org.junit
+ org.junit,
+ org.eclipse.emf.compare;bundle-version="3.0.0"
 Bundle-ActivationPolicy: lazy

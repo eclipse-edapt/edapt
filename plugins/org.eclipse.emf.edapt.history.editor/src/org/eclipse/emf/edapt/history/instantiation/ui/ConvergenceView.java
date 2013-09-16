@@ -22,16 +22,18 @@ import java.util.Set;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStackListener;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.merge.EMFCompareEObjectCopier;
-import org.eclipse.emf.compare.diff.merge.service.MergeService;
-import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSnapshot;
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.DiffFactory;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.service.DiffService;
-import org.eclipse.emf.compare.match.metamodel.Match2Elements;
-import org.eclipse.emf.compare.match.metamodel.MatchModel;
-import org.eclipse.emf.compare.match.service.MatchService;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.merge.EMFCompareEObjectCopier;
+//import org.eclipse.emf.compare.diff.merge.service.MergeService;
+//import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSnapshot;
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.DiffFactory;
+//import org.eclipse.emf.compare.diff.metamodel.DiffModel;
+//import org.eclipse.emf.compare.diff.service.DiffService;
+//import org.eclipse.emf.compare.match.metamodel.Match2Elements;
+//import org.eclipse.emf.compare.match.metamodel.MatchModel;
+//import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -145,7 +147,9 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 	/**
 	 * Set of breaking changes
 	 */
-	private Set<DiffElement> breakingChanges;
+	
+	// CB Migrate. 
+//	private Set<DiffElement> breakingChanges;
 
 	/**
 	 * Whether synchronization is turned on or off
@@ -211,19 +215,24 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 			public void doubleClick(DoubleClickEvent event) {
 				if(event.getSelection() instanceof IStructuredSelection) {
 					IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-					if(selection.getFirstElement() instanceof DiffElement) {
-						final DiffElement element = (DiffElement) selection.getFirstElement();
-						
-						editor.getEditingDomain().getCommandStack().execute(new ChangeCommand(editor.getEditingDomain().getResourceSet()) {
-
-							@Override
-							protected void doExecute() {
-										fixCopier();
-										MergeService.merge(element, true);
-							}
-							
-						});
-					}
+					
+					System.out.println("DifferenViewer doubleclick, selection" + selection);
+					// CB Migrate
+					// Execute a change command on the editor editing domain. 
+					
+//					if(selection.getFirstElement() instanceof DiffElement) {
+//						final DiffElement element = (DiffElement) selection.getFirstElement();
+//						
+//						editor.getEditingDomain().getCommandStack().execute(new ChangeCommand(editor.getEditingDomain().getResourceSet()) {
+//
+//							@Override
+//							protected void doExecute() {
+//										fixCopier();
+//										MergeService.merge(element, true);
+//							}
+//							
+//						});
+//					}
 				}
 			}
 		});
@@ -279,7 +288,9 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 				differenceSash.getStructureViewer().getTree().removeSelectionListener(selectionAdapter);
 			}
 			this.editor = null;
-			breakingChanges = null;
+			
+			// CB Migrate
+//			breakingChanges = null;
 		}
 	}
 
@@ -329,69 +340,81 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 	 * Refresh viewer contents
 	 */
 	private void refresh() {
-		try {
+//		try {
 			refresh = true;
+				
 			
-			ComparisonResourceSnapshot snapshot = compare();
+			// CB Migrate, we need a comparison snapshot here. 
+			
+			
+//			ComparisonResourceSnapshot snapshot = compare();
 
-			if (ModelAssert.numberOfChanges(snapshot.getDiff()) == 0) {
-				if(targetResource != null) {
-					URI targetURI = targetResource.getURI();
-					Integer number = extractNumber(targetURI);
-					if(number != null) {
-						addMarker(number+1);
-						String name = targetURI.lastSegment().replace(number.toString(), "" + (number+1));
-						try {
-							targetURI = targetURI.trimSegments(1).appendSegment(name);
-							
-							ResourceSet resourceSet;
-							resourceSet = ResourceUtils.loadResourceSet(targetURI);
-							targetResource = resourceSet.getResources().get(0);
-							
-							targetSash.getStructureViewer().setInput(targetResource);
-							targetSash.getStructureViewer().expandToLevel(2);
+//			if (ModelAssert.numberOfChanges(snapshot.getDiff()) == 0) {
+//				if(targetResource != null) {
+//					URI targetURI = targetResource.getURI();
+//					Integer number = extractNumber(targetURI);
+//					if(number != null) {
+//						addMarker(number+1);
+//						String name = targetURI.lastSegment().replace(number.toString(), "" + (number+1));
+//						try {
+//							targetURI = targetURI.trimSegments(1).appendSegment(name);
+//							
+//							ResourceSet resourceSet;
+//							resourceSet = ResourceUtils.loadResourceSet(targetURI);
+//							targetResource = resourceSet.getResources().get(0);
+//							
+//							targetSash.getStructureViewer().setInput(targetResource);
+//							targetSash.getStructureViewer().expandToLevel(2);
+//
+//							snapshot = compare();
+//						} catch (IOException e) {
+//							// ignore
+//						}
+//					}
+//				}
+//			}
 
-							snapshot = compare();
-						} catch (IOException e) {
-							// ignore
-						}
-					}
-				}
-			}
+//			initMapping(snapshot.getMatch());
+//			calculateBreaking(snapshot.getDiff());
 
-			initMapping(snapshot.getMatch());
-			calculateBreaking(snapshot.getDiff());
-
-			differenceSash.getStructureViewer().setInput(snapshot.getDiff());
+//			differenceSash.getStructureViewer().setInput(snapshot.getDiff());
+			
+			
+			
 			differenceSash.getStructureViewer().expandToLevel(3);
 			
-		} catch (InterruptedException e) {
-			LoggingUtils
-					.logError(HistoryEditorPlugin.getPlugin(), e);
-		} finally {
-			refresh = false;
-		}
+//		} catch (InterruptedException e) {
+//			LoggingUtils
+//					.logError(HistoryEditorPlugin.getPlugin(), e);
+//		} finally {
+//			refresh = false;
+//		}
 	}
 	
+	
 	/** Compare source and target resource. */
-	private ComparisonResourceSnapshot compare() throws InterruptedException {
-		ComparisonResourceSnapshot snapshot = DiffFactory.eINSTANCE
-				.createComparisonResourceSnapshot();
-
-		MatchModel match = MatchService.doResourceMatch(targetResource,
-				sourceResource, null);
-		DiffModel diff = DiffService.doDiff(match);
-		IDiffModelFilter filter = DiffModelFilterUtils
-				.and(DiffModelOrderFilter.INSTANCE,
-						DiffModelResourceFilter.INSTANCE);
-		DiffModelFilterUtils.filter(diff, filter);
-
-		snapshot.setMatch(match);
-		snapshot.setDiff(diff);
-
-		return snapshot;
-
-	}
+// CB Migrate
+// Returns a comparison snapshot. 
+	
+	
+//	private ComparisonResourceSnapshot compare() throws InterruptedException {
+//		ComparisonResourceSnapshot snapshot = DiffFactory.eINSTANCE
+//				.createComparisonResourceSnapshot();
+//
+//		MatchModel match = MatchService.doResourceMatch(targetResource,
+//				sourceResource, null);
+//		DiffModel diff = DiffService.doDiff(match);
+//		IDiffModelFilter filter = DiffModelFilterUtils
+//				.and(DiffModelOrderFilter.INSTANCE,
+//						DiffModelResourceFilter.INSTANCE);
+//		DiffModelFilterUtils.filter(diff, filter);
+//
+//		snapshot.setMatch(match);
+//		snapshot.setDiff(diff);
+//
+//		return snapshot;
+//
+//	}
 
 	/**
 	 * Add a marker with the current revision number to the history
@@ -413,18 +436,21 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 	/**
 	 * Initialize the mapping
 	 */
-	private void initMapping(MatchModel match) {
-		mapping = new Mapping();
-		for(Iterator<EObject> i = match.eAllContents(); i.hasNext(); ) {
-			EObject element = i.next();
-			if(element instanceof Match2Elements) {
-				Match2Elements match2Elements = (Match2Elements) element;
-				mapping.map(match2Elements.getRightElement(), match2Elements
-						.getLeftElement());
-			}
-		}
-		selectionAdapter.setMapping(mapping);
-	}
+	
+	
+	// CB Migrate
+//	private void initMapping(MatchModel match) {
+//		mapping = new Mapping();
+//		for(Iterator<EObject> i = match.eAllContents(); i.hasNext(); ) {
+//			EObject element = i.next();
+//			if(element instanceof Match2Elements) {
+//				Match2Elements match2Elements = (Match2Elements) element;
+//				mapping.map(match2Elements.getRightElement(), match2Elements
+//						.getLeftElement());
+//			}
+//		}
+//		selectionAdapter.setMapping(mapping);
+//	}
 
 	/**
 	 * {@inheritDoc}
@@ -458,29 +484,31 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 	/**
 	 * Calculate the breaking changes
 	 */
-	public void calculateBreaking(DiffModel model) {
-
-		breakingChanges = new HashSet<DiffElement>();
-		BreakingSwitch s = new BreakingSwitch();
-		
-		for(Iterator<EObject> i = model.eAllContents(); i.hasNext(); ) {
-			EObject eObject = i.next();
-			if(eObject instanceof DiffElement) {
-				DiffElement element = (DiffElement) eObject;
-				boolean breaking = s.doSwitch(element);
-				if(breaking) {
-					breakingChanges.add(element);
-				}
-			}
-		}
-		
-		for(DiffElement change : new HashSet<DiffElement>(breakingChanges)) {
-			while(change.eContainer() != null && change.eContainer() instanceof DiffElement) {
-				change = (DiffElement) change.eContainer();
-				breakingChanges.add(change);
-			}
-		}
-	}
+	
+	// CB Migrate
+//	public void calculateBreaking(DiffModel model) {
+//
+//		breakingChanges = new HashSet<DiffElement>();
+//		BreakingSwitch s = new BreakingSwitch();
+//		
+//		for(Iterator<EObject> i = model.eAllContents(); i.hasNext(); ) {
+//			EObject eObject = i.next();
+//			if(eObject instanceof DiffElement) {
+//				DiffElement element = (DiffElement) eObject;
+//				boolean breaking = s.doSwitch(element);
+//				if(breaking) {
+//					breakingChanges.add(element);
+//				}
+//			}
+//		}
+//		
+//		for(DiffElement change : new HashSet<DiffElement>(breakingChanges)) {
+//			while(change.eContainer() != null && change.eContainer() instanceof DiffElement) {
+//				change = (DiffElement) change.eContainer();
+//				breakingChanges.add(change);
+//			}
+//		}
+//	}
 	
 	/**
 	 * Extract the revision number from the URI
@@ -529,41 +557,43 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 	/**
 	 * Fix the copier of EMF Compare
 	 */
-	private void fixCopier() {
-		try {
-			DiffModel diff = (DiffModel) differenceSash.getStructureViewer()
-					.getInput();
-			Field field = MergeService.class
-					.getDeclaredField("copier");
-			field.setAccessible(true);
-				field.set(null, new EMFCompareEObjectCopier(diff) {
-					@Override
-					public EObject get(Object key) {
-					EObject value = super.get(key);
-					if (value == null) {
-						if (key instanceof EDataType) {
-							EDataType type = (EDataType) key;
-							EPackage ePackage = type.getEPackage();
-							if (ePackage == EcorePackage.eINSTANCE) {
-								value = type;
-							}
-						} else if (key instanceof EObject) {
-							value = mapping.getSource((EObject) key);
-							}
-					}
-						return value;
-									}
-				});
-		} catch (SecurityException e) {
-			// ignore
-		} catch (NoSuchFieldException e) {
-			// ignore
-		} catch (IllegalArgumentException e) {
-			// ignore
-		} catch (IllegalAccessException e) {
-			// ignore
-		}
-	}
+	
+	// CB Migrate
+//	private void fixCopier() {
+//		try {
+//			DiffModel diff = (DiffModel) differenceSash.getStructureViewer()
+//					.getInput();
+//			Field field = MergeService.class
+//					.getDeclaredField("copier");
+//			field.setAccessible(true);
+//				field.set(null, new EMFCompareEObjectCopier(diff) {
+//					@Override
+//					public EObject get(Object key) {
+//					EObject value = super.get(key);
+//					if (value == null) {
+//						if (key instanceof EDataType) {
+//							EDataType type = (EDataType) key;
+//							EPackage ePackage = type.getEPackage();
+//							if (ePackage == EcorePackage.eINSTANCE) {
+//								value = type;
+//							}
+//						} else if (key instanceof EObject) {
+//							value = mapping.getSource((EObject) key);
+//							}
+//					}
+//						return value;
+//									}
+//				});
+//		} catch (SecurityException e) {
+//			// ignore
+//		} catch (NoSuchFieldException e) {
+//			// ignore
+//		} catch (IllegalArgumentException e) {
+//			// ignore
+//		} catch (IllegalAccessException e) {
+//			// ignore
+//		}
+//	}
 
 	/**
 	 * Decorator for breaking changes
@@ -591,9 +621,11 @@ public class ConvergenceView extends ViewPart implements CommandStackListener,
 		 * {@inheritDoc}
 		 */
 		public Color decorateForeground(Object element) {
-			if(breakingChanges.contains(element)) {
-				return red;
-			}
+			
+// CB Migrate			
+//			if(breakingChanges.contains(element)) {
+//				return red;
+//			}
 			return null;
 		}
 

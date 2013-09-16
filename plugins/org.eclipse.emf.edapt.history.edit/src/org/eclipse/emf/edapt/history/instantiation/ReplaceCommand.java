@@ -15,7 +15,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+// CB Migrate
+//import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
 import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -33,7 +34,8 @@ import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edapt.history.reconstruction.DiffModelFilterUtils;
 import org.eclipse.emf.edapt.history.reconstruction.DiffModelOrderFilter;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.history.reconstruction.HistoryComparer;
+// CB Migrate
+//import org.eclipse.emf.edapt.history.reconstruction.HistoryComparer;
 import org.eclipse.emf.edapt.history.reconstruction.IDiffModelFilter;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
 import org.eclipse.emf.edit.command.ChangeCommand;
@@ -56,7 +58,8 @@ public class ReplaceCommand extends ChangeCommand {
 	private final OperationInstance operation;
 
 	/** Difference model. */
-	private DiffResourceSet diff;
+	// CB Migrate
+//	private DiffResourceSet diff;
 
 	/** Constructor. */
 	public ReplaceCommand(List<PrimitiveChange> changes,
@@ -70,35 +73,41 @@ public class ReplaceCommand extends ChangeCommand {
 	/** {@inheritDoc} */
 	@Override
 	protected boolean prepare() {
-		diff = calculateDifference(operation);
-		IDiffModelFilter filter = DiffModelFilterUtils
-				.and(DiffModelOrderFilter.INSTANCE);
-		DiffModelFilterUtils.filter(diff, filter);
-		boolean validReplacement = ModelAssert.numberOfChanges(diff) == 0;
-		return validReplacement && super.prepare();
+		
+		
+		return false;
+		
+		// CB Migrate
+//		diff = calculateDifference(operation);
+//		IDiffModelFilter filter = DiffModelFilterUtils
+//				.and(DiffModelOrderFilter.INSTANCE);
+//		DiffModelFilterUtils.filter(diff, filter);
+//		boolean validReplacement = ModelAssert.numberOfChanges(diff) == 0;
+//		return validReplacement && super.prepare();
 	}
 
 	/**
 	 * Compare the metamodel after the sequence of changes with the metamodel
 	 * before the sequence of changes on which the operation was executed.
 	 */
-	private DiffResourceSet calculateDifference(OperationInstance operation) {
-
-		EcoreForwardReconstructor current = new EcoreForwardReconstructor(URI
-				.createFileURI("current"));
-		current.reconstruct(changes.get(changes.size() - 1), false);
-
-		EcoreForwardReconstructor replaced = new EcoreForwardReconstructor(URI
-				.createFileURI("replaced"));
-		replaced.reconstruct(changes.get(0), true);
-
-		tryOperation(operation, current, replaced);
-
-		HistoryComparer differ = new HistoryComparer(current, replaced);
-		DiffResourceSet diff = differ.compare().getDiffResourceSet();
-
-		return diff;
-	}
+	// CB Migrate
+//	private DiffResourceSet calculateDifference(OperationInstance operation) {
+//
+//		EcoreForwardReconstructor current = new EcoreForwardReconstructor(URI
+//				.createFileURI("current"));
+//		current.reconstruct(changes.get(changes.size() - 1), false);
+//
+//		EcoreForwardReconstructor replaced = new EcoreForwardReconstructor(URI
+//				.createFileURI("replaced"));
+//		replaced.reconstruct(changes.get(0), true);
+//
+//		tryOperation(operation, current, replaced);
+//
+//		HistoryComparer differ = new HistoryComparer(current, replaced);
+//		DiffResourceSet diff = differ.compare().getDiffResourceSet();
+//
+//		return diff;
+//	}
 
 	/** Try to execute the operation. */
 	private void tryOperation(OperationInstance operation,
@@ -170,7 +179,8 @@ public class ReplaceCommand extends ChangeCommand {
 	}
 
 	/** Returns difference model. */
-	public DiffResourceSet getDiff() {
-		return diff;
-	}
+	// CB Migrate
+//	public DiffResourceSet getDiff() {
+//		return diff;
+//	}
 }

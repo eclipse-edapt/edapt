@@ -13,10 +13,14 @@ package org.eclipse.emf.edapt.history.reconstruction;
 
 import java.util.ArrayList;
 
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
+//import org.eclipse.emf.compare.diff.metamodel.DiffModel;
+//import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -36,34 +40,39 @@ public final class DiffModelFilterUtils {
 	}
 
 	/** Filter a diff model. */
-	public static DiffModel filter(DiffModel model, IDiffModelFilter filter) {
-		doFilter(model, filter);
-		return model;
-	}
+	// CB Migrate
+//	public static DiffModel filter(DiffModel model, IDiffModelFilter filter) {
+//		doFilter(model, filter);
+//		return model;
+//	}
 
 	/** Filter a diff model. */
-	public static DiffResourceSet filter(DiffResourceSet model,
-			IDiffModelFilter filter) {
-		doFilter(model, filter);
-		return model;
-	}
+	
+	// CB Migrate
+//	public static DiffResourceSet filter(DiffResourceSet model,
+//			IDiffModelFilter filter) {
+//		doFilter(model, filter);
+//		return model;
+//	}
 
 	/** Perform filtering on an element in a diff model. */
-	private static void doFilter(EObject element, IDiffModelFilter filter) {
-		for (EObject child : new ArrayList<EObject>(element.eContents())) {
-			if (child instanceof DiffElement
-					&& !filter.select((DiffElement) child)) {
-				EcoreUtil.delete(child);
-				continue;
-			}
-			doFilter(child, filter);
-			if (child instanceof DiffGroup) {
-				if (child.eContents().isEmpty()) {
-					EcoreUtil.delete(child);
-				}
-			}
-		}
-	}
+	
+	// CB Migrate
+//	private static void doFilter(EObject element, IDiffModelFilter filter) {
+//		for (EObject child : new ArrayList<EObject>(element.eContents())) {
+//			if (child instanceof DiffElement
+//					&& !filter.select((DiffElement) child)) {
+//				EcoreUtil.delete(child);
+//				continue;
+//			}
+//			doFilter(child, filter);
+//			if (child instanceof DiffGroup) {
+//				if (child.eContents().isEmpty()) {
+//					EcoreUtil.delete(child);
+//				}
+//			}
+//		}
+//	}
 
 	/**
 	 * Create a filter from a number of filters that only selects an element if
@@ -71,14 +80,16 @@ public final class DiffModelFilterUtils {
 	 */
 	public static <E> IDiffModelFilter and(final IDiffModelFilter... filters) {
 		return new IDiffModelFilter() {
-			public boolean select(DiffElement element) {
-				for (IDiffModelFilter filter : filters) {
-					if (!filter.select(element)) {
-						return false;
-					}
-				}
-				return true;
-			}
+			
+			// CB Migrate
+//			public boolean select(DiffElement element) {
+//				for (IDiffModelFilter filter : filters) {
+//					if (!filter.select(element)) {
+//						return false;
+//					}
+//				}
+//				return true;
+//			}
 		};
 	}
 }

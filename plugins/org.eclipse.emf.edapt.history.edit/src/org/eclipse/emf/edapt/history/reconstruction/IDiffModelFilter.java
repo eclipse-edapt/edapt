@@ -11,7 +11,8 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+// CB TODO Migrate
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
 
 /**
  * Interface to filter difference models.
@@ -24,5 +25,5 @@ import org.eclipse.emf.compare.diff.metamodel.DiffElement;
 public interface IDiffModelFilter {
 
 	/** Check whether an element should not be filtered out. */
-	boolean select(DiffElement element);
+//	boolean select(DiffElement element);
 }

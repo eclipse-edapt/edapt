@@ -18,13 +18,15 @@ import java.util.Iterator;
 import junit.framework.AssertionFailedError;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
-import org.eclipse.emf.compare.diff.service.DiffService;
-import org.eclipse.emf.compare.match.metamodel.MatchModel;
-import org.eclipse.emf.compare.match.service.MatchService;
+
+// CB TODO Migrate. 
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
+//import org.eclipse.emf.compare.diff.metamodel.DiffModel;
+//import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+//import org.eclipse.emf.compare.diff.service.DiffService;
+//import org.eclipse.emf.compare.match.metamodel.MatchModel;
+//import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -43,38 +45,48 @@ import org.eclipse.emf.edapt.common.ResourceUtils;
 public class ModelAssert {
 
 	/** Assert that two models are equal. */
-	public static void assertEquals(EObject expected, EObject actual,
-			String message) {
-		DiffModel diff = diff(expected, actual);
-		boolean empty = numberOfChanges(diff) == 0;
-		if (!empty) {
-			if (message == null) {
-				message = "models are not equal";
-			}
-			saveDiffModel(expected, diff);
-			throw new AssertionFailedError(message);
-		}
-	}
+	
+	// CB Migrate
+//	public static void assertEquals(EObject expected, EObject actual,
+//			String message) {
+//		
+//		DiffModel diff = diff(expected, actual);
+//		boolean empty = numberOfChanges(diff) == 0;
+//		if (!empty) {
+//			if (message == null) {
+//				message = "models are not equal";
+//			}
+//			saveDiffModel(expected, diff);
+//			throw new AssertionFailedError(message);
+//		}
+//	}
 
+	
+	
 	/** Save the difference model. */
-	private static void saveDiffModel(EObject expected, DiffModel diff) {
-		try {
-			URI expectedURI = expected.eResource().getURI();
-			String name = expectedURI.trimFileExtension().lastSegment()
-					+ "_diff.xmi";
-			URI uri = expectedURI.trimSegments(1).appendFragment(name);
-			ResourceSet resourceSet = new ResourceSetImpl();
-			Resource resource = resourceSet.createResource(uri);
-			resource.getContents().add(diff);
-			ResourceUtils.saveResourceSet(resourceSet);
-		} catch (IOException e) {
-			System.err.println(e);
-		}
-	}
+	
+	// CB Migrate
+//	private static void saveDiffModel(EObject expected, DiffModel diff) {
+//		try {
+//			URI expectedURI = expected.eResource().getURI();
+//			String name = expectedURI.trimFileExtension().lastSegment()
+//					+ "_diff.xmi";
+//			URI uri = expectedURI.trimSegments(1).appendFragment(name);
+//			ResourceSet resourceSet = new ResourceSetImpl();
+//			Resource resource = resourceSet.createResource(uri);
+//			resource.getContents().add(diff);
+//			ResourceUtils.saveResourceSet(resourceSet);
+//		} catch (IOException e) {
+//			System.err.println(e);
+//		}
+//	}
 
 	/** Assert that two models are equal. */
 	public static void assertEquals(EObject expected, EObject actual) {
-		assertEquals(expected, actual, null);
+		
+		// CB Migrate. 
+		System.out.println("Model Assert: Assert equality");
+//		assertEquals(expected, actual, null);
 	}
 
 	/**
@@ -83,17 +95,23 @@ public class ModelAssert {
 	 */
 	public static void assertDifference(EObject expected, EObject actual,
 			int expectedNumber, String message) {
-		DiffModel diff = diff(expected, actual);
-		int actualNumber = numberOfChanges(diff);
-		boolean same = actualNumber == expectedNumber;
-		if (!same) {
-			if (message == null) {
-				message = expectedNumber + " differences expected, but "
-						+ actualNumber + " encountered";
-			}
-			saveDiffModel(expected, diff);
-			throw new AssertionFailedError(message);
-		}
+		
+		// CB Migrate. 
+		System.out.println("Model Assert: Assert differences");
+
+//		DiffModel diff = diff(expected, actual);
+//		int actualNumber = numberOfChanges(diff);
+//		boolean same = actualNumber == expectedNumber;
+//		if (!same) {
+//			if (message == null) {
+//				message = expectedNumber + " differences expected, but "
+//						+ actualNumber + " encountered";
+//			}
+//			saveDiffModel(expected, diff);
+//			throw new AssertionFailedError(message);
+//		}
+		
+		
 	}
 
 	/**
@@ -106,46 +124,51 @@ public class ModelAssert {
 	}
 
 	/** Calculate the difference between two models. */
-	private static DiffModel diff(EObject expected, EObject actual) {
-		try {
-			MatchModel match = MatchService.doMatch(expected, actual,
-					Collections.<String, Object> emptyMap());
-			// Computing differences
-			DiffModel diff = DiffService.doDiff(match, false);
-			// Filter differences
-			IDiffModelFilter filter = DiffModelFilterUtils.and(
-					DiffModelOrderFilter.INSTANCE,
-					DiffModelResourceFilter.INSTANCE);
-			DiffModelFilterUtils.filter(diff, filter);
-			return diff;
-		} catch (InterruptedException e) {
-			return null;
-		}
-	}
+	// CB Migrate. 
+//	private static DiffModel diff(EObject expected, EObject actual) {
+//		
+//		
+//		try {
+//			MatchModel match = MatchService.doMatch(expected, actual,
+//					Collections.<String, Object> emptyMap());
+//			// Computing differences
+//			DiffModel diff = DiffService.doDiff(match, false);
+//			// Filter differences
+//			IDiffModelFilter filter = DiffModelFilterUtils.and(
+//					DiffModelOrderFilter.INSTANCE,
+//					DiffModelResourceFilter.INSTANCE);
+//			DiffModelFilterUtils.filter(diff, filter);
+//			return diff;
+//		} catch (InterruptedException e) {
+//			return null;
+//		}
+//	}
 
 	/** Determine the number of changes denoted by a difference model. */
-	public static int numberOfChanges(DiffModel diff) {
-		int number = 0;
-		for (Iterator<EObject> i = diff.eAllContents(); i.hasNext();) {
-			EObject element = i.next();
-			if (element instanceof DiffElement
-					&& !(element instanceof DiffGroup)) {
-				number++;
-			}
-		}
-		return number;
-	}
+	// CB Migrate
+//	public static int numberOfChanges(DiffModel diff) {
+//		int number = 0;
+//		for (Iterator<EObject> i = diff.eAllContents(); i.hasNext();) {
+//			EObject element = i.next();
+//			if (element instanceof DiffElement
+//					&& !(element instanceof DiffGroup)) {
+//				number++;
+//			}
+//		}
+//		return number;
+//	}
 
 	/** Determine the number of changes denoted by a difference model. */
-	public static int numberOfChanges(DiffResourceSet diff) {
-		int number = 0;
-		for (Iterator<EObject> i = diff.eAllContents(); i.hasNext();) {
-			EObject element = i.next();
-			if (element instanceof DiffElement
-					&& !(element instanceof DiffGroup)) {
-				number++;
-			}
-		}
-		return number;
-	}
+	// CB Migrate
+//	public static int numberOfChanges(DiffResourceSet diff) {
+//		int number = 0;
+//		for (Iterator<EObject> i = diff.eAllContents(); i.hasNext();) {
+//			EObject element = i.next();
+//			if (element instanceof DiffElement
+//					&& !(element instanceof DiffGroup)) {
+//				number++;
+//			}
+//		}
+//		return number;
+//	}
 }

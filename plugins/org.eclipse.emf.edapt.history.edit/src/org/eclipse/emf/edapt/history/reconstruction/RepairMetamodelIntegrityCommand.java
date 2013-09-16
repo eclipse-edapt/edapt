@@ -16,10 +16,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.eclipse.emf.compare.diff.merge.service.MergeService;
-import org.eclipse.emf.compare.diff.metamodel.DiffElement;
-import org.eclipse.emf.compare.diff.metamodel.DiffModel;
-import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.merge.service.MergeService;
+//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+//import org.eclipse.emf.compare.diff.metamodel.DiffModel;
+//import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
+
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.change.ChangeDescription;
 import org.eclipse.emf.edapt.history.Change;
@@ -41,24 +44,34 @@ public class RepairMetamodelIntegrityCommand extends ChangeCommand implements
 		IChangeProvider {
 
 	/** Differences between metamodel and history. */
-	private final DiffResourceSet diffResourceSet;
+	
+	
+	// CB Migrate
+//	private final DiffResourceSet diffResourceSet;
 
 	/** Constructor. */
 	@SuppressWarnings("unchecked")
-	public RepairMetamodelIntegrityCommand(Collection<EPackage> rootPackages,
-			DiffResourceSet diffResourceSet) {
+	
+	public RepairMetamodelIntegrityCommand(Collection<EPackage> rootPackages){
 		super((Collection) rootPackages);
-		this.diffResourceSet = diffResourceSet;
 	}
+	
+	
+	// CB Migrate
+//	public RepairMetamodelIntegrityCommand(Collection<EPackage> rootPackages,
+//			DiffResourceSet diffResourceSet) {
+//		super((Collection) rootPackages);
+//		this.diffResourceSet = diffResourceSet;
+//	}
 
 	/** {@inheritDoc} */
 	@Override
 	protected void doExecute() {
-		List<DiffElement> elements = new ArrayList<DiffElement>();
-		for (DiffModel diffModel : diffResourceSet.getDiffModels()) {
-			elements.addAll(diffModel.getOwnedElements());
-		}
-		MergeService.merge(elements, false);
+//		List<DiffElement> elements = new ArrayList<DiffElement>();
+//		for (DiffModel diffModel : diffResourceSet.getDiffModels()) {
+//			elements.addAll(diffModel.getOwnedElements());
+//		}
+//		MergeService.merge(elements, false);
 	}
 
 	/** {@inheritDoc} */

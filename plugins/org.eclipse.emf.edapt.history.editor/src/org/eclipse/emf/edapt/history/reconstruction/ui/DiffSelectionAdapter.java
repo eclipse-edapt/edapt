@@ -11,13 +11,17 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
-import org.eclipse.emf.compare.diff.metamodel.AttributeChange;
-import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
-import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeLeftTarget;
-import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeRightTarget;
-import org.eclipse.emf.compare.diff.metamodel.ReferenceChange;
-import org.eclipse.emf.compare.diff.metamodel.UpdateModelElement;
-import org.eclipse.emf.compare.diff.metamodel.util.DiffSwitch;
+
+// CB Migrate
+//import org.eclipse.emf.compare.diff.metamodel.AttributeChange;
+//import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
+//import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeLeftTarget;
+//import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeRightTarget;
+//import org.eclipse.emf.compare.diff.metamodel.ReferenceChange;
+//import org.eclipse.emf.compare.diff.metamodel.UpdateModelElement;
+//import org.eclipse.emf.compare.diff.metamodel.util.DiffSwitch;
+
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.common.ui.ModelSash;
@@ -94,59 +98,62 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 		Object data = ((TreeItem) e.item).getData();
 		if(data instanceof EObject) {
 			EObject element = (EObject) data;
-			DiffSwitch<Boolean> s = new DiffSwitch<Boolean>() {
-				
-				@Override
-				public Boolean caseDiffGroup(DiffGroup object) {
-					EObject source = object.getRightParent();
-					selectSource(source);
-					if(mapping != null) {
-						selectTarget(mapping.getTarget(source));
-					}
-					return true;
-				}
-				
-				@Override
-				public Boolean caseModelElementChangeLeftTarget(ModelElementChangeLeftTarget object) {
-					selectSource(object.getRightParent());
-					selectTarget(object.getLeftElement());
-					return true;
-				}
-				
-				@Override
-				public Boolean caseModelElementChangeRightTarget(ModelElementChangeRightTarget object) {
-					selectSource(object.getRightElement());
-					selectTarget(object.getLeftParent());
-					return true;
-				}
-				
-				@Override
-				public Boolean caseUpdateModelElement(UpdateModelElement object) {
-					selectSource(object.getRightElement());
-					selectTarget(object.getLeftElement());
-					return true;
-				}
-				
-				@Override
-				public Boolean caseReferenceChange(ReferenceChange object) {
-					selectSource(object.getRightElement());
-					selectTarget(object.getLeftElement());
-					selectSourceProperty(object.getReference());
-					selectTargetProperty(object.getReference());
-					return true;
-				}
-				
-				@Override
-				public Boolean caseAttributeChange(AttributeChange object) {
-					selectSource(object.getRightElement());
-					selectTarget(object.getLeftElement());
-					selectSourceProperty(object.getAttribute());
-					selectTargetProperty(object.getAttribute());
-					return true;
-				}
-
-			};
-			s.doSwitch(element);
+			
+			System.out.println(" Diff Selection adapter widget seelected"); 
+			// CB Migrate, another diffswitch. 
+//			DiffSwitch<Boolean> s = new DiffSwitch<Boolean>() {
+//				
+//				@Override
+//				public Boolean caseDiffGroup(DiffGroup object) {
+//					EObject source = object.getRightParent();
+//					selectSource(source);
+//					if(mapping != null) {
+//						selectTarget(mapping.getTarget(source));
+//					}
+//					return true;
+//				}
+//				
+//				@Override
+//				public Boolean caseModelElementChangeLeftTarget(ModelElementChangeLeftTarget object) {
+//					selectSource(object.getRightParent());
+//					selectTarget(object.getLeftElement());
+//					return true;
+//				}
+//				
+//				@Override
+//				public Boolean caseModelElementChangeRightTarget(ModelElementChangeRightTarget object) {
+//					selectSource(object.getRightElement());
+//					selectTarget(object.getLeftParent());
+//					return true;
+//				}
+//				
+//				@Override
+//				public Boolean caseUpdateModelElement(UpdateModelElement object) {
+//					selectSource(object.getRightElement());
+//					selectTarget(object.getLeftElement());
+//					return true;
+//				}
+//				
+//				@Override
+//				public Boolean caseReferenceChange(ReferenceChange object) {
+//					selectSource(object.getRightElement());
+//					selectTarget(object.getLeftElement());
+//					selectSourceProperty(object.getReference());
+//					selectTargetProperty(object.getReference());
+//					return true;
+//				}
+//				
+//				@Override
+//				public Boolean caseAttributeChange(AttributeChange object) {
+//					selectSource(object.getRightElement());
+//					selectTarget(object.getLeftElement());
+//					selectSourceProperty(object.getAttribute());
+//					selectTargetProperty(object.getAttribute());
+//					return true;
+//				}
+//
+//			};
+//			s.doSwitch(element);
 		}
 	}
 

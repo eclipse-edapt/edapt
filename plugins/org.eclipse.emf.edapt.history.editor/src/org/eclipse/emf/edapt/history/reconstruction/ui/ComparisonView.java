@@ -12,14 +12,14 @@
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSetSnapshot;
+//import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSetSnapshot;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ui.ModelSash;
 import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.CompositeMapping;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
-import org.eclipse.emf.edapt.history.reconstruction.HistoryComparer;
+//import org.eclipse.emf.edapt.history.reconstruction.HistoryComparer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.SashForm;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -62,7 +62,7 @@ public class ComparisonView extends ViewPart {
 	/**
 	 * Difference calculator
 	 */
-	private HistoryComparer comparer;
+//	private HistoryComparer comparer;
 
 	/**
 	 * Adapter for selection of metamodel elements
@@ -131,8 +131,10 @@ public class ComparisonView extends ViewPart {
 		
 		EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(URI.createURI("after"));
 		afterReconstructor.reconstruct(to, false);
-
-		comparer = new HistoryComparer(beforeReconstructor, afterReconstructor);
+		
+		
+		// CB Migrate
+//		comparer = new HistoryComparer(beforeReconstructor, afterReconstructor);
 
 		show();
 	}
@@ -141,18 +143,21 @@ public class ComparisonView extends ViewPart {
 	 * Show the metamodel versions and their difference
 	 */
 	private void show() {
-		beforeSash.getStructureViewer().setInput(comparer.getSourceReconstructor().getResourceSet());
-		beforeSash.getStructureViewer().expandToLevel(3);
 		
-		afterSash.getStructureViewer().setInput(comparer.getTargetReconstructor().getResourceSet());
-		afterSash.getStructureViewer().expandToLevel(3);
+		// CB Migrate
+//		beforeSash.getStructureViewer().setInput(comparer.getSourceReconstructor().getResourceSet());
+//		beforeSash.getStructureViewer().expandToLevel(3);
+//		
+//		afterSash.getStructureViewer().setInput(comparer.getTargetReconstructor().getResourceSet());
+//		afterSash.getStructureViewer().expandToLevel(3);
 		
-		ComparisonResourceSetSnapshot comparison = comparer.compare();
-		CompositeMapping mapping = new CompositeMapping(comparer.getSourceReconstructor().getMapping(), comparer.getTargetReconstructor().getMapping());
-		adapter.setMapping(mapping);
-		differenceSash.getStructureViewer().setInput(
-				comparison.getDiffResourceSet());
-		differenceSash.getStructureViewer().expandToLevel(3);
+//		ComparisonResourceSetSnapshot comparison = comparer.compare();
+		
+//		CompositeMapping mapping = new CompositeMapping(comparer.getSourceReconstructor().getMapping(), comparer.getTargetReconstructor().getMapping());
+//		adapter.setMapping(mapping);
+//		differenceSash.getStructureViewer().setInput(
+//				comparison.getDiffResourceSet());
+//		differenceSash.getStructureViewer().expandToLevel(3);
 	}
 	
 	/**
@@ -165,8 +170,9 @@ public class ComparisonView extends ViewPart {
 		
 		EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(URI.createURI("after"));
 		afterReconstructor.reconstruct(to, false);
-
-		comparer = new HistoryComparer(beforeReconstructor, afterReconstructor);
+		
+		// CB Migrate
+//		comparer = new HistoryComparer(beforeReconstructor, afterReconstructor);
 
 		show();
 	}
