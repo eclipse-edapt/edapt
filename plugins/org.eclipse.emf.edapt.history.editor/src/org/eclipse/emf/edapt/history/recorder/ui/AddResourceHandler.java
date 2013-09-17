@@ -16,13 +16,14 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
+import org.eclipse.emf.edapt.history.instantiation.ui.CreateHistoryWizard;
 import org.eclipse.emf.edapt.history.recorder.AddResourceCommand;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
-
 
 /**
  * Command to add a metamodel to the history.
@@ -40,18 +41,27 @@ public class AddResourceHandler extends AbstractHandler {
 		EditingDomainListener listener = EcoreEditorDetector.getInstance()
 				.getListener(editor);
 
-		ISelection selection = HandlerUtil.getCurrentSelection(event);
-		Resource resource = SelectionUtils.getSelectedElement(selection);
+		if (listener == null) {
+			CreateHistoryWizard wizard = new CreateHistoryWizard(editor);
+			WizardDialog dialog = new WizardDialog(Display.getDefault()
+					.getActiveShell(), wizard);
+			dialog.open();
 
-		AddResourceCommand command = new AddResourceCommand(listener, resource);
-		if (listener.isRecorded(resource)) {
-			MessageDialog.openInformation(
-					Display.getDefault().getActiveShell(),
-					"Metamodel already recorded",
-					"The metamodel is already recorded.");
-			return null;
+		} else {
+
+			ISelection selection = HandlerUtil.getCurrentSelection(event);
+			Resource resource = SelectionUtils.getSelectedElement(selection);
+
+			AddResourceCommand command = new AddResourceCommand(listener,
+					resource);
+			if (listener.isRecorded(resource)) {
+				MessageDialog.openInformation(Display.getDefault()
+						.getActiveShell(), "Metamodel already recorded",
+						"The metamodel is already recorded.");
+				return null;
+			}
+			editor.getEditingDomain().getCommandStack().execute(command);
 		}
-		editor.getEditingDomain().getCommandStack().execute(command);
 		return null;
 	}
 }
