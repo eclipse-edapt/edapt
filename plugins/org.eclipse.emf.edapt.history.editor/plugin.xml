@@ -613,17 +613,20 @@
   <extension
         point="org.eclipse.ui.menus">
      <menuContribution
-           locationURI="toolbar:org.eclipse.emf.edapt.history.instantiation.view.operationsBrowser">
+           locationURI="toolbar:org.eclipse.emf.edapt.history.instantiation.view.operationsBrowser?after=additions">
         <command
               commandId="org.eclipse.emf.edapt.CreateHistory"
+              label="Create History"
               style="push">
         </command>
         <command
               commandId="org.eclipse.emf.edapt.Release"
+              label="Release"
               style="push">
         </command>
         <command
               commandId="org.eclipse.emf.edapt.Converge"
+              label="Converge"
               style="push">
         </command>
      </menuContribution>
