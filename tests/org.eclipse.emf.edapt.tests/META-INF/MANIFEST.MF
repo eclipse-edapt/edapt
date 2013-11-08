@@ -4,14 +4,14 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.tests
 Bundle-Version: 0.3.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.junit4,
- org.eclipse.emf.ecore.xmi,
+Require-Bundle: org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.edit,
  org.eclipse.emf.edapt.common,
  org.eclipse.emf.edapt.migration.test,
  org.eclipse.emf.edapt.history.editor,
  org.eclipse.emf.edapt.migration,
- org.eclipse.emf.edapt.declaration.editor
+ org.eclipse.emf.edapt.declaration.editor,
+ org.junit;bundle-version="4.11.0"
 Export-Package: org.eclipse.emf.edapt.tests.declaration,
  org.eclipse.emf.edapt.tests.history,
  org.eclipse.emf.edapt.tests.migration,
