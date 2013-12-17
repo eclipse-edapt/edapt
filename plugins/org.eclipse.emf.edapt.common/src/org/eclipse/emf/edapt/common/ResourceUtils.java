@@ -25,11 +25,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
+import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -89,9 +89,11 @@ public final class ResourceUtils {
 			if (isPathmap(modelURI)) {
 				continue;
 			}
-			Resource resource = resourceSet.createResource(modelURI);
+			
+			Resource resource = resourceSet.getResource(modelURI, true);
+//			Resource resource = resourceSet.createResource(modelURI);
 			try {
-				resource.load(options);
+				resource.load(options);				
 			} catch (Resource.IOWrappedException e) {
 				// ignore
 				EList<Diagnostic> errors = resource.getErrors();
