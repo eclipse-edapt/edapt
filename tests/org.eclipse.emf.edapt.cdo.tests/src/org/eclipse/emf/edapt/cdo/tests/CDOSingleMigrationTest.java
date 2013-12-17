@@ -9,7 +9,7 @@
  *     BMW Car IT - Initial API and implementation
  *     Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
-package org.eclipse.emf.edapt.tests.migration;
+package org.eclipse.emf.edapt.cdo.tests;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,22 +21,20 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.migration.execution.ClassLoaderFacade;
-import org.eclipse.emf.edapt.migration.test.MigrationTestSuite;
 
 /**
  * Test of model migrations defined by test models.
  * 
- * @author herrmama
- * @author $Author$
- * @version $Rev$
- * @levd.rating RED Rev:
+ * @author Christophe Bouhier
+ * @version 0.4.0
  */
-public class SingleMigrationTest extends TestSuite {
+public class CDOSingleMigrationTest extends TestSuite {
+
+	// Add test models from the Edapt test plugin.
 
 	/** Assembling the test suite. */
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Migration Test");
-
 		addMigrationTestSuites(suite, new File("data/component"));
 
 		return suite;
@@ -52,9 +50,10 @@ public class SingleMigrationTest extends TestSuite {
 				if (extension != null && "test".equals(extension)) {
 					URI uri = URIUtils.getURI(file);
 					try {
-						suite.addTest(new MigrationTestSuite(uri,
-								new ClassLoaderFacade(SingleMigrationTest.class
+						suite.addTest(new CDOMigrationTestSuite(uri,
+								new ClassLoaderFacade(CDOSingleMigrationTest.class
 										.getClassLoader())));
+
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
