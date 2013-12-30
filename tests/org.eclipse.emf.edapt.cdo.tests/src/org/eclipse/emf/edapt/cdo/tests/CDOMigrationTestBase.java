@@ -56,10 +56,8 @@ import org.eclipse.emf.edapt.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.Persistency;
 import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
 
 /**
  * A class for test cases to validate a model migration.
@@ -86,10 +84,12 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		vpRegistry.addViewProvider(new EdaptCDOViewProvider(
 				"cdo(\\.net4j\\.tcp)?://.*", CDOViewProvider.DEFAULT_PRIORITY));
 
+		// FIXME, See EMF Forum, how to obtain the root resource with connection
+		// aware URI!
 		// clearCDORepositories();
-
 	}
 
+	@SuppressWarnings("unused")
 	private void clearCDORepositories() {
 		ResourceSetImpl set = new ResourceSetImpl();
 
@@ -109,8 +109,9 @@ public abstract class CDOMigrationTestBase extends TestCase {
 			}
 		} else if (resource instanceof CDOResourceLeaf) {
 			// clear the leaf object.
+			@SuppressWarnings("unused")
 			EObject eContainer = resource.eContainer();
-
+			// TODO Not implemented yet,.
 		}
 	}
 
@@ -214,16 +215,13 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		// EDaptCDOViewProvider
 		copy(metamodel, sourceSet, cdoSourceURIs, new ResourceSetFactoryImpl());
 
-		// CB FIX the CDOMigrationTestCase so it can work with connection aware
-		// CDO URI's! For now we produce the target URI ourself.
 		migrator.migrateAndSave(cdoSourceURIs, release, null,
 				new PrintStreamProgressMonitor(System.out), cdoTargetURIs);
 
 		// Test Comparision is metamodel based.
-
-		Metamodel expectedMetamodel = Persistency
-				.loadMetamodel(expectedTargetMetamodelURI);
-
+		// TODO, FIX THE Result ASSERT.
+		// Metamodel expectedMetamodel = Persistency
+		// .loadMetamodel(expectedTargetMetamodelURI);
 		// EObject actualModel = ResourceUtils
 		// .loadResourceSet(targetModelURI,
 		// expectedMetamodel.getEPackages()).getResources().get(0)
@@ -237,13 +235,6 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		// ModelAssert
 		// .assertDifference(expectedModel, actualModel, expectedNumber);
 
-		// Remove the CDO Resource.
-		// t.getResourceSet().getResources().remove(cdoResource);
-
-		// commitTransaction(t);
-		// clearEPackage(ePack);
-		// }
-		// closeSession();
 	}
 
 	private void clear(List<URI> cdoSourceURIs,
@@ -371,6 +362,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 * @param resourceSetFactory
 	 * @return
 	 */
+	@SuppressWarnings("unused")
 	private ResourceSet copyToSource(Metamodel metamodel,
 			ResourceSet sourceModels, IResourceSetFactory resourceSetFactory) {
 
@@ -450,9 +442,6 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 * 'file' based URI's. The connection details are taken from the target
 	 * repository settings.
 	 * 
-	 * FIXME Implement an abstract ConnectURIProvider which can be specialized
-	 * for source and target.
-	 * 
 	 * @param modelURIs
 	 * @return
 	 */
@@ -499,7 +488,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	private URI cdoConnectionAwareURI(URI sourceURI, String port, String repo) {
 
 		try {
-			URI createFileURI = URI.createFileURI(sourceURI.toString());
+			URI.createFileURI(sourceURI.toString());
 		} catch (Exception e) {
 			// bail when we are not a file URI.
 			e.printStackTrace();
