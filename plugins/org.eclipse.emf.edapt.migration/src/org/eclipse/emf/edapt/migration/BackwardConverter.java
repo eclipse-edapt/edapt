@@ -41,7 +41,7 @@ import org.eclipse.emf.edapt.common.TwoWayIdentityHashMap;
 public class BackwardConverter {
 
 	/** Mapping from graph nodes to EMF model elements. */
-	private ReversableMap<Instance, EObject> mapping;
+	protected ReversableMap<Instance, EObject> mapping;
 
 	/** Convert model graph to EMF elements. */
 	public ResourceSet convert(Model model) {
@@ -57,14 +57,14 @@ public class BackwardConverter {
 	}
 
 	/** Create an EMF model element for each node. */
-	private void initObjects(Model model) {
+	protected void initObjects(Model model) {
 		for (Type type : model.getTypes()) {
 			createObjects(type);
 		}
 	}
 
 	/** Create all EMF model elements of a certain type. */
-	private void createObjects(Type type) {
+	protected void createObjects(Type type) {
 		EClass sourceClass = type.getEClass();
 		EClass targetClass = resolveEClass(sourceClass);
 		for (Instance element : type.getInstances()) {
@@ -82,10 +82,10 @@ public class BackwardConverter {
 	}
 
 	/** Determine root EMF model elements. */
-	private ResourceSet initResources(Model model) {
+	protected ResourceSet initResources(Model model) {
 		ResourceSet resourceSet = new ResourceSetImpl();
-		ResourceUtils.register(model.getMetamodel().getEPackages(), resourceSet
-				.getPackageRegistry());
+		ResourceUtils.register(model.getMetamodel().getEPackages(),
+				resourceSet.getPackageRegistry());
 		for (ModelResource modelResource : model.getResources()) {
 			Resource resource = resourceSet.createResource(modelResource
 					.getUri());
@@ -103,7 +103,7 @@ public class BackwardConverter {
 	}
 
 	/** Initialize the EMF model elements based on the edges. */
-	private void initProperties(Model model) {
+	protected void initProperties(Model model) {
 		for (Type type : model.getTypes()) {
 			for (Instance instance : type.getInstances()) {
 				initProperties(instance);
@@ -117,8 +117,8 @@ public class BackwardConverter {
 	}
 
 	/** Initialize an EMF model element based on the edges outgoing from a node. */
-	@SuppressWarnings("unchecked")
-	private void initProperties(Instance element) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected void initProperties(Instance element) {
 		EObject eObject = resolve(element);
 		for (Slot slot : element.getSlots()) {
 			EStructuralFeature sourceFeature = slot.getEFeature();
@@ -182,7 +182,7 @@ public class BackwardConverter {
 	/**
 	 * Determines whether a certain feature should be ignored during conversion.
 	 */
-	private boolean ignore(EStructuralFeature feature) {
+	protected boolean ignore(EStructuralFeature feature) {
 		return feature.isTransient()
 				|| !feature.isChangeable()
 				||
@@ -197,7 +197,7 @@ public class BackwardConverter {
 	}
 
 	/** Get the EMF model element corresponding to a node. */
-	private EObject resolve(Instance instance) {
+	protected EObject resolve(Instance instance) {
 		return mapping.get(instance);
 	}
 }
