@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">
+<booleanAttribute key="append.args" value="true"/>
+<stringAttribute key="application" value="org.eclipse.emf.cdo.server.app"/>
+<booleanAttribute key="askclear" value="false"/>
+<booleanAttribute key="automaticAdd" value="false"/>
+<booleanAttribute key="automaticValidate" value="false"/>
+<stringAttribute key="bootstrap" value=""/>
+<stringAttribute key="checked" value="org.eclipse.emf.cdo.common,org.eclipse.emf.cdo.security,org.eclipse.emf.cdo.server,org.eclipse.emf.cdo.server.admin,org.eclipse.emf.cdo.server.db,org.eclipse.emf.cdo.server.net4j,org.eclipse.net4j,org.eclipse.net4j.db,org.eclipse.net4j.db.h2,org.eclipse.net4j.tcp,org.eclipse.net4j.util"/>
+<booleanAttribute key="clearConfig" value="false"/>
+<booleanAttribute key="clearws" value="true"/>
+<booleanAttribute key="clearwslog" value="false"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/EdaptSourceServer"/>
+<booleanAttribute key="default" value="false"/>
+<booleanAttribute key="includeOptional" value="false"/>
+<stringAttribute key="location" value="${workspace_loc}/../runtime-EdaptSourceServer"/>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl}&#13;&#10;-debug&#13;&#10;-console"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms40m&#13;&#10;-Xmx1024m&#13;&#10;-Ddebug=true&#13;&#10;-Dnet4j.config=&quot;${project_loc:/org.eclipse.emf.edapt.cdo.server.source}/config&quot;&#13;&#10;-Dorg.eclipse.emf.cdo.server.browser.port=7777&#13;&#10;-Dosgi.console.enable.builtin=true"/>
+<stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value="${workspace_loc:org.eclipse.emf.edapt.cdo.server.source}"/>
+<stringAttribute key="pde.version" value="3.3"/>
+<stringAttribute key="product" value="org.eclipse.platform.ide"/>
+<stringAttribute key="selected_target_plugins" value="com.ibm.icu@default:default,javax.xml@default:default,org.eclipse.ant.core@default:default,org.eclipse.compare.core@default:default,org.eclipse.core.contenttype*3.4.200.v20120523-2004@default:default,org.eclipse.core.contenttype*3.4.200.v20130326-1255@default:default,org.eclipse.core.expressions@default:default,org.eclipse.core.filesystem.macosx@default:false,org.eclipse.core.filesystem@default:default,org.eclipse.core.jobs*3.5.200.v20120521-2346@default:default,org.eclipse.core.jobs*3.5.300.v20130429-1813@default:default,org.eclipse.core.resources@default:default,org.eclipse.core.runtime*3.8.0.v20120521-2346@default:true,org.eclipse.core.runtime*3.9.0.v20130326-1255@default:true,org.eclipse.core.runtime.compatibility.registry*3.5.100.v20120521-2346@default:false,org.eclipse.core.runtime.compatibility.registry*3.5.200.v20130514-1256@default:false,org.eclipse.core.variables@default:default,org.eclipse.emf.cdo.common@default:default,org.eclipse.emf.cdo.ecore.retrofit@default:false,org.eclipse.emf.cdo.server.admin@default:default,org.eclipse.emf.cdo.server.db@default:default,org.eclipse.emf.cdo.server.net4j@default:default,org.eclipse.emf.cdo.server@default:default,org.eclipse.emf.cdo@default:default,org.eclipse.emf.common@default:default,org.eclipse.emf.ecore.change@default:default,org.eclipse.emf.ecore.xmi@default:default,org.eclipse.emf.ecore@default:default,org.eclipse.equinox.app*1.3.100.v20120522-1841@default:default,org.eclipse.equinox.app*1.3.100.v20130327-1442@default:default,org.eclipse.equinox.common*3.6.100.v20120522-1841@2:true,org.eclipse.equinox.common*3.6.200.v20130402-1505@2:true,org.eclipse.equinox.preferences*3.5.1.v20121031-182809@default:default,org.eclipse.equinox.preferences*3.5.100.v20130422-1538@default:default,org.eclipse.equinox.registry*3.5.200.v20120522-1841@default:default,org.eclipse.equinox.registry*3.5.300.v20130327-1442@default:default,org.eclipse.equinox.transforms.hook@default:false,org.eclipse.equinox.weaving.hook@default:false,org.eclipse.net4j.db.h2@default:default,org.eclipse.net4j.db@default:default,org.eclipse.net4j.tcp@default:default,org.eclipse.net4j.util@default:default,org.eclipse.net4j@default:default,org.eclipse.osgi*3.8.2.v20130124-134944@-1:true,org.eclipse.osgi*3.9.0.v20130529-1710@-1:true,org.eclipse.team.core@default:default,org.h2@default:default"/>
+<booleanAttribute key="show_selected_only" value="true"/>
+<stringAttribute key="templateConfig" value="${target_home}\configuration\config.ini"/>
+<booleanAttribute key="tracing" value="true"/>
+<booleanAttribute key="useCustomFeatures" value="false"/>
+<booleanAttribute key="useDefaultConfig" value="true"/>
+<booleanAttribute key="useDefaultConfigArea" value="true"/>
+<booleanAttribute key="useProduct" value="false"/>
+</launchConfiguration>
