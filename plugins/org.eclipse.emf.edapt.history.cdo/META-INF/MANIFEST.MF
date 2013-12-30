@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: org.eclipse.emf.edapt.history.cdo;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: %Bundle-Vendor
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.emf.edapt.history,
+ org.eclipse.emf.cdo;bundle-version="4.2.1",
+ org.eclipse.emf.cdo.net4j;bundle-version="4.1.101",
+ org.eclipse.net4j.tcp;bundle-version="4.1.100"
+Export-Package: org.eclipse.emf.edapt.cdo.migration,
+ org.eclipse.emf.edapt.cdo.migration.execution
