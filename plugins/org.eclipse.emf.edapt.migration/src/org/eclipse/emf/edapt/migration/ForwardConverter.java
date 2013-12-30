@@ -40,10 +40,10 @@ import org.eclipse.emf.edapt.common.EcoreUtils;
 public class ForwardConverter {
 
 	/** Model graph. */
-	private Model model;
+	protected Model model;
 
 	/** Mapping from EMF elements to graph nodes. */
-	private Map<EObject, Instance> mapping;
+	protected Map<EObject, Instance> mapping;
 
 	/** Convert an EMF model to a model graph. */
 	public Model convert(ResourceSet resourceSet) {
@@ -58,7 +58,7 @@ public class ForwardConverter {
 	}
 
 	/** Create a node for each EMF model element */
-	private void initElements(ResourceSet resourceSet) {
+	protected void initElements(ResourceSet resourceSet) {
 		for (Resource resource : resourceSet.getResources()) {
 			for (TreeIterator<EObject> i = resource.getAllContents(); i
 					.hasNext();) {
@@ -75,7 +75,7 @@ public class ForwardConverter {
 	}
 
 	/** Initialize the properties of the nodes. */
-	private void initProperties(ResourceSet resourceSet) {
+	protected void initProperties(ResourceSet resourceSet) {
 		Set<EObject> done = new HashSet<EObject>();
 		for (Resource resource : resourceSet.getResources()) {
 			for (TreeIterator<EObject> i = resource.getAllContents(); i
@@ -92,13 +92,15 @@ public class ForwardConverter {
 	}
 
 	/** Determine the root nodes. */
-	private void initResources(ResourceSet resourceSet) {
+	protected void initResources(ResourceSet resourceSet) {
 		for (Resource resource : resourceSet.getResources()) {
 			if (resource.getContents().isEmpty()) {
 				continue;
 			}
 			ModelResource modelResource = MigrationFactory.eINSTANCE
 					.createModelResource();
+
+			// For CDO we need the connection aware URI!
 			modelResource.setUri(resource.getURI());
 			if (resource instanceof XMLResource) {
 				XMLResource xmlResource = (XMLResource) resource;
@@ -112,10 +114,11 @@ public class ForwardConverter {
 	}
 
 	/** Initialize edges outgoing from a node. */
-	@SuppressWarnings("unchecked")
-	private void initInstance(EObject eObject) {
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	protected void initInstance(EObject eObject) {
 		Instance element = resolve(eObject);
 		EClass c = eObject.eClass();
+		
 		for (EAttribute attribute : c.getEAllAttributes()) {
 			if (ignore(attribute)) {
 				continue;
@@ -167,7 +170,7 @@ public class ForwardConverter {
 	/**
 	 * Determines whether a certain feature should be ignored during conversion.
 	 */
-	private boolean ignore(EStructuralFeature feature) {
+	protected boolean ignore(EStructuralFeature feature) {
 		if (feature.isTransient()) {
 			if (feature instanceof EReference) {
 				EReference reference = (EReference) feature;
@@ -182,7 +185,7 @@ public class ForwardConverter {
 	}
 
 	/** Create a new node for an EMF model element. */
-	private Instance newInstance(EObject eObject, boolean proxy) {
+	protected Instance newInstance(EObject eObject, boolean proxy) {
 		EClass eClass = eObject.eClass();
 		Instance element = model.newInstance(eClass);
 		mapping.put(eObject, element);
@@ -193,7 +196,7 @@ public class ForwardConverter {
 	}
 
 	/** Get the node corresponding to an EMF model element. */
-	private Instance resolve(EObject eObject) {
+	protected Instance resolve(EObject eObject) {
 		Instance resolved = mapping.get(eObject);
 		if (resolved == null) {
 			resolved = newInstance(eObject, true);

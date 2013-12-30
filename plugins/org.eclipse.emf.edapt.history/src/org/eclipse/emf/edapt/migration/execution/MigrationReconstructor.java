@@ -66,19 +66,19 @@ import org.eclipse.emf.edapt.migration.Repository;
 public class MigrationReconstructor extends ReconstructorBase {
 
 	/** Source release. */
-	private final Release sourceRelease;
+	protected final Release sourceRelease;
 
 	/** Target release. */
-	private final Release targetRelease;
+	protected final Release targetRelease;
 
 	/** URIs of the models that need to be migrated. */
-	private final List<URI> modelURIs;
+	protected final List<URI> modelURIs;
 
 	/** Extent of the reconstructed metamodel. */
-	private MetamodelExtent extent;
+	protected MetamodelExtent extent;
 
 	/** Internal representation of the model during migration. */
-	private Repository repository;
+	protected Repository repository;
 
 	/** Whether migration is active. */
 	private boolean enabled = false;
@@ -108,7 +108,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	private final ValidationLevel level;
 
 	/** Factory to create {@link ResourceSet}s for custom serialization. */
-	private IResourceSetFactory resourceSetFactory;
+	protected IResourceSetFactory resourceSetFactory;
 
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
@@ -160,7 +160,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	 * Check the conformance of the model to the metamodel if the validation
 	 * level is greater or equal to a certain level.
 	 */
-	private void checkConformanceIfMoreThan(ValidationLevel level) {
+	protected void checkConformanceIfMoreThan(ValidationLevel level) {
 		if (this.level.compareTo(level) >= 0) {
 			checkConformance();
 		}
@@ -176,7 +176,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	}
 
 	/** Load the model before migration. */
-	private void loadRepository() {
+	protected void loadRepository() {
 		Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
@@ -192,7 +192,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	}
 
 	/** Load the metamodel. */
-	private Metamodel loadMetamodel() {
+	protected Metamodel loadMetamodel() {
 		URI metamodelURI = URI.createFileURI(new File("metamodel."
 				+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
 		Collection<EPackage> rootPackages = extent.getRootPackages();
@@ -206,6 +206,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	public void startChange(Change change) {
 		if (isEnabled()) {
 			if (isStarted()) {
+				monitor.subTask("Change " + change.toString());
 				migrationSwitch.doSwitch(change);
 			}
 			checkPause(change);
@@ -259,27 +260,32 @@ public class MigrationReconstructor extends ReconstructorBase {
 	}
 
 	/** Check whether migration is started. */
-	private boolean isStarted() {
+	protected boolean isStarted() {
 		return started;
 	}
 
+	protected void start() {
+		if (!started)
+			started = true;
+	}
+
 	/** Check whether migration is active. */
-	private boolean isEnabled() {
+	protected boolean isEnabled() {
 		return enabled;
 	}
 
 	/** De-activate migration. */
-	private void disable() {
+	protected void disable() {
 		enabled = false;
 	}
 
 	/** Activate migration. */
-	private void enable() {
+	protected void enable() {
 		enabled = true;
 	}
 
 	/** Wrap and throw a {@link MigrationException}. */
-	private void throwWrappedMigrationException(String message, Throwable e) {
+	protected void throwWrappedMigrationException(String message, Throwable e) {
 		MigrationException me = new MigrationException(message, e);
 		throwWrappedMigrationException(me);
 	}

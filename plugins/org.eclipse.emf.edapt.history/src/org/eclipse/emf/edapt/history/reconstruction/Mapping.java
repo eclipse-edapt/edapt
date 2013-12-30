@@ -85,4 +85,14 @@ public class Mapping extends MappingBase {
 	public boolean isMapped(EObject source, EObject target) {
 		return getTarget(source) == target && getSource(target) == source;
 	}
+
+	@Override
+	public String toString() {
+		StringBuffer sb = new StringBuffer();
+		for(EObject key: mapping.keySet()){
+			EObject target = mapping.get(key);
+			sb.append("map " + key + " to:" + target + "\n");
+		}
+		return sb.toString();
+	}
 }
