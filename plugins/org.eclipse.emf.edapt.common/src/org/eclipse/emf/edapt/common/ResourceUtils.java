@@ -75,25 +75,63 @@ public final class ResourceUtils {
 				new ResourceSetFactoryImpl());
 	}
 
-	/**
-	 * Load EMF model based on a set of {@link URI} and root packages.
-	 */
-	public static ResourceSet loadResourceSet(List<URI> modelURIs,
-			List<EPackage> ePackages, IResourceSetFactory resourceSetFactory)
-			throws IOException {
-		ResourceSet resourceSet = resourceSetFactory.createResourceSet();
-		register(ePackages, resourceSet.getPackageRegistry());
+	public static void loadResourceSet(List<URI> modelURIs,
+			ResourceSet resourceSet) throws IOException {
 
 		Map<String, Object> options = new HashMap<String, Object>();
 		for (URI modelURI : modelURIs) {
 			if (isPathmap(modelURI)) {
 				continue;
 			}
-			
+
+			// Whenever we load a resourceset, we will create a session and
+			// transaction.
+			// in case we deal with a CDO Resource.
 			Resource resource = resourceSet.getResource(modelURI, true);
-//			Resource resource = resourceSet.createResource(modelURI);
+			// Resource resource = resourceSet.createResource(modelURI);
 			try {
-				resource.load(options);				
+				resource.load(options);
+			} catch (Resource.IOWrappedException e) {
+				// ignore
+				EList<Diagnostic> errors = resource.getErrors();
+				if (errors.size() > 0) {
+					System.err.println(resource.getURI() + ": " + errors.size()
+							+ " errors");
+				} else {
+					throw e;
+				}
+			}
+		}
+
+		ResourceUtils.resolveAll(resourceSet);
+	}
+
+	/**
+	 * Load EMF model based on a set of {@link URI} and root packages.
+	 */
+	public static ResourceSet loadResourceSet(List<URI> modelURIs,
+			List<EPackage> ePackages, IResourceSetFactory resourceSetFactory)
+			throws IOException {
+
+		ResourceSet resourceSet = resourceSetFactory.createResourceSet();
+
+		// Do not register ePackages if not set.
+		if (ePackages != null)
+			register(ePackages, resourceSet.getPackageRegistry());
+
+		Map<String, Object> options = new HashMap<String, Object>();
+		for (URI modelURI : modelURIs) {
+			if (isPathmap(modelURI)) {
+				continue;
+			}
+
+			// Whenever we load a resourceset, we will create a session and
+			// transaction.
+			// in case we deal with a CDO Resource.
+			Resource resource = resourceSet.getResource(modelURI, true);
+			// Resource resource = resourceSet.createResource(modelURI);
+			try {
+				resource.load(options);
 			} catch (Resource.IOWrappedException e) {
 				// ignore
 				EList<Diagnostic> errors = resource.getErrors();
@@ -254,4 +292,5 @@ public final class ResourceUtils {
 			}
 		}
 	}
+
 }
