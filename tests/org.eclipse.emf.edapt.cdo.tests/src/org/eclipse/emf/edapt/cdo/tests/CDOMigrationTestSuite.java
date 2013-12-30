@@ -17,12 +17,12 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.edapt.cdo.migration.execution.CDOMigrator;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.History;
 import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.test.TestCaseDefinition;
 import org.eclipse.emf.edapt.migration.test.TestPackage;
 import org.eclipse.emf.edapt.migration.test.TestSuiteDefinition;
@@ -41,7 +41,7 @@ public class CDOMigrationTestSuite extends TestSuite {
 	private final TestSuiteDefinition suiteDefinition;
 
 	/** Migrator. */
-	private Migrator migrator;
+	private CDOMigrator migrator;
 
 	/** Classloader for loading {@link CustomMigration}s. */
 	private IClassLoader loader;
@@ -99,14 +99,14 @@ public class CDOMigrationTestSuite extends TestSuite {
 	}
 
 	/** Get the migrator. */
-	Migrator getMigrator() {
+	CDOMigrator getMigrator() {
 		return migrator;
 	}
 
 	/** Load the migrator from the history model. */
-	private Migrator loadMigrator() throws IOException {
+	private CDOMigrator loadMigrator() throws IOException {
 		History history = loadHistory();
-		Migrator migrator = new Migrator(history, loader);
+		CDOMigrator migrator = new CDOMigrator(history, loader);
 		return migrator;
 	}
 }

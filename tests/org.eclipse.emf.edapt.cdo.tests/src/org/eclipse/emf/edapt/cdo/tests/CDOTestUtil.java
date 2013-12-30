@@ -19,13 +19,20 @@ public class CDOTestUtil {
 
 	public static CDOTestUtil self = new CDOTestUtil();
 
-	private static final String REPO_NAME = "repo1";
+	public static final String REPO_SOURCE = "repo_source";
+	public static final String REPO_TARGET = "repo_target";
+
+	public static final String SOURCE_PORT = "2036";
+	public static final String TARGET_PORT = "2037";
+	
+	public static final String CONNECTOR_TYPE = "tcp";
+	
 
 	@SuppressWarnings("unused")
 	private IJVMAcceptor acceptor;
 	private IConnector connector;
 
-	protected static final String CONNECTION_ADDRESS = "localhost:2036";
+	protected static final String HOST = "127.0.0.1";
 
 	private ExceptionHandler exceptionHandler = new ExceptionHandler() {
 
@@ -60,10 +67,13 @@ public class CDOTestUtil {
 				.createNet4jSessionConfiguration();
 
 		// acceptor = JVMUtil.getAcceptor(container, "default");
-		connector = TCPUtil.getConnector(container, CONNECTION_ADDRESS);
+		
+		// Use a factory to produce a Connect and parse the connector description (See TCPCOnnectorFactory). 
+		
+		connector = TCPUtil.getConnector(container, HOST + ":" + SOURCE_PORT);
 
 		sessionConfiguration.setConnector(connector);
-		sessionConfiguration.setRepositoryName(REPO_NAME);
+		sessionConfiguration.setRepositoryName(REPO_SOURCE);
 		sessionConfiguration.setExceptionHandler(exceptionHandler);
 
 		return sessionConfiguration;
