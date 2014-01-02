@@ -14,6 +14,7 @@
   </parent>
   <modules>
     <module>org.eclipse.emf.edapt.runtime.feature</module>
+    <module>org.eclipse.emf.edapt.runtime.cdo.feature</module>
     <module>org.eclipse.emf.edapt.recorder.feature</module>
   </modules>
 </project>

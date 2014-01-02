@@ -23,7 +23,6 @@ public class EdaptCDOViewProvider extends AbstractCDOViewProvider {
 	}
 
 
-	@Override
 	public CDOView getView(URI uri, ResourceSet resourceSet) {
 		if (container == null) {
 			container = new ManagedContainer();

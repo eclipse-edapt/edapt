@@ -19,6 +19,7 @@
     <module>org.eclipse.emf.edapt.declaration.edit</module>
     <module>org.eclipse.emf.edapt.declaration.editor</module>
     <module>org.eclipse.emf.edapt.history</module>
+    <module>org.eclipse.emf.edapt.history.cdo</module>
     <module>org.eclipse.emf.edapt.history.edit</module>
     <module>org.eclipse.emf.edapt.history.editor</module>
     <module>org.eclipse.emf.edapt.migration</module>
