@@ -14,7 +14,5 @@
 # Edapt Publishing Script
 # Publish various artifacts. 
 # Edapt P2 => build.eclipse.org/ ~/downloads/edapt/p2
-#
-# SSH Authentication: 
-# 		Add -o IdentityFile=/Users/Christophe/.ssh/id_rsa
-cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public//download-staging.priv/modeling/edapt/repository
+
+cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public//download-staging.priv/modeling/edapt/nightly
