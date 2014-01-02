@@ -22,7 +22,7 @@
 							<groupId>${project.groupId}</groupId>
 							<artifactId>${project.artifactId}</artifactId>
 							<version>${project.version}</version>
-							<classifier>../../builds/org.eclipse.emf.edapt.releng.target/edapt</classifier>
+							<classifier>../../builds/org.eclipse.emf.edapt.releng.target/edapt_with_cdo</classifier>
 						</artifact>
 					</target>
 				</configuration>
