@@ -6,5 +6,7 @@
    <feature url="features/org.eclipse.emf.edapt.recorder.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.recorder.feature" version="0.3.0.qualifier">
       <category name="org.eclipse.emf.edapt.category.latest"/>
    </feature>
+   <feature url="features/org.eclipse.emf.edapt.cdo.runtime.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.cdo.runtime.feature" version="0.3.0.qualifier"/>
    <category-def name="org.eclipse.emf.edapt.category.latest" label="Edapt Kepler"/>
+   <category-def name="org.eclipse.emf.edapt.category.optional" label="Edapt Optional"/>
 </site>
