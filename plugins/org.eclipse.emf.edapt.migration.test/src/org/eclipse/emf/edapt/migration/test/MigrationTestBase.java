@@ -16,7 +16,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
@@ -104,7 +103,7 @@ public abstract class MigrationTestBase extends TestCase {
 			int expectedNumber) throws MigrationException, IOException {
 
 		Set<Release> releases = migrator.getRelease(modelURI);
-		Assert.assertTrue(releases.size() >= 1);
+		assertTrue(releases.size() >= 1);
 		Release release = HistoryUtils.getMinimumRelease(releases);
 		URI targetModelURI = rename(migrator, modelURI, release);
 
@@ -178,7 +177,7 @@ public abstract class MigrationTestBase extends TestCase {
 		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 
 		Migrator migrator = MigratorRegistry.getInstance().getMigrator(nsURI);
-		Assert.assertNotNull(migrator);
+		assertNotNull(migrator);
 		testMigration(migrator, modelURI, expectedTargetModelURI,
 				expectedTargetMetamodelURI, expectedDifferences);
 	}
