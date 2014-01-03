@@ -15,4 +15,4 @@
 # Publish various artifacts. 
 # Edapt P2 => build.eclipse.org/ ~/downloads/edapt/p2
 
-cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public//download-staging.priv/modeling/edapt/nightly
+cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public/download-staging.priv/modeling/edapt/nightly
