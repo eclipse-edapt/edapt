@@ -17,4 +17,4 @@
 #
 # SSH Authentication: 
 # 		Add -o IdentityFile=/Users/Christophe/.ssh/id_rsa
-cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public//download-staging.priv/modeling/edapt/
+cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public/download-staging.priv/modeling/edapt/
