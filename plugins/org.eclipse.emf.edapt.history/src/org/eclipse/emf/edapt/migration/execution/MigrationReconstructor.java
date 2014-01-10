@@ -206,7 +206,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 	public void startChange(Change change) {
 		if (isEnabled()) {
 			if (isStarted()) {
-				monitor.subTask("Change " + change.toString());
+//				monitor.subTask("Change " + change.toString());
 				migrationSwitch.doSwitch(change);
 			}
 			checkPause(change);

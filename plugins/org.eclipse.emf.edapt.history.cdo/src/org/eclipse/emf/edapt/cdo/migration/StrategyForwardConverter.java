@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -25,7 +26,10 @@ public class StrategyForwardConverter extends ForwardConverter {
 
 	@Override
 	protected Instance newInstance(EObject eObject, boolean proxy) {
-
+		
+		
+		// Lookup from the metamodel eClass so we have an EClass with 
+		// a ECoreFactory instead of CDOFactory for objecss. 
 		EObject find = find(eObject.eClass());
 
 		if (find instanceof EClass) {
@@ -126,8 +130,25 @@ public class StrategyForwardConverter extends ForwardConverter {
 		}
 		EReference reference = sourceElement.eContainmentFeature();
 		if (reference.isMany()) {
+
+			// CB Doesn't work for CDO! (Not with already loaded resources,
+			// turned on the option to emulate Generated packages, but provides
+			// Classifiers here in different order....
+
 			List<EObject> targetChildren = (List<EObject>) targetParent
 					.eGet(reference);
+			for (EObject t : targetChildren) {
+				if (t instanceof ENamedElement
+						&& sourceElement instanceof ENamedElement) {
+					if( ((ENamedElement) t).getName().equals(
+							((ENamedElement) sourceElement).getName())){
+						return t;
+					}
+				}
+
+			}
+			
+			// Fallback to using index ..
 			List<EObject> sourceChildren = (List<EObject>) sourceParent
 					.eGet(reference);
 			int index = sourceChildren.indexOf(sourceElement);

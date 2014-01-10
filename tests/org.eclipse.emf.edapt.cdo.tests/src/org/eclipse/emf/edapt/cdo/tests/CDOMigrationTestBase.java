@@ -15,39 +15,21 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import junit.framework.TestCase;
 
-import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.cdo.eresource.CDOResource;
-import org.eclipse.emf.cdo.eresource.CDOResourceFactory;
-import org.eclipse.emf.cdo.eresource.CDOResourceFolder;
-import org.eclipse.emf.cdo.eresource.CDOResourceLeaf;
-import org.eclipse.emf.cdo.eresource.CDOResourceNode;
 import org.eclipse.emf.cdo.net4j.CDONet4jSession;
-import org.eclipse.emf.cdo.net4j.CDONet4jUtil;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CDOURIData;
-import org.eclipse.emf.cdo.util.CDOURIUtil;
-import org.eclipse.emf.cdo.util.CommitException;
-import org.eclipse.emf.cdo.util.ConcurrentAccessException;
-import org.eclipse.emf.cdo.view.CDOViewProvider;
-import org.eclipse.emf.cdo.view.CDOViewProviderRegistry;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.BasicExtendedMetaData;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.edapt.cdo.migration.execution.CDOMigrator;
-import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.Release;
@@ -69,51 +51,6 @@ import org.eclipse.emf.edapt.migration.execution.IClassLoader;
  * @levd.rating YELLOW Hash: 028BD5369E87644723FF537FB5E55E4D
  */
 public abstract class CDOMigrationTestBase extends TestCase {
-
-	@Override
-	protected void setUp() throws Exception {
-		super.setUp();
-
-		// Make sure we register various protocols with the CDO Factory.
-		registerCDOResourceFactory();
-
-		// Initialize the PluginViewProvider (Which needs a Session factory), it
-		// can deal with
-		// both cdo and cdo.net4j.tcp
-		CDOViewProviderRegistry vpRegistry = CDOViewProviderRegistry.INSTANCE;
-		vpRegistry.addViewProvider(new EdaptCDOViewProvider(
-				"cdo(\\.net4j\\.tcp)?://.*", CDOViewProvider.DEFAULT_PRIORITY));
-
-		// FIXME, See EMF Forum, how to obtain the root resource with connection
-		// aware URI!
-		// clearCDORepositories();
-	}
-
-	@SuppressWarnings("unused")
-	private void clearCDORepositories() {
-		ResourceSetImpl set = new ResourceSetImpl();
-
-		URI uri = cdoConnectionAwareURI("", CDOTestUtil.SOURCE_PORT,
-				CDOTestUtil.REPO_SOURCE);
-		Resource resource = set.getResource(uri, true);
-		clearCDO((CDOResourceNode) resource);
-
-	}
-
-	private void clearCDO(CDOResourceNode resource) {
-		// Walk the resource hierarchy and clean all.
-		if (resource instanceof CDOResourceFolder) {
-			CDOResourceFolder folder = (CDOResourceFolder) resource;
-			for (CDOResourceNode node : folder.getNodes()) {
-				clearCDO(node);
-			}
-		} else if (resource instanceof CDOResourceLeaf) {
-			// clear the leaf object.
-			@SuppressWarnings("unused")
-			EObject eContainer = resource.eContainer();
-			// TODO Not implemented yet,.
-		}
-	}
 
 	private CDONet4jSession testSession;
 
@@ -204,18 +141,20 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		ResourceSet sourceSet = ResourceUtils.loadResourceSet(modelURIs,
 				metamodel.getEPackages());
 
-		ResourceSetFactoryImpl resourceSetFactoryImpl = new ResourceSetFactoryImpl();
+		migrator.clearCDORepositories(CDOTestUtil.HOST,
+				CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
 
-		clear(cdoSourceURIs, resourceSetFactoryImpl);
-		clear(cdoTargetURIs, resourceSetFactoryImpl);
+		migrator.clearCDORepositories(CDOTestUtil.HOST,
+				CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
 
 		// Copy the source set to the CDO source repo, let our CDOView provider
 		// do all the CDO stuff
 		// like creating a container, connector, session and transaction. See
 		// EDaptCDOViewProvider
-		copy(metamodel, sourceSet, cdoSourceURIs, new ResourceSetFactoryImpl());
+		CDOMigrator.copy(metamodel, sourceSet, cdoSourceURIs,
+				new ResourceSetFactoryImpl());
 
-		migrator.migrateAndSave(cdoSourceURIs, release, null,
+		migrator.migrateAndCopy(cdoSourceURIs, release, null,
 				new PrintStreamProgressMonitor(System.out), cdoTargetURIs);
 
 		// Test Comparision is metamodel based.
@@ -237,49 +176,30 @@ public abstract class CDOMigrationTestBase extends TestCase {
 
 	}
 
-	private void clear(List<URI> cdoSourceURIs,
-			ResourceSetFactoryImpl resourceSetFactoryImpl) {
-		ResourceSet set = resourceSetFactoryImpl.createResourceSet();
+	public void testMigration(CDOURIData sourceURIData,
+			CDOURIData targetURIData, CDOMigrator migrator, int expectedNumber)
+			throws MigrationException, IOException {
 
-		CDOTransaction transaction;
-		for (URI uri : cdoSourceURIs) {
+		migrator.migrateAndCopy(sourceURIData, targetURIData,
+				new PrintStreamProgressMonitor(System.out));
 
-			try {
+		// Test Comparision is metamodel based.
+		// TODO, FIX THE Result ASSERT.
+		// Metamodel expectedMetamodel = Persistency
+		// .loadMetamodel(expectedTargetMetamodelURI);
+		// EObject actualModel = ResourceUtils
+		// .loadResourceSet(targetModelURI,
+		// expectedMetamodel.getEPackages()).getResources().get(0)
+		// .getContents().get(0);
+		//
+		// EObject expectedModel = ResourceUtils
+		// .loadResourceSet(expectedTargetModelURI,
+		// expectedMetamodel.getEPackages()).getResources().get(0)
+		// .getContents().get(0);
+		//
+		// ModelAssert
+		// .assertDifference(expectedModel, actualModel, expectedNumber);
 
-				Resource resource = set.getResource(uri, true);
-
-				if (resource instanceof CDOResource) {
-					CDOResource cdoRes = (CDOResource) resource;
-					transaction = (CDOTransaction) cdoRes.cdoView();
-					try {
-						cdoRes.delete(null);
-						transaction.commit();
-					} catch (IOException e) {
-					} catch (ConcurrentAccessException e) {
-					} catch (CommitException e) {
-					}
-				}
-			} catch (RuntimeException re) {
-				// Guard for Exception, as the resource might not exist,
-				// which will be an invalid URI when demand loading duh....
-			}
-
-		}
-	}
-
-	private void registerCDOResourceFactory() {
-		// Initialize our factoy.
-		Map<String, Object> map = Resource.Factory.Registry.INSTANCE
-				.getProtocolToFactoryMap();
-
-		// cdo.net4j.tcp
-		if (!map.containsKey(CDONet4jUtil.PROTOCOL_TCP)) {
-			map.put(CDONet4jUtil.PROTOCOL_TCP, CDOResourceFactory.INSTANCE);
-		}
-		// cdo
-		if (!map.containsKey(CDOURIUtil.PROTOCOL_NAME)) {
-			map.put(CDOURIUtil.PROTOCOL_NAME, CDOResourceFactory.INSTANCE);
-		}
 	}
 
 	/**
@@ -335,7 +255,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 			}
 		}
 
-		if (commitTransaction(t)) {
+		if (CDOMigrator.commitTransaction(t)) {
 			// Commit failed.
 			// Nothing going on in CDO, remove the package and return.
 			// clearEPackage(ePack);
@@ -349,92 +269,6 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		// Change the modelURI to deal with CDO.
 		URI cdoModelURI = cdoResource.getURI();
 		return cdoModelURI;
-	}
-
-	/**
-	 * Construct CDO {@link URI} from a given {@link ResourceSet source models},
-	 * create {@link ResourceSet target models } and copy the source content to
-	 * the target content. Note: this will only work with a configured
-	 * {@link CDOViewProvider}.
-	 * 
-	 * @param metamodel
-	 * @param sourceModels
-	 * @param resourceSetFactory
-	 * @return
-	 */
-	@SuppressWarnings("unused")
-	private ResourceSet copyToSource(Metamodel metamodel,
-			ResourceSet sourceModels, IResourceSetFactory resourceSetFactory) {
-
-		// Our CDO target Resourceset.
-		ResourceSet set = resourceSetFactory.createResourceSet();
-
-		for (Resource resource : sourceModels.getResources()) {
-
-			// Construct a URI for each resource in the Model ResourceSet, let
-			// the CDO View Provider take care of the session, transaction,
-			// etc....
-			if (resource.getURI() == null
-					|| resource.getURI().isPlatformPlugin()) {
-				continue;
-			}
-
-			URI cdoResourceURI = cdoSourceConnectionAwareURI(resource.getURI());
-			CDOResource cdoLoadResource = cdoCreateResource(set,
-					cdoResourceURI, metamodel);
-			EObject loadElement = resource.getContents().get(0);
-
-			EObject copy = EcoreUtil.copy(loadElement);
-			cdoLoadResource.getContents().add(copy);
-
-			try {
-				cdoLoadResource.save(null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return set;
-	}
-
-	/**
-	 * Construct CDO {@link URI} from a given {@link ResourceSet source models},
-	 * create {@link ResourceSet target models } and copy the source content to
-	 * the target content. Note: this will only work with a configured
-	 * {@link CDOViewProvider}.
-	 * 
-	 * @param metamodel
-	 * @param sourceModels
-	 * @param resourceSetFactory
-	 * @return
-	 */
-	public void copy(Metamodel metamodel, ResourceSet sourceModels,
-			List<URI> cdoURIs, IResourceSetFactory resourceSetFactory) {
-
-		// Our CDO target Resourceset.
-		ResourceSet set = resourceSetFactory.createResourceSet();
-
-		for (Resource resource : sourceModels.getResources()) {
-
-			int index = sourceModels.getResources().indexOf(resource);
-			URI cdoResourceURI = cdoURIs.get(index);
-
-			CDOResource cdoLoadResource = cdoCreateResource(set,
-					cdoResourceURI, metamodel);
-
-			// Copy over the stuff to CDO.
-			EObject loadElement = resource.getContents().get(0);
-
-			EObject copy = EcoreUtil.copy(loadElement);
-			cdoLoadResource.getContents().add(copy);
-
-			try {
-				cdoLoadResource.save(null);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		// TODO, how to get rid of the transaction?
-
 	}
 
 	/**
@@ -470,140 +304,13 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	}
 
 	private URI cdoSourceConnectionAwareURI(URI sourceURI) {
-		return cdoConnectionAwareURI(sourceURI, CDOTestUtil.SOURCE_PORT,
-				CDOTestUtil.REPO_SOURCE);
+		return CDOMigrator.cdoConnectionAwareURI(sourceURI, CDOTestUtil.HOST,
+				CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
 	}
 
 	private URI cdoTargetConnectionAwareURI(URI sourceURI) {
-		return cdoConnectionAwareURI(sourceURI, CDOTestUtil.TARGET_PORT,
-				CDOTestUtil.REPO_TARGET);
-	}
-
-	/**
-	 * Converts a 'regular' resource URI to a CDO Resource URI.
-	 * 
-	 * @param sourceURI
-	 * @return
-	 */
-	private URI cdoConnectionAwareURI(URI sourceURI, String port, String repo) {
-
-		try {
-			URI.createFileURI(sourceURI.toString());
-		} catch (Exception e) {
-			// bail when we are not a file URI.
-			e.printStackTrace();
-		}
-
-		String fileName = sourceURI.lastSegment();
-
-		// Strip the extension of the file name.
-		String resourceName = fileName.substring(0, fileName.lastIndexOf("."));
-		return cdoConnectionAwareURI(resourceName, port, repo);
-	}
-
-	private URI cdoConnectionAwareURI(String resourceName, String port,
-			String repo) {
-
-		CDOURIData cdouriData = new CDOURIData();
-		cdouriData.setScheme("cdo.net4j.tcp");
-		cdouriData.setAuthority(CDOTestUtil.HOST + ":" + port);
-		cdouriData.setRepositoryName(repo);
-		cdouriData.setResourcePath(new Path(resourceName));
-
-		return cdouriData.toURI();
-	}
-
-	/**
-	 * Converts a 'regular' resource URI to a CDO Resource URI.
-	 * 
-	 * @param sourceURI
-	 * @return
-	 */
-	@SuppressWarnings("unused")
-	private URI cdoCanonicalURI(URI sourceURI) {
-
-		// FIXME, check the URI is file based....
-		String fileName = sourceURI.lastSegment();
-
-		// Strip the extension of the file name.
-		String resourceName = fileName.substring(0, fileName.lastIndexOf("."));
-
-		CDOURIData cdouriData = new CDOURIData();
-
-		cdouriData.setScheme("cdo");
-		cdouriData.setRepositoryName(CDOTestUtil.REPO_SOURCE);
-		cdouriData.setResourcePath(new Path(resourceName));
-
-		return cdouriData.toURI();
-	}
-
-	/**
-	 * Create a {@link CDOResource} from a {@link URI} the {@link Metamodel
-	 * MMMeta} will be used to register the corresponding {@link EPackage} by
-	 * the {@link CDOViewProvider}.
-	 * 
-	 * @param set
-	 * @param cdoResourceURI
-	 * @param mmmeta
-	 * @return
-	 */
-	public CDOResource cdoCreateResource(ResourceSet set, URI cdoResourceURI,
-			Metamodel mmmeta) {
-
-		ResourceUtils.register(mmmeta.getEPackages(), set.getPackageRegistry());
-
-		Resource resource = set.createResource(cdoResourceURI);
-
-		if (resource instanceof CDOResource) {
-			return (CDOResource) resource;
-		}
-		return null;
-	}
-
-	@SuppressWarnings("unused")
-	private void clearEPackage(EPackage ePack) {
-		if (testSession.getPackageRegistry().containsKey(ePack.getNsURI())) {
-			testSession.getPackageRegistry().remove(ePack.getNsURI());
-		}
-	}
-
-	private boolean commitTransaction(CDOTransaction t) {
-		boolean commitFailed = false;
-		try {
-			t.commit();
-		} catch (ConcurrentAccessException e) {
-			e.printStackTrace();
-			commitFailed = true;
-		} catch (CommitException e) {
-			e.printStackTrace();
-			commitFailed = true;
-		}
-		return commitFailed;
-	}
-
-	@SuppressWarnings("unused")
-	private EPackage loadEPackageFromEcore(URI expectedTargetMetamodelURI) {
-		// register globally the Ecore Resource Factory to the ".ecore"
-		// extension
-		// weird that we need to do this, but well...
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-				"ecore", new EcoreResourceFactoryImpl());
-
-		ResourceSet rs = new ResourceSetImpl();
-		// enable extended metadata
-		final ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(
-				rs.getPackageRegistry());
-		rs.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
-				extendedMetaData);
-
-		Resource r = rs.getResource(expectedTargetMetamodelURI, true);
-		EObject eObject = r.getContents().get(0);
-		if (eObject instanceof EPackage) {
-			EPackage p = (EPackage) eObject;
-			rs.getPackageRegistry().put(p.getNsURI(), p);
-			return p;
-		}
-		return null;
+		return CDOMigrator.cdoConnectionAwareURI(sourceURI, CDOTestUtil.HOST,
+				CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
 	}
 
 	/**

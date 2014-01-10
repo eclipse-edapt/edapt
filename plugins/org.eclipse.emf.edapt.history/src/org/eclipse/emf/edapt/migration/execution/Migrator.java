@@ -292,6 +292,9 @@ public class Migrator {
 		return releaseMap.keySet();
 	}
 
+	
+	// CB TODO SHOULD BE API or Adapter, this is called from MigrateHandler. 
+	
 	/** Returns the metamodel for a release. */
 	public Metamodel getMetamodel(Release release) {
 		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(

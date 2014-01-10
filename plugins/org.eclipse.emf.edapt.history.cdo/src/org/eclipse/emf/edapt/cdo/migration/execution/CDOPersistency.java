@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.cdo.migration.StrategyBackwardConverter;
 import org.eclipse.emf.edapt.cdo.migration.StrategyForwardConverter;
@@ -53,6 +54,12 @@ public class CDOPersistency extends Persistency {
 
 	public static Model loadModel(List<URI> modelURIs, Metamodel metamodel,
 			ResourceSet set) throws IOException {
+		
+		// Register all our packages...otherwise proxy resolve won't work.
+		for(EPackage pack: metamodel.getEPackages()){
+			set.getPackageRegistry().put(pack.getNsURI(), pack);
+		}
+		
 		ResourceUtils.loadResourceSet(modelURIs, set);
 		StrategyForwardConverter fConverter = new StrategyForwardConverter(
 				metamodel.getEPackages());
