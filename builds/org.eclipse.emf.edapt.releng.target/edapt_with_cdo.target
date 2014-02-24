@@ -90,7 +90,7 @@
 <unit id="org.eclipse.acceleo.doc.feature.group" version="3.2.2.v20120807-0831"/>
 <unit id="org.eclipse.acceleo.feature.group" version="3.2.2.v20120807-0831"/>
 <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.2.2.v20120807-0831"/>
-<repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.2"/>
+<repository location="http://download.eclipse.org/acceleo/updates/releases/3.2"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.junit" version="4.11.0.v201303080030"/>
