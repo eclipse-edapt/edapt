@@ -196,7 +196,7 @@ public class Migrator {
 	}
 
 	/** Get the latest release. */
-	private Release getLatestRelease() {
+	public Release getLatestRelease() {
 		List<Release> releases = history.getReleases();
 		return releases.get(releases.size() - 2);
 	}
@@ -269,6 +269,11 @@ public class Migrator {
 		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return releaseMap.containsKey(nsURI) ? releaseMap.get(nsURI)
 				: Collections.<Release> emptySet();
+	}
+	
+	/** Get the release map from NS-URI to releases */
+	public Map<String, Set<Release>> getReleaseMap() {
+		return releaseMap;
 	}
 
 	/** Get the release with a certain number. */
