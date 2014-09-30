@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.emf.edapt.runtime.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.runtime.feature" version="0.3.0.qualifier">
+   <feature id="org.eclipse.emf.edapt.runtime.feature" version="1.0.0.qualifier">
       <category name="org.eclipse.emf.edapt.category.base"/>
    </feature>
-   <feature url="features/org.eclipse.emf.edapt.recorder.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.recorder.feature" version="0.3.0.qualifier">
+   <feature id="org.eclipse.emf.edapt.recorder.feature" version="1.0.0.qualifier">
       <category name="org.eclipse.emf.edapt.category.base"/>
    </feature>
-   <feature url="features/org.eclipse.emf.edapt.runtime.cdo.feature_0.3.0.qualifier.jar" id="org.eclipse.emf.edapt.runtime.cdo.feature" version="0.3.0.qualifier">
+   <feature id="org.eclipse.emf.edapt.runtime.cdo.feature" version="1.0.0.qualifier">
       <category name="org.eclipse.emf.edapt.category.cdo"/>
    </feature>
    <category-def name="org.eclipse.emf.edapt.category.base" label="Edapt base"/>
