@@ -7,14 +7,14 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
-import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.MigrationFactory;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.migration.execution.MigrationReconstructor;
-import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.internal.migration.execution.MigrationReconstructor;
+import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.MigrationFactory;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 public class CDOMigrationReconstructor extends MigrationReconstructor {
 

@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil.UsageCrossReferencer;
-import org.eclipse.emf.edapt.history.util.HistorySwitch;
+import org.eclipse.emf.edapt.spi.history.util.HistorySwitch;
 
 
 /**

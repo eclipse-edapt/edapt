@@ -1,12 +1,12 @@
 package org.eclipse.emf.edapt.migration.ui;
 
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.BACKUP;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.HISTORY;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.MODELS;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VM_ARGUMENTS;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.BACKUP;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.HISTORY;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.MODELS;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.VM_ARGUMENTS;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,10 +34,10 @@ import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
+import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
+import org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLine;
+import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
-import org.eclipse.emf.edapt.migration.execution.MigratorCommandLine;
-import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
 import org.eclipse.jdt.launching.JavaLaunchDelegate;
 
 /**

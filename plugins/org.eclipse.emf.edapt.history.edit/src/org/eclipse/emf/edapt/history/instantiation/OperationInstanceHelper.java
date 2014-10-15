@@ -23,13 +23,13 @@ import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.declaration.Parameter;
-import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.migration.Repository;
-import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
+import org.eclipse.emf.edapt.internal.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.ParameterInstance;
+import org.eclipse.emf.edapt.spi.migration.Repository;
 
 /**
  * Helper to deal with operation instances

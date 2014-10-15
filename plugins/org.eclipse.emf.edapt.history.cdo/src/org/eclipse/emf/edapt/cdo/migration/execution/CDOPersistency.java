@@ -21,9 +21,9 @@ import org.eclipse.emf.edapt.cdo.migration.StrategyBackwardConverter;
 import org.eclipse.emf.edapt.cdo.migration.StrategyForwardConverter;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.Persistency;
+import org.eclipse.emf.edapt.internal.migration.Persistency;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Helper class for loading and saving models.

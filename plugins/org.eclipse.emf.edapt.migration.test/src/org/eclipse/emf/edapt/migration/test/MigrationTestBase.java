@@ -21,18 +21,18 @@ import junit.framework.TestCase;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.migration.BackupUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.internal.migration.BackupUtils;
+import org.eclipse.emf.edapt.internal.migration.Persistency;
+import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
-import org.eclipse.emf.edapt.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.execution.MigratorRegistry;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
 
 /**
  * A class for test cases to validate a model migration.

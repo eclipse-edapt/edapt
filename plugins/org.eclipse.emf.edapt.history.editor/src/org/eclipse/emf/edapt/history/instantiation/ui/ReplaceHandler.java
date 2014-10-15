@@ -14,10 +14,10 @@ package org.eclipse.emf.edapt.history.instantiation.ui;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.instantiation.ReplaceCommand;
 import org.eclipse.emf.edapt.history.presentation.action.SubsequentChangesHandler;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.IDialogConstants;
 

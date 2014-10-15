@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.history.Change;
 import org.eclipse.emf.edapt.history.util.MoveChecker;
+import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edit.command.DragAndDropCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 

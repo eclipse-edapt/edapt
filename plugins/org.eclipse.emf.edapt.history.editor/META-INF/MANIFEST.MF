@@ -8,11 +8,11 @@ Bundle-Activator: org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.history.instantiation.ui,
- org.eclipse.emf.edapt.history.presentation,
- org.eclipse.emf.edapt.history.presentation.action,
- org.eclipse.emf.edapt.history.reconstruction.ui,
- org.eclipse.emf.edapt.history.recorder.ui
+Export-Package: org.eclipse.emf.edapt.history.instantiation.ui;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.presentation;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.presentation.action;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.reconstruction.ui;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.recorder.ui;version="1.0.0";x-internal:=true
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.history.edit;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,

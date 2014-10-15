@@ -17,13 +17,13 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.OperationChange;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.Release;
 
 
 /**

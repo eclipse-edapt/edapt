@@ -17,13 +17,13 @@ $Id$
 +--------------------------------------------------------------------------*/
 package org.eclipse.emf.edapt.migration.ui;
 
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.BACKUP;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.HISTORY;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.MODELS;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
-import static org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption.VM_ARGUMENTS;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.BACKUP;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.HISTORY;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.MODELS;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.SOURCE_RELEASE;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.TARGET_RELEASE;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.VALIDATION_LEVEL;
+import static org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption.VM_ARGUMENTS;
 import static org.eclipse.emf.edapt.migration.ui.LaunchUtils.getAttribute;
 
 import java.util.ArrayList;
@@ -46,12 +46,12 @@ import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.StringUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.migration.execution.ClassLoaderFacade;
+import org.eclipse.emf.edapt.internal.migration.execution.ClassLoaderFacade;
+import org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLineOption;
+import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
-import org.eclipse.emf.edapt.migration.execution.MigratorCommandLineOption;
-import org.eclipse.emf.edapt.migration.execution.ValidationLevel;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.viewers.ArrayContentProvider;

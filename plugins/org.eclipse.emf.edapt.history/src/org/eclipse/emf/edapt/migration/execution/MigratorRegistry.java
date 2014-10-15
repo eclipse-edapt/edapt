@@ -22,9 +22,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.internal.migration.execution.BundleClassLoader;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.MigrationPlugin;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
+import org.eclipse.emf.edapt.spi.migration.MigrationPlugin;
 import org.osgi.framework.Bundle;
 
 /**

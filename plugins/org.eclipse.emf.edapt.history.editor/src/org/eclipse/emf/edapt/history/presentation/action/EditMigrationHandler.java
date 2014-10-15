@@ -14,7 +14,7 @@ package org.eclipse.emf.edapt.history.presentation.action;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.edapt.common.ui.EditingDomainHandlerBase;
 import org.eclipse.emf.edapt.common.ui.HandlerUtils;
-import org.eclipse.emf.edapt.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**

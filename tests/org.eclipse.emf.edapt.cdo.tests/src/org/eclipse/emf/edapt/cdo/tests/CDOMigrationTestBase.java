@@ -32,14 +32,14 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.cdo.migration.execution.CDOMigrator;
 import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.migration.BackupUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.internal.migration.BackupUtils;
+import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
-import org.eclipse.emf.edapt.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * A class for test cases to validate a model migration.

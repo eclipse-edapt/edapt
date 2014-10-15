@@ -10,5 +10,5 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edapt.common;visibility:=reexport
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.common.ui
+Export-Package: org.eclipse.emf.edapt.common.ui;version="1.0.0";x-internal:=true
 Bundle-Vendor: %providerName

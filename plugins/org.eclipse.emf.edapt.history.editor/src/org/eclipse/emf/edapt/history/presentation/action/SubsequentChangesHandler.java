@@ -17,8 +17,8 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.emf.edapt.common.ui.EditingDomainHandlerBase;
 import org.eclipse.emf.edapt.common.ui.HandlerUtils;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
 

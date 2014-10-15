@@ -1,5 +1,5 @@
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.emf.edapt.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Instance;
 
 
 public abstract class ReengineeringCustomMigration extends CustomMigration {

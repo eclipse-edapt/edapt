@@ -56,7 +56,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.declaration.provider.DeclarationItemProviderAdapterFactory;
-import org.eclipse.emf.edapt.history.provider.HistoryItemProviderAdapterFactory;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryItemProviderAdapterFactory;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;

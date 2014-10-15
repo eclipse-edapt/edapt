@@ -22,10 +22,10 @@ import org.eclipse.emf.common.util.URI;
 //import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
 
 
 /**

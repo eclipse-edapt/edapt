@@ -16,13 +16,13 @@ import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.instantiation.UndoChangesCommand;
 import org.eclipse.emf.edapt.history.presentation.action.SubsequentChangesHandler;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.emf.edapt.history.recorder.ui.EcoreEditorDetector;
 import org.eclipse.emf.edapt.history.util.DependencyChecker;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;

@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edapt.migration.ForwardConverter;
-import org.eclipse.emf.edapt.migration.Instance;
-import org.eclipse.emf.edapt.migration.ReferenceSlot;
+import org.eclipse.emf.edapt.internal.migration.ForwardConverter;
+import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
 
 public class StrategyForwardConverter extends ForwardConverter {
 

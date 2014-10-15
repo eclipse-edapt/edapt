@@ -16,13 +16,13 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.OperationChange;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
 import org.eclipse.emf.edapt.history.instantiation.OperationInterpreter;
 import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 

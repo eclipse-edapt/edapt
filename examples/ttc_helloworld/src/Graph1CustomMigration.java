@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.edapt.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Instance;
 
 public abstract class Graph1CustomMigration extends HelloWorldCustomMigration {
 

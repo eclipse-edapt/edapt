@@ -24,13 +24,13 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edapt.history.recorder.ChangeRecorder;
 import org.eclipse.emf.edapt.history.recorder.HistoryChangeRecorder;
 import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
 
 
 /**

@@ -1,5 +1,8 @@
 package org.eclipse.emf.edapt.migration;
 
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.Model;
+
 /**
  * Base class for custom migrations.
  * 

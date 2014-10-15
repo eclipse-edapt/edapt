@@ -12,9 +12,9 @@
 package org.eclipse.emf.edapt.history.reconstruction;
 
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.MigrateableChange;
-import org.eclipse.emf.edapt.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.MigrateableChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
 
 /**
  * Reconstructor for the metamodel adaptation code of a certain {@link MigrationChange}.

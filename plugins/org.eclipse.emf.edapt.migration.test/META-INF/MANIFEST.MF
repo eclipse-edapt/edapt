@@ -15,6 +15,6 @@ Require-Bundle: org.eclipse.ui,
  org.junit
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.eclipse.emf.edapt.migration.test,
- org.eclipse.emf.edapt.migration.test.impl,
- org.eclipse.emf.edapt.migration.test.util
+Export-Package: org.eclipse.emf.edapt.migration.test;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.migration.test.impl;version="1.0.0";x-internal:=true,
+ org.eclipse.emf.edapt.migration.test.util;version="1.0.0";x-internal:=true
