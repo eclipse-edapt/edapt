@@ -13,13 +13,13 @@ Export-Package: org.eclipse.emf.edapt.history.instantiation;version="1.0.0";x-in
  org.eclipse.emf.edapt.history.reconstruction;version="1.0.0";x-internal:=true,
  org.eclipse.emf.edapt.history.recorder;version="1.0.0";x-internal:=true,
  org.eclipse.emf.edapt.spi.history.provider;version="1.0.0"
-Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.emf.edapt.history;visibility:=reexport,
- org.eclipse.emf.edit;visibility:=reexport,
- org.eclipse.emf.edapt.declaration;visibility:=reexport,
- org.eclipse.emf.edapt.declaration.edit;visibility:=reexport,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.edit;visibility:=reexport,
- org.junit,
- org.eclipse.emf.compare;bundle-version="3.0.0"
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
+ org.eclipse.emf.edapt.history;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.edit;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.edapt.declaration;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.edapt.declaration.edit;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.ecore.edit;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
+ org.eclipse.emf.compare;bundle-version="[3.0.0,4.0.0)",
+ org.junit;bundle-version="[4.0.0,5.0.0)"
 Bundle-ActivationPolicy: lazy
