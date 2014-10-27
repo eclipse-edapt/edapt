@@ -40,6 +40,7 @@
            allowMultiple="false"
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.presentation.ChangeDocumentationView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/TypeInstance.gif"
            id="org.eclipse.emf.edapt.history.presentation.ChangeDocumentationView"
            name="Change Documentation"
            restorable="true">
@@ -48,6 +49,7 @@
            allowMultiple="false"
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.presentation.ElementChangesView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/CompositeChange.gif"
            id="org.eclipse.emf.edapt.history.presentation.ElementChangesView"
            name="Element Changes"
            restorable="true">
@@ -351,6 +353,7 @@
      <view
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/CompositeChange.gif"
            id="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
            name="Reconstruction View">
      </view>
