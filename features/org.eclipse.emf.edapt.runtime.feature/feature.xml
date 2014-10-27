@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.edapt.runtime.feature"
-      label="Edapt Runtime Feature (Incubation)"
+      label="Edapt Runtime Feature"
       version="1.0.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
