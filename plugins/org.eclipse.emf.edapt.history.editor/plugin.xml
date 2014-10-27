@@ -126,7 +126,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrateableChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrateableChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -148,7 +148,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -166,7 +166,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -185,7 +185,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.CompositeChange">
+                             value="org.eclipse.emf.edapt.spi.history.CompositeChange">
                        </instanceof>
                        <test
                              forcePluginActivation="true"
@@ -208,7 +208,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.PrimitiveChange">
+                             value="org.eclipse.emf.edapt.spi.history.PrimitiveChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -230,7 +230,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.History">
+                             value="org.eclipse.emf.edapt.spi.history.History">
                        </instanceof>
                     </iterate>
                  </with>
@@ -249,7 +249,7 @@
                     <iterate>
                        <or>
                           <instanceof
-                                value="org.eclipse.emf.edapt.history.Release">
+                                value="org.eclipse.emf.edapt.spi.history.Release">
                           </instanceof>
                           <test
                                 forcePluginActivation="true"
@@ -272,7 +272,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -295,7 +295,7 @@
            id="org.eclipse.emf.edapt.history.editor.containerIsRelease"
            namespace="org.eclipse.emf.edapt.history.editor"
            properties="containerIsRelease"
-           type="org.eclipse.emf.edapt.history.Change">
+           type="org.eclipse.emf.edapt.spi.history.Change">
      </propertyTester>
   </extension>
   <extension
@@ -458,10 +458,10 @@
                     <iterate>
                        <or>
                           <instanceof
-                                value="org.eclipse.emf.edapt.history.Change">
+                                value="org.eclipse.emf.edapt.spi.history.Change">
                           </instanceof>
                           <instanceof
-                                value="org.eclipse.emf.edapt.history.Release">
+                                value="org.eclipse.emf.edapt.spi.history.Release">
                           </instanceof>
                        </or>
                     </iterate>
@@ -483,7 +483,7 @@
            <iterate
                  ifEmpty="false">
               <adapt
-                    type="org.eclipse.emf.edapt.history.History">
+                    type="org.eclipse.emf.edapt.spi.history.History">
               </adapt>
            </iterate>
         </with>
@@ -498,10 +498,10 @@
            <iterate>
               <or>
                  <instanceof
-                       value="org.eclipse.emf.edapt.history.Change">
+                       value="org.eclipse.emf.edapt.spi.history.Change">
                  </instanceof>
                  <instanceof
-                       value="org.eclipse.emf.edapt.history.Release">
+                       value="org.eclipse.emf.edapt.spi.history.Release">
                  </instanceof>
               </or>
            </iterate>
@@ -555,7 +555,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.PrimitiveChange">
+                             value="org.eclipse.emf.edapt.spi.history.PrimitiveChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -578,7 +578,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.Change">
+                             value="org.eclipse.emf.edapt.spi.history.Change">
                        </instanceof>
                     </iterate>
                     <test
