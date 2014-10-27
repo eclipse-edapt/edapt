@@ -35,7 +35,7 @@ public final class MigrationPlugin extends EMFPlugin {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static Implementation plugin = new Implementation();
+	private static Implementation plugin;
 
 	/**
 	 * Create the instance.
@@ -67,6 +67,9 @@ public final class MigrationPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public static Implementation getPlugin() {
+		if (plugin == null) {
+			plugin = new Implementation();
+		}
 		return plugin;
 	}
 
