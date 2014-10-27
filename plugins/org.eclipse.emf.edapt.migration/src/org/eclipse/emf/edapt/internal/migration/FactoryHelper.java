@@ -49,6 +49,9 @@ public final class FactoryHelper {
 	private void readExtensionPoint() {
 		final IExtensionRegistry extensionRegistry = Platform
 				.getExtensionRegistry();
+		if (extensionRegistry == null) {
+			return;
+		}
 		final IConfigurationElement[] configurationElements = extensionRegistry
 				.getConfigurationElementsFor(POINT_ID);
 		for (final IConfigurationElement configurationElement : configurationElements) {

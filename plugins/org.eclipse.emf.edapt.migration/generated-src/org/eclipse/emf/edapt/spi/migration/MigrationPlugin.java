@@ -67,9 +67,6 @@ public final class MigrationPlugin extends EMFPlugin {
 	 * @generated
 	 */
 	public static Implementation getPlugin() {
-		if (plugin == null) {
-			plugin = new Implementation();
-		}
 		return plugin;
 	}
 
