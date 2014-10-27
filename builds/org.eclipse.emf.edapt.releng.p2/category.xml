@@ -9,6 +9,6 @@
    <feature id="org.eclipse.emf.edapt.runtime.cdo.feature" version="1.0.0.qualifier">
       <category name="org.eclipse.emf.edapt.category.cdo"/>
    </feature>
-   <category-def name="org.eclipse.emf.edapt.category.base" label="Edapt base"/>
-   <category-def name="org.eclipse.emf.edapt.category.cdo" label="Edapt CDO (Optional)"/>
+   <category-def name="org.eclipse.emf.edapt.category.base" label="Edapt base (Install all to get started)"/>
+   <category-def name="org.eclipse.emf.edapt.category.cdo" label="Edapt CDO (Experimental)"/>
 </site>
