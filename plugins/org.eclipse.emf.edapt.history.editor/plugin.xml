@@ -354,12 +354,6 @@
            id="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
            name="Reconstruction View">
      </view>
-     <view
-           category="org.eclipse.emf.edapt.view.category"
-           class="org.eclipse.emf.edapt.history.reconstruction.ui.ComparisonView"
-           id="org.eclipse.emf.edapt.history.reconstruction.ui.ComparisonView"
-           name="Comparison View">
-     </view>
   </extension>
   <extension
         point="org.eclipse.ui.commands">
@@ -386,12 +380,6 @@
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructWithHistoryHandler"
            id="org.eclipse.emf.edapt.ReconstructWithHistory"
            name="Reconstruct with History">
-     </command>
-     <command
-           categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CompareHandler"
-           id="org.eclipse.emf.edapt.Compare"
-           name="Compare">
      </command>
      <category
            id="org.eclipse.emf.edapt"
@@ -443,29 +431,6 @@
                  <reference
                        definitionId="org.eclipse.emf.edapt.history.reconstruction.changeOrRelease">
                  </reference>
-              </visibleWhen>
-           </command>
-           <command
-                 commandId="org.eclipse.emf.edapt.Compare"
-                 style="push">
-              <visibleWhen
-                    checkEnabled="false">
-                 <with
-                       variable="selection">
-                    <count
-                          value="+">
-                    </count>
-                    <iterate>
-                       <or>
-                          <instanceof
-                                value="org.eclipse.emf.edapt.spi.history.Change">
-                          </instanceof>
-                          <instanceof
-                                value="org.eclipse.emf.edapt.spi.history.Release">
-                          </instanceof>
-                       </or>
-                    </iterate>
-                 </with>
               </visibleWhen>
            </command>
         </menu>
@@ -526,13 +491,6 @@
            icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/OperationInstance.gif"
            id="org.eclipse.emf.edapt.history.instantiation.view.operationsBrowser"
            name="Operation Browser">
-     </view>
-     <view
-           category="org.eclipse.emf.edapt.view.category"
-           class="org.eclipse.emf.edapt.history.instantiation.ui.ConvergenceView"
-           id="org.eclipse.emf.edapt.history.instantiation.ui.ConvergenceView"
-           name="Convergence View"
-           restorable="true">
      </view>
   </extension>
   <extension
@@ -624,11 +582,6 @@
               label="Release"
               style="push">
         </command>
-        <command
-              commandId="org.eclipse.emf.edapt.Converge"
-              label="Converge"
-              style="push">
-        </command>
      </menuContribution>
   </extension>
   <extension
@@ -644,12 +597,6 @@
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReleaseHandler"
            id="org.eclipse.emf.edapt.Release"
            name="Release">
-     </command>
-     <command
-           categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ConvergeHandler"
-           id="org.eclipse.emf.edapt.Converge"
-           name="Converge">
      </command>
      <category
            id="org.eclipse.emf.edapt"
