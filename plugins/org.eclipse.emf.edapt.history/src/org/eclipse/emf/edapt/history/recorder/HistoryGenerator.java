@@ -16,8 +16,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.Release;
 
 
 /**

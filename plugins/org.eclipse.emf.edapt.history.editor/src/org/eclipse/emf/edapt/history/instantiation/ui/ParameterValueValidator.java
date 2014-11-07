@@ -7,10 +7,10 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.ui.IValueValidator;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.ParameterInstance;
-import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.internal.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.ParameterInstance;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
 
 /**
  * Validator for parameters

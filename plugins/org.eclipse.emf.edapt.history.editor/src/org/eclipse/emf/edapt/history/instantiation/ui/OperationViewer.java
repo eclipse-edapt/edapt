@@ -15,8 +15,8 @@ import java.net.URL;
 import java.util.List;
 
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
 import org.eclipse.jface.dialogs.PopupDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DoubleClickEvent;

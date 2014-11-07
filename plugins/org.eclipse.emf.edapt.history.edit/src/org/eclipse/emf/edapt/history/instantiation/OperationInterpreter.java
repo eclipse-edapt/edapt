@@ -13,11 +13,11 @@ package org.eclipse.emf.edapt.history.instantiation;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
+import org.eclipse.emf.edapt.internal.migration.execution.OperationInstanceConverter;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.Repository;
-import org.eclipse.emf.edapt.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
+import org.eclipse.emf.edapt.spi.migration.Repository;
 
 /**
  * Interpreter for an operation.

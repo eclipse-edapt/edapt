@@ -2,9 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.emf.edapt.migration.Instance;
-import org.eclipse.emf.edapt.migration.Metamodel;
-import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 public class InsertTransitiveEdges extends Graph1CustomMigration {
 

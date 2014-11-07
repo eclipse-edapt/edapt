@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.edapt.runtime.cdo.feature"
+      label="Edapt CDO Feature"
+      version="1.0.0.qualifier"
+      provider-name="Eclipse Modeling Project">
+
+   <description url="http://www.eclipse.org/edapt">
+      Edapt eases the coupled evolution of EMF metamodels and models.
+The CDO plugin provides support for CDO based coupled evolution.
+   </description>
+
+   <copyright>
+      Copyright (c) 2014 NetXForge, EclipseSource.
+ All rights reserved. This program and the accompanying materials
+ are made available under the terms of the Eclipse Public License v1.0
+ which accompanies this distribution, and is available at
+ http://www.eclipse.org/legal/epl-v10.html
+ 
+ Contributors:
+ Christophe Bouhier - initial API and implementation and/or initial documentation
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <discovery label="Edapt project site" url="http://www.eclipse.org/edapt"/>
+   </url>
+
+   <plugin
+         id="org.eclipse.emf.edapt.history.cdo"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.TypeUtils;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.Create;
-import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.InitializerChange;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.Move;
-import org.eclipse.emf.edapt.history.OperationChange;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
-import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.history.Remove;
-import org.eclipse.emf.edapt.history.util.HistorySwitch;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.Create;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.InitializerChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.Move;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.history.Remove;
+import org.eclipse.emf.edapt.spi.history.util.HistorySwitch;
 
 
 /**
@@ -244,7 +244,7 @@ public class HistoryValidator extends ReconstructorBase {
 		 * {@inheritDoc}
 		 */
 		@Override
-		public Boolean caseSet(final org.eclipse.emf.edapt.history.Set set) {
+		public Boolean caseSet(final org.eclipse.emf.edapt.spi.history.Set set) {
 			final EStructuralFeature feature = set.getFeature();
 			EObject element = mapping.resolveTarget(set.getElement());
 			if (isCreated(element)) {

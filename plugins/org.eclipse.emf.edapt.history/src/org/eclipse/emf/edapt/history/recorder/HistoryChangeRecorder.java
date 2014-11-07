@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
-import org.eclipse.emf.edapt.history.History;
+import org.eclipse.emf.edapt.spi.history.History;
 
 
 /**

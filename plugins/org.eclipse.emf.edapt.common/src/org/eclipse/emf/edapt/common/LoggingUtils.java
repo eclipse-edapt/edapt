@@ -59,12 +59,18 @@ public final class LoggingUtils {
 
 	/** Log status. */
 	public static void log(Plugin plugin, IStatus status) {
+		if (plugin == null) {
+			return;
+		}
 		plugin.getLog().log(status);
 	}
 
 	/** Create status. */
 	public static IStatus createStatus(Plugin plugin, int severity, int code,
 			String message, Throwable exception) {
+		if (plugin == null) {
+			return null;
+		}
 		String pluginId = plugin.getBundle().getSymbolicName();
 		return new Status(severity, pluginId, code, message, exception);
 	}

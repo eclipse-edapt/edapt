@@ -18,11 +18,11 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.HistoryPackage;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.emf.edapt.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 
 /**
  * Suite to test a migration.

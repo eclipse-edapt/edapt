@@ -40,6 +40,7 @@
            allowMultiple="false"
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.presentation.ChangeDocumentationView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/TypeInstance.gif"
            id="org.eclipse.emf.edapt.history.presentation.ChangeDocumentationView"
            name="Change Documentation"
            restorable="true">
@@ -48,6 +49,7 @@
            allowMultiple="false"
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.presentation.ElementChangesView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/CompositeChange.gif"
            id="org.eclipse.emf.edapt.history.presentation.ElementChangesView"
            name="Element Changes"
            restorable="true">
@@ -126,7 +128,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrateableChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrateableChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -148,7 +150,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -166,7 +168,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -185,7 +187,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.CompositeChange">
+                             value="org.eclipse.emf.edapt.spi.history.CompositeChange">
                        </instanceof>
                        <test
                              forcePluginActivation="true"
@@ -208,7 +210,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.PrimitiveChange">
+                             value="org.eclipse.emf.edapt.spi.history.PrimitiveChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -230,7 +232,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.History">
+                             value="org.eclipse.emf.edapt.spi.history.History">
                        </instanceof>
                     </iterate>
                  </with>
@@ -249,7 +251,7 @@
                     <iterate>
                        <or>
                           <instanceof
-                                value="org.eclipse.emf.edapt.history.Release">
+                                value="org.eclipse.emf.edapt.spi.history.Release">
                           </instanceof>
                           <test
                                 forcePluginActivation="true"
@@ -272,7 +274,7 @@
                     </count>
                     <iterate>
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.MigrationChange">
+                             value="org.eclipse.emf.edapt.spi.history.MigrationChange">
                        </instanceof>
                     </iterate>
                  </with>
@@ -295,7 +297,7 @@
            id="org.eclipse.emf.edapt.history.editor.containerIsRelease"
            namespace="org.eclipse.emf.edapt.history.editor"
            properties="containerIsRelease"
-           type="org.eclipse.emf.edapt.history.Change">
+           type="org.eclipse.emf.edapt.spi.history.Change">
      </propertyTester>
   </extension>
   <extension
@@ -351,14 +353,9 @@
      <view
            category="org.eclipse.emf.edapt.view.category"
            class="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
+           icon="platform:/plugin/org.eclipse.emf.edapt.history.edit/icons/full/obj16/CompositeChange.gif"
            id="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructionView"
            name="Reconstruction View">
-     </view>
-     <view
-           category="org.eclipse.emf.edapt.view.category"
-           class="org.eclipse.emf.edapt.history.reconstruction.ui.ComparisonView"
-           id="org.eclipse.emf.edapt.history.reconstruction.ui.ComparisonView"
-           name="Comparison View">
      </view>
   </extension>
   <extension
@@ -386,12 +383,6 @@
            defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.ReconstructWithHistoryHandler"
            id="org.eclipse.emf.edapt.ReconstructWithHistory"
            name="Reconstruct with History">
-     </command>
-     <command
-           categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.reconstruction.ui.CompareHandler"
-           id="org.eclipse.emf.edapt.Compare"
-           name="Compare">
      </command>
      <category
            id="org.eclipse.emf.edapt"
@@ -445,29 +436,6 @@
                  </reference>
               </visibleWhen>
            </command>
-           <command
-                 commandId="org.eclipse.emf.edapt.Compare"
-                 style="push">
-              <visibleWhen
-                    checkEnabled="false">
-                 <with
-                       variable="selection">
-                    <count
-                          value="+">
-                    </count>
-                    <iterate>
-                       <or>
-                          <instanceof
-                                value="org.eclipse.emf.edapt.history.Change">
-                          </instanceof>
-                          <instanceof
-                                value="org.eclipse.emf.edapt.history.Release">
-                          </instanceof>
-                       </or>
-                    </iterate>
-                 </with>
-              </visibleWhen>
-           </command>
         </menu>
      </menuContribution>
   </extension>
@@ -483,7 +451,7 @@
            <iterate
                  ifEmpty="false">
               <adapt
-                    type="org.eclipse.emf.edapt.history.History">
+                    type="org.eclipse.emf.edapt.spi.history.History">
               </adapt>
            </iterate>
         </with>
@@ -498,10 +466,10 @@
            <iterate>
               <or>
                  <instanceof
-                       value="org.eclipse.emf.edapt.history.Change">
+                       value="org.eclipse.emf.edapt.spi.history.Change">
                  </instanceof>
                  <instanceof
-                       value="org.eclipse.emf.edapt.history.Release">
+                       value="org.eclipse.emf.edapt.spi.history.Release">
                  </instanceof>
               </or>
            </iterate>
@@ -527,13 +495,6 @@
            id="org.eclipse.emf.edapt.history.instantiation.view.operationsBrowser"
            name="Operation Browser">
      </view>
-     <view
-           category="org.eclipse.emf.edapt.view.category"
-           class="org.eclipse.emf.edapt.history.instantiation.ui.ConvergenceView"
-           id="org.eclipse.emf.edapt.history.instantiation.ui.ConvergenceView"
-           name="Convergence View"
-           restorable="true">
-     </view>
   </extension>
   <extension
         point="org.eclipse.ui.menus">
@@ -555,7 +516,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.PrimitiveChange">
+                             value="org.eclipse.emf.edapt.spi.history.PrimitiveChange">
                        </instanceof>
                     </iterate>
                     <test
@@ -578,7 +539,7 @@
                     <iterate
                           ifEmpty="false">
                        <instanceof
-                             value="org.eclipse.emf.edapt.history.Change">
+                             value="org.eclipse.emf.edapt.spi.history.Change">
                        </instanceof>
                     </iterate>
                     <test
@@ -624,11 +585,6 @@
               label="Release"
               style="push">
         </command>
-        <command
-              commandId="org.eclipse.emf.edapt.Converge"
-              label="Converge"
-              style="push">
-        </command>
      </menuContribution>
   </extension>
   <extension
@@ -644,12 +600,6 @@
            defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ReleaseHandler"
            id="org.eclipse.emf.edapt.Release"
            name="Release">
-     </command>
-     <command
-           categoryId="org.eclipse.emf.edapt"
-           defaultHandler="org.eclipse.emf.edapt.history.instantiation.ui.ConvergeHandler"
-           id="org.eclipse.emf.edapt.Converge"
-           name="Converge">
      </command>
      <category
            id="org.eclipse.emf.edapt"

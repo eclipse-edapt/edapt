@@ -10,11 +10,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.declaration.BaseLibrary;
 import org.eclipse.emf.edapt.declaration.DeclarationPackage;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
+import org.eclipse.emf.edapt.internal.declaration.BaseLibrary;
+import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
 
 public class OperationExtractor {
 

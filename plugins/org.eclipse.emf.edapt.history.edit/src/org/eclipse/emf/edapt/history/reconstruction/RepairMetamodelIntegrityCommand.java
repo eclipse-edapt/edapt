@@ -23,11 +23,12 @@ import java.util.List;
 //import org.eclipse.emf.compare.diff.metamodel.DiffModel;
 //import org.eclipse.emf.compare.diff.metamodel.DiffResourceSet;
 
+
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.change.ChangeDescription;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
 import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 

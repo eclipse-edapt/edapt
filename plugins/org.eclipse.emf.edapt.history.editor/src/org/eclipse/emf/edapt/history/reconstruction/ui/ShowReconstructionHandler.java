@@ -16,9 +16,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.ui.HandlerUtils;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.ui.PartInitException;
 
 

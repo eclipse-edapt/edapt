@@ -15,7 +15,7 @@ import java.util.Set;
 
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
 import org.eclipse.emf.edapt.common.ui.TitleMessageDialogBase;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.ILabelProvider;

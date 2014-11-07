@@ -14,10 +14,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.spi.history.Release;
 
 /**
  * Test for ensuring that the configuration of the custom serialization has

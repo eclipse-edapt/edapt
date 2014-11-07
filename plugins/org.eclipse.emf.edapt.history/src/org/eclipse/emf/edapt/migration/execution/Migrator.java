@@ -35,22 +35,28 @@ import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
 import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
-import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.migration.BackupUtils;
+import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
+import org.eclipse.emf.edapt.internal.migration.BackupUtils;
+import org.eclipse.emf.edapt.internal.migration.MaterializingBackwardConverter;
+import org.eclipse.emf.edapt.internal.migration.Persistency;
+import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.internal.migration.execution.ClassLoaderFacade;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.internal.migration.execution.MigrationReconstructor;
+import org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLine;
+import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
+import org.eclipse.emf.edapt.internal.migration.execution.WrappedMigrationException;
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.emf.edapt.migration.MaterializingBackwardConverter;
-import org.eclipse.emf.edapt.migration.Metamodel;
 import org.eclipse.emf.edapt.migration.MigrationException;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.Persistency;
-import org.eclipse.emf.edapt.migration.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Migrator to migrate a model from a previous to the current release.
@@ -129,8 +135,8 @@ public class Migrator {
 			Map<EPackage, String> packageMap) {
 		for (Iterator<EObject> i = release.eAllContents(); i.hasNext();) {
 			EObject element = i.next();
-			if (element instanceof org.eclipse.emf.edapt.history.Set) {
-				org.eclipse.emf.edapt.history.Set set = (org.eclipse.emf.edapt.history.Set) element;
+			if (element instanceof org.eclipse.emf.edapt.spi.history.Set) {
+				org.eclipse.emf.edapt.spi.history.Set set = (org.eclipse.emf.edapt.spi.history.Set) element;
 				if (set.getFeature() == EcorePackage.eINSTANCE
 						.getEPackage_NsURI()) {
 					EPackage ePackage = (EPackage) set.getElement();
@@ -196,7 +202,7 @@ public class Migrator {
 	}
 
 	/** Get the latest release. */
-	private Release getLatestRelease() {
+	public Release getLatestRelease() {
 		List<Release> releases = history.getReleases();
 		return releases.get(releases.size() - 2);
 	}
@@ -270,6 +276,11 @@ public class Migrator {
 		return releaseMap.containsKey(nsURI) ? releaseMap.get(nsURI)
 				: Collections.<Release> emptySet();
 	}
+	
+	/** Get the release map from NS-URI to releases */
+	public Map<String, Set<Release>> getReleaseMap() {
+		return releaseMap;
+	}
 
 	/** Get the release with a certain number. */
 	public Release getRelease(int number) {
@@ -292,6 +303,9 @@ public class Migrator {
 		return releaseMap.keySet();
 	}
 
+	
+	// CB TODO SHOULD BE API or Adapter, this is called from MigrateHandler. 
+	
 	/** Returns the metamodel for a release. */
 	public Metamodel getMetamodel(Release release) {
 		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(

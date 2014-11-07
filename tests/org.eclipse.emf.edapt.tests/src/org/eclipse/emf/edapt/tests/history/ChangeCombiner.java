@@ -16,9 +16,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.HistoryPackage;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edapt.spi.history.Release;
 
 
 /**

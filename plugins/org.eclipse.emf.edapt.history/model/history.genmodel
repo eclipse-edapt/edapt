@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<genmodel:GenModel xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.edapt.history/generated-src"
-    editDirectory="/org.eclipse.emf.edapt.history.edit/generated-src" editorDirectory="/org.eclipse.emf.edapt.history.editor/generated-src"
-    modelPluginID="org.eclipse.emf.edapt.history" templateDirectory="" modelName="History"
-    modelPluginClass="HistoryPlugin" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
-    copyrightFields="false" usedGenPackages="../../org.eclipse.emf.edapt.declaration/model/declaration.genmodel#//declaration platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.edapt.history/generated-src" editDirectory="/org.eclipse.emf.edapt.history.edit/generated-src"
+    editorDirectory="/org.eclipse.emf.edapt.history.editor/generated-src" modelPluginID="org.eclipse.emf.edapt.history"
+    templateDirectory="" modelName="History" modelPluginClass="org.eclipse.emf.edapt.spi.history.HistoryPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.edapt.declaration/model/declaration.genmodel#//declaration platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
   <foreignModel>history.ecore</foreignModel>
-  <genPackages prefix="History" basePackage="org.eclipse.emf.edapt" disposableProviderFactory="true"
+  <genPackages prefix="History" basePackage="org.eclipse.emf.edapt.spi" disposableProviderFactory="true"
       multipleEditorPages="false" generateModelWizard="false" ecorePackage="history.ecore#/">
     <genClasses ecoreClass="history.ecore#//History">
       <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference history.ecore#//History/releases"/>
       <genOperations ecoreOperation="history.ecore#//History/getFirstRelease"/>
       <genOperations ecoreOperation="history.ecore#//History/getLastRelease"/>
       <genOperations ecoreOperation="history.ecore#//History/getRootPackages"/>
+      <genOperations ecoreOperation="history.ecore#//History/getLatestRelease"/>
     </genClasses>
     <genClasses ecoreClass="history.ecore#//Release">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//Release/date"/>
@@ -25,6 +25,7 @@
       <genOperations ecoreOperation="history.ecore#//Release/isFirstRelease"/>
       <genOperations ecoreOperation="history.ecore#//Release/isLastRelease"/>
       <genOperations ecoreOperation="history.ecore#//Release/getNumber"/>
+      <genOperations ecoreOperation="history.ecore#//Release/isLatestRelease"/>
     </genClasses>
     <genClasses image="false" ecoreClass="history.ecore#//Change" labelFeature="#//history/Change/description">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//Change/breaking"/>
@@ -71,18 +72,11 @@
     </genClasses>
     <genClasses ecoreClass="history.ecore#//OperationInstance">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference history.ecore#//OperationInstance/parameters"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference history.ecore#//OperationInstance/variables"/>
       <genOperations ecoreOperation="history.ecore#//OperationInstance/getParameter">
         <genParameters ecoreParameter="history.ecore#//OperationInstance/getParameter/name"/>
       </genOperations>
       <genOperations ecoreOperation="history.ecore#//OperationInstance/getParameterValue">
         <genParameters ecoreParameter="history.ecore#//OperationInstance/getParameterValue/name"/>
-      </genOperations>
-      <genOperations ecoreOperation="history.ecore#//OperationInstance/getVariable">
-        <genParameters ecoreParameter="history.ecore#//OperationInstance/getVariable/name"/>
-      </genOperations>
-      <genOperations ecoreOperation="history.ecore#//OperationInstance/getVariableValue">
-        <genParameters ecoreParameter="history.ecore#//OperationInstance/getVariableValue/name"/>
       </genOperations>
       <genOperations ecoreOperation="history.ecore#//OperationInstance/getOperation"/>
       <genOperations ecoreOperation="history.ecore#//OperationInstance/setParameterValue">
@@ -90,20 +84,14 @@
         <genParameters ecoreParameter="history.ecore#//OperationInstance/setParameterValue/value"/>
       </genOperations>
     </genClasses>
-    <genClasses image="false" ecoreClass="history.ecore#//PlaceholderInstance">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//PlaceholderInstance/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//PlaceholderInstance/dataValue"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference history.ecore#//PlaceholderInstance/referenceValue"/>
-      <genOperations ecoreOperation="history.ecore#//PlaceholderInstance/getPlaceholder"/>
-    </genClasses>
     <genClasses ecoreClass="history.ecore#//ParameterInstance">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//ParameterInstance/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//ParameterInstance/dataValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference history.ecore#//ParameterInstance/referenceValue"/>
       <genOperations ecoreOperation="history.ecore#//ParameterInstance/getParameter"/>
     </genClasses>
     <genClasses ecoreClass="history.ecore#//ModelReference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference history.ecore#//ModelReference/element"/>
-    </genClasses>
-    <genClasses ecoreClass="history.ecore#//VariableInstance">
-      <genOperations ecoreOperation="history.ecore#//VariableInstance/getVariable"/>
     </genClasses>
     <genClasses image="false" ecoreClass="history.ecore#//NamedElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute history.ecore#//NamedElement/name"/>

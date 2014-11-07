@@ -12,9 +12,9 @@ import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.Operation;
-import org.eclipse.emf.edapt.declaration.OperationExtractor;
-import org.eclipse.emf.edapt.declaration.OperationRegistry;
 import org.eclipse.emf.edapt.declaration.Parameter;
+import org.eclipse.emf.edapt.internal.declaration.OperationExtractor;
+import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
 
 /**
  * Tests for the {@link OperationExtractor}.

@@ -13,10 +13,10 @@ package org.eclipse.emf.edapt.history.presentation;
 
 import java.util.List;
 
-import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.MigrateableChange;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.MigrateableChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 /**

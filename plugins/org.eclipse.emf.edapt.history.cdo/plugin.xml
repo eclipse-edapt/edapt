@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.cdo.viewProviders">
+      <viewProvider
+            class="org.eclipse.emf.edapt.cdo.migration.execution.EdaptCDOViewProvider"
+            priority="500"
+            regex="cdo">
+      </viewProvider>
+   </extension>
+
+</plugin>

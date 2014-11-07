@@ -19,10 +19,10 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.HistoryPackage;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.HistoryValidator;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.action.ValidateAction;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -50,7 +50,7 @@ public class ExtendedValidateAction extends ValidateAction {
 		EValidator.Registry.INSTANCE.put(HistoryPackage.eINSTANCE,
 				new EValidator.Descriptor() {
 					public EValidator getEValidator() {
-						return org.eclipse.emf.edapt.history.util.HistoryValidator.INSTANCE;
+						return org.eclipse.emf.edapt.spi.history.util.HistoryValidator.INSTANCE;
 					}
 				});
 	}

@@ -25,12 +25,6 @@ import org.eclipse.emf.ecore.change.util.ChangeRecorder;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.OperationChange;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
-import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edapt.history.reconstruction.DiffModelFilterUtils;
 import org.eclipse.emf.edapt.history.reconstruction.DiffModelOrderFilter;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
@@ -38,6 +32,12 @@ import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 //import org.eclipse.emf.edapt.history.reconstruction.HistoryComparer;
 import org.eclipse.emf.edapt.history.reconstruction.IDiffModelFilter;
 import org.eclipse.emf.edapt.history.reconstruction.ModelAssert;
+import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 

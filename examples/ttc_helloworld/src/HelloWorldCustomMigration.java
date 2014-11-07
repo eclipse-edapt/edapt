@@ -1,8 +1,8 @@
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.migration.CustomMigration;
-import org.eclipse.emf.edapt.migration.Instance;
-import org.eclipse.emf.edapt.migration.Model;
-import org.eclipse.emf.edapt.migration.ModelResource;
+import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Model;
+import org.eclipse.emf.edapt.spi.migration.ModelResource;
 
 public abstract class HelloWorldCustomMigration extends CustomMigration {
 

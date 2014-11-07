@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.history.Add;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.Create;
-import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.Move;
-import org.eclipse.emf.edapt.history.Remove;
-import org.eclipse.emf.edapt.history.Set;
+import org.eclipse.emf.edapt.spi.history.Add;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.Create;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.Move;
+import org.eclipse.emf.edapt.spi.history.Remove;
+import org.eclipse.emf.edapt.spi.history.Set;
 
 
 /**

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="org.eclipse.emf.edapt.recorder.sdk.feature"
-      label="Edapt Recorder SDK Feature (Incubation)"
-      version="0.3.0.qualifier"
+      label="Edapt Recorder SDK Feature"
+      version="1.0.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/edapt">

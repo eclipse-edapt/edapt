@@ -13,9 +13,9 @@ package org.eclipse.emf.edapt.migration.ui;
 
 import java.util.List;
 
-import org.eclipse.emf.edapt.migration.IOracle;
-import org.eclipse.emf.edapt.migration.Instance;
-import org.eclipse.emf.edapt.migration.Model;
+import org.eclipse.emf.edapt.internal.migration.IOracle;
+import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Oracle that asks the user

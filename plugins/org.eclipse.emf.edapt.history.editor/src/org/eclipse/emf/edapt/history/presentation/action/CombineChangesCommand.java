@@ -13,10 +13,10 @@ package org.eclipse.emf.edapt.history.presentation.action;
 
 import java.util.List;
 
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.HistoryFactory;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
 

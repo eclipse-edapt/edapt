@@ -17,8 +17,8 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.util.HistoryValidator;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.util.HistoryValidator;
 
 
 /**

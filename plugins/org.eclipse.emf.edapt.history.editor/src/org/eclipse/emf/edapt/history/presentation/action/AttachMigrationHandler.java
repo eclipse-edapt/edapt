@@ -14,12 +14,12 @@ package org.eclipse.emf.edapt.history.presentation.action;
 import java.util.List;
 
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.emf.edapt.history.MigrateableChange;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.presentation.AttachMigrationCommand;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.reconstruction.MigrationChangeReconstructor;
+import org.eclipse.emf.edapt.spi.history.MigrateableChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jdt.core.IType;
 import org.eclipse.jface.dialogs.MessageDialog;

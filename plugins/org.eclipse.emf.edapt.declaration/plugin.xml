@@ -26,7 +26,7 @@
   <extension
         point="org.eclipse.emf.edapt.operations">
      <library
-           class="org.eclipse.emf.edapt.declaration.BaseLibrary">
+           class="org.eclipse.emf.edapt.internal.declaration.BaseLibrary">
      </library>
   </extension>
 

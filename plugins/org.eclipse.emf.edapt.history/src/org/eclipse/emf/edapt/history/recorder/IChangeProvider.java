@@ -13,8 +13,8 @@ package org.eclipse.emf.edapt.history.recorder;
 
 import java.util.List;
 
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 
 
 /**

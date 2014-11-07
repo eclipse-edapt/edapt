@@ -20,7 +20,7 @@ import junit.framework.TestSuite;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.FileUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.migration.execution.ClassLoaderFacade;
+import org.eclipse.emf.edapt.internal.migration.execution.ClassLoaderFacade;
 import org.eclipse.emf.edapt.migration.test.MigrationTestSuite;
 
 /**
@@ -37,7 +37,7 @@ public class SingleMigrationTest extends TestSuite {
 	public static Test suite() {
 		TestSuite suite = new TestSuite("Migration Test");
 
-		addMigrationTestSuites(suite, new File("data/filesystem"));
+		addMigrationTestSuites(suite, new File("data/component"));
 
 		return suite;
 	}

@@ -20,16 +20,16 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.Create;
-import org.eclipse.emf.edapt.history.Delete;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.OperationChange;
-import org.eclipse.emf.edapt.history.OperationInstance;
-import org.eclipse.emf.edapt.history.Release;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.Create;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.Release;
 
 /**
  * Reconstructor to reproduce the history.

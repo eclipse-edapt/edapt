@@ -20,10 +20,10 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.migration.BackupUtils;
-import org.eclipse.emf.edapt.migration.Metamodel;
+import org.eclipse.emf.edapt.internal.migration.BackupUtils;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
 
 /**
  * Action to restore the backup of the model file.

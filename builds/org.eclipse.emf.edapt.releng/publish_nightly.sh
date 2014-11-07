@@ -15,9 +15,4 @@
 # Publish various artifacts. 
 # Edapt P2 => build.eclipse.org/ ~/downloads/edapt/p2
 
-# Copy to the Download area.
-cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /home/data/httpd/download.eclipse.org/edapt/p2/nightly
-
-# Paths
-# /home/data/httpd/download.eclipse.org/edapt
-# /home/data/httpd/download-staging.priv/modeling/edapt
+cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository/* /home/data/httpd/download.eclipse.org/edapt/p2/nightly

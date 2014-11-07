@@ -19,15 +19,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.CompositeChange;
-import org.eclipse.emf.edapt.history.History;
-import org.eclipse.emf.edapt.history.InitializerChange;
-import org.eclipse.emf.edapt.history.MigrateableChange;
-import org.eclipse.emf.edapt.history.MigrationChange;
-import org.eclipse.emf.edapt.history.PrimitiveChange;
-import org.eclipse.emf.edapt.history.Release;
-import org.eclipse.emf.edapt.history.ValueChange;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.InitializerChange;
+import org.eclipse.emf.edapt.spi.history.MigrateableChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.history.ValueChange;
 
 
 /**

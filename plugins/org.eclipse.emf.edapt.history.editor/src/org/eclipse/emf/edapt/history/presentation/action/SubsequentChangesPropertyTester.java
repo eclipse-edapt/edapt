@@ -17,8 +17,8 @@ import java.util.List;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
-import org.eclipse.emf.edapt.history.Change;
-import org.eclipse.emf.edapt.history.Release;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.jface.viewers.ISelection;
 
 
