@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.edapt.recorder.feature"
       label="Edapt Recorder Feature"
-      version="1.0.0.qualifier"
+      version="1.1.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/edapt">
