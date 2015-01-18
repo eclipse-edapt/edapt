@@ -123,6 +123,9 @@ public class EcoreForwardReconstructor extends ForwardReconstructorBase {
 			else {
 				element = type.getEPackage().getEFactoryInstance().create(type);
 				String filename = operation.getElement().eResource().getURI().lastSegment();
+				if (filename == null) {
+					filename = operation.getElement().eResource().getURI().toString();
+				}
 				URI uri = folder.appendSegment(filename);
 				Resource resource = resourceSet.getResource(uri, false);
 				if (resource == null) {
