@@ -5,10 +5,9 @@
   <parent>
     <groupId>edapt</groupId>
     <artifactId>plugins</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
   </parent>
   <groupId>edapt</groupId>
   <artifactId>org.eclipse.emf.edapt.migration</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
   <packaging>eclipse-plugin</packaging>
 </project>
