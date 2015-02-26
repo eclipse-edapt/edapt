@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.edapt.history.instantiation;version="1
  .1.0";x-internal:=true,org.eclipse.emf.edapt.history.provider.util;ve
  rsion="1.1.0";x-internal:=true,org.eclipse.emf.edapt.history.reconstr
