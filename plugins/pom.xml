@@ -1,28 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>edapt</groupId>
-  <artifactId>plugins</artifactId>
-  <packaging>pom</packaging>
-  <parent>
-    <groupId>edapt</groupId>
-    <artifactId>root</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
-    <relativePath>../builds/org.eclipse.emf.edapt.releng</relativePath>  
-  </parent>
-  <modules>
-    <module>org.eclipse.emf.edapt.common</module>
-    <module>org.eclipse.emf.edapt.common.ui</module>
-    <module>org.eclipse.emf.edapt.declaration</module>
-    <module>org.eclipse.emf.edapt.declaration.edit</module>
-    <module>org.eclipse.emf.edapt.declaration.editor</module>
-    <module>org.eclipse.emf.edapt.history</module>
-    <module>org.eclipse.emf.edapt.history.cdo</module>
-    <module>org.eclipse.emf.edapt.history.edit</module>
-    <module>org.eclipse.emf.edapt.history.editor</module>
-    <module>org.eclipse.emf.edapt.migration</module>
-    <module>org.eclipse.emf.edapt.migration.test</module>
-    <module>org.eclipse.emf.edapt.migration.ui</module>
-  </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edapt</groupId>
+	<artifactId>plugins</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>edapt</groupId>
+		<artifactId>root</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../builds/org.eclipse.emf.edapt.releng</relativePath>  
+	</parent>
+
+	<modules>
+		<module>org.eclipse.emf.edapt.common</module>
+		<module>org.eclipse.emf.edapt.common.ui</module>
+		<module>org.eclipse.emf.edapt.declaration</module>
+		<module>org.eclipse.emf.edapt.declaration.edit</module>
+		<module>org.eclipse.emf.edapt.declaration.editor</module>
+		<module>org.eclipse.emf.edapt.history</module>
+		<module>org.eclipse.emf.edapt.history.cdo</module>
+		<module>org.eclipse.emf.edapt.history.edit</module>
+		<module>org.eclipse.emf.edapt.history.editor</module>
+		<module>org.eclipse.emf.edapt.migration</module>
+		<module>org.eclipse.emf.edapt.migration.test</module>
+		<module>org.eclipse.emf.edapt.migration.ui</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<!-- 1. Enable source plugin generation -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>attach-source</id>
+						<goals>
+							<goal>plugin-source</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<!-- Enable code signing and packing -->
+		<profile>
+			<id>build-server</id>
+			<build>
+				<plugins>
+					<!-- Packing normalize -->
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200a-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pack200-normalize</id>
+								<goals>
+									<goal>normalize</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<!-- code signing -->
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<!-- packing -->
+					<plugin>
+						<groupId>org.eclipse.tycho.extras</groupId>
+						<artifactId>tycho-pack200b-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>pack200-pack</id>
+								<goals>
+									<goal>pack</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					
+					<!-- p2 metadata after pack -->
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<executions>
+							<execution>
+								<id>attach-p2-metadata</id>
+								<phase>package</phase>
+								<goals>
+									<goal>p2-metadata</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<defaultP2Metadata>false</defaultP2Metadata>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 </project>

@@ -7,11 +7,64 @@
 	<artifactId>root</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
+
 	<properties>
-		<tycho-version>0.19.0</tycho-version>
+		<tycho-version>0.22.0</tycho-version>
 	</properties>
+
+	<profiles>
+		<!-- Profile for use on the eclipse build server. -->
+		<profile>
+			<id>build-server</id>
+			<activation>
+				<property>
+					<name>build-server</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-compiler-plugin</artifactId>
+						<version>${tycho-version}</version>
+						<configuration>
+							<useJDK>BREE</useJDK>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<!-- Add eclipse maven repo -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>eclipse-maven-releases</id>
+			<url>https://repo.eclipse.org/content/repositories/releases/</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<modules>
+		<module>../../plugins</module>
+		<module>../../features</module>
+		<module>../org.eclipse.emf.edapt.releng.p2</module>
+	</modules>
+
 	<build>
 		<plugins>
+
+			<!-- Enable tycho -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<!-- Configure target platform-->
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -25,14 +78,18 @@
 							<classifier>../../builds/org.eclipse.emf.edapt.releng.target/edapt_with_cdo</classifier>
 						</artifact>
 					</target>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
+
+
+			<!-- For version handling -->
 			<plugin>  
 				<groupId>org.eclipse.tycho</groupId>  
 				<artifactId>tycho-versions-plugin</artifactId>  
@@ -40,9 +97,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>../../plugins</module>
-		<module>../../features</module>
-		<module>../org.eclipse.emf.edapt.releng.p2</module>
-	</modules>
+
 </project>
