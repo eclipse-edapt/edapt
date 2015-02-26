@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2015-02-26T09:37:22.515+0100">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="ChangeAttributeType.ecore#/">
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#/" featureName="name"
+            dataValue="change_attribute_type"/>
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#/" featureName="nsURI"
+            dataValue="change_attribute_type/v2"/>
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#/" featureName="nsPrefix"
+            dataValue="change_attribute_type"/>
+      </changes>
+      <changes xsi:type="history:Create" target="ChangeAttributeType.ecore#/" referenceName="eClassifiers"
+          element="ChangeAttributeType.ecore#//Root">
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#//Root"
+            featureName="name" dataValue="Root"/>
+      </changes>
+      <changes xsi:type="history:Create" target="ChangeAttributeType.ecore#//Root"
+          referenceName="eStructuralFeatures" element="ChangeAttributeType.ecore#//Root/id">
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#//Root/id"
+            featureName="name" dataValue="id"/>
+        <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#//Root/id"
+            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2015-02-26T09:41:42.193+0100" label="v3">
+    <changes xsi:type="history:OperationChange">
+      <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#//Root/id"
+          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"
+          oldReferenceValue="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+      <operation name="changeAttributeType">
+        <parameters name="attribute">
+          <referenceValue element="ChangeAttributeType.ecore#//Root/id"/>
+        </parameters>
+        <parameters name="type">
+          <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" element="ChangeAttributeType.ecore#/" featureName="nsURI"
+        dataValue="change_attribute_type/v3" oldDataValue="change_attribute_type/v2"/>
+  </releases>
+  <releases/>
+</history:History>

@@ -40,8 +40,6 @@ public class ChangeAttributeType extends OperationImplementation {
 		// variables
 		EClass eClass = attribute.getEContainingClass();
 
-		// metamodel adaptation
-		attribute.setEType(type);
 
 		// model migration
 		for (Instance instance : model.getAllInstances(eClass)) {
@@ -60,6 +58,9 @@ public class ChangeAttributeType extends OperationImplementation {
 				}
 			}
 		}
+		
+		// metamodel adaptation
+		attribute.setEType(type);
 	}
 
 	/** Convert a value from the old to the new type of the attribute. */
