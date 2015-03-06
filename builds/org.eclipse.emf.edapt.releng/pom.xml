@@ -11,6 +11,8 @@
 	<properties>
 		<tycho-version>0.22.0</tycho-version>
 		<eclipse-jarsigner-version>1.1.0</eclipse-jarsigner-version>
+		<maven-surefire-version>2.18.1</maven-surefire-version>
+		<junit-version>4.12</junit-version>
 	</properties>
 
 	<profiles>
@@ -52,6 +54,7 @@
 		<module>../../plugins</module>
 		<module>../../features</module>
 		<module>../org.eclipse.emf.edapt.releng.p2</module>
+		<module>../../tests/org.eclipse.emf.edapt.tests</module>
 	</modules>
 
 	<build>
@@ -98,5 +101,16 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit-version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
