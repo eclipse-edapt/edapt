@@ -5,18 +5,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,8 +44,8 @@ public class PropagateFeature extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
 		boolean first = true;
-		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
-		for (EReference reference : references) {
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>();
+		for (final EReference reference : references) {
 			EStructuralFeature feature = null;
 			if (first) {
 				feature = mainFeature;
@@ -55,18 +55,18 @@ public class PropagateFeature extends OperationImplementation {
 			}
 			features.add(feature);
 			reference.getEContainingClass().getEStructuralFeatures().add(
-					feature);
+				feature);
 		}
 
 		// model migration
 		for (int i = 0; i < references.size(); i++) {
-			EReference reference = references.get(i);
-			EStructuralFeature feature = features.get(i);
-			for (Instance instance : model.getAllInstances(reference
-					.getEContainingClass())) {
-				Instance ref = instance.get(reference);
+			final EReference reference = references.get(i);
+			final EStructuralFeature feature = features.get(i);
+			for (final Instance instance : model.getAllInstances(reference
+				.getEContainingClass())) {
+				final Instance ref = instance.get(reference);
 				if (ref != null) {
-					Object value = ref.unset(mainFeature);
+					final Object value = ref.unset(mainFeature);
 					instance.set(feature, value);
 				}
 			}

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
  * Action to edit the migration of a {@link MigrationChange}.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,7 +30,7 @@ public class EditMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		MigrationChange change = HandlerUtils.getSelectedElement(event);
+		final MigrationChange change = HandlerUtils.getSelectedElement(event);
 		JavaUIUtils.showCustomMigration(change);
 		return null;
 	}

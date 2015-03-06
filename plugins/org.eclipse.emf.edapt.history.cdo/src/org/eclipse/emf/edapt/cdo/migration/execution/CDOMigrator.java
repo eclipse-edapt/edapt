@@ -42,23 +42,24 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
-import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
+import org.eclipse.emf.edapt.internal.common.ResourceSetFactoryImpl;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
-import org.eclipse.emf.edapt.internal.migration.BackupUtils;
-import org.eclipse.emf.edapt.internal.migration.MaterializingBackwardConverter;
-import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
-import org.eclipse.emf.edapt.internal.migration.execution.ClassLoaderFacade;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.internal.migration.execution.MigratorCommandLine;
 import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
-import org.eclipse.emf.edapt.internal.migration.execution.WrappedMigrationException;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.ClassLoaderFacade;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.MigratorCommandLine;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.WrappedMigrationException;
+import org.eclipse.emf.edapt.internal.migration.internal.BackupUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.MaterializingBackwardConverter;
+import org.eclipse.emf.edapt.internal.migration.internal.Persistency;
+import org.eclipse.emf.edapt.internal.migration.internal.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
@@ -71,7 +72,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Migrator to migrate a model from a previous to the current release.
- * 
+ *
  * @author Christophe Bouhier
  */
 public class CDOMigrator {
@@ -97,12 +98,12 @@ public class CDOMigrator {
 
 	/** Constructor. */
 	public CDOMigrator(URI historyURI, IClassLoader classLoader)
-			throws MigrationException {
+		throws MigrationException {
 		HistoryPackage.eINSTANCE.getHistory();
 		try {
 			history = ResourceUtils.loadElement(historyURI);
-		} catch (IOException e) {
-			throw new MigrationException("History could not be loaded", e);
+		} catch (final IOException e) {
+			throw new MigrationException("History could not be loaded", e); //$NON-NLS-1$
 		}
 		this.classLoader = classLoader;
 		init();
@@ -118,17 +119,16 @@ public class CDOMigrator {
 
 		// Register a CDO View Provider which deals with connection aware and
 		// canonical URI's.
-		CDOViewProviderRegistry vpRegistry = CDOViewProviderRegistry.INSTANCE;
-		edaptCDOViewProvider = new EdaptCDOViewProvider(
-				"cdo(\\.net4j\\.tcp)?://.*", CDOViewProvider.DEFAULT_PRIORITY);
+		final CDOViewProviderRegistry vpRegistry = CDOViewProviderRegistry.INSTANCE;
+		edaptCDOViewProvider = new EdaptCDOViewProvider("cdo(\\.net4j\\.tcp)?://.*", CDOViewProvider.DEFAULT_PRIORITY); //$NON-NLS-1$
 		vpRegistry.addViewProvider(edaptCDOViewProvider);
 		init();
 	}
 
 	private void registerCDOResourceFactory() {
 		// Initialize our factoy.
-		Map<String, Object> map = Resource.Factory.Registry.INSTANCE
-				.getProtocolToFactoryMap();
+		final Map<String, Object> map = Resource.Factory.Registry.INSTANCE
+			.getProtocolToFactoryMap();
 
 		// cdo.net4j.tcp
 		if (!map.containsKey(CDONet4jUtil.PROTOCOL_TCP)) {
@@ -142,8 +142,8 @@ public class CDOMigrator {
 
 	/**
 	 * Get the {@link CDOViewProvider}.
-	 * 
-	 * @return
+	 *
+	 * @return the view provider
 	 */
 	public EdaptCDOViewProvider getEdaptCDOViewProvider() {
 		return edaptCDOViewProvider;
@@ -152,9 +152,9 @@ public class CDOMigrator {
 	/** Initialize release map for the migrator. */
 	private void init() {
 		releaseMap = new HashMap<String, Set<Release>>();
-		Map<EPackage, String> packageMap = new HashMap<EPackage, String>();
+		final Map<EPackage, String> packageMap = new HashMap<EPackage, String>();
 
-		for (Release release : history.getReleases()) {
+		for (final Release release : history.getReleases()) {
 			if (!release.isLastRelease()) {
 				updatePackages(release, packageMap);
 				registerRelease(release, packageMap);
@@ -164,9 +164,9 @@ public class CDOMigrator {
 
 	/** Register a package for a certain release. */
 	private void registerRelease(Release release,
-			Map<EPackage, String> packageMap) {
-		for (Entry<EPackage, String> entry : packageMap.entrySet()) {
-			String nsURI = entry.getValue();
+		Map<EPackage, String> packageMap) {
+		for (final Entry<EPackage, String> entry : packageMap.entrySet()) {
+			final String nsURI = entry.getValue();
 			Set<Release> releases = releaseMap.get(nsURI);
 			if (releases == null) {
 				releases = new HashSet<Release>();
@@ -178,19 +178,19 @@ public class CDOMigrator {
 
 	/** Update the namespace URIs based on the changes during a release. */
 	private void updatePackages(Release release,
-			Map<EPackage, String> packageMap) {
-		for (Iterator<EObject> i = release.eAllContents(); i.hasNext();) {
-			EObject element = i.next();
+		Map<EPackage, String> packageMap) {
+		for (final Iterator<EObject> i = release.eAllContents(); i.hasNext();) {
+			final EObject element = i.next();
 			if (element instanceof org.eclipse.emf.edapt.spi.history.Set) {
-				org.eclipse.emf.edapt.spi.history.Set set = (org.eclipse.emf.edapt.spi.history.Set) element;
+				final org.eclipse.emf.edapt.spi.history.Set set = (org.eclipse.emf.edapt.spi.history.Set) element;
 				if (set.getFeature() == EcorePackage.eINSTANCE
-						.getEPackage_NsURI()) {
-					EPackage ePackage = (EPackage) set.getElement();
-					String nsURI = (String) set.getValue();
+					.getEPackage_NsURI()) {
+					final EPackage ePackage = (EPackage) set.getElement();
+					final String nsURI = (String) set.getValue();
 					packageMap.put(ePackage, nsURI);
 				}
 			} else if (element instanceof Delete) {
-				Delete delete = (Delete) element;
+				final Delete delete = (Delete) element;
 				packageMap.remove(delete.getElement());
 			}
 		}
@@ -199,7 +199,7 @@ public class CDOMigrator {
 	/**
 	 * Migrate a model based on a set of {@link URI} and save to it's own URI
 	 * location.
-	 * 
+	 *
 	 * @param modelURIs
 	 * @param sourceRelease
 	 * @param targetRelease
@@ -222,84 +222,82 @@ public class CDOMigrator {
 	// }
 
 	/**
-	 * 
-	 * @param sourceURIData
-	 * @param sourceRelease
-	 * @param targetRelease
-	 * @param monitor
-	 * @param list
+	 *
+	 * @param sourceURIData the source uri data
+	 * @param targetURIData the target uri data
+	 * @param monitor the progress monitor
 	 * @throws MigrationException
 	 */
 	public void migrateAndCopy(CDOURIData sourceURIData,
-			CDOURIData targetURIData, IProgressMonitor monitor)
-			throws MigrationException {
+		CDOURIData targetURIData, IProgressMonitor monitor)
+		throws MigrationException {
 
 		// We need to force this, to let the ViewProvider store the root
 		// resource ;-)
 		try {
-			ResourceSetImpl set = new ResourceSetImpl();
+			final ResourceSetImpl set = new ResourceSetImpl();
 			// Trigger an exception.
 			set.getResource(sourceURIData.toURI(), true);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 		}
 
 		// Get the modelURIs by collecting it from the repository.
-		CDOResource rootResource = this.getEdaptCDOViewProvider()
-				.getRootResource(sourceURIData.getRepositoryName());
+		final CDOResource rootResource = getEdaptCDOViewProvider()
+			.getRootResource(sourceURIData.getRepositoryName());
 
-		List<CDOResource> cdoResCollection = new ArrayList<CDOResource>();
+		final List<CDOResource> cdoResCollection = new ArrayList<CDOResource>();
 		collectResources(cdoResCollection, rootResource);
 
-		for (CDOResource cdoRes : cdoResCollection) {
+		for (final CDOResource cdoRes : cdoResCollection) {
 			// Get the source release
-			
-			List<URI> sourceConnectionAwareURIS = new ArrayList<URI>();
-			URI sourceURI = cdoConnectionAwareURI(cdoRes.getURI(),
-					sourceURIData);
+
+			final List<URI> sourceConnectionAwareURIS = new ArrayList<URI>();
+			final URI sourceURI = cdoConnectionAwareURI(cdoRes.getURI(),
+				sourceURIData);
 			sourceConnectionAwareURIS.add(sourceURI);
 
-			List<URI> targetConnectionAwareURIS = new ArrayList<URI>();
-			URI targetURI = cdoConnectionAwareURI(cdoRes.getURI(),
-					targetURIData);
+			final List<URI> targetConnectionAwareURIS = new ArrayList<URI>();
+			final URI targetURI = cdoConnectionAwareURI(cdoRes.getURI(),
+				targetURIData);
 			targetConnectionAwareURIS.add(targetURI);
 
-			Set<Release> releases = this.getRelease(cdoRes);
+			final Set<Release> releases = this.getRelease(cdoRes);
 
-			Release release = HistoryUtils.getMinimumRelease(releases);
-			Model model = migrate(sourceConnectionAwareURIS, release, null,
-					monitor);
+			final Release release = HistoryUtils.getMinimumRelease(releases);
+			final Model model = migrate(sourceConnectionAwareURIS, release, null,
+				monitor);
 			if (model == null) {
-				throw new MigrationException("Model is up-to-date", null);
+				throw new MigrationException("Model is up-to-date", null); //$NON-NLS-1$
 			}
 			// Get the original extend, as we need a factory...
 			try {
 				CDOPersistency.saveModel(model, extent,
-						targetConnectionAwareURIS);
-			} catch (IOException e) {
-				throw new MigrationException("Model could not be saved", e);
+					targetConnectionAwareURIS);
+			} catch (final IOException e) {
+				throw new MigrationException("Model could not be saved", e); //$NON-NLS-1$
 			}
 		}
 
 	}
 
 	public void migrateAndCopy(List<URI> modelURIs, Release sourceRelease,
-			Release targetRelease, IProgressMonitor monitor, List<URI> list)
-			throws MigrationException {
-		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
+		Release targetRelease, IProgressMonitor monitor, List<URI> list)
+		throws MigrationException {
+		final Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
 		if (model == null) {
-			throw new MigrationException("Model is up-to-date", null);
+			throw new MigrationException("Model is up-to-date", null); //$NON-NLS-1$
 		}
 		// Get the original extent, as we need a factory...
 		try {
 			CDOPersistency.saveModel(model, extent, list);
-		} catch (IOException e) {
-			throw new MigrationException("Model could not be saved", e);
+		} catch (final IOException e) {
+			throw new MigrationException("Model could not be saved", e); //$NON-NLS-1$
 		}
 	}
 
 	/**
 	 * Migrate a model based on a set of {@link URI}s and load it afterwards.
-	 * 
+	 *
 	 * @param modelURIs
 	 *            The set of {@link URI}
 	 * @param sourceRelease
@@ -312,25 +310,25 @@ public class CDOMigrator {
 	 * @return The model in a {@link ResourceSet}
 	 */
 	public ResourceSet migrateAndLoad(List<URI> modelURIs,
-			Release sourceRelease, Release targetRelease,
-			IProgressMonitor monitor) throws MigrationException {
-		Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
+		Release sourceRelease, Release targetRelease,
+		IProgressMonitor monitor) throws MigrationException {
+		final Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
 		if (model == null) {
 			return null;
 		}
-		MaterializingBackwardConverter converter = new MaterializingBackwardConverter();
+		final MaterializingBackwardConverter converter = new MaterializingBackwardConverter();
 		return converter.convert(model);
 	}
 
 	/** Get the latest release. */
 	private Release getLatestRelease() {
-		List<Release> releases = history.getReleases();
+		final List<Release> releases = history.getReleases();
 		return releases.get(releases.size() - 2);
 	}
 
 	/**
 	 * Migrate a model based on a set of {@link URI}s.
-	 * 
+	 *
 	 * @param modelURIs
 	 *            The set of {@link URI}
 	 * @param sourceRelease
@@ -343,8 +341,8 @@ public class CDOMigrator {
 	 * @return The model in the generic structure
 	 */
 	private Model migrate(List<URI> modelURIs, Release sourceRelease,
-			Release targetRelease, IProgressMonitor monitor)
-			throws MigrationException {
+		Release targetRelease, IProgressMonitor monitor)
+		throws MigrationException {
 		try {
 			if (targetRelease == null) {
 				targetRelease = getLatestRelease();
@@ -353,22 +351,22 @@ public class CDOMigrator {
 				return null;
 			}
 
-			monitor.beginTask("Migrate: " + modelURIs,
-					numberOfSteps(sourceRelease, targetRelease));
-			EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-					URI.createFileURI("test"));
-			CDOMigrationReconstructor migrationReconstructor = new CDOMigrationReconstructor(
-					modelURIs, sourceRelease, targetRelease, monitor,
-					classLoader, level, resourceSetFactory);
+			monitor.beginTask("Migrate: " + modelURIs, //$NON-NLS-1$
+				numberOfSteps(sourceRelease, targetRelease));
+			final EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
+				URI.createFileURI("test")); //$NON-NLS-1$
+			final CDOMigrationReconstructor migrationReconstructor = new CDOMigrationReconstructor(
+				modelURIs, sourceRelease, targetRelease, monitor,
+				classLoader, level, resourceSetFactory);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
 
 			extent = reconstructor.getExtent();
 
-			Model model = migrationReconstructor.getModel();
+			final Model model = migrationReconstructor.getModel();
 			return model;
-		} catch (WrappedMigrationException e) {
+		} catch (final WrappedMigrationException e) {
 			throw e.getCause();
 		} finally {
 			monitor.done();
@@ -379,7 +377,7 @@ public class CDOMigrator {
 	private int numberOfSteps(Release sourceRelease, Release targetRelease) {
 		int size = 0;
 		boolean inRelease = false;
-		for (Release release : history.getReleases()) {
+		for (final Release release : history.getReleases()) {
 			if (inRelease) {
 				size += release.getChanges().size();
 			}
@@ -398,19 +396,19 @@ public class CDOMigrator {
 
 		// FIXME, get the nsURI from a CDO Resource.
 
-		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
+		final String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return releaseMap.containsKey(nsURI) ? releaseMap.get(nsURI)
-				: Collections.<Release> emptySet();
+			: Collections.<Release> emptySet();
 	}
 
 	public Set<Release> getRelease(CDOResource resource) {
 
 		// Simply get a matching Release for the register package in the CDO
 		// Registry.
-		CDOPackageRegistry packageRegistry = resource.cdoView().getSession()
-				.getPackageRegistry();
-		for (CDOPackageInfo info : packageRegistry.getPackageInfos()) {
-			String packageURI = info.getPackageURI();
+		final CDOPackageRegistry packageRegistry = resource.cdoView().getSession()
+			.getPackageRegistry();
+		for (final CDOPackageInfo info : packageRegistry.getPackageInfos()) {
+			final String packageURI = info.getPackageURI();
 			if (releaseMap.containsKey(packageURI)) {
 				return releaseMap.get(packageURI);
 			}
@@ -429,7 +427,7 @@ public class CDOMigrator {
 
 	/** Get all releases. */
 	public List<Release> getReleases() {
-		List<Release> releases = new ArrayList<Release>();
+		final List<Release> releases = new ArrayList<Release>();
 		releases.addAll(history.getReleases());
 		releases.remove(history.getLastRelease());
 		return releases;
@@ -442,16 +440,16 @@ public class CDOMigrator {
 
 	/** Returns the metamodel for a release. */
 	public Metamodel getMetamodel(Release release) {
-		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-				URI.createFileURI("test"));
+		final EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
+			URI.createFileURI("test")); //$NON-NLS-1$
 		reconstructor.reconstruct(release, false);
-		URI metamodelURI = URI.createFileURI(new File("metamodel."
-				+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
-		List<EPackage> rootPackages = ResourceUtils.getRootElements(
-				reconstructor.getResourceSet(), EPackage.class);
-		ResourceSet resourceSet = MetamodelUtils
-				.createIndependentMetamodelCopy(rootPackages, metamodelURI);
-		return CDOPersistency.loadMetamodel(resourceSet);
+		final URI metamodelURI = URI.createFileURI(new File("metamodel." //$NON-NLS-1$
+			+ ResourceUtils.ECORE_FILE_EXTENSION).getAbsolutePath());
+		final List<EPackage> rootPackages = ResourceUtils.getRootElements(
+			reconstructor.getResourceSet(), EPackage.class);
+		final ResourceSet resourceSet = MetamodelUtils
+			.createIndependentMetamodelCopy(rootPackages, metamodelURI);
+		return Persistency.loadMetamodel(resourceSet);
 	}
 
 	/** Set the validation level. */
@@ -464,49 +462,49 @@ public class CDOMigrator {
 	// CB TODO, adapt for CDO handling.
 	public static void main(String[] args) {
 
-		MigratorCommandLine commandLine = new MigratorCommandLine(args);
-		List<URI> modelURIs = commandLine.getModelURIs();
-		int sourceReleaseNumber = commandLine.getSourceReleaseNumber();
-		int targetReleaseNumber = commandLine.getTargetReleaseNumber();
+		final MigratorCommandLine commandLine = new MigratorCommandLine(args);
+		final List<URI> modelURIs = commandLine.getModelURIs();
+		final int sourceReleaseNumber = commandLine.getSourceReleaseNumber();
+		final int targetReleaseNumber = commandLine.getTargetReleaseNumber();
 
 		try {
-			for (Class<? extends LibraryImplementation> library : commandLine
-					.getLibraries()) {
+			for (final Class<? extends LibraryImplementation> library : commandLine
+				.getLibraries()) {
 				OperationRegistry.getInstance().registerLibrary(library);
 			}
-			for (Class<? extends OperationImplementation> operation : commandLine
-					.getOperations()) {
+			for (final Class<? extends OperationImplementation> operation : commandLine
+				.getOperations()) {
 				OperationRegistry.getInstance().registerOperation(operation);
 			}
 
-			CDOMigrator migrator = new CDOMigrator(commandLine.getHistoryURI(),
-					new ClassLoaderFacade(Thread.currentThread()
-							.getContextClassLoader()));
+			final CDOMigrator migrator = new CDOMigrator(commandLine.getHistoryURI(),
+				new ClassLoaderFacade(Thread.currentThread()
+					.getContextClassLoader()));
 			migrator.setLevel(commandLine.getLevel());
 
-			Set<Release> releases = migrator.getRelease(modelURIs.get(0));
+			final Set<Release> releases = migrator.getRelease(modelURIs.get(0));
 			Release sourceRelease = null;
 			if (sourceReleaseNumber != -1) {
 				sourceRelease = HistoryUtils.getRelease(releases,
-						sourceReleaseNumber);
+					sourceReleaseNumber);
 			} else {
 				sourceRelease = releases.iterator().next();
 			}
 
 			if (commandLine.isBackup()) {
-				Metamodel metamodel = migrator.getMetamodel(sourceRelease);
+				final Metamodel metamodel = migrator.getMetamodel(sourceRelease);
 				try {
 					BackupUtils.backup(modelURIs, metamodel);
-				} catch (IOException e) {
+				} catch (final IOException e) {
 					System.err.println(e.getMessage());
 				}
 			}
 
-			Release targetRelease = migrator.getRelease(targetReleaseNumber);
+			final Release targetRelease = migrator.getRelease(targetReleaseNumber);
 
 			migrator.migrateAndCopy(modelURIs, sourceRelease, targetRelease,
-					new PrintStreamProgressMonitor(System.out), null);
-		} catch (MigrationException e) {
+				new PrintStreamProgressMonitor(System.out), null);
+		} catch (final MigrationException e) {
 			System.err.println(e.getMessage());
 			System.err.println(e.getCause().getMessage());
 		}
@@ -526,37 +524,35 @@ public class CDOMigrator {
 
 	/**
 	 * clear the specified CDO Repository.
-	 * 
+	 *
 	 * @param host
 	 * @param port
 	 * @param repo
-	 * @param resourcePath
 	 */
 	public void clearCDORepositories(String host, String port, String repo) {
-		ResourceSetImpl set = new ResourceSetImpl();
+		final ResourceSetImpl set = new ResourceSetImpl();
 
-		URI uri = CDOMigrator.cdoConnectionAwareURI(host, port, repo, "");
+		final URI uri = CDOMigrator.cdoConnectionAwareURI(host, port, repo, ""); //$NON-NLS-1$
 
 		try {
 			// Trigger an exception.
 			set.getResource(uri, true);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// this is expected to happen, as CDO doesn't support retrieving
 			// the root resource with a connection aware URI.
 			// However this will have triggered our view provider to store the
 			// root resource :-)
-			CDOResource rootResource = getEdaptCDOViewProvider()
-					.getRootResource(repo);
+			final CDOResource rootResource = getEdaptCDOViewProvider()
+				.getRootResource(repo);
 			if (rootResource != null) {
 
 				// Will contain all our resources.
-				List<CDOResource> cdoResCollection = new ArrayList<CDOResource>();
-				collectResources(cdoResCollection,
-						(CDOResourceNode) rootResource);
-				for (CDOResource res : cdoResCollection) {
+				final List<CDOResource> cdoResCollection = new ArrayList<CDOResource>();
+				collectResources(cdoResCollection, rootResource);
+				for (final CDOResource res : cdoResCollection) {
 					try {
 						res.delete(null);
-					} catch (IOException e1) {
+					} catch (final IOException e1) {
 						e1.printStackTrace();
 					}
 				}
@@ -570,37 +566,35 @@ public class CDOMigrator {
 	/**
 	 * Construct CDO {@link URI} from a given {@link ResourceSet source models},
 	 * create {@link ResourceSet target models } and copy the source content to
-	 * the target content. Note: this will only work with a configured
-	 * {@link CDOViewProvider}.
-	 * 
+	 * the target content. Note: this will only work with a configured {@link CDOViewProvider}.
+	 *
 	 * @param metamodel
 	 * @param sourceModels
 	 * @param resourceSetFactory
-	 * @return
 	 */
 	public static void copy(Metamodel metamodel, ResourceSet sourceModels,
-			List<URI> cdoURIs, IResourceSetFactory resourceSetFactory) {
+		List<URI> cdoURIs, IResourceSetFactory resourceSetFactory) {
 
 		// Our CDO target Resourceset.
-		ResourceSet set = resourceSetFactory.createResourceSet();
+		final ResourceSet set = resourceSetFactory.createResourceSet();
 
-		for (Resource resource : sourceModels.getResources()) {
+		for (final Resource resource : sourceModels.getResources()) {
 
-			int index = sourceModels.getResources().indexOf(resource);
-			URI cdoResourceURI = cdoURIs.get(index);
+			final int index = sourceModels.getResources().indexOf(resource);
+			final URI cdoResourceURI = cdoURIs.get(index);
 
-			CDOResource cdoLoadResource = cdoCreateResource(set,
-					cdoResourceURI, metamodel);
+			final CDOResource cdoLoadResource = cdoCreateResource(set,
+				cdoResourceURI, metamodel);
 
 			// Copy over the stuff to CDO.
-			EObject loadElement = resource.getContents().get(0);
+			final EObject loadElement = resource.getContents().get(0);
 
-			EObject copy = EcoreUtil.copy(loadElement);
+			final EObject copy = EcoreUtil.copy(loadElement);
 			cdoLoadResource.getContents().add(copy);
 
 			try {
 				cdoLoadResource.save(null);
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				e.printStackTrace();
 			}
 		}
@@ -611,18 +605,18 @@ public class CDOMigrator {
 	 * Create a {@link CDOResource} from a {@link URI} the {@link Metamodel
 	 * MMMeta} will be used to register the corresponding {@link EPackage} by
 	 * the {@link CDOViewProvider}.
-	 * 
+	 *
 	 * @param set
 	 * @param cdoResourceURI
 	 * @param mmmeta
-	 * @return
+	 * @return the cdo resource
 	 */
 	public static CDOResource cdoCreateResource(ResourceSet set,
-			URI cdoResourceURI, Metamodel mmmeta) {
+		URI cdoResourceURI, Metamodel mmmeta) {
 
 		ResourceUtils.register(mmmeta.getEPackages(), set.getPackageRegistry());
 
-		Resource resource = set.createResource(cdoResourceURI);
+		final Resource resource = set.createResource(cdoResourceURI);
 
 		if (resource instanceof CDOResource) {
 			return (CDOResource) resource;
@@ -633,19 +627,19 @@ public class CDOMigrator {
 	/**
 	 * Get a {@link CDOURIData connection aware URI} for specified arguments.
 	 * The schema is set to TCP.
-	 * 
+	 *
 	 * @param host
 	 * @param port
 	 * @param repo
 	 * @param resourceName
-	 * @return
+	 * @return the uri
 	 */
 	public static URI cdoConnectionAwareURI(String host, String port,
-			String repo, String resourceName) {
+		String repo, String resourceName) {
 
-		CDOURIData cdouriData = new CDOURIData();
-		cdouriData.setScheme("cdo.net4j.tcp");
-		cdouriData.setAuthority(host + ":" + port);
+		final CDOURIData cdouriData = new CDOURIData();
+		cdouriData.setScheme("cdo.net4j.tcp"); //$NON-NLS-1$
+		cdouriData.setAuthority(host + ":" + port); //$NON-NLS-1$
 		cdouriData.setRepositoryName(repo);
 		cdouriData.setResourcePath(new Path(resourceName));
 
@@ -655,17 +649,15 @@ public class CDOMigrator {
 	/**
 	 * Get a {@link CDOURIData connection aware URI} for original canonical URI
 	 * and specified arguments. The schema is set to TCP.
-	 * 
-	 * @param host
-	 * @param port
-	 * @param repo
-	 * @param resourceName
-	 * @return
+	 *
+	 * @param canonicalURI uri for creating a {@link CDOURIData}
+	 * @param authority authority for creating a {@link CDOURIData}
+	 * @return the uri
 	 */
 	public static URI cdoConnectionAwareURI(URI canonicalURI, String authority) {
 
-		CDOURIData cdouriData = new CDOURIData(canonicalURI);
-		cdouriData.setScheme("cdo.net4j.tcp");
+		final CDOURIData cdouriData = new CDOURIData(canonicalURI);
+		cdouriData.setScheme("cdo.net4j.tcp"); //$NON-NLS-1$
 		cdouriData.setAuthority(authority);
 
 		return cdouriData.toURI();
@@ -675,22 +667,21 @@ public class CDOMigrator {
 	 * Get a {@link CDOURIData connection aware URI} for original canonical URI
 	 * and specified source CDOURIData. (Setting the authority, user name and
 	 * password from this source). </br> The schema is set to TCP.
-	 * 
+	 *
 	 * @param canonicalURI
 	 * @param data
-	 * @return
+	 * @return the uri
 	 */
 	public static URI cdoConnectionAwareURI(URI canonicalURI, CDOURIData data) {
-		
-		
+
 		String path = CDOURIUtil.extractResourcePath(canonicalURI);
-		// Remove the leading '/'. 
-		if(path.startsWith("/")){
-			path = path.substring(1,path.length());
+		// Remove the leading '/'.
+		if (path.startsWith("/")) { //$NON-NLS-1$
+			path = path.substring(1, path.length());
 		}
-		
-		CDOURIData cdouriData = new CDOURIData();
-		cdouriData.setScheme("cdo.net4j.tcp");
+
+		final CDOURIData cdouriData = new CDOURIData();
+		cdouriData.setScheme("cdo.net4j.tcp"); //$NON-NLS-1$
 		cdouriData.setAuthority(data.getAuthority());
 		cdouriData.setResourcePath(new Path(path));
 		cdouriData.setRepositoryName(data.getRepositoryName());
@@ -703,33 +694,33 @@ public class CDOMigrator {
 	/**
 	 * Clear a {@link CDOResource} from the CDO Repository. The CDOResource
 	 * should be active (Have an active {@link CDOTransaction}).
-	 * 
+	 *
 	 * @param cdoSourceURIs
 	 * @param resourceSetFactoryImpl
 	 */
 	public static void clear(List<URI> cdoSourceURIs,
-			ResourceSetFactoryImpl resourceSetFactoryImpl) {
-		ResourceSet set = resourceSetFactoryImpl.createResourceSet();
+		ResourceSetFactoryImpl resourceSetFactoryImpl) {
+		final ResourceSet set = resourceSetFactoryImpl.createResourceSet();
 
 		CDOTransaction transaction;
-		for (URI uri : cdoSourceURIs) {
+		for (final URI uri : cdoSourceURIs) {
 
 			try {
 
-				Resource resource = set.getResource(uri, true);
+				final Resource resource = set.getResource(uri, true);
 
 				if (resource instanceof CDOResource) {
-					CDOResource cdoRes = (CDOResource) resource;
+					final CDOResource cdoRes = (CDOResource) resource;
 					transaction = (CDOTransaction) cdoRes.cdoView();
 					try {
 						cdoRes.delete(null);
 						transaction.commit();
-					} catch (IOException e) {
-					} catch (ConcurrentAccessException e) {
-					} catch (CommitException e) {
+					} catch (final IOException e) {
+					} catch (final ConcurrentAccessException e) {
+					} catch (final CommitException e) {
 					}
 				}
-			} catch (RuntimeException re) {
+			} catch (final RuntimeException re) {
 				// Guard for Exception, as the resource might not exist,
 				// which will be an invalid URI when demand loading duh....
 			}
@@ -739,43 +730,43 @@ public class CDOMigrator {
 
 	/**
 	 * Converts a 'regular' resource URI to a CDO Resource URI.
-	 * 
+	 *
 	 * @param sourceURI
-	 * @return
+	 * @return the uri
 	 */
 	public static URI cdoConnectionAwareURI(URI sourceURI, String host,
-			String port, String repo) {
+		String port, String repo) {
 
 		try {
 			URI.createFileURI(sourceURI.toString());
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// bail when we are not a file URI.
 			e.printStackTrace();
 		}
 
-		String fileName = sourceURI.lastSegment();
+		final String fileName = sourceURI.lastSegment();
 
 		// Strip the extension of the file name.
-		String resourceName = fileName.substring(0, fileName.lastIndexOf("."));
+		final String resourceName = fileName.substring(0, fileName.lastIndexOf(".")); //$NON-NLS-1$
 		return cdoConnectionAwareURI(host, port, repo, resourceName);
 	}
 
 	/**
 	 * Converts regular CDOResource URI's to connection aware URI's.
-	 * 
+	 *
 	 * @param data
 	 * @param cdoResCollection
 	 * @param node
-	 * @return
+	 * @return the uris
 	 */
 	public static List<URI> collectConnectionAwareURIs(CDOURIData data,
-			List<CDOResource> cdoResCollection, CDOResourceNode node) {
+		List<CDOResource> cdoResCollection, CDOResourceNode node) {
 
-		List<URI> connectionAwareURIs = new ArrayList<URI>();
+		final List<URI> connectionAwareURIs = new ArrayList<URI>();
 		collectResources(cdoResCollection, node);
-		for (CDOResource res : cdoResCollection) {
-			URI connectionAware = cdoConnectionAwareURI(res.getURI(),
-					data.getAuthority());
+		for (final CDOResource res : cdoResCollection) {
+			final URI connectionAware = cdoConnectionAwareURI(res.getURI(),
+				data.getAuthority());
 			connectionAwareURIs.add(connectionAware);
 		}
 		return connectionAwareURIs;
@@ -785,32 +776,32 @@ public class CDOMigrator {
 	 * Collect all {@link CDOResource} for a root resource. (Works best if the
 	 * initial {@link CDOResourceNode} is of type {@link CDOResource} and this
 	 * is the root resource for the repository.
-	 * 
+	 *
 	 * @param cdoResCollection
 	 * @param node
 	 */
 	public static void collectResources(List<CDOResource> cdoResCollection,
-			CDOResourceNode node) {
+		CDOResourceNode node) {
 
 		if (node.isRoot()) {
 			// We are the root,
-			CDOResource rootResource = (CDOResource) node;
-			for (EObject eo : rootResource.getContents()) {
+			final CDOResource rootResource = (CDOResource) node;
+			for (final EObject eo : rootResource.getContents()) {
 				if (eo instanceof CDOResourceNode) {
 					collectResources(cdoResCollection, (CDOResourceNode) eo);
 				}
 			}
 		} else if (node instanceof CDOResourceFolder) {
 			// Walk the resource hierarchy and clean all.
-			CDOResourceFolder folder = (CDOResourceFolder) node;
-			for (CDOResourceNode childNode : folder.getNodes()) {
+			final CDOResourceFolder folder = (CDOResourceFolder) node;
+			for (final CDOResourceNode childNode : folder.getNodes()) {
 				collectResources(cdoResCollection, childNode);
 			}
 		} else if (node instanceof CDOResourceLeaf) {
-			CDOResourceLeaf leaf = (CDOResourceLeaf) node;
+			final CDOResourceLeaf leaf = (CDOResourceLeaf) node;
 			// Clear it! (Call delete(null).
 			if (leaf instanceof CDOResource) {
-				CDOResource res = (CDOResource) leaf;
+				final CDOResource res = (CDOResource) leaf;
 				cdoResCollection.add(res);
 			}
 		}
@@ -818,18 +809,18 @@ public class CDOMigrator {
 
 	/**
 	 * Commit a CDO Transaction.
-	 * 
+	 *
 	 * @param t
-	 * @return
+	 * @return <code>true</code> if commit failed, <code>false</code> otherwise
 	 */
 	public static boolean commitTransaction(CDOTransaction t) {
 		boolean commitFailed = false;
 		try {
 			t.commit();
-		} catch (ConcurrentAccessException e) {
+		} catch (final ConcurrentAccessException e) {
 			e.printStackTrace();
 			commitFailed = true;
-		} catch (CommitException e) {
+		} catch (final CommitException e) {
 			e.printStackTrace();
 			commitFailed = true;
 		}
@@ -840,20 +831,19 @@ public class CDOMigrator {
 		// register globally the Ecore Resource Factory to the ".ecore"
 		// extension
 		// weird that we need to do this, but well...
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(
-				"ecore", new EcoreResourceFactoryImpl());
+		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new EcoreResourceFactoryImpl()); //$NON-NLS-1$
 
-		ResourceSet rs = new ResourceSetImpl();
+		final ResourceSet rs = new ResourceSetImpl();
 		// enable extended metadata
 		final ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(
-				rs.getPackageRegistry());
+			rs.getPackageRegistry());
 		rs.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA,
-				extendedMetaData);
+			extendedMetaData);
 
-		Resource r = rs.getResource(expectedTargetMetamodelURI, true);
-		EObject eObject = r.getContents().get(0);
+		final Resource r = rs.getResource(expectedTargetMetamodelURI, true);
+		final EObject eObject = r.getContents().get(0);
 		if (eObject instanceof EPackage) {
-			EPackage p = (EPackage) eObject;
+			final EPackage p = (EPackage) eObject;
 			rs.getPackageRegistry().put(p.getNsURI(), p);
 			return p;
 		}
@@ -862,21 +852,21 @@ public class CDOMigrator {
 
 	/**
 	 * Converts a 'regular' resource URI to a CDO Resource URI.
-	 * 
+	 *
 	 * @param sourceURI
-	 * @return
+	 * @return the uri
 	 */
 	public static URI cdoCanonicalURI(URI sourceURI, String repo) {
 
 		// FIXME, check the URI is file based....
-		String fileName = sourceURI.lastSegment();
+		final String fileName = sourceURI.lastSegment();
 
 		// Strip the extension of the file name.
-		String resourceName = fileName.substring(0, fileName.lastIndexOf("."));
+		final String resourceName = fileName.substring(0, fileName.lastIndexOf(".")); //$NON-NLS-1$
 
-		CDOURIData cdouriData = new CDOURIData();
+		final CDOURIData cdouriData = new CDOURIData();
 
-		cdouriData.setScheme("cdo");
+		cdouriData.setScheme("cdo"); //$NON-NLS-1$
 		cdouriData.setRepositoryName(repo);
 		cdouriData.setResourcePath(new Path(resourceName));
 

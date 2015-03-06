@@ -6,14 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -27,9 +26,9 @@ import org.eclipse.emf.ecore.EReference;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference <em>Reference</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName <em>Reference Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference <em>Reference</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName <em>Reference Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,6 +45,7 @@ public interface ContentChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * The target element of the create, delete or move
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(EObject)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getContentChange_Target()
@@ -55,9 +55,11 @@ public interface ContentChange extends PrimitiveChange {
 	EObject getTarget();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget <em>Target</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget <em>Target</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Target</em>' reference.
 	 * @see #getTarget()
 	 * @generated
@@ -71,6 +73,7 @@ public interface ContentChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * A reference to the meta-metamodel feature which is derived from the featureName attribute
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Reference</em>' reference.
 	 * @see #setReference(EReference)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getContentChange_Reference()
@@ -80,9 +83,11 @@ public interface ContentChange extends PrimitiveChange {
 	EReference getReference();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference <em>Reference</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference <em>Reference</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Reference</em>' reference.
 	 * @see #getReference()
 	 * @generated
@@ -96,6 +101,7 @@ public interface ContentChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * The name of the feature within which the child is created in the element
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Reference Name</em>' attribute.
 	 * @see #setReferenceName(String)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getContentChange_ReferenceName()
@@ -105,9 +111,11 @@ public interface ContentChange extends PrimitiveChange {
 	String getReferenceName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName <em>Reference Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName
+	 * <em>Reference Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Reference Name</em>' attribute.
 	 * @see #getReferenceName()
 	 * @generated

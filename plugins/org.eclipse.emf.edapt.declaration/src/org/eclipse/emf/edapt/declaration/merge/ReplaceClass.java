@@ -6,18 +6,18 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -42,7 +42,7 @@ public class ReplaceClass extends OperationImplementation {
 	@EdaptConstraint(restricts = "featuresToReplace", description = "The replace features must be defined in the replaced class")
 	public boolean checkFeaturesToReplace(EStructuralFeature featuresToReplace) {
 		return toReplace.getEAllStructuralFeatures()
-				.contains(featuresToReplace);
+			.contains(featuresToReplace);
 	}
 
 	/** {@description} */
@@ -53,17 +53,17 @@ public class ReplaceClass extends OperationImplementation {
 	@EdaptConstraint(restricts = "featuresReplaceBy", description = "The replacing features must be defined in the replacing class")
 	public boolean checkFeaturesReplaceBy(EStructuralFeature featuresReplaceBy) {
 		return replaceBy.getEAllStructuralFeatures()
-				.contains(featuresReplaceBy);
+			.contains(featuresReplaceBy);
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The replace features must cover all "
-			+ "features from the difference between the class to "
-			+ "replace and the class by which it is replaced")
+		+ "features from the difference between the class to "
+		+ "replace and the class by which it is replaced")
 	public boolean checkCoverFeatureDifference() {
 		return replaceBy == null
-				|| featuresToReplace.containsAll(MetamodelUtils
-						.subtractFeatures(toReplace, replaceBy));
+			|| featuresToReplace.containsAll(MetamodelUtils
+				.subtractFeatures(toReplace, replaceBy));
 	}
 
 	/** {@description} */
@@ -82,18 +82,18 @@ public class ReplaceClass extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		for (EReference reference : metamodel.<EReference> getInverse(
-				toReplace, EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {
+		for (final EReference reference : metamodel.<EReference> getInverse(
+			toReplace, EcorePackage.Literals.ETYPED_ELEMENT__ETYPE)) {
 			reference.setEType(replaceBy);
 		}
 		metamodel.delete(toReplace);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(toReplace)) {
+		for (final Instance instance : model.getAllInstances(toReplace)) {
 			instance.migrate(replaceBy);
 			for (int i = 0; i < featuresToReplace.size(); i++) {
 				instance.set(featuresReplaceBy.get(i), instance
-						.unset(featuresToReplace.get(i)));
+					.unset(featuresToReplace.get(i)));
 			}
 		}
 	}

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EPackage;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getRootPackages <em>Root Packages</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getRootPackages <em>Root Packages</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,13 +41,14 @@ public interface MetamodelResource extends AbstractResource {
 	 * The list contents are of type {@link org.eclipse.emf.ecore.EPackage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Root Packages</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Root Packages</em>' reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Packages that constitute the root of a metamodel resource
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Root Packages</em>' reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getMetamodelResource_RootPackages()
 	 * @model
@@ -57,13 +58,15 @@ public interface MetamodelResource extends AbstractResource {
 
 	/**
 	 * Returns the value of the '<em><b>Metamodel</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources <em>Resources</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources
+	 * <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Metamodel</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Metamodel</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Metamodel</em>' container reference.
 	 * @see #setMetamodel(Metamodel)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getMetamodelResource_Metamodel()
@@ -74,9 +77,11 @@ public interface MetamodelResource extends AbstractResource {
 	Metamodel getMetamodel();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel
+	 * <em>Metamodel</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Metamodel</em>' container reference.
 	 * @see #getMetamodel()
 	 * @generated

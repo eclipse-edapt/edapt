@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
@@ -17,14 +17,14 @@ import org.eclipse.emf.edapt.history.reconstruction.HistoryReconstructor;
 /**
  * Action to reconstruct a metamodel together with its history until a version
  * or right before a change.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ReconstructWithHistoryHandler extends ReconstructHandler {
-	
+
 	/** {@inheritDoc} */
 	@Override
 	protected void customizeReconstructor(EcoreForwardReconstructor reconstructor) {

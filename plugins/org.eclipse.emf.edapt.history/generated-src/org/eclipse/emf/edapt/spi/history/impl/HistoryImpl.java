@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -29,7 +29,6 @@ import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.Release;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>History</b></em>'.
@@ -37,7 +36,7 @@ import org.eclipse.emf.edapt.spi.history.Release;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.HistoryImpl#getReleases <em>Releases</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.HistoryImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +47,7 @@ public class HistoryImpl extends EObjectImpl implements History {
 	 * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getReleases()
 	 * @generated
 	 * @ordered
@@ -57,6 +57,7 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected HistoryImpl() {
@@ -66,6 +67,7 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -76,11 +78,14 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Release> getReleases() {
 		if (releases == null) {
-			releases = new EObjectContainmentWithInverseEList<Release>(Release.class, this, HistoryPackage.HISTORY__RELEASES, HistoryPackage.RELEASE__HISTORY);
+			releases = new EObjectContainmentWithInverseEList<Release>(Release.class, this,
+				HistoryPackage.HISTORY__RELEASES, HistoryPackage.RELEASE__HISTORY);
 		}
 		return releases;
 	}
@@ -88,11 +93,13 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Release getFirstRelease() {
-		EList<Release> releases = this.getReleases();
-		if(releases.isEmpty()) {
+		final EList<Release> releases = getReleases();
+		if (releases.isEmpty()) {
 			return null;
 		}
 		return releases.get(0);
@@ -101,29 +108,33 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Release getLastRelease() {
-		EList<Release> releases = this.getReleases();
-		if(releases.isEmpty()) {
+		final EList<Release> releases = getReleases();
+		if (releases.isEmpty()) {
 			return null;
 		}
-		return releases.get(releases.size()-1);
+		return releases.get(releases.size() - 1);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public EList<EPackage> getRootPackages() {
-		EList<EPackage> rootPackages = new UniqueEList<EPackage>();
-		for(Iterator<EObject> i = this.eAllContents(); i.hasNext(); ) {
-			EObject object = i.next();
-			if(object instanceof Create) {
-				Create createChild = (Create) object;
-				if(createChild.getElement() instanceof EPackage && createChild.getTarget() == null) {
-					EPackage rootPackage = (EPackage) createChild.getElement();
+		final EList<EPackage> rootPackages = new UniqueEList<EPackage>();
+		for (final Iterator<EObject> i = eAllContents(); i.hasNext();) {
+			final EObject object = i.next();
+			if (object instanceof Create) {
+				final Create createChild = (Create) object;
+				if (createChild.getElement() instanceof EPackage && createChild.getTarget() == null) {
+					final EPackage rootPackage = (EPackage) createChild.getElement();
 					rootPackages.add(rootPackage);
 				}
 			}
@@ -134,11 +145,13 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Release getLatestRelease() {
-		EList<Release> releases = this.getReleases();
-		if(releases.size() < 2) {
+		final EList<Release> releases = getReleases();
+		if (releases.size() < 2) {
 			return null;
 		}
 		return releases.get(releases.size() - 2);
@@ -147,14 +160,15 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getReleases()).basicAdd(otherEnd, msgs);
+		case HistoryPackage.HISTORY__RELEASES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getReleases()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -162,13 +176,14 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				return ((InternalEList<?>)getReleases()).basicRemove(otherEnd, msgs);
+		case HistoryPackage.HISTORY__RELEASES:
+			return ((InternalEList<?>) getReleases()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -176,13 +191,14 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				return getReleases();
+		case HistoryPackage.HISTORY__RELEASES:
+			return getReleases();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -190,16 +206,17 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				getReleases().clear();
-				getReleases().addAll((Collection<? extends Release>)newValue);
-				return;
+		case HistoryPackage.HISTORY__RELEASES:
+			getReleases().clear();
+			getReleases().addAll((Collection<? extends Release>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -207,14 +224,15 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				getReleases().clear();
-				return;
+		case HistoryPackage.HISTORY__RELEASES:
+			getReleases().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -222,15 +240,16 @@ public class HistoryImpl extends EObjectImpl implements History {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.HISTORY__RELEASES:
-				return releases != null && !releases.isEmpty();
+		case HistoryPackage.HISTORY__RELEASES:
+			return releases != null && !releases.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //HistoryImpl
+} // HistoryImpl

@@ -1,16 +1,16 @@
 package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EAnnotation;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.common.AnnotateModelElement;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,10 +30,10 @@ public class NewGMFConstraint extends AnnotateModelElement {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EAnnotation annotation = MetamodelFactory.newEAnnotation(element,
-				"http://www.eclipse.org/gmf/2005/constraints");
-		MetamodelFactory.newEStringToStringMapEntry(annotation, "ocl", ocl);
-		MetamodelFactory.newEStringToStringMapEntry(annotation, "description",
-				description);
+		final EAnnotation annotation = MetamodelFactory.newEAnnotation(element,
+			"http://www.eclipse.org/gmf/2005/constraints"); //$NON-NLS-1$
+		MetamodelFactory.newEStringToStringMapEntry(annotation, "ocl", ocl); //$NON-NLS-1$
+		MetamodelFactory.newEStringToStringMapEntry(annotation, "description", //$NON-NLS-1$
+			description);
 	}
 }

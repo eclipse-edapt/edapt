@@ -10,7 +10,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,7 +28,7 @@ public class NotChangeableToSuppressedSetVisibility extends OperationImplementat
 	public void execute(Metamodel metamodel, Model model) {
 		reference.setChangeable(true);
 		EcoreUtil.setAnnotation(reference,
-				"http://www.eclipse.org/emf/2002/GenModel",
-				"suppressedSetVisibility", "true");
+			"http://www.eclipse.org/emf/2002/GenModel", //$NON-NLS-1$
+			"suppressedSetVisibility", "true"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 }

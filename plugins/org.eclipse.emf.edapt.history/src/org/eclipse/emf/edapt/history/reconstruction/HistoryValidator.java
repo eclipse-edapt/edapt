@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -23,8 +23,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.ETypedElement;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.util.EcoreSwitch;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.TypeUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.TypeUtils;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.Create;
@@ -38,11 +38,10 @@ import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edapt.spi.history.Remove;
 import org.eclipse.emf.edapt.spi.history.util.HistorySwitch;
 
-
 /**
  * A reconstructor that follows the history and checks whether changes are
  * breaking
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -87,7 +86,7 @@ public class HistoryValidator extends ReconstructorBase {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 */
 	public HistoryValidator() {
 		createdElements = new HashSet<EObject>();
@@ -147,7 +146,7 @@ public class HistoryValidator extends ReconstructorBase {
 	 */
 	private boolean canIgnore() {
 		return inFirstRelease || inMigrationChange || inOperationChange
-				|| inInitializerChange;
+			|| inInitializerChange;
 	}
 
 	/**
@@ -189,15 +188,15 @@ public class HistoryValidator extends ReconstructorBase {
 	private void endUpdate(Change change) {
 		if (change instanceof Create) {
 			// add created element
-			Create createChild = (Create) change;
-			EObject created = mapping.resolveTarget(createChild.getElement());
+			final Create createChild = (Create) change;
+			final EObject created = mapping.resolveTarget(createChild.getElement());
 			created(created);
 		} else if (change instanceof CompositeChange
-				&& !(change instanceof OperationChange)) {
+			&& !(change instanceof OperationChange)) {
 			// update breaking status of composite change
-			CompositeChange compositeChange = (CompositeChange) change;
+			final CompositeChange compositeChange = (CompositeChange) change;
 			boolean breaking = false;
-			for (PrimitiveChange primitiveChange : compositeChange.getChanges()) {
+			for (final PrimitiveChange primitiveChange : compositeChange.getChanges()) {
 				breaking |= primitiveChange.isBreaking();
 			}
 			compositeChange.setBreaking(breaking);
@@ -214,7 +213,7 @@ public class HistoryValidator extends ReconstructorBase {
 
 	/**
 	 * Check whether an element was recently created
-	 * 
+	 *
 	 * @param element
 	 *            Element
 	 * @return true if the element was recently created, false otherwise
@@ -246,7 +245,7 @@ public class HistoryValidator extends ReconstructorBase {
 		@Override
 		public Boolean caseSet(final org.eclipse.emf.edapt.spi.history.Set set) {
 			final EStructuralFeature feature = set.getFeature();
-			EObject element = mapping.resolveTarget(set.getElement());
+			final EObject element = mapping.resolveTarget(set.getElement());
 			if (isCreated(element)) {
 				return false;
 			}
@@ -254,101 +253,101 @@ public class HistoryValidator extends ReconstructorBase {
 			/**
 			 * Switch distinguish element types
 			 */
-			EcoreSwitch<Boolean> setValidatorSwitch = new EcoreSwitch<Boolean>() {
+			final EcoreSwitch<Boolean> setValidatorSwitch = new EcoreSwitch<Boolean>() {
 				@Override
 				public Boolean caseETypedElement(ETypedElement object) {
 
 					if (object instanceof EOperation) {
 						return false;
 					} else if (object instanceof EStructuralFeature
-							&& (feature).isDerived()) {
+						&& feature.isDerived()) {
 						return false;
 					}
 
 					switch (feature.getFeatureID()) {
-						// ETypedElement.unique -> true
-						case EcorePackage.ETYPED_ELEMENT__UNIQUE: {
-							boolean value = (Boolean) set.getValue();
-							if (value) {
+					// ETypedElement.unique -> true
+					case EcorePackage.ETYPED_ELEMENT__UNIQUE: {
+						final boolean value = (Boolean) set.getValue();
+						if (value) {
+							return true;
+						}
+						break;
+					}
+					// ETypedElement.upperBound
+					case EcorePackage.ETYPED_ELEMENT__UPPER_BOUND: {
+						final int value = (Integer) set.getValue();
+						final int oldValue = (Integer) set.getOldValue();
+						// decrease
+						if (oldValue < 0) {
+							return true;
+						} else if (value >= 0 && value < oldValue) {
+							return true;
+						}
+						break;
+					}
+					// ETypedElement.eType
+					case EcorePackage.ETYPED_ELEMENT__ETYPE: {
+						if (set.getElement() instanceof EReference) {
+							final EClass oldValue = (EClass) mapping
+								.resolveTarget(set.getOldValue());
+							final EClass newValue = (EClass) mapping.resolveTarget(set
+								.getValue());
+							if (!TypeUtils.ancestor(oldValue, newValue)) {
 								return true;
 							}
-							break;
+						} else {
+							return true;
 						}
-						// ETypedElement.upperBound
-						case EcorePackage.ETYPED_ELEMENT__UPPER_BOUND: {
-							int value = (Integer) set.getValue();
-							int oldValue = (Integer) set.getOldValue();
-							// decrease
-							if (oldValue < 0) {
-								return true;
-							} else if (value >= 0 && value < oldValue) {
-								return true;
-							}
-							break;
-						}
-						// ETypedElement.eType
-						case EcorePackage.ETYPED_ELEMENT__ETYPE: {
-							if (set.getElement() instanceof EReference) {
-								EClass oldValue = (EClass) mapping
-										.resolveTarget(set.getOldValue());
-								EClass newValue = (EClass) mapping.resolveTarget(set
-										.getValue());
-								if (!TypeUtils.ancestor(oldValue, newValue)) {
-									return true;
-								}
-							} else {
-								return true;
-							}
-							break;
-						}
+						break;
+					}
 					}
 
 					return null;
 				}
-				
+
 				@Override
 				public Boolean caseEStructuralFeature(EStructuralFeature object) {
 					switch (feature.getFeatureID()) {
-						// EStructuralFeature.transient -> true
-						case EcorePackage.ESTRUCTURAL_FEATURE__TRANSIENT: {
-							boolean value = (Boolean) set.getValue();
-							if (value) {
-								return true;
-							}
-							break;
+					// EStructuralFeature.transient -> true
+					case EcorePackage.ESTRUCTURAL_FEATURE__TRANSIENT: {
+						final boolean value = (Boolean) set.getValue();
+						if (value) {
+							return true;
 						}
+						break;
 					}
-					
+					}
+
 					return null;
 				}
-				
+
 				@Override
 				public Boolean caseEAttribute(EAttribute object) {
-					switch(feature.getFeatureID()) {
-						// EAttribute.iD -> true
-						case EcorePackage.EATTRIBUTE__ID: {
-							boolean value = (Boolean) set.getValue();
-							if (value) {
-								return true;
-							}
-							break;
+					switch (feature.getFeatureID()) {
+					// EAttribute.iD -> true
+					case EcorePackage.EATTRIBUTE__ID: {
+						final boolean value = (Boolean) set.getValue();
+						if (value) {
+							return true;
 						}
+						break;
 					}
-					
+					}
+
 					return null;
 				}
-				
+
 				@Override
 				public Boolean caseEReference(EReference object) {
-					switch(feature.getFeatureID()) {
-						// EReference.containment
-						case EcorePackage.EREFERENCE__CONTAINMENT: {
-							return true;
-						}
-						// EReference.eOpposite
-						case EcorePackage.EREFERENCE__EOPPOSITE: {
-							return true;
-						}
+					switch (feature.getFeatureID()) {
+					// EReference.containment
+					case EcorePackage.EREFERENCE__CONTAINMENT: {
+						return true;
+					}
+					// EReference.eOpposite
+					case EcorePackage.EREFERENCE__EOPPOSITE: {
+						return true;
+					}
 					}
 
 					return null;
@@ -357,24 +356,24 @@ public class HistoryValidator extends ReconstructorBase {
 				@Override
 				public Boolean caseEClass(EClass eClass) {
 					switch (feature.getFeatureID()) {
-						case EcorePackage.ECLASS__ABSTRACT: {
-							// EClass.abstract -> true
-							if (feature == p.getEClass_Abstract()) {
-								boolean value = (Boolean) set.getValue();
-								if (value && !eClass.isInterface()) {
-									return true;
-								}
+					case EcorePackage.ECLASS__ABSTRACT: {
+						// EClass.abstract -> true
+						if (feature == p.getEClass_Abstract()) {
+							final boolean value = (Boolean) set.getValue();
+							if (value && !eClass.isInterface()) {
+								return true;
 							}
-							break;
 						}
-						// EClass.interface -> true
-						case EcorePackage.ECLASS__INTERFACE: {
-							boolean value = (Boolean) set.getValue();
-								if (value && !eClass.isAbstract()) {
-									return true;
-								}
-							break;
+						break;
+					}
+					// EClass.interface -> true
+					case EcorePackage.ECLASS__INTERFACE: {
+						final boolean value = (Boolean) set.getValue();
+						if (value && !eClass.isAbstract()) {
+							return true;
 						}
+						break;
+					}
 					}
 
 					return null;
@@ -394,8 +393,8 @@ public class HistoryValidator extends ReconstructorBase {
 		 */
 		@Override
 		public Boolean caseRemove(Remove remove) {
-			EStructuralFeature feature = remove.getFeature();
-			EObject element = mapping.resolveTarget(remove.getElement());
+			final EStructuralFeature feature = remove.getFeature();
+			final EObject element = mapping.resolveTarget(remove.getElement());
 			if (isCreated(element)) {
 				return false;
 			}
@@ -404,7 +403,7 @@ public class HistoryValidator extends ReconstructorBase {
 			if (element instanceof EClass) {
 				switch (feature.getFeatureID()) {
 				case EcorePackage.ECLASS__ESUPER_TYPES:
-					EClass eClass = (EClass) remove.getValue();
+					final EClass eClass = (EClass) remove.getValue();
 					if (!eClass.getEAllStructuralFeatures().isEmpty()) {
 						return true;
 					}
@@ -420,7 +419,7 @@ public class HistoryValidator extends ReconstructorBase {
 		 */
 		@Override
 		public Boolean caseDelete(Delete delete) {
-			EObject element = mapping.resolveTarget(delete.getElement());
+			final EObject element = mapping.resolveTarget(delete.getElement());
 			if (isCreated(element)) {
 				return false;
 			}
@@ -439,7 +438,7 @@ public class HistoryValidator extends ReconstructorBase {
 		 */
 		@Override
 		public Boolean caseMove(Move move) {
-			EObject element = move.getElement();
+			final EObject element = move.getElement();
 			if (element instanceof EStructuralFeature) {
 				return true;
 			}

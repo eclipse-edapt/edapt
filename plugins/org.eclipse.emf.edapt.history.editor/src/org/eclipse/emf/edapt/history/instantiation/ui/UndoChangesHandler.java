@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -28,10 +28,9 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-
 /**
  * Action to undo a sequence of changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -42,19 +41,19 @@ public class UndoChangesHandler extends SubsequentChangesHandler<Change> {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(Release release, List<Change> changes,
-			EditingDomain domain, ExecutionEvent event) {
-		EcoreEditor editor = (EcoreEditor) HandlerUtil.getActiveEditor(event);
+		EditingDomain domain, ExecutionEvent event) {
+		final EcoreEditor editor = (EcoreEditor) HandlerUtil.getActiveEditor(event);
 		if (DependencyChecker.depends(getSubsequentChanges(changes), changes)) {
 			MessageDialog
-					.openInformation(
-							Display.getDefault().getActiveShell(),
-							"Dependency",
-							"These changes cannot be undone. There are subsequent changes which depend on these changes.");
+				.openInformation(
+					Display.getDefault().getActiveShell(),
+					"Dependency", //$NON-NLS-1$
+					"These changes cannot be undone. There are subsequent changes which depend on these changes."); //$NON-NLS-1$
 		} else {
-			EcoreEditorDetector detector = EcoreEditorDetector.getInstance();
-			EditingDomainListener listener = detector.getListener(editor);
-			UndoChangesCommand command = new UndoChangesCommand(changes,
-					listener.getExtent());
+			final EcoreEditorDetector detector = EcoreEditorDetector.getInstance();
+			final EditingDomainListener listener = detector.getListener(editor);
+			final UndoChangesCommand command = new UndoChangesCommand(changes,
+				listener.getExtent());
 			domain.getCommandStack().execute(command);
 		}
 		return null;
@@ -65,17 +64,17 @@ public class UndoChangesHandler extends SubsequentChangesHandler<Change> {
 	 * undone
 	 */
 	private List<Change> getSubsequentChanges(List<Change> changes) {
-		Change lastChange = changes.get(changes.size() - 1);
-		List<Change> subsequentChanges = new ArrayList<Change>();
+		final Change lastChange = changes.get(changes.size() - 1);
+		final List<Change> subsequentChanges = new ArrayList<Change>();
 
-		Release release = lastChange.getRelease();
-		List<Change> releaseChanges = release.getChanges();
+		final Release release = lastChange.getRelease();
+		final List<Change> releaseChanges = release.getChanges();
 		for (int i = releaseChanges.indexOf(lastChange) + 1; i < releaseChanges
-				.size(); i++) {
+			.size(); i++) {
 			subsequentChanges.add(releaseChanges.get(i));
 		}
 
-		List<Release> releases = release.getHistory().getReleases();
+		final List<Release> releases = release.getHistory().getReleases();
 		for (int i = release.getNumber() + 1; i < releases.size(); i++) {
 			subsequentChanges.addAll(releases.get(i).getChanges());
 		}

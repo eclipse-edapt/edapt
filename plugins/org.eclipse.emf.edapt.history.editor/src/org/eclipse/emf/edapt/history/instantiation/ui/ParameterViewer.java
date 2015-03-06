@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Markus Herrmannsdoerfer - initial API and implementation
+ * Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -64,7 +64,7 @@ import org.eclipse.swt.widgets.TableItem;
 /**
  * Table viewer to display and edit parameter instances of an operation (An
  * operation instance is exected as input)
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -75,12 +75,12 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 	/**
 	 * Label of name column
 	 */
-	private static final String NAME_COLUMN_PROPERTY = "Name";
+	private static final String NAME_COLUMN_PROPERTY = "Name"; //$NON-NLS-1$
 
 	/**
 	 * Label of value column
 	 */
-	private static final String VALUE_COLUMN_PROPERTY = "Value";
+	private static final String VALUE_COLUMN_PROPERTY = "Value"; //$NON-NLS-1$
 
 	/**
 	 * Operation browser
@@ -104,14 +104,14 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param parent
 	 *            Parent composite
 	 * @param operationSash
 	 */
 	public ParameterViewer(Composite parent, OperationSash operationSash) {
 		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER
-				| SWT.FULL_SELECTION);
+			| SWT.FULL_SELECTION);
 
 		this.operationSash = operationSash;
 
@@ -120,29 +120,28 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 	/**
 	 * Initialize table viewer
-	 * 
+	 *
 	 */
 	private void init() {
-		ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory();
+		final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory();
 		adapterFactory
-				.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+			.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory
-				.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+			.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		adapterFactory
-				.addAdapterFactory(new HistoryItemProviderAdapterFactory());
+			.addAdapterFactory(new HistoryItemProviderAdapterFactory());
 
 		dialogLabelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		cellLabelProvider = new LabelProvider() {
 
-			@SuppressWarnings("unchecked")
 			@Override
 			public Image getImage(Object element) {
 				if (element instanceof Collection) {
-					Collection collection = (Collection) element;
+					final Collection collection = (Collection) element;
 					if (!collection.isEmpty()) {
 						return dialogLabelProvider.getImage(collection
-								.iterator().next());
+							.iterator().next());
 					}
 				} else {
 					if (element != null) {
@@ -152,16 +151,15 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 				return null;
 			}
 
-			@SuppressWarnings("unchecked")
 			@Override
 			public String getText(Object element) {
 				if (element instanceof Collection) {
-					String label = "";
-					Collection c = (Collection) element;
-					for (Iterator i = c.iterator(); i.hasNext();) {
+					String label = ""; //$NON-NLS-1$
+					final Collection c = (Collection) element;
+					for (final Iterator i = c.iterator(); i.hasNext();) {
 						label += dialogLabelProvider.getText(i.next());
 						if (i.hasNext()) {
-							label += ", ";
+							label += ", "; //$NON-NLS-1$
 						}
 					}
 					return label;
@@ -170,23 +168,23 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 			}
 		};
 
-		URL url = (URL) HistoryEditPlugin.INSTANCE
-				.getImage("full/obj16/ParameterInstance");
-		ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
+		final URL url = (URL) HistoryEditPlugin.INSTANCE
+			.getImage("full/obj16/ParameterInstance"); //$NON-NLS-1$
+		final ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
 		parameterImage = imageDescriptor.createImage();
 
 		// columns
 		final Table parameterTable = getTable();
 		parameterTable.setHeaderVisible(true);
 
-		TableColumn parameterNameColumn = new TableColumn(parameterTable,
-				SWT.None);
+		final TableColumn parameterNameColumn = new TableColumn(parameterTable,
+			SWT.None);
 		parameterNameColumn.setWidth(100);
 		parameterNameColumn.setText(NAME_COLUMN_PROPERTY);
 		parameterNameColumn.setResizable(false);
 
-		TableColumn parameterValueColumn = new TableColumn(parameterTable,
-				SWT.None);
+		final TableColumn parameterValueColumn = new TableColumn(parameterTable,
+			SWT.None);
 		parameterValueColumn.setWidth(100);
 		parameterValueColumn.setText(VALUE_COLUMN_PROPERTY);
 		parameterValueColumn.setResizable(false);
@@ -194,17 +192,20 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 		// content provider
 		setContentProvider(new IStructuredContentProvider() {
 
+			@Override
 			public Object[] getElements(Object inputElement) {
-				OperationInstance operationInstance = (OperationInstance) inputElement;
+				final OperationInstance operationInstance = (OperationInstance) inputElement;
 				return operationInstance.getParameters().toArray();
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public void inputChanged(Viewer viewer, Object oldInput,
-					Object newInput) {
+				Object newInput) {
 				// not required
 			}
 
@@ -213,45 +214,51 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 		// label provider
 		setLabelProvider(new ITableLabelProvider() {
 
+			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
-				ParameterInstance parameterInstance = (ParameterInstance) element;
+				final ParameterInstance parameterInstance = (ParameterInstance) element;
 				switch (columnIndex) {
 				case 0:
 					return parameterImage;
 				case 1:
 					return cellLabelProvider.getImage(parameterInstance
-							.getValue());
+						.getValue());
 				default:
 					return null;
 				}
 			}
 
+			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				ParameterInstance parameterInstance = (ParameterInstance) element;
+				final ParameterInstance parameterInstance = (ParameterInstance) element;
 				switch (columnIndex) {
 				case 0:
 					return parameterInstance.getName();
 				case 1: {
-					Object value = parameterInstance.getValue();
+					final Object value = parameterInstance.getValue();
 					return cellLabelProvider.getText(value);
 				}
 				default:
-					return "";
+					return ""; //$NON-NLS-1$
 				}
 			}
 
+			@Override
 			public void addListener(ILabelProviderListener listener) {
 				// not required
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public boolean isLabelProperty(Object element, String property) {
 				return false;
 			}
 
+			@Override
 			public void removeListener(ILabelProviderListener listener) {
 				// not required
 			}
@@ -259,7 +266,7 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 		// cell editors
 		setColumnProperties(new String[] { NAME_COLUMN_PROPERTY,
-				VALUE_COLUMN_PROPERTY });
+			VALUE_COLUMN_PROPERTY });
 
 		final CellEditor[] cellEditors = new CellEditor[2];
 		cellEditors[1] = new TextCellEditor(getTable());
@@ -267,12 +274,13 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 		setCellModifier(new ICellModifier() {
 
+			@Override
 			public boolean canModify(Object element, String property) {
 				if (NAME_COLUMN_PROPERTY.equals(property)) {
 					return false;
 				}
-				ParameterInstance parameterInstance = (ParameterInstance) element;
-				Parameter parameter = parameterInstance.getParameter();
+				final ParameterInstance parameterInstance = (ParameterInstance) element;
+				final Parameter parameter = parameterInstance.getParameter();
 				if (parameter.isMain()) {
 					return false;
 				}
@@ -280,23 +288,25 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 				return true;
 			}
 
+			@Override
 			public Object getValue(Object element, String property) {
-				ParameterInstance parameterInstance = (ParameterInstance) element;
+				final ParameterInstance parameterInstance = (ParameterInstance) element;
 				return parameterInstance.getValue();
 			}
 
+			@Override
 			public void modify(Object element, String property,
-					final Object value) {
+				final Object value) {
 				element = ((TableItem) element).getData();
-				ParameterInstance parameterInstance = (ParameterInstance) element;
-				Parameter parameter = parameterInstance.getParameter();
+				final ParameterInstance parameterInstance = (ParameterInstance) element;
+				final Parameter parameter = parameterInstance.getParameter();
 
 				if (parameter.isMany()) {
 					if (parameter.getClassifier() instanceof EClass) {
 						if (!(value instanceof Object[])) {
 							return;
 						}
-						Object[] values = (Object[]) value;
+						final Object[] values = (Object[]) value;
 						parameterInstance.setValue(Arrays.asList(values));
 					} else {
 						parameterInstance.setValue(value);
@@ -306,7 +316,7 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 						if (!(value instanceof Object[])) {
 							return;
 						}
-						Object[] values = (Object[]) value;
+						final Object[] values = (Object[]) value;
 						if (values.length == 0) {
 							parameterInstance.setValue(null);
 						} else {
@@ -319,8 +329,8 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 				refresh(true);
 				operationSash
-						.updateConstraints((OperationInstance) parameterInstance
-								.eContainer());
+					.updateConstraints((OperationInstance) parameterInstance
+						.eContainer());
 			}
 
 		});
@@ -328,10 +338,11 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 		// show parameter description upon double click
 		parameterTable.addHelpListener(new HelpListener() {
 
+			@Override
 			public void helpRequested(HelpEvent e) {
 
 				if (parameterTable.getSelectionCount() > 0) {
-					TableItem tableItem = parameterTable.getSelection()[0];
+					final TableItem tableItem = parameterTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
@@ -340,10 +351,11 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 		addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 
 				if (parameterTable.getSelectionCount() > 0) {
-					TableItem tableItem = parameterTable.getSelection()[0];
+					final TableItem tableItem = parameterTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
@@ -353,22 +365,22 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 	/**
 	 * Show the description of a parameter which is associated to a table item
-	 * 
+	 *
 	 * @param tableItem
 	 *            Table item
 	 */
 	private void showDescription(TableItem tableItem) {
-		ParameterInstance parameterInstance = (ParameterInstance) tableItem
-				.getData();
-		Parameter parameter = parameterInstance.getParameter();
+		final ParameterInstance parameterInstance = (ParameterInstance) tableItem
+			.getData();
+		final Parameter parameter = parameterInstance.getParameter();
 		final PopupDialog dialog = new TableItemPopupDialog(tableItem,
-				parameter.getName(), parameter.getDescription());
+			parameter.getName(), parameter.getDescription());
 		dialog.open();
 	}
 
 	/**
 	 * Get cell editor for a parameter instance based on the type of parameter
-	 * 
+	 *
 	 * @param parameterInstance
 	 *            Parameter instance
 	 * @return Cell editor
@@ -379,22 +391,21 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 		if (parameter.isMany()) {
 			if (parameter.getClassifier() instanceof EClass) {
 				return new ExtendedDialogCellEditor(getTable(),
-						cellLabelProvider) {
+					cellLabelProvider) {
 
-					@SuppressWarnings("unchecked")
 					@Override
 					protected Object openDialogBox(Control cellEditorWindow) {
 
-						ParameterValueValidator selection = new ParameterValueValidator(
-								parameterInstance, operationSash.getHelper()
-										.getExtent());
+						final ParameterValueValidator selection = new ParameterValueValidator(
+							parameterInstance, operationSash.getHelper()
+								.getExtent());
 
-						List values = (List) parameterInstance.getValue();
-						MultiValueSelectionDialog dialog = new MultiValueSelectionDialog(
-								cellEditorWindow.getShell(), parameterImage,
-								getEditorTitle(parameter), values,
-								getRootPackages(), dialogLabelProvider,
-								selection);
+						final List values = (List) parameterInstance.getValue();
+						final MultiValueSelectionDialog dialog = new MultiValueSelectionDialog(
+							cellEditorWindow.getShell(), parameterImage,
+							getEditorTitle(parameter), values,
+							getRootPackages(), dialogLabelProvider,
+							selection);
 
 						dialog.open();
 						return dialog.getResult();
@@ -403,20 +414,20 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 				};
 			} else if (parameter.getClassifier() instanceof EDataType) {
 				return new ExtendedDialogCellEditor(getTable(),
-						cellLabelProvider) {
+					cellLabelProvider) {
 
-					@SuppressWarnings("unchecked")
 					@Override
 					protected Object openDialogBox(Control cellEditorWindow) {
 
-						EDataType type = (EDataType) parameter.getClassifier();
-						List values = (List) parameterInstance.getValue();
+						final EDataType type = (EDataType) parameter.getClassifier();
+						final List values = (List) parameterInstance.getValue();
 
-						FeatureEditorDialog dialog = new FeatureEditorDialog(
-								cellEditorWindow.getShell(),
-								dialogLabelProvider, parameterInstance, type,
-								values, getEditorTitle(parameterInstance
-										.getParameter()), null);
+						@SuppressWarnings("deprecation")
+						final FeatureEditorDialog dialog = new FeatureEditorDialog(
+							cellEditorWindow.getShell(),
+							dialogLabelProvider, parameterInstance, type,
+							values, getEditorTitle(parameterInstance
+								.getParameter()), null);
 
 						dialog.open();
 						return dialog.getResult();
@@ -427,20 +438,20 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 		} else {
 			if (parameter.getClassifier() instanceof EClass) {
 				return new ExtendedDialogCellEditor(getTable(),
-						cellLabelProvider) {
+					cellLabelProvider) {
 
 					@Override
 					protected Object openDialogBox(Control cellEditorWindow) {
 
-						ParameterValueValidator selection = new ParameterValueValidator(
-								parameterInstance, operationSash.getHelper()
-										.getExtent());
+						final ParameterValueValidator selection = new ParameterValueValidator(
+							parameterInstance, operationSash.getHelper()
+								.getExtent());
 
-						SingleValueSelectionDialog dialog = new SingleValueSelectionDialog(
-								cellEditorWindow.getShell(), parameterImage,
-								getEditorTitle(parameter), parameterInstance
-										.getValue(), getRootPackages(),
-								dialogLabelProvider, selection);
+						final SingleValueSelectionDialog dialog = new SingleValueSelectionDialog(
+							cellEditorWindow.getShell(), parameterImage,
+							getEditorTitle(parameter), parameterInstance
+								.getValue(), getRootPackages(),
+							dialogLabelProvider, selection);
 
 						dialog.open();
 						return dialog.getResult();
@@ -448,18 +459,18 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 
 				};
 			} else if (parameter.getClassifier() instanceof EDataType) {
-				EDataType dataType = (EDataType) parameter.getClassifier();
+				final EDataType dataType = (EDataType) parameter.getClassifier();
 				if (dataType.getInstanceClass() == Boolean.class
-						|| dataType.getInstanceClass() == Boolean.TYPE) {
+					|| dataType.getInstanceClass() == Boolean.TYPE) {
 
-					List<Object> values = Arrays.asList(new Object[] { Boolean.FALSE,
-									Boolean.TRUE });
+					final List<Object> values = Arrays.asList(new Object[] { Boolean.FALSE,
+						Boolean.TRUE });
 
 					return new ExtendedComboBoxCellEditor(getTable(),
-							values, dialogLabelProvider, false);
+						values, dialogLabelProvider, false);
 				}
 				return new PropertyDescriptor.EDataTypeCellEditor(
-						(EDataType) parameter.getClassifier(), getTable());
+					(EDataType) parameter.getClassifier(), getTable());
 			}
 		}
 
@@ -470,26 +481,26 @@ public class ParameterViewer extends AutoColumnSizeTableViewer {
 	 * Helper method to access root packages
 	 */
 	private Collection<EPackage> getRootPackages() {
-		Collection<EPackage> rootPackages = new ArrayList<EPackage>();
+		final Collection<EPackage> rootPackages = new ArrayList<EPackage>();
 		rootPackages.addAll(operationSash.getHelper().getExtent()
-				.getRootPackages());
+			.getRootPackages());
 		rootPackages.add(EcorePackage.eINSTANCE);
 		return rootPackages;
 	}
 
 	/**
 	 * Get table of cell editor dialog
-	 * 
+	 *
 	 * @param parameter
 	 *            Parameter
 	 * @return Title
 	 */
 	public static String getEditorTitle(Parameter parameter) {
-		String result = "Parameter ";
+		String result = "Parameter "; //$NON-NLS-1$
 		result += parameter.getName();
-		result += " : ";
+		result += " : "; //$NON-NLS-1$
 		if (parameter.isMany()) {
-			result += "List<" + parameter.getClassifierName() + ">";
+			result += "List<" + parameter.getClassifierName() + ">"; //$NON-NLS-1$ //$NON-NLS-2$
 		} else {
 			result += parameter.getClassifierName();
 		}

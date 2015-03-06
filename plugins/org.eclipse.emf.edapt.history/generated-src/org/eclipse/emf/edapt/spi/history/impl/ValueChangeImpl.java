@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Value Change</b></em>'.
@@ -32,12 +31,12 @@ import org.eclipse.emf.edapt.spi.history.ValueChange;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getElement <em>Element</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getDataValue <em>Data Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getReferenceValue <em>Reference Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getFeature <em>Feature</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getFeatureName <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getDataValue <em>Data Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getReferenceValue <em>Reference Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +47,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getElement()
 	 * @generated
 	 * @ordered
@@ -58,6 +58,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The default value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
@@ -68,6 +69,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The cached value of the '{@link #getFeatureName() <em>Feature Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getFeatureName()
 	 * @generated
 	 * @ordered
@@ -78,6 +80,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The default value of the '{@link #getDataValue() <em>Data Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getDataValue()
 	 * @generated
 	 * @ordered
@@ -88,6 +91,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The cached value of the '{@link #getDataValue() <em>Data Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getDataValue()
 	 * @generated
 	 * @ordered
@@ -98,6 +102,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The cached value of the '{@link #getReferenceValue() <em>Reference Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getReferenceValue()
 	 * @generated
 	 * @ordered
@@ -108,6 +113,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -117,6 +123,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ValueChangeImpl() {
@@ -126,6 +133,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -136,15 +144,19 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getElement() {
 		if (element != null && element.eIsProxy()) {
-			InternalEObject oldElement = (InternalEObject)element;
+			final InternalEObject oldElement = (InternalEObject) element;
 			element = eResolveProxy(oldElement);
 			if (element != oldElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.VALUE_CHANGE__ELEMENT, oldElement, element));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.VALUE_CHANGE__ELEMENT,
+						oldElement, element));
+				}
 			}
 		}
 		return element;
@@ -153,6 +165,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetElement() {
@@ -162,35 +175,43 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setElement(EObject newElement) {
-		EObject oldElement = element;
+		final EObject oldElement = element;
 		element = newElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__ELEMENT, oldElement, element));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__ELEMENT, oldElement,
+				element));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EStructuralFeature getFeature() {
-		EStructuralFeature feature = basicGetFeature();
-		return feature != null && feature.eIsProxy() ? (EStructuralFeature)eResolveProxy((InternalEObject)feature) : feature;
+		final EStructuralFeature feature = basicGetFeature();
+		return feature != null && feature.eIsProxy() ? (EStructuralFeature) eResolveProxy((InternalEObject) feature)
+			: feature;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	public EStructuralFeature basicGetFeature() {
-		EObject element = this.getElement();
-		String featureName = this.getFeatureName();
-		if(element != null && featureName != null) {
-			EClass clazz = element.eClass();
+		final EObject element = getElement();
+		final String featureName = getFeatureName();
+		if (element != null && featureName != null) {
+			final EClass clazz = element.eClass();
 			return clazz.getEStructuralFeature(featureName);
 		}
 		return null;
@@ -199,22 +220,26 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void setFeature(EStructuralFeature newFeature) {
-		if(newFeature != null) {
-			this.setFeatureName(newFeature.getName());
+		if (newFeature != null) {
+			setFeatureName(newFeature.getName());
 		}
 		else {
-			this.setFeatureName(null);
-		} 
+			setFeatureName(null);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getFeatureName() {
 		return featureName;
 	}
@@ -222,20 +247,26 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setFeatureName(String newFeatureName) {
-		String oldFeatureName = featureName;
+		final String oldFeatureName = featureName;
 		featureName = newFeatureName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__FEATURE_NAME, oldFeatureName, featureName));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__FEATURE_NAME,
+				oldFeatureName, featureName));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getDataValue() {
 		return dataValue;
 	}
@@ -243,27 +274,35 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setDataValue(String newDataValue) {
-		String oldDataValue = dataValue;
+		final String oldDataValue = dataValue;
 		dataValue = newDataValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__DATA_VALUE, oldDataValue, dataValue));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__DATA_VALUE,
+				oldDataValue, dataValue));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getReferenceValue() {
 		if (referenceValue != null && referenceValue.eIsProxy()) {
-			InternalEObject oldReferenceValue = (InternalEObject)referenceValue;
+			final InternalEObject oldReferenceValue = (InternalEObject) referenceValue;
 			referenceValue = eResolveProxy(oldReferenceValue);
 			if (referenceValue != oldReferenceValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE, oldReferenceValue, referenceValue));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE, oldReferenceValue, referenceValue));
+				}
 			}
 		}
 		return referenceValue;
@@ -272,6 +311,7 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetReferenceValue() {
@@ -281,70 +321,85 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setReferenceValue(EObject newReferenceValue) {
-		EObject oldReferenceValue = referenceValue;
+		final EObject oldReferenceValue = referenceValue;
 		referenceValue = newReferenceValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE, oldReferenceValue, referenceValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Object getValue() {
-		EStructuralFeature feature = this.getFeature();
-		if(feature instanceof EReference) {
-			return this.getReferenceValue();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE,
+				oldReferenceValue, referenceValue));
 		}
-		EAttribute attribute = (EAttribute) feature;
-		EDataType type = attribute.getEAttributeType();
-		return EcoreUtil.createFromString(type, this.getDataValue());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
+	public Object getValue() {
+		final EStructuralFeature feature = getFeature();
+		if (feature instanceof EReference) {
+			return getReferenceValue();
+		}
+		final EAttribute attribute = (EAttribute) feature;
+		final EDataType type = attribute.getEAttributeType();
+		return EcoreUtil.createFromString(type, getDataValue());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
 	public void setValue(Object newValue) {
-		EStructuralFeature feature = this.getFeature();
-		if(feature instanceof EReference) {
-			this.setReferenceValue((EObject) newValue);
+		final EStructuralFeature feature = getFeature();
+		if (feature instanceof EReference) {
+			setReferenceValue((EObject) newValue);
 		}
 		else {
-			EAttribute attribute = (EAttribute) feature;
-			EDataType type = attribute.getEAttributeType();
-			this.setDataValue(EcoreUtil.convertToString(type, newValue));
-		} 
+			final EAttribute attribute = (EAttribute) feature;
+			final EDataType type = attribute.getEAttributeType();
+			setDataValue(EcoreUtil.convertToString(type, newValue));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.VALUE_CHANGE__ELEMENT:
-				if (resolve) return getElement();
-				return basicGetElement();
-			case HistoryPackage.VALUE_CHANGE__FEATURE:
-				if (resolve) return getFeature();
-				return basicGetFeature();
-			case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
-				return getFeatureName();
-			case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
-				return getDataValue();
-			case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
-				if (resolve) return getReferenceValue();
-				return basicGetReferenceValue();
-			case HistoryPackage.VALUE_CHANGE__VALUE:
-				return getValue();
+		case HistoryPackage.VALUE_CHANGE__ELEMENT:
+			if (resolve) {
+				return getElement();
+			}
+			return basicGetElement();
+		case HistoryPackage.VALUE_CHANGE__FEATURE:
+			if (resolve) {
+				return getFeature();
+			}
+			return basicGetFeature();
+		case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
+			return getFeatureName();
+		case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
+			return getDataValue();
+		case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
+			if (resolve) {
+				return getReferenceValue();
+			}
+			return basicGetReferenceValue();
+		case HistoryPackage.VALUE_CHANGE__VALUE:
+			return getValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -352,29 +407,30 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.VALUE_CHANGE__ELEMENT:
-				setElement((EObject)newValue);
-				return;
-			case HistoryPackage.VALUE_CHANGE__FEATURE:
-				setFeature((EStructuralFeature)newValue);
-				return;
-			case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
-				setFeatureName((String)newValue);
-				return;
-			case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
-				setDataValue((String)newValue);
-				return;
-			case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
-				setReferenceValue((EObject)newValue);
-				return;
-			case HistoryPackage.VALUE_CHANGE__VALUE:
-				setValue(newValue);
-				return;
+		case HistoryPackage.VALUE_CHANGE__ELEMENT:
+			setElement((EObject) newValue);
+			return;
+		case HistoryPackage.VALUE_CHANGE__FEATURE:
+			setFeature((EStructuralFeature) newValue);
+			return;
+		case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
+			setFeatureName((String) newValue);
+			return;
+		case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
+			setDataValue((String) newValue);
+			return;
+		case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
+			setReferenceValue((EObject) newValue);
+			return;
+		case HistoryPackage.VALUE_CHANGE__VALUE:
+			setValue(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -382,29 +438,30 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.VALUE_CHANGE__ELEMENT:
-				setElement((EObject)null);
-				return;
-			case HistoryPackage.VALUE_CHANGE__FEATURE:
-				setFeature((EStructuralFeature)null);
-				return;
-			case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
-				setFeatureName(FEATURE_NAME_EDEFAULT);
-				return;
-			case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
-				setDataValue(DATA_VALUE_EDEFAULT);
-				return;
-			case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
-				setReferenceValue((EObject)null);
-				return;
-			case HistoryPackage.VALUE_CHANGE__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
+		case HistoryPackage.VALUE_CHANGE__ELEMENT:
+			setElement((EObject) null);
+			return;
+		case HistoryPackage.VALUE_CHANGE__FEATURE:
+			setFeature((EStructuralFeature) null);
+			return;
+		case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
+			setFeatureName(FEATURE_NAME_EDEFAULT);
+			return;
+		case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
+			setDataValue(DATA_VALUE_EDEFAULT);
+			return;
+		case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
+			setReferenceValue((EObject) null);
+			return;
+		case HistoryPackage.VALUE_CHANGE__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -412,23 +469,24 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.VALUE_CHANGE__ELEMENT:
-				return element != null;
-			case HistoryPackage.VALUE_CHANGE__FEATURE:
-				return basicGetFeature() != null;
-			case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
-				return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
-			case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
-				return DATA_VALUE_EDEFAULT == null ? dataValue != null : !DATA_VALUE_EDEFAULT.equals(dataValue);
-			case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
-				return referenceValue != null;
-			case HistoryPackage.VALUE_CHANGE__VALUE:
-				return VALUE_EDEFAULT == null ? getValue() != null : !VALUE_EDEFAULT.equals(getValue());
+		case HistoryPackage.VALUE_CHANGE__ELEMENT:
+			return element != null;
+		case HistoryPackage.VALUE_CHANGE__FEATURE:
+			return basicGetFeature() != null;
+		case HistoryPackage.VALUE_CHANGE__FEATURE_NAME:
+			return FEATURE_NAME_EDEFAULT == null ? featureName != null : !FEATURE_NAME_EDEFAULT.equals(featureName);
+		case HistoryPackage.VALUE_CHANGE__DATA_VALUE:
+			return DATA_VALUE_EDEFAULT == null ? dataValue != null : !DATA_VALUE_EDEFAULT.equals(dataValue);
+		case HistoryPackage.VALUE_CHANGE__REFERENCE_VALUE:
+			return referenceValue != null;
+		case HistoryPackage.VALUE_CHANGE__VALUE:
+			return VALUE_EDEFAULT == null ? getValue() != null : !VALUE_EDEFAULT.equals(getValue());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -436,19 +494,22 @@ public abstract class ValueChangeImpl extends PrimitiveChangeImpl implements Val
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (featureName: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (featureName: "); //$NON-NLS-1$
 		result.append(featureName);
-		result.append(", dataValue: ");
+		result.append(", dataValue: "); //$NON-NLS-1$
 		result.append(dataValue);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ValueChangeImpl
+} // ValueChangeImpl

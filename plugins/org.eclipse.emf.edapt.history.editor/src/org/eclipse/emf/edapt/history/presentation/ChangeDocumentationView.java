@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation;
 
@@ -41,17 +41,16 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.forms.widgets.ScrolledFormText;
 import org.eclipse.ui.part.ViewPart;
 
-
 /**
  * View to show documentation for a selected change
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ChangeDocumentationView extends ViewPart implements
-		ISelectionListener {
+	ISelectionListener {
 
 	/**
 	 * Identifier like in the plugin.xml
@@ -68,10 +67,10 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
-		Color white = Display.getDefault().getSystemColor(SWT.COLOR_WHITE);
+		final Color white = Display.getDefault().getSystemColor(SWT.COLOR_WHITE);
 
-		GridLayout layout = new GridLayout(1, false);
-		Composite composite = new Composite(parent, SWT.None);
+		final GridLayout layout = new GridLayout(1, false);
+		final Composite composite = new Composite(parent, SWT.None);
 		composite.setBackground(white);
 		composite.setLayout(layout);
 
@@ -80,7 +79,7 @@ public class ChangeDocumentationView extends ViewPart implements
 		text.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getSelectionService().addSelectionListener(this);
+			.getSelectionService().addSelectionListener(this);
 	}
 
 	/**
@@ -98,16 +97,16 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getDocumentation(Change change) {
 		if (change instanceof OperationChange) {
-			OperationChange operationChange = (OperationChange) change;
-			Operation operation = operationChange.getOperation().getOperation();
+			final OperationChange operationChange = (OperationChange) change;
+			final Operation operation = operationChange.getOperation().getOperation();
 			return getDocumentation(operation);
 		} else if (change instanceof PrimitiveChange) {
-			PrimitiveChange primitiveChange = (PrimitiveChange) change;
+			final PrimitiveChange primitiveChange = (PrimitiveChange) change;
 			return getDocumentation(primitiveChange);
 		} else if (change instanceof MigrationChange) {
 			return getMigrationDocumentation();
 		}
-		return "<form></form>";
+		return "<form></form>"; //$NON-NLS-1$
 	}
 
 	/**
@@ -115,16 +114,16 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getMigrationDocumentation() {
 		return assemble(
-				"Custom Migration",
-				"This change attaches a custom migration to a sequence of changes.",
-				new String[] { "<b>changes</b>: the sequence of changes" });
+			"Custom Migration", //$NON-NLS-1$
+			"This change attaches a custom migration to a sequence of changes.", //$NON-NLS-1$
+			new String[] { "<b>changes</b>: the sequence of changes" }); //$NON-NLS-1$
 	}
 
 	/**
 	 * Get the documentation for a {@link PrimitiveChange}
 	 */
 	private String getDocumentation(PrimitiveChange change) {
-		EClass eClass = change.eClass();
+		final EClass eClass = change.eClass();
 
 		switch (eClass.getClassifierID()) {
 		case HistoryPackage.ADD:
@@ -143,15 +142,15 @@ public class ChangeDocumentationView extends ViewPart implements
 			return getNoChangeDocumentation();
 		}
 
-		return "<form></form>";
+		return "<form></form>"; //$NON-NLS-1$
 	}
 
 	/**
 	 * Get documentation for a {@link NoChange}
 	 */
 	private String getNoChangeDocumentation() {
-		return assemble("Primitive \"No Change\"",
-				"In the metamodel, nothing is changed.", new String[] {});
+		return assemble("Primitive \"No Change\"", //$NON-NLS-1$
+			"In the metamodel, nothing is changed.", new String[] {}); //$NON-NLS-1$
 	}
 
 	/**
@@ -159,13 +158,13 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getMoveDocumentation() {
 		return assemble(
-				"Primitive \"Move\"",
-				"In the metamodel, an element is moved to a new target. This primitive only applies to containment references.",
-				new String[] {
-						"<b>element</b>: the element which is moved",
-						"<b>target</b>: the target to which the element is moved",
-						"<b>reference</b>: the reference to which the element is moved",
-						"<b>source</b>: the source from which the element is moved" });
+			"Primitive \"Move\"", //$NON-NLS-1$
+			"In the metamodel, an element is moved to a new target. This primitive only applies to containment references.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element which is moved", //$NON-NLS-1$
+				"<b>target</b>: the target to which the element is moved", //$NON-NLS-1$
+				"<b>reference</b>: the reference to which the element is moved", //$NON-NLS-1$
+				"<b>source</b>: the source from which the element is moved" }); //$NON-NLS-1$
 	}
 
 	/**
@@ -173,13 +172,13 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getDeleteDocumentation() {
 		return assemble(
-				"Primitive \"Delete\"",
-				"In the metamodel, an element is deleted from a target. In addition, cross references are removed which target the element or its children. This primitive only applies to containment references.",
-				new String[] {
-						"<b>element</b>: the element which is deleted",
-						"<b>target</b>: the target from which the element is deleted",
-						"<b>reference</b>: the reference from which the element is deleted",
-						"<b>changes</b>: changes that delete the cross references" });
+			"Primitive \"Delete\"", //$NON-NLS-1$
+			"In the metamodel, an element is deleted from a target. In addition, cross references are removed which target the element or its children. This primitive only applies to containment references.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element which is deleted", //$NON-NLS-1$
+				"<b>target</b>: the target from which the element is deleted", //$NON-NLS-1$
+				"<b>reference</b>: the reference from which the element is deleted", //$NON-NLS-1$
+				"<b>changes</b>: changes that delete the cross references" }); //$NON-NLS-1$
 	}
 
 	/**
@@ -187,13 +186,13 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getCreateDocumentation() {
 		return assemble(
-				"Primitive \"Create\"",
-				"In the metamodel, an element is created as a child of a target and initialized. This primitive only applies to containment references.",
-				new String[] {
-						"<b>element</b>: the element which is created",
-						"<b>target</b>: the target as a child of which the element is created",
-						"<b>reference</b>: the reference in which the element is created",
-						"<b>changes</b>: changes that initialize attribute and cross references of the element" });
+			"Primitive \"Create\"", //$NON-NLS-1$
+			"In the metamodel, an element is created as a child of a target and initialized. This primitive only applies to containment references.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element which is created", //$NON-NLS-1$
+				"<b>target</b>: the target as a child of which the element is created", //$NON-NLS-1$
+				"<b>reference</b>: the reference in which the element is created", //$NON-NLS-1$
+				"<b>changes</b>: changes that initialize attribute and cross references of the element" }); //$NON-NLS-1$
 	}
 
 	/**
@@ -201,13 +200,13 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getSetDocumentation() {
 		return assemble(
-				"Primitive \"Set\"",
-				"In the metamodel, the value of an element's feature is changed. This primitive only applies to single-valued features which are either attribute or cross reference.",
-				new String[] {
-						"<b>element</b>: the element whose feature's value is changed",
-						"<b>feature</b>: the single-valued feature",
-						"<b>value</b>: the new value",
-						"<b>oldValue</b>: the old value" });
+			"Primitive \"Set\"", //$NON-NLS-1$
+			"In the metamodel, the value of an element's feature is changed. This primitive only applies to single-valued features which are either attribute or cross reference.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element whose feature's value is changed", //$NON-NLS-1$
+				"<b>feature</b>: the single-valued feature", //$NON-NLS-1$
+				"<b>value</b>: the new value", //$NON-NLS-1$
+				"<b>oldValue</b>: the old value" }); //$NON-NLS-1$
 	}
 
 	/**
@@ -215,12 +214,12 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getRemoveDocumentation() {
 		return assemble(
-				"Primitive \"Remove\"",
-				"In the metamodel, a value is removed from a feature of an element. This primitive only applies to many-valued features which are either attribute or cross reference.",
-				new String[] {
-						"<b>element</b>: the element from whose feature the value is removed",
-						"<b>feature</b>: the multi-valued feature",
-						"<b>value</b>: the value that is removed" });
+			"Primitive \"Remove\"", //$NON-NLS-1$
+			"In the metamodel, a value is removed from a feature of an element. This primitive only applies to many-valued features which are either attribute or cross reference.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element from whose feature the value is removed", //$NON-NLS-1$
+				"<b>feature</b>: the multi-valued feature", //$NON-NLS-1$
+				"<b>value</b>: the value that is removed" }); //$NON-NLS-1$
 	}
 
 	/**
@@ -228,39 +227,39 @@ public class ChangeDocumentationView extends ViewPart implements
 	 */
 	private String getAddDocumentation() {
 		return assemble(
-				"Primitive \"Add\"",
-				"In the metamodel, a value is added to a feature of an element. This primitive only applies to many-valued features which are either attribute or cross reference.",
-				new String[] {
-						"<b>element</b>: the element to whose feature the value is added",
-						"<b>feature</b>: the multi-valued feature",
-						"<b>value</b>: the value that is added" });
+			"Primitive \"Add\"", //$NON-NLS-1$
+			"In the metamodel, a value is added to a feature of an element. This primitive only applies to many-valued features which are either attribute or cross reference.", //$NON-NLS-1$
+			new String[] {
+				"<b>element</b>: the element to whose feature the value is added", //$NON-NLS-1$
+				"<b>feature</b>: the multi-valued feature", //$NON-NLS-1$
+				"<b>value</b>: the value that is added" }); //$NON-NLS-1$
 	}
 
 	/**
 	 * Get documentation for an {@link OperationChange}
 	 */
 	private String getDocumentation(Operation operation) {
-		String[] parameterList = new String[operation.getParameters().size()];
+		final String[] parameterList = new String[operation.getParameters().size()];
 		int i = 0;
-		for (Parameter parameter : operation.getParameters()) {
-			parameterList[i++] = "<b>" + parameter.getName() + "</b>: "
-					+ parameter.getDescription();
+		for (final Parameter parameter : operation.getParameters()) {
+			parameterList[i++] = "<b>" + parameter.getName() + "</b>: " //$NON-NLS-1$ //$NON-NLS-2$
+				+ parameter.getDescription();
 		}
 
-		return assemble("Operation \"" + operation.getLabel() + "\"", operation
-				.getDescription(), parameterList);
+		return assemble("Operation \"" + operation.getLabel() + "\"", operation //$NON-NLS-1$ //$NON-NLS-2$
+			.getDescription(), parameterList);
 	}
 
 	/**
 	 * Unset the documentation
 	 */
 	private void unsetText() {
-		text.setText("");
+		text.setText(""); //$NON-NLS-1$
 	}
 
 	/**
 	 * Assemble the documentation
-	 * 
+	 *
 	 * @param title
 	 *            The title
 	 * @param description
@@ -270,25 +269,25 @@ public class ChangeDocumentationView extends ViewPart implements
 	 * @return Assembled documentation
 	 */
 	private String assemble(String title, String description, String[] list) {
-		StringBuffer result = new StringBuffer();
+		final StringBuffer result = new StringBuffer();
 
-		result.append("<form>");
+		result.append("<form>"); //$NON-NLS-1$
 
-		result.append("<p><b>");
+		result.append("<p><b>"); //$NON-NLS-1$
 		result.append(title);
-		result.append("</b></p>");
+		result.append("</b></p>"); //$NON-NLS-1$
 
-		result.append("<p>");
+		result.append("<p>"); //$NON-NLS-1$
 		result.append(description);
-		result.append("</p>");
+		result.append("</p>"); //$NON-NLS-1$
 
-		for (String item : list) {
-			result.append("<li>");
+		for (final String item : list) {
+			result.append("<li>"); //$NON-NLS-1$
 			result.append(item);
-			result.append("</li>");
+			result.append("</li>"); //$NON-NLS-1$
 		}
 
-		result.append("</form>");
+		result.append("</form>"); //$NON-NLS-1$
 
 		return result.toString();
 	}
@@ -300,24 +299,25 @@ public class ChangeDocumentationView extends ViewPart implements
 	public void dispose() {
 		super.dispose();
 		PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-				.getSelectionService().removeSelectionListener(this);
+			.getSelectionService().removeSelectionListener(this);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void selectionChanged(IWorkbenchPart part, ISelection selection) {
 		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (structuredSelection.size() == 1) {
-				Object element = structuredSelection.getFirstElement();
+				final Object element = structuredSelection.getFirstElement();
 				if (element instanceof Change) {
-					Change change = (Change) element;
+					final Change change = (Change) element;
 					text.setText(getDocumentation(change));
 					return;
 				} else if (element instanceof OperationInstance) {
-					OperationInstance operationInstance = (OperationInstance) element;
-					Operation operation = operationInstance.getOperation();
+					final OperationInstance operationInstance = (OperationInstance) element;
+					final Operation operation = operationInstance.getOperation();
 					text.setText(getDocumentation(operation));
 					return;
 				}

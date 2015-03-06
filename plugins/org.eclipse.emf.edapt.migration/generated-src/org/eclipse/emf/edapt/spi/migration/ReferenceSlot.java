@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EReference;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference <em>EReference</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues <em>Values</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference <em>EReference</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,13 +40,14 @@ public interface ReferenceSlot extends Slot {
 	 * Returns the value of the '<em><b>EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EReference</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>EReference</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The reference to which the slot conforms
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>EReference</em>' reference.
 	 * @see #setEReference(EReference)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getReferenceSlot_EReference()
@@ -56,9 +57,11 @@ public interface ReferenceSlot extends Slot {
 	EReference getEReference();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference <em>EReference</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference
+	 * <em>EReference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>EReference</em>' reference.
 	 * @see #getEReference()
 	 * @generated
@@ -68,16 +71,18 @@ public interface ReferenceSlot extends Slot {
 	/**
 	 * Returns the value of the '<em><b>Values</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.migration.Instance}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences <em>References</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences
+	 * <em>References</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Values</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Values</em>' reference list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The values of the reference slot
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Values</em>' reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getReferenceSlot_Values()
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getReferences

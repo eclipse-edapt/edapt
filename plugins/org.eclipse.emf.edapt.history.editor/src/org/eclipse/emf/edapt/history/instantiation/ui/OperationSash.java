@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Markus Herrmannsdoerfer - initial API and implementation
+ * Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -15,10 +15,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.common.IExtentProvider;
 import org.eclipse.emf.edapt.common.ui.SelectionUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.history.instantiation.OperationInstanceHelper;
+import org.eclipse.emf.edapt.internal.common.IExtentProvider;
 import org.eclipse.emf.edapt.spi.history.OperationInstance;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -32,7 +32,7 @@ import org.eclipse.swt.widgets.Label;
 
 /**
  * Sash containing the operation, parameter and constraint viewer
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -62,7 +62,7 @@ public class OperationSash extends SashForm {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param parent
 	 */
 	public OperationSash(Composite parent, IExtentProvider provider) {
@@ -83,18 +83,19 @@ public class OperationSash extends SashForm {
 
 		// listen to selection of operation
 		operationViewer
-				.addSelectionChangedListener(new ISelectionChangedListener() {
+			.addSelectionChangedListener(new ISelectionChangedListener() {
 
-					public void selectionChanged(SelectionChangedEvent event) {
-						OperationInstance operationInstance = SelectionUtils
-								.getSelectedElement(event.getSelection());
-						if (operationInstance != null) {
-							parameterViewer.setInput(operationInstance);
-							updateConstraints(operationInstance);
-						}
+				@Override
+				public void selectionChanged(SelectionChangedEvent event) {
+					final OperationInstance operationInstance = SelectionUtils
+						.getSelectedElement(event.getSelection());
+					if (operationInstance != null) {
+						parameterViewer.setInput(operationInstance);
+						updateConstraints(operationInstance);
 					}
+				}
 
-				});
+			});
 
 		setWeights(new int[] { 3, 2, 2 });
 	}
@@ -104,48 +105,48 @@ public class OperationSash extends SashForm {
 	 */
 	private void initOperationViewer() {
 
-		Composite composite = new Composite(this, SWT.None);
+		final Composite composite = new Composite(this, SWT.None);
 		composite.setLayout(new GridLayout(1, false));
 
-		Label operationLabel = new Label(composite, SWT.None);
-		operationLabel.setText("Applicable Operations:");
+		final Label operationLabel = new Label(composite, SWT.None);
+		operationLabel.setText("Applicable Operations:"); //$NON-NLS-1$
 		operationLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		operationViewer = new OperationViewer(composite);
 		operationViewer.getTable().setLayoutData(
-				new GridData(GridData.FILL_BOTH));
+			new GridData(GridData.FILL_BOTH));
 	}
 
 	/**
 	 * Initialize parameter viewer
 	 */
 	private void initParameterViewer() {
-		Composite composite = new Composite(this, SWT.None);
+		final Composite composite = new Composite(this, SWT.None);
 		composite.setLayout(new GridLayout(1, false));
 
-		Label parameterLabel = new Label(composite, SWT.None);
-		parameterLabel.setText("Parameters:");
+		final Label parameterLabel = new Label(composite, SWT.None);
+		parameterLabel.setText("Parameters:"); //$NON-NLS-1$
 		parameterLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		parameterViewer = new ParameterViewer(composite, this);
 		parameterViewer.getTable().setLayoutData(
-				new GridData(GridData.FILL_BOTH));
+			new GridData(GridData.FILL_BOTH));
 	}
 
 	/**
 	 * Initialize constraint viewer
 	 */
 	private void initConstraintViewer() {
-		Composite composite = new Composite(this, SWT.None);
+		final Composite composite = new Composite(this, SWT.None);
 		composite.setLayout(new GridLayout(1, false));
 
-		Label constraintLabel = new Label(composite, SWT.None);
-		constraintLabel.setText("Violated constraints:");
+		final Label constraintLabel = new Label(composite, SWT.None);
+		constraintLabel.setText("Violated constraints:"); //$NON-NLS-1$
 		constraintLabel.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		constraintViewer = new ConstraintViewer(composite);
 		constraintViewer.getTable().setLayoutData(
-				new GridData(GridData.FILL_BOTH));
+			new GridData(GridData.FILL_BOTH));
 	}
 
 	/**
@@ -161,12 +162,12 @@ public class OperationSash extends SashForm {
 
 	/**
 	 * Get the selected operation
-	 * 
+	 *
 	 * @return Operation
 	 */
 	public OperationInstance getSelectedOperation() {
-		OperationInstance operationInstance = SelectionUtils
-				.getSelectedElement(operationViewer.getSelection());
+		final OperationInstance operationInstance = SelectionUtils
+			.getSelectedElement(operationViewer.getSelection());
 		return operationInstance;
 
 	}
@@ -174,15 +175,15 @@ public class OperationSash extends SashForm {
 	/**
 	 * Revalidate operation constraints on an instance and set enablement of
 	 * execution button accordingly
-	 * 
+	 *
 	 * @param operationInstance
 	 *            Instance of operation
 	 * @return true if no constraint is violated, false otherwise
 	 */
 	protected boolean updateConstraints(OperationInstance operationInstance) {
 
-		List<Constraint> violatedConstraints = helper
-				.getViolatedConstraints(operationInstance);
+		final List<Constraint> violatedConstraints = helper
+			.getViolatedConstraints(operationInstance);
 		constraintViewer.setInput(violatedConstraints);
 
 		return violatedConstraints.isEmpty();
@@ -191,27 +192,26 @@ public class OperationSash extends SashForm {
 	/**
 	 * Update the offered operations by means of a selection of elements
 	 */
-	@SuppressWarnings("unchecked")
 	public void updateOperations(IStructuredSelection structuredSelection) {
 
-		List<EObject> selectedElements = new ArrayList<EObject>();
-		for (Iterator i = structuredSelection.iterator(); i.hasNext();) {
-			Object o = i.next();
+		final List<EObject> selectedElements = new ArrayList<EObject>();
+		for (final Iterator i = structuredSelection.iterator(); i.hasNext();) {
+			final Object o = i.next();
 			if (o instanceof EObject) {
-				EObject element = (EObject) o;
+				final EObject element = (EObject) o;
 				selectedElements.add(element);
 			}
 		}
 
-		List<OperationInstance> possibleOperations = helper
-				.getPossibleOperations(selectedElements);
+		final List<OperationInstance> possibleOperations = helper
+			.getPossibleOperations(selectedElements);
 
 		updateViewers(possibleOperations);
 	}
 
 	/**
 	 * Update the viewers
-	 * 
+	 *
 	 * @param possibleOperations
 	 */
 	protected void updateViewers(List<OperationInstance> possibleOperations) {
@@ -222,7 +222,7 @@ public class OperationSash extends SashForm {
 
 	/**
 	 * Getter for operation instance helper
-	 * 
+	 *
 	 * @return Operation instance helper
 	 */
 	protected OperationInstanceHelper getHelper() {

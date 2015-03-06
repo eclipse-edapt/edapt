@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -34,15 +34,15 @@ public class DeleteOppositeReference extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EReference opposite = reference.getEOpposite();
+		final EReference opposite = reference.getEOpposite();
 
-		EClass eClass = opposite.getEContainingClass();
+		final EClass eClass = opposite.getEContainingClass();
 
 		// metamodel adaptation
 		metamodel.delete(opposite);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
 			deleteFeatureValue(instance, opposite);
 		}
 	}

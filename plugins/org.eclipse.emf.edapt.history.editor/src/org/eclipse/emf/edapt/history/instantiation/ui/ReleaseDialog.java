@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -21,17 +21,16 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-
 /**
  * A dialog to support the update of package namespaces when releasing.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ReleaseDialog extends TitleMessageDialogBase {
-	
+
 	/** Label to be replaced. */
 	private String source;
 
@@ -52,10 +51,10 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 
 	/** Constructor. */
 	public ReleaseDialog(String source) {
-		super("Update namespace URI of packages",
-				"In the namespace URI of each package, a label is replaced by another one.\n" +
-				   "The new label will denote the release. If you want to change the namespace\n" +
-				   "URIs in a different, modify them manually before pressing Release.");
+		super("Update namespace URI of packages", //$NON-NLS-1$
+			"In the namespace URI of each package, a label is replaced by another one.\n" + //$NON-NLS-1$
+				"The new label will denote the release. If you want to change the namespace\n" + //$NON-NLS-1$
+				"URIs in a different, modify them manually before pressing Release."); //$NON-NLS-1$
 		this.source = source;
 	}
 
@@ -64,33 +63,33 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
 
-		Composite composite = new Composite(parent, SWT.None);
+		final Composite composite = new Composite(parent, SWT.None);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		GridLayout layout = new GridLayout(2, false);
+		final GridLayout layout = new GridLayout(2, false);
 		composite.setLayout(layout);
-		
-		Label sourceLabel = new Label(composite, SWT.None);
-		sourceLabel.setText("Label to match:");
-		
+
+		final Label sourceLabel = new Label(composite, SWT.None);
+		sourceLabel.setText("Label to match:"); //$NON-NLS-1$
+
 		sourceText = new Text(composite, SWT.BORDER);
 		sourceText.setText(source);
 		sourceText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-		Label targetLabel = new Label(composite, SWT.None);
-		targetLabel.setText("Label to replace with:");
-		
+		final Label targetLabel = new Label(composite, SWT.None);
+		targetLabel.setText("Label to replace with:"); //$NON-NLS-1$
+
 		targetText = new Text(composite, SWT.BORDER);
 		targetText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
-		Label updateLabel = new Label(composite, SWT.None);
-		updateLabel.setText("Update namespace URIs:");
-		
+
+		final Label updateLabel = new Label(composite, SWT.None);
+		updateLabel.setText("Update namespace URIs:"); //$NON-NLS-1$
+
 		updateButton = new Button(composite, SWT.CHECK);
 		updateButton.setSelection(true);
 
 		return parent;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	protected void okPressed() {
@@ -104,7 +103,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	public String getSource() {
 		return source;
 	}
-	
+
 	/** Returns target label. */
 	public String getTarget() {
 		return target;

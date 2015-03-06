@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -22,13 +22,13 @@ public class MigrationUIActivator extends AbstractUIPlugin {
 	/**
 	 * The plug-in ID
 	 */
-	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.migration.ui";
+	public static final String PLUGIN_ID = "org.eclipse.emf.edapt.migration.ui"; //$NON-NLS-1$
 
 	/**
 	 * The shared instance
 	 */
 	private static MigrationUIActivator plugin;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

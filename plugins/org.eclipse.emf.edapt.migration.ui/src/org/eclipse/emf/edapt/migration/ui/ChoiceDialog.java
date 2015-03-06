@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -52,7 +52,7 @@ import org.eclipse.swt.widgets.Menu;
 
 /**
  * Dialog to choose an element from a set of elements
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -64,22 +64,22 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	 * Choices
 	 */
 	private final List<?> choices;
-	
+
 	/**
 	 * Context instance
 	 */
 	private final Instance instance;
-	
+
 	/**
 	 * Viewer displaying the model
 	 */
 	private StructureTreeViewer modelViewer;
-	
+
 	/**
 	 * Viewer displaying the selection
 	 */
 	private TableViewer choiceViewer;
-	
+
 	/**
 	 * Selected element
 	 */
@@ -92,54 +92,54 @@ public class ChoiceDialog extends ResizeableDialogBase {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param instance
 	 * @param choices
 	 * @param message
 	 */
 	public ChoiceDialog(Instance instance, List<?> choices, String message) {
-		super(new Point(800, 600), "Choice", message);
-		
+		super(new Point(800, 600), "Choice", message); //$NON-NLS-1$
+
 		this.instance = instance;
 		this.choices = choices;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
-		
-	    ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory();
+
+		final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory();
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		this.adapterFactory = adapterFactory;
-		
-		SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
+
+		final SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
 		sash.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
+
 		createModelViewer(sash);
 		createChoiceViewer(sash);
-		
-		sash.setWeights(new int[]{1,1});
-		
+
+		sash.setWeights(new int[] { 1, 1 });
+
 		return parent;
 	}
 
 	/**
 	 * Create the viewer displaying the model
-	 * 
+	 *
 	 * @param sash
 	 */
 	private void createModelViewer(SashForm sash) {
 
-		ModelSash modelSash = new MigrationModelSash(sash, SWT.None, adapterFactory);
-		modelViewer = modelSash.getStructureViewer();		
-		Repository repository = instance.getType().getModel().getRepository();
+		final ModelSash modelSash = new MigrationModelSash(sash, SWT.None, adapterFactory);
+		modelViewer = modelSash.getStructureViewer();
+		final Repository repository = instance.getType().getModel().getRepository();
 		modelViewer.setInput(repository);
 		modelViewer.setSelection(new StructuredSelection(instance), true);
-		
+
 		createContextMenu();
 	}
 
@@ -147,31 +147,33 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	 * Create context menu for model viewer
 	 */
 	private void createContextMenu() {
-		MenuManager menuManager = new MenuManager();
+		final MenuManager menuManager = new MenuManager();
 		menuManager.setRemoveAllWhenShown(true);
 		menuManager.addMenuListener(new IMenuListener() {
 
+			@Override
 			public void menuAboutToShow(IMenuManager manager) {
-				IStructuredSelection selection = (IStructuredSelection) modelViewer.getSelection();
-				if(selection.size() == 1) {
-					Object element = selection.getFirstElement();
-					if(element instanceof Instance) {
+				final IStructuredSelection selection = (IStructuredSelection) modelViewer.getSelection();
+				if (selection.size() == 1) {
+					final Object element = selection.getFirstElement();
+					if (element instanceof Instance) {
 						final Instance instance = (Instance) element;
-						
-						IEditingDomainItemProvider provider = (IEditingDomainItemProvider) adapterFactory.adapt(instance, IEditingDomainItemProvider.class);
-						Collection<?> descriptors = provider.getNewChildDescriptors(instance, null, null);
 
-						for(Object descriptor : descriptors) {
-							if(descriptor instanceof CommandParameter) {
-								CommandParameter parameter = (CommandParameter) descriptor;
+						final IEditingDomainItemProvider provider = (IEditingDomainItemProvider) adapterFactory.adapt(
+							instance, IEditingDomainItemProvider.class);
+						final Collection<?> descriptors = provider.getNewChildDescriptors(instance, null, null);
+
+						for (final Object descriptor : descriptors) {
+							if (descriptor instanceof CommandParameter) {
+								final CommandParameter parameter = (CommandParameter) descriptor;
 								final EReference reference = parameter.getEReference();
 								final EClass type = parameter.getEValue().eClass();
-								
-								manager.add(new Action("Create " + reference.getName() + ":" + type.getName()) {
+
+								manager.add(new Action("Create " + reference.getName() + ":" + type.getName()) { //$NON-NLS-1$ //$NON-NLS-2$
 									@Override
 									public void run() {
-										Model model = instance.getType().getModel();
-										Instance child = model.newInstance(type);
+										final Model model = instance.getType().getModel();
+										final Instance child = model.newInstance(type);
 										instance.add(reference, child);
 										modelViewer.refresh(instance);
 									}
@@ -181,52 +183,56 @@ public class ChoiceDialog extends ResizeableDialogBase {
 					}
 				}
 			}
-			
+
 		});
-		
-		Menu menu = menuManager.createContextMenu(modelViewer.getControl());
+
+		final Menu menu = menuManager.createContextMenu(modelViewer.getControl());
 		modelViewer.getControl().setMenu(menu);
 	}
 
 	/**
 	 * Initialize the viewer displaying the choices
-	 * 
+	 *
 	 * @param sash
 	 */
 	private void createChoiceViewer(SashForm sash) {
-		
+
 		choiceViewer = new TableViewer(sash, SWT.BORDER);
 		choiceViewer.setContentProvider(new IStructuredContentProvider() {
 
+			@Override
 			public Object[] getElements(Object inputElement) {
 				return choices.toArray();
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 				// not required
 			}
-			
+
 		});
-		
-		ILabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
+
+		final ILabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		choiceViewer.setLabelProvider(labelProvider);
-		
+
 		choiceViewer.addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
-				Object element = SelectionUtils.getSelectedElement(event
-						.getSelection());
+				final Object element = SelectionUtils.getSelectedElement(event
+					.getSelection());
 				modelViewer.setSelection(new StructuredSelection(element));
 			}
-			
+
 		});
-	
+
 		choiceViewer.setInput(choices);
-		choiceViewer.setSelection(new StructuredSelection(choiceViewer.getElementAt(0)));		
+		choiceViewer.setSelection(new StructuredSelection(choiceViewer.getElementAt(0)));
 	}
 
 	/**
@@ -235,7 +241,7 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	@Override
 	protected void okPressed() {
 		selectedElement = SelectionUtils.getSelectedElement(choiceViewer
-				.getSelection());
+			.getSelection());
 		super.okPressed();
 	}
 
@@ -243,7 +249,7 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	public Object getSelectedElement() {
 		return selectedElement;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -251,7 +257,7 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	protected void createButtonsForButtonBar(Composite parent) {
 		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

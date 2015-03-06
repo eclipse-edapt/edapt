@@ -19,7 +19,7 @@ import org.eclipse.jdt.core.IType;
 
 /**
  * Handler to create an empty migration.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,8 +30,8 @@ public class CreateMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		EObject element = HandlerUtils.getSelectedElement(event);
-		IType javaType = JavaUIUtils.createCustomMigration(element);
+		final EObject element = HandlerUtils.getSelectedElement(event);
+		final IType javaType = JavaUIUtils.createCustomMigration(element);
 		if (javaType != null) {
 			createMigration(element, javaType.getFullyQualifiedName(), domain);
 		}
@@ -40,23 +40,23 @@ public class CreateMigrationHandler extends EditingDomainHandlerBase {
 
 	/** Create an empty migration before a change or at the end of a release. */
 	private void createMigration(EObject element, String elementName,
-			EditingDomain domain) {
+		EditingDomain domain) {
 		Release release = null;
 		int index = CommandParameter.NO_INDEX;
 		if (element instanceof Release) {
 			release = (Release) element;
 		} else if (element instanceof Change) {
-			Change change = (Change) element;
+			final Change change = (Change) element;
 			release = change.getRelease();
 			index = release.getChanges().indexOf(change);
 		}
 
-		MigrationChange change = HistoryFactory.eINSTANCE
-				.createMigrationChange();
+		final MigrationChange change = HistoryFactory.eINSTANCE
+			.createMigrationChange();
 		change.setMigration(elementName);
-		Command command = new CreateChildCommand(domain, release,
-				HistoryPackage.eINSTANCE.getRelease_Changes(), change, index,
-				Collections.emptyList());
+		final Command command = new CreateChildCommand(domain, release,
+			HistoryPackage.eINSTANCE.getRelease_Changes(), change, index,
+			Collections.emptyList());
 		domain.getCommandStack().execute(command);
 	}
 }

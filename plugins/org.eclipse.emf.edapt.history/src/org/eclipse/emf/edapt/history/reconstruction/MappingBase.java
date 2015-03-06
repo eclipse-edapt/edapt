@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * Base class for mappings between model elements
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +44,7 @@ public abstract class MappingBase {
 		protected EObject doResolve(EObject source) {
 			return getSource(source);
 		}
-		
+
 	};
 
 	/**

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getRootInstances <em>Root Instances</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getRootInstances <em>Root Instances</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,13 +40,14 @@ public interface ModelResource extends AbstractResource {
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.migration.Instance}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Root Instances</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Root Instances</em>' reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The instances which are the root elements of the resource
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Root Instances</em>' reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getModelResource_RootInstances()
 	 * @model
@@ -56,13 +57,15 @@ public interface ModelResource extends AbstractResource {
 
 	/**
 	 * Returns the value of the '<em><b>Model</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Model#getResources <em>Resources</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Model#getResources
+	 * <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Model</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Model</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Model</em>' container reference.
 	 * @see #setModel(Model)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getModelResource_Model()
@@ -73,9 +76,11 @@ public interface ModelResource extends AbstractResource {
 	Model getModel();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}'
+	 * container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Model</em>' container reference.
 	 * @see #getModel()
 	 * @generated

@@ -9,7 +9,7 @@ import org.eclipse.emf.edapt.declaration.OperationImplementation;
 
 /**
  * Base class for operations which annotate a model element.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -24,6 +24,6 @@ public abstract class AnnotateModelElement extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "element", description = "The element must not be an annotation.")
 	public boolean checkElement(EModelElement element) {
-		return (!(element instanceof EAnnotation) && !(element instanceof EStringToStringMapEntryImpl));
+		return !(element instanceof EAnnotation) && !(element instanceof EStringToStringMapEntryImpl);
 	}
 }

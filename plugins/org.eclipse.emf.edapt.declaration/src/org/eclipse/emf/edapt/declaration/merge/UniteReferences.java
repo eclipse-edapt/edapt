@@ -6,19 +6,19 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
-import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
+import org.eclipse.emf.edapt.internal.common.TypeUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -39,42 +39,42 @@ public class UniteReferences extends OperationImplementation {
 	@EdaptConstraint(description = "The references must be all either cross or containment references")
 	public boolean checkReferencesSameContainment() {
 		return hasSameValue(references,
-				EcorePackage.Literals.EREFERENCE__CONTAINMENT);
+			EcorePackage.Literals.EREFERENCE__CONTAINMENT);
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The references have to belong to the same class")
 	public boolean checkReferencesSameClass() {
 		return hasSameValue(references, EcorePackage.eINSTANCE
-				.getEStructuralFeature_EContainingClass());
+			.getEStructuralFeature_EContainingClass());
 	}
 
 	/** {@inheritDoc} */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EReference mainReference = references.get(0);
-		EClass contextClass = mainReference.getEContainingClass();
+		final EReference mainReference = references.get(0);
+		final EClass contextClass = mainReference.getEContainingClass();
 
 		// metamodel adaptation
-		List<EClass> referenceTypes = new ArrayList<EClass>();
-		for (EReference reference : references) {
+		final List<EClass> referenceTypes = new ArrayList<EClass>();
+		for (final EReference reference : references) {
 			referenceTypes.add(reference.getEReferenceType());
 			metamodel.delete(reference);
 		}
-		EClass type = TypeUtils.leastCommonAncestor(referenceTypes);
-		EReference unitedReference = MetamodelFactory
-				.newEReference(contextClass, unitedReferenceName, type, 0, -1,
-						mainReference.isContainment());
+		final EClass type = TypeUtils.leastCommonAncestor(referenceTypes);
+		final EReference unitedReference = MetamodelFactory
+			.newEReference(contextClass, unitedReferenceName, type, 0, -1,
+				mainReference.isContainment());
 
 		// model migration
-		for (Instance contextElement : model.getAllInstances(contextClass)) {
-			for (EReference reference : references) {
+		for (final Instance contextElement : model.getAllInstances(contextClass)) {
+			for (final EReference reference : references) {
 				if (reference.isMany()) {
-					List values = contextElement.unset(reference);
+					final List values = contextElement.unset(reference);
 					((List) contextElement.get(unitedReference)).addAll(values);
 				} else {
-					Instance value = contextElement.unset(reference);
+					final Instance value = contextElement.unset(reference);
 					if (value != null) {
 						contextElement.add(unitedReference, value);
 					}

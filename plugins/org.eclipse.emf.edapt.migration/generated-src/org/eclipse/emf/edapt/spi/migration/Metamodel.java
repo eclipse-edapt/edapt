@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.migration.MigrationException;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Metamodel</b></em>'.
@@ -37,9 +36,9 @@ import org.eclipse.emf.edapt.migration.MigrationException;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources <em>Resources</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage <em>Default Package</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources <em>Resources</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage <em>Default Package</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,16 +50,18 @@ public interface Metamodel {
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.migration.MetamodelResource}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
+	 * It is bidirectional and its opposite is '
+	 * {@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Resources</em>' containment reference list isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The resources of which this metamodel consists
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Resources</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getMetamodel_Resources()
 	 * @see org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel
@@ -71,16 +72,18 @@ public interface Metamodel {
 
 	/**
 	 * Returns the value of the '<em><b>Repository</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Repository#getMetamodel <em>Metamodel</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Repository#getMetamodel
+	 * <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Repository</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Repository</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The repository to which the metamodel belongs
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Repository</em>' container reference.
 	 * @see #setRepository(Repository)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getMetamodel_Repository()
@@ -91,9 +94,11 @@ public interface Metamodel {
 	Repository getRepository();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}'
+	 * container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Repository</em>' container reference.
 	 * @see #getRepository()
 	 * @generated
@@ -107,6 +112,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Packages that constitute the root of a metamodel resource
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Default Package</em>' reference.
 	 * @see #setDefaultPackage(EPackage)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getMetamodel_DefaultPackage()
@@ -116,9 +122,11 @@ public interface Metamodel {
 	EPackage getDefaultPackage();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage <em>Default Package</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage
+	 * <em>Default Package</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Default Package</em>' reference.
 	 * @see #getDefaultPackage()
 	 * @generated
@@ -128,13 +136,14 @@ public interface Metamodel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EPackages</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>EPackages</em>' reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The root packages of all resources of which the metamodel consists
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -146,6 +155,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve an attribute of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model packageNameRequired="true"
 	 * @generated
 	 */
@@ -157,6 +167,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a data type of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -168,6 +179,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a data type of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -179,6 +191,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Delete an instance from the model, including all the contained instances
 	 * <!-- end-model-doc -->
+	 *
 	 * @model metamodelElementRequired="true"
 	 * @generated
 	 */
@@ -190,6 +203,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Get the inverse value of the reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @model metamodelElementRequired="true" referenceRequired="true"
 	 * @generated
 	 */
@@ -201,6 +215,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Get the inverse value of the reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @model eClassRequired="true"
 	 * @generated
 	 */
@@ -212,6 +227,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Get the inverse value of the reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @model eClassRequired="true"
 	 * @generated
 	 */
@@ -223,6 +239,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Set the opposite of a reference, adapting opposite values in the model
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceRequired="true" oppositeRequired="true"
 	 * @generated
 	 */
@@ -234,6 +251,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a package of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -245,6 +263,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a classifier of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -256,6 +275,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a feature of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -267,6 +287,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a class of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -278,6 +299,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a reference of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -289,6 +311,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve an attribute of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -300,6 +323,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a data type of the metamodel by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -311,6 +335,7 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Resolve a metamodel element by its fully qualified name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -322,11 +347,12 @@ public interface Metamodel {
 	 * <!-- begin-model-doc -->
 	 * Validate the metamodel
 	 * <!-- end-model-doc -->
+	 *
 	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException"
 	 * @generated
 	 */
 	void validate() throws MigrationException;
-	
+
 	/** Clear the internal caches within the metamodel elements. */
 	void refreshCaches();
 

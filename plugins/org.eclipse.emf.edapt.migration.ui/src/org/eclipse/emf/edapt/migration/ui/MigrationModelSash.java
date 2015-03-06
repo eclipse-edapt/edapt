@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -26,7 +26,7 @@ import org.eclipse.swt.widgets.Composite;
 
 /**
  * Model sash to show the generic instance model during migration
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,17 +38,17 @@ public class MigrationModelSash extends ModelSash {
 	 * Constructor
 	 */
 	public MigrationModelSash(Composite parent, int style,
-			AdapterFactory adapterFactory) {
+		AdapterFactory adapterFactory) {
 		super(parent, style, adapterFactory);
-		
-		StructuredViewer modelViewer = getStructureViewer();
+
+		final StructuredViewer modelViewer = getStructureViewer();
 		modelViewer.setContentProvider(new MigrationContentProvider(adapterFactory));
 		modelViewer.setSorter(null);
 	}
 
 	/**
 	 * Content provider to display the generic instance model during migration
-	 * 
+	 *
 	 * @author herrmama
 	 * @author $Author$
 	 * @version $Rev$
@@ -73,58 +73,58 @@ public class MigrationModelSash extends ModelSash {
 		 */
 		@Override
 		public Object[] getChildren(Object object) {
-			if(object instanceof Model) {
-				Model model = (Model) object;
+			if (object instanceof Model) {
+				final Model model = (Model) object;
 				return model.getResources().toArray();
 			}
-			if(object instanceof ModelResource) {
-				ModelResource resource = (ModelResource) object;
+			if (object instanceof ModelResource) {
+				final ModelResource resource = (ModelResource) object;
 				return resource.getRootInstances().toArray();
 			}
-			if(object instanceof MetamodelResource) {
-				MetamodelResource resource = (MetamodelResource) object;
+			if (object instanceof MetamodelResource) {
+				final MetamodelResource resource = (MetamodelResource) object;
 				return resource.getRootPackages().toArray();
 			}
 			return super.getChildren(object);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public boolean hasChildren(Object object) {
-			if(object instanceof Model) {
-				Model model = (Model) object;
+			if (object instanceof Model) {
+				final Model model = (Model) object;
 				return !model.getResources().isEmpty();
 			}
-			if(object instanceof ModelResource) {
-				ModelResource resource = (ModelResource) object;
+			if (object instanceof ModelResource) {
+				final ModelResource resource = (ModelResource) object;
 				return !resource.getRootInstances().isEmpty();
 			}
-			if(object instanceof MetamodelResource) {
-				MetamodelResource resource = (MetamodelResource) object;
+			if (object instanceof MetamodelResource) {
+				final MetamodelResource resource = (MetamodelResource) object;
 				return !resource.getRootPackages().isEmpty();
 			}
 			return super.hasChildren(object);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public Object getParent(Object object) {
-			if(object instanceof Instance) {
-				Instance instance = (Instance) object;
-				if(instance.getContainer() == null) {
+			if (object instanceof Instance) {
+				final Instance instance = (Instance) object;
+				if (instance.getContainer() == null) {
 					return instance.getResource();
 				}
 				return instance.getContainer();
 			}
-			if(object instanceof EPackage) {
-				EPackage ePackage = (EPackage) object;
-				if(ePackage.getESuperPackage() == null) {
-					for(MetamodelResource resource : repository.getMetamodel().getResources()) {
-						if(resource.getRootPackages().contains(ePackage)) {
+			if (object instanceof EPackage) {
+				final EPackage ePackage = (EPackage) object;
+				if (ePackage.getESuperPackage() == null) {
+					for (final MetamodelResource resource : repository.getMetamodel().getResources()) {
+						if (resource.getRootPackages().contains(ePackage)) {
 							return resource;
 						}
 					}
@@ -132,7 +132,7 @@ public class MigrationModelSash extends ModelSash {
 			}
 			return super.getParent(object);
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */

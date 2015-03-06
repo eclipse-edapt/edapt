@@ -5,17 +5,17 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,11 +38,11 @@ public class OperationToVolatile extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		EClass eClass = operation.getEContainingClass();
-		EClassifier type = operation.getEType();
+		final EClass eClass = operation.getEContainingClass();
+		final EClassifier type = operation.getEType();
 
 		String name = operation.getName();
-		if (name.startsWith("get")) {
+		if (name.startsWith("get")) { //$NON-NLS-1$
 			name = name.substring(3);
 			name = name.substring(0, 1).toLowerCase() + name.substring(1);
 		}
@@ -50,11 +50,11 @@ public class OperationToVolatile extends OperationImplementation {
 		EStructuralFeature feature = null;
 		if (type instanceof EClass) {
 			feature = MetamodelFactory.newEReference(eClass, name, (EClass) type,
-					operation.getLowerBound(), operation.getUpperBound());
+				operation.getLowerBound(), operation.getUpperBound());
 		} else {
 			feature = MetamodelFactory.newEAttribute(eClass, name,
-					(EDataType) type, operation.getLowerBound(), operation
-							.getUpperBound());
+				(EDataType) type, operation.getLowerBound(), operation
+					.getUpperBound());
 		}
 		feature.setVolatile(true);
 		feature.setTransient(true);

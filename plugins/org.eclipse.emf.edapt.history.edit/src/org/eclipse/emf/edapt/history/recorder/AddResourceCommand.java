@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 
 /**
  * Command to add a metamodel resource to the history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -32,7 +32,7 @@ public class AddResourceCommand extends ChangeCommand {
 
 	/** Constructor. */
 	public AddResourceCommand(EditingDomainListener listener,
-			Resource resource) {
+		Resource resource) {
 		super(listener.getHistory());
 
 		this.listener = listener;

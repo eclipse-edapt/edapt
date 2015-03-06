@@ -2,16 +2,16 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -51,8 +51,8 @@ public class NewReference extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EReference reference = MetamodelFactory.newEReference(eClass, name, type,
-				lowerBound, upperBound, containment);
+		final EReference reference = MetamodelFactory.newEReference(eClass, name, type,
+			lowerBound, upperBound, containment);
 		if (opposite != null) {
 			metamodel.setEOpposite(opposite, reference);
 		}

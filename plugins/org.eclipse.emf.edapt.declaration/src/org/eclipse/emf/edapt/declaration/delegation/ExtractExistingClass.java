@@ -7,18 +7,18 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -59,32 +59,32 @@ public class ExtractExistingClass extends OperationImplementation {
 	@EdaptConstraint(description = "The features must be of the same type")
 	public boolean checkFeaturesSameType() {
 		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
-				.getETypedElement_EType());
+			.getETypedElement_EType());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features must be of the same multiplicity")
 	public boolean checkFeaturesSameMultiplicity() {
 		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
-				.getETypedElement_Many());
+			.getETypedElement_Many());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass contextClass = toReplace.get(0).getEContainingClass();
+		final EClass contextClass = toReplace.get(0).getEContainingClass();
 
-		EReference reference = MetamodelFactory.newEReference(contextClass,
-				referenceName, extractedClass, 1, 1, true);
-		for (EStructuralFeature feature : toReplace) {
+		final EReference reference = MetamodelFactory.newEReference(contextClass,
+			referenceName, extractedClass, 1, 1, true);
+		for (final EStructuralFeature feature : toReplace) {
 			metamodel.delete(feature);
 		}
 
-		for (Instance contextInstance : model.getAllInstances(contextClass)) {
-			Instance extractedInstance = model.newInstance(extractedClass);
+		for (final Instance contextInstance : model.getAllInstances(contextClass)) {
+			final Instance extractedInstance = model.newInstance(extractedClass);
 			contextInstance.set(reference, extractedInstance);
 			for (int i = 0; i < toReplace.size(); i++) {
-				Object value = contextInstance.unset(toReplace.get(i));
+				final Object value = contextInstance.unset(toReplace.get(i));
 				extractedInstance.set(replaceBy.get(i), value);
 			}
 		}

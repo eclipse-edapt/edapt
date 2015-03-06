@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -36,18 +36,17 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableItem;
 
-
 /**
  * Table viewer to display applicable operations
  * (A list of operation instances is expected as input)
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class OperationViewer extends TableViewer {
-	
+
 	/**
 	 * Operation icon
 	 */
@@ -55,12 +54,12 @@ public class OperationViewer extends TableViewer {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param parent Parent composite
 	 */
 	public OperationViewer(Composite parent) {
 		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.FULL_SELECTION);
-		
+
 		init();
 	}
 
@@ -69,106 +68,121 @@ public class OperationViewer extends TableViewer {
 	 *
 	 */
 	private void init() {
-		
-		URL url = (URL) HistoryEditPlugin.INSTANCE.getImage("full/obj16/OperationInstance");
-		ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
+
+		final URL url = (URL) HistoryEditPlugin.INSTANCE.getImage("full/obj16/OperationInstance"); //$NON-NLS-1$
+		final ImageDescriptor imageDescriptor = ImageDescriptor.createFromURL(url);
 		operationImage = imageDescriptor.createImage();
-		
+
 		final Table operationTable = getTable();
-		
+
 		// content provider
 		setContentProvider(new IStructuredContentProvider() {
 
-			@SuppressWarnings("unchecked")
+			@Override
 			public Object[] getElements(Object inputElement) {
-				List list = (List) inputElement;
+				final List list = (List) inputElement;
 				return list.toArray();
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
 				// not required
 			}
-			
+
 		});
-		
+
 		// label provider
 		setLabelProvider(new ITableLabelProvider() {
 
+			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
-				switch(columnIndex) {
-				case 0: return operationImage;
-				default: return null;
+				switch (columnIndex) {
+				case 0:
+					return operationImage;
+				default:
+					return null;
 				}
 			}
 
+			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				OperationInstance operationInstance = (OperationInstance) element;
-				Operation operation = operationInstance.getOperation();
-				switch(columnIndex) {
-				case 0: return operation.getLabel();
-				case 1: return operation.getDescription();
-				default: return "";
+				final OperationInstance operationInstance = (OperationInstance) element;
+				final Operation operation = operationInstance.getOperation();
+				switch (columnIndex) {
+				case 0:
+					return operation.getLabel();
+				case 1:
+					return operation.getDescription();
+				default:
+					return ""; //$NON-NLS-1$
 				}
 			}
 
+			@Override
 			public void addListener(ILabelProviderListener listener) {
 				// not required
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public boolean isLabelProperty(Object element, String property) {
 				return false;
 			}
 
+			@Override
 			public void removeListener(ILabelProviderListener listener) {
 				// not required
 			}
-			
+
 		});
-		
+
 		// show operation description upon pressing F1
 		operationTable.addHelpListener(new HelpListener() {
 
+			@Override
 			public void helpRequested(HelpEvent e) {
-				
-				if(operationTable.getSelectionCount() > 0) {
-					TableItem tableItem = operationTable.getSelection()[0];
+
+				if (operationTable.getSelectionCount() > 0) {
+					final TableItem tableItem = operationTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
-			
+
 		});
-		
+
 		addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
-				
-				if(operationTable.getSelectionCount() > 0) {
-					TableItem tableItem = operationTable.getSelection()[0];
+
+				if (operationTable.getSelectionCount() > 0) {
+					final TableItem tableItem = operationTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
-			
+
 		});
-		
+
 		setSorter(new ViewerSorter() {
 			@Override
 			public int compare(Viewer viewer, Object e1, Object e2) {
-				OperationInstance oi1 = (OperationInstance) e1;
-				OperationInstance oi2 = (OperationInstance) e2;
-				
+				final OperationInstance oi1 = (OperationInstance) e1;
+				final OperationInstance oi2 = (OperationInstance) e2;
+
 				return oi1.getOperation().getLabel().compareTo(
-						oi2.getOperation().getLabel());
+					oi2.getOperation().getLabel());
 			}
 		});
-		
+
 		addFilter(new ViewerFilter() {
 
 			/**
@@ -176,23 +190,23 @@ public class OperationViewer extends TableViewer {
 			 */
 			@Override
 			public boolean select(Viewer viewer, Object parentElement,
-					Object element) {
-				OperationInstance operationInstance = (OperationInstance) element;
+				Object element) {
+				final OperationInstance operationInstance = (OperationInstance) element;
 				return !operationInstance.getOperation().isDeprecated();
 			}
-			
+
 		});
 	}
 
 	/**
 	 * Show the description of an operation which is associated to a table item
-	 * 
+	 *
 	 * @param tableItem Table item
 	 */
 	private void showDescription(TableItem tableItem) {
-		OperationInstance operationInstance = (OperationInstance) tableItem.getData();
-		Operation operation = operationInstance.getOperation();
-		PopupDialog dialog = new TableItemPopupDialog(tableItem, operation.getLabel(), operation.getDescription());
+		final OperationInstance operationInstance = (OperationInstance) tableItem.getData();
+		final Operation operation = operationInstance.getOperation();
+		final PopupDialog dialog = new TableItemPopupDialog(tableItem, operation.getLabel(), operation.getDescription());
 		dialog.open();
 	}
 }

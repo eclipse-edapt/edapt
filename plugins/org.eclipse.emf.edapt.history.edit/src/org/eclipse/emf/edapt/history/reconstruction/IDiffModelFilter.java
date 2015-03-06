@@ -6,17 +6,17 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
 // CB TODO Migrate
-//import org.eclipse.emf.compare.diff.metamodel.DiffElement;
+// import org.eclipse.emf.compare.diff.metamodel.DiffElement;
 
 /**
  * Interface to filter difference models.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -25,5 +25,5 @@ package org.eclipse.emf.edapt.history.reconstruction;
 public interface IDiffModelFilter {
 
 	/** Check whether an element should not be filtered out. */
-//	boolean select(DiffElement element);
+	// boolean select(DiffElement element);
 }

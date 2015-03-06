@@ -2,17 +2,17 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -69,12 +69,12 @@ public class NewOppositeReference extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EClass eClass = reference.getEReferenceType();
-		EClass type = reference.getEContainingClass();
+		final EClass eClass = reference.getEReferenceType();
+		final EClass type = reference.getEContainingClass();
 
 		// metamodel adaptation
-		EReference opposite = MetamodelFactory.newEReference(eClass, name, type,
-				lowerBound, upperBound, false);
+		final EReference opposite = MetamodelFactory.newEReference(eClass, name, type,
+			lowerBound, upperBound, false);
 		metamodel.setEOpposite(reference, opposite);
 		opposite.setChangeable(changeable);
 	}

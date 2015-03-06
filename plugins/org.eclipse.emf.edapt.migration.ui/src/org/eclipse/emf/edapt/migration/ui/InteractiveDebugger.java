@@ -6,18 +6,18 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
-import org.eclipse.emf.edapt.internal.migration.IDebugger;
+import org.eclipse.emf.edapt.internal.migration.internal.IDebugger;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Debugger that shows the state of the model to the user
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,14 +28,15 @@ public class InteractiveDebugger implements IDebugger {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void debug(Instance instance, String message) {
-		
-		Model model = instance.getType().getModel();
+
+		final Model model = instance.getType().getModel();
 		model.setReflection(true);
-		
-		DebugDialog dialog = new DebugDialog(instance, message);
+
+		final DebugDialog dialog = new DebugDialog(instance, message);
 		dialog.open();
-		
+
 		model.setReflection(false);
 	}
 

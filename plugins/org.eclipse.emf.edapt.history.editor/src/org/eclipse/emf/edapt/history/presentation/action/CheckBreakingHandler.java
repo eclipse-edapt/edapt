@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -19,7 +19,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
  * Action to check whether changes in the history are breaking
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,11 +28,12 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class CheckBreakingHandler extends AbstractHandler {
 
 	/** {@inheritDoc} */
+	@Override
 	public Object execute(ExecutionEvent event) {
-		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		final ISelection selection = HandlerUtil.getCurrentSelection(event);
 		if (selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			ExtendedValidateAction validateAction = new ExtendedValidateAction();
+			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+			final ExtendedValidateAction validateAction = new ExtendedValidateAction();
 			validateAction.updateSelection(structuredSelection);
 			validateAction.setActiveWorkbenchPart(HandlerUtil.getActivePart(event));
 			validateAction.run();

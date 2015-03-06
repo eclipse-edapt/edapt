@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -50,8 +50,8 @@ public class SpecializeReference extends OperationImplementation {
 	@EdaptConstraint(description = "The multiplicity must be the same or more special")
 	public boolean checkReferenceMultiplicityRestricted() {
 		return lowerBound >= reference.getLowerBound()
-				&& (upperBound <= reference.getUpperBound() || reference
-						.getUpperBound() == -1);
+			&& (upperBound <= reference.getUpperBound() || reference
+				.getUpperBound() == -1);
 	}
 
 	/** {@inheritDoc} */
@@ -74,8 +74,8 @@ public class SpecializeReference extends OperationImplementation {
 		}
 
 		// model migration
-		for (Instance instance : model.getAllInstances(reference
-				.getEContainingClass())) {
+		for (final Instance instance : model.getAllInstances(reference
+			.getEContainingClass())) {
 			filterValueByType(instance, reference, type, model);
 			filterValueByMultiplicity(instance, reference, upperBound, model);
 		}
@@ -87,11 +87,11 @@ public class SpecializeReference extends OperationImplementation {
 
 	/** Remove all values that do not conform to a certain type. */
 	private void filterValueByType(Instance instance, EReference reference,
-			EClass type, Model model) {
+		EClass type, Model model) {
 		if (reference.isMany()) {
-			List<Instance> values = new ArrayList<Instance>(instance
-					.getLinks(reference));
-			for (Instance value : values) {
+			final List<Instance> values = new ArrayList<Instance>(instance
+				.getLinks(reference));
+			for (final Instance value : values) {
 				if (!value.instanceOf(type)) {
 					instance.remove(reference, value);
 					if (reference.isContainment()) {
@@ -100,7 +100,7 @@ public class SpecializeReference extends OperationImplementation {
 				}
 			}
 		} else {
-			Instance value = instance.get(reference);
+			final Instance value = instance.get(reference);
 			if (value != null) {
 				if (!value.instanceOf(type)) {
 					instance.unset(reference);
@@ -114,13 +114,13 @@ public class SpecializeReference extends OperationImplementation {
 
 	/** Remove all values that do not conform to a certain upper bound. */
 	private void filterValueByMultiplicity(Instance instance,
-			EReference reference, int upperBound, Model model) {
+		EReference reference, int upperBound, Model model) {
 		if (reference.isMany()) {
-			List<Instance> values = new ArrayList<Instance>(instance
-					.getLinks(reference));
+			final List<Instance> values = new ArrayList<Instance>(instance
+				.getLinks(reference));
 			if (upperBound == 1 && values.size() > 1) {
 				int i = 0;
-				for (Instance value : values) {
+				for (final Instance value : values) {
 					if (i >= upperBound) {
 						instance.remove(reference, value);
 						if (reference.isContainment()) {

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -19,26 +19,25 @@ import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
-
 /**
  * Command to combine a sequence of primitive changes into a composite change
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class CombineChangesCommand extends ChangeCommand {
-	
+
 	/**
 	 * Release
 	 */
-	private Release release;
-	
+	private final Release release;
+
 	/**
 	 * Sequence of primitive changes
 	 */
-	private List<PrimitiveChange> changes;
+	private final List<PrimitiveChange> changes;
 
 	/**
 	 * Constructor
@@ -54,7 +53,7 @@ public class CombineChangesCommand extends ChangeCommand {
 	 */
 	@Override
 	protected void doExecute() {
-		CompositeChange compositeChange = HistoryFactory.eINSTANCE.createCompositeChange();
+		final CompositeChange compositeChange = HistoryFactory.eINSTANCE.createCompositeChange();
 		release.getChanges().add(release.getChanges().indexOf(changes.get(0)), compositeChange);
 		compositeChange.getChanges().addAll(changes);
 	}

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -29,10 +29,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 
-
 /**
  * Dialog to choose a release from a number of releases
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +43,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	 * Set of releases
 	 */
 	private final Set<Release> releases;
-	
+
 	/**
 	 * Combo viewer to display releases
 	 */
@@ -59,10 +58,10 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	 * Constructor
 	 */
 	public ReleaseDialog(Set<Release> releases) {
-		super("Choose metamodel release for model",
-				"The release of the metamodel to which the model conforms cannot be uniquely determined.\n" +
-				"This dialog allows to choose the release from the possibilities.");
-		
+		super("Choose metamodel release for model", //$NON-NLS-1$
+			"The release of the metamodel to which the model conforms cannot be uniquely determined.\n" + //$NON-NLS-1$
+				"This dialog allows to choose the release from the possibilities."); //$NON-NLS-1$
+
 		this.releases = releases;
 	}
 
@@ -72,27 +71,27 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
-		
-		Composite composite = new Composite(parent, SWT.None);
+
+		final Composite composite = new Composite(parent, SWT.None);
 		composite.setLayout(new GridLayout(2, false));
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
-		Label releaseLabel = new Label(composite, SWT.None);
-		releaseLabel.setText("Release");
-		
+
+		final Label releaseLabel = new Label(composite, SWT.None);
+		releaseLabel.setText("Release"); //$NON-NLS-1$
+
 		releaseCombo = new ComboViewer(composite);
 		releaseCombo.getCombo().setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
+
 		releaseCombo.setContentProvider(new ArrayContentProvider());
 		releaseCombo.setLabelProvider(new LabelProvider());
 		releaseCombo.setComparator(new ViewerComparator());
-		
+
 		releaseCombo.setInput(releases);
 		releaseCombo.getCombo().select(0);
-		
+
 		return parent;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -101,14 +100,14 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		release = SelectionUtils.getSelectedElement(releaseCombo.getSelection());
 		super.okPressed();
 	}
-	
+
 	/**
 	 * Gets the chosen release.
 	 */
 	public Release getRelease() {
 		return release;
 	}
-	
+
 	/**
 	 * Label provider
 	 */
@@ -117,6 +116,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public Image getImage(Object element) {
 			return null;
 		}
@@ -124,14 +124,16 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public String getText(Object element) {
-			Release release = (Release) element;
-			return release.getLabel() + " (" + release.getNumber() + ")";
+			final Release release = (Release) element;
+			return release.getLabel() + " (" + release.getNumber() + ")"; //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public void addListener(ILabelProviderListener listener) {
 			// not required
 		}
@@ -139,6 +141,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public void dispose() {
 			// not required
 		}
@@ -146,6 +149,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public boolean isLabelProperty(Object element, String property) {
 			return false;
 		}
@@ -153,9 +157,10 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 		/**
 		 * {@inheritDoc}
 		 */
+		@Override
 		public void removeListener(ILabelProviderListener listener) {
 			// not required
 		}
-		
+
 	}
 }

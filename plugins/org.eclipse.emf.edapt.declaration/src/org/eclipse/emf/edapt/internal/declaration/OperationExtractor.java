@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.declaration;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.edapt.declaration.Parameter;
 /**
  * Helper class to extract the declaration of an operation from its
  * implementation.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -46,11 +46,11 @@ public class OperationExtractor {
 	@SuppressWarnings("unchecked")
 	public Operation extractOperation(Class c) {
 
-		EdaptOperation operationAnnotation = (EdaptOperation) c
-				.getAnnotation(EdaptOperation.class);
+		final EdaptOperation operationAnnotation = (EdaptOperation) c
+			.getAnnotation(EdaptOperation.class);
 		if (operationAnnotation != null) {
-			Operation operation = DeclarationFactory.eINSTANCE
-					.createOperation();
+			final Operation operation = DeclarationFactory.eINSTANCE
+				.createOperation();
 			operation.setImplementation(c);
 			if (operationAnnotation.identifier().isEmpty()) {
 				operation.setName(c.getName());
@@ -63,10 +63,10 @@ public class OperationExtractor {
 				operation.setDeprecated(true);
 			}
 
-			for (Field field : c.getFields()) {
+			for (final Field field : c.getFields()) {
 				addParameter(operation, field);
 			}
-			for (Method method : c.getMethods()) {
+			for (final Method method : c.getMethods()) {
 				addConstraint(operation, method);
 			}
 			return operation;
@@ -78,14 +78,13 @@ public class OperationExtractor {
 	/**
 	 * Add a parameter to the operation declaration based on a field of a class.
 	 */
-	@SuppressWarnings("unchecked")
 	private void addParameter(Operation operation, Field field) {
-		EdaptParameter parameterAnnotation = field
-				.getAnnotation(EdaptParameter.class);
+		final EdaptParameter parameterAnnotation = field
+			.getAnnotation(EdaptParameter.class);
 
 		if (parameterAnnotation != null) {
-			Parameter parameter = DeclarationFactory.eINSTANCE
-					.createParameter();
+			final Parameter parameter = DeclarationFactory.eINSTANCE
+				.createParameter();
 			operation.getParameters().add(parameter);
 			if (parameterAnnotation.main()) {
 				parameter.setMain(true);
@@ -95,22 +94,21 @@ public class OperationExtractor {
 			parameter.setName(field.getName());
 			parameter.setDescription(parameterAnnotation.description());
 
-			Class type = setManyAndReturnType(parameter, field);
+			final Class type = setManyAndReturnType(parameter, field);
 
 			parameter.setClassifier(getEcoreType(type));
 		}
 	}
 
 	/** Determine whether the parameter is many-valued and return its type. */
-	@SuppressWarnings("unchecked")
 	private Class setManyAndReturnType(Parameter parameter, Field field) {
 		Class type = field.getType();
 		if (type == List.class) {
 			parameter.setMany(true);
-			Type t = field.getGenericType();
+			final Type t = field.getGenericType();
 			if (t instanceof ParameterizedType) {
-				ParameterizedType pt = (ParameterizedType) t;
-				Type a = pt.getActualTypeArguments()[0];
+				final ParameterizedType pt = (ParameterizedType) t;
+				final Type a = pt.getActualTypeArguments()[0];
 				if (a instanceof Class) {
 					type = (Class) a;
 				}
@@ -120,12 +118,11 @@ public class OperationExtractor {
 	}
 
 	/** Get the ecore type for a class. */
-	@SuppressWarnings("unchecked")
 	private EClassifier getEcoreType(Class type) {
 		if (type.getPackage() == EClass.class.getPackage()) {
 			return EcorePackage.eINSTANCE.getEClassifier(type.getSimpleName());
 		}
-		for (EClassifier classifier : EcorePackage.eINSTANCE.getEClassifiers()) {
+		for (final EClassifier classifier : EcorePackage.eINSTANCE.getEClassifiers()) {
 			if (classifier.getInstanceClass() == type) {
 				return classifier;
 			}
@@ -138,17 +135,17 @@ public class OperationExtractor {
 	 * class.
 	 */
 	private void addConstraint(Operation operation, Method method) {
-		EdaptConstraint constraintAnnotation = method
-				.getAnnotation(EdaptConstraint.class);
+		final EdaptConstraint constraintAnnotation = method
+			.getAnnotation(EdaptConstraint.class);
 
 		if (constraintAnnotation != null) {
-			Constraint constraint = DeclarationFactory.eINSTANCE
-					.createConstraint();
+			final Constraint constraint = DeclarationFactory.eINSTANCE
+				.createConstraint();
 			constraint.setName(method.getName());
 			constraint.setDescription(constraintAnnotation.description());
 			operation.getConstraints().add(constraint);
 
-			String restricts = constraintAnnotation.restricts();
+			final String restricts = constraintAnnotation.restricts();
 			if (!restricts.isEmpty()) {
 				constraint.setRestricts(operation.getParameter(restricts));
 			}

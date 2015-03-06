@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.TableItem;
 
 /**
  * A sash to display both the structure and the properties of a metamodel
- * 
+ *
  * @author markus.herrmannsdoer
  *
  */
@@ -43,7 +43,7 @@ public class ModelSash extends SashForm {
 	 * Viewer to display the structure of the metamodel
 	 */
 	private StructureTreeViewer structureViewer;
-	
+
 	/**
 	 * Viewer to display the properties of a metamodel element seletected in the structure viewer
 	 */
@@ -52,35 +52,36 @@ public class ModelSash extends SashForm {
 	/**
 	 * Adapter factory
 	 */
-	private AdapterFactory adapterFactory;
+	private final AdapterFactory adapterFactory;
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param parent Parent composite
 	 * @param style Sash style
 	 */
 	public ModelSash(Composite parent, int style) {
 		super(parent, style | SWT.VERTICAL);
-		
-	    ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
+
+		final ComposedAdapterFactory adapterFactory = new ComposedAdapterFactory(
+			ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 		this.adapterFactory = adapterFactory;
-		
+
 		init();
 	}
-	
+
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param parent Parent composite
 	 * @param style Sash style
 	 */
 	public ModelSash(Composite parent, int style, AdapterFactory adapterFactory) {
 		super(parent, style | SWT.VERTICAL);
-		
+
 		this.adapterFactory = adapterFactory;
-		
+
 		init();
 	}
 
@@ -89,63 +90,63 @@ public class ModelSash extends SashForm {
 	 *
 	 */
 	private void init() {
-		
+
 		structureViewer = new StructureTreeViewer(this, SWT.None, adapterFactory);
 		propertiesViewer = new PropertiesTableViewer(this, SWT.None, adapterFactory);
-		
+
 		structureViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 
+			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
-				IStructuredSelection structuredSelection = (IStructuredSelection) event.getSelection();
-				if(!structuredSelection.isEmpty() && structuredSelection.getFirstElement() instanceof EObject) {
-					EObject before = (EObject) structuredSelection.getFirstElement();				
+				final IStructuredSelection structuredSelection = (IStructuredSelection) event.getSelection();
+				if (!structuredSelection.isEmpty() && structuredSelection.getFirstElement() instanceof EObject) {
+					final EObject before = (EObject) structuredSelection.getFirstElement();
 					propertiesViewer.setElement(before);
 				}
 				else {
 					propertiesViewer.setInput(null);
 				}
 			}
-			
+
 		});
-		
+
 		propertiesViewer.getTable().addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetDefaultSelected(SelectionEvent e) {
-				TableItem item = (TableItem) e.item;
-				PropertyDescriptor descriptor = (PropertyDescriptor) item.getData();
-				PropertySource propertySource = (PropertySource) propertiesViewer.getInput();
+				final TableItem item = (TableItem) e.item;
+				final PropertyDescriptor descriptor = (PropertyDescriptor) item.getData();
+				final PropertySource propertySource = (PropertySource) propertiesViewer.getInput();
 				Object value = propertySource.getPropertyValue(descriptor.getId());
-				if(value instanceof ItemPropertyDescriptor.PropertyValueWrapper) {
-					ItemPropertyDescriptor.PropertyValueWrapper wrapper = (ItemPropertyDescriptor.PropertyValueWrapper) value;
+				if (value instanceof ItemPropertyDescriptor.PropertyValueWrapper) {
+					final ItemPropertyDescriptor.PropertyValueWrapper wrapper = (ItemPropertyDescriptor.PropertyValueWrapper) value;
 					value = wrapper.getEditableValue(value);
 					propertyValuesSelected(value);
 				}
 			}
 
 		});
-		
-		setWeights(new int[]{2,1});
+
+		setWeights(new int[] { 2, 1 });
 	}
-	
+
 	/**
 	 * Code to perform when property values are selected
 	 * (can be overwritten by sub classes)
-	 * 
+	 *
 	 * @param value
 	 */
-	@SuppressWarnings("unchecked")
 	protected void propertyValuesSelected(Object value) {
-		if(value instanceof EObject) {
+		if (value instanceof EObject) {
 			structureViewer.setSelection(new StructuredSelection(value), true);
 		}
-		else if(value instanceof List) {
+		else if (value instanceof List) {
 			structureViewer.setSelection(new StructuredSelection((List) value), true);
 		}
 	}
 
 	/**
 	 * Getter for structure viewer
-	 * 
+	 *
 	 * @return Structure viewer
 	 */
 	public StructureTreeViewer getStructureViewer() {
@@ -154,7 +155,7 @@ public class ModelSash extends SashForm {
 
 	/**
 	 * Getter for properties viewer
-	 * 
+	 *
 	 * @return Properties viewer
 	 */
 	public PropertiesTableViewer getPropertiesViewer() {

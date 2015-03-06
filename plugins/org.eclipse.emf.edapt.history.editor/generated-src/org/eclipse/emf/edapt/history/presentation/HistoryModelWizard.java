@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation;
-
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -68,12 +67,11 @@ import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-
-
 /**
  * This is a simple wizard for creating a new model file.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class HistoryModelWizard extends Wizard implements INewWizard {
@@ -81,24 +79,28 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * The supported extensions for created files.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static final List<String> FILE_EXTENSIONS =
-		Collections.unmodifiableList(Arrays.asList(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameExtensions").split("\\s*,\\s*")));
+		Collections.unmodifiableList(Arrays.asList(HistoryEditorPlugin.INSTANCE.getString(
+			"_UI_HistoryEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * A formatted list of supported file extensions, suitable for display.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static final String FORMATTED_FILE_EXTENSIONS =
-		HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+		HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", "); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 	/**
 	 * This caches an instance of the model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected HistoryPackage historyPackage = HistoryPackage.eINSTANCE;
@@ -107,6 +109,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This caches an instance of the model factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected HistoryFactory historyFactory = historyPackage.getHistoryFactory();
@@ -115,6 +118,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This is the file creation page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected HistoryModelWizardNewFileCreationPage newFileCreationPage;
@@ -123,6 +127,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This is the initial object creation page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected HistoryModelWizardInitialObjectCreationPage initialObjectCreationPage;
@@ -131,6 +136,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Remember the selection during initialization for populating the default container.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IStructuredSelection selection;
@@ -139,6 +145,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Remember the workbench during initialization.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IWorkbench workbench;
@@ -147,6 +154,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Caches the names of the types that can be created as the root object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected List<String> initialObjectNames;
@@ -155,27 +163,31 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This just records the information.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		this.workbench = workbench;
 		this.selection = selection;
-		setWindowTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_Wizard_label"));
-		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(HistoryEditorPlugin.INSTANCE.getImage("full/wizban/NewHistory")));
+		setWindowTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
+		setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(HistoryEditorPlugin.INSTANCE
+			.getImage("full/wizban/NewHistory"))); //$NON-NLS-1$
 	}
 
 	/**
 	 * Returns the names of the types that can be created as the root object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected Collection<String> getInitialObjectNames() {
 		if (initialObjectNames == null) {
 			initialObjectNames = new ArrayList<String>();
-			for (EClassifier eClassifier : historyPackage.getEClassifiers()) {
+			for (final EClassifier eClassifier : historyPackage.getEClassifiers()) {
 				if (eClassifier instanceof EClass) {
-					EClass eClass = (EClass)eClassifier;
+					final EClass eClass = (EClass) eClassifier;
 					if (!eClass.isAbstract()) {
 						initialObjectNames.add(eClass.getName());
 					}
@@ -190,11 +202,12 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Create a new model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected EObject createInitialModel() {
-		EClass eClass = (EClass)historyPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
-		EObject rootObject = historyFactory.create(eClass);
+		final EClass eClass = (EClass) historyPackage.getEClassifier(initialObjectCreationPage.getInitialObjectName());
+		final EObject rootObject = historyFactory.create(eClass);
 		return rootObject;
 	}
 
@@ -202,6 +215,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Do the work after everything is specified.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -213,37 +227,37 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 
 			// Do the work within an operation.
 			//
-			WorkspaceModifyOperation operation =
+			final WorkspaceModifyOperation operation =
 				new WorkspaceModifyOperation() {
 					@Override
 					protected void execute(IProgressMonitor progressMonitor) {
 						try {
 							// Create a resource set
 							//
-							ResourceSet resourceSet = new ResourceSetImpl();
+							final ResourceSet resourceSet = new ResourceSetImpl();
 
 							// Get the URI of the model file.
 							//
-							URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+							final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
 							// Create a resource for this file.
 							//
-							Resource resource = resourceSet.createResource(fileURI);
+							final Resource resource = resourceSet.createResource(fileURI);
 
 							// Add the initial model object to the contents.
 							//
-							EObject rootObject = createInitialModel();
+							final EObject rootObject = createInitialModel();
 							if (rootObject != null) {
 								resource.getContents().add(rootObject);
 							}
 
 							// Save the contents of the resource to the file system.
 							//
-							Map<Object, Object> options = new HashMap<Object, Object>();
+							final Map<Object, Object> options = new HashMap<Object, Object>();
 							options.put(XMLResource.OPTION_ENCODING, initialObjectCreationPage.getEncoding());
 							resource.save(options);
 						}
-						catch (Exception exception) {
+						catch (final Exception exception) {
 							HistoryEditorPlugin.INSTANCE.log(exception);
 						}
 						finally {
@@ -256,17 +270,18 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 
 			// Select the new file resource in the current view.
 			//
-			IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
-			IWorkbenchPage page = workbenchWindow.getActivePage();
+			final IWorkbenchWindow workbenchWindow = workbench.getActiveWorkbenchWindow();
+			final IWorkbenchPage page = workbenchWindow.getActivePage();
 			final IWorkbenchPart activePart = page.getActivePart();
 			if (activePart instanceof ISetSelectionTarget) {
 				final ISelection targetSelection = new StructuredSelection(modelFile);
 				getShell().getDisplay().asyncExec
 					(new Runnable() {
-						 public void run() {
-							 ((ISetSelectionTarget)activePart).selectReveal(targetSelection);
-						 }
-					 });
+						@Override
+						public void run() {
+							((ISetSelectionTarget) activePart).selectReveal(targetSelection);
+						}
+					});
 			}
 
 			// Open an editor on the new file.
@@ -274,16 +289,15 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 			try {
 				page.openEditor
 					(new FileEditorInput(modelFile),
-					 workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
-			}
-			catch (PartInitException exception) {
-				MessageDialog.openError(workbenchWindow.getShell(), HistoryEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage());
+						workbench.getEditorRegistry().getDefaultEditor(modelFile.getFullPath().toString()).getId());
+			} catch (final PartInitException exception) {
+				MessageDialog.openError(workbenchWindow.getShell(),
+					HistoryEditorPlugin.INSTANCE.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
 				return false;
 			}
 
 			return true;
-		}
-		catch (Exception exception) {
+		} catch (final Exception exception) {
 			HistoryEditorPlugin.INSTANCE.log(exception);
 			return false;
 		}
@@ -293,6 +307,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This is the one page of the wizard.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public class HistoryModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
@@ -300,6 +315,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public HistoryModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection) {
@@ -310,15 +326,18 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		 * The framework calls this to see if the file is correct.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		@Override
 		protected boolean validatePage() {
 			if (super.validatePage()) {
-				String extension = new Path(getFileName()).getFileExtension();
+				final String extension = new Path(getFileName()).getFileExtension();
 				if (extension == null || !FILE_EXTENSIONS.contains(extension)) {
-					String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension";
-					setErrorMessage(HistoryEditorPlugin.INSTANCE.getString(key, new Object [] { FORMATTED_FILE_EXTENSIONS }));
+					final String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" //$NON-NLS-1$
+						: "_WARN_FilenameExtension"; //$NON-NLS-1$
+					setErrorMessage(HistoryEditorPlugin.INSTANCE.getString(key,
+						new Object[] { FORMATTED_FILE_EXTENSIONS }));
 					return false;
 				}
 				return true;
@@ -329,6 +348,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public IFile getModelFile() {
@@ -340,26 +360,29 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * This is the page where the type of object to create is selected.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public class HistoryModelWizardInitialObjectCreationPage extends WizardPage {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected Combo initialObjectField;
 
 		/**
 		 * @generated
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+		 *            <!-- begin-user-doc -->
+		 *            <!-- end-user-doc -->
 		 */
 		protected List<String> encodings;
 
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected Combo encodingField;
@@ -368,6 +391,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		 * Pass in the selection.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public HistoryModelWizardInitialObjectCreationPage(String pageId) {
@@ -377,40 +401,43 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
+		@Override
 		public void createControl(Composite parent) {
-			Composite composite = new Composite(parent, SWT.NONE); {
-				GridLayout layout = new GridLayout();
+			final Composite composite = new Composite(parent, SWT.NONE);
+			{
+				final GridLayout layout = new GridLayout();
 				layout.numColumns = 1;
 				layout.verticalSpacing = 12;
 				composite.setLayout(layout);
 
-				GridData data = new GridData();
+				final GridData data = new GridData();
 				data.verticalAlignment = GridData.FILL;
 				data.grabExcessVerticalSpace = true;
 				data.horizontalAlignment = GridData.FILL;
 				composite.setLayoutData(data);
 			}
 
-			Label containerLabel = new Label(composite, SWT.LEFT);
+			final Label containerLabel = new Label(composite, SWT.LEFT);
 			{
-				containerLabel.setText(HistoryEditorPlugin.INSTANCE.getString("_UI_ModelObject"));
+				containerLabel.setText(HistoryEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
 
-				GridData data = new GridData();
+				final GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				containerLabel.setLayoutData(data);
 			}
 
 			initialObjectField = new Combo(composite, SWT.BORDER);
 			{
-				GridData data = new GridData();
+				final GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				data.grabExcessHorizontalSpace = true;
 				initialObjectField.setLayoutData(data);
 			}
 
-			for (String objectName : getInitialObjectNames()) {
+			for (final String objectName : getInitialObjectNames()) {
 				initialObjectField.add(getLabel(objectName));
 			}
 
@@ -419,23 +446,23 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 			}
 			initialObjectField.addModifyListener(validator);
 
-			Label encodingLabel = new Label(composite, SWT.LEFT);
+			final Label encodingLabel = new Label(composite, SWT.LEFT);
 			{
-				encodingLabel.setText(HistoryEditorPlugin.INSTANCE.getString("_UI_XMLEncoding"));
+				encodingLabel.setText(HistoryEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
-				GridData data = new GridData();
+				final GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				encodingLabel.setLayoutData(data);
 			}
 			encodingField = new Combo(composite, SWT.BORDER);
 			{
-				GridData data = new GridData();
+				final GridData data = new GridData();
 				data.horizontalAlignment = GridData.FILL;
 				data.grabExcessHorizontalSpace = true;
 				encodingField.setLayoutData(data);
 			}
 
-			for (String encoding : getEncodings()) {
+			for (final String encoding : getEncodings()) {
 				encodingField.add(encoding);
 			}
 
@@ -449,10 +476,12 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected ModifyListener validator =
 			new ModifyListener() {
+				@Override
 				public void modifyText(ModifyEvent e) {
 					setPageComplete(validatePage());
 				}
@@ -461,6 +490,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected boolean validatePage() {
@@ -470,6 +500,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		@Override
@@ -490,12 +521,13 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public String getInitialObjectName() {
-			String label = initialObjectField.getText();
+			final String label = initialObjectField.getText();
 
-			for (String name : getInitialObjectNames()) {
+			for (final String name : getInitialObjectNames()) {
 				if (getLabel(name).equals(label)) {
 					return name;
 				}
@@ -506,6 +538,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public String getEncoding() {
@@ -516,13 +549,13 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		 * Returns the label for the specified type name.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected String getLabel(String typeName) {
 			try {
-				return HistoryEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type");
-			}
-			catch(MissingResourceException mre) {
+				return HistoryEditPlugin.INSTANCE.getString("_UI_" + typeName + "_type"); //$NON-NLS-1$ //$NON-NLS-2$
+			} catch (final MissingResourceException mre) {
 				HistoryEditorPlugin.INSTANCE.log(mre);
 			}
 			return typeName;
@@ -531,12 +564,14 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		protected Collection<String> getEncodings() {
 			if (encodings == null) {
 				encodings = new ArrayList<String>();
-				for (StringTokenizer stringTokenizer = new StringTokenizer(HistoryEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens(); ) {
+				for (final StringTokenizer stringTokenizer = new StringTokenizer(
+					HistoryEditorPlugin.INSTANCE.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) { //$NON-NLS-1$
 					encodings.add(stringTokenizer.nextToken());
 				}
 			}
@@ -548,16 +583,19 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * The framework calls this to create the contents of the wizard.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-		@Override
+	@Override
 	public void addPages() {
 		// Create a page, set the title, and the initial model file name.
 		//
-		newFileCreationPage = new HistoryModelWizardNewFileCreationPage("Whatever", selection);
-		newFileCreationPage.setTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_label"));
-		newFileCreationPage.setDescription(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_description"));
-		newFileCreationPage.setFileName(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0));
+		newFileCreationPage = new HistoryModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
+		newFileCreationPage.setTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_label")); //$NON-NLS-1$
+		newFileCreationPage
+			.setDescription(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_description")); //$NON-NLS-1$
+		newFileCreationPage.setFileName(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameDefaultBase") //$NON-NLS-1$
+			+ "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$
 		addPage(newFileCreationPage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
@@ -565,11 +603,11 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 		if (selection != null && !selection.isEmpty()) {
 			// Get the resource...
 			//
-			Object selectedElement = selection.iterator().next();
+			final Object selectedElement = selection.iterator().next();
 			if (selectedElement instanceof IResource) {
 				// Get the resource parent, if its a file.
 				//
-				IResource selectedResource = (IResource)selectedElement;
+				IResource selectedResource = (IResource) selectedElement;
 				if (selectedResource.getType() == IResource.FILE) {
 					selectedResource = selectedResource.getParent();
 				}
@@ -583,19 +621,21 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 
 					// Make up a unique new name here.
 					//
-					String defaultModelBaseFilename = HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryEditorFilenameDefaultBase");
-					String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
-					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension;
-					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
-						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension;
+					final String defaultModelBaseFilename = HistoryEditorPlugin.INSTANCE
+						.getString("_UI_HistoryEditorFilenameDefaultBase"); //$NON-NLS-1$
+					final String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
+					String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
+					for (int i = 1; ((IContainer) selectedResource).findMember(modelFilename) != null; ++i) {
+						modelFilename = defaultModelBaseFilename + i + "." + defaultModelFilenameExtension; //$NON-NLS-1$
 					}
 					newFileCreationPage.setFileName(modelFilename);
 				}
 			}
 		}
-		initialObjectCreationPage = new HistoryModelWizardInitialObjectCreationPage("Whatever2");
-		initialObjectCreationPage.setTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_label"));
-		initialObjectCreationPage.setDescription(HistoryEditorPlugin.INSTANCE.getString("_UI_Wizard_initial_object_description"));
+		initialObjectCreationPage = new HistoryModelWizardInitialObjectCreationPage("Whatever2"); //$NON-NLS-1$
+		initialObjectCreationPage.setTitle(HistoryEditorPlugin.INSTANCE.getString("_UI_HistoryModelWizard_label")); //$NON-NLS-1$
+		initialObjectCreationPage.setDescription(HistoryEditorPlugin.INSTANCE
+			.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
 		addPage(initialObjectCreationPage);
 	}
 
@@ -603,6 +643,7 @@ public class HistoryModelWizard extends Wizard implements INewWizard {
 	 * Get the file from the page.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public IFile getModelFile() {

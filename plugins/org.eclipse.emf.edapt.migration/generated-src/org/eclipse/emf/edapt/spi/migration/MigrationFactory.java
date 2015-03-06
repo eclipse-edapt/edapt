@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage
  * @generated
  */
@@ -26,6 +27,7 @@ public interface MigrationFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	MigrationFactory eINSTANCE = org.eclipse.emf.edapt.spi.migration.impl.MigrationFactoryImpl.init();
@@ -34,6 +36,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Model</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Model</em>'.
 	 * @generated
 	 */
@@ -43,6 +46,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Metamodel</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Metamodel</em>'.
 	 * @generated
 	 */
@@ -52,6 +56,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Type</em>'.
 	 * @generated
 	 */
@@ -61,6 +66,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Instance</em>'.
 	 * @generated
 	 */
@@ -70,6 +76,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Attribute Slot</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Attribute Slot</em>'.
 	 * @generated
 	 */
@@ -79,6 +86,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Reference Slot</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Reference Slot</em>'.
 	 * @generated
 	 */
@@ -88,6 +96,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Repository</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Repository</em>'.
 	 * @generated
 	 */
@@ -97,6 +106,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Model Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Model Resource</em>'.
 	 * @generated
 	 */
@@ -106,6 +116,7 @@ public interface MigrationFactory extends EFactory {
 	 * Returns a new object of class '<em>Metamodel Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Metamodel Resource</em>'.
 	 * @generated
 	 */
@@ -115,9 +126,10 @@ public interface MigrationFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	MigrationPackage getMigrationPackage();
 
-} //MigrationFactory
+} // MigrationFactory

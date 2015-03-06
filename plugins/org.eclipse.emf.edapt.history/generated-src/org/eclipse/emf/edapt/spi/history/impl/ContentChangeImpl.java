@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edapt.spi.history.ContentChange;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Content Change</b></em>'.
@@ -29,9 +28,9 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getReference <em>Reference</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getReferenceName <em>Reference Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getTarget <em>Target</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getReference <em>Reference</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl#getReferenceName <em>Reference Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +41,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
@@ -51,6 +51,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	 * The default value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getReferenceName()
 	 * @generated
 	 * @ordered
@@ -60,6 +61,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	 * The cached value of the '{@link #getReferenceName() <em>Reference Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getReferenceName()
 	 * @generated
 	 * @ordered
@@ -69,6 +71,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ContentChangeImpl() {
@@ -78,6 +81,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -88,15 +92,19 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getTarget() {
 		if (target != null && target.eIsProxy()) {
-			InternalEObject oldTarget = (InternalEObject)target;
+			final InternalEObject oldTarget = (InternalEObject) target;
 			target = eResolveProxy(oldTarget);
 			if (target != oldTarget) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.CONTENT_CHANGE__TARGET, oldTarget, target));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.CONTENT_CHANGE__TARGET,
+						oldTarget, target));
+				}
 			}
 		}
 		return target;
@@ -105,6 +113,7 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetTarget() {
@@ -114,37 +123,45 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setTarget(EObject newTarget) {
-		EObject oldTarget = target;
+		final EObject oldTarget = target;
 		target = newTarget;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.CONTENT_CHANGE__TARGET, oldTarget, target));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.CONTENT_CHANGE__TARGET, oldTarget,
+				target));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getReference() {
-		EReference reference = basicGetReference();
-		return reference != null && reference.eIsProxy() ? (EReference)eResolveProxy((InternalEObject)reference) : reference;
+		final EReference reference = basicGetReference();
+		return reference != null && reference.eIsProxy() ? (EReference) eResolveProxy((InternalEObject) reference)
+			: reference;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	public EReference basicGetReference() {
-		EObject target = ((ContentChange) this).getTarget();
-		String referenceName = ((ContentChange) this).getReferenceName();
-		if(target != null && referenceName != null) {
-			EClass clazz = target.eClass();
-			EStructuralFeature feature = clazz.getEStructuralFeature(referenceName);
-			if(feature instanceof EReference) {
+		final EObject target = ((ContentChange) this).getTarget();
+		final String referenceName = ((ContentChange) this).getReferenceName();
+		if (target != null && referenceName != null) {
+			final EClass clazz = target.eClass();
+			final EStructuralFeature feature = clazz.getEStructuralFeature(referenceName);
+			if (feature instanceof EReference) {
 				return (EReference) feature;
 			}
 		}
@@ -154,22 +171,26 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void setReference(EReference newReference) {
-		if(newReference != null) {
-			this.setReferenceName(newReference.getName());
+		if (newReference != null) {
+			setReferenceName(newReference.getName());
 		}
 		else {
-			this.setReferenceName(null);
-		} 
+			setReferenceName(null);
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getReferenceName() {
 		return referenceName;
 	}
@@ -177,31 +198,40 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setReferenceName(String newReferenceName) {
-		String oldReferenceName = referenceName;
+		final String oldReferenceName = referenceName;
 		referenceName = newReferenceName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME, oldReferenceName, referenceName));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME,
+				oldReferenceName, referenceName));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.CONTENT_CHANGE__TARGET:
-				if (resolve) return getTarget();
-				return basicGetTarget();
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE:
-				if (resolve) return getReference();
-				return basicGetReference();
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
-				return getReferenceName();
+		case HistoryPackage.CONTENT_CHANGE__TARGET:
+			if (resolve) {
+				return getTarget();
+			}
+			return basicGetTarget();
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE:
+			if (resolve) {
+				return getReference();
+			}
+			return basicGetReference();
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
+			return getReferenceName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -209,20 +239,21 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.CONTENT_CHANGE__TARGET:
-				setTarget((EObject)newValue);
-				return;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE:
-				setReference((EReference)newValue);
-				return;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
-				setReferenceName((String)newValue);
-				return;
+		case HistoryPackage.CONTENT_CHANGE__TARGET:
+			setTarget((EObject) newValue);
+			return;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE:
+			setReference((EReference) newValue);
+			return;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
+			setReferenceName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -230,20 +261,21 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.CONTENT_CHANGE__TARGET:
-				setTarget((EObject)null);
-				return;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE:
-				setReference((EReference)null);
-				return;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
-				setReferenceName(REFERENCE_NAME_EDEFAULT);
-				return;
+		case HistoryPackage.CONTENT_CHANGE__TARGET:
+			setTarget((EObject) null);
+			return;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE:
+			setReference((EReference) null);
+			return;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
+			setReferenceName(REFERENCE_NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -251,17 +283,19 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.CONTENT_CHANGE__TARGET:
-				return target != null;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE:
-				return basicGetReference() != null;
-			case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
-				return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT.equals(referenceName);
+		case HistoryPackage.CONTENT_CHANGE__TARGET:
+			return target != null;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE:
+			return basicGetReference() != null;
+		case HistoryPackage.CONTENT_CHANGE__REFERENCE_NAME:
+			return REFERENCE_NAME_EDEFAULT == null ? referenceName != null : !REFERENCE_NAME_EDEFAULT
+				.equals(referenceName);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -269,17 +303,20 @@ public abstract class ContentChangeImpl extends PrimitiveChangeImpl implements C
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (referenceName: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (referenceName: "); //$NON-NLS-1$
 		result.append(referenceName);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ContentChangeImpl
+} // ContentChangeImpl

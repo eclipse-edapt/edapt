@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -31,25 +30,26 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.ParameterInstance} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class ParameterInstanceItemProvider
 	extends NamedElementItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public ParameterInstanceItemProvider(AdapterFactory adapterFactory) {
@@ -60,6 +60,7 @@ public class ParameterInstanceItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,44 +78,48 @@ public class ParameterInstanceItemProvider
 	 * This adds a property descriptor for the Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParameterInstance_value_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterInstance_value_feature", "_UI_ParameterInstance_type"),
-				 HistoryPackage.Literals.PARAMETER_INSTANCE__VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParameterInstance_value_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterInstance_value_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ParameterInstance_type"), //$NON-NLS-1$
+				HistoryPackage.Literals.PARAMETER_INSTANCE__VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Data Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addDataValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ParameterInstance_dataValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ParameterInstance_dataValue_feature", "_UI_ParameterInstance_type"),
-				 HistoryPackage.Literals.PARAMETER_INSTANCE__DATA_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_ParameterInstance_dataValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_ParameterInstance_dataValue_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_ParameterInstance_type"), //$NON-NLS-1$
+				HistoryPackage.Literals.PARAMETER_INSTANCE__DATA_VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -123,6 +128,7 @@ public class ParameterInstanceItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -137,6 +143,7 @@ public class ParameterInstanceItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -151,25 +158,27 @@ public class ParameterInstanceItemProvider
 	 * This returns ParameterInstance.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParameterInstance"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ParameterInstance")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((ParameterInstance)object).getName();
+		final String label = ((ParameterInstance) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_ParameterInstance_type") :
-			getString("_UI_ParameterInstance_type") + " " + label;
+			getString("_UI_ParameterInstance_type") : //$NON-NLS-1$
+			getString("_UI_ParameterInstance_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -177,6 +186,7 @@ public class ParameterInstanceItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -184,13 +194,13 @@ public class ParameterInstanceItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(ParameterInstance.class)) {
-			case HistoryPackage.PARAMETER_INSTANCE__VALUE:
-			case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case HistoryPackage.PARAMETER_INSTANCE__VALUE:
+		case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -200,6 +210,7 @@ public class ParameterInstanceItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -208,8 +219,8 @@ public class ParameterInstanceItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(HistoryPackage.Literals.PARAMETER_INSTANCE__REFERENCE_VALUE,
-				 HistoryFactory.eINSTANCE.createModelReference()));
+			(HistoryPackage.Literals.PARAMETER_INSTANCE__REFERENCE_VALUE,
+				HistoryFactory.eINSTANCE.createModelReference()));
 	}
 
 }

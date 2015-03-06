@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -18,27 +18,26 @@ import org.eclipse.emf.edapt.history.recorder.ui.EcoreEditorDetector;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
 
-
 /**
  * Base class for command handlers that are attached to a metamodel whose
  * history is recorded.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public abstract class EditingDomainListenerHandlerBase extends
-		OperationBrowserHandlerBase {
+	OperationBrowserHandlerBase {
 
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(OperationBrowser browser, ExecutionEvent event) {
-		EditingDomainListener listener = EcoreEditorDetector.getInstance()
-				.getListener(browser.getEditor());
+		final EditingDomainListener listener = EcoreEditorDetector.getInstance()
+			.getListener(browser.getEditor());
 		if (listener == null) {
 			MessageDialog.openError(Display.getDefault().getActiveShell(),
-					"History not found", "No history found. Create one first.");
+				"History not found", "No history found. Create one first."); //$NON-NLS-1$ //$NON-NLS-2$
 			return null;
 		}
 		return execute(listener, browser.getEditor());
@@ -46,5 +45,5 @@ public abstract class EditingDomainListenerHandlerBase extends
 
 	/** Execute the command using the metamodel listener. */
 	protected abstract Object execute(EditingDomainListener listener,
-			EcoreEditor editor);
+		EcoreEditor editor);
 }

@@ -8,12 +8,11 @@ Bundle-Activator: org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin$I
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.edapt.history.instantiation;version="1
- .1.0";x-internal:=true,org.eclipse.emf.edapt.history.provider.util;ve
- rsion="1.1.0";x-internal:=true,org.eclipse.emf.edapt.history.reconstr
- uction;version="1.1.0";x-internal:=true,org.eclipse.emf.edapt.history
- .recorder;version="1.1.0";x-internal:=true,org.eclipse.emf.edapt.spi.
- history.provider;version="1.1.0"
+Export-Package: org.eclipse.emf.edapt.history.instantiation;version="1.1.0";x-friends:="org.eclipse.emf.edapt.history.editor",
+ org.eclipse.emf.edapt.history.provider.util;version="1.1.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.reconstruction;version="1.1.0";x-friends:="org.eclipse.emf.edapt.history.editor,org.eclipse.emf.edapt.migration.test",
+ org.eclipse.emf.edapt.history.recorder;version="1.1.0";x-friends:="org.eclipse.emf.edapt.history.editor",
+ org.eclipse.emf.edapt.spi.history.provider;version="1.1.0"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.emf.edapt.history;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
  org.eclipse.emf.edit;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,

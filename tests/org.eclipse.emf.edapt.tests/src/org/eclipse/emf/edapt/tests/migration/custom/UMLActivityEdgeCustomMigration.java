@@ -10,13 +10,13 @@ public class UMLActivityEdgeCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
-		for (Instance edge : model.getAllInstances("minuml1.ActivityEdge")) {
-			if (edge.getLink("source").instanceOf("minuml1.ObjectNode")
-					|| edge.getLink("target").instanceOf("minuml1.ObjectNode")) {
-				edge.migrate("minuml1.ObjectFlow");
+		throws MigrationException {
+		for (final Instance edge : model.getAllInstances("minuml1.ActivityEdge")) { //$NON-NLS-1$
+			if (edge.getLink("source").instanceOf("minuml1.ObjectNode") //$NON-NLS-1$ //$NON-NLS-2$
+				|| edge.getLink("target").instanceOf("minuml1.ObjectNode")) { //$NON-NLS-1$ //$NON-NLS-2$
+				edge.migrate("minuml1.ObjectFlow"); //$NON-NLS-1$
 			} else {
-				edge.migrate("minuml1.ControlFlow");
+				edge.migrate("minuml1.ControlFlow"); //$NON-NLS-1$
 			}
 		}
 	}

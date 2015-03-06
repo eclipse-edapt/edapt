@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -25,7 +25,6 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.OperationInstance;
 import org.eclipse.emf.edapt.spi.history.ParameterInstance;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Operation Instance</b></em>'.
@@ -33,7 +32,7 @@ import org.eclipse.emf.edapt.spi.history.ParameterInstance;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +43,7 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getParameters()
 	 * @generated
 	 * @ordered
@@ -53,6 +53,7 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected OperationInstanceImpl() {
@@ -62,6 +63,7 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -72,11 +74,14 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<ParameterInstance> getParameters() {
 		if (parameters == null) {
-			parameters = new EObjectContainmentEList<ParameterInstance>(ParameterInstance.class, this, HistoryPackage.OPERATION_INSTANCE__PARAMETERS);
+			parameters = new EObjectContainmentEList<ParameterInstance>(ParameterInstance.class, this,
+				HistoryPackage.OPERATION_INSTANCE__PARAMETERS);
 		}
 		return parameters;
 	}
@@ -84,19 +89,23 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Operation getOperation() {
-		return OperationRegistry.getInstance().getOperation(this.getName());
+		return OperationRegistry.getInstance().getOperation(getName());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void setParameterValue(String name, Object value) {
-		ParameterInstance parameter = getParameter(name);
+		final ParameterInstance parameter = getParameter(name);
 		if (parameter != null) {
 			parameter.setValue(value);
 		}
@@ -105,10 +114,12 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ParameterInstance getParameter(String name) {
-		for (ParameterInstance parameter : this.getParameters()) {
+		for (final ParameterInstance parameter : getParameters()) {
 			if (name.equals(parameter.getName())) {
 				return parameter;
 			}
@@ -119,10 +130,12 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Object getParameterValue(String name) {
-		ParameterInstance parameter = this.getParameter(name);
+		final ParameterInstance parameter = getParameter(name);
 		if (parameter != null) {
 			return parameter.getValue();
 		}
@@ -132,13 +145,14 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+		case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
+			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -146,13 +160,14 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-				return getParameters();
+		case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
+			return getParameters();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -160,16 +175,17 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends ParameterInstance>)newValue);
-				return;
+		case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
+			getParameters().clear();
+			getParameters().addAll((Collection<? extends ParameterInstance>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -177,14 +193,15 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-				getParameters().clear();
-				return;
+		case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
+			getParameters().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -192,15 +209,16 @@ public class OperationInstanceImpl extends NamedElementImpl implements Operation
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
+		case HistoryPackage.OPERATION_INSTANCE__PARAMETERS:
+			return parameters != null && !parameters.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //OperationInstanceImpl
+} // OperationInstanceImpl

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -22,10 +22,9 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.handlers.HandlerUtil;
 
-
 /**
  * Action to replace a composite changes by its children primitive changes.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -37,20 +36,20 @@ public class FlattenMigrationHandler extends EditingDomainHandlerBase {
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
 
-		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		final ISelection selection = HandlerUtil.getCurrentSelection(event);
 		final MigrationChange change = SelectionUtils
-				.getSelectedElement(selection);
+			.getSelectedElement(selection);
 
 		final Release release = (Release) change.eContainer();
-		Command command = new ChangeCommand(release) {
+		final Command command = new ChangeCommand(release) {
 
 			@Override
 			protected void doExecute() {
-				int index = release.getChanges().indexOf(change);
+				final int index = release.getChanges().indexOf(change);
 				release.getChanges().remove(index);
 				release.getChanges().addAll(index, change.getChanges());
 			}
-			
+
 		};
 		domain.getCommandStack().execute(command);
 		return null;

@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Base class for implementations of libraries.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -21,7 +21,7 @@ public class LibraryImplementation {
 
 	/** Add the implementation of an operation to this library. */
 	protected void addOperation(
-			Class<? extends OperationImplementation> operation) {
+		Class<? extends OperationImplementation> operation) {
 		operations.add(operation);
 	}
 

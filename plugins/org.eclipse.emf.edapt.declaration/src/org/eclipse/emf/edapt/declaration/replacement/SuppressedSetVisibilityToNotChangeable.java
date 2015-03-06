@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,11 +36,11 @@ public class SuppressedSetVisibilityToNotChangeable extends OperationImplementat
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 
-		EAnnotation annotation = getAnnotation();
+		final EAnnotation annotation = getAnnotation();
 
 		reference.setChangeable(false);
 		if (annotation.getDetails().size() > 1) {
-			annotation.getDetails().remove("suppressedSetVisibility");
+			annotation.getDetails().remove("suppressedSetVisibility"); //$NON-NLS-1$
 		} else {
 			metamodel.delete(annotation);
 		}
@@ -48,10 +48,10 @@ public class SuppressedSetVisibilityToNotChangeable extends OperationImplementat
 
 	/** Get the "suppressedSetVisibility" annotation. */
 	private EAnnotation getAnnotation() {
-		for (EAnnotation annotation : reference.getEAnnotations()) {
-			for (Entry<String, String> detail : annotation.getDetails()
-					.entrySet()) {
-				if ("suppressedSetVisibility".equals(detail.getKey())) {
+		for (final EAnnotation annotation : reference.getEAnnotations()) {
+			for (final Entry<String, String> detail : annotation.getDetails()
+				.entrySet()) {
+				if ("suppressedSetVisibility".equals(detail.getKey())) { //$NON-NLS-1$
 					return annotation;
 				}
 			}

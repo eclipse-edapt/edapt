@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.edapt.declaration.DeclarationPackage;
 import org.eclipse.emf.edapt.declaration.IdentifiedElement;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Identified Element</b></em>'.
@@ -26,8 +25,8 @@ import org.eclipse.emf.edapt.declaration.IdentifiedElement;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +37,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -48,6 +48,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getName()
 	 * @generated
 	 * @ordered
@@ -58,6 +59,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -68,6 +70,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getDescription()
 	 * @generated
 	 * @ordered
@@ -77,6 +80,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IdentifiedElementImpl() {
@@ -86,6 +90,7 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -96,8 +101,10 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -105,20 +112,26 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
-		String oldName = name;
+		final String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.IDENTIFIED_ELEMENT__NAME, oldName, name));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.IDENTIFIED_ELEMENT__NAME, oldName,
+				name));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getDescription() {
 		return description;
 	}
@@ -126,27 +139,32 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setDescription(String newDescription) {
-		String oldDescription = description;
+		final String oldDescription = description;
 		description = newDescription;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION, oldDescription, description));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION,
+				oldDescription, description));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
-				return getName();
-			case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
-				return getDescription();
+		case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
+			return getName();
+		case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
+			return getDescription();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,17 +172,18 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
-				setName((String)newValue);
-				return;
-			case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
-				setDescription((String)newValue);
-				return;
+		case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
+			setName((String) newValue);
+			return;
+		case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
+			setDescription((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -172,17 +191,18 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
-				setName(NAME_EDEFAULT);
-				return;
-			case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
-				setDescription(DESCRIPTION_EDEFAULT);
-				return;
+		case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
+			setName(NAME_EDEFAULT);
+			return;
+		case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,15 +210,16 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-			case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
-				return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+		case DeclarationPackage.IDENTIFIED_ELEMENT__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case DeclarationPackage.IDENTIFIED_ELEMENT__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -206,19 +227,22 @@ public abstract class IdentifiedElementImpl extends EObjectImpl implements Ident
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
-		result.append(", description: ");
+		result.append(", description: "); //$NON-NLS-1$
 		result.append(description);
 		result.append(')');
 		return result.toString();
 	}
 
-} //IdentifiedElementImpl
+} // IdentifiedElementImpl

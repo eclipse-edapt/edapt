@@ -6,13 +6,12 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
 import org.eclipse.emf.ecore.EClassifier;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -26,12 +25,12 @@ import org.eclipse.emf.ecore.EClassifier;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,16 +41,18 @@ import org.eclipse.emf.ecore.EClassifier;
 public interface Parameter extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Operation</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getParameters
+	 * <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operation</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Operation</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Operation to which the parameter belongs
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Operation</em>' container reference.
 	 * @see #setOperation(Operation)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Operation()
@@ -62,9 +63,11 @@ public interface Parameter extends IdentifiedElement {
 	Operation getOperation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}'
+	 * container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Operation</em>' container reference.
 	 * @see #getOperation()
 	 * @generated
@@ -79,6 +82,7 @@ public interface Parameter extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Whether the parameter is required to be set for allowing an operation to be executed
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Required</em>' attribute.
 	 * @see #setRequired(boolean)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Required()
@@ -88,9 +92,11 @@ public interface Parameter extends IdentifiedElement {
 	boolean isRequired();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Required</em>' attribute.
 	 * @see #isRequired()
 	 * @generated
@@ -104,6 +110,7 @@ public interface Parameter extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Whether the parameter is determined by selection (at most one parameter for unambiguousness)
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Main</em>' attribute.
 	 * @see #setMain(boolean)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Main()
@@ -116,6 +123,7 @@ public interface Parameter extends IdentifiedElement {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Main</em>' attribute.
 	 * @see #isMain()
 	 * @generated
@@ -129,6 +137,7 @@ public interface Parameter extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Whether the type is multi-valued
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Many</em>' attribute.
 	 * @see #setMany(boolean)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Many()
@@ -141,6 +150,7 @@ public interface Parameter extends IdentifiedElement {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Many</em>' attribute.
 	 * @see #isMany()
 	 * @generated
@@ -154,6 +164,7 @@ public interface Parameter extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Classifier for which the type stands (the value of this reference is derived from the type's name)
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see #setClassifier(EClassifier)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_Classifier()
@@ -163,9 +174,11 @@ public interface Parameter extends IdentifiedElement {
 	EClassifier getClassifier();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Classifier</em>' reference.
 	 * @see #getClassifier()
 	 * @generated
@@ -179,6 +192,7 @@ public interface Parameter extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Name of the classifier for which the type stands
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Classifier Name</em>' attribute.
 	 * @see #setClassifierName(String)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getParameter_ClassifierName()
@@ -188,9 +202,11 @@ public interface Parameter extends IdentifiedElement {
 	String getClassifierName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName
+	 * <em>Classifier Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Classifier Name</em>' attribute.
 	 * @see #getClassifierName()
 	 * @generated

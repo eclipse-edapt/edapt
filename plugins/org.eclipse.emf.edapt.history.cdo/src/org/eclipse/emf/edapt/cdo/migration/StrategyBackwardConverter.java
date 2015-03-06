@@ -15,22 +15,22 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.internal.migration.BackwardConverter;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.BackwardConverter;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Model;
 import org.eclipse.emf.edapt.spi.migration.ModelResource;
 import org.eclipse.emf.edapt.spi.migration.Type;
 
 /**
- * 
+ *
  * A {@link BackwardConverter} which defines a Strategy for converting a Model
  * to a {@link Resource}.
- * 
- * 
+ *
+ *
  * @author Christophe Bouhier
- * 
+ *
  */
 public class StrategyBackwardConverter extends BackwardConverter {
 
@@ -43,25 +43,25 @@ public class StrategyBackwardConverter extends BackwardConverter {
 	 * Dynamic Objects. This is not compatible with Edapt as a DynamicCDOObject
 	 * will have a CDOClassInfo based on a previous EPackage. Here we create
 	 * regular EMF Objects which are added to a resource.
-	 * 
+	 *
 	 */
 	@Override
 	protected void createObjects(Type type) {
-		EClass sourceClass = type.getEClass();
-		EClass targetClass = resolveEClass(sourceClass);
-		for (Instance element : type.getInstances()) {
+		final EClass sourceClass = type.getEClass();
+		final EClass targetClass = resolveEClass(sourceClass);
+		for (final Instance element : type.getInstances()) {
 
-			EFactory eFactoryInstance = targetClass.getEPackage()
-					.getEFactoryInstance();
+			final EFactory eFactoryInstance = targetClass.getEPackage()
+				.getEFactoryInstance();
 			EObject eObject = null;
 			if (eFactoryInstance instanceof CDOFactory) {
 				// We are a CDO Factory auch... we can't create
 				// migrated model objects with a CDOFactory.
 
 				if (eFactory == null) {
-					Collection<EPackage> rootPackages = extent
-							.getRootPackages();
-					for (EPackage ePack : rootPackages) {
+					final Collection<EPackage> rootPackages = extent
+						.getRootPackages();
+					for (final EPackage ePack : rootPackages) {
 						eFactory = ePack.getEFactoryInstance();
 					}
 				}
@@ -84,42 +84,42 @@ public class StrategyBackwardConverter extends BackwardConverter {
 	/**
 	 * The target {@link URI} which represents a path.
 	 */
-	private List<URI> targetURI;
+	private final List<URI> targetURI;
 
 	/**
 	 * The original metamodel extent needed to obtain a {@link EFactory factory}
 	 */
-	private MetamodelExtent extent;
+	private final MetamodelExtent extent;
 
 	public StrategyBackwardConverter(MetamodelExtent extent, List<URI> list) {
-		this.targetURI = list;
+		targetURI = list;
 		this.extent = extent;
 	}
 
 	@Override
 	protected ResourceSet initResources(Model model) {
-		ResourceSet resourceSet = new ResourceSetImpl();
+		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		ResourceUtils.register(model.getMetamodel().getEPackages(),
-				resourceSet.getPackageRegistry());
+			resourceSet.getPackageRegistry());
 
-		for (ModelResource modelResource : model.getResources()) {
+		for (final ModelResource modelResource : model.getResources()) {
 
 			// FIXME How to map source/target URI's, should be a map right?
-			URI target = targetURI.get(0);
+			final URI target = targetURI.get(0);
 
-			Resource resource = resourceSet.createResource(target);
+			final Resource resource = resourceSet.createResource(target);
 
 			if (resource instanceof XMLResource) {
-				XMLResource xmlResource = (XMLResource) resource;
+				final XMLResource xmlResource = (XMLResource) resource;
 				if (modelResource.getEncoding() != null) {
 					xmlResource.setEncoding(modelResource.getEncoding());
 				}
 			}
 
 			// We can only add to the resource when a conforming EPackage.
-			for (Instance element : modelResource.getRootInstances()) {
-				EObject resolve = resolve(element);
+			for (final Instance element : modelResource.getRootInstances()) {
+				final EObject resolve = resolve(element);
 				resource.getContents().add(resolve);
 			}
 		}

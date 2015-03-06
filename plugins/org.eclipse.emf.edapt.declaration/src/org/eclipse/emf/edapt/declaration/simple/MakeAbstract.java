@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -47,7 +47,7 @@ public class MakeAbstract extends OperationImplementation {
 		eClass.setAbstract(true);
 
 		// model migration
-		for (Instance instance : model.getInstances(eClass)) {
+		for (final Instance instance : model.getInstances(eClass)) {
 			instance.migrate(subClass);
 		}
 	}

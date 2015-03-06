@@ -18,22 +18,22 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateBefore(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 		model.checkConformance();
 		languageAttribute = metamodel
-				.getEAttribute("gmfgen.ValueExpression.language");
+			.getEAttribute("gmfgen.ValueExpression.language"); //$NON-NLS-1$
 	}
 
 	public Instance findProvider(Instance valueExpression) {
-		Metamodel metamodel = valueExpression.getType().getModel()
-				.getMetamodel();
-		for (Instance provider : container.getLinks("providers")) {
+		final Metamodel metamodel = valueExpression.getType().getModel()
+			.getMetamodel();
+		for (final Instance provider : container.getLinks("providers")) { //$NON-NLS-1$
 			if (valueExpression.get(languageAttribute) == metamodel
-					.getEEnumLiteral("gmfgen.GenLanguage.java")
-					&& provider.instanceOf("gmfgen.GenJavaExpressionProvider")) {
+				.getEEnumLiteral("gmfgen.GenLanguage.java") //$NON-NLS-1$
+				&& provider.instanceOf("gmfgen.GenJavaExpressionProvider")) { //$NON-NLS-1$
 				return provider;
 			} else if (valueExpression.get(languageAttribute) == provider
-					.get("language")) {
+				.get("language")) { //$NON-NLS-1$
 				return provider;
 			}
 		}
@@ -41,10 +41,10 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 	}
 
 	public Instance findExpression(Instance valueExpression) {
-		Instance provider = findProvider(valueExpression);
+		final Instance provider = findProvider(valueExpression);
 		if (provider != null) {
-			for (Instance expression : provider.getLinks("expressions")) {
-				if (expression.get("body").equals(valueExpression.get("body"))) {
+			for (final Instance expression : provider.getLinks("expressions")) { //$NON-NLS-1$
+				if (expression.get("body").equals(valueExpression.get("body"))) { //$NON-NLS-1$ //$NON-NLS-2$
 					return expression;
 				}
 			}
@@ -54,14 +54,14 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 
 	public void containment2Association(EReference reference, Model model) {
 
-		for (Instance instance : model.getAllInstances(reference
-				.getEContainingClass())) {
-			Instance valueExpression = instance.get(reference);
+		for (final Instance instance : model.getAllInstances(reference
+			.getEContainingClass())) {
+			final Instance valueExpression = instance.get(reference);
 			if (valueExpression != null) {
 				if (container == null) {
 					model.delete(valueExpression);
 				} else {
-					Instance expression = findExpression(valueExpression);
+					final Instance expression = findExpression(valueExpression);
 					if (expression != valueExpression) {
 						instance.set(reference, expression);
 						model.delete(valueExpression);
@@ -73,29 +73,29 @@ public class GMFGenValueExpressionCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 
-		List<Instance> containers = model
-				.getInstances("gmfgen.GenExpressionProviderContainer");
+		final List<Instance> containers = model
+			.getInstances("gmfgen.GenExpressionProviderContainer"); //$NON-NLS-1$
 		if (!containers.isEmpty()) {
 			container = containers.get(0);
 		}
 
-		EReference[] references = new EReference[] {
-				metamodel
-						.getEReference("gmfgen.TypeModelFacet.modelElementSelector"),
-				metamodel.getEReference("gmfgen.GenLinkConstraints.sourceEnd"),
-				metamodel.getEReference("gmfgen.GenLinkConstraints.targetEnd"),
-				metamodel.getEReference("gmfgen.GenAuditRule.rule"),
-				metamodel.getEReference("gmfgen.GenMetricRule.rule"),
-				metamodel.getEReference("gmfgen.GenFeatureValueSpec.value") };
+		final EReference[] references = new EReference[] {
+			metamodel
+				.getEReference("gmfgen.TypeModelFacet.modelElementSelector"), //$NON-NLS-1$
+			metamodel.getEReference("gmfgen.GenLinkConstraints.sourceEnd"), //$NON-NLS-1$
+			metamodel.getEReference("gmfgen.GenLinkConstraints.targetEnd"), //$NON-NLS-1$
+			metamodel.getEReference("gmfgen.GenAuditRule.rule"), //$NON-NLS-1$
+			metamodel.getEReference("gmfgen.GenMetricRule.rule"), //$NON-NLS-1$
+			metamodel.getEReference("gmfgen.GenFeatureValueSpec.value") }; //$NON-NLS-1$
 
-		for (EReference reference : references) {
+		for (final EReference reference : references) {
 			containment2Association(reference, model);
 		}
 
-		for (Instance instance : model
-				.getAllInstances("gmfgen.ValueExpression")) {
+		for (final Instance instance : model
+			.getAllInstances("gmfgen.ValueExpression")) { //$NON-NLS-1$
 			instance.unset(languageAttribute);
 		}
 

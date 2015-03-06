@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
@@ -38,16 +38,15 @@ import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Detect when an {@link EcoreEditor} is opened and attach an
- * {@link EditingDomainListener} to it (singleton).
- * 
+ * Detect when an {@link EcoreEditor} is opened and attach an {@link EditingDomainListener} to it (singleton).
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class EcoreEditorDetector extends PartAdapter implements
-		IPropertyListener {
+	IPropertyListener {
 
 	/**
 	 * Mapping of {@link EcoreEditor} to attached {@link EditingDomainListener}.
@@ -66,18 +65,18 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * Private default constructor.
 	 */
 	private EcoreEditorDetector() {
-		IWorkbenchPage activePage = PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage();
+		final IWorkbenchPage activePage = PlatformUI.getWorkbench()
+			.getActiveWorkbenchWindow().getActivePage();
 		activePage.addPartListener(this);
 
 		mapping = new HashMap<EcoreEditor, EditingDomainListener>();
 
-		IEditorReference[] editorReferences = activePage.getEditorReferences();
+		final IEditorReference[] editorReferences = activePage.getEditorReferences();
 		for (int i = 0, n = editorReferences.length; i < n; i++) {
-			IEditorReference editorReference = editorReferences[i];
-			IEditorPart editor = editorReference.getEditor(false);
+			final IEditorReference editorReference = editorReferences[i];
+			final IEditorPart editor = editorReference.getEditor(false);
 			if (editor instanceof EcoreEditor) {
-				EcoreEditor ecoreEditor = (EcoreEditor) editor;
+				final EcoreEditor ecoreEditor = (EcoreEditor) editor;
 				addEditor(ecoreEditor);
 			}
 		}
@@ -102,7 +101,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * create a history to record the changes.
 	 */
 	public void addEditorAndCreateHistory(EcoreEditor editor,
-			List<Resource> metamodelResources, URI historyURI) {
+		List<Resource> metamodelResources, URI historyURI) {
 		EditingDomainListener listener = getListener(editor);
 
 		if (listener == null) {
@@ -116,7 +115,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * Validate and start the listener.
 	 */
 	private void validateListener(EcoreEditor editor,
-			final EditingDomainListener listener) {
+		final EditingDomainListener listener) {
 		mapping.put(editor, listener);
 		editor.addPropertyListener(this);
 		hackAdapterFactory(editor);
@@ -127,23 +126,23 @@ public class EcoreEditorDetector extends PartAdapter implements
 		listener.beginListening();
 		listener.addResourceListener(new IResourceLoadListener() {
 
+			@Override
 			public void resourceLoaded(Resource resource) {
 				addHistory(listener, resource);
 			}
 		});
 	}
 
-
 	/** Ask the user whether a resource should be added to the history. */
 	private void addHistory(final EditingDomainListener listener,
-			Resource resource) {
-		boolean addHistory = MessageDialog.openQuestion(Display.getDefault()
-				.getActiveShell(), "Resource loaded",
-				"A resource has been loaded. "
-						+ "Do you want to add it to the history?");
+		Resource resource) {
+		final boolean addHistory = MessageDialog.openQuestion(Display.getDefault()
+			.getActiveShell(), "Resource loaded", //$NON-NLS-1$
+			"A resource has been loaded. " //$NON-NLS-1$
+				+ "Do you want to add it to the history?"); //$NON-NLS-1$
 		if (addHistory) {
-			CommandStack commandStack = listener.getEditingDomain()
-					.getCommandStack();
+			final CommandStack commandStack = listener.getEditingDomain()
+				.getCommandStack();
 			commandStack.execute(new AddResourceCommand(listener, resource));
 		}
 	}
@@ -153,17 +152,17 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * factory registry instead of the reflective adapter factory.
 	 */
 	private void hackAdapterFactory(EcoreEditor editor) {
-		ComposedAdapterFactory composedAdapterFactory = (ComposedAdapterFactory) editor
-				.getAdapterFactory();
-		AdapterFactory adapterFactory = composedAdapterFactory
-				.getFactoryForType(HistoryPackage.eINSTANCE.getHistory());
+		final ComposedAdapterFactory composedAdapterFactory = (ComposedAdapterFactory) editor
+			.getAdapterFactory();
+		final AdapterFactory adapterFactory = composedAdapterFactory
+			.getFactoryForType(HistoryPackage.eINSTANCE.getHistory());
 		if (adapterFactory instanceof ReflectiveItemProviderAdapterFactory) {
 			// remove the reflective adapter factory
 			composedAdapterFactory.removeAdapterFactory(adapterFactory);
 			// add an adapterfactory using the registry
 			composedAdapterFactory
-					.addAdapterFactory(new ComposedAdapterFactory(
-							ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
+				.addAdapterFactory(new ComposedAdapterFactory(
+					ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
 		}
 	}
 
@@ -171,7 +170,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	 * Detach an {@link EditingDomainListener} from an {@link EcoreEditor}.
 	 */
 	private void removeEditor(EcoreEditor editor) {
-		EditingDomainListener listener = mapping.get(editor);
+		final EditingDomainListener listener = mapping.get(editor);
 		if (listener != null) {
 			listener.endListening();
 			editor.removePropertyListener(this);
@@ -185,7 +184,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	@Override
 	public void partOpened(IWorkbenchPart part) {
 		if (part instanceof EcoreEditor) {
-			EcoreEditor editor = (EcoreEditor) part;
+			final EcoreEditor editor = (EcoreEditor) part;
 			if (EcoreUIUtils.isMetamodelEditor(editor)) {
 				addEditor(editor);
 			}
@@ -198,7 +197,7 @@ public class EcoreEditorDetector extends PartAdapter implements
 	@Override
 	public void partClosed(IWorkbenchPart part) {
 		if (part instanceof EcoreEditor) {
-			EcoreEditor editor = (EcoreEditor) part;
+			final EcoreEditor editor = (EcoreEditor) part;
 			removeEditor(editor);
 		}
 	}
@@ -213,10 +212,11 @@ public class EcoreEditorDetector extends PartAdapter implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void propertyChanged(Object source, int propId) {
 		if (propId == IEditorPart.PROP_DIRTY) {
-			EcoreEditor editor = (EcoreEditor) source;
-			EditingDomainListener listener = mapping.get(editor);
+			final EcoreEditor editor = (EcoreEditor) source;
+			final EditingDomainListener listener = mapping.get(editor);
 			listener.resetRecorder();
 		}
 	}

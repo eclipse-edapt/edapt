@@ -10,39 +10,39 @@ public class SprinklePortCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 
-		metamodel.setDefaultPackage("sprinkle");
+		metamodel.setDefaultPackage("sprinkle"); //$NON-NLS-1$
 
 		// hierarchy inputs
-		for (Instance connection : model.getAllInstances("Connection")) {
-			if (connection.evaluate("destination.signal.parent") == connection
-					.evaluate("source.signal")) {
-				connection.getLink("source").migrate("Input");
-				connection.getLink("destination").migrate("Input");
+		for (final Instance connection : model.getAllInstances("Connection")) { //$NON-NLS-1$
+			if (connection.evaluate("destination.signal.parent") == connection //$NON-NLS-1$
+				.evaluate("source.signal")) { //$NON-NLS-1$
+				connection.getLink("source").migrate("Input"); //$NON-NLS-1$ //$NON-NLS-2$
+				connection.getLink("destination").migrate("Input"); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 
 		// hierarchy outputs
-		for (Instance connection : model.getAllInstances("Connection")) {
-			if (connection.evaluate("source.signal.parent") == connection
-					.evaluate("destination.signal")) {
-				connection.getLink("source").migrate("Output");
-				connection.getLink("destination").migrate("Output");
+		for (final Instance connection : model.getAllInstances("Connection")) { //$NON-NLS-1$
+			if (connection.evaluate("source.signal.parent") == connection //$NON-NLS-1$
+				.evaluate("destination.signal")) { //$NON-NLS-1$
+				connection.getLink("source").migrate("Output"); //$NON-NLS-1$ //$NON-NLS-2$
+				connection.getLink("destination").migrate("Output"); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 
 		// do inputs
-		for (Instance port : model.getInstances("Port")) {
-			if (!port.getInverse("Connection.destination").isEmpty()) {
-				port.migrate("Input");
+		for (final Instance port : model.getInstances("Port")) { //$NON-NLS-1$
+			if (!port.getInverse("Connection.destination").isEmpty()) { //$NON-NLS-1$
+				port.migrate("Input"); //$NON-NLS-1$
 			}
 		}
 
 		// do outputs
-		for (Instance port : model.getInstances("Port")) {
-			if (!port.getInverse("Connection.source").isEmpty()) {
-				port.migrate("Output");
+		for (final Instance port : model.getInstances("Port")) { //$NON-NLS-1$
+			if (!port.getInverse("Connection.source").isEmpty()) { //$NON-NLS-1$
+				port.migrate("Output"); //$NON-NLS-1$
 			}
 		}
 	}

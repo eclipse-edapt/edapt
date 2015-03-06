@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -53,23 +53,23 @@ public class InlineClass extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The class to be inlined must not have sub classes")
 	public boolean checkInlinedClassNoSubTypes(Metamodel metamodel) {
-		EClass inlinedClass = reference.getEReferenceType();
-		EList<EClass> subTypes = metamodel.getInverse(inlinedClass,
-				EcorePackage.eINSTANCE.getEClass_ESuperTypes());
+		final EClass inlinedClass = reference.getEReferenceType();
+		final EList<EClass> subTypes = metamodel.getInverse(inlinedClass,
+			EcorePackage.eINSTANCE.getEClass_ESuperTypes());
 		return subTypes.isEmpty();
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The class to be inlined must not be a type of another reference")
 	public boolean checkInlinedClassNotTargetedByReference(Metamodel metamodel) {
-		EClass inlinedClass = reference.getEReferenceType();
-		for (ETypedElement element : metamodel.<ETypedElement> getInverse(
-				inlinedClass, EcorePackage.eINSTANCE.getETypedElement_EType())) {
+		final EClass inlinedClass = reference.getEReferenceType();
+		for (final ETypedElement element : metamodel.<ETypedElement> getInverse(
+			inlinedClass, EcorePackage.eINSTANCE.getETypedElement_EType())) {
 			if (element instanceof EReference) {
-				EReference reference = (EReference) element;
-				EReference eOpposite = reference.getEOpposite();
-				EList<EStructuralFeature> features = inlinedClass
-						.getEStructuralFeatures();
+				final EReference reference = (EReference) element;
+				final EReference eOpposite = reference.getEOpposite();
+				final EList<EStructuralFeature> features = inlinedClass
+					.getEStructuralFeatures();
 				if (eOpposite != null && !features.contains(eOpposite)) {
 					return false;
 				}
@@ -81,16 +81,16 @@ public class InlineClass extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass inlinedClass = reference.getEReferenceType();
-		EClass contextClass = reference.getEContainingClass();
-		List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(
-				inlinedClass.getEStructuralFeatures());
+		final EClass inlinedClass = reference.getEReferenceType();
+		final EClass contextClass = reference.getEContainingClass();
+		final List<EStructuralFeature> features = new ArrayList<EStructuralFeature>(
+			inlinedClass.getEStructuralFeatures());
 
 		// metamodel adaptation
 		contextClass.getEStructuralFeatures().addAll(features);
-		for (EStructuralFeature feature : features) {
+		for (final EStructuralFeature feature : features) {
 			if (feature instanceof EReference) {
-				EReference reference = (EReference) feature;
+				final EReference reference = (EReference) feature;
 				if (reference.getEOpposite() != null) {
 					reference.getEOpposite().setEType(contextClass);
 				}
@@ -100,10 +100,10 @@ public class InlineClass extends OperationImplementation {
 		metamodel.delete(inlinedClass);
 
 		// model migration
-		for (Instance contextElement : model.getAllInstances(contextClass)) {
-			Instance inlinedElement = contextElement.unset(reference);
+		for (final Instance contextElement : model.getAllInstances(contextClass)) {
+			final Instance inlinedElement = contextElement.unset(reference);
 			if (inlinedElement != null) {
-				for (EStructuralFeature feature : features) {
+				for (final EStructuralFeature feature : features) {
 					contextElement.set(feature, inlinedElement.unset(feature));
 				}
 				model.delete(inlinedElement);

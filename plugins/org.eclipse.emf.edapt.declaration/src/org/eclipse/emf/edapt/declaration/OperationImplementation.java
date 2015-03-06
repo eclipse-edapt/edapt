@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -29,7 +29,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Base class for implementations of operations.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -39,11 +39,11 @@ public abstract class OperationImplementation {
 
 	/** Execute the operation. */
 	protected abstract void execute(Metamodel metamodel, Model model)
-			throws MigrationException;
+		throws MigrationException;
 
 	/** Check the preconditions of the operation. */
 	public final List<String> checkPreconditions(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
+		final List<String> result = new ArrayList<String>();
 		result.addAll(checkRequiredParameters());
 		result.addAll(checkConstraints(metamodel));
 		return result;
@@ -51,11 +51,11 @@ public abstract class OperationImplementation {
 
 	/** Check the preconditions before executing the operation. */
 	public void checkAndExecute(Metamodel metamodel, Model model)
-			throws MigrationException {
-		List<String> messages = checkPreconditions(metamodel);
+		throws MigrationException {
+		final List<String> messages = checkPreconditions(metamodel);
 		if (!messages.isEmpty()) {
-			throw new MigrationException("The preconditions of the "
-					+ "operation are not fulfilled: " + messages, null);
+			throw new MigrationException("The preconditions of the " //$NON-NLS-1$
+				+ "operation are not fulfilled: " + messages, null); //$NON-NLS-1$
 		}
 		execute(metamodel, model);
 	}
@@ -63,25 +63,25 @@ public abstract class OperationImplementation {
 	/** Check whether all required parameters are set. */
 	@SuppressWarnings({ "rawtypes" })
 	private Collection<? extends String> checkRequiredParameters() {
-		List<String> result = new ArrayList<String>();
-		for (Field field : getClass().getFields()) {
-			EdaptParameter p = field.getAnnotation(EdaptParameter.class);
+		final List<String> result = new ArrayList<String>();
+		for (final Field field : getClass().getFields()) {
+			final EdaptParameter p = field.getAnnotation(EdaptParameter.class);
 
 			if (p != null && !p.optional()) {
 				try {
-					Object value = field.get(this);
+					final Object value = field.get(this);
 					if (field.getType() == List.class) {
 						if (value == null || ((List) value).isEmpty()) {
-							result.add("Parameter '" + field.getName()
-									+ "' must be set");
+							result.add("Parameter '" + field.getName() //$NON-NLS-1$
+								+ "' must be set"); //$NON-NLS-1$
 						}
 					} else {
 						if (value == null) {
-							result.add("Parameter '" + field.getName()
-									+ "' must be set");
+							result.add("Parameter '" + field.getName() //$NON-NLS-1$
+								+ "' must be set"); //$NON-NLS-1$
 						}
 					}
-				} catch (Exception e) {
+				} catch (final Exception e) {
 					// if we ignore all exceptions, then we are on the safe
 					// side.
 				}
@@ -92,16 +92,16 @@ public abstract class OperationImplementation {
 
 	/** Check whether all defined constraints are fulfilled. */
 	private List<String> checkConstraints(Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		for (Method method : getClass().getMethods()) {
-			EdaptConstraint constraint = method
-					.getAnnotation(EdaptConstraint.class);
+		final List<String> result = new ArrayList<String>();
+		for (final Method method : getClass().getMethods()) {
+			final EdaptConstraint constraint = method
+				.getAnnotation(EdaptConstraint.class);
 			if (constraint != null) {
 				if (constraint.restricts().length() > 0) {
 					checkRestriction(method, constraint, metamodel, result);
 				} else {
 					invokeMethodAndAddResult(method, constraint, metamodel,
-							result);
+						result);
 				}
 			}
 		}
@@ -111,22 +111,22 @@ public abstract class OperationImplementation {
 	/** Check whether a restriction on a parameter value is fulfilled. */
 	@SuppressWarnings("rawtypes")
 	private void checkRestriction(Method method, EdaptConstraint constraint,
-			Metamodel metamodel, List<String> result) {
+		Metamodel metamodel, List<String> result) {
 		try {
-			Field field = getClass().getField(constraint.restricts());
-			Object value = field.get(this);
+			final Field field = getClass().getField(constraint.restricts());
+			final Object value = field.get(this);
 			if (field.getType() == List.class) {
-				for (Object v : (List) value) {
+				for (final Object v : (List) value) {
 					if (invokeMethodAndAddResult(method, constraint, metamodel,
-							result, v)) {
+						result, v)) {
 						break;
 					}
 				}
 			} else {
 				invokeMethodAndAddResult(method, constraint, metamodel, result,
-						value);
+					value);
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// if we ignore all exceptions, then we are on the safe side.
 		}
 	}
@@ -136,8 +136,8 @@ public abstract class OperationImplementation {
 	 * message to the result if the constraint is not fulfilled.
 	 */
 	private boolean invokeMethodAndAddResult(Method method,
-			EdaptConstraint constraint, Metamodel metamodel,
-			List<String> result, Object... parameters) {
+		EdaptConstraint constraint, Metamodel metamodel,
+		List<String> result, Object... parameters) {
 		try {
 			boolean fulfilled = true;
 			if (method.getParameterTypes().length > parameters.length) {
@@ -152,7 +152,7 @@ public abstract class OperationImplementation {
 				result.add(constraint.description());
 				return true;
 			}
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// if we ignore all exceptions, then we are on the safe side.
 		}
 		return false;
@@ -160,14 +160,14 @@ public abstract class OperationImplementation {
 
 	/** Check whether all restrictions on a certain parameter are fulfilled. */
 	public List<String> checkRestriction(String parameterName,
-			Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		for (Method method : getRestrictions(parameterName)) {
+		Metamodel metamodel) {
+		final List<String> result = new ArrayList<String>();
+		for (final Method method : getRestrictions(parameterName)) {
 			try {
-				EdaptConstraint constraint = method
-						.getAnnotation(EdaptConstraint.class);
+				final EdaptConstraint constraint = method
+					.getAnnotation(EdaptConstraint.class);
 				checkRestriction(method, constraint, metamodel, result);
-			} catch (Exception e) {
+			} catch (final Exception e) {
 				// if we ignore all exceptions, then we are on the safe side.
 			}
 		}
@@ -176,12 +176,12 @@ public abstract class OperationImplementation {
 
 	/** Get the restriction methods for a certain parameter. */
 	private List<Method> getRestrictions(String parameterName) {
-		List<Method> restrictions = new ArrayList<Method>();
-		for (Method method : getClass().getMethods()) {
-			EdaptConstraint constraint = method
-					.getAnnotation(EdaptConstraint.class);
+		final List<Method> restrictions = new ArrayList<Method>();
+		for (final Method method : getClass().getMethods()) {
+			final EdaptConstraint constraint = method
+				.getAnnotation(EdaptConstraint.class);
 			if (constraint != null
-					&& parameterName.equals(constraint.restricts())) {
+				&& parameterName.equals(constraint.restricts())) {
 				restrictions.add(method);
 			}
 		}
@@ -193,19 +193,19 @@ public abstract class OperationImplementation {
 	 * for a certain value.
 	 */
 	public List<String> checkRestriction(String parameterName, Object value,
-			Metamodel metamodel) {
-		List<String> result = new ArrayList<String>();
-		for (Method method : getRestrictions(parameterName)) {
-			EdaptConstraint constraint = method
-					.getAnnotation(EdaptConstraint.class);
+		Metamodel metamodel) {
+		final List<String> result = new ArrayList<String>();
+		for (final Method method : getRestrictions(parameterName)) {
+			final EdaptConstraint constraint = method
+				.getAnnotation(EdaptConstraint.class);
 			invokeMethodAndAddResult(method, constraint, metamodel, result,
-					value);
+				value);
 		}
 		return result;
 	}
 
 	/** Initialize the parameters of the operation. */
-	public void initialize(@SuppressWarnings("unused") Metamodel metamodel) {
+	public void initialize(Metamodel metamodel) {
 		// to be implemented by subclasses
 	}
 
@@ -215,14 +215,14 @@ public abstract class OperationImplementation {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void deleteFeatureValue(Instance instance,
-			EStructuralFeature feature) {
-		Object value = instance.unset(feature);
+		EStructuralFeature feature) {
+		final Object value = instance.unset(feature);
 		if (feature instanceof EReference) {
-			EReference reference = (EReference) feature;
+			final EReference reference = (EReference) feature;
 			if (reference.isContainment()) {
-				Model model = instance.getType().getModel();
+				final Model model = instance.getType().getModel();
 				if (reference.isMany()) {
-					for (Instance v : (List<Instance>) value) {
+					for (final Instance v : (List<Instance>) value) {
 						model.delete(v);
 					}
 				} else if (value != null) {
@@ -237,11 +237,11 @@ public abstract class OperationImplementation {
 	 * feature.
 	 */
 	protected boolean hasSameValue(List<? extends EObject> elements,
-			EStructuralFeature feature) {
+		EStructuralFeature feature) {
 		if (elements.isEmpty()) {
 			return true;
 		}
-		Object referenceValue = elements.get(0).eGet(feature);
+		final Object referenceValue = elements.get(0).eGet(feature);
 		return hasValue(elements, feature, referenceValue);
 	}
 
@@ -250,9 +250,9 @@ public abstract class OperationImplementation {
 	 * feature.
 	 */
 	protected boolean hasValue(List<? extends EObject> elements,
-			EStructuralFeature feature, Object referenceValue) {
-		for (EObject element : elements) {
-			Object value = element.eGet(feature);
+		EStructuralFeature feature, Object referenceValue) {
+		for (final EObject element : elements) {
+			final Object value = element.eGet(feature);
 			if (!isSame(referenceValue, value)) {
 				return false;
 			}
@@ -274,7 +274,7 @@ public abstract class OperationImplementation {
 
 	/** Check whether a list of elements is of a certain type. */
 	protected boolean isOfType(List<? extends EObject> elements, EClass eClass) {
-		for (EObject element : elements) {
+		for (final EObject element : elements) {
 			if (element.eClass() != eClass) {
 				return false;
 			}
@@ -296,7 +296,7 @@ public abstract class OperationImplementation {
 	 * element at the same index position in the other list.
 	 */
 	protected boolean hasSameValue(List<? extends EObject> first,
-			List<? extends EObject> second, EStructuralFeature feature) {
+		List<? extends EObject> second, EStructuralFeature feature) {
 		if (first.size() != second.size()) {
 			return false;
 		}

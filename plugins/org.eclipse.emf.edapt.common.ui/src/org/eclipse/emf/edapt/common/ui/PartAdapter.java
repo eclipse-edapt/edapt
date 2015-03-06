@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -16,7 +16,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 /**
  * This class provides default implementations of the interface methods.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -27,6 +27,7 @@ public abstract class PartAdapter implements IPartListener {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void partActivated(IWorkbenchPart part) {
 		// avoid empty implementations in sub classes
 	}
@@ -34,6 +35,7 @@ public abstract class PartAdapter implements IPartListener {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void partBroughtToTop(IWorkbenchPart part) {
 		// avoid empty implementations in sub classes
 	}
@@ -41,6 +43,7 @@ public abstract class PartAdapter implements IPartListener {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void partClosed(IWorkbenchPart part) {
 		// avoid empty implementations in sub classes
 	}
@@ -48,6 +51,7 @@ public abstract class PartAdapter implements IPartListener {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void partDeactivated(IWorkbenchPart part) {
 		// avoid empty implementations in sub classes
 	}
@@ -55,6 +59,7 @@ public abstract class PartAdapter implements IPartListener {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void partOpened(IWorkbenchPart part) {
 		// avoid empty implementations in sub classes
 	}

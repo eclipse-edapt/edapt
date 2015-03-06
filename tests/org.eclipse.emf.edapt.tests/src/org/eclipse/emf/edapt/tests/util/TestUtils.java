@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.tests.util;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
 /**
  * Helper methods for test cases.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,10 +36,10 @@ public final class TestUtils {
 
 	/** Create an {@link EditingDomain} based on a {@link ResourceSet}. */
 	public static EditingDomain createEditingDomain(ResourceSet resourceSet) {
-		AdapterFactory adapterFactory = new ReflectiveItemProviderAdapterFactory();
-		CommandStack commandStack = new BasicCommandStack();
-		EditingDomain editingDomain = new AdapterFactoryEditingDomain(
-				adapterFactory, commandStack, resourceSet);
+		final AdapterFactory adapterFactory = new ReflectiveItemProviderAdapterFactory();
+		final CommandStack commandStack = new BasicCommandStack();
+		final EditingDomain editingDomain = new AdapterFactoryEditingDomain(
+			adapterFactory, commandStack, resourceSet);
 		return editingDomain;
 	}
 

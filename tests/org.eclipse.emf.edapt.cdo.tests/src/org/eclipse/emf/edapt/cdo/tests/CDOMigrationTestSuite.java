@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.cdo.tests;
 
@@ -18,7 +18,7 @@ import junit.framework.TestSuite;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.cdo.migration.execution.CDOMigrator;
-import org.eclipse.emf.edapt.common.ResourceUtils;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.test.TestCaseDefinition;
@@ -29,12 +29,13 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 
 /**
  * Suite to test a migration.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 2C4DF77775780E1EA52BAB95C2F42E0A
  */
+@SuppressWarnings("restriction")
 public class CDOMigrationTestSuite extends TestSuite {
 
 	/** Definition of the test suite. */
@@ -48,14 +49,14 @@ public class CDOMigrationTestSuite extends TestSuite {
 
 	/** Constructor. */
 	public CDOMigrationTestSuite(URI definitionURI, IClassLoader loader)
-			throws IOException {
+		throws IOException {
 		this(loadTestSuiteDefinition(definitionURI));
 		this.loader = loader;
 	}
 
 	/** Helper method to load a test suite definition. */
 	private static TestSuiteDefinition loadTestSuiteDefinition(URI definitionURI)
-			throws IOException {
+		throws IOException {
 		// ensure that test metamodel is initialized.
 		TestPackage.eINSTANCE.getTestCaseDefinition();
 		return (TestSuiteDefinition) ResourceUtils.loadElement(definitionURI);
@@ -67,7 +68,7 @@ public class CDOMigrationTestSuite extends TestSuite {
 
 		this.suiteDefinition = suiteDefinition;
 
-		for (TestCaseDefinition caseDefinition : suiteDefinition.getCases()) {
+		for (final TestCaseDefinition caseDefinition : suiteDefinition.getCases()) {
 			addTest(new CDOMigrationTestCase(this, caseDefinition));
 		}
 	}
@@ -78,14 +79,14 @@ public class CDOMigrationTestSuite extends TestSuite {
 		try {
 			migrator = loadMigrator();
 			super.run(result);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	/** Resolve the {@link URI} relative to the location of the definition. */
 	private URI getURI(String uri) {
-		URI definitionURI = suiteDefinition.eResource().getURI();
+		final URI definitionURI = suiteDefinition.eResource().getURI();
 		return URI.createFileURI(uri).resolve(definitionURI);
 	}
 
@@ -93,8 +94,8 @@ public class CDOMigrationTestSuite extends TestSuite {
 	private History loadHistory() throws IOException {
 		// ensure that history metamodel is initialized.
 		HistoryPackage.eINSTANCE.getHistory();
-		URI historyURI = getURI(suiteDefinition.getHistory());
-		History history = ResourceUtils.loadElement(historyURI);
+		final URI historyURI = getURI(suiteDefinition.getHistory());
+		final History history = ResourceUtils.loadElement(historyURI);
 		return history;
 	}
 
@@ -105,8 +106,8 @@ public class CDOMigrationTestSuite extends TestSuite {
 
 	/** Load the migrator from the history model. */
 	private CDOMigrator loadMigrator() throws IOException {
-		History history = loadHistory();
-		CDOMigrator migrator = new CDOMigrator(history, loader);
+		final History history = loadHistory();
+		final CDOMigrator migrator = new CDOMigrator(history, loader);
 		return migrator;
 	}
 }

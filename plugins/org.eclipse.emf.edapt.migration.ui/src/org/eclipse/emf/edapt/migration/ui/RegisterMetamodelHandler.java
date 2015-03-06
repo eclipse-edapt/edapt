@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -20,15 +20,14 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.common.ui.HandlerUtils;
-
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
 
 /**
  * Action to register a metamodel to the package registry.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -37,15 +36,16 @@ import org.eclipse.emf.edapt.common.ui.HandlerUtils;
 public class RegisterMetamodelHandler extends AbstractHandler {
 
 	/** {@inheritDoc} */
+	@Override
 	public Object execute(ExecutionEvent event) {
-		IFile file = HandlerUtils.getSelectedElement(event);
-		URI uri = URIUtils.getURI(file);
+		final IFile file = HandlerUtils.getSelectedElement(event);
+		final URI uri = URIUtils.getURI(file);
 		try {
-			ResourceSet resourceSet = ResourceUtils.loadResourceSet(uri);
-			List<EPackage> ePackages = ResourceUtils.getRootElements(
-					resourceSet, EPackage.class);
+			final ResourceSet resourceSet = ResourceUtils.loadResourceSet(uri);
+			final List<EPackage> ePackages = ResourceUtils.getRootElements(
+				resourceSet, EPackage.class);
 			ResourceUtils.register(ePackages, EPackage.Registry.INSTANCE);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
 		}
 		return null;

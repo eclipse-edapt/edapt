@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -19,14 +19,14 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Base class for elements which are identified by a name 
+ * Base class for elements which are identified by a name
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +42,7 @@ public interface IdentifiedElement extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Identifier
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getIdentifiedElement_Name()
@@ -51,9 +52,11 @@ public interface IdentifiedElement extends EObject {
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName <em>Name</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Name</em>' attribute.
 	 * @see #getName()
 	 * @generated
@@ -67,6 +70,7 @@ public interface IdentifiedElement extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Description for the metamodeler to be able to understand the parameter
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getIdentifiedElement_Description()
@@ -76,9 +80,11 @@ public interface IdentifiedElement extends EObject {
 	String getDescription();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription
+	 * <em>Description</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Description</em>' attribute.
 	 * @see #getDescription()
 	 * @generated

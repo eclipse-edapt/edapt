@@ -10,7 +10,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -29,10 +29,10 @@ public class VolatileToOpposite extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "opposite", description = "Reference and opposite "
-			+ "must be compatible with each other")
+		+ "must be compatible with each other")
 	public boolean checkOppositeCompatible(EReference opposite) {
 		return reference.getEType() == opposite.getEContainingClass()
-				&& reference.getEContainingClass() == opposite.getEType();
+			&& reference.getEContainingClass() == opposite.getEType();
 	}
 
 	/** {@description} */

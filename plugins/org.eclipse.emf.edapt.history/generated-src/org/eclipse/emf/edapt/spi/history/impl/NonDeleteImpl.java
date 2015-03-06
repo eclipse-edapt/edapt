@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.NonDelete;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Non Delete</b></em>'.
@@ -27,7 +26,7 @@ import org.eclipse.emf.edapt.spi.history.NonDelete;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +37,7 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getElement()
 	 * @generated
 	 * @ordered
@@ -47,6 +47,7 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected NonDeleteImpl() {
@@ -56,6 +57,7 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -66,15 +68,19 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getElement() {
 		if (element != null && element.eIsProxy()) {
-			InternalEObject oldElement = (InternalEObject)element;
+			final InternalEObject oldElement = (InternalEObject) element;
 			element = eResolveProxy(oldElement);
 			if (element != oldElement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.NON_DELETE__ELEMENT, oldElement, element));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.NON_DELETE__ELEMENT,
+						oldElement, element));
+				}
 			}
 		}
 		return element;
@@ -83,6 +89,7 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetElement() {
@@ -92,26 +99,33 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setElement(EObject newElement) {
-		EObject oldElement = element;
+		final EObject oldElement = element;
 		element = newElement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.NON_DELETE__ELEMENT, oldElement, element));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.NON_DELETE__ELEMENT, oldElement,
+				element));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.NON_DELETE__ELEMENT:
-				if (resolve) return getElement();
-				return basicGetElement();
+		case HistoryPackage.NON_DELETE__ELEMENT:
+			if (resolve) {
+				return getElement();
+			}
+			return basicGetElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,14 +133,15 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.NON_DELETE__ELEMENT:
-				setElement((EObject)newValue);
-				return;
+		case HistoryPackage.NON_DELETE__ELEMENT:
+			setElement((EObject) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,14 +149,15 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.NON_DELETE__ELEMENT:
-				setElement((EObject)null);
-				return;
+		case HistoryPackage.NON_DELETE__ELEMENT:
+			setElement((EObject) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,15 +165,16 @@ public abstract class NonDeleteImpl extends ContentChangeImpl implements NonDele
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.NON_DELETE__ELEMENT:
-				return element != null;
+		case HistoryPackage.NON_DELETE__ELEMENT:
+			return element != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //NonDeleteImpl
+} // NonDeleteImpl

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 /**
  * A resolver is able to perform a deep copy of history elements, but it
  * resolves references to metamodel elements
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -47,56 +47,56 @@ public abstract class ResolverBase {
 		if (element == null) {
 			return null;
 		}
-		EClass c = element.eClass();
+		final EClass c = element.eClass();
 		if (c.getEPackage() != EcorePackage.eINSTANCE) {
-			EObject copy = c.getEPackage().getEFactoryInstance().create(c);
-			for (Iterator features = c.getEAllStructuralFeatures().iterator(); features
-					.hasNext();) {
-				EStructuralFeature feature = (EStructuralFeature) features
-						.next();
+			final EObject copy = c.getEPackage().getEFactoryInstance().create(c);
+			for (final Iterator features = c.getEAllStructuralFeatures().iterator(); features
+				.hasNext();) {
+				final EStructuralFeature feature = (EStructuralFeature) features
+					.next();
 
 				if (!feature.isChangeable() || feature.isTransient()) {
 					continue;
 				}
 
 				if (feature instanceof EAttribute) {
-					EAttribute attribute = (EAttribute) feature;
+					final EAttribute attribute = (EAttribute) feature;
 					if (attribute.isMany()) {
 						((List) copy.eGet(attribute)).addAll((List) element
-								.eGet(attribute));
+							.eGet(attribute));
 					} else {
 						copy.eSet(attribute, element.eGet(attribute));
 					}
 				} else {
-					EReference reference = (EReference) feature;
+					final EReference reference = (EReference) feature;
 					if (reference.isContainment()) {
 						if (deepCopy) {
 							if (reference.isMany()) {
-								for (Iterator i = ((List) element
-										.eGet(reference)).iterator(); i
-										.hasNext();) {
-									EObject child = (EObject) i.next();
+								for (final Iterator i = ((List) element
+									.eGet(reference)).iterator(); i
+									.hasNext();) {
+									final EObject child = (EObject) i.next();
 									((List) copy.eGet(reference))
-											.add(copyResolve(child, deepCopy));
+										.add(copyResolve(child, deepCopy));
 								}
 							} else {
 								copy.eSet(reference, copyResolve(
-										(EObject) element.eGet(reference),
-										deepCopy));
+									(EObject) element.eGet(reference),
+									deepCopy));
 							}
 						}
 					} else {
 						if (reference.getEOpposite() != null
-								&& reference.getEOpposite().isContainment()) {
+							&& reference.getEOpposite().isContainment()) {
 							continue;
 						}
 						if (reference.isMany()) {
 							((List) copy.eGet(reference))
-									.addAll(resolve((List) element
-											.eGet(reference)));
+								.addAll(resolve((List) element
+									.eGet(reference)));
 						} else {
 							copy.eSet(reference, resolve(element
-									.eGet(reference)));
+								.eGet(reference)));
 						}
 					}
 				}
@@ -126,10 +126,10 @@ public abstract class ResolverBase {
 	 */
 	@SuppressWarnings("unchecked")
 	private List resolve(List sourceList) {
-		List targetList = new ArrayList();
-		for (Iterator i = sourceList.iterator(); i.hasNext();) {
-			Object source = i.next();
-			Object target = resolve(source);
+		final List targetList = new ArrayList();
+		for (final Iterator i = sourceList.iterator(); i.hasNext();) {
+			final Object source = i.next();
+			final Object target = resolve(source);
 			targetList.add(target);
 		}
 		return targetList;
@@ -140,7 +140,7 @@ public abstract class ResolverBase {
 	 * themselves)
 	 */
 	private EObject resolve(EObject source) {
-		EObject target = doResolve(source);
+		final EObject target = doResolve(source);
 		if (target != null) {
 			return target;
 		}

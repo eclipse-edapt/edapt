@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.provider.util;
 
@@ -22,10 +22,9 @@ import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edit.command.DragAndDropCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-
 /**
  * Special {@link DragAndDropCommand} that forbids moves of changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -37,8 +36,8 @@ public class RestrictingDragAndDropCommand extends DragAndDropCommand {
 	 * Constructor
 	 */
 	public RestrictingDragAndDropCommand(EditingDomain domain, Object owner,
-			float location, int operations, int operation,
-			Collection<?> collection) {
+		float location, int operations, int operation,
+		Collection<?> collection) {
 		super(domain, owner, location, operations, operation, collection);
 	}
 
@@ -50,12 +49,12 @@ public class RestrictingDragAndDropCommand extends DragAndDropCommand {
 		if (!super.prepareDropMoveOn()) {
 			return false;
 		}
-		List<Change> changes = getChanges();
-		EObject target = (EObject) owner;
+		final List<Change> changes = getChanges();
+		final EObject target = (EObject) owner;
 		if (changes.contains(owner)) {
 			return false;
 		}
-		boolean canBeMoved = MoveChecker.canBeMoved(changes, target);
+		final boolean canBeMoved = MoveChecker.canBeMoved(changes, target);
 		return canBeMoved;
 	}
 
@@ -63,8 +62,8 @@ public class RestrictingDragAndDropCommand extends DragAndDropCommand {
 	 * Get the changes to be moved
 	 */
 	private List<Change> getChanges() {
-		List<Change> changes = new ArrayList<Change>();
-		for (Object element : collection) {
+		final List<Change> changes = new ArrayList<Change>();
+		for (final Object element : collection) {
 			if (element instanceof Change) {
 				changes.add((Change) element);
 			} else {
@@ -87,13 +86,13 @@ public class RestrictingDragAndDropCommand extends DragAndDropCommand {
 	 */
 	@Override
 	protected boolean prepareDropMoveInsert(Object parent,
-			Collection<?> children, int index) {
+		Collection<?> children, int index) {
 		if (!super.prepareDropMoveInsert(parent, children, index)) {
 			return false;
 		}
-		List<Change> changes = getChanges();
-		EObject target = (EObject) parent;
-		boolean canBeMoved = MoveChecker.canBeMoved(changes, target, index);
+		final List<Change> changes = getChanges();
+		final EObject target = (EObject) parent;
+		final boolean canBeMoved = MoveChecker.canBeMoved(changes, target, index);
 		return canBeMoved;
 	}
 
@@ -102,7 +101,7 @@ public class RestrictingDragAndDropCommand extends DragAndDropCommand {
 	 */
 	@Override
 	protected boolean prepareDropCopyInsert(Object parent,
-			Collection<?> children, int index) {
+		Collection<?> children, int index) {
 		return false;
 	}
 }

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -20,23 +20,22 @@ import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-
 /**
  * Action to combine a number of changes into a {@link CompositeChange}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class CombineChangesHandler extends
-		SubsequentChangesHandler<PrimitiveChange> {
+	SubsequentChangesHandler<PrimitiveChange> {
 
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(Release release, List<PrimitiveChange> changes,
-			EditingDomain domain, ExecutionEvent event) {
-		Command command = new CombineChangesCommand(release, changes);
+		EditingDomain domain, ExecutionEvent event) {
+		final Command command = new CombineChangesCommand(release, changes);
 		domain.getCommandStack().execute(command);
 		return null;
 	}

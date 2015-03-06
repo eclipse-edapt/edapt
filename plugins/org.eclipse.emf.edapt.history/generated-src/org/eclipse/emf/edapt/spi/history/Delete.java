@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -41,6 +41,7 @@ public interface Delete extends InitializerChange {
 	 * <!-- begin-model-doc -->
 	 * The element to be deleted
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Element</em>' containment reference.
 	 * @see #setElement(EObject)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getDelete_Element()
@@ -50,9 +51,11 @@ public interface Delete extends InitializerChange {
 	EObject getElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}' containment
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Element</em>' containment reference.
 	 * @see #getElement()
 	 * @generated

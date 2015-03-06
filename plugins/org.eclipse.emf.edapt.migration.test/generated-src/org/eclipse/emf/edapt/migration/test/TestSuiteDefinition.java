@@ -6,14 +6,12 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.test;
 
 import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,8 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getCases <em>Cases</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory <em>History</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getCases <em>Cases</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory <em>History</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,13 +34,15 @@ public interface TestSuiteDefinition extends NamedElement {
 	/**
 	 * Returns the value of the '<em><b>Cases</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite <em>Suite</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite
+	 * <em>Suite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Cases</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Cases</em>' containment reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Cases</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.migration.test.TestPackage#getTestSuiteDefinition_Cases()
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite
@@ -55,10 +55,11 @@ public interface TestSuiteDefinition extends NamedElement {
 	 * Returns the value of the '<em><b>History</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>History</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>History</em>' attribute isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>History</em>' attribute.
 	 * @see #setHistory(String)
 	 * @see org.eclipse.emf.edapt.migration.test.TestPackage#getTestSuiteDefinition_History()
@@ -68,9 +69,11 @@ public interface TestSuiteDefinition extends NamedElement {
 	String getHistory();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory <em>History</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory
+	 * <em>History</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>History</em>' attribute.
 	 * @see #getHistory()
 	 * @generated

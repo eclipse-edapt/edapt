@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.execution;
 
@@ -20,10 +20,10 @@ import org.eclipse.core.runtime.IContributor;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.internal.migration.execution.BundleClassLoader;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.BundleClassLoader;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.ReleaseUtils;
 import org.eclipse.emf.edapt.spi.migration.MigrationPlugin;
@@ -32,7 +32,7 @@ import org.osgi.framework.Bundle;
 /**
  * Registry for all migrators (singleton). A migrator is registered as an
  * Eclipse extension.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -64,45 +64,45 @@ public final class MigratorRegistry {
 
 	/** Register all migrators from extensions. */
 	private void registerExtensionMigrators() {
-		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		IConfigurationElement[] configurationElements = extensionRegistry
-				.getConfigurationElementsFor("org.eclipse.emf.edapt.migrators");
+		final IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+		final IConfigurationElement[] configurationElements = extensionRegistry
+			.getConfigurationElementsFor("org.eclipse.emf.edapt.migrators"); //$NON-NLS-1$
 
-		for (IConfigurationElement configurationElement : configurationElements) {
+		for (final IConfigurationElement configurationElement : configurationElements) {
 			registerExtensionMigrator(configurationElement);
 		}
 	}
 
 	/** Register migrator for one extension. */
 	private void registerExtensionMigrator(
-			IConfigurationElement configurationElement) {
+		IConfigurationElement configurationElement) {
 
-		String migrationPath = configurationElement.getAttribute("path");
+		final String migrationPath = configurationElement.getAttribute("path"); //$NON-NLS-1$
 
-		IContributor contributor = configurationElement.getContributor();
-		String bundleName = contributor.getName();
-		Bundle bundle = Platform.getBundle(bundleName);
-		URI migratorURI = URI.createPlatformPluginURI("/" + bundleName + "/"
-				+ migrationPath, true);
+		final IContributor contributor = configurationElement.getContributor();
+		final String bundleName = contributor.getName();
+		final Bundle bundle = Platform.getBundle(bundleName);
+		final URI migratorURI = URI.createPlatformPluginURI("/" + bundleName + "/" //$NON-NLS-1$ //$NON-NLS-2$
+			+ migrationPath, true);
 		try {
 			registerMigrator(migratorURI, new BundleClassLoader(bundle));
-		} catch (MigrationException e) {
+		} catch (final MigrationException e) {
 			LoggingUtils.logError(MigrationPlugin.getPlugin(), e);
 		}
 	}
 
 	/** Register a migrator by its URL. */
 	public void registerMigrator(URL migratorURL, IClassLoader loader)
-			throws MigrationException {
-		Migrator migrator = new Migrator(URIUtils.getURI(migratorURL), loader);
-		for (String nsURI : migrator.getNsURIs()) {
+		throws MigrationException {
+		final Migrator migrator = new Migrator(URIUtils.getURI(migratorURL), loader);
+		for (final String nsURI : migrator.getNsURIs()) {
 			migrators.put(nsURI, migrator);
 		}
 	}
 
 	/** Register a migrator by its URI. */
 	public void registerMigrator(URI migratorURI, IClassLoader loader)
-			throws MigrationException {
+		throws MigrationException {
 		registerMigrator(URIUtils.getURL(migratorURI), loader);
 	}
 
@@ -113,7 +113,7 @@ public final class MigratorRegistry {
 
 	/** Get a migrator for a certain model. */
 	public Migrator getMigrator(URI modelURI) {
-		String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
+		final String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return getMigrator(nsURI);
 	}
 }

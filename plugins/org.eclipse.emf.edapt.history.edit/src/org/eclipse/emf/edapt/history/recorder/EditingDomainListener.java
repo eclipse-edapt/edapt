@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.HistoryFactory;
@@ -35,7 +35,7 @@ import org.eclipse.emf.edit.domain.EditingDomain;
 
 /**
  * Listener for an {@link EditingDomain}.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -59,10 +59,10 @@ public class EditingDomainListener {
 	private final Adapter resourceListener = new EContentAdapter() {
 		@Override
 		public void notifyChanged(Notification notification) {
-			Object notifier = notification.getNotifier();
+			final Object notifier = notification.getNotifier();
 			if (notifier instanceof Resource) {
 				if (notification.getFeatureID(Resource.class) == Resource.RESOURCE__IS_LOADED) {
-					Resource resource = (Resource) notifier;
+					final Resource resource = (Resource) notifier;
 					if (!isRecorded(resource)) {
 						notifyListeners(resource);
 					}
@@ -94,13 +94,13 @@ public class EditingDomainListener {
 	public void beginListening() {
 		if (!isListening()) {
 			commandStackListener = new CommandStackListener(
-					editingDomain.getCommandStack(), historyResource);
+				editingDomain.getCommandStack(), historyResource);
 			commandStackListener.beginListening();
 			editingDomain.getResourceSet().eAdapters().add(resourceListener);
 
 			listening = true;
 		} else {
-			throw new IllegalStateException("Listener already activated");
+			throw new IllegalStateException("Listener already activated"); //$NON-NLS-1$
 		}
 	}
 
@@ -112,7 +112,7 @@ public class EditingDomainListener {
 
 			listening = false;
 		} else {
-			throw new IllegalStateException("Listener already deactivated");
+			throw new IllegalStateException("Listener already deactivated"); //$NON-NLS-1$
 		}
 	}
 
@@ -128,15 +128,15 @@ public class EditingDomainListener {
 
 	/** Load the history from a metamodel resource */
 	public boolean loadHistory() {
-		ResourceSet resourceSet = editingDomain.getResourceSet();
-		URI uri = HistoryUtils.getHistoryURI(resourceSet.getResources().get(0));
+		final ResourceSet resourceSet = editingDomain.getResourceSet();
+		final URI uri = HistoryUtils.getHistoryURI(resourceSet.getResources().get(0));
 		historyResource = resourceSet.createResource(uri);
 
 		try {
 			historyResource.load(null);
 			EcoreUtil.resolveAll(historyResource);
 			return true;
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			resourceSet.getResources().remove(historyResource);
 			return false;
 		}
@@ -144,10 +144,10 @@ public class EditingDomainListener {
 
 	/** Check whether the history is already recorded for a metamodel. */
 	public boolean isRecorded(Resource metamodel) {
-		List<EPackage> rootPackages = ResourceUtils.getRootElements(metamodel,
-				EPackage.class);
-		List<EPackage> historyRootPackages = getHistory().getRootPackages();
-		for (EPackage rootPackage : rootPackages) {
+		final List<EPackage> rootPackages = ResourceUtils.getRootElements(metamodel,
+			EPackage.class);
+		final List<EPackage> historyRootPackages = getHistory().getRootPackages();
+		for (final EPackage rootPackage : rootPackages) {
 			if (historyRootPackages.contains(rootPackage)) {
 				return true;
 			}
@@ -157,55 +157,55 @@ public class EditingDomainListener {
 
 	/** Add a metamodel resource to the history. */
 	public void addHistory(Resource metamodel) {
-		List<EPackage> rootPackages = ResourceUtils.getRootElements(metamodel,
-				EPackage.class);
+		final List<EPackage> rootPackages = ResourceUtils.getRootElements(metamodel,
+			EPackage.class);
 		getExtent().addRootPackages(rootPackages);
 
 		HistoryUtils.setHistoryURI(metamodel, historyResource.getURI());
 
-		HistoryGenerator generator = new HistoryGenerator(rootPackages);
-		List<Change> changes = generator.generate().getFirstRelease()
-				.getChanges();
+		final HistoryGenerator generator = new HistoryGenerator(rootPackages);
+		final List<Change> changes = generator.generate().getFirstRelease()
+			.getChanges();
 		getHistory().getLastRelease().getChanges().addAll(changes);
 	}
 
 	/** Create history for a certain metamodel. */
 	public void createHistory(List<Resource> metamodelResources) {
-		URI historyURI = HistoryUtils.getDefaultHistoryURI(metamodelResources
-				.get(0));
+		final URI historyURI = HistoryUtils.getDefaultHistoryURI(metamodelResources
+			.get(0));
 		createHistory(metamodelResources, historyURI);
 	}
 
 	/** Create history for a certain metamodel. */
 	public void createHistory(List<Resource> metamodelResources, URI historyURI) {
 		historyResource = editingDomain.getResourceSet().createResource(
-				historyURI);
+			historyURI);
 
-		List<EPackage> rootPackages = new ArrayList<EPackage>();
-		for (Resource resource : metamodelResources) {
+		final List<EPackage> rootPackages = new ArrayList<EPackage>();
+		for (final Resource resource : metamodelResources) {
 			HistoryUtils.setHistoryURI(resource, historyURI);
 			rootPackages.addAll(ResourceUtils.getRootElements(resource,
-					EPackage.class));
+				EPackage.class));
 		}
-		History history = new HistoryGenerator(rootPackages).generate();
+		final History history = new HistoryGenerator(rootPackages).generate();
 		historyResource.getContents().add(history);
 	}
 
 	/** Release a metamodel. */
 	public void release() {
-		Release currentRelease = getHistory().getLastRelease();
+		final Release currentRelease = getHistory().getLastRelease();
 		if (!currentRelease.getChanges().isEmpty()) {
 			currentRelease.setDate(new Date());
 
-			HistoryFactory factory = HistoryFactory.eINSTANCE;
-			Release version = factory.createRelease();
+			final HistoryFactory factory = HistoryFactory.eINSTANCE;
+			final Release version = factory.createRelease();
 			getHistory().getReleases().add(version);
 		}
 	}
 
 	/** Get the history that is listened to. */
 	public History getHistory() {
-		History history = (History) historyResource.getContents().get(0);
+		final History history = (History) historyResource.getContents().get(0);
 		return history;
 	}
 
@@ -231,7 +231,7 @@ public class EditingDomainListener {
 
 	/** Notify the listeners. */
 	private void notifyListeners(Resource resource) {
-		for (IResourceLoadListener listener : listeners) {
+		for (final IResourceLoadListener listener : listeners) {
 			listener.resourceLoaded(resource);
 		}
 	}

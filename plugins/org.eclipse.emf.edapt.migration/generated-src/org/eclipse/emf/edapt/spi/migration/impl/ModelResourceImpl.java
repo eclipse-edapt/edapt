@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.impl;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
 import org.eclipse.emf.edapt.spi.migration.Model;
 import org.eclipse.emf.edapt.spi.migration.ModelResource;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Model Resource</b></em>'.
@@ -35,8 +34,8 @@ import org.eclipse.emf.edapt.spi.migration.ModelResource;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl#getRootInstances <em>Root Instances</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl#getModel <em>Model</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl#getRootInstances <em>Root Instances</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl#getModel <em>Model</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,6 +46,7 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	 * The cached value of the '{@link #getRootInstances() <em>Root Instances</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getRootInstances()
 	 * @generated
 	 * @ordered
@@ -56,6 +56,7 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ModelResourceImpl() {
@@ -65,6 +66,7 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -75,11 +77,14 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Instance> getRootInstances() {
 		if (rootInstances == null) {
-			rootInstances = new EObjectResolvingEList<Instance>(Instance.class, this, MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES);
+			rootInstances = new EObjectResolvingEList<Instance>(Instance.class, this,
+				MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES);
 		}
 		return rootInstances;
 	}
@@ -87,56 +92,74 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Model getModel() {
-		if (eContainerFeatureID() != MigrationPackage.MODEL_RESOURCE__MODEL) return null;
-		return (Model)eContainer();
+		if (eContainerFeatureID() != MigrationPackage.MODEL_RESOURCE__MODEL) {
+			return null;
+		}
+		return (Model) eContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetModel(Model newModel, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newModel, MigrationPackage.MODEL_RESOURCE__MODEL, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newModel, MigrationPackage.MODEL_RESOURCE__MODEL, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setModel(Model newModel) {
-		if (newModel != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.MODEL_RESOURCE__MODEL && newModel != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newModel))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+		if (newModel != eInternalContainer()
+			|| eContainerFeatureID() != MigrationPackage.MODEL_RESOURCE__MODEL && newModel != null) {
+			if (EcoreUtil.isAncestor(this, (EObject) newModel)) {
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newModel != null)
-				msgs = ((InternalEObject)newModel).eInverseAdd(this, MigrationPackage.MODEL__RESOURCES, Model.class, msgs);
+			}
+			if (newModel != null) {
+				msgs = ((InternalEObject) newModel).eInverseAdd(this, MigrationPackage.MODEL__RESOURCES, Model.class,
+					msgs);
+			}
 			msgs = basicSetModel(newModel, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL_RESOURCE__MODEL, newModel, newModel));
+		else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL_RESOURCE__MODEL, newModel,
+				newModel));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetModel((Model)otherEnd, msgs);
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			if (eInternalContainer() != null) {
+				msgs = eBasicRemoveFromContainer(msgs);
+			}
+			return basicSetModel((Model) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -144,13 +167,14 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				return basicSetModel(null, msgs);
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			return basicSetModel(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -158,13 +182,14 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				return eInternalContainer().eInverseRemove(this, MigrationPackage.MODEL__RESOURCES, Model.class, msgs);
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			return eInternalContainer().eInverseRemove(this, MigrationPackage.MODEL__RESOURCES, Model.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -172,15 +197,16 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
-				return getRootInstances();
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				return getModel();
+		case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
+			return getRootInstances();
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			return getModel();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -188,19 +214,20 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
-				getRootInstances().clear();
-				getRootInstances().addAll((Collection<? extends Instance>)newValue);
-				return;
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				setModel((Model)newValue);
-				return;
+		case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
+			getRootInstances().clear();
+			getRootInstances().addAll((Collection<? extends Instance>) newValue);
+			return;
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			setModel((Model) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -208,17 +235,18 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
-				getRootInstances().clear();
-				return;
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				setModel((Model)null);
-				return;
+		case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
+			getRootInstances().clear();
+			return;
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			setModel((Model) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -226,17 +254,18 @@ public class ModelResourceImpl extends AbstractResourceImpl implements ModelReso
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
-				return rootInstances != null && !rootInstances.isEmpty();
-			case MigrationPackage.MODEL_RESOURCE__MODEL:
-				return getModel() != null;
+		case MigrationPackage.MODEL_RESOURCE__ROOT_INSTANCES:
+			return rootInstances != null && !rootInstances.isEmpty();
+		case MigrationPackage.MODEL_RESOURCE__MODEL:
+			return getModel() != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ModelResourceImpl
+} // ModelResourceImpl

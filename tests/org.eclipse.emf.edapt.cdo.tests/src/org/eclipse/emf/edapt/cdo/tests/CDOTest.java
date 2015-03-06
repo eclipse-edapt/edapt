@@ -10,28 +10,21 @@ import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.util.ConcurrentAccessException;
 
-
 /**
- * 
+ *
  * @author Christophe Bouhier
  */
 public class CDOTest extends TestCase {
 
-	
-	
-	
-	
-	
-	
 	public void testCDO() {
-		CDONet4jSession openSession = CDOTestUtil.self.openSession();
-		CDOPackageRegistry packageRegistry = openSession.getPackageRegistry();
-		for (CDOPackageUnit unit : packageRegistry.getPackageUnits()) {
+		final CDONet4jSession openSession = CDOTestUtil.self.openSession();
+		final CDOPackageRegistry packageRegistry = openSession.getPackageRegistry();
+		for (final CDOPackageUnit unit : packageRegistry.getPackageUnits()) {
 			System.out.println(unit);
 		}
-		CDOTransaction t = openSession.openTransaction();
-		CDOResource res = createResource(t);
-		
+		final CDOTransaction t = openSession.openTransaction();
+		final CDOResource res = createResource(t);
+
 		removeResource(t, res);
 	}
 
@@ -42,23 +35,23 @@ public class CDOTest extends TestCase {
 
 		try {
 			t.commit();
-		} catch (ConcurrentAccessException e) {
+		} catch (final ConcurrentAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (CommitException e) {
+		} catch (final CommitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	private CDOResource createResource(CDOTransaction t) {
-		CDOResource testRes = t.getOrCreateResource("test");
+		final CDOResource testRes = t.getOrCreateResource("test");
 		try {
 			t.commit();
-		} catch (ConcurrentAccessException e) {
+		} catch (final ConcurrentAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (CommitException e) {
+		} catch (final CommitException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

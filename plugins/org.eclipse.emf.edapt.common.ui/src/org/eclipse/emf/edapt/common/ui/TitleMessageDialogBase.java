@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * A dialog that shows a title and a message.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,23 +30,23 @@ public abstract class TitleMessageDialogBase extends TitleAreaDialog {
 	/**
 	 * Title
 	 */
-	private String title;
-	
+	private final String title;
+
 	/**
 	 * Message
 	 */
-	private String message;
+	private final String message;
 
 	/**
 	 * Constructor
 	 */
 	public TitleMessageDialogBase(String title, String message) {
 		super(Display.getDefault().getActiveShell());
-		
+
 		this.title = title;
 		this.message = message;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -61,7 +61,7 @@ public abstract class TitleMessageDialogBase extends TitleAreaDialog {
 	 */
 	@Override
 	protected Control createContents(Composite parent) {
-		Control contents = super.createContents(parent);
+		final Control contents = super.createContents(parent);
 		setTitle(title);
 		setMessage(message);
 		return contents;

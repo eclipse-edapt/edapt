@@ -10,7 +10,7 @@ import org.eclipse.ocl.utilities.TypedElement;
 
 /**
  * Abstract base class for operations that generalize a {@link TypedElement}.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,7 +33,7 @@ public abstract class GeneralizeTypedElement extends OperationImplementation {
 	@EdaptConstraint(description = "The multiplicity must be the same or more general")
 	public boolean checkSameOrExtendedMultiplicity() {
 		return lowerBound <= getTypedElement().getLowerBound()
-				&& (upperBound >= getTypedElement().getUpperBound() || upperBound == -1);
+			&& (upperBound >= getTypedElement().getUpperBound() || upperBound == -1);
 	}
 
 	/** {@inheritDoc} */

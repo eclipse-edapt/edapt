@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,20 +36,20 @@ public class MakeContainment extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass contextClass = reference.getEContainingClass();
+		final EClass contextClass = reference.getEContainingClass();
 
 		// metamodel adaptation
 		reference.setContainment(true);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(contextClass)) {
+		for (final Instance instance : model.getAllInstances(contextClass)) {
 			if (reference.isMany()) {
-				List<Instance> values = instance.unset(reference);
-				for (Instance value : values) {
+				final List<Instance> values = instance.unset(reference);
+				for (final Instance value : values) {
 					instance.add(reference, value.copy());
 				}
 			} else {
-				Instance value = instance.unset(reference);
+				final Instance value = instance.unset(reference);
 				if (value != null) {
 					instance.set(reference, value.copy());
 				}

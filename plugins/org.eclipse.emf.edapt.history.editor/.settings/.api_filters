@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.edapt.history.editor" version="2">
+    <resource path="src/org/eclipse/emf/edapt/history/instantiation/ui/ConstraintViewer.java" type="org.eclipse.emf.edapt.history.instantiation.ui.ConstraintViewer">
+        <filter id="571473929">
+            <message_arguments>
+                <message_argument value="TableViewer"/>
+                <message_argument value="ConstraintViewer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/edapt/history/instantiation/ui/OperationViewer.java" type="org.eclipse.emf.edapt.history.instantiation.ui.OperationViewer">
+        <filter id="571473929">
+            <message_arguments>
+                <message_argument value="TableViewer"/>
+                <message_argument value="OperationViewer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

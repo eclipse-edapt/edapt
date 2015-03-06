@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.tests.util;
 
@@ -21,19 +21,20 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.internal.migration.Persistency;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.Persistency;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 
 /**
  * Split containment across different resources
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
+@SuppressWarnings("restriction")
 public class SplitContainment {
 
 	/**
@@ -41,11 +42,11 @@ public class SplitContainment {
 	 */
 	public static void main(String[] args) throws IOException {
 
-		URI contextURI = URIUtils.getURI("data/node");
-		URI metamodelURI = contextURI.appendSegment("node.ecore");
-		URI modelURI = contextURI.appendSegment("node.xmi");
-		URI targetURI = contextURI.appendSegment("split.xmi");
-		
+		final URI contextURI = URIUtils.getURI("data/node"); //$NON-NLS-1$
+		final URI metamodelURI = contextURI.appendSegment("node.ecore"); //$NON-NLS-1$
+		final URI modelURI = contextURI.appendSegment("node.xmi"); //$NON-NLS-1$
+		final URI targetURI = contextURI.appendSegment("split.xmi"); //$NON-NLS-1$
+
 		split(metamodelURI, modelURI, targetURI, 12);
 	}
 
@@ -53,28 +54,28 @@ public class SplitContainment {
 	 * Split containment across n+1 resources where targetURI denotes the root resource
 	 */
 	private static void split(URI metamodelURI, URI sourceURI, URI targetURI, int n) throws IOException {
-		
-		Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
-		
-		ResourceSet resourceSet = ResourceUtils.loadResourceSet(sourceURI, metamodel.getEPackages());
-		
-		Resource mainResource = resourceSet.getResources().get(0);
+
+		final Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
+
+		final ResourceSet resourceSet = ResourceUtils.loadResourceSet(sourceURI, metamodel.getEPackages());
+
+		final Resource mainResource = resourceSet.getResources().get(0);
 		mainResource.setURI(targetURI);
-		
-		List<EObject> elements = getAllContents(mainResource);
+
+		final List<EObject> elements = getAllContents(mainResource);
 		elements.removeAll(mainResource.getContents());
-		
-		Random random = new Random();
-		for(int i = 1; i <= n; i++) {
-			int index = random.nextInt(elements.size());
-			EObject element = elements.remove(index);
-			String name = targetURI.trimFileExtension().lastSegment() + i;
-			String extension = targetURI.fileExtension();
-			URI uri = targetURI.trimSegments(1).appendSegment(name).appendFileExtension(extension);
-			Resource resource = resourceSet.createResource(uri);
+
+		final Random random = new Random();
+		for (int i = 1; i <= n; i++) {
+			final int index = random.nextInt(elements.size());
+			final EObject element = elements.remove(index);
+			final String name = targetURI.trimFileExtension().lastSegment() + i;
+			final String extension = targetURI.fileExtension();
+			final URI uri = targetURI.trimSegments(1).appendSegment(name).appendFileExtension(extension);
+			final Resource resource = resourceSet.createResource(uri);
 			resource.getContents().add(element);
 		}
-		
+
 		ResourceUtils.saveResourceSet(resourceSet);
 	}
 
@@ -82,9 +83,9 @@ public class SplitContainment {
 	 * Get all the contents of a resource
 	 */
 	private static List<EObject> getAllContents(Resource resource) {
-		List<EObject> elements = new ArrayList<EObject>();
-		
-		for(Iterator<EObject> i = resource.getAllContents(); i.hasNext(); ) {
+		final List<EObject> elements = new ArrayList<EObject>();
+
+		for (final Iterator<EObject> i = resource.getAllContents(); i.hasNext();) {
 			elements.add(i.next());
 		}
 		return elements;

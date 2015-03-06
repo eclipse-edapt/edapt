@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -51,8 +51,8 @@ public class SpecializeSuperType extends OperationImplementation {
 	public void initialize(Metamodel metamodel) {
 		if (eClass.getESuperTypes().size() == 1) {
 			toReplace = eClass.getESuperTypes().get(0);
-			List<EClass> subClasses = new ArrayList<EClass>(metamodel
-					.getESubTypes(toReplace));
+			final List<EClass> subClasses = new ArrayList<EClass>(metamodel
+				.getESubTypes(toReplace));
 			subClasses.remove(eClass);
 			if (subClasses.size() == 1) {
 				replaceBy = subClasses.get(0);

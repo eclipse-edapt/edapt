@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -62,26 +62,27 @@ public class UseSuperClass extends OperationImplementation {
 	@EdaptConstraint(description = "The features must be of the same multiplicity")
 	public boolean checkFeaturesSameMultiplicity() {
 		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
-				.getETypedElement_Many());
+			.getETypedElement_Many());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features must be of the same type")
 	public boolean checkFeaturesSameType() {
 		return hasSameValue(toReplace, replaceBy, EcorePackage.eINSTANCE
-				.getETypedElement_EType());
+			.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
+		throws MigrationException {
 
 		subClass.getESuperTypes().add(superClass);
 		subClass.getESuperTypes().removeAll(superClass.getEAllSuperTypes());
 
 		for (int i = 0; i < toReplace.size(); i++) {
-			ReplaceFeature operation = new ReplaceFeature();
+			final ReplaceFeature operation = new ReplaceFeature();
 			operation.replaceBy = replaceBy.get(i);
 			operation.toReplace = toReplace.get(i);
 			operation.checkAndExecute(metamodel, model);

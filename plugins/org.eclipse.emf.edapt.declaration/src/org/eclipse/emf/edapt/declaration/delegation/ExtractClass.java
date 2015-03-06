@@ -7,18 +7,18 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -62,8 +62,8 @@ public class ExtractClass extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "A feature with the same name already exists")
 	public boolean checkUniqueFeatureName() {
-		EStructuralFeature feature = contextClass
-				.getEStructuralFeature(referenceName);
+		final EStructuralFeature feature = contextClass
+			.getEStructuralFeature(referenceName);
 		return feature == null || features.contains(feature);
 	}
 
@@ -80,13 +80,13 @@ public class ExtractClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EClass extractedClass = MetamodelFactory.newEClass(ePackage, className);
-		EReference reference = MetamodelFactory.newEReference(contextClass,
-				referenceName, extractedClass, 1, 1, true);
+		final EClass extractedClass = MetamodelFactory.newEClass(ePackage, className);
+		final EReference reference = MetamodelFactory.newEReference(contextClass,
+			referenceName, extractedClass, 1, 1, true);
 		extractedClass.getEStructuralFeatures().addAll(features);
-		for (EStructuralFeature feature : features) {
+		for (final EStructuralFeature feature : features) {
 			if (feature instanceof EReference) {
-				EReference r = (EReference) feature;
+				final EReference r = (EReference) feature;
 				if (r.getEOpposite() != null) {
 					r.getEOpposite().setEType(extractedClass);
 				}
@@ -94,10 +94,10 @@ public class ExtractClass extends OperationImplementation {
 		}
 
 		// model migration
-		for (Instance contextInstance : model.getAllInstances(contextClass)) {
-			Instance extractedInstance = model.newInstance(extractedClass);
+		for (final Instance contextInstance : model.getAllInstances(contextClass)) {
+			final Instance extractedInstance = model.newInstance(extractedClass);
 			contextInstance.set(reference, extractedInstance);
-			for (EStructuralFeature feature : features) {
+			for (final EStructuralFeature feature : features) {
 				extractedInstance.set(feature, contextInstance.unset(feature));
 			}
 		}

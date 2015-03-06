@@ -4,16 +4,16 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,16 +30,16 @@ public class PushOperation extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EClass superClass = operation.getEContainingClass();
-		List<EClass> subClasses = metamodel.getESubTypes(superClass);
+		final EClass superClass = operation.getEContainingClass();
+		final List<EClass> subClasses = metamodel.getESubTypes(superClass);
 
 		// metamodel adaptation
 		boolean first = true;
-		for (EClass subClass : subClasses) {
+		for (final EClass subClass : subClasses) {
 			if (first) {
 				subClass.getEOperations().add(operation);
 			} else {
-				EOperation clone = MetamodelUtils.copy(operation);
+				final EOperation clone = MetamodelUtils.copy(operation);
 				subClass.getEOperations().add(clone);
 			}
 			first = false;

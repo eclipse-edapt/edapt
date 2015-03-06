@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Control;
 
 /**
  * Dialog to show a model
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -31,8 +31,8 @@ public class ModelDialog extends ResizeableDialogBase {
 	/**
 	 * Root element of the model
 	 */
-	private Object element;
-	
+	private final Object element;
+
 	/**
 	 * Model sash
 	 */
@@ -40,15 +40,15 @@ public class ModelDialog extends ResizeableDialogBase {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param element
 	 */
 	public ModelDialog(Object element, String title, String message) {
 		super(new Point(800, 600), title, message);
-		
+
 		this.element = element;
 	}
-		
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -56,14 +56,14 @@ public class ModelDialog extends ResizeableDialogBase {
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
 
-		Composite composite = new Composite(parent, SWT.None);
+		final Composite composite = new Composite(parent, SWT.None);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		GridLayout layout = new GridLayout(1, false);
+		final GridLayout layout = new GridLayout(1, false);
 		composite.setLayout(layout);
-		
+
 		sash = new ModelSash(composite, SWT.None);
 		sash.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
+
 		sash.getStructureViewer().setInput(element);
 
 		return parent;

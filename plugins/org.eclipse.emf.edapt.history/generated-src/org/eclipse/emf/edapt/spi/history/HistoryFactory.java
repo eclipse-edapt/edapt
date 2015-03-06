@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.history.HistoryPackage
  * @generated
  */
@@ -26,6 +27,7 @@ public interface HistoryFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	HistoryFactory eINSTANCE = org.eclipse.emf.edapt.spi.history.impl.HistoryFactoryImpl.init();
@@ -34,6 +36,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>History</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>History</em>'.
 	 * @generated
 	 */
@@ -43,6 +46,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Release</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Release</em>'.
 	 * @generated
 	 */
@@ -52,6 +56,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>No Change</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>No Change</em>'.
 	 * @generated
 	 */
@@ -61,6 +66,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Create</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Create</em>'.
 	 * @generated
 	 */
@@ -70,6 +76,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Move</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Move</em>'.
 	 * @generated
 	 */
@@ -79,6 +86,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Delete</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Delete</em>'.
 	 * @generated
 	 */
@@ -88,6 +96,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Set</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Set</em>'.
 	 * @generated
 	 */
@@ -97,6 +106,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Add</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Add</em>'.
 	 * @generated
 	 */
@@ -106,6 +116,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Remove</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Remove</em>'.
 	 * @generated
 	 */
@@ -115,6 +126,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Composite Change</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Composite Change</em>'.
 	 * @generated
 	 */
@@ -124,6 +136,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Operation Change</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Operation Change</em>'.
 	 * @generated
 	 */
@@ -133,6 +146,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Operation Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Operation Instance</em>'.
 	 * @generated
 	 */
@@ -142,6 +156,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Parameter Instance</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Parameter Instance</em>'.
 	 * @generated
 	 */
@@ -151,6 +166,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Model Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Model Reference</em>'.
 	 * @generated
 	 */
@@ -160,6 +176,7 @@ public interface HistoryFactory extends EFactory {
 	 * Returns a new object of class '<em>Migration Change</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Migration Change</em>'.
 	 * @generated
 	 */
@@ -169,9 +186,10 @@ public interface HistoryFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	HistoryPackage getHistoryPackage();
 
-} //HistoryFactory
+} // HistoryFactory

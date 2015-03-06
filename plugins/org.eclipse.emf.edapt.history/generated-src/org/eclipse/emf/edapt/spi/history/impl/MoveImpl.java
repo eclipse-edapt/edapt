@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.Move;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Move</b></em>'.
@@ -27,7 +26,7 @@ import org.eclipse.emf.edapt.spi.history.Move;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.MoveImpl#getSource <em>Source</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.MoveImpl#getSource <em>Source</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +37,7 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getSource()
 	 * @generated
 	 * @ordered
@@ -47,6 +47,7 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected MoveImpl() {
@@ -56,6 +57,7 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -66,15 +68,19 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getSource() {
 		if (source != null && source.eIsProxy()) {
-			InternalEObject oldSource = (InternalEObject)source;
+			final InternalEObject oldSource = (InternalEObject) source;
 			source = eResolveProxy(oldSource);
 			if (source != oldSource) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.MOVE__SOURCE, oldSource, source));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.MOVE__SOURCE, oldSource,
+						source));
+				}
 			}
 		}
 		return source;
@@ -83,6 +89,7 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetSource() {
@@ -92,26 +99,32 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setSource(EObject newSource) {
-		EObject oldSource = source;
+		final EObject oldSource = source;
 		source = newSource;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.MOVE__SOURCE, oldSource, source));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.MOVE__SOURCE:
-				if (resolve) return getSource();
-				return basicGetSource();
+		case HistoryPackage.MOVE__SOURCE:
+			if (resolve) {
+				return getSource();
+			}
+			return basicGetSource();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -119,14 +132,15 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.MOVE__SOURCE:
-				setSource((EObject)newValue);
-				return;
+		case HistoryPackage.MOVE__SOURCE:
+			setSource((EObject) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -134,14 +148,15 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.MOVE__SOURCE:
-				setSource((EObject)null);
-				return;
+		case HistoryPackage.MOVE__SOURCE:
+			setSource((EObject) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -149,15 +164,16 @@ public class MoveImpl extends NonDeleteImpl implements Move {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.MOVE__SOURCE:
-				return source != null;
+		case HistoryPackage.MOVE__SOURCE:
+			return source != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //MoveImpl
+} // MoveImpl

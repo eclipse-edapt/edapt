@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
-import org.eclipse.emf.edapt.common.URIUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -34,7 +34,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  * Helper methods for extraction of namespace URI and version from a model file.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -55,16 +55,16 @@ public final class ReleaseUtils {
 	/** Extract the namespace URI from a model file using SAX. */
 	public static String getNamespaceURI_SAX(File file) {
 
-		ContentHandler contentHandler = new ContentHandler();
+		final ContentHandler contentHandler = new ContentHandler();
 		FileReader fileReader = null;
 		try {
-			XMLReader reader = XMLReaderFactory.createXMLReader();
+			final XMLReader reader = XMLReaderFactory.createXMLReader();
 			reader.setContentHandler(contentHandler);
 
 			fileReader = new FileReader(file);
-			
+
 			reader.parse(new InputSource(fileReader));
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// loading should fail
 		} finally {
 			try {
@@ -88,9 +88,9 @@ public final class ReleaseUtils {
 		/** {@inheritDoc} */
 		@Override
 		public void startElement(String uri, String localName, String qName,
-				Attributes attributes) throws SAXException {
+			Attributes attributes) throws SAXException {
 			if (!ExtendedMetaData.XMI_URI.equals(uri)
-					&& !ExtendedMetaData.XML_SCHEMA_URI.equals(uri)) {
+				&& !ExtendedMetaData.XML_SCHEMA_URI.equals(uri)) {
 				nsURI = uri;
 				throw new SAXException();
 			}
@@ -104,17 +104,17 @@ public final class ReleaseUtils {
 
 	/** Extract the namespace URI from a model file using EMF Resource loading. */
 	public static String getNamespaceURI_Registry(URI modelURI) {
-		ResourceSet resourceSet = new ResourceSetImpl();
+		final ResourceSet resourceSet = new ResourceSetImpl();
 
 		// register delegating package registry
-		PackageRegistry registry = new PackageRegistry(
-				resourceSet.getPackageRegistry());
+		final PackageRegistry registry = new PackageRegistry(
+			resourceSet.getPackageRegistry());
 		resourceSet.setPackageRegistry(registry);
 
-		Resource resource = resourceSet.createResource(modelURI);
+		final Resource resource = resourceSet.createResource(modelURI);
 		try {
 			resource.load(null);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			// loading should fail here
 		}
 
@@ -135,7 +135,7 @@ public final class ReleaseUtils {
 
 		/**
 		 * Default constructor.
-		 * 
+		 *
 		 * @param delegate
 		 *            Registry to which method calls are delegated
 		 */
@@ -144,21 +144,25 @@ public final class ReleaseUtils {
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public void clear() {
 			delegate.clear();
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public boolean containsKey(Object key) {
 			return delegate.containsKey(key);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public boolean containsValue(Object value) {
 			return delegate.containsValue(value);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		@SuppressWarnings("unchecked")
 		public Set entrySet() {
 			return delegate.entrySet();
@@ -171,16 +175,19 @@ public final class ReleaseUtils {
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public Object get(Object key) {
 			return delegate.get(key);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public EFactory getEFactory(String nsURI) {
 			return delegate.getEFactory(nsURI);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public EPackage getEPackage(String nsURI) {
 			if (this.nsURI == null) {
 				this.nsURI = nsURI;
@@ -195,38 +202,45 @@ public final class ReleaseUtils {
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public boolean isEmpty() {
 			return delegate.isEmpty();
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		@SuppressWarnings("unchecked")
 		public Set keySet() {
 			return delegate.keySet();
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public Object put(String key, Object value) {
 			return delegate.put(key, value);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		@SuppressWarnings("unchecked")
 		public void putAll(Map t) {
 			delegate.putAll(t);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public Object remove(Object key) {
 			return delegate.remove(key);
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public int size() {
 			return delegate.size();
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		@SuppressWarnings("unchecked")
 		public Collection values() {
 			return delegate.values();

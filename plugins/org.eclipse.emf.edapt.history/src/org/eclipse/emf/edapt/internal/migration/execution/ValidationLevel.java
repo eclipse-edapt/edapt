@@ -2,11 +2,12 @@ package org.eclipse.emf.edapt.internal.migration.execution;
 
 /**
  * Enumeration for the validation level
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
+ * @since 1.1
  */
 public enum ValidationLevel {
 

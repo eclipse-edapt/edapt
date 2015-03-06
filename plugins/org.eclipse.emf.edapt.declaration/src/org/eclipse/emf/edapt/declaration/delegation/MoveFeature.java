@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,7 +33,7 @@ public class MoveFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "reference", description = "The reference must be available in the same class as the feature")
 	public boolean checkReferenceInSameClass(EReference reference) {
-		EClass sourceClass = feature.getEContainingClass();
+		final EClass sourceClass = feature.getEContainingClass();
 		return sourceClass.getEAllStructuralFeatures().contains(reference);
 	}
 
@@ -52,7 +52,7 @@ public class MoveFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "A feature with that name already exists in the target class")
 	public boolean checkFeatureNameUniqueInTargetClass() {
-		EClass targetClass = reference.getEReferenceType();
+		final EClass targetClass = reference.getEReferenceType();
 		return targetClass.getEStructuralFeature(feature.getName()) == null;
 	}
 
@@ -60,17 +60,17 @@ public class MoveFeature extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EClass sourceClass = feature.getEContainingClass();
-		EClass targetClass = reference.getEReferenceType();
+		final EClass sourceClass = feature.getEContainingClass();
+		final EClass targetClass = reference.getEReferenceType();
 
 		// metamodel adaptation
 		targetClass.getEStructuralFeatures().add(feature);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(sourceClass)) {
-			Instance target = instance.get(reference);
+		for (final Instance instance : model.getAllInstances(sourceClass)) {
+			final Instance target = instance.get(reference);
 			if (instance.isSet(feature)) {
-				Object value = instance.unset(feature);
+				final Object value = instance.unset(feature);
 				target.set(feature, value);
 			}
 		}

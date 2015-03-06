@@ -5,16 +5,16 @@ import java.util.List;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,11 +38,11 @@ public class CreateEnumeration extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EEnum eEnum = MetamodelFactory.newEEnum(ePackage, name);
+		final EEnum eEnum = MetamodelFactory.newEEnum(ePackage, name);
 		int i = 0;
-		for (String literal : literals) {
-			EEnumLiteral eLiteral = MetamodelFactory.newEEnumLiteral(eEnum,
-					literal);
+		for (final String literal : literals) {
+			final EEnumLiteral eLiteral = MetamodelFactory.newEEnumLiteral(eEnum,
+				literal);
 			eLiteral.setValue(i);
 			i++;
 		}

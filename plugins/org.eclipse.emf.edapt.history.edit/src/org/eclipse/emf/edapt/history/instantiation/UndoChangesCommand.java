@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
@@ -18,9 +18,9 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreReconstructorSwitchBase;
 import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
 import org.eclipse.emf.edapt.spi.history.Add;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
@@ -35,23 +35,22 @@ import org.eclipse.emf.edapt.spi.history.Set;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
-
 /**
  * Command to undo a number of changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class UndoChangesCommand extends ChangeCommand implements
-		IChangeProvider {
+	IChangeProvider {
 
 	/**
 	 * The changes to be undone
 	 */
 	private final List<Change> changes;
-	
+
 	/**
 	 * The switch to undo changes
 	 */
@@ -62,7 +61,7 @@ public class UndoChangesCommand extends ChangeCommand implements
 	 */
 	public UndoChangesCommand(List<Change> changes, MetamodelExtent extent) {
 		super(getNotifiers(changes, extent));
-		
+
 		this.changes = changes;
 		undoSwitch = new UndoSwitch();
 	}
@@ -71,9 +70,9 @@ public class UndoChangesCommand extends ChangeCommand implements
 	 * Get all the elements whose content is about to be changed
 	 */
 	private static Collection<Notifier> getNotifiers(List<Change> changes, MetamodelExtent extent) {
-		Collection<Notifier> notifiers = new HashSet<Notifier>();
+		final Collection<Notifier> notifiers = new HashSet<Notifier>();
 		notifiers.addAll(extent.getRootPackages());
-		for(Change change : changes) {
+		for (final Change change : changes) {
 			notifiers.add(change.getRelease().getHistory());
 		}
 		return notifiers;
@@ -85,7 +84,7 @@ public class UndoChangesCommand extends ChangeCommand implements
 	@Override
 	protected void doExecute() {
 		Collections.reverse(changes);
-		for(Change change : changes) {
+		for (final Change change : changes) {
 			undoSwitch.doSwitch(change);
 			EcoreUtil.delete(change);
 		}
@@ -94,15 +93,16 @@ public class UndoChangesCommand extends ChangeCommand implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public List<Change> getChanges(List<PrimitiveChange> changes) {
 		return Collections.emptyList();
 	}
-	
+
 	/**
 	 * Switch to undo changes
 	 */
 	private class UndoSwitch extends EcoreReconstructorSwitchBase<Object> {
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -111,7 +111,7 @@ public class UndoChangesCommand extends ChangeCommand implements
 			set(set.getElement(), set.getFeature(), set.getOldValue());
 			return set;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -120,7 +120,7 @@ public class UndoChangesCommand extends ChangeCommand implements
 			remove(add.getElement(), add.getFeature(), add.getValue());
 			return add;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -129,7 +129,7 @@ public class UndoChangesCommand extends ChangeCommand implements
 			add(remove.getElement(), remove.getFeature(), remove.getValue());
 			return remove;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -138,19 +138,19 @@ public class UndoChangesCommand extends ChangeCommand implements
 			delete(create.getElement());
 			return create;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public Object caseDelete(Delete delete) {
 			add(delete.getTarget(), delete.getReference(), delete.getElement());
-			for(ValueChange change : delete.getChanges()) {
+			for (final ValueChange change : delete.getChanges()) {
 				doSwitch(change);
 			}
 			return delete;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
@@ -159,26 +159,26 @@ public class UndoChangesCommand extends ChangeCommand implements
 			add(move.getSource(), move.getReference(), move.getElement());
 			return move;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public Object caseCompositeChange(CompositeChange compositeChange) {
-			List<PrimitiveChange> changes = compositeChange.getChanges();
-			for(int i = changes.size()-1; i >= 0; i--) {
+			final List<PrimitiveChange> changes = compositeChange.getChanges();
+			for (int i = changes.size() - 1; i >= 0; i--) {
 				doSwitch(changes.get(i));
 			}
 			return compositeChange;
 		}
-		
+
 		/**
 		 * {@inheritDoc}
 		 */
 		@Override
 		public Object caseMigrationChange(MigrationChange migrationChange) {
-			List<MigrateableChange> changes = migrationChange.getChanges();
-			for(int i = changes.size()-1; i >= 0; i--) {
+			final List<MigrateableChange> changes = migrationChange.getChanges();
+			for (int i = changes.size() - 1; i >= 0; i--) {
 				doSwitch(changes.get(i));
 			}
 			return migrationChange;

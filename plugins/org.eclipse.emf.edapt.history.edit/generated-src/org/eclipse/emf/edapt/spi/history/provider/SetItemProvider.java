@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -31,25 +30,26 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Set} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class SetItemProvider
 	extends ValueChangeItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public SetItemProvider(AdapterFactory adapterFactory) {
@@ -60,6 +60,7 @@ public class SetItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -74,95 +75,99 @@ public class SetItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This adds a property descriptor for the Old Data Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addOldDataValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Set_oldDataValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Set_oldDataValue_feature", "_UI_Set_type"),
-				 HistoryPackage.Literals.SET__OLD_DATA_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Set_oldDataValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Set_oldDataValue_feature", "_UI_Set_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.SET__OLD_DATA_VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Old Reference Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addOldReferenceValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Set_oldReferenceValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Set_oldReferenceValue_feature", "_UI_Set_type"),
-				 HistoryPackage.Literals.SET__OLD_REFERENCE_VALUE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Set_oldReferenceValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Set_oldReferenceValue_feature", "_UI_Set_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.SET__OLD_REFERENCE_VALUE,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Old Value feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addOldValuePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Set_oldValue_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Set_oldValue_feature", "_UI_Set_type"),
-				 HistoryPackage.Literals.SET__OLD_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Set_oldValue_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Set_oldValue_feature", "_UI_Set_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.SET__OLD_VALUE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This returns Set.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Set"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Set")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Set element = (Set) object;
-		String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
-		String featureLabel = HistoryUIUtils.getLabel(element.getFeature());
+		final Set element = (Set) object;
+		final String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
+		final String featureLabel = HistoryUIUtils.getLabel(element.getFeature());
 		String valueLabel = null, oldValueLabel = null;
 		if (element.getFeature() instanceof EReference) {
 			valueLabel = HistoryUIUtils.getBracedLabel(element.getValue());
@@ -171,9 +176,9 @@ public class SetItemProvider
 			valueLabel = HistoryUIUtils.getLabel(element.getValue());
 			oldValueLabel = HistoryUIUtils.getLabel(element.getOldValue());
 		}
-		
-		return featureLabel + " of " + elementLabel + " has been changed from "
-				+ oldValueLabel + " to " + valueLabel;
+
+		return featureLabel + " of " + elementLabel + " has been changed from " //$NON-NLS-1$ //$NON-NLS-2$
+			+ oldValueLabel + " to " + valueLabel; //$NON-NLS-1$
 	}
 
 	/**
@@ -181,6 +186,7 @@ public class SetItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -188,10 +194,10 @@ public class SetItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Set.class)) {
-			case HistoryPackage.SET__OLD_DATA_VALUE:
-			case HistoryPackage.SET__OLD_VALUE:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case HistoryPackage.SET__OLD_DATA_VALUE:
+		case HistoryPackage.SET__OLD_VALUE:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -201,6 +207,7 @@ public class SetItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

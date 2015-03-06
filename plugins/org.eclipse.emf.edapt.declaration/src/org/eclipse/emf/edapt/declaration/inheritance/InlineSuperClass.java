@@ -5,18 +5,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,19 +38,19 @@ public class InlineSuperClass extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
+		throws MigrationException {
 
-		for (EStructuralFeature feature : new ArrayList<EStructuralFeature>(
-				superClass.getEStructuralFeatures())) {
-			PushFeature operation = new PushFeature();
+		for (final EStructuralFeature feature : new ArrayList<EStructuralFeature>(
+			superClass.getEStructuralFeatures())) {
+			final PushFeature operation = new PushFeature();
 			operation.feature = feature;
 			operation.checkAndExecute(metamodel, model);
 		}
 
-		List<EClass> subClasses = metamodel.getESubTypes(superClass);
-		for (EClass subClass : subClasses) {
+		final List<EClass> subClasses = metamodel.getESubTypes(superClass);
+		for (final EClass subClass : subClasses) {
 			subClass.getESuperTypes().remove(superClass);
-			for (EClass superSuperClass : superClass.getESuperTypes()) {
+			for (final EClass superSuperClass : superClass.getESuperTypes()) {
 				if (!subClass.getEAllSuperTypes().contains(superSuperClass)) {
 					subClass.getESuperTypes().add(superSuperClass);
 				}

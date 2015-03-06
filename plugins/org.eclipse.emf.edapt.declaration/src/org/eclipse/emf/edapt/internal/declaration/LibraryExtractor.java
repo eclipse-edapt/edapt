@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.declaration.OperationImplementation;
 
 /**
  * Helper class to extract the declaration of a library from its implementation.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -21,9 +21,9 @@ public class LibraryExtractor {
 
 	/** Extract the declaration of a library from its implementation in a class. */
 	public Library extractLibrary(Class<? extends LibraryImplementation> c) {
-		EdaptLibrary libraryAnnotation = c.getAnnotation(EdaptLibrary.class);
+		final EdaptLibrary libraryAnnotation = c.getAnnotation(EdaptLibrary.class);
 		if (libraryAnnotation != null) {
-			Library library = DeclarationFactory.eINSTANCE.createLibrary();
+			final Library library = DeclarationFactory.eINSTANCE.createLibrary();
 			library.setName(c.getName());
 			library.setImplementation(c);
 			library.setLabel(libraryAnnotation.label());
@@ -31,9 +31,9 @@ public class LibraryExtractor {
 			try {
 				extractChildren(c, library);
 				return library;
-			} catch (InstantiationException e) {
+			} catch (final InstantiationException e) {
 				// return null
-			} catch (IllegalAccessException e) {
+			} catch (final IllegalAccessException e) {
 				// return null
 			}
 		}
@@ -42,20 +42,20 @@ public class LibraryExtractor {
 
 	/** Extract the children of a library implementation. */
 	private void extractChildren(Class<? extends LibraryImplementation> c,
-			Library library) throws InstantiationException, IllegalAccessException {
-		LibraryImplementation libraryImplementation = c.newInstance();
-		List<Class<? extends LibraryImplementation>> libraryClasses = libraryImplementation
-				.getLibraries();
-		for (Class<? extends LibraryImplementation> libraryClass : libraryClasses) {
-			Library subLibrary = extractLibrary(libraryClass);
+		Library library) throws InstantiationException, IllegalAccessException {
+		final LibraryImplementation libraryImplementation = c.newInstance();
+		final List<Class<? extends LibraryImplementation>> libraryClasses = libraryImplementation
+			.getLibraries();
+		for (final Class<? extends LibraryImplementation> libraryClass : libraryClasses) {
+			final Library subLibrary = extractLibrary(libraryClass);
 			if (subLibrary != null) {
 				library.getLibraries().add(subLibrary);
 			}
 		}
-		List<Class<? extends OperationImplementation>> operationClasses = libraryImplementation
-				.getOperations();
-		for (Class<? extends OperationImplementation> operationClass : operationClasses) {
-			Operation operation = extractOperation(operationClass);
+		final List<Class<? extends OperationImplementation>> operationClasses = libraryImplementation
+			.getOperations();
+		for (final Class<? extends OperationImplementation> operationClass : operationClasses) {
+			final Operation operation = extractOperation(operationClass);
 			if (operation != null) {
 				library.getOperations().add(operation);
 			}
@@ -64,7 +64,7 @@ public class LibraryExtractor {
 
 	/** Extract the declaration of an operation from its implementation. */
 	private Operation extractOperation(
-			Class<? extends OperationImplementation> c) {
+		Class<? extends OperationImplementation> c) {
 		return new OperationExtractor().extractOperation(c);
 	}
 }

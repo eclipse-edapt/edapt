@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Markus Herrmannsdoerfer - initial API and implementation
+ * Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
@@ -16,16 +16,16 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.common.IExtentProvider;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.TypeUtils;
 import org.eclipse.emf.edapt.declaration.Constraint;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.declaration.Parameter;
+import org.eclipse.emf.edapt.internal.common.IExtentProvider;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.TypeUtils;
 import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
-import org.eclipse.emf.edapt.internal.migration.execution.OperationInstanceConverter;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.OperationInstanceConverter;
 import org.eclipse.emf.edapt.spi.history.HistoryFactory;
 import org.eclipse.emf.edapt.spi.history.OperationInstance;
 import org.eclipse.emf.edapt.spi.history.ParameterInstance;
@@ -33,7 +33,7 @@ import org.eclipse.emf.edapt.spi.migration.Repository;
 
 /**
  * Helper to deal with operation instances
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -56,45 +56,45 @@ public class OperationInstanceHelper {
 	/**
 	 * Create operation instances for operations which are applicable on a list
 	 * of selected elements
-	 * 
+	 *
 	 * @param selectedElements
 	 *            Selected elements
 	 * @return List of instances of applicable operations
 	 */
 	public List<OperationInstance> getPossibleOperations(
-			List<EObject> selectedElements) {
+		List<EObject> selectedElements) {
 
-		List<OperationInstance> result = new ArrayList<OperationInstance>();
+		final List<OperationInstance> result = new ArrayList<OperationInstance>();
 
 		// iterate over all registered operations
-		Collection<Operation> operations = OperationRegistry.getInstance()
-				.getOperations();
-		for (Operation operation : operations) {
+		final Collection<Operation> operations = OperationRegistry.getInstance()
+			.getOperations();
+		for (final Operation operation : operations) {
 
 			if (operation.refines()) {
 				continue;
 			}
 
-			Parameter mainParameter = operation.getMainParameter();
+			final Parameter mainParameter = operation.getMainParameter();
 
 			// check consistency of selected elements with type of main
 			// parameter
 			if (mainParameter != null) {
-				EClass type = (EClass) mainParameter.getClassifier();
+				final EClass type = (EClass) mainParameter.getClassifier();
 				if (TypeUtils.ancestor(TypeUtils
-						.commonSuperClass(selectedElements), type)) {
+					.commonSuperClass(selectedElements), type)) {
 
 					if (selectedElements.size() > 1) {
 						if (mainParameter.isMany()) {
-							OperationInstance operationInstance = createOperationInstance(
-									operation, selectedElements);
+							final OperationInstance operationInstance = createOperationInstance(
+								operation, selectedElements);
 							if (isApplicable(operationInstance)) {
 								result.add(operationInstance);
 							}
 						}
 					} else {
-						OperationInstance operationInstance = createOperationInstance(
-								operation, selectedElements);
+						final OperationInstance operationInstance = createOperationInstance(
+							operation, selectedElements);
 						if (isApplicable(operationInstance)) {
 							result.add(operationInstance);
 						}
@@ -110,14 +110,14 @@ public class OperationInstanceHelper {
 	 * restrictions.
 	 */
 	private boolean isApplicable(OperationInstance operationInstance) {
-		Repository repository = OperationInstanceConverter
-				.createEmptyRepository(getExtent());
-		OperationImplementation operationBase = OperationInstanceConverter
-				.convert(operationInstance, repository.getMetamodel());
+		final Repository repository = OperationInstanceConverter
+			.createEmptyRepository(getExtent());
+		final OperationImplementation operationBase = OperationInstanceConverter
+			.convert(operationInstance, repository.getMetamodel());
 
-		List<String> messages = operationBase.checkRestriction(
-				operationInstance.getOperation().getMainParameter().getName(),
-				repository.getMetamodel());
+		final List<String> messages = operationBase.checkRestriction(
+			operationInstance.getOperation().getMainParameter().getName(),
+			repository.getMetamodel());
 
 		OperationInstanceConverter.convert(operationBase, operationInstance);
 
@@ -126,7 +126,7 @@ public class OperationInstanceHelper {
 
 	/**
 	 * Create an instance of an operation based on the list of selected elements
-	 * 
+	 *
 	 * @param operation
 	 *            Operation
 	 * @param selectedElements
@@ -134,18 +134,18 @@ public class OperationInstanceHelper {
 	 * @return Operation instance
 	 */
 	public OperationInstance createOperationInstance(Operation operation,
-			List<EObject> selectedElements) {
+		List<EObject> selectedElements) {
 
-		HistoryFactory factory = HistoryFactory.eINSTANCE;
+		final HistoryFactory factory = HistoryFactory.eINSTANCE;
 
-		OperationInstance operationInstance = factory.createOperationInstance();
+		final OperationInstance operationInstance = factory.createOperationInstance();
 		operationInstance.setName(operation.getName());
 
 		// create instance of main parameter and initialize with selected
 		// elements
-		for (Parameter parameter : operation.getParameters()) {
-			ParameterInstance parameterInstance = factory
-					.createParameterInstance();
+		for (final Parameter parameter : operation.getParameters()) {
+			final ParameterInstance parameterInstance = factory
+				.createParameterInstance();
 			parameterInstance.setName(parameter.getName());
 			operationInstance.getParameters().add(parameterInstance);
 
@@ -164,25 +164,25 @@ public class OperationInstanceHelper {
 	/**
 	 * Evaluate all constraints of an operation instance and return those which
 	 * are not fulfilled
-	 * 
+	 *
 	 * @param operationInstance
 	 *            Operation instance
 	 * @return List of violated constraints
 	 */
 	public List<Constraint> getViolatedConstraints(
-			OperationInstance operationInstance) {
-		Repository repository = OperationInstanceConverter
-				.createEmptyRepository(getExtent());
-		OperationImplementation operationBase = OperationInstanceConverter
-				.convert(operationInstance, repository.getMetamodel());
-		List<String> messages = operationBase.checkPreconditions(repository
-				.getMetamodel());
+		OperationInstance operationInstance) {
+		final Repository repository = OperationInstanceConverter
+			.createEmptyRepository(getExtent());
+		final OperationImplementation operationBase = OperationInstanceConverter
+			.convert(operationInstance, repository.getMetamodel());
+		final List<String> messages = operationBase.checkPreconditions(repository
+			.getMetamodel());
 
-		List<Constraint> violatedConstraints = new ArrayList<Constraint>();
-		for (String message : messages) {
+		final List<Constraint> violatedConstraints = new ArrayList<Constraint>();
+		for (final String message : messages) {
 			Constraint constraint = getConstraint(operationInstance
-					.getOperation(), message);
-			if(constraint == null) {
+				.getOperation(), message);
+			if (constraint == null) {
 				constraint = DeclarationFactory.eINSTANCE.createConstraint();
 				constraint.setDescription(message);
 			}
@@ -195,7 +195,7 @@ public class OperationInstanceHelper {
 
 	/** Create a constraint with a certain message. */
 	private Constraint getConstraint(Operation operation, String message) {
-		for (Constraint constraint : operation.getConstraints()) {
+		for (final Constraint constraint : operation.getConstraints()) {
 			if (message.equals(constraint.getDescription())) {
 				return constraint;
 			}
@@ -205,7 +205,7 @@ public class OperationInstanceHelper {
 
 	/**
 	 * Get metamodel extent
-	 * 
+	 *
 	 * @return Metamodel extent
 	 */
 	public MetamodelExtent getExtent() {

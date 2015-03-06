@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Composite Change</b></em>'.
@@ -31,7 +30,7 @@ import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl#getChanges <em>Changes</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +41,7 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	 * The cached value of the '{@link #getChanges() <em>Changes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getChanges()
 	 * @generated
 	 * @ordered
@@ -51,6 +51,7 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected CompositeChangeImpl() {
@@ -60,6 +61,7 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -70,11 +72,14 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<PrimitiveChange> getChanges() {
 		if (changes == null) {
-			changes = new EObjectContainmentEList<PrimitiveChange>(PrimitiveChange.class, this, HistoryPackage.COMPOSITE_CHANGE__CHANGES);
+			changes = new EObjectContainmentEList<PrimitiveChange>(PrimitiveChange.class, this,
+				HistoryPackage.COMPOSITE_CHANGE__CHANGES);
 		}
 		return changes;
 	}
@@ -82,13 +87,14 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				return ((InternalEList<?>)getChanges()).basicRemove(otherEnd, msgs);
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			return ((InternalEList<?>) getChanges()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -96,13 +102,14 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				return getChanges();
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			return getChanges();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -110,16 +117,17 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				getChanges().clear();
-				getChanges().addAll((Collection<? extends PrimitiveChange>)newValue);
-				return;
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			getChanges().clear();
+			getChanges().addAll((Collection<? extends PrimitiveChange>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -127,14 +135,15 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				getChanges().clear();
-				return;
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			getChanges().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -142,15 +151,16 @@ public class CompositeChangeImpl extends MigrateableChangeImpl implements Compos
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				return changes != null && !changes.isEmpty();
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			return changes != null && !changes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //CompositeChangeImpl
+} // CompositeChangeImpl

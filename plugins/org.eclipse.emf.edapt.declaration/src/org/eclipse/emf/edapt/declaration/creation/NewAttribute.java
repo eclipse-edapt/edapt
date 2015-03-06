@@ -2,16 +2,16 @@ package org.eclipse.emf.edapt.declaration.creation;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -48,6 +48,6 @@ public class NewAttribute extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		MetamodelFactory.newEAttribute(eClass, name, type, lowerBound,
-				upperBound, defaultValue);
+			upperBound, defaultValue);
 	}
 }

@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -43,17 +43,17 @@ public class ReplaceLiteral extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EEnum contextEnum = toReplace.getEEnum();
+		final EEnum contextEnum = toReplace.getEEnum();
 
 		// metamodel adaptation
 		metamodel.delete(toReplace);
 
 		// model migration
-		List<EAttribute> attributes = metamodel.getInverse(contextEnum,
-				EcorePackage.Literals.EATTRIBUTE__EATTRIBUTE_TYPE);
-		for (EAttribute attribute : attributes) {
-			EClass contextClass = attribute.getEContainingClass();
-			for (Instance instance : model.getAllInstances(contextClass)) {
+		final List<EAttribute> attributes = metamodel.getInverse(contextEnum,
+			EcorePackage.Literals.EATTRIBUTE__EATTRIBUTE_TYPE);
+		for (final EAttribute attribute : attributes) {
+			final EClass contextClass = attribute.getEContainingClass();
+			for (final Instance instance : model.getAllInstances(contextClass)) {
 				if (instance.get(attribute) == toReplace) {
 					instance.set(attribute, replaceBy);
 				}

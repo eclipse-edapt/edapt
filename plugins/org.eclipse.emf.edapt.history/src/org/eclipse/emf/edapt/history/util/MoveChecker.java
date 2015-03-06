@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.util;
 
@@ -25,10 +25,9 @@ import org.eclipse.emf.edapt.spi.history.MigrationChange;
 import org.eclipse.emf.edapt.spi.history.OperationChange;
 import org.eclipse.emf.edapt.spi.history.Release;
 
-
 /**
  * Helper class that checks whether moving a change preserves integrity
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -48,7 +47,7 @@ public class MoveChecker {
 	 * change or release
 	 */
 	public static boolean canBeMoved(List<Change> changes, EObject target) {
-		List<Change> children = getChanges(getChildren(target));
+		final List<Change> children = getChanges(getChildren(target));
 		return canBeMoved(changes, target, children.size());
 	}
 
@@ -57,27 +56,27 @@ public class MoveChecker {
 	 * target change or release
 	 */
 	public static boolean canBeMoved(List<Change> changes, EObject target,
-			int targetIndex) {
+		int targetIndex) {
 		if (!allowedTarget(changes, target)) {
 			return false;
 		}
-		for (Change change : changes) {
-			EObject source = change.eContainer();
-			int sourceIndex = getIndex(change);
+		for (final Change change : changes) {
+			final EObject source = change.eContainer();
+			final int sourceIndex = getIndex(change);
 
 			if (source == target && sourceIndex == targetIndex) {
 				// nothing has to be done
 			} else if (before(source, sourceIndex, target, targetIndex)) {
-				List<Change> difference = getDifference(source,
-						sourceIndex + 1, target, targetIndex);
+				final List<Change> difference = getDifference(source,
+					sourceIndex + 1, target, targetIndex);
 				difference.removeAll(changes);
 				if (DependencyChecker.depends(difference, Collections
-						.singletonList(change))) {
+					.singletonList(change))) {
 					return false;
 				}
 			} else {
-				List<Change> difference = getDifference(target, targetIndex,
-						source, sourceIndex - 1);
+				final List<Change> difference = getDifference(target, targetIndex,
+					source, sourceIndex - 1);
 				difference.removeAll(changes);
 				if (DependencyChecker.depends(change, difference)) {
 					return false;
@@ -91,16 +90,16 @@ public class MoveChecker {
 	 * Checks whether a change or release is a valid target for a set of changes
 	 */
 	private static boolean allowedTarget(List<Change> changes, EObject target) {
-		EObject box = getBox(target);
+		final EObject box = getBox(target);
 		if (box != null) {
-			for (Change change : changes) {
+			for (final Change change : changes) {
 				if (box != getBox(change.eContainer())) {
 					return false;
 				}
 			}
 			return true;
 		}
-		for (Change change : changes) {
+		for (final Change change : changes) {
 			if (getBox(change.eContainer()) != null) {
 				return false;
 			}
@@ -114,7 +113,7 @@ public class MoveChecker {
 	private static EObject getBox(EObject element) {
 		while (element != null) {
 			if (element instanceof OperationChange
-					|| element instanceof MigrationChange) {
+				|| element instanceof MigrationChange) {
 				return element;
 			}
 			element = element.eContainer();
@@ -127,34 +126,33 @@ public class MoveChecker {
 	 * change. The source is denoted by a parent and an index, and the target is
 	 * denoted by a parent and an index.
 	 */
-	@SuppressWarnings("unchecked")
 	private static List<Change> getDifference(EObject source, int sourceIndex,
-			EObject target, int targetIndex) {
-		List<Change> difference = new ArrayList<Change>();
+		EObject target, int targetIndex) {
+		final List<Change> difference = new ArrayList<Change>();
 		if (source == target) {
-			List elements = getChildren(source);
+			final List elements = getChildren(source);
 			targetIndex = Math.min(targetIndex, elements.size() - 1);
 
-			List<Change> changes = getChanges(elements.subList(sourceIndex,
-					targetIndex + 1));
+			final List<Change> changes = getChanges(elements.subList(sourceIndex,
+				targetIndex + 1));
 			difference.addAll(changes);
 		} else if (contains(source, target)) {
-			List elements = getChildren(target);
+			final List elements = getChildren(target);
 			targetIndex = Math.min(targetIndex, elements.size() - 1);
 
-			List<Change> changes = getChanges(elements.subList(0, targetIndex + 1));
+			final List<Change> changes = getChanges(elements.subList(0, targetIndex + 1));
 			difference.addAll(changes);
 			difference.addAll(getDifference(source, sourceIndex, target
-					.eContainer(), getIndex(target)));
+				.eContainer(), getIndex(target)));
 		} else {
-			List elements = getChildren(source);
+			final List elements = getChildren(source);
 
-			List<Change> changes = getChanges(elements.subList(sourceIndex,
-					elements.size()));
+			final List<Change> changes = getChanges(elements.subList(sourceIndex,
+				elements.size()));
 			difference.addAll(changes);
 			difference.addAll(getDifference(source.eContainer(),
-					(source instanceof Delete) ? getIndex(source)
-							: getIndex(source) + 1, target, targetIndex));
+				source instanceof Delete ? getIndex(source)
+					: getIndex(source) + 1, target, targetIndex));
 		}
 		return difference;
 	}
@@ -162,14 +160,13 @@ public class MoveChecker {
 	/**
 	 * Extracts the changes from a list of elements
 	 */
-	@SuppressWarnings("unchecked")
 	private static List<Change> getChanges(List elements) {
-		List<Change> changes = new ArrayList<Change>();
-		for (Object element : elements) {
+		final List<Change> changes = new ArrayList<Change>();
+		for (final Object element : elements) {
 			if (element instanceof Change) {
 				changes.add((Change) element);
 			} else if (element instanceof Release) {
-				Release release = (Release) element;
+				final Release release = (Release) element;
 				changes.addAll(release.getChanges());
 			}
 		}
@@ -179,20 +176,18 @@ public class MoveChecker {
 	/**
 	 * Get the children of an element
 	 */
-	@SuppressWarnings("unchecked")
 	private static List getChildren(EObject element) {
-		EReference reference = getChangeReference(element);
-		List elements = (List) element.eGet(reference);
+		final EReference reference = getChangeReference(element);
+		final List elements = (List) element.eGet(reference);
 		return elements;
 	}
 
 	/**
 	 * Get the index of an element within its container element
 	 */
-	@SuppressWarnings("unchecked")
 	private static int getIndex(EObject element) {
 		return ((List) element.eContainer().eGet(element.eContainmentFeature()))
-				.indexOf(element);
+			.indexOf(element);
 	}
 
 	/**
@@ -202,9 +197,9 @@ public class MoveChecker {
 		if (element instanceof History) {
 			return HistoryPackage.eINSTANCE.getHistory_Releases();
 		}
-		for (EReference reference : element.eClass().getEAllContainments()) {
+		for (final EReference reference : element.eClass().getEAllContainments()) {
 			if (HistoryPackage.eINSTANCE.getChange().isSuperTypeOf(
-					reference.getEReferenceType())) {
+				reference.getEReferenceType())) {
 				return reference;
 			}
 		}
@@ -217,15 +212,15 @@ public class MoveChecker {
 	 * a parent and an index.
 	 */
 	private static boolean before(EObject source, int sourceIndex,
-			EObject target, int targetIndex) {
+		EObject target, int targetIndex) {
 		if (source == target) {
 			return sourceIndex < targetIndex;
 		} else if (contains(source, target)) {
 			return before(source, sourceIndex, target.eContainer(),
-					getIndex(target));
+				getIndex(target));
 		} else {
 			return before(source.eContainer(), getIndex(source), target,
-					targetIndex);
+				targetIndex);
 		}
 	}
 

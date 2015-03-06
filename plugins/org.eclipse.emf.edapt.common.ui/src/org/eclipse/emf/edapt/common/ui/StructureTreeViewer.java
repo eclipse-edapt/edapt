@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -28,7 +28,7 @@ import org.eclipse.swt.widgets.Composite;
 
 /**
  * A tree viewer to display a metamodel using the Ecore default item providers
- * 
+ *
  * @author markus.herrmannsdoer
  *
  */
@@ -36,27 +36,28 @@ public class StructureTreeViewer extends TreeViewer {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param parent Parent composite
 	 * @param style Viewer style
-	 * @param adapterFactory 
+	 * @param adapterFactory
 	 */
-	public StructureTreeViewer(Composite parent, int style, AdapterFactory adapterFactory) {	
+	public StructureTreeViewer(Composite parent, int style, AdapterFactory adapterFactory) {
 		super(parent, style | SWT.BORDER | SWT.MULTI);
 
 		setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
 		final AdapterFactoryLabelProvider labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
 		setLabelProvider(labelProvider);
-		
+
 		setSorter(new ViewerSorter() {
 			@Override
 			public int category(Object element) {
-				if(element instanceof EObject) {
-					EObject eObject = (EObject) element;
-						if(eObject.eContainer() != null) {
-						EReference containmentFeature = eObject.eContainmentFeature();
-						EList<EStructuralFeature> features = eObject.eContainer().eClass().getEAllStructuralFeatures();
-						int indexOf = features.indexOf(containmentFeature);
+				if (element instanceof EObject) {
+					final EObject eObject = (EObject) element;
+					if (eObject.eContainer() != null) {
+						final EReference containmentFeature = eObject.eContainmentFeature();
+						final EList<EStructuralFeature> features = eObject.eContainer().eClass()
+							.getEAllStructuralFeatures();
+						final int indexOf = features.indexOf(containmentFeature);
 						return indexOf;
 					}
 				}
@@ -67,7 +68,7 @@ public class StructureTreeViewer extends TreeViewer {
 		addFilter(new ViewerFilter() {
 			@Override
 			public boolean select(Viewer viewer, Object parentElement,
-					Object element) {
+				Object element) {
 				if (element instanceof EGenericType) {
 					return false;
 				}

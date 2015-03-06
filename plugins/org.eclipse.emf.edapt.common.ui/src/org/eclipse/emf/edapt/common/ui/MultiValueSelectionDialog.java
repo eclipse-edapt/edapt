@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -37,7 +37,7 @@ import org.eclipse.ui.dialogs.SelectionStatusDialog;
 
 /**
  * Dialog to select multiple values.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -53,13 +53,11 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	/**
 	 * Root elements of area in which values can be found
 	 */
-	@SuppressWarnings("unchecked")
 	private final Collection valueArea;
 
 	/**
 	 * Current value that is selected
 	 */
-	@SuppressWarnings("unchecked")
 	private final List values;
 
 	/**
@@ -82,8 +80,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	public MultiValueSelectionDialog(Shell parent, Image image, String title,
-			List values, Collection valueArea,
-			AdapterFactoryLabelProvider labelProvider, IValueValidator validator) {
+		List values, Collection valueArea,
+		AdapterFactoryLabelProvider labelProvider, IValueValidator validator) {
 		super(parent);
 
 		setImage(image);
@@ -107,8 +105,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite contents = (Composite) super.createDialogArea(parent);
-		GridLayout layout = (GridLayout) contents.getLayout();
+		final Composite contents = (Composite) super.createDialogArea(parent);
+		final GridLayout layout = (GridLayout) contents.getLayout();
 		layout.numColumns = 3;
 
 		createValueSelectionComposite(contents);
@@ -123,10 +121,11 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	private void createValueSelectionComposite(Composite contents) {
 		composite = new ValueSelectionComposite(
-				contents, labelProvider, values, true, valueArea, validator);
+			contents, labelProvider, values, true, valueArea, validator);
 
 		composite.addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				if (composite.validSelection()) {
 					addSelectedValues();
@@ -140,10 +139,10 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	private void createValueList(Composite contents) {
 		valuesViewer = new TableViewer(contents);
-		GridData data = new GridData(GridData.FILL_VERTICAL);
+		final GridData data = new GridData(GridData.FILL_VERTICAL);
 		data.widthHint = 200;
 		valuesViewer.getTable().setLayoutData(
-				data);
+			data);
 
 		valuesViewer.setLabelProvider(labelProvider);
 		valuesViewer.setContentProvider(ArrayContentProvider.getInstance());
@@ -151,6 +150,7 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 
 		valuesViewer.addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				removeSelectedValues();
 			}
@@ -161,16 +161,16 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 * Create the buttons to add and remove values.
 	 */
 	private void createButtons(Composite contents) {
-		Composite buttonComposite = new Composite(contents, SWT.None);
-		GridLayout layout = new GridLayout();
+		final Composite buttonComposite = new Composite(contents, SWT.None);
+		final GridLayout layout = new GridLayout();
 		layout.marginHeight = layout.marginWidth = 0;
 		buttonComposite.setLayout(layout);
-		GridData data = new GridData(GridData.FILL_VERTICAL);
+		final GridData data = new GridData(GridData.FILL_VERTICAL);
 		data.widthHint = 50;
 		buttonComposite.setLayoutData(data);
 
-		Button addButton = new Button(buttonComposite, SWT.None);
-		addButton.setText("add");
+		final Button addButton = new Button(buttonComposite, SWT.None);
+		addButton.setText("add"); //$NON-NLS-1$
 		addButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		addButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -179,8 +179,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 			}
 		});
 
-		Button removeButton = new Button(buttonComposite, SWT.None);
-		removeButton.setText("remove");
+		final Button removeButton = new Button(buttonComposite, SWT.None);
+		removeButton.setText("remove"); //$NON-NLS-1$
 		removeButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		removeButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -191,8 +191,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 
 		new Label(buttonComposite, SWT.None);
 
-		Button upButton = new Button(buttonComposite, SWT.None);
-		upButton.setText("up");
+		final Button upButton = new Button(buttonComposite, SWT.None);
+		upButton.setText("up"); //$NON-NLS-1$
 		upButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		upButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -201,8 +201,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 			}
 		});
 
-		Button downButton = new Button(buttonComposite, SWT.None);
-		downButton.setText("down");
+		final Button downButton = new Button(buttonComposite, SWT.None);
+		downButton.setText("down"); //$NON-NLS-1$
 		downButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		downButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -213,8 +213,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 
 		new Label(buttonComposite, SWT.None);
 
-		Button clearButton = new Button(buttonComposite, SWT.None);
-		clearButton.setText("clear");
+		final Button clearButton = new Button(buttonComposite, SWT.None);
+		clearButton.setText("clear"); //$NON-NLS-1$
 		clearButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		clearButton.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -237,14 +237,14 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void downSelectedValues() {
-		List<Object> selectedValues = SelectionUtils
-				.getSelectedElements(valuesViewer.getSelection());
+		final List<Object> selectedValues = SelectionUtils
+			.getSelectedElements(valuesViewer.getSelection());
 		sortSelectedValues(selectedValues);
 		Collections.reverse(selectedValues);
-		for (Object element : selectedValues) {
-			int index = values.indexOf(element);
+		for (final Object element : selectedValues) {
+			final int index = values.indexOf(element);
 			if (index < values.size() - 1
-					&& !selectedValues.contains(values.get(index + 1))) {
+				&& !selectedValues.contains(values.get(index + 1))) {
 				values.remove(element);
 				values.add(index + 1, element);
 			}
@@ -257,11 +257,11 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void upSelectedValues() {
-		List<Object> selectedValues = SelectionUtils
-				.getSelectedElements(valuesViewer.getSelection());
+		final List<Object> selectedValues = SelectionUtils
+			.getSelectedElements(valuesViewer.getSelection());
 		sortSelectedValues(selectedValues);
-		for (Object element : selectedValues) {
-			int index = values.indexOf(element);
+		for (final Object element : selectedValues) {
+			final int index = values.indexOf(element);
 			if (index > 0 && !selectedValues.contains(values.get(index - 1))) {
 				values.remove(element);
 				values.add(index - 1, element);
@@ -277,6 +277,7 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	private void sortSelectedValues(List<Object> selectedValues) {
 		Collections.sort(selectedValues, new Comparator<Object>() {
 
+			@Override
 			public int compare(Object o1, Object o2) {
 				return values.indexOf(o1) - values.indexOf(o2);
 			}
@@ -288,8 +289,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void removeSelectedValues() {
-		List<Object> selectedValues = SelectionUtils
-				.getSelectedElements(valuesViewer.getSelection());
+		final List<Object> selectedValues = SelectionUtils
+			.getSelectedElements(valuesViewer.getSelection());
 		values.removeAll(selectedValues);
 		valuesViewer.refresh();
 	}
@@ -299,8 +300,8 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@SuppressWarnings("unchecked")
 	protected void addSelectedValues() {
-		List<Object> selectedValues = composite.getSelectedElements();
-		for(Object element : selectedValues) {
+		final List<Object> selectedValues = composite.getSelectedElements();
+		for (final Object element : selectedValues) {
 			if (!values.contains(element)) {
 				values.add(element);
 			}

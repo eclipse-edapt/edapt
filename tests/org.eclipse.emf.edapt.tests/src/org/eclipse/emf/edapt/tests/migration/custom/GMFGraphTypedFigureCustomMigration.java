@@ -9,12 +9,12 @@ public class GMFGraphTypedFigureCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel) {
-		for(Instance fa : model.getAllInstances("gmfgraph.FigureAccessor")) {
-			Instance tf = fa.getLink("typedFigure");
-			if(tf == null) {
-				tf = model.newInstance("gmfgraph.CustomFigure");
-				tf.set("qualifiedClassName", "org.eclipse.draw2d.IFigure");
-				fa.set("typedFigure", tf);
+		for (final Instance fa : model.getAllInstances("gmfgraph.FigureAccessor")) { //$NON-NLS-1$
+			Instance tf = fa.getLink("typedFigure"); //$NON-NLS-1$
+			if (tf == null) {
+				tf = model.newInstance("gmfgraph.CustomFigure"); //$NON-NLS-1$
+				tf.set("qualifiedClassName", "org.eclipse.draw2d.IFigure"); //$NON-NLS-1$ //$NON-NLS-2$
+				fa.set("typedFigure", tf); //$NON-NLS-1$
 			}
 		}
 	}

@@ -10,7 +10,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,19 +36,19 @@ public class RemoveSuperfluousSuperType extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "superType", description = "The super type to be removed must be subsumed by one of the other super types")
 	public boolean checkSuperTypeSubsumed(EClass superType) {
-		for (EClass s : eClass.getESuperTypes()) {
+		for (final EClass s : eClass.getESuperTypes()) {
 			if (s.getEAllSuperTypes().contains(superType)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	
+
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
-		for(EClass superType : eClass.getESuperTypes()) {
-			if(checkSuperTypeSubsumed(superType)) {
+		for (final EClass superType : eClass.getESuperTypes()) {
+			if (checkSuperTypeSubsumed(superType)) {
 				this.superType = superType;
 				break;
 			}

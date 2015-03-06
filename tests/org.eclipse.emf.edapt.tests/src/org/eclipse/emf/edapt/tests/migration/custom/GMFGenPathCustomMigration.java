@@ -10,13 +10,13 @@ public class GMFGenPathCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
-		for (Instance container : model
-				.getAllInstances("gmfgen.GenAuditContainer")) {
+		throws MigrationException {
+		for (final Instance container : model
+			.getAllInstances("gmfgen.GenAuditContainer")) { //$NON-NLS-1$
 			Instance current = container;
-			while (current.get("parentContainer") != null) {
-				current = current.getLink("parentContainer");
-				container.add("path", 0, current);
+			while (current.get("parentContainer") != null) { //$NON-NLS-1$
+				current = current.getLink("parentContainer"); //$NON-NLS-1$
+				container.add("path", 0, current); //$NON-NLS-1$
 			}
 		}
 		model.checkConformance();

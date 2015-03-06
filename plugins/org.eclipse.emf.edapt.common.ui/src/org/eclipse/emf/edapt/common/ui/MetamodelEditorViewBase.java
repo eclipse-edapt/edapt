@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -20,18 +20,17 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
-
 /**
  * Base class for a view that is linked to the default Ecore Editor
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public abstract class MetamodelEditorViewBase extends ViewPart implements
-		ISelectionChangedListener {
-	
+	ISelectionChangedListener {
+
 	/** Ecore editor to which the browser is currently linked. */
 	private EcoreEditor editor;
 
@@ -63,7 +62,7 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 	public final void createPartControl(Composite parent) {
 		createActions();
 		createContents(parent);
-		
+
 		setEditorPart(getSite().getPage().getActiveEditor());
 		getSite().getPage().addPartListener(partListener);
 	}
@@ -77,41 +76,41 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 
 	/**
 	 * Create the contents of that view
-	 * 
+	 *
 	 * @param parent
 	 */
 	protected abstract void createContents(Composite parent);
-	
+
 	/**
 	 * Helper method to set editor part (checks whether editor is of the needed type)
-	 * 
+	 *
 	 * @param part Part
 	 */
 	private void setEditorPart(IWorkbenchPart part) {
-		if(part instanceof EcoreEditor) {
-			EcoreEditor ecoreEditor = (EcoreEditor) part;
+		if (part instanceof EcoreEditor) {
+			final EcoreEditor ecoreEditor = (EcoreEditor) part;
 			// not used as reflective editor
-			if(EcoreUIUtils.isMetamodelEditor(ecoreEditor)) {
+			if (EcoreUIUtils.isMetamodelEditor(ecoreEditor)) {
 				setEditor(ecoreEditor);
 			}
 		}
 	}
-	
+
 	/**
 	 * Helper method to set editor
 	 */
 	private void setEditor(EcoreEditor newEditor) {
 
-		if (this.editor == newEditor) {
+		if (editor == newEditor) {
 			return;
 		}
-		
+
 		uninstallSelectionChangedListener();
-		
-		EcoreEditor oldEditor = this.editor;
-		this.editor = newEditor;
+
+		final EcoreEditor oldEditor = editor;
+		editor = newEditor;
 		editorChanged(oldEditor);
-		
+
 		installSelectionChangedListener();
 	}
 
@@ -119,8 +118,8 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 	 * Start to listen to the selection of the current editor
 	 */
 	protected void installSelectionChangedListener() {
-		if (this.editor != null) {
-			this.editor.addSelectionChangedListener(this);
+		if (editor != null) {
+			editor.addSelectionChangedListener(this);
 		}
 	}
 
@@ -128,14 +127,14 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 	 * Stop to listen to the selection of the current editor
 	 */
 	protected void uninstallSelectionChangedListener() {
-		if (this.editor != null) {
-			this.editor.removeSelectionChangedListener(this);
+		if (editor != null) {
+			editor.removeSelectionChangedListener(this);
 		}
 	}
 
 	/**
 	 * Notify when the Ecore editor has changed
-	 * 
+	 *
 	 * @param oldEditor
 	 */
 	protected void editorChanged(EcoreEditor oldEditor) {
@@ -145,6 +144,7 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		selectionChanged((IStructuredSelection) event.getSelection());
 	}
@@ -166,7 +166,7 @@ public abstract class MetamodelEditorViewBase extends ViewPart implements
 
 	/**
 	 * Getter for editor
-	 * 
+	 *
 	 * @return Ecore editor
 	 */
 	public EcoreEditor getEditor() {

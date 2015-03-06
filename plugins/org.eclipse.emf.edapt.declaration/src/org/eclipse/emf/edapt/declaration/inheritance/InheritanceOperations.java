@@ -5,17 +5,18 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: DC7BEF9ADBA02561523EC50C0D65DA0F
  */
 @EdaptLibrary(label = "Inheritance Operations", description = "Inheritance " +
-		"operations move features along the inheritance hierarchy.")
+	"operations move features along the inheritance hierarchy.")
 public class InheritanceOperations extends LibraryImplementation {
 
 	/** Constructor. */
+	@SuppressWarnings("deprecation")
 	public InheritanceOperations() {
 		addOperation(ExtractSubClass.class);
 		addOperation(ExtractSuperClass.class);

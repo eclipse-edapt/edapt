@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -20,35 +20,35 @@ import org.eclipse.ui.PlatformUI;
 /**
  * Base class for views where the listening to the editor's selection can be
  * turned off
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public abstract class SyncedMetamodelEditorViewBase extends
-		MetamodelEditorViewBase {
+	MetamodelEditorViewBase {
 
 	/**
 	 * Whether the view gets notified about changed of the editor's selection
 	 */
 	private boolean listening = true;
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected void createActions() {
-		Action syncAction = new Action("Sync", IAction.AS_CHECK_BOX) {
+		final Action syncAction = new Action("Sync", IAction.AS_CHECK_BOX) { //$NON-NLS-1$
 
 			{
 				setChecked(true);
 				setImageDescriptor(PlatformUI.getWorkbench()
-						.getSharedImages().getImageDescriptor(
-								ISharedImages.IMG_ELCL_SYNCED));
+					.getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_ELCL_SYNCED));
 				setDisabledImageDescriptor(PlatformUI.getWorkbench()
-						.getSharedImages().getImageDescriptor(
-								ISharedImages.IMG_ELCL_SYNCED_DISABLED));
+					.getSharedImages().getImageDescriptor(
+						ISharedImages.IMG_ELCL_SYNCED_DISABLED));
 			}
 
 			@Override
@@ -58,7 +58,7 @@ public abstract class SyncedMetamodelEditorViewBase extends
 		};
 
 		getViewSite().getActionBars().getToolBarManager().add(
-				syncAction);
+			syncAction);
 	}
 
 	/**

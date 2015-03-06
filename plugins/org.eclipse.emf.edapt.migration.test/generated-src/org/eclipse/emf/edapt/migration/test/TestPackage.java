@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.test;
 
@@ -21,12 +21,13 @@ import org.eclipse.emf.ecore.EReference;
  * The <b>Package</b> for the model.
  * It contains accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.migration.test.TestFactory
  * @model kind="package"
  * @generated
@@ -36,38 +37,44 @@ public interface TestPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNAME = "test";
+	String eNAME = "test"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/test/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/test/0.3"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_PREFIX = "test";
+	String eNS_PREFIX = "test"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	TestPackage eINSTANCE = org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl
+	 * <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl
 	 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getNamedElement()
 	 * @generated
@@ -78,6 +85,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -87,15 +95,18 @@ public interface TestPackage extends EPackage {
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl <em>Suite Definition</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl
+	 * <em>Suite Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl
 	 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getTestSuiteDefinition()
 	 * @generated
@@ -106,6 +117,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -115,6 +127,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Cases</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -124,6 +137,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>History</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -133,15 +147,18 @@ public interface TestPackage extends EPackage {
 	 * The number of structural features of the '<em>Suite Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int TEST_SUITE_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl <em>Case Definition</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl
+	 * <em>Case Definition</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl
 	 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getTestCaseDefinition()
 	 * @generated
@@ -152,6 +169,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -161,6 +179,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Model</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -170,6 +189,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Expected Model</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -179,6 +199,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Suite</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -188,6 +209,7 @@ public interface TestPackage extends EPackage {
 	 * The feature id for the '<em><b>Expected Differences</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -197,16 +219,18 @@ public interface TestPackage extends EPackage {
 	 * The number of structural features of the '<em>Case Definition</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int TEST_CASE_DEFINITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition <em>Suite Definition</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition
+	 * <em>Suite Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Suite Definition</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestSuiteDefinition
 	 * @generated
@@ -214,9 +238,11 @@ public interface TestPackage extends EPackage {
 	EClass getTestSuiteDefinition();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getCases <em>Cases</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getCases <em>Cases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Cases</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getCases()
 	 * @see #getTestSuiteDefinition()
@@ -225,9 +251,11 @@ public interface TestPackage extends EPackage {
 	EReference getTestSuiteDefinition_Cases();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory <em>History</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory <em>History</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>History</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestSuiteDefinition#getHistory()
 	 * @see #getTestSuiteDefinition()
@@ -236,9 +264,11 @@ public interface TestPackage extends EPackage {
 	EAttribute getTestSuiteDefinition_History();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition <em>Case Definition</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition
+	 * <em>Case Definition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Case Definition</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition
 	 * @generated
@@ -246,9 +276,11 @@ public interface TestPackage extends EPackage {
 	EClass getTestCaseDefinition();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getModel <em>Model</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Model</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getModel()
 	 * @see #getTestCaseDefinition()
@@ -257,9 +289,11 @@ public interface TestPackage extends EPackage {
 	EAttribute getTestCaseDefinition_Model();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedModel <em>Expected Model</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedModel <em>Expected Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Expected Model</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedModel()
 	 * @see #getTestCaseDefinition()
@@ -268,9 +302,11 @@ public interface TestPackage extends EPackage {
 	EAttribute getTestCaseDefinition_ExpectedModel();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite <em>Suite</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite <em>Suite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Suite</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getSuite()
 	 * @see #getTestCaseDefinition()
@@ -279,9 +315,12 @@ public interface TestPackage extends EPackage {
 	EReference getTestCaseDefinition_Suite();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedDifferences <em>Expected Differences</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedDifferences
+	 * <em>Expected Differences</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Expected Differences</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.TestCaseDefinition#getExpectedDifferences()
 	 * @see #getTestCaseDefinition()
@@ -290,9 +329,11 @@ public interface TestPackage extends EPackage {
 	EAttribute getTestCaseDefinition_ExpectedDifferences();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.NamedElement <em>Named Element</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.migration.test.NamedElement
+	 * <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Named Element</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.NamedElement
 	 * @generated
@@ -300,9 +341,11 @@ public interface TestPackage extends EPackage {
 	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.NamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.migration.test.NamedElement#getName
+	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.edapt.migration.test.NamedElement#getName()
 	 * @see #getNamedElement()
@@ -314,6 +357,7 @@ public interface TestPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -323,19 +367,22 @@ public interface TestPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * Defines literals for the meta objects that represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl <em>Suite Definition</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl
+		 * <em>Suite Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.migration.test.impl.TestSuiteDefinitionImpl
 		 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getTestSuiteDefinition()
 		 * @generated
@@ -346,6 +393,7 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Cases</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference TEST_SUITE_DEFINITION__CASES = eINSTANCE.getTestSuiteDefinition_Cases();
@@ -354,14 +402,17 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>History</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_SUITE_DEFINITION__HISTORY = eINSTANCE.getTestSuiteDefinition_History();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl <em>Case Definition</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl
+		 * <em>Case Definition</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.migration.test.impl.TestCaseDefinitionImpl
 		 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getTestCaseDefinition()
 		 * @generated
@@ -372,6 +423,7 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Model</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_CASE_DEFINITION__MODEL = eINSTANCE.getTestCaseDefinition_Model();
@@ -380,6 +432,7 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Expected Model</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_CASE_DEFINITION__EXPECTED_MODEL = eINSTANCE.getTestCaseDefinition_ExpectedModel();
@@ -388,6 +441,7 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Suite</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference TEST_CASE_DEFINITION__SUITE = eINSTANCE.getTestCaseDefinition_Suite();
@@ -396,14 +450,17 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Expected Differences</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute TEST_CASE_DEFINITION__EXPECTED_DIFFERENCES = eINSTANCE.getTestCaseDefinition_ExpectedDifferences();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl
+		 * <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.migration.test.impl.NamedElementImpl
 		 * @see org.eclipse.emf.edapt.migration.test.impl.TestPackageImpl#getNamedElement()
 		 * @generated
@@ -414,10 +471,11 @@ public interface TestPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 	}
 
-} //TestPackage
+} // TestPackage

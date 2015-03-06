@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 
 /**
  * Command to a attach a migration to a number of changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +44,7 @@ public class AttachMigrationCommand extends ChangeCommand {
 	/** Constructor */
 	public AttachMigrationCommand(List<MigrateableChange> changes, String code) {
 		super(changes.get(0).eContainer());
-		this.release = (Release) changes.get(0).eContainer();
+		release = (Release) changes.get(0).eContainer();
 		this.changes = changes;
 		this.code = code;
 	}
@@ -55,7 +55,7 @@ public class AttachMigrationCommand extends ChangeCommand {
 		migrationChange = HistoryFactory.eINSTANCE.createMigrationChange();
 		migrationChange.setMigration(code);
 		release.getChanges().add(release.getChanges().indexOf(changes.get(0)),
-				migrationChange);
+			migrationChange);
 		migrationChange.getChanges().addAll(changes);
 	}
 

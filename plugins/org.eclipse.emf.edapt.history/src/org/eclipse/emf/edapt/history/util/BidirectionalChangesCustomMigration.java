@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
 
 /**
  * Custom migration to add bidirectionality to changes.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,13 +28,13 @@ import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
 public class BidirectionalChangesCustomMigration extends CustomMigration {
 
 	/** List of root elements of the reconstructed metamodel. */
-	private List<Instance> root = new ArrayList<Instance>();
+	private final List<Instance> root = new ArrayList<Instance>();
 
 	/** Mapping from the current to the reconstructed metamodel. */
-	private Map<Instance, Instance> forwardMapping = new HashMap<Instance, Instance>();
+	private final Map<Instance, Instance> forwardMapping = new HashMap<Instance, Instance>();
 
 	/** Mapping from the reconstructed to the current metamodel. */
-	private Map<Instance, Instance> backwardMapping = new HashMap<Instance, Instance>();
+	private final Map<Instance, Instance> backwardMapping = new HashMap<Instance, Instance>();
 
 	/** Access to the model. */
 	private Model model;
@@ -42,75 +42,75 @@ public class BidirectionalChangesCustomMigration extends CustomMigration {
 	/** Visit a change during reconstruction. */
 	private void visitChange(Instance change) throws MigrationException {
 		// CompositeChange
-		if (change.instanceOf("CompositeChange")) {
-			List<Instance> children = change.getLinks("changes");
-			for (Instance child : children) {
+		if (change.instanceOf("CompositeChange")) { //$NON-NLS-1$
+			final List<Instance> children = change.getLinks("changes"); //$NON-NLS-1$
+			for (final Instance child : children) {
 				visitChange(child);
 			}
 		}
 		// MigrationChange
-		else if (change.instanceOf("MigrationChange")) {
-			List<Instance> children = change.getLinks("changes");
-			for (Instance child : children) {
+		else if (change.instanceOf("MigrationChange")) { //$NON-NLS-1$
+			final List<Instance> children = change.getLinks("changes"); //$NON-NLS-1$
+			for (final Instance child : children) {
 				visitChange(child);
 			}
 		}
 		// ContentChange
-		else if (change.instanceOf("ContentChange")) {
+		else if (change.instanceOf("ContentChange")) { //$NON-NLS-1$
 			visitContentChange(change);
 		}
 		// ValueChange
-		else if (change.instanceOf("ValueChange")) {
+		else if (change.instanceOf("ValueChange")) { //$NON-NLS-1$
 			visitValueChange(change);
 		}
 		// NoChange
-		else if (change.instanceOf("NoChange")) {
+		else if (change.instanceOf("NoChange")) { //$NON-NLS-1$
 			// ignore
 		} else {
-			throw new MigrationException("Unknown change: "
-					+ change.getEClass().getName(), null);
+			throw new MigrationException("Unknown change: " //$NON-NLS-1$
+				+ change.getEClass().getName(), null);
 		}
 	}
 
 	/** Visit a value change during reconstruction. */
 	private void visitValueChange(Instance change) {
-		if (change.instanceOf("Set")) {
+		if (change.instanceOf("Set")) { //$NON-NLS-1$
 			visitSet(change);
-		} else if (change.instanceOf("Add")) {
+		} else if (change.instanceOf("Add")) { //$NON-NLS-1$
 			visitAdd(change);
-		} else if (change.instanceOf("Remove")) {
+		} else if (change.instanceOf("Remove")) { //$NON-NLS-1$
 			visitRemove(change);
 		}
 	}
 
 	/** Visit a content change during reconstruction. */
 	private void visitContentChange(Instance change) {
-		if (change.instanceOf("Create")) {
+		if (change.instanceOf("Create")) { //$NON-NLS-1$
 			visitCreate(change);
-		} else if (change.instanceOf("Move")) {
+		} else if (change.instanceOf("Move")) { //$NON-NLS-1$
 			visitMove(change);
-		} else if (change.instanceOf("Delete")) {
+		} else if (change.instanceOf("Delete")) { //$NON-NLS-1$
 			visitDelete(change);
 		}
 	}
 
 	/** Visit a create during reconstruction. */
 	private void visitCreate(Instance change) {
-		Model model = change.getType().getModel();
-		Instance element = change.getLink("element");
-		Instance reconstructed = model.newInstance(element.getEClass());
+		final Model model = change.getType().getModel();
+		final Instance element = change.getLink("element"); //$NON-NLS-1$
+		final Instance reconstructed = model.newInstance(element.getEClass());
 		map(element, reconstructed);
-		Instance target = change.get("target");
+		final Instance target = change.get("target"); //$NON-NLS-1$
 		if (target != null) {
-			String referenceName = change.<String> get("referenceName");
-			EStructuralFeature reference = target.getEClass()
-					.getEStructuralFeature(referenceName);
+			final String referenceName = change.<String> get("referenceName"); //$NON-NLS-1$
+			final EStructuralFeature reference = target.getEClass()
+				.getEStructuralFeature(referenceName);
 			getForward(target).add(reference, reconstructed);
 		} else {
 			root.add(reconstructed);
 		}
-		List<Instance> children = change.getLinks("changes");
-		for (Instance child : children) {
+		final List<Instance> children = change.getLinks("changes"); //$NON-NLS-1$
+		for (final Instance child : children) {
 			visitValueChange(child);
 		}
 	}
@@ -118,15 +118,15 @@ public class BidirectionalChangesCustomMigration extends CustomMigration {
 	/** Visit a move during reconstruction. */
 	private void visitMove(Instance change) {
 		// make bidirectional
-		Instance element = change.get("element");
-		change.set("source", getBackward(getForward(element).getContainer()));
+		final Instance element = change.get("element"); //$NON-NLS-1$
+		change.set("source", getBackward(getForward(element).getContainer())); //$NON-NLS-1$
 		// apply change
-		Instance target = change.get("target");
-		String referenceName = change.<String> get("referenceName");
-		EStructuralFeature reference = target.getEClass()
-				.getEStructuralFeature(referenceName);
+		final Instance target = change.get("target"); //$NON-NLS-1$
+		final String referenceName = change.<String> get("referenceName"); //$NON-NLS-1$
+		final EStructuralFeature reference = target.getEClass()
+			.getEStructuralFeature(referenceName);
 		getForward(element).getContainer().remove(reference,
-				getForward(element));
+			getForward(element));
 		getForward(target).add(reference, getForward(element));
 	}
 
@@ -144,93 +144,93 @@ public class BidirectionalChangesCustomMigration extends CustomMigration {
 	/** Visit a delete during reconstruction. */
 	private void visitDelete(Instance change) {
 		// make bidirectional
-		Instance element = getForward(change.getLink("element"));
+		final Instance element = getForward(change.getLink("element")); //$NON-NLS-1$
 		addRemoves(element, change);
-		change.set("target", getBackward(element.getContainer()));
-		change.set("referenceName", element.getContainerReference().getName());
+		change.set("target", getBackward(element.getContainer())); //$NON-NLS-1$
+		change.set("referenceName", element.getContainerReference().getName()); //$NON-NLS-1$
 		// apply change
 		model.delete(element);
 	}
 
 	/** Add removes to a delete. */
 	private void addRemoves(Instance element, Instance delete) {
-		for (ReferenceSlot referenceSlot : element.getReferences()) {
-			Instance source = referenceSlot.getInstance();
+		for (final ReferenceSlot referenceSlot : element.getReferences()) {
+			final Instance source = referenceSlot.getInstance();
 			if (contains(source, element) || contains(element, source)) {
 				continue;
 			}
-			Model model = element.getType().getModel();
-			Instance remove = model.newInstance("Remove");
-			remove.set("element", getBackward(source));
-			remove.set("featureName", referenceSlot.getEReference().getName());
-			remove.set("referenceValue", getBackward(element));
-			delete.getLinks("changes").add(remove);
+			final Model model = element.getType().getModel();
+			final Instance remove = model.newInstance("Remove"); //$NON-NLS-1$
+			remove.set("element", getBackward(source)); //$NON-NLS-1$
+			remove.set("featureName", referenceSlot.getEReference().getName()); //$NON-NLS-1$
+			remove.set("referenceValue", getBackward(element)); //$NON-NLS-1$
+			delete.getLinks("changes").add(remove); //$NON-NLS-1$
 		}
-		for (Instance child : element.getContents()) {
+		for (final Instance child : element.getContents()) {
 			addRemoves(child, delete);
 		}
 	}
 
 	/** Visit a set during reconstruction. */
 	private void visitSet(Instance change) {
-		Instance element = change.get("element");
-		String featureName = change.get("featureName");
-		EStructuralFeature feature = element.getEClass().getEStructuralFeature(
-				featureName);
+		final Instance element = change.get("element"); //$NON-NLS-1$
+		final String featureName = change.get("featureName"); //$NON-NLS-1$
+		final EStructuralFeature feature = element.getEClass().getEStructuralFeature(
+			featureName);
 		if (feature instanceof EReference) {
 			// make bidirectional
-			change.set("oldReferenceValue", getBackward(getForward(element)
-					.<Instance> get(feature)));
+			change.set("oldReferenceValue", getBackward(getForward(element) //$NON-NLS-1$
+				.<Instance> get(feature)));
 			// apply change
-			Instance referenceValue = change.getLink("referenceValue");
+			final Instance referenceValue = change.getLink("referenceValue"); //$NON-NLS-1$
 			getForward(element).set(feature, resolveForward(referenceValue));
 		} else {
-			EDataType type = ((EAttribute) feature).getEAttributeType();
+			final EDataType type = ((EAttribute) feature).getEAttributeType();
 			// make bidirectional
-			change.set("oldDataValue", EcoreUtil.convertToString(type,
-					getForward(element).get(feature)));
+			change.set("oldDataValue", EcoreUtil.convertToString(type, //$NON-NLS-1$
+				getForward(element).get(feature)));
 			// apply change
-			String dataValue = change.<String> get("dataValue");
+			final String dataValue = change.<String> get("dataValue"); //$NON-NLS-1$
 			getForward(element).set(feature,
-					EcoreUtil.createFromString(type, dataValue));
+				EcoreUtil.createFromString(type, dataValue));
 		}
 	}
 
 	/** Visit an add during reconstruction. */
 	private void visitAdd(Instance change) {
-		Instance element = change.get("element");
-		String featureName = change.<String> get("featureName");
-		EStructuralFeature feature = element.getEClass().getEStructuralFeature(
-				featureName);
+		final Instance element = change.get("element"); //$NON-NLS-1$
+		final String featureName = change.<String> get("featureName"); //$NON-NLS-1$
+		final EStructuralFeature feature = element.getEClass().getEStructuralFeature(
+			featureName);
 		if (feature instanceof EReference) {
 			// apply change
-			Instance referenceValue = change.getLink("referenceValue");
+			final Instance referenceValue = change.getLink("referenceValue"); //$NON-NLS-1$
 			getForward(element).add(feature, resolveForward(referenceValue));
 		} else {
 			// apply change
-			EDataType type = ((EAttribute) feature).getEAttributeType();
-			String dataValue = change.<String> get("dataValue");
+			final EDataType type = ((EAttribute) feature).getEAttributeType();
+			final String dataValue = change.<String> get("dataValue"); //$NON-NLS-1$
 			getForward(element).add(feature,
-					EcoreUtil.createFromString(type, dataValue));
+				EcoreUtil.createFromString(type, dataValue));
 		}
 	}
 
 	/** Visit a remove during reconstruction. */
 	private void visitRemove(Instance change) {
-		Instance element = change.get("element");
-		String featureName = change.<String> get("featureName");
-		EStructuralFeature feature = element.getEClass().getEStructuralFeature(
-				featureName);
+		final Instance element = change.get("element"); //$NON-NLS-1$
+		final String featureName = change.<String> get("featureName"); //$NON-NLS-1$
+		final EStructuralFeature feature = element.getEClass().getEStructuralFeature(
+			featureName);
 		if (feature instanceof EReference) {
 			// apply change
-			Instance referenceValue = change.getLink("referenceValue");
+			final Instance referenceValue = change.getLink("referenceValue"); //$NON-NLS-1$
 			getForward(element).remove(feature, resolveForward(referenceValue));
 		} else {
 			// apply change
-			EDataType type = ((EAttribute) feature).getEAttributeType();
-			String dataValue = change.<String> get("dataValue");
+			final EDataType type = ((EAttribute) feature).getEAttributeType();
+			final String dataValue = change.<String> get("dataValue"); //$NON-NLS-1$
 			getForward(element).remove(feature,
-					EcoreUtil.createFromString(type, dataValue));
+				EcoreUtil.createFromString(type, dataValue));
 		}
 	}
 
@@ -247,7 +247,7 @@ public class BidirectionalChangesCustomMigration extends CustomMigration {
 	 * reconstructed metamodel.
 	 */
 	private Instance resolveForward(Instance instance) {
-		Instance forward = getForward(instance);
+		final Instance forward = getForward(instance);
 		if (forward == null) {
 			return instance;
 		}
@@ -274,19 +274,19 @@ public class BidirectionalChangesCustomMigration extends CustomMigration {
 	/** {@inheritDoc} */
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 
-		metamodel.setDefaultPackage("history");
+		metamodel.setDefaultPackage("history"); //$NON-NLS-1$
 
-		Instance history = model.getInstances("History").get(0);
-		for (Instance release : history.getLinks("releases")) {
-			for (Instance change : release.getLinks("changes")) {
+		final Instance history = model.getInstances("History").get(0); //$NON-NLS-1$
+		for (final Instance release : history.getLinks("releases")) { //$NON-NLS-1$
+			for (final Instance change : release.getLinks("changes")) { //$NON-NLS-1$
 				visitChange(change);
 			}
 		}
 
 		// cleanup
-		for (Instance r : root) {
+		for (final Instance r : root) {
 			model.delete(r);
 		}
 	}

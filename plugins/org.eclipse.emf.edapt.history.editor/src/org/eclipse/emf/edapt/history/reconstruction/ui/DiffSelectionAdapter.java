@@ -6,21 +6,19 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
-
 // CB Migrate
-//import org.eclipse.emf.compare.diff.metamodel.AttributeChange;
-//import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
-//import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeLeftTarget;
-//import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeRightTarget;
-//import org.eclipse.emf.compare.diff.metamodel.ReferenceChange;
-//import org.eclipse.emf.compare.diff.metamodel.UpdateModelElement;
-//import org.eclipse.emf.compare.diff.metamodel.util.DiffSwitch;
-
+// import org.eclipse.emf.compare.diff.metamodel.AttributeChange;
+// import org.eclipse.emf.compare.diff.metamodel.DiffGroup;
+// import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeLeftTarget;
+// import org.eclipse.emf.compare.diff.metamodel.ModelElementChangeRightTarget;
+// import org.eclipse.emf.compare.diff.metamodel.ReferenceChange;
+// import org.eclipse.emf.compare.diff.metamodel.UpdateModelElement;
+// import org.eclipse.emf.compare.diff.metamodel.util.DiffSwitch;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -33,11 +31,10 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.TreeItem;
 
-
 /**
  * Adapter to listen to the difference viewer that automatically updates
  * source and target metamodel viewer
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -54,7 +51,7 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 	 * Viewer for the properties of the source metamodel (can be null)
 	 */
 	private final PropertiesTableViewer sourcePropertiesViewer;
-	
+
 	/**
 	 * Viewer for the structure of the target metamodel
 	 */
@@ -64,96 +61,98 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 	 * Viewer for the properties of the target metamodel (can be null)
 	 */
 	private final PropertiesTableViewer targetPropertiesViewer;
-	
+
 	/**
 	 * Mapping between elements of source and target metamodel
 	 */
 	private MappingBase mapping;
-	
+
 	/**
 	 * Constructor
 	 */
 	public DiffSelectionAdapter(ModelSash sourceSash, ModelSash targetSash) {
-		this(sourceSash.getStructureViewer(), sourceSash.getPropertiesViewer(), targetSash.getStructureViewer(), targetSash.getPropertiesViewer());
+		this(sourceSash.getStructureViewer(), sourceSash.getPropertiesViewer(), targetSash.getStructureViewer(),
+			targetSash.getPropertiesViewer());
 	}
 
 	/**
 	 * Constructor
 	 */
 	public DiffSelectionAdapter(Viewer sourceStructureViewer,
-			PropertiesTableViewer sourcePropertiesViewer,
-			Viewer targetStructureViewer,
-			PropertiesTableViewer targetPropertiesViewer) {
+		PropertiesTableViewer sourcePropertiesViewer,
+		Viewer targetStructureViewer,
+		PropertiesTableViewer targetPropertiesViewer) {
 		this.sourceStructureViewer = sourceStructureViewer;
 		this.sourcePropertiesViewer = sourcePropertiesViewer;
 		this.targetStructureViewer = targetStructureViewer;
 		this.targetPropertiesViewer = targetPropertiesViewer;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void widgetSelected(SelectionEvent e) {
-		Object data = ((TreeItem) e.item).getData();
-		if(data instanceof EObject) {
-			EObject element = (EObject) data;
-			
-			System.out.println(" Diff Selection adapter widget seelected"); 
-			// CB Migrate, another diffswitch. 
-//			DiffSwitch<Boolean> s = new DiffSwitch<Boolean>() {
-//				
-//				@Override
-//				public Boolean caseDiffGroup(DiffGroup object) {
-//					EObject source = object.getRightParent();
-//					selectSource(source);
-//					if(mapping != null) {
-//						selectTarget(mapping.getTarget(source));
-//					}
-//					return true;
-//				}
-//				
-//				@Override
-//				public Boolean caseModelElementChangeLeftTarget(ModelElementChangeLeftTarget object) {
-//					selectSource(object.getRightParent());
-//					selectTarget(object.getLeftElement());
-//					return true;
-//				}
-//				
-//				@Override
-//				public Boolean caseModelElementChangeRightTarget(ModelElementChangeRightTarget object) {
-//					selectSource(object.getRightElement());
-//					selectTarget(object.getLeftParent());
-//					return true;
-//				}
-//				
-//				@Override
-//				public Boolean caseUpdateModelElement(UpdateModelElement object) {
-//					selectSource(object.getRightElement());
-//					selectTarget(object.getLeftElement());
-//					return true;
-//				}
-//				
-//				@Override
-//				public Boolean caseReferenceChange(ReferenceChange object) {
-//					selectSource(object.getRightElement());
-//					selectTarget(object.getLeftElement());
-//					selectSourceProperty(object.getReference());
-//					selectTargetProperty(object.getReference());
-//					return true;
-//				}
-//				
-//				@Override
-//				public Boolean caseAttributeChange(AttributeChange object) {
-//					selectSource(object.getRightElement());
-//					selectTarget(object.getLeftElement());
-//					selectSourceProperty(object.getAttribute());
-//					selectTargetProperty(object.getAttribute());
-//					return true;
-//				}
-//
-//			};
-//			s.doSwitch(element);
+		final Object data = ((TreeItem) e.item).getData();
+		if (data instanceof EObject) {
+			@SuppressWarnings("unused")
+			final EObject element = (EObject) data;
+
+			System.out.println(" Diff Selection adapter widget seelected"); //$NON-NLS-1$
+			// CB Migrate, another diffswitch.
+			// DiffSwitch<Boolean> s = new DiffSwitch<Boolean>() {
+			//
+			// @Override
+			// public Boolean caseDiffGroup(DiffGroup object) {
+			// EObject source = object.getRightParent();
+			// selectSource(source);
+			// if(mapping != null) {
+			// selectTarget(mapping.getTarget(source));
+			// }
+			// return true;
+			// }
+			//
+			// @Override
+			// public Boolean caseModelElementChangeLeftTarget(ModelElementChangeLeftTarget object) {
+			// selectSource(object.getRightParent());
+			// selectTarget(object.getLeftElement());
+			// return true;
+			// }
+			//
+			// @Override
+			// public Boolean caseModelElementChangeRightTarget(ModelElementChangeRightTarget object) {
+			// selectSource(object.getRightElement());
+			// selectTarget(object.getLeftParent());
+			// return true;
+			// }
+			//
+			// @Override
+			// public Boolean caseUpdateModelElement(UpdateModelElement object) {
+			// selectSource(object.getRightElement());
+			// selectTarget(object.getLeftElement());
+			// return true;
+			// }
+			//
+			// @Override
+			// public Boolean caseReferenceChange(ReferenceChange object) {
+			// selectSource(object.getRightElement());
+			// selectTarget(object.getLeftElement());
+			// selectSourceProperty(object.getReference());
+			// selectTargetProperty(object.getReference());
+			// return true;
+			// }
+			//
+			// @Override
+			// public Boolean caseAttributeChange(AttributeChange object) {
+			// selectSource(object.getRightElement());
+			// selectTarget(object.getLeftElement());
+			// selectSourceProperty(object.getAttribute());
+			// selectTargetProperty(object.getAttribute());
+			// return true;
+			// }
+			//
+			// };
+			// s.doSwitch(element);
 		}
 	}
 
@@ -161,26 +160,30 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 	 * Selects an element in the structure viewer of the source metamodel
 	 */
 	public void selectSource(EObject element) {
-		sourceStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(element), true);
+		sourceStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(
+			element), true);
 	}
 
 	/**
 	 * Selects an element in the structure viewer of the target metamodel
 	 */
 	public void selectTarget(EObject element) {
-		targetStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(element), true);
+		targetStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(
+			element), true);
 	}
 
 	/**
 	 * Selects a feature in the properties viewer of the source metamodel
 	 */
+	@SuppressWarnings("unused")
 	private void selectSourceProperty(EStructuralFeature feature) {
 		selectProperty(sourcePropertiesViewer, feature);
 	}
-	
+
 	/**
 	 * Selects a feature in the properties viewer of the target metamodel
 	 */
+	@SuppressWarnings("unused")
 	private void selectTargetProperty(EStructuralFeature feature) {
 		selectProperty(targetPropertiesViewer, feature);
 	}
@@ -189,7 +192,7 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 	 * Select a feature in a properties viewer
 	 */
 	private void selectProperty(Viewer viewer, EStructuralFeature feature) {
-		if(viewer != null) {
+		if (viewer != null) {
 			viewer.setSelection(new StructuredSelection(feature), true);
 		}
 	}

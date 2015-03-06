@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -32,10 +32,10 @@ public class ReplaceFeature extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "replaceBy", description = "The feature to replace "
-			+ "must be defined in a sub class of the one "
-			+ "with the feature by which it is replaced")
+		+ "must be defined in a sub class of the one "
+		+ "with the feature by which it is replaced")
 	public boolean checkFeaturesInCompatibleClasses(EStructuralFeature replaceBy) {
-		EClass subClass = toReplace.getEContainingClass();
+		final EClass subClass = toReplace.getEContainingClass();
 		return subClass.getEAllStructuralFeatures().contains(replaceBy);
 	}
 
@@ -54,13 +54,13 @@ public class ReplaceFeature extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass subClass = toReplace.getEContainingClass();
+		final EClass subClass = toReplace.getEContainingClass();
 
 		// metamodel adaptation
 		metamodel.delete(toReplace);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(subClass)) {
+		for (final Instance instance : model.getAllInstances(subClass)) {
 			instance.set(replaceBy, instance.unset(toReplace));
 		}
 	}

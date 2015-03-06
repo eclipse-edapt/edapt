@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -28,25 +27,26 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Move} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class MoveItemProvider
 	extends NonDeleteItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public MoveItemProvider(AdapterFactory adapterFactory) {
@@ -57,6 +57,7 @@ public class MoveItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,55 +70,57 @@ public class MoveItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This adds a property descriptor for the Source feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addSourcePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Move_source_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Move_source_feature", "_UI_Move_type"),
-				 HistoryPackage.Literals.MOVE__SOURCE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Move_source_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Move_source_feature", "_UI_Move_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.MOVE__SOURCE,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**
 	 * This returns Move.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Move"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Move")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Move element = (Move) object;
-		String sourceLabel = HistoryUIUtils.getBracedLabel(element.getSource());
-		String targetLabel = HistoryUIUtils.getBracedLabel(element.getTarget());
-		String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
-		
-		return elementLabel + " has been moved from " + sourceLabel + " to "
-				+ targetLabel;
+		final Move element = (Move) object;
+		final String sourceLabel = HistoryUIUtils.getBracedLabel(element.getSource());
+		final String targetLabel = HistoryUIUtils.getBracedLabel(element.getTarget());
+		final String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
+
+		return elementLabel + " has been moved from " + sourceLabel + " to " //$NON-NLS-1$ //$NON-NLS-2$
+			+ targetLabel;
 	}
 
 	/**
@@ -125,6 +128,7 @@ public class MoveItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,6 +142,7 @@ public class MoveItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

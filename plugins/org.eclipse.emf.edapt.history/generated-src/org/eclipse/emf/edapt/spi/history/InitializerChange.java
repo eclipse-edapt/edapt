@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -19,13 +19,14 @@ import org.eclipse.emf.common.util.EList;
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
- * Base class for content changes that perform a number of value changes to initialize a created element or detach a deleted element
+ * Base class for content changes that perform a number of value changes to initialize a created element or detach a
+ * deleted element
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.InitializerChange#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.InitializerChange#getChanges <em>Changes</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,13 +40,14 @@ public interface InitializerChange extends ContentChange {
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.history.ValueChange}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Changes</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Changes</em>' containment reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The value changes that are performed as part of the content change
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Changes</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getInitializerChange_Changes()
 	 * @model containment="true"

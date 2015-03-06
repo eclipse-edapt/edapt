@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,16 +37,18 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 public interface Slot {
 	/**
 	 * Returns the value of the '<em><b>Instance</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots <em>Slots</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots
+	 * <em>Slots</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Instance</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Instance</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The instance to which this slot belongs
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Instance</em>' container reference.
 	 * @see #setInstance(Instance)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getSlot_Instance()
@@ -57,9 +59,11 @@ public interface Slot {
 	Instance getInstance();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}' container
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Instance</em>' container reference.
 	 * @see #getInstance()
 	 * @generated
@@ -72,6 +76,7 @@ public interface Slot {
 	 * <!-- begin-model-doc -->
 	 * Get the feature to which the slot conforms
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EAttribute;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute <em>EAttribute</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getValues <em>Values</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute <em>EAttribute</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,13 +40,14 @@ public interface AttributeSlot extends Slot {
 	 * Returns the value of the '<em><b>EAttribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>EAttribute</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>EAttribute</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The attribute to which the slot conforms
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>EAttribute</em>' reference.
 	 * @see #setEAttribute(EAttribute)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getAttributeSlot_EAttribute()
@@ -56,9 +57,11 @@ public interface AttributeSlot extends Slot {
 	EAttribute getEAttribute();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute <em>EAttribute</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute
+	 * <em>EAttribute</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>EAttribute</em>' reference.
 	 * @see #getEAttribute()
 	 * @generated
@@ -70,13 +73,14 @@ public interface AttributeSlot extends Slot {
 	 * The list contents are of type {@link java.lang.Object}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Values</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Values</em>' attribute list isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The values of an attribute slot
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getAttributeSlot_Values()
 	 * @model unique="false"

@@ -9,13 +9,13 @@ public class ComponentSignatureCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel) {
-		metamodel.setDefaultPackage("component");
-		for (Instance signature : model.getInstances("Signature")) {
-			for (Instance port : signature.getLinks("inPort")) {
-				port.migrate("InPort");
+		metamodel.setDefaultPackage("component"); //$NON-NLS-1$
+		for (final Instance signature : model.getInstances("Signature")) { //$NON-NLS-1$
+			for (final Instance port : signature.getLinks("inPort")) { //$NON-NLS-1$
+				port.migrate("InPort"); //$NON-NLS-1$
 			}
-			for (Instance port : signature.getLinks("outPort")) {
-				port.migrate("OutPort");
+			for (final Instance port : signature.getLinks("outPort")) { //$NON-NLS-1$
+				port.migrate("OutPort"); //$NON-NLS-1$
 			}
 		}
 	}

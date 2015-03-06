@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -21,10 +21,9 @@ import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.jface.viewers.ISelection;
 
-
 /**
  * Property tester to check whether selected changes are subsequent.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,11 +32,12 @@ import org.eclipse.jface.viewers.ISelection;
 public class SubsequentChangesPropertyTester extends PropertyTester {
 
 	/** {@inheritDoc} */
+	@Override
 	public boolean test(Object receiver, String property, Object[] args,
-			Object expectedValue) {
+		Object expectedValue) {
 
-		ISelection selection = (ISelection) receiver;
-		List<Change> changes = SelectionUtils.getSelectedElements(selection);
+		final ISelection selection = (ISelection) receiver;
+		final List<Change> changes = SelectionUtils.getSelectedElements(selection);
 
 		return isValid(changes);
 	}
@@ -45,7 +45,7 @@ public class SubsequentChangesPropertyTester extends PropertyTester {
 	/**
 	 * Determine whether the selection is valid, i.e. the changes are subsequent
 	 * and contained by a single release
-	 * 
+	 *
 	 * @return true if the changes are valid
 	 */
 	private boolean isValid(List<Change> changes) {
@@ -56,10 +56,10 @@ public class SubsequentChangesPropertyTester extends PropertyTester {
 		if (release == null) {
 			return false;
 		}
-		int firstIndex = release.getChanges().indexOf(changes.get(0));
-		int lastIndex = release.getChanges().indexOf(
-				changes.get(changes.size() - 1));
-		boolean valid = (lastIndex - firstIndex + 1) == changes.size();
+		final int firstIndex = release.getChanges().indexOf(changes.get(0));
+		final int lastIndex = release.getChanges().indexOf(
+			changes.get(changes.size() - 1));
+		final boolean valid = lastIndex - firstIndex + 1 == changes.size();
 		return valid;
 	}
 
@@ -71,9 +71,10 @@ public class SubsequentChangesPropertyTester extends PropertyTester {
 		}
 		Collections.sort(changes, new Comparator<Change>() {
 
+			@Override
 			public int compare(Change c1, Change c2) {
-				int i1 = release.getChanges().indexOf(c1);
-				int i2 = release.getChanges().indexOf(c2);
+				final int i1 = release.getChanges().indexOf(c1);
+				final int i2 = release.getChanges().indexOf(c2);
 				return new Integer(i1).compareTo(i2);
 			}
 
@@ -83,12 +84,12 @@ public class SubsequentChangesPropertyTester extends PropertyTester {
 
 	/** Get the release by which the changes are contained. */
 	public static Release getRelease(List<? extends Change> changes) {
-		Change first = changes.get(0);
+		final Change first = changes.get(0);
 		if (!(first.eContainer() instanceof Release)) {
 			return null;
 		}
-		Release release = (Release) first.eContainer();
-		for (Change change : changes) {
+		final Release release = (Release) first.eContainer();
+		for (final Change change : changes) {
 			if (!(change.eContainer() == release)) {
 				return null;
 			}

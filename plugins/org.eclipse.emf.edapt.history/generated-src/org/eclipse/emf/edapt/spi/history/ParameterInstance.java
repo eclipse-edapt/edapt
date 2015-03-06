@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -26,9 +26,9 @@ import org.eclipse.emf.edapt.declaration.Parameter;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getDataValue <em>Data Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getReferenceValue <em>Reference Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getDataValue <em>Data Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getReferenceValue <em>Reference Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,8 +42,10 @@ public interface ParameterInstance extends NamedElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * The value conforming to the type derived from dataValue and referenceValue depending on its characteristics (primitive or object type, single-valued or multi-valued type)
+	 * The value conforming to the type derived from dataValue and referenceValue depending on its characteristics
+	 * (primitive or object type, single-valued or multi-valued type)
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Object)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getParameterInstance_Value()
@@ -53,9 +55,11 @@ public interface ParameterInstance extends NamedElement {
 	Object getValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue <em>Value</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue <em>Value</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated
@@ -70,6 +74,7 @@ public interface ParameterInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * A list of serialized instances of a primitive type
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Data Value</em>' attribute list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getParameterInstance_DataValue()
 	 * @model
@@ -85,6 +90,7 @@ public interface ParameterInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * A list of serialized instances of an object type
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Reference Value</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getParameterInstance_ReferenceValue()
 	 * @model containment="true"
@@ -98,6 +104,7 @@ public interface ParameterInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the instantiated parameter
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */

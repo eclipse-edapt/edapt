@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -48,9 +48,9 @@ public class CombineFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "Each feature has to belong to its reference's class")
 	public boolean checkFeatureParent() {
-		for (EReference reference : references) {
+		for (final EReference reference : references) {
 			if (reference.getEContainingClass() != features.get(
-					references.indexOf(reference)).getEContainingClass()) {
+				references.indexOf(reference)).getEContainingClass()) {
 				return false;
 			}
 		}
@@ -60,12 +60,12 @@ public class CombineFeature extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass eClass = references.get(0).getEReferenceType();
-		EStructuralFeature mainFeature = features.get(0);
+		final EClass eClass = references.get(0).getEReferenceType();
+		final EStructuralFeature mainFeature = features.get(0);
 
 		// metamodel adaptation
 		eClass.getEStructuralFeatures().add(mainFeature);
-		for (EStructuralFeature feature : features) {
+		for (final EStructuralFeature feature : features) {
 			if (feature != mainFeature) {
 				metamodel.delete(feature);
 			}
@@ -73,12 +73,12 @@ public class CombineFeature extends OperationImplementation {
 
 		// model migration
 		for (int i = 0; i < references.size(); i++) {
-			EReference reference = references.get(i);
-			EStructuralFeature feature = features.get(i);
-			for (Instance instance : model.getAllInstances(reference
-					.getEContainingClass())) {
-				Object value = instance.unset(feature);
-				Instance ref = instance.get(reference);
+			final EReference reference = references.get(i);
+			final EStructuralFeature feature = features.get(i);
+			for (final Instance instance : model.getAllInstances(reference
+				.getEContainingClass())) {
+				final Object value = instance.unset(feature);
+				final Instance ref = instance.get(reference);
 				if (ref != null) {
 					ref.set(mainFeature, value);
 				}

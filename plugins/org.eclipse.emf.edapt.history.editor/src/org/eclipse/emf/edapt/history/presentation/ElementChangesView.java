@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation;
 
@@ -36,22 +36,21 @@ import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-
 /**
  * View to show related changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ElementChangesView extends SyncedMetamodelEditorViewBase {
-	
+
 	/**
 	 * Identifier of the view like in the plugin.xml
 	 */
 	public static final String ID = ElementChangesView.class.getName();
-	
+
 	/**
 	 * Sash to show the history reduced to the related changes
 	 */
@@ -62,17 +61,18 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	 */
 	@Override
 	protected void createContents(Composite parent) {
-		
+
 		sash = new ModelSash(parent, SWT.None);
 
 		sash.getStructureViewer().setSorter(null);
 		sash.getStructureViewer().addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+				final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 				getEditor().getViewer().setSelection(new StructuredSelection(selection.getFirstElement()), true);
 			}
-			
+
 		});
 	}
 
@@ -90,7 +90,7 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	@Override
 	protected void selectionChanged(IStructuredSelection structuredSelection) {
 		if (structuredSelection.size() == 1) {
-			Object firstElement = structuredSelection.getFirstElement();
+			final Object firstElement = structuredSelection.getFirstElement();
 			if (firstElement instanceof EObject) {
 				update((EObject) firstElement);
 			}
@@ -101,71 +101,71 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	 * Update the view
 	 */
 	private void update(EObject element) {
-		
-		History history = getHistory();
+
+		final History history = getHistory();
 		sash.getStructureViewer().setInput(history);
-		
-		List<Change> changes = getChanges(element);
+
+		final List<Change> changes = getChanges(element);
 		final Set<EObject> elements = enrich(changes);
-		
-		sash.getStructureViewer().setFilters(new ViewerFilter[]{new ViewerFilter() {
+
+		sash.getStructureViewer().setFilters(new ViewerFilter[] { new ViewerFilter() {
 
 			@Override
 			public boolean select(Viewer viewer, Object parentElement,
-					Object element) {
+				Object element) {
 				return elements.contains(element);
 			}
-			
-		}});
-		
+
+		} });
+
 		sash.getStructureViewer().expandToLevel(2);
 	}
-	
+
 	/**
 	 * Enrich changes to paths leading to them
 	 */
 	private Set<EObject> enrich(List<Change> changes) {
-		Set<EObject> elements = new HashSet<EObject>();
-		
-		for(Change change : changes) {
+		final Set<EObject> elements = new HashSet<EObject>();
+
+		for (final Change change : changes) {
 			EObject element = change;
-			while(element != null) {
+			while (element != null) {
 				elements.add(element);
 				element = element.eContainer();
 			}
 		}
-		
+
 		return elements;
 	}
-	
+
 	/**
 	 * Get the changes related to an element
 	 */
 	private List<Change> getChanges(EObject element) {
-		if(element instanceof Change && getElement((Change) element) != null) {
+		if (element instanceof Change && getElement((Change) element) != null) {
 			element = getElement((Change) element);
 		}
-		List<Change> changes = new ArrayList<Change>();
-		History history = getHistory();
-		
-		for(Iterator<EObject> i = history.eAllContents(); i.hasNext(); ) {
-			EObject historyElement = i.next();
-			if(historyElement instanceof Change) {
-				Change change = (Change) historyElement;
-				if(getElement(change) == element) {
+		final List<Change> changes = new ArrayList<Change>();
+		final History history = getHistory();
+
+		for (final Iterator<EObject> i = history.eAllContents(); i.hasNext();) {
+			final EObject historyElement = i.next();
+			if (historyElement instanceof Change) {
+				final Change change = (Change) historyElement;
+				if (getElement(change) == element) {
 					changes.add(change);
-				}				
+				}
 			}
 		}
-		
+
 		return changes;
 	}
-	
+
 	/**
 	 * Get the history
 	 */
 	private History getHistory() {
-		Resource resource = HistoryUtils.getHistoryResource(getEditor().getEditingDomain().getResourceSet());
+		final Resource resource = HistoryUtils.getHistoryResource(getEditor().getEditingDomain().getResourceSet());
 		return (History) resource.getContents().get(0);
 	}
 
@@ -173,13 +173,13 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	 * Get the element of a change
 	 */
 	private EObject getElement(Change change) {
-		if(change instanceof NonDelete) {
+		if (change instanceof NonDelete) {
 			return ((NonDelete) change).getElement();
 		}
-		else if(change instanceof Delete) {
+		else if (change instanceof Delete) {
 			return ((Delete) change).getElement();
 		}
-		else if(change instanceof ValueChange) {
+		else if (change instanceof ValueChange) {
 			return ((ValueChange) change).getElement();
 		}
 		return null;
