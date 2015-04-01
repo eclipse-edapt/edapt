@@ -12,6 +12,7 @@
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -26,8 +27,9 @@ import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
 import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.window.Window;
+import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Display;
 
 /**
@@ -56,8 +58,7 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 			return true;
 		}
 		final boolean ignore = MessageDialog
-			.openConfirm(Display.getDefault().getActiveShell(),
-				"Metamodel inconsistent", //$NON-NLS-1$
+			.openConfirm(Display.getDefault().getActiveShell(), "Metamodel inconsistent", //$NON-NLS-1$
 				"The metamodel is inconsistent. Do you really want to release it?"); //$NON-NLS-1$
 		return ignore;
 	}
@@ -68,38 +69,21 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 		if (!isNsURIChanged(extent, listener.getHistory().getLastRelease())) {
 			final History history = listener.getHistory();
 			final List<EPackage> rootPackages = history.getRootPackages();
-			final String source = inferSource(rootPackages);
-			final ReleaseDialog dialog = new ReleaseDialog(source);
-			if (dialog.open() == IDialogConstants.OK_ID) {
-				final String target = dialog.getTarget();
-				if (dialog.isUpdate()) {
-					updateNamespaceURI(domain, rootPackages,
-						dialog.getSource(), target);
-					if (isNsURIChanged(extent, history.getLastRelease())) {
-						addRelease(domain, listener, target);
-					} else {
-						MessageDialog
-							.openError(Display.getDefault()
-								.getActiveShell(), "Error", //$NON-NLS-1$
-								"Namepaces URIs not fully changed since last release"); //$NON-NLS-1$
+			final ReleaseWizard releaseWizard = new ReleaseWizard(rootPackages);
+			final WizardDialog dialog = new WizardDialog(Display.getDefault().getActiveShell(), releaseWizard);
+			if (dialog.open() == Window.OK) {
+				for (final EPackage ePackage : rootPackages) {
+					if (!releaseWizard.updatePackage(ePackage)) {
+						continue;
 					}
-				} else {
-					addRelease(domain, listener, target);
+					final String source = releaseWizard.getSource(ePackage);
+					final String target = releaseWizard.getTarget(ePackage);
+					updateNamespaceURI(domain, Collections.singletonList(ePackage), source, target);
 				}
+				addRelease(domain, listener, null);
 			}
 		} else {
 			addRelease(domain, listener, null);
-		}
-	}
-
-	/** Infer the label to be replaced from the packages. */
-	private String inferSource(List<EPackage> ePackages) {
-		try {
-			final String nsURI = ePackages.get(0).getNsURI();
-			final int index = nsURI.lastIndexOf('/');
-			return nsURI.substring(index + 1);
-		} catch (final RuntimeException e) {
-			return ""; //$NON-NLS-1$
 		}
 	}
 
