@@ -187,4 +187,12 @@ public class ReleaseWizardPage extends WizardPage {
 		}
 	}
 
+	/**
+	 * Allows to set the target text that is visible.
+	 */
+	public void setTarget(String target) {
+		targetText.setText(target);
+		checkIfPageComplete();
+	}
+
 }

@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 
 /**
@@ -32,6 +33,12 @@ public class ReleaseWizard extends Wizard {
 	private final Map<EPackage, Boolean> updateMap = new LinkedHashMap<EPackage, Boolean>();
 	private final Map<EPackage, String> sourceMap = new LinkedHashMap<EPackage, String>();
 	private final Map<EPackage, String> targetMap = new LinkedHashMap<EPackage, String>();
+
+	/**
+	 * This map holds values entered by the user for the given key. Used to set a default string in a target textbox by
+	 * default.
+	 */
+	private final Map<String, String> sourceToTargetMap = new LinkedHashMap<String, String>();
 
 	private final List<EPackage> rootPackages;
 
@@ -105,6 +112,29 @@ public class ReleaseWizard extends Wizard {
 	 */
 	public String getTarget(EPackage ePackage) {
 		return targetMap.get(ePackage);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see org.eclipse.jface.wizard.Wizard#getNextPage(org.eclipse.jface.wizard.IWizardPage)
+	 */
+	@Override
+	public IWizardPage getNextPage(IWizardPage page) {
+		final ReleaseWizardPage next = ReleaseWizardPage.class.cast(super.getNextPage(page));
+		if (next == null) {
+			return next;
+		}
+		final ReleaseWizardPage current = ReleaseWizardPage.class.cast(page);
+		if (!current.isUpdate()) {
+			return next;
+		}
+		sourceToTargetMap.put(current.getSource(), current.getTarget());
+		if (!sourceToTargetMap.containsKey(next.getSource())) {
+			return next;
+		}
+		next.setTarget(sourceToTargetMap.get(next.getSource()));
+		return next;
 	}
 
 	/**
