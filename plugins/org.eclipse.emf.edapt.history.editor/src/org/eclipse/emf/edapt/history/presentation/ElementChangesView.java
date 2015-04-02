@@ -103,22 +103,24 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	private void update(EObject element) {
 
 		final History history = getHistory();
-		sash.getStructureViewer().setInput(history);
+		if (history != null) {
+			sash.getStructureViewer().setInput(history);
 
-		final List<Change> changes = getChanges(element);
-		final Set<EObject> elements = enrich(changes);
+			final List<Change> changes = getChanges(element);
+			final Set<EObject> elements = enrich(changes);
 
-		sash.getStructureViewer().setFilters(new ViewerFilter[] { new ViewerFilter() {
+			sash.getStructureViewer().setFilters(new ViewerFilter[] { new ViewerFilter() {
 
-			@Override
-			public boolean select(Viewer viewer, Object parentElement,
-				Object element) {
-				return elements.contains(element);
-			}
+				@Override
+				public boolean select(Viewer viewer, Object parentElement,
+					Object element) {
+					return elements.contains(element);
+				}
 
-		} });
+			} });
 
-		sash.getStructureViewer().expandToLevel(2);
+			sash.getStructureViewer().expandToLevel(2);
+		}
 	}
 
 	/**
@@ -147,17 +149,17 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 		}
 		final List<Change> changes = new ArrayList<Change>();
 		final History history = getHistory();
-
-		for (final Iterator<EObject> i = history.eAllContents(); i.hasNext();) {
-			final EObject historyElement = i.next();
-			if (historyElement instanceof Change) {
-				final Change change = (Change) historyElement;
-				if (getElement(change) == element) {
-					changes.add(change);
+		if (history != null) {
+			for (final Iterator<EObject> i = history.eAllContents(); i.hasNext();) {
+				final EObject historyElement = i.next();
+				if (historyElement instanceof Change) {
+					final Change change = (Change) historyElement;
+					if (getElement(change) == element) {
+						changes.add(change);
+					}
 				}
 			}
 		}
-
 		return changes;
 	}
 
@@ -166,7 +168,7 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	 */
 	private History getHistory() {
 		final Resource resource = HistoryUtils.getHistoryResource(getEditor().getEditingDomain().getResourceSet());
-		return (History) resource.getContents().get(0);
+		return resource != null ? (History) resource.getContents().get(0) : null;
 	}
 
 	/**
@@ -175,11 +177,9 @@ public class ElementChangesView extends SyncedMetamodelEditorViewBase {
 	private EObject getElement(Change change) {
 		if (change instanceof NonDelete) {
 			return ((NonDelete) change).getElement();
-		}
-		else if (change instanceof Delete) {
+		} else if (change instanceof Delete) {
 			return ((Delete) change).getElement();
-		}
-		else if (change instanceof ValueChange) {
+		} else if (change instanceof ValueChange) {
 			return ((ValueChange) change).getElement();
 		}
 		return null;
