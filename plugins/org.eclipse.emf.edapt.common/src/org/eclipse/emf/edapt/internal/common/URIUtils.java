@@ -8,10 +8,14 @@
  * Contributors:
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
+ * Johannes Faltermeier - Extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.common;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -23,6 +27,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 
 /**
  * Helper methods for conversions between different types of resource
@@ -164,6 +169,32 @@ public final class URIUtils {
 			return location.toFile();
 		}
 		return new File(uri.toFileString());
+	}
+
+	/**
+	 * Get an input stream from the given URI.
+	 *
+	 * @return an {@link InputStream} or <code>null</code> if no stream could be created
+	 */
+	public static InputStream getInputStream(URI uri) {
+		try {
+			return new ExtensibleURIConverterImpl().createInputStream(uri);
+		} catch (final IOException ex) {
+			return null;
+		}
+	}
+
+	/**
+	 * Get an output stream from the given URI.
+	 *
+	 * @return an {@link OutputStream} or <code>null</code> if no stream could be created
+	 */
+	public static OutputStream getOutputStream(URI uri) {
+		try {
+			return new ExtensibleURIConverterImpl().createOutputStream(uri);
+		} catch (final IOException ex) {
+			return null;
+		}
 	}
 
 	/** Get the relative path of a {@link URI} w.r.t. another {@link URI}. */

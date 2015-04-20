@@ -8,11 +8,13 @@
  * Contributors:
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
+ * Johannes Faltermeier - Extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStream;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -49,7 +51,7 @@ public final class ReleaseUtils {
 
 	/** Extract the namespace URI from a model. */
 	public static String getNamespaceURI(URI uri) {
-		return getNamespaceURI_SAX(URIUtils.getJavaFile(uri));
+		return getNamespaceURI_SAX(URIUtils.getInputStream(uri));
 	}
 
 	/** Extract the namespace URI from a model file using SAX. */
@@ -70,6 +72,34 @@ public final class ReleaseUtils {
 			try {
 				if (fileReader != null) {
 					fileReader.close();
+				}
+			} catch (final Exception e) {
+				// ignore
+			}
+		}
+
+		return contentHandler.getNsURI();
+	}
+
+	/**
+	 * Extract the namespace URI from an inputstream using SAX.
+	 *
+	 * @since 1.1
+	 */
+	public static String getNamespaceURI_SAX(InputStream inputStream) {
+
+		final ContentHandler contentHandler = new ContentHandler();
+		try {
+			final XMLReader reader = XMLReaderFactory.createXMLReader();
+			reader.setContentHandler(contentHandler);
+
+			reader.parse(new InputSource(inputStream));
+		} catch (final Exception e) {
+			// loading should fail
+		} finally {
+			try {
+				if (inputStream != null) {
+					inputStream.close();
 				}
 			} catch (final Exception e) {
 				// ignore

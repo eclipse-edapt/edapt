@@ -13,9 +13,6 @@ package org.eclipse.emf.edapt.migration.test;
 
 import java.io.IOException;
 
-import junit.framework.TestResult;
-import junit.framework.TestSuite;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
@@ -23,6 +20,10 @@ import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+
+import junit.framework.Test;
+import junit.framework.TestResult;
+import junit.framework.TestSuite;
 
 /**
  * Suite to test a migration.
@@ -65,8 +66,18 @@ public class MigrationTestSuite extends TestSuite {
 		this.suiteDefinition = suiteDefinition;
 
 		for (final TestCaseDefinition caseDefinition : suiteDefinition.getCases()) {
-			addTest(new MigrationTestCase(this, caseDefinition));
+			addTest(createTest(caseDefinition));
 		}
+	}
+
+	/**
+	 * Creates a {@link Test} which will be passed to {@link #addTest(Test)}.
+	 * 
+	 * @param caseDefinition the {@link TestCaseDefinition}
+	 * @return the test to add
+	 */
+	protected Test createTest(final TestCaseDefinition caseDefinition) {
+		return new MigrationTestCase(this, caseDefinition);
 	}
 
 	/** {@inheritDoc} */
@@ -96,7 +107,7 @@ public class MigrationTestSuite extends TestSuite {
 	}
 
 	/** Get the migrator. */
-	Migrator getMigrator() {
+	public Migrator getMigrator() {
 		return migrator;
 	}
 

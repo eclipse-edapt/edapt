@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="association_to_class"
+    nsURI="association_to_class/v2" nsPrefix="association_to_class">
+  <eClassifiers xsi:type="ecore:EClass" name="Root">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nodes" upperBound="-1"
+        eType="#//Node" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Node">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToOneForward" eType="#//OneToOne"
+        containment="true" eOpposite="#//OneToOne/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToOneBackward" eType="#//OneToOne"
+        eOpposite="#//OneToOne/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToManyForward" upperBound="-1"
+        eType="#//OneToMany" containment="true" eOpposite="#//OneToMany/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oneToManyBackward" eType="#//OneToMany"
+        eOpposite="#//OneToMany/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manyToManyForward" upperBound="-1"
+        eType="#//ManyToMany" containment="true" eOpposite="#//ManyToMany/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="manyToManyBackward" upperBound="-1"
+        eType="#//ManyToMany" eOpposite="#//ManyToMany/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToOne">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/oneToOneForward"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/oneToOneBackward"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OneToMany">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/oneToManyForward"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/oneToManyBackward"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ManyToMany">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/manyToManyForward"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Node" eOpposite="#//Node/manyToManyBackward"/>
+  </eClassifiers>
+</ecore:EPackage>

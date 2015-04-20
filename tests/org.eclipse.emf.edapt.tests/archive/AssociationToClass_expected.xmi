@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<association_to_class:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:association_to_class="association_to_class/v2">
+  <nodes name="a" oneToOneBackward="//@nodes.1/@oneToOneForward" oneToManyBackward="//@nodes.3/@oneToManyForward.0" manyToManyBackward="//@nodes.0/@manyToManyForward.0 //@nodes.1/@manyToManyForward.0 //@nodes.2/@manyToManyForward.0 //@nodes.3/@manyToManyForward.0">
+    <manyToManyForward target="//@nodes.0"/>
+  </nodes>
+  <nodes name="b" oneToManyBackward="//@nodes.3/@oneToManyForward.1">
+    <oneToOneForward target="//@nodes.0"/>
+    <manyToManyForward target="//@nodes.0"/>
+  </nodes>
+  <nodes name="c" oneToManyBackward="//@nodes.2/@oneToManyForward.0">
+    <oneToOneForward target="//@nodes.3"/>
+    <oneToManyForward target="//@nodes.2"/>
+    <manyToManyForward target="//@nodes.0"/>
+  </nodes>
+  <nodes name="d" oneToOneBackward="//@nodes.2/@oneToOneForward">
+    <oneToManyForward target="//@nodes.0"/>
+    <oneToManyForward target="//@nodes.1"/>
+    <manyToManyForward target="//@nodes.0"/>
+  </nodes>
+</association_to_class:Root>
