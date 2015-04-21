@@ -112,7 +112,7 @@ public final class ResourceUtils {
 	 */
 	public static ResourceSet loadResourceSet(List<URI> modelURIs,
 		List<EPackage> ePackages, IResourceSetFactory resourceSetFactory)
-		throws IOException {
+			throws IOException {
 
 		final ResourceSet resourceSet = resourceSetFactory.createResourceSet();
 
@@ -191,9 +191,11 @@ public final class ResourceUtils {
 	}
 
 	/** Save model based on {@link ResourceSet}. */
-	public static void saveResourceSet(ResourceSet resourceSet)
+	public static void saveResourceSet(ResourceSet resourceSet, Map<String, Object> options)
 		throws IOException {
-		final Map<String, Object> options = new HashMap<String, Object>();
+		if (options == null) {
+			options = new HashMap<String, Object>();
+		}
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.FALSE);
 		for (final Resource resource : resourceSet.getResources()) {
 			if (resource.getURI() == null

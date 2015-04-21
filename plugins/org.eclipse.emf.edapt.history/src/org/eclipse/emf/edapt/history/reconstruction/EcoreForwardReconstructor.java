@@ -85,8 +85,8 @@ public class EcoreForwardReconstructor extends ForwardReconstructorBase {
 	/** Save all metamodel resources. */
 	public void save() {
 		try {
-			ResourceUtils.saveResourceSet(resourceSet);
-		} catch (final IOException e) {
+			ResourceUtils.saveResourceSet(resourceSet, null);
+		} catch (IOException e) {
 			LoggingUtils.logError(HistoryPlugin.getPlugin(),
 				e);
 		}

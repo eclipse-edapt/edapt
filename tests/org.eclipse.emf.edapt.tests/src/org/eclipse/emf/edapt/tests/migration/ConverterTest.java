@@ -85,7 +85,7 @@ public class ConverterTest extends TestCase {
 			resource.setUri(mapper.map(resource.getUri()));
 		}
 
-		Persistency.saveModel(model);
+		Persistency.saveModel(model, null);
 
 		final Resource model1 = ResourceUtils
 			.loadResourceSet(model1URI, metamodel.getEPackages())

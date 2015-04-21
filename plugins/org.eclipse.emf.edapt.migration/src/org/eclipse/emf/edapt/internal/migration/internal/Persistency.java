@@ -14,6 +14,7 @@ package org.eclipse.emf.edapt.internal.migration.internal;
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -81,7 +82,7 @@ public class Persistency {
 			resource.getContents().addAll(metamodelResource.getRootPackages());
 		}
 
-		ResourceUtils.saveResourceSet(resourceSet);
+		ResourceUtils.saveResourceSet(resourceSet, null);
 	}
 
 	/** Load model based on {@link URI} for model and metamodel. */
@@ -118,9 +119,9 @@ public class Persistency {
 	}
 
 	/** Save model based on {@link URI}. */
-	public static void saveModel(Model model) throws IOException {
+	public static void saveModel(Model model, Map<String, Object> options) throws IOException {
 		final BackwardConverter bConverter = new BackwardConverter();
 		final ResourceSet resourceSet = bConverter.convert(model);
-		ResourceUtils.saveResourceSet(resourceSet);
+		ResourceUtils.saveResourceSet(resourceSet, options);
 	}
 }

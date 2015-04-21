@@ -164,13 +164,34 @@ public class Migrator {
 	 */
 	public void migrateAndSave(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor)
-		throws MigrationException {
+			throws MigrationException {
+		this.migrateAndSave(modelURIs, sourceRelease, targetRelease, monitor, null);
+	}
+
+	/**
+	 * Migrate a model based on a set of {@link URI}.
+	 *
+	 * @param modelURIs
+	 * @param sourceRelease
+	 *            Release to which the model conforms
+	 * @param targetRelease
+	 *            Release to which the model should be migrated (use null for
+	 *            the newest release)
+	 * @param monitor
+	 *            Progress monitor
+	 * @param options
+	 *            Options to pass to the ResourceSet when saving
+	 * @since 1.1
+	 */
+	public void migrateAndSave(List<URI> modelURIs, Release sourceRelease,
+		Release targetRelease, IProgressMonitor monitor, Map<String, Object> options)
+			throws MigrationException {
 		final Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
 		if (model == null) {
 			throw new MigrationException("Model is up-to-date", null); //$NON-NLS-1$
 		}
 		try {
-			Persistency.saveModel(model);
+			Persistency.saveModel(model, options);
 		} catch (final IOException e) {
 			throw new MigrationException("Model could not be saved", e); //$NON-NLS-1$
 		}
@@ -223,7 +244,7 @@ public class Migrator {
 	 */
 	private Model migrate(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor)
-		throws MigrationException {
+			throws MigrationException {
 		try {
 			if (targetRelease == null) {
 				targetRelease = getLatestRelease();

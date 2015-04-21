@@ -158,7 +158,7 @@ public abstract class LifecycleTestBase extends MigrationTestBase {
 			.addReconstructor(new HistoryInterpreter(listener, mapping));
 		reconstructor.reconstruct(history.getLastRelease(), false);
 
-		ResourceUtils.saveResourceSet(domain.getResourceSet());
+		ResourceUtils.saveResourceSet(domain.getResourceSet(), null);
 
 		Assert.assertTrue(new IntegrityChecker(listener.getHistory()).check());
 	}

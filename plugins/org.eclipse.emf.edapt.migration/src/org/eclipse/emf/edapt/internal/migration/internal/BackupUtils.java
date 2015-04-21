@@ -107,7 +107,7 @@ public final class BackupUtils {
 				targetURIs.add(targetURI);
 			}
 		}
-		ResourceUtils.saveResourceSet(model);
+		ResourceUtils.saveResourceSet(model, null);
 		return targetURIs;
 	}
 

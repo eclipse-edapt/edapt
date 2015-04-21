@@ -49,7 +49,7 @@ public class CDOPersistency extends Persistency {
 		final StrategyBackwardConverter bConverter = new StrategyBackwardConverter(
 			extent, list);
 		final ResourceSet resourceSet = bConverter.convert(model);
-		ResourceUtils.saveResourceSet(resourceSet);
+		ResourceUtils.saveResourceSet(resourceSet, null);
 	}
 
 	public static Model loadModel(List<URI> modelURIs, Metamodel metamodel,

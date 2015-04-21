@@ -75,8 +75,8 @@ public class SplitContainment {
 			final Resource resource = resourceSet.createResource(uri);
 			resource.getContents().add(element);
 		}
-
-		ResourceUtils.saveResourceSet(resourceSet);
+		
+		ResourceUtils.saveResourceSet(resourceSet, null);
 	}
 
 	/**
