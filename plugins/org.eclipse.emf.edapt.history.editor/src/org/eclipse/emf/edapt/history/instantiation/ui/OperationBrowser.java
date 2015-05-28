@@ -156,8 +156,8 @@ public class OperationBrowser extends MetamodelEditorViewBase implements
 		if (!extent.isConsistent()) {
 			if (!MessageDialog
 				.openConfirm(Display.getDefault().getActiveShell(),
-					"Metamodel instonsistent", //$NON-NLS-1$
-					"Metamodel instonsistent. Do you really want to execute this operation?")) { //$NON-NLS-1$
+					"Metamodel inconsistent", //$NON-NLS-1$
+					"Metamodel inconsistent. Do you really want to execute this operation?")) { //$NON-NLS-1$
 				return;
 			}
 		}
@@ -172,7 +172,7 @@ public class OperationBrowser extends MetamodelEditorViewBase implements
 			if (!MessageDialog
 				.openConfirm(
 					Display.getDefault().getActiveShell(),
-					"Metamodel instonsistent", //$NON-NLS-1$
+					"Metamodel inconsistent", //$NON-NLS-1$
 					"Metamodel inconsistent. Do you really want to keep the result of this operation?")) { //$NON-NLS-1$
 				commandStack.undo();
 			}
