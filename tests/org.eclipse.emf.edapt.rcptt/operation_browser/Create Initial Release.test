@@ -1,0 +1,30 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw,_rv0HYAkGEeWg38ag0nnchw,_NFFKUAkEEeWg38ag0nnchw
+Element-Name: Create Initial Release
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _OwCI4AkHEeWg38ag0nnchw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/2/15 11:12 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history" | click
+get-view "Operation Browser - task.ecore" | get-button Release | click
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history" | click
+    key-type "M1+s"
+}
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+        | get-property childCount | equals 2 | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)" 
+        | get-property childCount | equals 0 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

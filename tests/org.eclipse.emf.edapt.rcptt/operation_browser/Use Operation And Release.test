@@ -1,0 +1,105 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_NFFKUAkEEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw,_rv0HYAkGEeWg38ag0nnchw,_qYMXsAkHEeWg38ag0nnchw
+Element-Name: Use Operation And Release
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _x_NzcAkHEeWg38ag0nnchw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/2/15 11:38 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-editor "task.ecore" | get-tree 
+    | select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task/Task"
+get-view "Operation Browser - task.ecore" | get-table | select Rename
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | select name
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | select name 
+    | activate-cell-edit -column 1
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | click-text 1 5
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | key-type Right
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | set-text TaskD
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | set-text TaskDe
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | set-text TaskDes
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox | set-text TaskDesc
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescr
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescri
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescrip
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescript
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescripti
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescriptio
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | get-editbox 
+    | set-text TaskDescription
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | apply-cell-edit
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | apply-cell-edit
+get-view "Operation Browser - task.ecore" | get-table -after [get-label "Parameters:"] | deactivate-cell-edit
+get-view "Operation Browser - task.ecore" | get-button Execute | click
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore" | click
+    key-type "M1+s"
+}
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/Operation \"Rename\" has been executed \\(element = {TaskDescription}, name = \"TaskDescription\"\\)" 
+        | get-property caption 
+        | equals "Operation \"Rename\" has been executed (element = {TaskDescription}, name = \"TaskDescription\")" 
+        | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/Operation \"Rename\" has been executed \\(element = {TaskDescription}, name = \"TaskDescription\"\\)" 
+        | get-property index | equals 0 | verify-true
+}
+get-view "Operation Browser - task.ecore" | get-button Release | click
+with [get-window "Create Release"] {
+    get-label "Update namespace URI of package http://eclipse/org/emf/ecp/makeithappen/model/task" 
+        | get-property caption 
+        | equals "Update namespace URI of package http://eclipse/org/emf/ecp/makeithappen/model/task" | verify-true
+    get-editbox -after [get-label "Update namespace URI of package http://eclipse/org/emf/ecp/makeithappen/model/task"] 
+        | get-property text | equals "Label to replace may not be empty" | verify-true
+    get-editbox -after [get-label "Label to match:"] | get-property text | equals task | verify-true
+    get-editbox -after [get-label "Label to replace with:"] | get-property text | equals "" | verify-true
+    get-button | get-property selected | equals true | verify-true
+}
+get-window "Create Release" | get-button Finish | get-property enablement | equals false | verify-true
+get-window "Create Release" | get-button | uncheck
+get-window "Create Release" | get-button Finish | get-property enablement | equals true | verify-true
+get-window "Create Release" | get-button Finish | click
+get-editor "task.ecore" | get-tree | key-type "M1+s"
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+        | get-property childCount | equals 3 | verify-true
+}
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task" | click
+get-view Properties | get-tree | get-item "Ns URI" | get-property "values['Value']" 
+    | equals "http://eclipse/org/emf/ecp/makeithappen/model/task" | verify-true
+get-view "Operation Browser - task.ecore" | get-button Release | click
+get-window "Create Release" | get-editbox -after [get-label "Label to replace with:"] | type-text "task"
+with [get-window "Create Release"] {
+    get-editbox -after [get-label "Update namespace URI of package http://eclipse/org/emf/ecp/makeithappen/model/task"] 
+        | get-property text | equals "Source and target label may not be equal" | verify-true
+    get-button Finish | get-property enablement | equals false | verify-true
+}
+get-window "Create Release" | get-editbox -after [get-label "Label to replace with:"] | set-text ""
+get-window "Create Release" | get-editbox -after [get-label "Label to replace with:"] | type-text "task/2"
+with [get-window "Create Release"] {
+    get-editbox -after [get-label "Update namespace URI of package http://eclipse/org/emf/ecp/makeithappen/model/task"] 
+        | get-property text | equals "Enter the label to replace and the target label or deselect the update button" 
+        | verify-true
+    get-button Finish | get-property enablement | equals true | verify-true
+}
+get-window "Create Release" | get-button Finish | click
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+    | get-property childCount | equals 4 | verify-true
+get-editor "task.ecore" | get-tree | key-type "M1+s"
+get-view Properties | get-tree | get-item "Ns URI" | get-property "values['Value']" 
+    | equals "http://eclipse/org/emf/ecp/makeithappen/model/task/2" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
