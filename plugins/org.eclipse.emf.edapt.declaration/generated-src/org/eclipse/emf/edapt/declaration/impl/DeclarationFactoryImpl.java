@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.impl;
 
@@ -16,13 +16,18 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.edapt.declaration.*;
-
+import org.eclipse.emf.edapt.declaration.Constraint;
+import org.eclipse.emf.edapt.declaration.DeclarationFactory;
+import org.eclipse.emf.edapt.declaration.DeclarationPackage;
+import org.eclipse.emf.edapt.declaration.Library;
+import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.Parameter;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model <b>Factory</b>.
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationFactory {
@@ -30,16 +35,17 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static DeclarationFactory init() {
 		try {
-			DeclarationFactory theDeclarationFactory = (DeclarationFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.eclipse.org/emf/edapt/declaration/0.3"); 
+			final DeclarationFactory theDeclarationFactory = (DeclarationFactory) EPackage.Registry.INSTANCE
+				.getEFactory("http://www.eclipse.org/emf/edapt/declaration/0.3"); //$NON-NLS-1$
 			if (theDeclarationFactory != null) {
 				return theDeclarationFactory;
 			}
-		}
-		catch (Exception exception) {
+		} catch (final Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
 		return new DeclarationFactoryImpl();
@@ -49,6 +55,7 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 	 * Creates an instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public DeclarationFactoryImpl() {
@@ -58,72 +65,88 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DeclarationPackage.LIBRARY: return createLibrary();
-			case DeclarationPackage.OPERATION: return createOperation();
-			case DeclarationPackage.PARAMETER: return createParameter();
-			case DeclarationPackage.CONSTRAINT: return createConstraint();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		case DeclarationPackage.LIBRARY:
+			return createLibrary();
+		case DeclarationPackage.OPERATION:
+			return createOperation();
+		case DeclarationPackage.PARAMETER:
+			return createParameter();
+		case DeclarationPackage.CONSTRAINT:
+			return createConstraint();
+		default:
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Library createLibrary() {
-		LibraryImpl library = new LibraryImpl();
+		final LibraryImpl library = new LibraryImpl();
 		return library;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Operation createOperation() {
-		OperationImpl operation = new OperationImpl();
+		final OperationImpl operation = new OperationImpl();
 		return operation;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Parameter createParameter() {
-		ParameterImpl parameter = new ParameterImpl();
+		final ParameterImpl parameter = new ParameterImpl();
 		return parameter;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Constraint createConstraint() {
-		ConstraintImpl constraint = new ConstraintImpl();
+		final ConstraintImpl constraint = new ConstraintImpl();
 		return constraint;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public DeclarationPackage getDeclarationPackage() {
-		return (DeclarationPackage)getEPackage();
+		return (DeclarationPackage) getEPackage();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @deprecated
 	 * @generated
 	 */
@@ -132,4 +155,4 @@ public class DeclarationFactoryImpl extends EFactoryImpl implements DeclarationF
 		return DeclarationPackage.eINSTANCE;
 	}
 
-} //DeclarationFactoryImpl
+} // DeclarationFactoryImpl

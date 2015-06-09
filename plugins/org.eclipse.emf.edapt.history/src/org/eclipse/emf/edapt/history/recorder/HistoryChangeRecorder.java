@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -24,11 +24,10 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.edapt.spi.history.History;
 
-
 /**
  * Recorder to store and restore links from the history to the metamodel that
  * have been lost due to {@link ResourceSet}-wide deletes.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -84,15 +83,15 @@ public class HistoryChangeRecorder {
 	 */
 	private void handleSet(Notification notification) {
 		if (notification.getFeature() instanceof EReference) {
-			EReference reference = (EReference) notification.getFeature();
+			final EReference reference = (EReference) notification.getFeature();
 			if (reference.isContainment()) {
 				return;
 			}
-			EObject element = (EObject) notification.getNotifier();
-			EObject oldValue = (EObject) notification.getOldValue();
+			final EObject element = (EObject) notification.getNotifier();
+			final EObject oldValue = (EObject) notification.getOldValue();
 			if (notification.getNewValue() == null && oldValue != null) {
 				if (oldValue.eClass().getEPackage() == EcorePackage.eINSTANCE) {
-					Link link = new Link(element, reference, oldValue);
+					final Link link = new Link(element, reference, oldValue);
 					links.add(link);
 				}
 			}
@@ -108,7 +107,7 @@ public class HistoryChangeRecorder {
 
 			recording = true;
 		} else {
-			throw new IllegalStateException("Recorder is already started");
+			throw new IllegalStateException("Recorder is already started"); //$NON-NLS-1$
 		}
 	}
 
@@ -124,13 +123,13 @@ public class HistoryChangeRecorder {
 		if (isRecording()) {
 			history.eAdapters().remove(adapter);
 
-			for (Link link : links) {
+			for (final Link link : links) {
 				link.restore();
 			}
 
 			recording = false;
 		} else {
-			throw new IllegalStateException("Recorder is already stopped");
+			throw new IllegalStateException("Recorder is already stopped"); //$NON-NLS-1$
 		}
 	}
 

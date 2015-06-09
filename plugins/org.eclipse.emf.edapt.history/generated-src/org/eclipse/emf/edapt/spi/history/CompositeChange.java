@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.CompositeChange#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.CompositeChange#getChanges <em>Changes</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +42,7 @@ public interface CompositeChange extends MigrateableChange {
 	 * <!-- begin-model-doc -->
 	 * A sequence of primitive changes
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Changes</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getCompositeChange_Changes()
 	 * @model containment="true"

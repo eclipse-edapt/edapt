@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -26,28 +25,27 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
-
 
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.declaration.Constraint} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class ConstraintItemProvider
 	extends IdentifiedElementItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public ConstraintItemProvider(AdapterFactory adapterFactory) {
@@ -58,6 +56,7 @@ public class ConstraintItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -74,47 +73,51 @@ public class ConstraintItemProvider
 	 * This adds a property descriptor for the Restricts feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addRestrictsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Constraint_restricts_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Constraint_restricts_feature", "_UI_Constraint_type"),
-				 DeclarationPackage.Literals.CONSTRAINT__RESTRICTS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Constraint_restricts_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Constraint_restricts_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Constraint_type"), //$NON-NLS-1$
+				DeclarationPackage.Literals.CONSTRAINT__RESTRICTS,
+				true,
+				false,
+				true,
+				null,
+				null,
+				null));
 	}
 
 	/**
 	 * This returns Constraint.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Constraint"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Constraint")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Constraint)object).getName();
+		final String label = ((Constraint) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Constraint_type") :
-			getString("_UI_Constraint_type") + " " + label;
+			getString("_UI_Constraint_type") : //$NON-NLS-1$
+			getString("_UI_Constraint_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -122,6 +125,7 @@ public class ConstraintItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -135,6 +139,7 @@ public class ConstraintItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

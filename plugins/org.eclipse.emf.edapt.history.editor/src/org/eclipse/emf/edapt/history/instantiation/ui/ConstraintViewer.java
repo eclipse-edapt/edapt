@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -34,7 +34,7 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 /**
  * Table viewer to display violated contraints (A list of constraints is
  * expected as input of the viewer)
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -50,17 +50,17 @@ public class ConstraintViewer extends TableViewer {
 
 	/**
 	 * Default constructor
-	 * 
+	 *
 	 * @param parent
 	 *            Parent composite
 	 */
 	public ConstraintViewer(Composite parent) {
 		super(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER
-				| SWT.FULL_SELECTION);
+			| SWT.FULL_SELECTION);
 
 		// icon taken from IDE Workbench plugin
-		ImageDescriptor imageDescriptor = IDEWorkbenchPlugin
-				.getIDEImageDescriptor("obj16/error_tsk.gif");
+		final ImageDescriptor imageDescriptor = IDEWorkbenchPlugin
+			.getIDEImageDescriptor("obj16/error_tsk.gif"); //$NON-NLS-1$
 		constraintImage = imageDescriptor.createImage();
 
 		init();
@@ -76,18 +76,21 @@ public class ConstraintViewer extends TableViewer {
 		// content provider
 		setContentProvider(new IStructuredContentProvider() {
 
+			@Override
 			@SuppressWarnings("unchecked")
 			public Object[] getElements(Object inputElement) {
-				List<Constraint> constraints = (List<Constraint>) inputElement;
+				final List<Constraint> constraints = (List<Constraint>) inputElement;
 				return constraints.toArray();
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public void inputChanged(Viewer viewer, Object oldInput,
-					Object newInput) {
+				Object newInput) {
 				// not required
 			}
 
@@ -96,6 +99,7 @@ public class ConstraintViewer extends TableViewer {
 		// label provider
 		setLabelProvider(new ITableLabelProvider() {
 
+			@Override
 			public Image getColumnImage(Object element, int columnIndex) {
 				switch (columnIndex) {
 				case 0:
@@ -105,28 +109,33 @@ public class ConstraintViewer extends TableViewer {
 				}
 			}
 
+			@Override
 			public String getColumnText(Object element, int columnIndex) {
-				Constraint constraint = (Constraint) element;
+				final Constraint constraint = (Constraint) element;
 				switch (columnIndex) {
 				case 0:
 					return constraint.getDescription();
 				default:
-					return "";
+					return ""; //$NON-NLS-1$
 				}
 			}
 
+			@Override
 			public void addListener(ILabelProviderListener listener) {
 				// not required
 			}
 
+			@Override
 			public void dispose() {
 				// not required
 			}
 
+			@Override
 			public boolean isLabelProperty(Object element, String property) {
 				return false;
 			}
 
+			@Override
 			public void removeListener(ILabelProviderListener listener) {
 				// not required
 			}
@@ -136,10 +145,11 @@ public class ConstraintViewer extends TableViewer {
 		// show constraint description upon double click
 		constraintTable.addHelpListener(new HelpListener() {
 
+			@Override
 			public void helpRequested(HelpEvent e) {
 
 				if (constraintTable.getSelectionCount() > 0) {
-					TableItem tableItem = constraintTable.getSelection()[0];
+					final TableItem tableItem = constraintTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
@@ -148,10 +158,11 @@ public class ConstraintViewer extends TableViewer {
 
 		addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 
 				if (constraintTable.getSelectionCount() > 0) {
-					TableItem tableItem = constraintTable.getSelection()[0];
+					final TableItem tableItem = constraintTable.getSelection()[0];
 					showDescription(tableItem);
 				}
 			}
@@ -161,14 +172,14 @@ public class ConstraintViewer extends TableViewer {
 
 	/**
 	 * Show the description of a constraint which is associated to a table item
-	 * 
+	 *
 	 * @param tableItem
 	 *            Table item
 	 */
 	private void showDescription(TableItem tableItem) {
-		Constraint constraint = (Constraint) tableItem.getData();
-		TableItemPopupDialog dialog = new TableItemPopupDialog(tableItem,
-				constraint.getDescription(), constraint.getName());
+		final Constraint constraint = (Constraint) tableItem.getData();
+		final TableItemPopupDialog dialog = new TableItemPopupDialog(tableItem,
+			constraint.getDescription(), constraint.getName());
 		dialog.open();
 	}
 

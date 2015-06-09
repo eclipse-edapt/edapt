@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<test:TestSuiteDefinition xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:test="http://www.eclipse.org/emf/edapt/migration/test/0.3" name="ChangeAttributeType" history="ChangeAttributeType.history">
+  <cases name="AllCases" model="ChangeAttributeType.xmi" expectedModel="ChangeAttributeType_expected.xmi"/>
+</test:TestSuiteDefinition>

@@ -9,7 +9,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -19,10 +19,10 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 public class Document extends AnnotateModelElement {
 
 	/** Source for the documentation. */
-	private static final String GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel";
+	private static final String GEN_MODEL_PACKAGE_NS_URI = "http://www.eclipse.org/emf/2002/GenModel"; //$NON-NLS-1$
 
 	/** Key for the documentation. */
-	private static final String DOCUMENTATION_KEY = "documentation";
+	private static final String DOCUMENTATION_KEY = "documentation"; //$NON-NLS-1$
 
 	/** {@description} */
 	@EdaptParameter(description = "The comment for documentation")
@@ -33,7 +33,7 @@ public class Document extends AnnotateModelElement {
 	public void initialize(Metamodel metamodel) {
 		if (documentation == null) {
 			documentation = EcoreUtil.getAnnotation(element,
-					GEN_MODEL_PACKAGE_NS_URI, DOCUMENTATION_KEY);
+				GEN_MODEL_PACKAGE_NS_URI, DOCUMENTATION_KEY);
 		}
 	}
 
@@ -41,6 +41,6 @@ public class Document extends AnnotateModelElement {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		EcoreUtil.setAnnotation(element, GEN_MODEL_PACKAGE_NS_URI,
-				DOCUMENTATION_KEY, documentation);
+			DOCUMENTATION_KEY, documentation);
 	}
 }

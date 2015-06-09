@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -37,9 +37,9 @@ public class PullFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "targetClass", description = "The features' classes must have a common super type")
 	public boolean checkTargetClassCommonSuperType(EClass targetClass) {
-		for (EStructuralFeature feature : features) {
+		for (final EStructuralFeature feature : features) {
 			if (!feature.getEContainingClass().getESuperTypes()
-					.contains(targetClass)) {
+				.contains(targetClass)) {
 				return false;
 			}
 		}
@@ -49,10 +49,10 @@ public class PullFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The features must not have opposite references")
 	public boolean checkReferencesOpposite() {
-		EcorePackage mmm = EcorePackage.eINSTANCE;
+		final EcorePackage mmm = EcorePackage.eINSTANCE;
 		if (features.size() > 1) {
 			return !isOfType(features, mmm.getEReference())
-					|| hasValue(features, mmm.getEReference_EOpposite(), null);
+				|| hasValue(features, mmm.getEReference_EOpposite(), null);
 		}
 		return true;
 	}
@@ -60,32 +60,32 @@ public class PullFeature extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The features have to be all containment references or not")
 	public boolean checkReferencesContainment() {
-		EcorePackage mmm = EcorePackage.eINSTANCE;
+		final EcorePackage mmm = EcorePackage.eINSTANCE;
 		return !isOfType(features, mmm.getEReference())
-				|| hasSameValue(features, mmm.getEReference_Containment());
+			|| hasSameValue(features, mmm.getEReference_Containment());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features' multiplicities have to be the same")
 	public boolean checkFeaturesSameMultiplicity() {
-		EcorePackage mmm = EcorePackage.eINSTANCE;
+		final EcorePackage mmm = EcorePackage.eINSTANCE;
 		return hasSameValue(features, mmm.getETypedElement_LowerBound())
-				&& hasSameValue(features, mmm.getETypedElement_UpperBound());
+			&& hasSameValue(features, mmm.getETypedElement_UpperBound());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features' types have to be the same")
 	public boolean checkFeaturesSameType() {
 		return hasSameValue(features,
-				EcorePackage.Literals.ETYPED_ELEMENT__ETYPE);
+			EcorePackage.Literals.ETYPED_ELEMENT__ETYPE);
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
 		if (targetClass == null) {
-			List<EClass> superTypes = features.get(0).getEContainingClass()
-					.getESuperTypes();
+			final List<EClass> superTypes = features.get(0).getEContainingClass()
+				.getESuperTypes();
 			if (!superTypes.isEmpty()) {
 				targetClass = superTypes.get(0);
 			}
@@ -93,25 +93,26 @@ public class PullFeature extends OperationImplementation {
 	}
 
 	/** {@inheritDoc} */
+	@SuppressWarnings("deprecation")
 	@Override
 	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
-		EStructuralFeature mainFeature = features.get(0);
+		throws MigrationException {
+		final EStructuralFeature mainFeature = features.get(0);
 
 		targetClass.getEStructuralFeatures().add(mainFeature);
 		if (mainFeature instanceof EReference) {
-			EReference mainReference = (EReference) mainFeature;
+			final EReference mainReference = (EReference) mainFeature;
 			if (mainReference.getEOpposite() != null) {
-				GeneralizeReference operation = new GeneralizeReference();
+				final GeneralizeReference operation = new GeneralizeReference();
 				operation.reference = mainReference.getEOpposite();
 				operation.initialize(metamodel);
 				operation.type = targetClass;
 				operation.checkAndExecute(metamodel, model);
 			}
 		}
-		for (EStructuralFeature feature : features) {
+		for (final EStructuralFeature feature : features) {
 			if (feature != mainFeature) {
-				ReplaceFeature operation = new ReplaceFeature();
+				final ReplaceFeature operation = new ReplaceFeature();
 				operation.toReplace = feature;
 				operation.replaceBy = mainFeature;
 				operation.checkAndExecute(metamodel, model);

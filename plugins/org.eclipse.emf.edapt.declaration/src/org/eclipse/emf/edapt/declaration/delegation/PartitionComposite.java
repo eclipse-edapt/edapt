@@ -3,18 +3,18 @@ package org.eclipse.emf.edapt.declaration.delegation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -62,14 +62,14 @@ public class PartitionComposite extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
 		eClass.setAbstract(true);
-		EPackage ePackage = eClass.getEPackage();
-		EClass compositeClass = MetamodelFactory.newEClass(ePackage,
-				compositeName, eClass);
+		final EPackage ePackage = eClass.getEPackage();
+		final EClass compositeClass = MetamodelFactory.newEClass(ePackage,
+			compositeName, eClass);
 		compositeClass.getEStructuralFeatures().add(childReference);
-		EClass leafClass = MetamodelFactory.newEClass(ePackage, leafName, eClass);
+		final EClass leafClass = MetamodelFactory.newEClass(ePackage, leafName, eClass);
 
 		// model migration
-		for (Instance instance : model.getInstances(eClass)) {
+		for (final Instance instance : model.getInstances(eClass)) {
 			if (instance.getLinks(childReference).isEmpty()) {
 				instance.migrate(leafClass);
 			} else {

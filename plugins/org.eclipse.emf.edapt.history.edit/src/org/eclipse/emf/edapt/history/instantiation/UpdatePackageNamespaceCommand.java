@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
@@ -19,32 +19,32 @@ import org.eclipse.emf.edit.command.ChangeCommand;
 
 /**
  * Command to update package namespaces
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class UpdatePackageNamespaceCommand extends ChangeCommand {
-	
+
 	/**
 	 * Root packages
 	 */
-	private List<EPackage> ePackages;
-	
+	private final List<EPackage> ePackages;
+
 	/**
 	 * Label to be replaced
 	 */
-	private String toReplace;
-	
+	private final String toReplace;
+
 	/**
 	 * Label by which it is replaced
 	 */
-	private String replaceBy;
+	private final String replaceBy;
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param ePackages
 	 * @param toReplace
 	 * @param replaceBy
@@ -52,7 +52,7 @@ public class UpdatePackageNamespaceCommand extends ChangeCommand {
 	@SuppressWarnings("unchecked")
 	public UpdatePackageNamespaceCommand(List<EPackage> ePackages, String toReplace, String replaceBy) {
 		super((Collection) ePackages);
-		
+
 		this.ePackages = ePackages;
 		this.toReplace = toReplace;
 		this.replaceBy = replaceBy;
@@ -68,14 +68,14 @@ public class UpdatePackageNamespaceCommand extends ChangeCommand {
 
 	/**
 	 * Helper method to update a number of packages which also recurses over their children
-	 * 
+	 *
 	 * @param ePackages
 	 */
 	private void updatePackageNamespace(List<EPackage> ePackages) {
-		for(EPackage ePackage : ePackages) {
-			String nsURI = ePackage.getNsURI();
-			String updatedNsURI = nsURI.replace(toReplace, replaceBy);
-			if(!updatedNsURI.equals(nsURI)) {
+		for (final EPackage ePackage : ePackages) {
+			final String nsURI = ePackage.getNsURI();
+			final String updatedNsURI = nsURI.replace(toReplace, replaceBy);
+			if (!updatedNsURI.equals(nsURI)) {
 				ePackage.setNsURI(updatedNsURI);
 			}
 			updatePackageNamespace(ePackage.getESubpackages());

@@ -5,18 +5,18 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -73,14 +73,14 @@ public class ClassToAssociation extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(description = "The class may only be targeted by one containment "
-			+ "reference and the opposite of source and target reference.")
+		+ "reference and the opposite of source and target reference.")
 	public boolean checkReferences(Metamodel metamodel) {
-		List<EReference> references = metamodel.getInverse(eClass,
-				EcorePackage.eINSTANCE.getEReference_EReferenceType());
-		for (EReference reference : references) {
+		final List<EReference> references = metamodel.getInverse(eClass,
+			EcorePackage.eINSTANCE.getEReference_EReferenceType());
+		for (final EReference reference : references) {
 			if (reference.isContainment()
-					|| sourceReference.getEOpposite() == reference
-					|| targetReference.getEOpposite() == reference) {
+				|| sourceReference.getEOpposite() == reference
+				|| targetReference.getEOpposite() == reference) {
 				continue;
 			}
 			return false;
@@ -93,16 +93,16 @@ public class ClassToAssociation extends OperationImplementation {
 	protected void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EClass sourceClass = sourceReference.getEReferenceType();
-		EClass targetClass = targetReference.getEReferenceType();
+		final EClass sourceClass = sourceReference.getEReferenceType();
+		final EClass targetClass = targetReference.getEReferenceType();
 
-		EReference association = MetamodelFactory.newEReference(sourceClass,
-				associationName, targetClass, 0, -1);
+		final EReference association = MetamodelFactory.newEReference(sourceClass,
+			associationName, targetClass, 0, -1);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
-			Instance source = instance.getLink(sourceReference);
-			Instance target = instance.getLink(targetReference);
+		for (final Instance instance : model.getAllInstances(eClass)) {
+			final Instance source = instance.getLink(sourceReference);
+			final Instance target = instance.getLink(targetReference);
 			source.add(association, target);
 			model.delete(instance);
 		}
@@ -116,9 +116,9 @@ public class ClassToAssociation extends OperationImplementation {
 			metamodel.delete(targetReference.getEOpposite());
 		}
 		metamodel.delete(targetReference);
-		List<EReference> references = metamodel.getInverse(eClass,
-				EcorePackage.eINSTANCE.getEReference_EReferenceType());
-		for (EReference reference : references) {
+		final List<EReference> references = metamodel.getInverse(eClass,
+			EcorePackage.eINSTANCE.getEReference_EReferenceType());
+		for (final EReference reference : references) {
 			metamodel.delete(reference);
 		}
 		metamodel.delete(eClass);

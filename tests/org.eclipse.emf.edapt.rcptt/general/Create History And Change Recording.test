@@ -1,0 +1,72 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw
+Element-Name: Create History And Change Recording
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _bLN-kAkEEeWg38ag0nnchw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/2/15 11:05 AM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Package Explorer" | get-tree | select "org.eclipse.emf.ecp.makeithappen.model/model/task.ecore" | double-click
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore" | click
+    select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore" 
+        | get-menu "Edapt/Add Metamodel to History" | click
+}
+get-window "Create History" | get-button Finish | click
+get-button "Save (M1+S)" | click
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history" 
+    | get-property caption | equals "platform:/resource/org.eclipse.emf.ecp.makeithappen.model/model/task.history" 
+    | verify-true
+get-view "Package Explorer" | get-tree | get-item "org.eclipse.emf.ecp.makeithappen.model/model/task.history" 
+    | get-property caption | equals "task.history" | verify-true
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+        | get-property childCount | equals 1 | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)" 
+        | get-property caption | equals "Release (not yet released)" | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)" 
+        | get-property childCount | equals 1 | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/Composite Change" 
+        | get-property caption | equals "Composite Change" | verify-true
+}
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task/Task" | click
+with [get-view Properties | get-tree] {
+    select Name | activate-cell-edit -column 1
+    with [get-editbox] {
+        key-type Right
+        set-text TaskDescription
+        key-type Enter
+    }
+    apply-cell-edit
+}
+get-editor "task.ecore" | get-tree | key-type "M1+s"
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+        | get-property caption | equals History | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History" 
+        | get-property childCount | equals 1 | verify-true
+}
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)" 
+        | get-property caption | equals "Release (not yet released)" | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)" 
+        | get-property childCount | equals 2 | verify-true
+}
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/name of {TaskDescription} has been changed from \"Task\" to \"TaskDescription\"" 
+        | get-property caption 
+        | equals "name of {TaskDescription} has been changed from \"Task\" to \"TaskDescription\"" | verify-true
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/name of {TaskDescription} has been changed from \"Task\" to \"TaskDescription\"" 
+        | get-property index | equals 1 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

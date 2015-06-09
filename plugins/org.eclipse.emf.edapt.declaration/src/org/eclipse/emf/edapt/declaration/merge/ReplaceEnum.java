@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -40,9 +40,9 @@ public class ReplaceEnum extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "literalsToReplace", description = "The replaced literals must "
-			+ "belong to the replaced enumeration")
+		+ "belong to the replaced enumeration")
 	public boolean checkLiteralsToReplaceCommonEnumeration(
-			EEnumLiteral literalsToReplace) {
+		EEnumLiteral literalsToReplace) {
 		return toReplace.getELiterals().contains(literalsToReplace);
 	}
 
@@ -52,7 +52,7 @@ public class ReplaceEnum extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "literalsReplaceBy", description = "The replacing literals must "
-			+ "belong to the replacing enumeration")
+		+ "belong to the replacing enumeration")
 	public boolean checkLiteralsReplaceBy(EEnumLiteral literalsReplaceBy) {
 		return replaceBy.getELiterals().contains(literalsReplaceBy);
 	}
@@ -67,20 +67,20 @@ public class ReplaceEnum extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		List<EAttribute> attributes = metamodel.<EAttribute> getInverse(
-				toReplace, EcorePackage.Literals.EATTRIBUTE__EATTRIBUTE_TYPE);
-		for (EAttribute attribute : attributes) {
+		final List<EAttribute> attributes = metamodel.<EAttribute> getInverse(
+			toReplace, EcorePackage.Literals.EATTRIBUTE__EATTRIBUTE_TYPE);
+		for (final EAttribute attribute : attributes) {
 			attribute.setEType(replaceBy);
 		}
 		metamodel.delete(toReplace);
 
 		// model migration
-		for (EAttribute attribute : attributes) {
-			EClass eClass = attribute.getEContainingClass();
-			for (Instance instance : model.getAllInstances(eClass)) {
+		for (final EAttribute attribute : attributes) {
+			final EClass eClass = attribute.getEContainingClass();
+			for (final Instance instance : model.getAllInstances(eClass)) {
 				if (instance.isSet(attribute)) {
-					Object value = instance.get(attribute);
-					int index = literalsToReplace.indexOf(value);
+					final Object value = instance.get(attribute);
+					final int index = literalsToReplace.indexOf(value);
 					instance.set(attribute, literalsReplaceBy.get(index));
 				}
 			}

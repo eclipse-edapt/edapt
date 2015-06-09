@@ -5,15 +5,15 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 213CDDB0ABF2E060DB587B49981FA476
  */
 @EdaptLibrary(label = "Generalization / Specialization Operations", description = "" +
-		"Generalization operations generalize feature or super type declarations, " +
-		"whereas specialization operations specialize them.")
+	"Generalization operations generalize feature or super type declarations, " +
+	"whereas specialization operations specialize them.")
 public class GeneralizationOperations extends LibraryImplementation {
 
 	/** Constructor. */

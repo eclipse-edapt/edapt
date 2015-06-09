@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -35,7 +35,6 @@ import org.eclipse.emf.edapt.spi.history.ModelReference;
 import org.eclipse.emf.edapt.spi.history.OperationInstance;
 import org.eclipse.emf.edapt.spi.history.ParameterInstance;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Parameter Instance</b></em>'.
@@ -43,9 +42,9 @@ import org.eclipse.emf.edapt.spi.history.ParameterInstance;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getDataValue <em>Data Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getReferenceValue <em>Reference Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getDataValue <em>Data Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl#getReferenceValue <em>Reference Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -56,6 +55,7 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
@@ -65,6 +65,7 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	 * The cached value of the '{@link #getDataValue() <em>Data Value</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getDataValue()
 	 * @generated
 	 * @ordered
@@ -74,6 +75,7 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	 * The cached value of the '{@link #getReferenceValue() <em>Reference Value</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getReferenceValue()
 	 * @generated
 	 * @ordered
@@ -83,6 +85,7 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ParameterInstanceImpl() {
@@ -92,6 +95,7 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -102,92 +106,96 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Object getValue() {
-		Parameter parameter = this.getParameter();
-		EClassifier classifier = parameter.getClassifier();
-		
-		if(parameter.isMany()) {
-			if(classifier instanceof EClass) {
-				List<EObject> result = new ArrayList<EObject>();
-				for(ModelReference reference : this.getReferenceValue()) {
+		final Parameter parameter = getParameter();
+		final EClassifier classifier = parameter.getClassifier();
+
+		if (parameter.isMany()) {
+			if (classifier instanceof EClass) {
+				final List<EObject> result = new ArrayList<EObject>();
+				for (final ModelReference reference : getReferenceValue()) {
 					result.add(reference.getElement());
 				}
 				return result;
 			}
-			EDataType dataType = (EDataType) classifier;
-			List<String> dataValue = this.getDataValue();
-			List<Object> result = new ArrayList<Object>();
-			for(Iterator<String> i = dataValue.iterator(); i.hasNext(); ) {
-				String stringValue = i.next();
+			final EDataType dataType = (EDataType) classifier;
+			final List<String> dataValue = getDataValue();
+			final List<Object> result = new ArrayList<Object>();
+			for (final Iterator<String> i = dataValue.iterator(); i.hasNext();) {
+				final String stringValue = i.next();
 				result.add(EcoreUtil.createFromString(dataType, stringValue));
 			}
 			return result;
 		}
-		if(classifier instanceof EClass) {
-			List<ModelReference> referenceValue = this.getReferenceValue();
-			if(referenceValue.isEmpty()) {
+		if (classifier instanceof EClass) {
+			final List<ModelReference> referenceValue = getReferenceValue();
+			if (referenceValue.isEmpty()) {
 				return null;
 			}
-			ModelReference reference = referenceValue.get(0); 
+			final ModelReference reference = referenceValue.get(0);
 			return reference.getElement();
 		}
-		EDataType dataType = (EDataType) classifier;
-		List<String> dataValue = this.getDataValue();
-		if(dataValue.isEmpty()) {
+		final EDataType dataType = (EDataType) classifier;
+		final List<String> dataValue = getDataValue();
+		if (dataValue.isEmpty()) {
 			return null;
 		}
-		String stringValue = dataValue.get(0);
+		final String stringValue = dataValue.get(0);
 		return EcoreUtil.createFromString(dataType, stringValue);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public void setValue(Object newValue) {
-		Parameter parameter = this.getParameter();
-		if(parameter.isMany()) {
-			if(parameter.getClassifier() instanceof EClass) {
-				List<ModelReference> referenceValue = this.getReferenceValue();
+		final Parameter parameter = getParameter();
+		if (parameter.isMany()) {
+			if (parameter.getClassifier() instanceof EClass) {
+				final List<ModelReference> referenceValue = getReferenceValue();
 				referenceValue.clear();
-				Collection<EObject> newReferenceValue = (Collection<EObject>) newValue;
-				if(newReferenceValue != null) {
-					for(EObject element : newReferenceValue) {
-						ModelReference reference = HistoryFactory.eINSTANCE.createModelReference();
+				final Collection<EObject> newReferenceValue = (Collection<EObject>) newValue;
+				if (newReferenceValue != null) {
+					for (final EObject element : newReferenceValue) {
+						final ModelReference reference = HistoryFactory.eINSTANCE.createModelReference();
 						reference.setElement(element);
 						referenceValue.add(reference);
 					}
 				}
 			}
 			else {
-				EDataType dataType = (EDataType) parameter.getClassifier();
-				List<String> dataValue = this.getDataValue();
+				final EDataType dataType = (EDataType) parameter.getClassifier();
+				final List<String> dataValue = getDataValue();
 				dataValue.clear();
-				Collection<String> newDataValue = (Collection<String>) newValue;
-				for(Iterator<String> i = newDataValue.iterator(); i.hasNext(); ) {
+				final Collection<String> newDataValue = (Collection<String>) newValue;
+				for (final Iterator<String> i = newDataValue.iterator(); i.hasNext();) {
 					dataValue.add(EcoreUtil.convertToString(dataType, i.next()));
 				}
 			}
 		}
 		else {
-			if(parameter.getClassifier() instanceof EClass) {
-				List<ModelReference> referenceValue = this.getReferenceValue();
+			if (parameter.getClassifier() instanceof EClass) {
+				final List<ModelReference> referenceValue = getReferenceValue();
 				referenceValue.clear();
-				if(newValue != null) {
-					ModelReference reference = HistoryFactory.eINSTANCE.createModelReference();
+				if (newValue != null) {
+					final ModelReference reference = HistoryFactory.eINSTANCE.createModelReference();
 					reference.setElement((EObject) newValue);
 					referenceValue.add(reference);
 				}
 			}
 			else {
-				EDataType dataType = (EDataType) parameter.getClassifier();
-				List<String> dataValue = this.getDataValue();
+				final EDataType dataType = (EDataType) parameter.getClassifier();
+				final List<String> dataValue = getDataValue();
 				dataValue.clear();
-				String stringValue = EcoreUtil.convertToString(dataType, newValue);
+				final String stringValue = EcoreUtil.convertToString(dataType, newValue);
 				dataValue.add(stringValue);
 			}
 		}
@@ -196,11 +204,14 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<String> getDataValue() {
 		if (dataValue == null) {
-			dataValue = new EDataTypeUniqueEList<String>(String.class, this, HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE);
+			dataValue = new EDataTypeUniqueEList<String>(String.class, this,
+				HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE);
 		}
 		return dataValue;
 	}
@@ -208,11 +219,14 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<ModelReference> getReferenceValue() {
 		if (referenceValue == null) {
-			referenceValue = new EObjectContainmentEList<ModelReference>(ModelReference.class, this, HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE);
+			referenceValue = new EObjectContainmentEList<ModelReference>(ModelReference.class, this,
+				HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE);
 		}
 		return referenceValue;
 	}
@@ -220,24 +234,27 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Parameter getParameter() {
-		OperationInstance operationInstance = (OperationInstance) this.eContainer();
-		Operation operation = operationInstance.getOperation();
-		return operation.getParameter(this.getName());
+		final OperationInstance operationInstance = (OperationInstance) eContainer();
+		final Operation operation = operationInstance.getOperation();
+		return operation.getParameter(getName());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				return ((InternalEList<?>)getReferenceValue()).basicRemove(otherEnd, msgs);
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			return ((InternalEList<?>) getReferenceValue()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -245,17 +262,18 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.PARAMETER_INSTANCE__VALUE:
-				return getValue();
-			case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
-				return getDataValue();
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				return getReferenceValue();
+		case HistoryPackage.PARAMETER_INSTANCE__VALUE:
+			return getValue();
+		case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
+			return getDataValue();
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			return getReferenceValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -263,23 +281,24 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.PARAMETER_INSTANCE__VALUE:
-				setValue(newValue);
-				return;
-			case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
-				getDataValue().clear();
-				getDataValue().addAll((Collection<? extends String>)newValue);
-				return;
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				getReferenceValue().clear();
-				getReferenceValue().addAll((Collection<? extends ModelReference>)newValue);
-				return;
+		case HistoryPackage.PARAMETER_INSTANCE__VALUE:
+			setValue(newValue);
+			return;
+		case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
+			getDataValue().clear();
+			getDataValue().addAll((Collection<? extends String>) newValue);
+			return;
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			getReferenceValue().clear();
+			getReferenceValue().addAll((Collection<? extends ModelReference>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -287,20 +306,21 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.PARAMETER_INSTANCE__VALUE:
-				setValue(VALUE_EDEFAULT);
-				return;
-			case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
-				getDataValue().clear();
-				return;
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				getReferenceValue().clear();
-				return;
+		case HistoryPackage.PARAMETER_INSTANCE__VALUE:
+			setValue(VALUE_EDEFAULT);
+			return;
+		case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
+			getDataValue().clear();
+			return;
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			getReferenceValue().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -308,17 +328,18 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.PARAMETER_INSTANCE__VALUE:
-				return VALUE_EDEFAULT == null ? getValue() != null : !VALUE_EDEFAULT.equals(getValue());
-			case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
-				return dataValue != null && !dataValue.isEmpty();
-			case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
-				return referenceValue != null && !referenceValue.isEmpty();
+		case HistoryPackage.PARAMETER_INSTANCE__VALUE:
+			return VALUE_EDEFAULT == null ? getValue() != null : !VALUE_EDEFAULT.equals(getValue());
+		case HistoryPackage.PARAMETER_INSTANCE__DATA_VALUE:
+			return dataValue != null && !dataValue.isEmpty();
+		case HistoryPackage.PARAMETER_INSTANCE__REFERENCE_VALUE:
+			return referenceValue != null && !referenceValue.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -326,17 +347,20 @@ public class ParameterInstanceImpl extends NamedElementImpl implements Parameter
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (dataValue: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (dataValue: "); //$NON-NLS-1$
 		result.append(dataValue);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ParameterInstanceImpl
+} // ParameterInstanceImpl

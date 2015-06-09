@@ -6,20 +6,20 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
 import java.util.List;
 
-import org.eclipse.emf.edapt.internal.migration.IOracle;
+import org.eclipse.emf.edapt.internal.migration.internal.IOracle;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * Oracle that asks the user
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,17 +30,18 @@ public class InteractiveOracle implements IOracle {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	@SuppressWarnings("unchecked")
 	public <V> V choose(Instance instance, List<V> values, String message) {
 
-		Model model = instance.getType().getModel();
+		final Model model = instance.getType().getModel();
 		model.setReflection(true);
-		
-		ChoiceDialog dialog = new ChoiceDialog(instance, values, message);
+
+		final ChoiceDialog dialog = new ChoiceDialog(instance, values, message);
 		dialog.open();
-		
+
 		model.setReflection(false);
-		
+
 		return (V) dialog.getSelectedElement();
 	}
 

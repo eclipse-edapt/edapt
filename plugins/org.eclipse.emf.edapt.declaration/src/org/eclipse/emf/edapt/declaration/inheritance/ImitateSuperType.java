@@ -6,18 +6,18 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +44,7 @@ public class ImitateSuperType extends OperationImplementation {
 	@EdaptConstraint(description = "The super class must not be target of a reference")
 	public boolean checkSuperClassNoReferenceTarget(Metamodel metamodel) {
 		return metamodel.getInverse(superClass,
-				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
+			EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
 	}
 
 	/** {@inheritDoc} */
@@ -58,21 +58,21 @@ public class ImitateSuperType extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		List<EStructuralFeature> features = superClass.getEStructuralFeatures();
+		final List<EStructuralFeature> features = superClass.getEStructuralFeatures();
 
 		// metamodel adaptation
 		subClass.getESuperTypes().remove(superClass);
 		subClass.getESuperTypes().addAll(superClass.getESuperTypes());
 
-		List<EStructuralFeature> clones = new ArrayList<EStructuralFeature>();
-		for (EStructuralFeature feature : features) {
-			EStructuralFeature clone = MetamodelUtils.copy(feature);
+		final List<EStructuralFeature> clones = new ArrayList<EStructuralFeature>();
+		for (final EStructuralFeature feature : features) {
+			final EStructuralFeature clone = MetamodelUtils.copy(feature);
 			subClass.getEStructuralFeatures().add(clone);
 			clones.add(clone);
 		}
 
 		// model migration
-		for (Instance instance : model.getAllInstances(subClass)) {
+		for (final Instance instance : model.getAllInstances(subClass)) {
 			for (int i = 0; i < features.size(); i++) {
 				instance.set(clones.get(i), instance.unset(features.get(i)));
 			}

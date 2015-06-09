@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -43,28 +43,28 @@ public class DropContainment extends OperationImplementation {
 	public String containerReferenceName;
 
 	/** {@inheritDoc} */
-	@SuppressWarnings( { "unchecked", "null" })
+	@SuppressWarnings({ "unchecked" })
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass contextClass = reference.getEContainingClass();
+		final EClass contextClass = reference.getEContainingClass();
 
 		// metamodel adaptation
 		reference.setContainment(false);
-		EReference containerReference = MetamodelFactory.newEReference(
-				containerClass, containerReferenceName, reference
-						.getEReferenceType(), 0, -1, true);
+		final EReference containerReference = MetamodelFactory.newEReference(
+			containerClass, containerReferenceName, reference
+				.getEReferenceType(), 0, -1, true);
 
 		// model migration
-		for (Instance contextElement : model.getAllInstances(contextClass)) {
+		for (final Instance contextElement : model.getAllInstances(contextClass)) {
 			Instance containerElement = contextElement;
 			while (containerElement != null
-					&& !(containerElement.instanceOf(containerClass))) {
+				&& !containerElement.instanceOf(containerClass)) {
 				containerElement = containerElement.getContainer();
 			}
-			Object value = contextElement.get(reference);
+			final Object value = contextElement.get(reference);
 			if (reference.isMany()) {
 				((List) containerElement.get(containerReference))
-						.addAll((List) value);
+					.addAll((List) value);
 			} else if (value != null) {
 				containerElement.add(containerReference, value);
 			}

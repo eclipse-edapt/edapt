@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -32,10 +32,9 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
-
 /**
  * Action to perform validation for breaking changes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -48,11 +47,12 @@ public class ExtendedValidateAction extends ValidateAction {
 	 */
 	public ExtendedValidateAction() {
 		EValidator.Registry.INSTANCE.put(HistoryPackage.eINSTANCE,
-				new EValidator.Descriptor() {
-					public EValidator getEValidator() {
-						return org.eclipse.emf.edapt.spi.history.util.HistoryValidator.INSTANCE;
-					}
-				});
+			new EValidator.Descriptor() {
+				@Override
+				public EValidator getEValidator() {
+					return org.eclipse.emf.edapt.spi.history.util.HistoryValidator.INSTANCE;
+				}
+			});
 	}
 
 	/**
@@ -61,10 +61,10 @@ public class ExtendedValidateAction extends ValidateAction {
 	@SuppressWarnings("cast")
 	@Override
 	public void run() {
-		EObject element = (EObject) selectedObjects.get(0);
-		History history = (History) element.eResource().getContents().get(0);
-		EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
-				history.eResource().getURI());
+		final EObject element = (EObject) selectedObjects.get(0);
+		final History history = (History) element.eResource().getContents().get(0);
+		final EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
+			history.eResource().getURI());
 		reconstructor.addReconstructor(new HistoryValidator());
 		reconstructor.reconstruct(history.getLastRelease(), false);
 		super.run();
@@ -75,64 +75,64 @@ public class ExtendedValidateAction extends ValidateAction {
 	 */
 	@Override
 	protected void handleDiagnostic(Diagnostic diagnostic) {
-		int severity = diagnostic.getSeverity();
+		final int severity = diagnostic.getSeverity();
 		String title = null;
 		String message = null;
 
 		if (severity == Diagnostic.ERROR || severity == Diagnostic.WARNING) {
 			title = EMFEditUIPlugin.INSTANCE
-					.getString("_UI_ValidationProblems_title");
+				.getString("_UI_ValidationProblems_title"); //$NON-NLS-1$
 			message = EMFEditUIPlugin.INSTANCE
-					.getString("_UI_ValidationProblems_message");
+				.getString("_UI_ValidationProblems_message"); //$NON-NLS-1$
 		} else {
 			title = EMFEditUIPlugin.INSTANCE
-					.getString("_UI_ValidationResults_title");
+				.getString("_UI_ValidationResults_title"); //$NON-NLS-1$
 			message = EMFEditUIPlugin.INSTANCE
-					.getString(severity == Diagnostic.OK ? "_UI_ValidationOK_message"
-							: "_UI_ValidationResults_message");
+				.getString(severity == Diagnostic.OK ? "_UI_ValidationOK_message" //$NON-NLS-1$
+					: "_UI_ValidationResults_message"); //$NON-NLS-1$
 		}
 
 		int result = 0;
 		if (diagnostic.getSeverity() == Diagnostic.OK) {
 			MessageDialog.openInformation(PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getShell(), title, message);
+				.getActiveWorkbenchWindow().getShell(), title, message);
 			result = Window.CANCEL;
 		} else {
 			result = DiagnosticDialog.open(PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getShell(), title, message,
-					diagnostic);
+				.getActiveWorkbenchWindow().getShell(), title, message,
+				diagnostic);
 		}
 
 		if (eclipseResourcesUtil != null) {
-			Resource resource = getResource(diagnostic);
+			final Resource resource = getResource(diagnostic);
 			if (resource != null) {
 				eclipseResourcesUtil.deleteMarkers(resource);
 			}
 
 			if (result == Window.OK) {
 				if (!diagnostic.getChildren().isEmpty()) {
-					List<?> data = (diagnostic.getChildren().get(0)).getData();
+					final List<?> data = diagnostic.getChildren().get(0).getData();
 					if (!data.isEmpty() && data.get(0) instanceof EObject) {
-						Object part = PlatformUI.getWorkbench()
-								.getActiveWorkbenchWindow().getActivePage()
-								.getActivePart();
+						final Object part = PlatformUI.getWorkbench()
+							.getActiveWorkbenchWindow().getActivePage()
+							.getActivePart();
 						if (part instanceof ISetSelectionTarget) {
 							((ISetSelectionTarget) part)
-									.selectReveal(new StructuredSelection(data
-											.get(0)));
+								.selectReveal(new StructuredSelection(data
+									.get(0)));
 						} else if (part instanceof IViewerProvider) {
-							Viewer viewer = ((IViewerProvider) part)
-									.getViewer();
+							final Viewer viewer = ((IViewerProvider) part)
+								.getViewer();
 							if (viewer != null) {
 								viewer.setSelection(new StructuredSelection(
-										data.get(0)), true);
+									data.get(0)), true);
 							}
 						}
 					}
 				}
 
-				for (Diagnostic childDiagnostic : diagnostic.getChildren()) {
-					Resource childResource = getResource(diagnostic);
+				for (final Diagnostic childDiagnostic : diagnostic.getChildren()) {
+					final Resource childResource = getResource(diagnostic);
 					if (childResource != null) {
 						eclipseResourcesUtil.createMarkers(childResource, childDiagnostic);
 					}
@@ -145,10 +145,10 @@ public class ExtendedValidateAction extends ValidateAction {
 	 * Get the resource for a diagnostic
 	 */
 	private Resource getResource(Diagnostic diagnostic) {
-		List<?> data = diagnostic.getData();
+		final List<?> data = diagnostic.getData();
 		if (data.size() > 0) {
 			if (data.get(0) instanceof EObject) {
-				EObject element = (EObject) data.get(0);
+				final EObject element = (EObject) data.get(0);
 				return element.eResource();
 			}
 		}

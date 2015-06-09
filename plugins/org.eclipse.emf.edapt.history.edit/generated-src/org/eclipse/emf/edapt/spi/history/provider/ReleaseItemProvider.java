@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.text.DateFormat;
 import java.util.Collection;
@@ -37,25 +36,26 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Release} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class ReleaseItemProvider
 	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public ReleaseItemProvider(AdapterFactory adapterFactory) {
@@ -66,6 +66,7 @@ public class ReleaseItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -83,43 +84,46 @@ public class ReleaseItemProvider
 	 * This adds a property descriptor for the Date feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Release_date_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Release_date_feature", "_UI_Release_type"),
-				 HistoryPackage.Literals.RELEASE__DATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Release_date_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Release_date_feature", "_UI_Release_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.RELEASE__DATE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
+
 	/**
 	 * This adds a property descriptor for the Label feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addLabelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Release_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Release_label_feature", "_UI_Release_type"),
-				 HistoryPackage.Literals.RELEASE__LABEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Release_label_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Release_label_feature", "_UI_Release_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.RELEASE__LABEL,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -128,6 +132,7 @@ public class ReleaseItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -142,6 +147,7 @@ public class ReleaseItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -156,31 +162,33 @@ public class ReleaseItemProvider
 	 * This returns Release.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Release"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Release")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Release element = (Release) object;
-		DateFormat formatter = DateFormat.getDateTimeInstance();
-		Date date = element.getDate();
-		String dateSegment = " ("
-				+ (date != null ? formatter.format(date) : "not yet released")
-				+ ")";
-		String labelSegment = element.getLabel() != null ? (" " + element
-				.getLabel()) : "";
-		return HistoryEditPlugin.INSTANCE.getString("_UI_Release_type")
-				+ labelSegment + dateSegment;
+		final Release element = (Release) object;
+		final DateFormat formatter = DateFormat.getDateTimeInstance();
+		final Date date = element.getDate();
+		final String dateSegment = " (" //$NON-NLS-1$
+			+ (date != null ? formatter.format(date) : "not yet released") //$NON-NLS-1$
+			+ ")"; //$NON-NLS-1$
+		final String labelSegment = element.getLabel() != null ? " " + element //$NON-NLS-1$
+			.getLabel() : ""; //$NON-NLS-1$
+		return HistoryEditPlugin.INSTANCE.getString("_UI_Release_type") //$NON-NLS-1$
+			+ labelSegment + dateSegment;
 	}
 
 	/**
@@ -188,6 +196,7 @@ public class ReleaseItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -195,13 +204,13 @@ public class ReleaseItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Release.class)) {
-			case HistoryPackage.RELEASE__DATE:
-			case HistoryPackage.RELEASE__LABEL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case HistoryPackage.RELEASE__CHANGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case HistoryPackage.RELEASE__DATE:
+		case HistoryPackage.RELEASE__LABEL:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case HistoryPackage.RELEASE__CHANGES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -211,6 +220,7 @@ public class ReleaseItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -222,6 +232,7 @@ public class ReleaseItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -231,10 +242,10 @@ public class ReleaseItemProvider
 
 	@Override
 	protected Command createDragAndDropCommand(EditingDomain domain,
-			Object owner, float location, int operations, int operation,
-			Collection<?> collection) {
+		Object owner, float location, int operations, int operation,
+		Collection<?> collection) {
 		return new RestrictingDragAndDropCommand(domain, owner, location,
-				operations, operation, collection) {
+			operations, operation, collection) {
 			@Override
 			protected boolean prepareDropCopyOn() {
 				return false;
@@ -242,7 +253,7 @@ public class ReleaseItemProvider
 
 			@Override
 			protected boolean prepareDropCopyInsert(Object parent,
-					Collection<?> children, int index) {
+				Collection<?> children, int index) {
 				return false;
 			}
 		};

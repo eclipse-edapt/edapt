@@ -126,27 +126,6 @@
       </definition>
    </extension>
    <extension
-         point="org.eclipse.ui.bindings">
-      <key
-            commandId="org.eclipse.emf.edapt.Migrate"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M3+M">
-      </key>
-      <key
-            commandId="org.eclipse.emf.edapt.LoadModel"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M3+L">
-      </key>
-      <key
-            commandId="org.eclipse.emf.edapt.RestoreBackup"
-            contextId="org.eclipse.ui.contexts.window"
-            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+M3+R">
-      </key>
-   </extension>
-   <extension
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             delegate="org.eclipse.emf.edapt.migration.ui.MigrationLaunchConfigurationDelegate"

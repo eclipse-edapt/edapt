@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.InitializerChange;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Create Child</b></em>'.
@@ -32,7 +31,7 @@ import org.eclipse.emf.edapt.spi.history.ValueChange;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.CreateImpl#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.CreateImpl#getChanges <em>Changes</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,6 +42,7 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	 * The cached value of the '{@link #getChanges() <em>Changes</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getChanges()
 	 * @generated
 	 * @ordered
@@ -52,6 +52,7 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected CreateImpl() {
@@ -61,6 +62,7 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -71,8 +73,10 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<ValueChange> getChanges() {
 		if (changes == null) {
 			changes = new EObjectContainmentEList<ValueChange>(ValueChange.class, this, HistoryPackage.CREATE__CHANGES);
@@ -83,13 +87,14 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.CREATE__CHANGES:
-				return ((InternalEList<?>)getChanges()).basicRemove(otherEnd, msgs);
+		case HistoryPackage.CREATE__CHANGES:
+			return ((InternalEList<?>) getChanges()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -97,13 +102,14 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.CREATE__CHANGES:
-				return getChanges();
+		case HistoryPackage.CREATE__CHANGES:
+			return getChanges();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -111,16 +117,17 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.CREATE__CHANGES:
-				getChanges().clear();
-				getChanges().addAll((Collection<? extends ValueChange>)newValue);
-				return;
+		case HistoryPackage.CREATE__CHANGES:
+			getChanges().clear();
+			getChanges().addAll((Collection<? extends ValueChange>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -128,14 +135,15 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.CREATE__CHANGES:
-				getChanges().clear();
-				return;
+		case HistoryPackage.CREATE__CHANGES:
+			getChanges().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -143,13 +151,14 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.CREATE__CHANGES:
-				return changes != null && !changes.isEmpty();
+		case HistoryPackage.CREATE__CHANGES:
+			return changes != null && !changes.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -157,14 +166,17 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == InitializerChange.class) {
 			switch (derivedFeatureID) {
-				case HistoryPackage.CREATE__CHANGES: return HistoryPackage.INITIALIZER_CHANGE__CHANGES;
-				default: return -1;
+			case HistoryPackage.CREATE__CHANGES:
+				return HistoryPackage.INITIALIZER_CHANGE__CHANGES;
+			default:
+				return -1;
 			}
 		}
 		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
@@ -173,17 +185,20 @@ public class CreateImpl extends NonDeleteImpl implements Create {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == InitializerChange.class) {
 			switch (baseFeatureID) {
-				case HistoryPackage.INITIALIZER_CHANGE__CHANGES: return HistoryPackage.CREATE__CHANGES;
-				default: return -1;
+			case HistoryPackage.INITIALIZER_CHANGE__CHANGES:
+				return HistoryPackage.CREATE__CHANGES;
+			default:
+				return -1;
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
-} //CreateChildImpl
+} // CreateChildImpl

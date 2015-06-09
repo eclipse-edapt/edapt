@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -49,21 +49,21 @@ public class ReplaceInheritanceByDelegation extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
 		subClass.getESuperTypes().remove(superClass);
-		EReference delegation = MetamodelFactory.newEReference(subClass,
-				referenceName, superClass, 1, 1, true);
+		final EReference delegation = MetamodelFactory.newEReference(subClass,
+			referenceName, superClass, 1, 1, true);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(subClass)) {
-			Instance delegate = model.newInstance(superClass);
+		for (final Instance instance : model.getAllInstances(subClass)) {
+			final Instance delegate = model.newInstance(superClass);
 			instance.set(delegation, delegate);
-			for (EStructuralFeature feature : superClass
-					.getEAllStructuralFeatures()) {
+			for (final EStructuralFeature feature : superClass
+				.getEAllStructuralFeatures()) {
 				delegate.set(feature, instance.unset(feature));
 			}
-			for (ReferenceSlot slot : new ArrayList<ReferenceSlot>(instance
-					.getReferences())) {
-				EReference reference = slot.getEReference();
-				Instance source = slot.getInstance();
+			for (final ReferenceSlot slot : new ArrayList<ReferenceSlot>(instance
+				.getReferences())) {
+				final EReference reference = slot.getEReference();
+				final Instance source = slot.getInstance();
 				if (reference.getEReferenceType().isSuperTypeOf(superClass)) {
 					if (reference.isMany()) {
 						source.remove(reference, instance);

@@ -6,34 +6,34 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
+
 import org.eclipse.ui.IStartup;
 import org.eclipse.ui.PlatformUI;
 
-
-
 /**
  * Class to ensure startup of the editor detector on Eclipse startup
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class RecorderStartup implements IStartup {
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public void earlyStartup() {
 		PlatformUI.getWorkbench().getDisplay().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				EcoreEditorDetector.getInstance();
 			}
 		});
 	}
 }
-

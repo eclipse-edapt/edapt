@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.presentation;
 
@@ -47,6 +47,7 @@ import org.eclipse.ui.PartInitException;
  * This is the action bar contributor for the Declaration model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class DeclarationActionBarContributor
@@ -56,6 +57,7 @@ public class DeclarationActionBarContributor
 	 * This keeps track of the active editor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IEditorPart activeEditorPart;
@@ -64,6 +66,7 @@ public class DeclarationActionBarContributor
 	 * This keeps track of the current selection provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ISelectionProvider selectionProvider;
@@ -72,16 +75,17 @@ public class DeclarationActionBarContributor
 	 * This action opens the Properties view.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IAction showPropertiesViewAction =
-		new Action(DeclarationEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) {
+		new Action(DeclarationEditorPlugin.INSTANCE.getString("_UI_ShowPropertiesView_menu_item")) { //$NON-NLS-1$
 			@Override
 			public void run() {
 				try {
-					getPage().showView("org.eclipse.ui.views.PropertySheet");
+					getPage().showView("org.eclipse.ui.views.PropertySheet"); //$NON-NLS-1$
 				}
-				catch (PartInitException exception) {
+				catch (final PartInitException exception) {
 					DeclarationEditorPlugin.INSTANCE.log(exception);
 				}
 			}
@@ -92,10 +96,11 @@ public class DeclarationActionBarContributor
 	 * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IAction refreshViewerAction =
-		new Action(DeclarationEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) {
+		new Action(DeclarationEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) { //$NON-NLS-1$
 			@Override
 			public boolean isEnabled() {
 				return activeEditorPart instanceof IViewerProvider;
@@ -104,7 +109,7 @@ public class DeclarationActionBarContributor
 			@Override
 			public void run() {
 				if (activeEditorPart instanceof IViewerProvider) {
-					Viewer viewer = ((IViewerProvider)activeEditorPart).getViewer();
+					final Viewer viewer = ((IViewerProvider) activeEditorPart).getViewer();
 					if (viewer != null) {
 						viewer.refresh();
 					}
@@ -117,6 +122,7 @@ public class DeclarationActionBarContributor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected Collection<IAction> createChildActions;
@@ -125,6 +131,7 @@ public class DeclarationActionBarContributor
 	 * This is the menu manager into which menu contribution items should be added for CreateChild actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IMenuManager createChildMenuManager;
@@ -134,6 +141,7 @@ public class DeclarationActionBarContributor
 	 * generated for the current selection by the item provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected Collection<IAction> createSiblingActions;
@@ -142,6 +150,7 @@ public class DeclarationActionBarContributor
 	 * This is the menu manager into which menu contribution items should be added for CreateSibling actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected IMenuManager createSiblingMenuManager;
@@ -150,6 +159,7 @@ public class DeclarationActionBarContributor
 	 * This creates an instance of the contributor.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public DeclarationActionBarContributor() {
@@ -163,12 +173,13 @@ public class DeclarationActionBarContributor
 	 * This adds Separators for editor additions to the tool bar.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void contributeToToolBar(IToolBarManager toolBarManager) {
-		toolBarManager.add(new Separator("declaration-settings"));
-		toolBarManager.add(new Separator("declaration-additions"));
+		toolBarManager.add(new Separator("declaration-settings")); //$NON-NLS-1$
+		toolBarManager.add(new Separator("declaration-additions")); //$NON-NLS-1$
 	}
 
 	/**
@@ -176,37 +187,43 @@ public class DeclarationActionBarContributor
 	 * as well as the sub-menus for object creation items.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_DeclarationEditor_menu"), "org.eclipse.emf.edapt.declarationMenuID");
-		menuManager.insertAfter("additions", submenuManager);
-		submenuManager.add(new Separator("settings"));
-		submenuManager.add(new Separator("actions"));
-		submenuManager.add(new Separator("additions"));
-		submenuManager.add(new Separator("additions-end"));
+		final IMenuManager submenuManager = new MenuManager(
+			DeclarationEditorPlugin.INSTANCE.getString("_UI_DeclarationEditor_menu"), //$NON-NLS-1$
+			"org.eclipse.emf.edapt.declarationMenuID"); //$NON-NLS-1$
+		menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
+		submenuManager.add(new Separator("settings")); //$NON-NLS-1$
+		submenuManager.add(new Separator("actions")); //$NON-NLS-1$
+		submenuManager.add(new Separator("additions")); //$NON-NLS-1$
+		submenuManager.add(new Separator("additions-end")); //$NON-NLS-1$
 
 		// Prepare for CreateChild item addition or removal.
 		//
-		createChildMenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
-		submenuManager.insertBefore("additions", createChildMenuManager);
+		createChildMenuManager = new MenuManager(
+			DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+		submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
 		// Prepare for CreateSibling item addition or removal.
 		//
-		createSiblingMenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
-		submenuManager.insertBefore("additions", createSiblingMenuManager);
+		createSiblingMenuManager = new MenuManager(
+			DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+		submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
 		// Force an update because Eclipse hides empty menus now.
 		//
 		submenuManager.addMenuListener
 			(new IMenuListener() {
-				 public void menuAboutToShow(IMenuManager menuManager) {
-					 menuManager.updateAll(true);
-				 }
-			 });
+				@Override
+				public void menuAboutToShow(IMenuManager menuManager) {
+					menuManager.updateAll(true);
+				}
+			});
 
 		addGlobalActions(submenuManager);
 	}
@@ -215,6 +232,7 @@ public class DeclarationActionBarContributor
 	 * When the active editor changes, this remembers the change and registers with it as a selection provider.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -248,8 +266,10 @@ public class DeclarationActionBarContributor
 	 * that can be added to the selected object and updating the menus accordingly.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void selectionChanged(SelectionChangedEvent event) {
 		// Remove any menu items for old selection.
 		//
@@ -265,11 +285,11 @@ public class DeclarationActionBarContributor
 		Collection<?> newChildDescriptors = null;
 		Collection<?> newSiblingDescriptors = null;
 
-		ISelection selection = event.getSelection();
-		if (selection instanceof IStructuredSelection && ((IStructuredSelection)selection).size() == 1) {
-			Object object = ((IStructuredSelection)selection).getFirstElement();
+		final ISelection selection = event.getSelection();
+		if (selection instanceof IStructuredSelection && ((IStructuredSelection) selection).size() == 1) {
+			final Object object = ((IStructuredSelection) selection).getFirstElement();
 
-			EditingDomain domain = ((IEditingDomainProvider)activeEditorPart).getEditingDomain();
+			final EditingDomain domain = ((IEditingDomainProvider) activeEditorPart).getEditingDomain();
 
 			newChildDescriptors = domain.getNewChildDescriptors(object, null);
 			newSiblingDescriptors = domain.getNewChildDescriptors(null, object);
@@ -291,16 +311,18 @@ public class DeclarationActionBarContributor
 	}
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateChildAction} for each object in
+	 * <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateChildActions(Collection<?> descriptors, ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
+		final Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
+			for (final Object descriptor : descriptors) {
 				actions.add(new CreateChildAction(activeEditorPart, selection, descriptor));
 			}
 		}
@@ -308,16 +330,18 @@ public class DeclarationActionBarContributor
 	}
 
 	/**
-	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in <code>descriptors</code>,
+	 * This generates a {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} for each object in
+	 * <code>descriptors</code>,
 	 * and returns the collection of these actions.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected Collection<IAction> generateCreateSiblingActions(Collection<?> descriptors, ISelection selection) {
-		Collection<IAction> actions = new ArrayList<IAction>();
+		final Collection<IAction> actions = new ArrayList<IAction>();
 		if (descriptors != null) {
-			for (Object descriptor : descriptors) {
+			for (final Object descriptor : descriptors) {
 				actions.add(new CreateSiblingAction(activeEditorPart, selection, descriptor));
 			}
 		}
@@ -331,11 +355,13 @@ public class DeclarationActionBarContributor
 	 * If <code>contributionID</code> is <code>null</code>, they are simply added.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions, String contributionID) {
+	protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions,
+		String contributionID) {
 		if (actions != null) {
-			for (IAction action : actions) {
+			for (final IAction action : actions) {
 				if (contributionID != null) {
 					manager.insertBefore(contributionID, action);
 				}
@@ -345,29 +371,30 @@ public class DeclarationActionBarContributor
 			}
 		}
 	}
-		
+
 	/**
 	 * This removes from the specified <code>manager</code> all {@link org.eclipse.jface.action.ActionContributionItem}s
 	 * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void depopulateManager(IContributionManager manager, Collection<? extends IAction> actions) {
 		if (actions != null) {
-			IContributionItem[] items = manager.getItems();
+			final IContributionItem[] items = manager.getItems();
 			for (int i = 0; i < items.length; i++) {
 				// Look into SubContributionItems
 				//
 				IContributionItem contributionItem = items[i];
 				while (contributionItem instanceof SubContributionItem) {
-					contributionItem = ((SubContributionItem)contributionItem).getInnerItem();
+					contributionItem = ((SubContributionItem) contributionItem).getInnerItem();
 				}
 
 				// Delete the ActionContributionItems with matching action.
 				//
 				if (contributionItem instanceof ActionContributionItem) {
-					IAction action = ((ActionContributionItem)contributionItem).getAction();
+					final IAction action = ((ActionContributionItem) contributionItem).getAction();
 					if (actions.contains(action)) {
 						manager.remove(contributionItem);
 					}
@@ -380,6 +407,7 @@ public class DeclarationActionBarContributor
 	 * This populates the pop-up menu before it appears.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -387,28 +415,29 @@ public class DeclarationActionBarContributor
 		super.menuAboutToShow(menuManager);
 		MenuManager submenuManager = null;
 
-		submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item"));
+		submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createChildActions, null);
-		menuManager.insertBefore("edit", submenuManager);
+		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-		submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item"));
+		submenuManager = new MenuManager(DeclarationEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
 		populateManager(submenuManager, createSiblingActions, null);
-		menuManager.insertBefore("edit", submenuManager);
+		menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 	}
 
 	/**
 	 * This inserts global actions before the "additions-end" separator.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	protected void addGlobalActions(IMenuManager menuManager) {
-		menuManager.insertAfter("additions-end", new Separator("ui-actions"));
-		menuManager.insertAfter("ui-actions", showPropertiesViewAction);
+		menuManager.insertAfter("additions-end", new Separator("ui-actions")); //$NON-NLS-1$ //$NON-NLS-2$
+		menuManager.insertAfter("ui-actions", showPropertiesViewAction); //$NON-NLS-1$
 
-		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());		
-		menuManager.insertAfter("ui-actions", refreshViewerAction);
+		refreshViewerAction.setEnabled(refreshViewerAction.isEnabled());
+		menuManager.insertAfter("ui-actions", refreshViewerAction); //$NON-NLS-1$
 
 		super.addGlobalActions(menuManager);
 	}
@@ -417,6 +446,7 @@ public class DeclarationActionBarContributor
 	 * This ensures that a delete action will clean up all references to deleted objects.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

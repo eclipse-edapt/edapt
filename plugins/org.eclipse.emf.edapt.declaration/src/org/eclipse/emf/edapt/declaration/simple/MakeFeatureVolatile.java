@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -47,24 +47,24 @@ public class MakeFeatureVolatile extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
+		throws MigrationException {
 		// metamodel adaptation
 		feature.setVolatile(true);
 		feature.setTransient(trans);
 		feature.setDerived(derived);
 		feature.setChangeable(changeable);
 		if (feature instanceof EReference) {
-			EReference reference = (EReference) feature;
+			final EReference reference = (EReference) feature;
 			if (reference.getEOpposite() != null) {
-				DropOpposite operation = new DropOpposite();
+				final DropOpposite operation = new DropOpposite();
 				operation.reference = reference;
 				operation.checkAndExecute(metamodel, model);
 			}
 		}
 
 		// model migration
-		for (Instance instance : model.getAllInstances(feature
-				.getEContainingClass())) {
+		for (final Instance instance : model.getAllInstances(feature
+			.getEContainingClass())) {
 			deleteFeatureValue(instance, feature);
 		}
 	}

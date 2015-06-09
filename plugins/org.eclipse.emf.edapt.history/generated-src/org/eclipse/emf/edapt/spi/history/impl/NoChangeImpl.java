@@ -6,15 +6,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.NoChange;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -29,6 +28,7 @@ public class NoChangeImpl extends PrimitiveChangeImpl implements NoChange {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected NoChangeImpl() {
@@ -38,6 +38,7 @@ public class NoChangeImpl extends PrimitiveChangeImpl implements NoChange {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -45,4 +46,4 @@ public class NoChangeImpl extends PrimitiveChangeImpl implements NoChange {
 		return HistoryPackage.Literals.NO_CHANGE;
 	}
 
-} //NoChangeImpl
+} // NoChangeImpl

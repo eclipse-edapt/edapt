@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,13 +38,14 @@ public interface ModelReference extends EObject {
 	 * Returns the value of the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Element</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Element</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Element of the metamodel which is referenced
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Element</em>' reference.
 	 * @see #setElement(EObject)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getModelReference_Element()
@@ -54,9 +55,11 @@ public interface ModelReference extends EObject {
 	EObject getElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement <em>Element</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement <em>Element</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Element</em>' reference.
 	 * @see #getElement()
 	 * @generated

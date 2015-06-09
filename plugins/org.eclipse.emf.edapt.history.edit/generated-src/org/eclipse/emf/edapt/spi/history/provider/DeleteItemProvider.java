@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -29,25 +28,26 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Delete} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class DeleteItemProvider
 	extends InitializerChangeItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public DeleteItemProvider(AdapterFactory adapterFactory) {
@@ -58,6 +58,7 @@ public class DeleteItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -69,13 +70,13 @@ public class DeleteItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -90,6 +91,7 @@ public class DeleteItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -104,33 +106,35 @@ public class DeleteItemProvider
 	 * This returns Delete.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Delete"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Delete")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Delete element = (Delete) object;
-		String elementLabel = HistoryUIUtils.getBracedLabel(element
-				.getElement());
-		String label = element.getElement().eClass().getName() + " "
-				+ elementLabel + " has been deleted";
-		
+		final Delete element = (Delete) object;
+		final String elementLabel = HistoryUIUtils.getBracedLabel(element
+			.getElement());
+		String label = element.getElement().eClass().getName() + " " //$NON-NLS-1$
+			+ elementLabel + " has been deleted"; //$NON-NLS-1$
+
 		if (element.getTarget() != null) {
-			String targetLabel = HistoryUIUtils.getBracedLabel(element
-					.getTarget());
-			label += " from " + targetLabel;
+			final String targetLabel = HistoryUIUtils.getBracedLabel(element
+				.getTarget());
+			label += " from " + targetLabel; //$NON-NLS-1$
 		}
-		
+
 		return label;
 	}
 
@@ -139,6 +143,7 @@ public class DeleteItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,9 +151,9 @@ public class DeleteItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Delete.class)) {
-			case HistoryPackage.DELETE__ELEMENT:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case HistoryPackage.DELETE__ELEMENT:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -158,6 +163,7 @@ public class DeleteItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

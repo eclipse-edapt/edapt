@@ -4,11 +4,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * Factory to create {@link ResourceSet}s for customizing serialization.
- * 
+ *
  * @author herrmi
  * @author $Author: hummelb $
  * @version $Rev: 18709 $
  * @levd.rating RED Rev:
+ * @since 1.1
  */
 public interface IResourceSetFactory {
 

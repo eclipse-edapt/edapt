@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.edapt.common.ui" version="2">
+    <resource path="src/org/eclipse/emf/edapt/common/ui/AutoColumnSizeTableViewer.java" type="org.eclipse.emf.edapt.common.ui.AutoColumnSizeTableViewer">
+        <filter id="571473929">
+            <message_arguments>
+                <message_argument value="TableViewer"/>
+                <message_argument value="AutoColumnSizeTableViewer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="src/org/eclipse/emf/edapt/common/ui/StructureTreeViewer.java" type="org.eclipse.emf.edapt.common.ui.StructureTreeViewer">
+        <filter id="571473929">
+            <message_arguments>
+                <message_argument value="TreeViewer"/>
+                <message_argument value="StructureTreeViewer"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

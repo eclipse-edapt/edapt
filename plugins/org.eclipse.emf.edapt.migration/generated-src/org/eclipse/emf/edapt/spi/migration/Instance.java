@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -31,11 +31,11 @@ import org.eclipse.emf.edapt.migration.MigrationException;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots <em>Slots</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getType <em>Type</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences <em>References</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getUri <em>Uri</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getUuid <em>Uuid</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots <em>Slots</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getType <em>Type</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences <em>References</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getUri <em>Uri</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.Instance#getUuid <em>Uuid</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,16 +47,18 @@ public interface Instance {
 	/**
 	 * Returns the value of the '<em><b>Slots</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.migration.Slot}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance
+	 * <em>Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Slots</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Slots</em>' containment reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The slots defined by the instance
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Slots</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getInstance_Slots()
 	 * @see org.eclipse.emf.edapt.spi.migration.Slot#getInstance
@@ -67,16 +69,18 @@ public interface Instance {
 
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Type#getInstances <em>Instances</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.Type#getInstances
+	 * <em>Instances</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Type</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Type</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type container to which the instance belongs
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Type</em>' container reference.
 	 * @see #setType(Type)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getInstance_Type()
@@ -87,9 +91,11 @@ public interface Instance {
 	Type getType();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Instance#getType <em>Type</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Instance#getType <em>Type</em>}' container
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Type</em>' container reference.
 	 * @see #getType()
 	 * @generated
@@ -99,16 +105,18 @@ public interface Instance {
 	/**
 	 * Returns the value of the '<em><b>References</b></em>' reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues <em>Values</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues
+	 * <em>Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>References</em>' reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>References</em>' reference list isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The slots from which the instance is referenced
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>References</em>' reference list.
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getInstance_References()
 	 * @see org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues
@@ -121,13 +129,13 @@ public interface Instance {
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Uri</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Uniform Resource Identifier (URI) of the instance in case the instance is a proxy
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(URI)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getInstance_Uri()
@@ -140,6 +148,7 @@ public interface Instance {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUri <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Uri</em>' attribute.
 	 * @see #getUri()
 	 * @generated
@@ -150,13 +159,13 @@ public interface Instance {
 	 * Returns the value of the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Uuid</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The unique and unchangeable identifier of the instance
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Uuid</em>' attribute.
 	 * @see #setUuid(String)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getInstance_Uuid()
@@ -169,6 +178,7 @@ public interface Instance {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUuid <em>Uuid</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Uuid</em>' attribute.
 	 * @see #getUuid()
 	 * @generated
@@ -180,8 +190,9 @@ public interface Instance {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature
+	 *
 	 * @param feature Get the value of the feature
-	 * <!-- end-model-doc -->
+	 *            <!-- end-model-doc -->
 	 * @model featureRequired="true"
 	 * @generated
 	 */
@@ -193,6 +204,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureNameRequired="true"
 	 * @generated
 	 */
@@ -204,6 +216,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the inverse value of the reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceRequired="true"
 	 * @generated
 	 */
@@ -215,6 +228,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the slot that conforms to the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true"
 	 * @generated
 	 */
@@ -226,6 +240,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the class to which the instance conforms
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -237,6 +252,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Set the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true"
 	 * @generated
 	 */
@@ -248,6 +264,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Set the value of a feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureNameRequired="true"
 	 * @generated
 	 */
@@ -259,6 +276,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Check whether the value of a feature is set
 	 * <!-- end-model-doc -->
+	 *
 	 * @model required="true" featureRequired="true"
 	 * @generated
 	 */
@@ -270,6 +288,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Unset the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true"
 	 * @generated
 	 */
@@ -281,6 +300,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Add an element at a certain position to the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true" indexRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -292,6 +312,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Add an element to the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -303,6 +324,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Remove an element from the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -314,6 +336,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Remove an element at a certain position from the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureRequired="true" indexRequired="true"
 	 * @generated
 	 */
@@ -325,6 +348,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Change the type of instance to a different class
 	 * <!-- end-model-doc -->
+	 *
 	 * @model eClassRequired="true"
 	 * @generated
 	 */
@@ -336,6 +360,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Check whether the instance is of a certain type (or its sub types)
 	 * <!-- end-model-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -347,6 +372,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the elements by which the instance is contained
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -358,6 +384,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the elements which are contained by the instance
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -369,6 +396,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Validate the elements rooted at the instance
 	 * <!-- end-model-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -380,6 +408,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Validate the elements rooted at the instance (added all the violations to a diagnostic)
 	 * <!-- end-model-doc -->
+	 *
 	 * @model required="true" chainDataType="org.eclipse.emf.edapt.migration.DiagnosticChain"
 	 * @generated
 	 */
@@ -391,6 +420,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Evaluate an OCL constraint with the instance as context
 	 * <!-- end-model-doc -->
+	 *
 	 * @model exceptions="org.eclipse.emf.edapt.migration.MigrationException" expressionRequired="true"
 	 * @generated
 	 */
@@ -402,6 +432,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the reference by which the instance is contained
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -413,6 +444,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the resource in which this instance is contained
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -424,6 +456,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Find out whether the instance is a proxy, i.e. has its URI set
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -435,6 +468,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Change the type of instance to a different class
 	 * <!-- end-model-doc -->
+	 *
 	 * @model classNameRequired="true"
 	 * @generated
 	 */
@@ -446,6 +480,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the inverse value of the reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
@@ -457,6 +492,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
@@ -468,6 +504,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceNameRequired="true"
 	 * @generated
 	 */
@@ -479,6 +516,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Check whether the instance is of a certain type (or its sub types)
 	 * <!-- end-model-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */
@@ -490,6 +528,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Add an element to the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureNameRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -501,6 +540,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Remove an element from the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureNameRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -512,6 +552,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Add an element at a certain position to the value of the feature
 	 * <!-- end-model-doc -->
+	 *
 	 * @model featureNameRequired="true" indexRequired="true" valueRequired="true"
 	 * @generated
 	 */
@@ -523,6 +564,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceRequired="true"
 	 * @generated
 	 */
@@ -534,6 +576,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model referenceRequired="true"
 	 * @generated
 	 */
@@ -545,6 +588,7 @@ public interface Instance {
 	 * <!-- begin-model-doc -->
 	 * Get the value of the feature which is given by its name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */

@@ -3,17 +3,17 @@ package org.eclipse.emf.edapt.declaration.creation;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,21 +33,21 @@ public class CopyFeature extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass contextClass = feature.getEContainingClass();
+		final EClass contextClass = feature.getEContainingClass();
 
 		// metamodel adaptation
-		EStructuralFeature copiedFeature = MetamodelUtils.copy(feature);
+		final EStructuralFeature copiedFeature = MetamodelUtils.copy(feature);
 		copiedFeature.setName(name);
 		contextClass.getEStructuralFeatures().add(copiedFeature);
 		if (copiedFeature instanceof EReference) {
-			EReference copiedReference = (EReference) copiedFeature;
+			final EReference copiedReference = (EReference) copiedFeature;
 			if (copiedReference.isContainment()) {
 				copiedReference.setContainment(false);
 			}
 		}
 
 		// model migration
-		for (Instance instance : model.getAllInstances(contextClass)) {
+		for (final Instance instance : model.getAllInstances(contextClass)) {
 			instance.set(copiedFeature, instance.get(feature));
 		}
 	}

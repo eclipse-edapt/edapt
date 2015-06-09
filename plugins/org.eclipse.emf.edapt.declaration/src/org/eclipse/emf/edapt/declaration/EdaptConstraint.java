@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -18,7 +18,7 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation for a method implementing the constraint of an operation.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -30,7 +30,7 @@ public @interface EdaptConstraint {
 
 	/** Description of the constraint. */
 	String description();
-	
+
 	/** Optional restricted parameter. */
 	String restricts() default "";
 }

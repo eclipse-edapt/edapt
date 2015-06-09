@@ -5,14 +5,14 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 9BD38028B3377E9110CEC619A333C25A
  */
 @EdaptLibrary(label = "Delegation Operations", description = "Delegation " +
-		"operations move features along the delegation structure.")
+	"operations move features along the delegation structure.")
 public class DelegationOperations extends LibraryImplementation {
 
 	/** Constructor. */

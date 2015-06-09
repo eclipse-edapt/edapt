@@ -5,18 +5,18 @@ import java.util.List;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -47,24 +47,24 @@ public class SpecializeComposition extends OperationImplementation {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass superType = reference.getEReferenceType();
-		EClass eClass = reference.getEContainingClass();
+		final EClass superType = reference.getEReferenceType();
+		final EClass eClass = reference.getEContainingClass();
 
 		// metamodel adaptation
-		EClass newType = MetamodelFactory.newEClass(ePackage, name, superType);
+		final EClass newType = MetamodelFactory.newEClass(ePackage, name, superType);
 		reference.setEType(newType);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
 			if (instance.isSet(reference)) {
-				Object value = instance.get(reference);
+				final Object value = instance.get(reference);
 				if (reference.isMany()) {
-					List<Instance> valueInstances = (List<Instance>) value;
-					for (Instance valueInstance : valueInstances) {
+					final List<Instance> valueInstances = (List<Instance>) value;
+					for (final Instance valueInstance : valueInstances) {
 						migrate(valueInstance, superType, newType, model);
 					}
 				} else if (value != null) {
-					Instance valueInstance = (Instance) value;
+					final Instance valueInstance = (Instance) value;
 					migrate(valueInstance, superType, newType, model);
 				}
 			}
@@ -73,7 +73,7 @@ public class SpecializeComposition extends OperationImplementation {
 
 	/** Migrate an instance from a super type to a sub type. */
 	private void migrate(Instance valueInstance, EClass superType,
-			EClass newType, Model model) {
+		EClass newType, Model model) {
 		if (valueInstance.getEClass() == superType) {
 			valueInstance.migrate(newType);
 		} else {

@@ -6,18 +6,18 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,36 +38,36 @@ public class ReplaceIdentifierByReference extends OperationImplementation {
 	@EdaptConstraint(description = "Referencing and referenced attribute must be of the same type")
 	public boolean checkAttributesSameType() {
 		return referencedAttribute == null
-				|| referencingAttribute.getEType() == referencedAttribute
-						.getEType();
+			|| referencingAttribute.getEType() == referencedAttribute
+				.getEType();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EClass referencedClass = referencedAttribute.getEContainingClass();
+		final EClass referencedClass = referencedAttribute.getEContainingClass();
 
 		// metamodel adaptation
-		EClass referencingClass = referencingAttribute.getEContainingClass();
-		EReference referencingReference = MetamodelFactory.newEReference(
-				referencingClass, referencingAttribute.getName(),
-				referencedClass, referencingAttribute.getLowerBound(),
-				referencingAttribute.getUpperBound());
+		final EClass referencingClass = referencingAttribute.getEContainingClass();
+		final EReference referencingReference = MetamodelFactory.newEReference(
+			referencingClass, referencingAttribute.getName(),
+			referencedClass, referencingAttribute.getLowerBound(),
+			referencingAttribute.getUpperBound());
 		metamodel.delete(referencingAttribute);
 
 		// model migration
-		Map<Object, Instance> referencedElements = new HashMap<Object, Instance>();
-		for (Instance referencedElement : model
-				.getAllInstances(referencedClass)) {
+		final Map<Object, Instance> referencedElements = new HashMap<Object, Instance>();
+		for (final Instance referencedElement : model
+			.getAllInstances(referencedClass)) {
 			referencedElements.put(referencedElement.get(referencedAttribute),
-					referencedElement);
+				referencedElement);
 		}
-		for (Instance referencingElement : model
-				.getAllInstances(referencingClass)) {
-			Object reference = referencingElement.unset(referencingAttribute);
+		for (final Instance referencingElement : model
+			.getAllInstances(referencingClass)) {
+			final Object reference = referencingElement.unset(referencingAttribute);
 			referencingElement.set(referencingReference, referencedElements
-					.get(reference));
+				.get(reference));
 		}
 	}
 }

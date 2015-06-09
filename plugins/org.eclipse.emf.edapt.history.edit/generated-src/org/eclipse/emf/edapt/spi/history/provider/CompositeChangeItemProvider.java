@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -28,25 +27,26 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.CompositeChange} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class CompositeChangeItemProvider
 	extends MigrateableChangeItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public CompositeChangeItemProvider(AdapterFactory adapterFactory) {
@@ -57,6 +57,7 @@ public class CompositeChangeItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,13 +69,13 @@ public class CompositeChangeItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -89,6 +90,7 @@ public class CompositeChangeItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -103,25 +105,27 @@ public class CompositeChangeItemProvider
 	 * This returns CompositeChange.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeChange"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/CompositeChange")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		CompositeChange element = (CompositeChange) object;
-		String label = "Composite Change";
+		final CompositeChange element = (CompositeChange) object;
+		String label = "Composite Change"; //$NON-NLS-1$
 		if (element.getDescription() != null) {
-			label += ": " + this.crop(element.getDescription());
+			label += ": " + crop(element.getDescription()); //$NON-NLS-1$
 		}
 		return label;
 	}
@@ -131,6 +135,7 @@ public class CompositeChangeItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -138,9 +143,9 @@ public class CompositeChangeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(CompositeChange.class)) {
-			case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case HistoryPackage.COMPOSITE_CHANGE__CHANGES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -150,6 +155,7 @@ public class CompositeChangeItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ASCII"?>
+<change_attribute_type:Root
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:change_attribute_type="change_attribute_type/v3"
+    xsi:schemaLocation="change_attribute_type/v3 ChangeAttributeType.ecore"
+    id="1234"/>

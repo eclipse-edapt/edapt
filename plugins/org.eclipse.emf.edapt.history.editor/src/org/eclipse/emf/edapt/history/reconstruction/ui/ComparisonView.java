@@ -6,14 +6,14 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.compare.Comparison;
-//import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSetSnapshot;
+// import org.eclipse.emf.compare.diff.metamodel.ComparisonResourceSetSnapshot;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edapt.common.ui.ModelSash;
 import org.eclipse.emf.edapt.history.reconstruction.CompositeMapping;
@@ -31,7 +31,7 @@ import org.eclipse.ui.part.ViewPart;
 
 /**
  * View to show a comparison between two metamodel versions
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -74,7 +74,7 @@ public class ComparisonView extends ViewPart {
 	 */
 	@Override
 	public void createPartControl(Composite parent) {
-		SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
+		final SashForm sash = new SashForm(parent, SWT.HORIZONTAL);
 
 		beforeSash = new ModelSash(sash, SWT.None);
 		differenceSash = new ModelSash(sash, SWT.None);
@@ -85,35 +85,35 @@ public class ComparisonView extends ViewPart {
 
 		adapter = new DiffSelectionAdapter(beforeSash, afterSash);
 		differenceSash.getStructureViewer().getTree()
-				.addSelectionListener(adapter);
+			.addSelectionListener(adapter);
 
 		beforeSash.getStructureViewer().getTree()
-				.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						Object data = ((TreeItem) e.item).getData();
-						if (data instanceof EObject) {
-							EObject source = (EObject) data;
-							EObject target = adapter.getMapping().getTarget(
-									source);
-							adapter.selectTarget(target);
-						}
+			.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					final Object data = ((TreeItem) e.item).getData();
+					if (data instanceof EObject) {
+						final EObject source = (EObject) data;
+						final EObject target = adapter.getMapping().getTarget(
+							source);
+						adapter.selectTarget(target);
 					}
-				});
+				}
+			});
 
 		afterSash.getStructureViewer().getTree()
-				.addSelectionListener(new SelectionAdapter() {
-					@Override
-					public void widgetSelected(SelectionEvent e) {
-						Object data = ((TreeItem) e.item).getData();
-						if (data instanceof EObject) {
-							EObject target = (EObject) data;
-							EObject source = adapter.getMapping().getSource(
-									target);
-							adapter.selectSource(source);
-						}
+			.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e) {
+					final Object data = ((TreeItem) e.item).getData();
+					if (data instanceof EObject) {
+						final EObject target = (EObject) data;
+						final EObject source = adapter.getMapping().getSource(
+							target);
+						adapter.selectSource(source);
 					}
-				});
+				}
+			});
 
 		sash.setWeights(new int[] { 1, 1, 1 });
 	}
@@ -131,12 +131,12 @@ public class ComparisonView extends ViewPart {
 	 */
 	public void setChange(Change from, Change to) {
 
-		EcoreForwardReconstructor beforeReconstructor = new EcoreForwardReconstructor(
-				URI.createURI("before"));
+		final EcoreForwardReconstructor beforeReconstructor = new EcoreForwardReconstructor(
+			URI.createURI("before")); //$NON-NLS-1$
 		beforeReconstructor.reconstruct(from, true);
 
-		EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(
-				URI.createURI("after"));
+		final EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(
+			URI.createURI("after")); //$NON-NLS-1$
 		afterReconstructor.reconstruct(to, false);
 
 		comparer = new HistoryComparer2(beforeReconstructor, afterReconstructor);
@@ -150,23 +150,22 @@ public class ComparisonView extends ViewPart {
 	private void show() {
 
 		beforeSash.getStructureViewer().setInput(
-				comparer.getSourceReconstructor().getResourceSet());
+			comparer.getSourceReconstructor().getResourceSet());
 		beforeSash.getStructureViewer().expandToLevel(3);
 
-		
 		afterSash.getStructureViewer().setInput(
-				comparer.getTargetReconstructor().getResourceSet());
+			comparer.getTargetReconstructor().getResourceSet());
 		afterSash.getStructureViewer().expandToLevel(3);
 
-		Comparison comparison = comparer.compare();
+		final Comparison comparison = comparer.compare();
 
-		CompositeMapping mapping = new CompositeMapping(comparer
-				.getSourceReconstructor().getMapping(), comparer
-				.getTargetReconstructor().getMapping());
+		final CompositeMapping mapping = new CompositeMapping(comparer
+			.getSourceReconstructor().getMapping(), comparer
+			.getTargetReconstructor().getMapping());
 		adapter.setMapping(mapping);
 
 		differenceSash.getStructureViewer().setInput(
-				comparison.getDifferences());
+			comparison.getDifferences());
 		differenceSash.getStructureViewer().expandToLevel(3);
 	}
 
@@ -175,12 +174,12 @@ public class ComparisonView extends ViewPart {
 	 */
 	public void setRelease(Release from, Release to) {
 
-		EcoreForwardReconstructor beforeReconstructor = new EcoreForwardReconstructor(
-				URI.createURI("before"));
+		final EcoreForwardReconstructor beforeReconstructor = new EcoreForwardReconstructor(
+			URI.createURI("before")); //$NON-NLS-1$
 		beforeReconstructor.reconstruct(from, true);
 
-		EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(
-				URI.createURI("after"));
+		final EcoreForwardReconstructor afterReconstructor = new EcoreForwardReconstructor(
+			URI.createURI("after")); //$NON-NLS-1$
 		afterReconstructor.reconstruct(to, false);
 
 		// CB Migrate

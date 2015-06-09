@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.util;
 
@@ -33,10 +33,9 @@ import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edapt.spi.history.Set;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 
-
 /**
  * Helper class to check whether a change depends on another change
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -54,8 +53,8 @@ public final class DependencyChecker {
 	 * changes (target).
 	 */
 	public static boolean depends(List<Change> sourceChanges,
-			List<Change> targetChanges) {
-		for (Change sourceChange : sourceChanges) {
+		List<Change> targetChanges) {
+		for (final Change sourceChange : sourceChanges) {
 			if (depends(sourceChange, targetChanges)) {
 				return true;
 			}
@@ -65,8 +64,8 @@ public final class DependencyChecker {
 
 	/** Check whether a change (source) depends on a list of changes (target). */
 	public static boolean depends(Change sourceChange,
-			List<Change> targetChanges) {
-		for (Change targetChange : targetChanges) {
+		List<Change> targetChanges) {
+		for (final Change targetChange : targetChanges) {
 			if (depends(sourceChange, targetChange)) {
 				return true;
 			}
@@ -76,11 +75,11 @@ public final class DependencyChecker {
 
 	/** Check whether a change (source) depends on another change (target). */
 	public static boolean depends(Change source, Change target) {
-		List<PrimitiveChange> sourceChanges = getPrimitiveChanges(source);
-		List<PrimitiveChange> targetChanges = getPrimitiveChanges(target);
+		final List<PrimitiveChange> sourceChanges = getPrimitiveChanges(source);
+		final List<PrimitiveChange> targetChanges = getPrimitiveChanges(target);
 
-		for (PrimitiveChange sourceChange : sourceChanges) {
-			for (PrimitiveChange targetChange : targetChanges) {
+		for (final PrimitiveChange sourceChange : sourceChanges) {
+			for (final PrimitiveChange targetChange : targetChanges) {
 				if (depends(sourceChange, targetChange)) {
 					return true;
 				}
@@ -101,7 +100,7 @@ public final class DependencyChecker {
 
 	/** Check whether a primitive change requires another primitive change. */
 	private static boolean requires(PrimitiveChange source,
-			PrimitiveChange target) {
+		PrimitiveChange target) {
 		if (source instanceof Delete) {
 			return requires((Delete) source, target);
 		} else if (target instanceof Create) {
@@ -116,8 +115,8 @@ public final class DependencyChecker {
 	 * element.
 	 */
 	private static boolean requires(PrimitiveChange source, Create target) {
-		java.util.Set<EObject> elements = getElements(source);
-		for (EObject element : elements) {
+		final java.util.Set<EObject> elements = getElements(source);
+		for (final EObject element : elements) {
 			if (element == target.getElement()) {
 				return true;
 			}
@@ -131,8 +130,8 @@ public final class DependencyChecker {
 	 * to which it refers.
 	 */
 	private static boolean requires(Delete source, PrimitiveChange target) {
-		java.util.Set<EObject> elements = getElements(target);
-		for (EObject element : elements) {
+		final java.util.Set<EObject> elements = getElements(target);
+		for (final EObject element : elements) {
 			if (isDeleted(source, element)) {
 				return true;
 			}
@@ -144,11 +143,11 @@ public final class DependencyChecker {
 	 * Check whether a primitive change conflicts with another primitive change.
 	 */
 	private static boolean conflicts(PrimitiveChange source,
-			PrimitiveChange target) {
+		PrimitiveChange target) {
 		if (source instanceof ValueChange && target instanceof ValueChange) {
 			return conflicts((ValueChange) source, (ValueChange) target);
 		}
-		if(source instanceof Move && target instanceof Move) {
+		if (source instanceof Move && target instanceof Move) {
 			return conflicts((Move) source, (Move) target);
 		}
 		return false;
@@ -163,8 +162,8 @@ public final class DependencyChecker {
 	 */
 	private static boolean conflicts(ValueChange source, ValueChange target) {
 		if (source.getElement() == target.getElement()
-				&& source.getFeature() == target.getFeature()) {
-			EStructuralFeature feature = source.getFeature();
+			&& source.getFeature() == target.getFeature()) {
+			final EStructuralFeature feature = source.getFeature();
 			if (feature.isMany()) {
 				if (source.getValue() == target.getValue()) {
 					return true;
@@ -183,7 +182,7 @@ public final class DependencyChecker {
 	 */
 	private static boolean conflicts(Move source, Move target) {
 		if (source.getElement() == target.getElement()
-				&& source.getReference() == target.getReference()) {
+			&& source.getReference() == target.getReference()) {
 			return true;
 		}
 		return false;
@@ -191,20 +190,20 @@ public final class DependencyChecker {
 
 	/** Get the primitive changes contained in a change. */
 	private static List<PrimitiveChange> getPrimitiveChanges(Change change) {
-		List<PrimitiveChange> changes = new ArrayList<PrimitiveChange>();
+		final List<PrimitiveChange> changes = new ArrayList<PrimitiveChange>();
 		if (change instanceof PrimitiveChange) {
 			changes.add((PrimitiveChange) change);
 			if (change instanceof InitializerChange) {
-				InitializerChange initializerChange = (InitializerChange) change;
+				final InitializerChange initializerChange = (InitializerChange) change;
 				changes.addAll(initializerChange.getChanges());
 			}
 		} else if (change instanceof CompositeChange) {
-			CompositeChange compositeChange = (CompositeChange) change;
+			final CompositeChange compositeChange = (CompositeChange) change;
 			changes.addAll(compositeChange.getChanges());
 		} else if (change instanceof MigrationChange) {
-			MigrationChange migrationChange = (MigrationChange) change;
-			for (MigrateableChange migrateableChange : migrationChange
-					.getChanges()) {
+			final MigrationChange migrationChange = (MigrationChange) change;
+			for (final MigrateableChange migrateableChange : migrationChange
+				.getChanges()) {
 				changes.addAll(getPrimitiveChanges(migrateableChange));
 			}
 		}
@@ -216,8 +215,8 @@ public final class DependencyChecker {
 		if (delete.getElement() == element) {
 			return true;
 		}
-		for (Iterator<EObject> i = delete.getElement().eAllContents(); i
-				.hasNext();) {
+		for (final Iterator<EObject> i = delete.getElement().eAllContents(); i
+			.hasNext();) {
 			if (i.next() == element) {
 				return true;
 			}
@@ -227,38 +226,38 @@ public final class DependencyChecker {
 
 	/** Get the elements that a {@link PrimitiveChange} uses. */
 	private static java.util.Set<EObject> getElements(PrimitiveChange change) {
-		java.util.Set<EObject> elements = new HashSet<EObject>();
+		final java.util.Set<EObject> elements = new HashSet<EObject>();
 		if (change instanceof ValueChange) {
-			ValueChange valueChange = (ValueChange) change;
+			final ValueChange valueChange = (ValueChange) change;
 			elements.add(valueChange.getElement());
 			if (valueChange.getFeature() instanceof EReference) {
 				if (valueChange.getReferenceValue() != null) {
 					elements.add(valueChange.getReferenceValue());
 				}
 				if (valueChange instanceof Set) {
-					Set set = (Set) valueChange;
+					final Set set = (Set) valueChange;
 					if (set.getOldReferenceValue() != null) {
 						elements.add(set.getOldReferenceValue());
 					}
 				}
 			}
 		} else if (change instanceof ContentChange) {
-			ContentChange contentChange = (ContentChange) change;
+			final ContentChange contentChange = (ContentChange) change;
 			if (contentChange.getTarget() != null) {
 				elements.add(contentChange.getTarget());
 			}
 			if (contentChange instanceof NonDelete) {
-				NonDelete nonDelete = (NonDelete) contentChange;
+				final NonDelete nonDelete = (NonDelete) contentChange;
 				elements.add(nonDelete.getElement());
 				if (nonDelete instanceof Move) {
-					Move move = (Move) nonDelete;
+					final Move move = (Move) nonDelete;
 					elements.add(move.getSource());
 				}
 			} else if (contentChange instanceof Delete) {
-				Delete delete = (Delete) contentChange;
+				final Delete delete = (Delete) contentChange;
 				elements.add(delete.getElement());
-				for (Iterator<EObject> i = delete.getElement().eAllContents(); i
-						.hasNext();) {
+				for (final Iterator<EObject> i = delete.getElement().eAllContents(); i
+					.hasNext();) {
 					elements.add(i.next());
 				}
 			}

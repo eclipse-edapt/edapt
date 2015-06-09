@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -21,15 +21,16 @@ import org.eclipse.emf.ecore.EReference;
  * The <b>Package</b> for the model.
  * It contains accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Metamodel for the declaration of operations
  * <!-- end-model-doc -->
+ *
  * @see org.eclipse.emf.edapt.declaration.DeclarationFactory
  * @model kind="package"
  * @generated
@@ -39,38 +40,44 @@ public interface DeclarationPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNAME = "declaration";
+	String eNAME = "declaration"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/declaration/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/declaration/0.3"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_PREFIX = "declaration";
+	String eNS_PREFIX = "declaration"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	DeclarationPackage eINSTANCE = org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl <em>Identified Element</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl
+	 * <em>Identified Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getIdentifiedElement()
 	 * @generated
@@ -81,6 +88,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -90,6 +98,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -99,6 +108,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The number of structural features of the '<em>Identified Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -108,6 +118,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl <em>Library</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.declaration.impl.LibraryImpl
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getLibrary()
 	 * @generated
@@ -118,6 +129,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -127,6 +139,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -136,6 +149,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Operations</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -145,6 +159,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -154,6 +169,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -163,6 +179,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Libraries</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -172,15 +189,18 @@ public interface DeclarationPackage extends EPackage {
 	 * The number of structural features of the '<em>Library</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int LIBRARY_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl <em>Operation</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl <em>Operation</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.declaration.impl.OperationImpl
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getOperation()
 	 * @generated
@@ -191,6 +211,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -200,6 +221,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -209,6 +231,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Library</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -218,6 +241,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -227,6 +251,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -236,6 +261,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Deprecated</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -245,6 +271,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Before</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -254,6 +281,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>After</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -263,6 +291,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Implementation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -272,6 +301,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -281,15 +311,18 @@ public interface DeclarationPackage extends EPackage {
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.declaration.impl.ParameterImpl
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getParameter()
 	 * @generated
@@ -300,6 +333,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -309,6 +343,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -318,6 +353,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Operation</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -327,6 +363,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -336,6 +373,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Main</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -345,6 +383,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Many</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -354,6 +393,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Classifier</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -363,6 +403,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Classifier Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -372,15 +413,18 @@ public interface DeclarationPackage extends EPackage {
 	 * The number of structural features of the '<em>Parameter</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int PARAMETER_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl <em>Constraint</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl <em>Constraint</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.declaration.impl.ConstraintImpl
 	 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getConstraint()
 	 * @generated
@@ -391,6 +435,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -400,6 +445,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -409,6 +455,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Operation</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -418,6 +465,7 @@ public interface DeclarationPackage extends EPackage {
 	 * The feature id for the '<em><b>Restricts</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -427,16 +475,18 @@ public interface DeclarationPackage extends EPackage {
 	 * The number of structural features of the '<em>Constraint</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int CONSTRAINT_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
-
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement <em>Identified Element</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement
+	 * <em>Identified Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Identified Element</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.IdentifiedElement
 	 * @generated
@@ -444,9 +494,11 @@ public interface DeclarationPackage extends EPackage {
 	EClass getIdentifiedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getName
+	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.IdentifiedElement#getName()
 	 * @see #getIdentifiedElement()
@@ -455,9 +507,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getIdentifiedElement_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Description</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription()
 	 * @see #getIdentifiedElement()
@@ -469,6 +523,7 @@ public interface DeclarationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Library <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Library</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Library
 	 * @generated
@@ -476,9 +531,11 @@ public interface DeclarationPackage extends EPackage {
 	EClass getLibrary();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Operations</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Library#getOperations()
 	 * @see #getLibrary()
@@ -487,9 +544,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getLibrary_Operations();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Library#getImplementation
+	 * <em>Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Implementation</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Library#getImplementation()
 	 * @see #getLibrary()
@@ -498,9 +557,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getLibrary_Implementation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Library#getLabel
+	 * <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Label</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Library#getLabel()
 	 * @see #getLibrary()
@@ -509,9 +570,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getLibrary_Label();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Libraries</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Library#getLibraries()
 	 * @see #getLibrary()
@@ -523,6 +586,7 @@ public interface DeclarationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Operation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Operation</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation
 	 * @generated
@@ -530,9 +594,11 @@ public interface DeclarationPackage extends EPackage {
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Library</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getLibrary()
 	 * @see #getOperation()
@@ -541,9 +607,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Library();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getParameters()
 	 * @see #getOperation()
@@ -552,9 +620,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Constraints</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getConstraints()
 	 * @see #getOperation()
@@ -563,9 +633,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Constraints();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#isDeprecated <em>Deprecated</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#isDeprecated
+	 * <em>Deprecated</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Deprecated</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#isDeprecated()
 	 * @see #getOperation()
@@ -574,9 +646,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_Deprecated();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getBefore <em>Before</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getBefore
+	 * <em>Before</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Before</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getBefore()
 	 * @see #getOperation()
@@ -585,9 +659,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_Before();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getAfter <em>After</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getAfter
+	 * <em>After</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>After</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getAfter()
 	 * @see #getOperation()
@@ -596,9 +672,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_After();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation
+	 * <em>Implementation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Implementation</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getImplementation()
 	 * @see #getOperation()
@@ -607,9 +685,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_Implementation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#getLabel
+	 * <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Label</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getLabel()
 	 * @see #getOperation()
@@ -621,6 +701,7 @@ public interface DeclarationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Parameter</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter
 	 * @generated
@@ -628,9 +709,11 @@ public interface DeclarationPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Operation</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#getOperation()
 	 * @see #getParameter()
@@ -639,9 +722,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getParameter_Operation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired <em>Required</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isRequired
+	 * <em>Required</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Required</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#isRequired()
 	 * @see #getParameter()
@@ -650,9 +735,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getParameter_Required();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMain <em>Main</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMain
+	 * <em>Main</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Main</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#isMain()
 	 * @see #getParameter()
@@ -661,9 +748,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getParameter_Main();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMany <em>Many</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#isMany
+	 * <em>Many</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Many</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#isMany()
 	 * @see #getParameter()
@@ -672,9 +761,11 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getParameter_Many();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier <em>Classifier</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifier
+	 * <em>Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Classifier</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#getClassifier()
 	 * @see #getParameter()
@@ -683,9 +774,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getParameter_Classifier();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName <em>Classifier Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Parameter#getClassifierName
+	 * <em>Classifier Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Classifier Name</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Parameter#getClassifierName()
 	 * @see #getParameter()
@@ -697,6 +790,7 @@ public interface DeclarationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Constraint <em>Constraint</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Constraint</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Constraint
 	 * @generated
@@ -704,9 +798,11 @@ public interface DeclarationPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.declaration.Constraint#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.declaration.Constraint#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Operation</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Constraint#getOperation()
 	 * @see #getConstraint()
@@ -715,9 +811,11 @@ public interface DeclarationPackage extends EPackage {
 	EReference getConstraint_Operation();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Constraint#getRestricts <em>Restricts</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.declaration.Constraint#getRestricts
+	 * <em>Restricts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Restricts</em>'.
 	 * @see org.eclipse.emf.edapt.declaration.Constraint#getRestricts()
 	 * @see #getConstraint()
@@ -729,6 +827,7 @@ public interface DeclarationPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -738,19 +837,22 @@ public interface DeclarationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * Defines literals for the meta objects that represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl <em>Identified Element</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl
+		 * <em>Identified Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl
 		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getIdentifiedElement()
 		 * @generated
@@ -761,6 +863,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute IDENTIFIED_ELEMENT__NAME = eINSTANCE.getIdentifiedElement_Name();
@@ -769,14 +872,17 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute IDENTIFIED_ELEMENT__DESCRIPTION = eINSTANCE.getIdentifiedElement_Description();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl <em>Library</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.LibraryImpl <em>Library</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.declaration.impl.LibraryImpl
 		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getLibrary()
 		 * @generated
@@ -787,6 +893,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Operations</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference LIBRARY__OPERATIONS = eINSTANCE.getLibrary_Operations();
@@ -795,6 +902,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Implementation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute LIBRARY__IMPLEMENTATION = eINSTANCE.getLibrary_Implementation();
@@ -803,6 +911,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute LIBRARY__LABEL = eINSTANCE.getLibrary_Label();
@@ -811,14 +920,17 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Libraries</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference LIBRARY__LIBRARIES = eINSTANCE.getLibrary_Libraries();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl <em>Operation</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl
+		 * <em>Operation</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.declaration.impl.OperationImpl
 		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getOperation()
 		 * @generated
@@ -829,6 +941,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Library</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference OPERATION__LIBRARY = eINSTANCE.getOperation_Library();
@@ -837,6 +950,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference OPERATION__PARAMETERS = eINSTANCE.getOperation_Parameters();
@@ -845,6 +959,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference OPERATION__CONSTRAINTS = eINSTANCE.getOperation_Constraints();
@@ -853,6 +968,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Deprecated</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute OPERATION__DEPRECATED = eINSTANCE.getOperation_Deprecated();
@@ -861,6 +977,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Before</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute OPERATION__BEFORE = eINSTANCE.getOperation_Before();
@@ -869,6 +986,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>After</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute OPERATION__AFTER = eINSTANCE.getOperation_After();
@@ -877,6 +995,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Implementation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute OPERATION__IMPLEMENTATION = eINSTANCE.getOperation_Implementation();
@@ -885,14 +1004,17 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute OPERATION__LABEL = eINSTANCE.getOperation_Label();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl
+		 * <em>Parameter</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.declaration.impl.ParameterImpl
 		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getParameter()
 		 * @generated
@@ -903,6 +1025,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference PARAMETER__OPERATION = eINSTANCE.getParameter_Operation();
@@ -911,6 +1034,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Required</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER__REQUIRED = eINSTANCE.getParameter_Required();
@@ -919,6 +1043,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Main</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER__MAIN = eINSTANCE.getParameter_Main();
@@ -927,6 +1052,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Many</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER__MANY = eINSTANCE.getParameter_Many();
@@ -935,6 +1061,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Classifier</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference PARAMETER__CLASSIFIER = eINSTANCE.getParameter_Classifier();
@@ -943,14 +1070,17 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Classifier Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER__CLASSIFIER_NAME = eINSTANCE.getParameter_ClassifierName();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl <em>Constraint</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ConstraintImpl
+		 * <em>Constraint</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.declaration.impl.ConstraintImpl
 		 * @see org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl#getConstraint()
 		 * @generated
@@ -961,6 +1091,7 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Operation</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference CONSTRAINT__OPERATION = eINSTANCE.getConstraint_Operation();
@@ -969,10 +1100,11 @@ public interface DeclarationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Restricts</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference CONSTRAINT__RESTRICTS = eINSTANCE.getConstraint_Restricts();
 
 	}
 
-} //DeclarationPackage
+} // DeclarationPackage

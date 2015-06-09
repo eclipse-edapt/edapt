@@ -13,35 +13,35 @@ public class StateMachineEventCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateBefore(Model model, Metamodel metamodel)
-			throws MigrationException {
-		metamodel.setDefaultPackage("statemachine");
-		triggerAttribute = metamodel.getEAttribute("Transition.trigger");
+		throws MigrationException {
+		metamodel.setDefaultPackage("statemachine"); //$NON-NLS-1$
+		triggerAttribute = metamodel.getEAttribute("Transition.trigger"); //$NON-NLS-1$
 	}
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 
-		for (Instance transition : model.getInstances("Transition")) {
-			String triggerLabel = transition.unset(triggerAttribute);
+		for (final Instance transition : model.getInstances("Transition")) { //$NON-NLS-1$
+			final String triggerLabel = transition.unset(triggerAttribute);
 			if (triggerLabel != null) {
-				Instance stateMachine = getStateMachine(transition);
+				final Instance stateMachine = getStateMachine(transition);
 				Instance event = stateMachine
-						.evaluate("event->any (e | e.name = '" + triggerLabel
-								+ "')");
+					.evaluate("event->any (e | e.name = '" + triggerLabel //$NON-NLS-1$
+						+ "')"); //$NON-NLS-1$
 				if (event == null) {
-					event = model.newInstance("Event");
-					event.set("name", triggerLabel);
-					stateMachine.add("event", event);
+					event = model.newInstance("Event"); //$NON-NLS-1$
+					event.set("name", triggerLabel); //$NON-NLS-1$
+					stateMachine.add("event", event); //$NON-NLS-1$
 				}
-				transition.set("trigger", event);
+				transition.set("trigger", event); //$NON-NLS-1$
 			}
 		}
 	}
 
 	public Instance getStateMachine(Instance transition) {
-		Instance state = transition.getLink("source");
-		while (state != null && !state.instanceOf("StateMachine")) {
+		Instance state = transition.getLink("source"); //$NON-NLS-1$
+		while (state != null && !state.instanceOf("StateMachine")) { //$NON-NLS-1$
 			state = state.getContainer();
 		}
 		return state;

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
@@ -27,7 +27,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
  * Command to add a metamodel to the history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,28 +36,29 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public class AddResourceHandler extends AbstractHandler {
 
 	/** {@inheritDoc} */
+	@Override
 	public Object execute(ExecutionEvent event) {
-		EcoreEditor editor = (EcoreEditor) HandlerUtil.getActiveEditor(event);
-		EditingDomainListener listener = EcoreEditorDetector.getInstance()
-				.getListener(editor);
+		final EcoreEditor editor = (EcoreEditor) HandlerUtil.getActiveEditor(event);
+		final EditingDomainListener listener = EcoreEditorDetector.getInstance()
+			.getListener(editor);
 
 		if (listener == null) {
-			CreateHistoryWizard wizard = new CreateHistoryWizard(editor);
-			WizardDialog dialog = new WizardDialog(Display.getDefault()
-					.getActiveShell(), wizard);
+			final CreateHistoryWizard wizard = new CreateHistoryWizard(editor);
+			final WizardDialog dialog = new WizardDialog(Display.getDefault()
+				.getActiveShell(), wizard);
 			dialog.open();
 
 		} else {
 
-			ISelection selection = HandlerUtil.getCurrentSelection(event);
-			Resource resource = SelectionUtils.getSelectedElement(selection);
+			final ISelection selection = HandlerUtil.getCurrentSelection(event);
+			final Resource resource = SelectionUtils.getSelectedElement(selection);
 
-			AddResourceCommand command = new AddResourceCommand(listener,
-					resource);
+			final AddResourceCommand command = new AddResourceCommand(listener,
+				resource);
 			if (listener.isRecorded(resource)) {
 				MessageDialog.openInformation(Display.getDefault()
-						.getActiveShell(), "Metamodel already recorded",
-						"The metamodel is already recorded.");
+					.getActiveShell(), "Metamodel already recorded", //$NON-NLS-1$
+					"The metamodel is already recorded."); //$NON-NLS-1$
 				return null;
 			}
 			editor.getEditingDomain().getCommandStack().execute(command);

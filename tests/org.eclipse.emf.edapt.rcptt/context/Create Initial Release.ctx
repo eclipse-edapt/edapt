@@ -1,0 +1,22 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: Create Initial Release
+Element-Type: context
+Element-Version: 2.0
+Id: _qYMXsAkHEeWg38ag0nnchw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/2/15 11:13 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-editor "task.ecore" | get-tree 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history" | click
+get-view "Operation Browser - task.ecore" | get-button Release | click
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history" | click
+    key-type "M1+s"
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

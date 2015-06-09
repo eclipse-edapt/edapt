@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -25,10 +25,10 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,12 +40,14 @@ public interface Library extends IdentifiedElement {
 	/**
 	 * Returns the value of the '<em><b>Operations</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.declaration.Operation}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary
+	 * <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Set of coupled evolution operations
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Operations</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Operations()
 	 * @see org.eclipse.emf.edapt.declaration.Operation#getLibrary
@@ -58,13 +60,14 @@ public interface Library extends IdentifiedElement {
 	 * Returns the value of the '<em><b>Implementation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Implementation</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Implementation</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Relative path to the code implementing the operations of the library
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Implementation</em>' attribute.
 	 * @see #setImplementation(Class)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Implementation()
@@ -74,9 +77,11 @@ public interface Library extends IdentifiedElement {
 	Class getImplementation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Library#getImplementation <em>Implementation</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Library#getImplementation
+	 * <em>Implementation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Implementation</em>' attribute.
 	 * @see #getImplementation()
 	 * @generated
@@ -90,6 +95,7 @@ public interface Library extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Label for an element
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Label</em>' attribute.
 	 * @see #setLabel(String)
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Label()
@@ -102,6 +108,7 @@ public interface Library extends IdentifiedElement {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Library#getLabel <em>Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Label</em>' attribute.
 	 * @see #getLabel()
 	 * @generated
@@ -113,10 +120,11 @@ public interface Library extends IdentifiedElement {
 	 * The list contents are of type {@link org.eclipse.emf.edapt.declaration.Library}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Libraries</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Libraries</em>' containment reference list isn't clear, there really should be more of
+	 * a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Libraries</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getLibrary_Libraries()
 	 * @model containment="true"
@@ -130,6 +138,7 @@ public interface Library extends IdentifiedElement {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the operation in the library with a certain name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model
 	 * @generated
 	 */

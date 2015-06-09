@@ -6,17 +6,17 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
 import org.eclipse.emf.common.ui.dialogs.ResourceDialog;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
-import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -24,10 +24,9 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 
-
 /**
  * Action to support the convergence of a source metamodel to a target metamodel
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,22 +37,22 @@ public class ConvergeHandler extends EditingDomainListenerHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomainListener listener, EcoreEditor editor) {
-		ResourceDialog dialog = new ResourceDialog(Display.getDefault()
-				.getActiveShell(), "Target metamodel", SWT.None);
+		final ResourceDialog dialog = new ResourceDialog(Display.getDefault()
+			.getActiveShell(), "Target metamodel", SWT.None); //$NON-NLS-1$
 		if (dialog.open() != IDialogConstants.OK_ID) {
 			return null;
 		}
 
-		URI targetURI = dialog.getURIs().get(0);
+		final URI targetURI = dialog.getURIs().get(0);
 		try {
-			IWorkbenchPage page = PlatformUI.getWorkbench()
-					.getActiveWorkbenchWindow().getActivePage();
-			ConvergenceView view = (ConvergenceView) page
-					.showView(ConvergenceView.ID);
+			final IWorkbenchPage page = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage();
+			final ConvergenceView view = (ConvergenceView) page
+				.showView(ConvergenceView.ID);
 			view.init(targetURI, editor);
-		} catch (PartInitException e) {
+		} catch (final PartInitException e) {
 			LoggingUtils
-					.logError(HistoryEditorPlugin.getPlugin(), e);
+				.logError(HistoryEditorPlugin.getPlugin(), e);
 		}
 		return null;
 	}

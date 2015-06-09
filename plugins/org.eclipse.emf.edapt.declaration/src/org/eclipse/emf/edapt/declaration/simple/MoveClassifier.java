@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -32,7 +32,7 @@ public class MoveClassifier extends OperationImplementation {
 	@EdaptConstraint(description = "A classifier with the same name exists in the target package")
 	public boolean checkUniqueClassifierNameInTargetPackage() {
 		return targetPackage == null
-				|| targetPackage.getEClassifier(classifier.getName()) == null;
+			|| targetPackage.getEClassifier(classifier.getName()) == null;
 	}
 
 	/** {@description} */

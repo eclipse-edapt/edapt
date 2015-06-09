@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -30,10 +30,9 @@ import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edapt.spi.history.Remove;
 import org.eclipse.emf.edapt.spi.history.Set;
 
-
 /**
  * Base class to generate the history for created elements
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -45,17 +44,17 @@ public abstract class GeneratorBase {
 	 * History factory for easier creation of History elements
 	 */
 	protected HistoryFactory factory;
-	
+
 	/**
 	 * Container for changes
 	 */
 	protected CompositeChange changeContainer;
-	
+
 	/**
 	 * References whose opposite has already been created
 	 */
 	private HashSet<EReference> opposite;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -66,53 +65,53 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Generate history for a number of root elements
-	 * 
+	 *
 	 * @param rootElements
 	 */
 	protected void generateElements(Collection<EObject> rootElements) {
-		DirectedGraph<EObject> digraph = new DirectedGraph<EObject>();
-		
+		final DirectedGraph<EObject> digraph = new DirectedGraph<EObject>();
+
 		opposite = new HashSet<EReference>();
-		
-		for(EObject root : rootElements) {
+
+		for (final EObject root : rootElements) {
 			addContents(root, digraph);
 		}
-		
+
 		addDependencies(digraph);
-		
-		List<EObject> order = digraph.getOrdering();
-		for(EObject element : order) {
+
+		final List<EObject> order = digraph.getOrdering();
+		for (final EObject element : order) {
 			generateElement(element);
 		}
 	}
 
 	/**
 	 * Add all elements to be created to a directed graph
-	 * 
+	 *
 	 * @param parent
 	 * @param digraph
 	 */
 	@SuppressWarnings("unchecked")
 	protected void addContents(EObject parent, DirectedGraph<EObject> digraph) {
 		digraph.add(parent);
-		for(EReference reference : parent.eClass().getEAllReferences()) {
-			if(skipFeature(reference)) {
+		for (final EReference reference : parent.eClass().getEAllReferences()) {
+			if (skipFeature(reference)) {
 				continue;
 			}
-			if(reference.isContainment()) {
-				if(reference.isMany()) {
-					for(EObject child : (List<EObject>) parent.eGet(reference)) {
+			if (reference.isContainment()) {
+				if (reference.isMany()) {
+					for (final EObject child : (List<EObject>) parent.eGet(reference)) {
 						addContents(child, digraph);
-						if(digraph.contains(child)) {
+						if (digraph.contains(child)) {
 							digraph.addOrder(parent, child);
 						}
 					}
 				}
 				else {
-					EObject child = (EObject) parent.eGet(reference);
-					if(child != null) {
+					final EObject child = (EObject) parent.eGet(reference);
+					if (child != null) {
 						addContents(child, digraph);
-						if(digraph.contains(child)) {
+						if (digraph.contains(child)) {
 							digraph.addOrder(parent, child);
 						}
 					}
@@ -123,31 +122,31 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add all dependencies between the elements to be created to the directed graph
-	 * 
+	 *
 	 * @param digraph
 	 */
 	@SuppressWarnings("unchecked")
 	private void addDependencies(DirectedGraph<EObject> digraph) {
-		for(EObject element : digraph.getElements()) {
-			for(EReference reference : element.eClass().getEAllReferences()) {
-				if(skipFeature(reference)) {
+		for (final EObject element : digraph.getElements()) {
+			for (final EReference reference : element.eClass().getEAllReferences()) {
+				if (skipFeature(reference)) {
 					continue;
 				}
-				if(!reference.isContainment()) {
-					if(reference.isMany()) {
-						List<EObject> targets = (List<EObject>) element.eGet(reference);
-						for(EObject target : targets) {
-							if(digraph.contains(target)) {
+				if (!reference.isContainment()) {
+					if (reference.isMany()) {
+						final List<EObject> targets = (List<EObject>) element.eGet(reference);
+						for (final EObject target : targets) {
+							if (digraph.contains(target)) {
 								digraph.addOrder(target, element);
 							}
 						}
 					}
 					else {
-						EObject target = (EObject) element.eGet(reference);
-						if(target != null) {
-							if(digraph.contains(target)) {
-								if(reference == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
-									if(!opposite.contains(element)) {
+						final EObject target = (EObject) element.eGet(reference);
+						if (target != null) {
+							if (digraph.contains(target)) {
+								if (reference == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
+									if (!opposite.contains(element)) {
 										digraph.addOrder(target, element);
 										opposite.add((EReference) target);
 									}
@@ -165,43 +164,44 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Generate the history for an element
-	 * 
+	 *
 	 * @param element
 	 */
 	@SuppressWarnings("unchecked")
 	private void generateElement(EObject element) {
-		Create change = create(element);
+		final Create change = create(element);
 		append(change);
-		for(EAttribute attribute : element.eClass().getEAllAttributes()) {
-			if(skipFeature(attribute)) {
+		for (final EAttribute attribute : element.eClass().getEAllAttributes()) {
+			if (skipFeature(attribute)) {
 				continue;
 			}
-			if(element.eGet(attribute) == null) {
-				if(attribute.getDefaultValue() != null) {
-					change.getChanges().add(set(element, attribute.getDefaultValue(), attribute, element.eGet(attribute)));
+			if (element.eGet(attribute) == null) {
+				if (attribute.getDefaultValue() != null) {
+					change.getChanges().add(
+						set(element, attribute.getDefaultValue(), attribute, element.eGet(attribute)));
 				}
 			}
-			else if(!element.eGet(attribute).equals(attribute.getDefaultValue())) {
+			else if (!element.eGet(attribute).equals(attribute.getDefaultValue())) {
 				change.getChanges().add(set(element, attribute.getDefaultValue(), attribute, element.eGet(attribute)));
 			}
 		}
-		for(EReference reference : element.eClass().getEAllReferences()) {
-			if(skipFeature(reference)) {
+		for (final EReference reference : element.eClass().getEAllReferences()) {
+			if (skipFeature(reference)) {
 				continue;
 			}
-			if(!reference.isContainment()) {
-				if(reference.isMany()) {
-					for(EObject value : (List<EObject>) element.eGet(reference)) {
+			if (!reference.isContainment()) {
+				if (reference.isMany()) {
+					for (final EObject value : (List<EObject>) element.eGet(reference)) {
 						change.getChanges().add(add(element, reference, value));
 					}
 				}
 				else {
-					EObject value = (EObject) element.eGet(reference);
-					if(value != null) {
-						if(reference == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
-							if(!opposite.contains(element)) {
+					final EObject value = (EObject) element.eGet(reference);
+					if (value != null) {
+						if (reference == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
+							if (!opposite.contains(element)) {
 								change.getChanges().add(set(element, null, reference, value));
-								change.getChanges().add(set(value, null, reference, element));								
+								change.getChanges().add(set(value, null, reference, element));
 							}
 						}
 						else {
@@ -215,14 +215,15 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Skip certain features
-	 * 
+	 *
 	 * @param feature
 	 * @return true if feature has to be skipped, false otherwise
 	 */
 	protected boolean skipFeature(EStructuralFeature feature) {
-		if(feature instanceof EReference) {
-			EReference reference = (EReference) feature;
-			if(reference.getEOpposite() != null && reference.getEOpposite().isContainment() || isGenericReference(reference)) {
+		if (feature instanceof EReference) {
+			final EReference reference = (EReference) feature;
+			if (reference.getEOpposite() != null && reference.getEOpposite().isContainment()
+				|| isGenericReference(reference)) {
 				return true;
 			}
 		}
@@ -231,25 +232,24 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Determine whether a reference is a generic one
-	 * 
+	 *
 	 * @param reference
 	 * @return true if reference is a generic one, false otherwise
 	 */
 	private boolean isGenericReference(EReference reference) {
-		return
-			reference == EcorePackage.eINSTANCE.getETypedElement_EGenericType() ||
+		return reference == EcorePackage.eINSTANCE.getETypedElement_EGenericType() ||
 			reference == EcorePackage.eINSTANCE.getEClass_EGenericSuperTypes();
 	}
 
 	/**
 	 * Add a create change
 	 * (target and containment feature will be inferred with the help of reflective API)
-	 * 
+	 *
 	 * @param created Element to be created
 	 * @return Change
 	 */
 	protected Create create(EObject created) {
-		Create createChild = factory.createCreate();
+		final Create createChild = factory.createCreate();
 		createChild.setElement(created);
 		createChild.setTarget(created.eContainer());
 		createChild.setReference(created.eContainmentFeature());
@@ -258,12 +258,12 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add a delete change
-	 * 
+	 *
 	 * @param element Element to be deleted
 	 * @return Change
 	 */
 	protected Delete delete(EObject element, EReference reference, EObject target) {
-		Delete delete = factory.createDelete();
+		final Delete delete = factory.createDelete();
 		delete.setElement(element);
 		delete.setReference(reference);
 		delete.setTarget(target);
@@ -272,14 +272,14 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add a move change of an element to a new container
-	 * 
+	 *
 	 * @param element Element to be moved
 	 * @param target Target
 	 * @param reference
 	 * @return Change
 	 */
 	protected Move move(EObject element, EObject source, EReference reference, EObject target) {
-		Move move = factory.createMove();
+		final Move move = factory.createMove();
 		move.setElement(element);
 		move.setSource(source);
 		move.setReference(reference);
@@ -289,14 +289,14 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add a set change
-	 * 
+	 *
 	 * @param element Changed element
 	 * @param feature Attribute to be set
 	 * @param value Value
 	 * @return Change
 	 */
 	protected Set set(EObject element, Object oldValue, EStructuralFeature feature, Object value) {
-		Set set = factory.createSet();
+		final Set set = factory.createSet();
 		set.setElement(element);
 		set.setFeature(feature);
 		set.setOldValue(oldValue);
@@ -306,14 +306,14 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add a remove change
-	 * 
+	 *
 	 * @param element Changed element
 	 * @param feature Reference from which the element should be removed
 	 * @param value Element to be removed
 	 * @return Change
 	 */
 	protected Remove remove(EObject element, EStructuralFeature feature, Object value) {
-		Remove remove = factory.createRemove();
+		final Remove remove = factory.createRemove();
 		remove.setElement(element);
 		remove.setFeature(feature);
 		remove.setValue(value);
@@ -322,14 +322,14 @@ public abstract class GeneratorBase {
 
 	/**
 	 * Add an add change
-	 * 
+	 *
 	 * @param element Changed element
 	 * @param feature Reference to which the element should be added
 	 * @param value Element to be added
 	 * @return Change
 	 */
 	protected Add add(EObject element, EStructuralFeature feature, Object value) {
-		Add add = factory.createAdd();
+		final Add add = factory.createAdd();
 		add.setElement(element);
 		add.setFeature(feature);
 		add.setValue(value);

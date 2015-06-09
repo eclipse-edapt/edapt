@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.util;
 
@@ -15,19 +15,24 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.declaration.*;
-
+import org.eclipse.emf.edapt.declaration.Constraint;
+import org.eclipse.emf.edapt.declaration.DeclarationPackage;
+import org.eclipse.emf.edapt.declaration.IdentifiedElement;
+import org.eclipse.emf.edapt.declaration.Library;
+import org.eclipse.emf.edapt.declaration.Operation;
+import org.eclipse.emf.edapt.declaration.Parameter;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
- * to invoke the <code>caseXXX</code> method for each class of the model,
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each
+ * class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.declaration.DeclarationPackage
  * @generated
  */
@@ -36,6 +41,7 @@ public class DeclarationSwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected static DeclarationPackage modelPackage;
@@ -44,6 +50,7 @@ public class DeclarationSwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public DeclarationSwitch() {
@@ -53,9 +60,11 @@ public class DeclarationSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -64,9 +73,11 @@ public class DeclarationSwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -74,59 +85,78 @@ public class DeclarationSwitch<T> {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+			doSwitch(eSuperTypes.get(0), theEObject);
+
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case DeclarationPackage.IDENTIFIED_ELEMENT: {
-				IdentifiedElement identifiedElement = (IdentifiedElement)theEObject;
-				T result = caseIdentifiedElement(identifiedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+		case DeclarationPackage.IDENTIFIED_ELEMENT: {
+			final IdentifiedElement identifiedElement = (IdentifiedElement) theEObject;
+			T result = caseIdentifiedElement(identifiedElement);
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case DeclarationPackage.LIBRARY: {
-				Library library = (Library)theEObject;
-				T result = caseLibrary(library);
-				if (result == null) result = caseIdentifiedElement(library);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case DeclarationPackage.LIBRARY: {
+			final Library library = (Library) theEObject;
+			T result = caseLibrary(library);
+			if (result == null) {
+				result = caseIdentifiedElement(library);
 			}
-			case DeclarationPackage.OPERATION: {
-				Operation operation = (Operation)theEObject;
-				T result = caseOperation(operation);
-				if (result == null) result = caseIdentifiedElement(operation);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case DeclarationPackage.PARAMETER: {
-				Parameter parameter = (Parameter)theEObject;
-				T result = caseParameter(parameter);
-				if (result == null) result = caseIdentifiedElement(parameter);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case DeclarationPackage.OPERATION: {
+			final Operation operation = (Operation) theEObject;
+			T result = caseOperation(operation);
+			if (result == null) {
+				result = caseIdentifiedElement(operation);
 			}
-			case DeclarationPackage.CONSTRAINT: {
-				Constraint constraint = (Constraint)theEObject;
-				T result = caseConstraint(constraint);
-				if (result == null) result = caseIdentifiedElement(constraint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			default: return defaultCase(theEObject);
+			return result;
+		}
+		case DeclarationPackage.PARAMETER: {
+			final Parameter parameter = (Parameter) theEObject;
+			T result = caseParameter(parameter);
+			if (result == null) {
+				result = caseIdentifiedElement(parameter);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case DeclarationPackage.CONSTRAINT: {
+			final Constraint constraint = (Constraint) theEObject;
+			T result = caseConstraint(constraint);
+			if (result == null) {
+				result = caseIdentifiedElement(constraint);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 
@@ -136,6 +166,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Identified Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -151,6 +182,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Library</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -166,6 +198,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Operation</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -181,6 +214,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Parameter</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -196,6 +230,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Constraint</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -211,6 +246,7 @@ public class DeclarationSwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
@@ -220,4 +256,4 @@ public class DeclarationSwitch<T> {
 		return null;
 	}
 
-} //DeclarationSwitch
+} // DeclarationSwitch

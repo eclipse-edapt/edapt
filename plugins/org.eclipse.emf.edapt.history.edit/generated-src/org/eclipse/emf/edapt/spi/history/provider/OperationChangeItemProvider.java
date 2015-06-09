@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -33,25 +32,26 @@ import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.OperationChange} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class OperationChangeItemProvider
 	extends CompositeChangeItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public OperationChangeItemProvider(AdapterFactory adapterFactory) {
@@ -62,6 +62,7 @@ public class OperationChangeItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -77,79 +78,80 @@ public class OperationChangeItemProvider
 	 * This returns OperationChange.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationChange"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/OperationChange")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		OperationChange element = (OperationChange) object;
-		OperationInstance operationInstance = element.getOperation();
-		Operation operation = operationInstance.getOperation();
-		
-		String result = "(";
-		for (Iterator<ParameterInstance> i = operationInstance.getParameters()
-				.iterator(); i.hasNext();) {
+		final OperationChange element = (OperationChange) object;
+		final OperationInstance operationInstance = element.getOperation();
+		final Operation operation = operationInstance.getOperation();
+
+		String result = "("; //$NON-NLS-1$
+		for (final Iterator<ParameterInstance> i = operationInstance.getParameters()
+			.iterator(); i.hasNext();) {
 			result += getLabel(i.next());
 			if (i.hasNext()) {
-				result += ", ";
+				result += ", "; //$NON-NLS-1$
 			}
 		}
-		result += ")";
-		
-		String label = "Operation \"" + operation.getLabel()
-				+ "\" has been executed " + result;
+		result += ")"; //$NON-NLS-1$
+
+		final String label = "Operation \"" + operation.getLabel() //$NON-NLS-1$
+			+ "\" has been executed " + result; //$NON-NLS-1$
 		return label;
 	}
-	
+
 	/**
 	 * Get the textual representation of the instance of a parameter
-	 * 
+	 *
 	 * @param parameterInstance
 	 * @return Textual representation
 	 */
-	@SuppressWarnings("unchecked")
 	private String getLabel(ParameterInstance parameterInstance) {
-		Object o = parameterInstance.getValue();
+		final Object o = parameterInstance.getValue();
 		if (o instanceof List) {
-			String result = "[";
-			for (Iterator i = ((List) o).iterator(); i.hasNext();) {
-				Object element = i.next();
+			String result = "["; //$NON-NLS-1$
+			for (final Iterator i = ((List) o).iterator(); i.hasNext();) {
+				final Object element = i.next();
 				if (element instanceof EObject) {
 					result += HistoryUIUtils.getBracedLabel(element);
 				} else {
 					result += HistoryUIUtils.getLabel(element);
 				}
 				if (i.hasNext()) {
-					result += ", ";
+					result += ", "; //$NON-NLS-1$
 				}
 			}
-			result += "]";
-			return parameterInstance.getName() + " = " + result;
+			result += "]"; //$NON-NLS-1$
+			return parameterInstance.getName() + " = " + result; //$NON-NLS-1$
 		}
 		if (o instanceof EObject) {
-			return parameterInstance.getName() + " = "
-					+ HistoryUIUtils.getBracedLabel(o);
+			return parameterInstance.getName() + " = " //$NON-NLS-1$
+				+ HistoryUIUtils.getBracedLabel(o);
 		}
-		return parameterInstance.getName() + " = "
-				+ HistoryUIUtils.getLabel(o);
+		return parameterInstance.getName() + " = " //$NON-NLS-1$
+			+ HistoryUIUtils.getLabel(o);
 	}
-
 
 	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -157,9 +159,9 @@ public class OperationChangeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(OperationChange.class)) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -169,6 +171,7 @@ public class OperationChangeItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

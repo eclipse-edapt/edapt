@@ -3,18 +3,18 @@ package org.eclipse.emf.edapt.declaration.inheritance;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +44,7 @@ public class ExtractSubClass extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "superClass", description = "The super class may not have a sub class")
 	public boolean checkSuperClassNoSubTypes(EClass superClass,
-			Metamodel metamodel) {
+		Metamodel metamodel) {
 		return metamodel.getESubTypes(superClass).isEmpty();
 	}
 
@@ -53,14 +53,14 @@ public class ExtractSubClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EPackage ePackage = superClass.getEPackage();
-		EClass subClass = MetamodelFactory.newEClass(ePackage, className,
-				superClass);
+		final EPackage ePackage = superClass.getEPackage();
+		final EClass subClass = MetamodelFactory.newEClass(ePackage, className,
+			superClass);
 		subClass.getEStructuralFeatures().add(feature);
 		feature.setLowerBound(1);
 
 		// model migration
-		for (Instance instance : model.getInstances(superClass)) {
+		for (final Instance instance : model.getInstances(superClass)) {
 			if (instance.isSet(feature)) {
 				instance.migrate(subClass);
 			}

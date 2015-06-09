@@ -1,0 +1,39 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_NFFKUAkEEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw,_rv0HYAkGEeWg38ag0nnchw,_qYMXsAkHEeWg38ag0nnchw,_JZ4xUAkMEeWg38ag0nnchw,_PqGr0AkEEeWg38ag0nnchw
+Element-Name: Select Change
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _spU9wAkQEeWg38ag0nnchw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/2/15 12:20 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+with [get-editor "task.ecore" | get-tree] {
+    select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task/TaskDescription" 
+        | double-click
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task/TaskDescription" 
+        | click
+}
+with [get-view Properties | get-tree] {
+    select Name | activate-cell-edit -column 1
+    get-editbox | set-text TaskDescription2
+    apply-cell-edit
+}
+with [get-editor "task.ecore" | get-tree] {
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore" | click
+    key-type "M1+s"
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/name of {TaskDescription2} has been changed from \"TaskDescription\" to \"TaskDescription2\"" 
+        | click
+}
+with [get-view "Reconstruction View"] {
+    get-tree | get-item "recons\\/task.ecore/task/TaskDescription2" | get-property caption | equals TaskDescription2 
+        | verify-true
+    get-table | get-item Name | get-property "values['Value']" | equals TaskDescription2 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

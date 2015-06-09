@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -20,10 +20,9 @@ import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.command.ChangeCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
 
-
 /**
  * Action to flatten a {@link CompositeChange}.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -36,11 +35,11 @@ public class FlattenCompositeHandler extends EditingDomainHandlerBase {
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
 		final CompositeChange change = HandlerUtils.getSelectedElement(event);
 		final Release release = (Release) change.eContainer();
-		Command command = new ChangeCommand(release) {
+		final Command command = new ChangeCommand(release) {
 
 			@Override
 			protected void doExecute() {
-				int index = release.getChanges().indexOf(change);
+				final int index = release.getChanges().indexOf(change);
 				release.getChanges().remove(index);
 				release.getChanges().addAll(index, change.getChanges());
 			}

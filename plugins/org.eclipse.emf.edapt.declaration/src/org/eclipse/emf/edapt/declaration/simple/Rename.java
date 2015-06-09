@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,7 +33,7 @@ public class Rename extends OperationImplementation {
 	@EdaptConstraint(description = "The name must not be already defined by the children of the element's parent.")
 	public boolean checkUniqueName() {
 		if (element.eContainer() != null) {
-			for (EObject sibling : element.eContainer().eContents()) {
+			for (final EObject sibling : element.eContainer().eContents()) {
 				if (sibling instanceof ENamedElement) {
 					if (((ENamedElement) sibling).getName().equals(name)) {
 						return false;

@@ -3,18 +3,18 @@ package org.eclipse.emf.edapt.declaration.merge;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -26,7 +26,7 @@ public class SplitStringAttribute extends OperationImplementation {
 	/** {@description} */
 	@EdaptParameter(main = true, description = "The feature whose values are split")
 	public EAttribute toSplit;
-	
+
 	/** {@description} */
 	@EdaptConstraint(restricts = "toSplit", description = "The type of the attribute to split has to be String")
 	public boolean checkAttributeTypeString(EAttribute toSplit) {
@@ -40,9 +40,9 @@ public class SplitStringAttribute extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "context", description = "The class with the new attribute must be a subclass of the class with the attribute to be split")
 	public boolean checkContext(EClass context, Metamodel metamodel) {
-		EClass eClass = toSplit.getEContainingClass();
+		final EClass eClass = toSplit.getEContainingClass();
 		return context == eClass
-				|| metamodel.getEAllSubTypes(eClass).contains(context);
+			|| metamodel.getEAllSubTypes(eClass).contains(context);
 	}
 
 	/** {@description} */
@@ -57,13 +57,13 @@ public class SplitStringAttribute extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		EAttribute newAttribute = MetamodelFactory.newEAttribute(context,
-				attributeName, EcorePackage.Literals.ESTRING);
+		final EAttribute newAttribute = MetamodelFactory.newEAttribute(context,
+			attributeName, EcorePackage.Literals.ESTRING);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(context)) {
-			String value = instance.get(toSplit);
-			String[] fragments = value.split(pattern);
+		for (final Instance instance : model.getAllInstances(context)) {
+			final String value = instance.get(toSplit);
+			final String[] fragments = value.split(pattern);
 			if (fragments.length > 1) {
 				instance.set(toSplit, fragments[0]);
 				instance.set(newAttribute, fragments[1]);

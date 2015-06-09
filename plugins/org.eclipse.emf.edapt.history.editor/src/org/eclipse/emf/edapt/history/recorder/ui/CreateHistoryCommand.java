@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
@@ -19,10 +19,9 @@ import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 
-
 /**
  * Command to create the history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -44,7 +43,7 @@ public class CreateHistoryCommand extends AbstractCommand {
 
 	/** Constructor. */
 	public CreateHistoryCommand(EcoreEditor editor,
-			List<Resource> metamodelResources, URI historyURI) {
+		List<Resource> metamodelResources, URI historyURI) {
 		this.editor = editor;
 		this.metamodelResources = metamodelResources;
 		this.historyURI = historyURI;
@@ -57,9 +56,10 @@ public class CreateHistoryCommand extends AbstractCommand {
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void execute() {
 		EcoreEditorDetector.getInstance().addEditorAndCreateHistory(editor,
-				metamodelResources, historyURI);
+			metamodelResources, historyURI);
 	}
 
 	/** {@inheritDoc} */
@@ -69,6 +69,7 @@ public class CreateHistoryCommand extends AbstractCommand {
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void redo() {
 		// not required
 	}

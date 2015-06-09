@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration;
 
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.declaration.DeclarationPackage
  * @generated
  */
@@ -26,6 +27,7 @@ public interface DeclarationFactory extends EFactory {
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	DeclarationFactory eINSTANCE = org.eclipse.emf.edapt.declaration.impl.DeclarationFactoryImpl.init();
@@ -34,6 +36,7 @@ public interface DeclarationFactory extends EFactory {
 	 * Returns a new object of class '<em>Library</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Library</em>'.
 	 * @generated
 	 */
@@ -43,6 +46,7 @@ public interface DeclarationFactory extends EFactory {
 	 * Returns a new object of class '<em>Operation</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Operation</em>'.
 	 * @generated
 	 */
@@ -52,6 +56,7 @@ public interface DeclarationFactory extends EFactory {
 	 * Returns a new object of class '<em>Parameter</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Parameter</em>'.
 	 * @generated
 	 */
@@ -61,6 +66,7 @@ public interface DeclarationFactory extends EFactory {
 	 * Returns a new object of class '<em>Constraint</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return a new object of class '<em>Constraint</em>'.
 	 * @generated
 	 */
@@ -70,9 +76,10 @@ public interface DeclarationFactory extends EFactory {
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
 	DeclarationPackage getDeclarationPackage();
 
-} //DeclarationFactory
+} // DeclarationFactory

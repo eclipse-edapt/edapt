@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -33,7 +33,7 @@ import org.eclipse.swt.widgets.Shell;
 
 /**
  * A debug dialog during model migration
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -49,19 +49,19 @@ public class DebugDialog extends ResizeableDialogBase {
 	/**
 	 * Repository to be displayed
 	 */
-	private Repository repository;
+	private final Repository repository;
 
 	/**
 	 * Adapter factory
 	 */
 	private ComposedAdapterFactory adapterFactory;
-	
+
 	/**
 	 * Constructor
 	 */
 	public DebugDialog(Repository repository, String message) {
-		super(new Point(800, 600), "Debug migration", message);
-		
+		super(new Point(800, 600), "Debug migration", message); //$NON-NLS-1$
+
 		this.repository = repository;
 	}
 
@@ -73,53 +73,54 @@ public class DebugDialog extends ResizeableDialogBase {
 
 		this.instance = instance;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
-		shell.setText("Debug");
+		shell.setText("Debug"); //$NON-NLS-1$
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
 		parent = (Composite) super.createDialogArea(parent);
-		
-	    adapterFactory = new ComposedAdapterFactory();
+
+		adapterFactory = new ComposedAdapterFactory();
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
-		
-		ModelSash modelSash = new MigrationModelSash(parent, SWT.None, adapterFactory);
+
+		final ModelSash modelSash = new MigrationModelSash(parent, SWT.None, adapterFactory);
 		modelSash.setLayoutData(new GridData(GridData.FILL_BOTH));
-		
-		final StructuredViewer modelViewer = modelSash.getStructureViewer();		
+
+		final StructuredViewer modelViewer = modelSash.getStructureViewer();
 		modelViewer.setInput(repository);
-		if(instance != null) {
+		if (instance != null) {
 			modelViewer.setSelection(new StructuredSelection(instance), true);
 		}
-		
+
 		modelViewer.addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
-				if(event.getSelection() instanceof IStructuredSelection) {
-					IStructuredSelection selection = (IStructuredSelection) event.getSelection();
-					if(selection.getFirstElement() instanceof Instance) {
-						Instance instance = (Instance) selection.getFirstElement();
+				if (event.getSelection() instanceof IStructuredSelection) {
+					final IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+					if (selection.getFirstElement() instanceof Instance) {
+						final Instance instance = (Instance) selection.getFirstElement();
 						modelViewer.setSelection(new StructuredSelection(instance.getEClass()));
 					}
 				}
 			}
-			
+
 		});
-		
+
 		return parent;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

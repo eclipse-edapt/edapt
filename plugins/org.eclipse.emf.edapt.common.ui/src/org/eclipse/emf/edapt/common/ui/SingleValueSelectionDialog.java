@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -27,7 +27,7 @@ import org.eclipse.ui.dialogs.SelectionStatusDialog;
 
 /**
  * Dialog to select a single value.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -43,7 +43,6 @@ public class SingleValueSelectionDialog extends SelectionStatusDialog {
 	/**
 	 * Root elements of area in which values can be found
 	 */
-	@SuppressWarnings("unchecked")
 	private final Collection valueArea;
 
 	/**
@@ -64,10 +63,9 @@ public class SingleValueSelectionDialog extends SelectionStatusDialog {
 	/**
 	 * Constructor
 	 */
-	@SuppressWarnings("unchecked")
 	public SingleValueSelectionDialog(Shell parent, Image image, String title,
-			Object value, Collection valueArea,
-			AdapterFactoryLabelProvider labelProvider, IValueValidator validator) {
+		Object value, Collection valueArea,
+		AdapterFactoryLabelProvider labelProvider, IValueValidator validator) {
 		super(parent);
 
 		setImage(image);
@@ -91,13 +89,14 @@ public class SingleValueSelectionDialog extends SelectionStatusDialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		Composite contents = (Composite) super.createDialogArea(parent);
+		final Composite contents = (Composite) super.createDialogArea(parent);
 
 		composite = new ValueSelectionComposite(contents, labelProvider, value,
-				false, valueArea, validator);
+			false, valueArea, validator);
 
 		composite.addSelectionChangedListener(new ISelectionChangedListener() {
 
+			@Override
 			public void selectionChanged(SelectionChangedEvent event) {
 				validateSelection();
 			}
@@ -106,6 +105,7 @@ public class SingleValueSelectionDialog extends SelectionStatusDialog {
 
 		composite.addDoubleClickListener(new IDoubleClickListener() {
 
+			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				if (composite.validSelection()) {
 					okPressed();
@@ -141,10 +141,9 @@ public class SingleValueSelectionDialog extends SelectionStatusDialog {
 	/**
 	 * {@inheritDoc}
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	protected void computeResult() {
-		List selectedElements = composite.getSelectedElements();
+		final List selectedElements = composite.getSelectedElements();
 		setResult(selectedElements);
 	}
 }

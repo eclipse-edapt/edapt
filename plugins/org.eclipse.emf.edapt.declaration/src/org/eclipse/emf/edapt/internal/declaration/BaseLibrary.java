@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.declaration.simple.NonStructuralPrimitives;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$

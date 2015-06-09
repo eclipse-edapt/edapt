@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -51,7 +51,7 @@ import org.eclipse.swt.widgets.TreeItem;
 /**
  * A composite to select a value. The possible values are represented as a tree.
  * Selection criteria can be entered through a text field.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -82,7 +82,6 @@ public class ValueSelectionComposite extends Composite {
 	/**
 	 * Root elements of area in which values can be found
 	 */
-	@SuppressWarnings("unchecked")
 	private final Collection valueArea;
 
 	/**
@@ -98,10 +97,9 @@ public class ValueSelectionComposite extends Composite {
 	/**
 	 * Constructor
 	 */
-	@SuppressWarnings("unchecked")
 	public ValueSelectionComposite(Composite parent,
-			AdapterFactoryLabelProvider labelProvider, Object value,
-			boolean multi, Collection valueArea, IValueValidator validator) {
+		AdapterFactoryLabelProvider labelProvider, Object value,
+		boolean multi, Collection valueArea, IValueValidator validator) {
 		super(parent, SWT.None);
 
 		this.labelProvider = labelProvider;
@@ -110,7 +108,7 @@ public class ValueSelectionComposite extends Composite {
 		this.valueArea = valueArea;
 		this.validator = validator;
 
-		filter = Pattern.compile(".*");
+		filter = Pattern.compile(".*"); //$NON-NLS-1$
 
 		init();
 	}
@@ -119,10 +117,10 @@ public class ValueSelectionComposite extends Composite {
 	 * Initialize the composite.
 	 */
 	private void init() {
-		GridLayout layout = new GridLayout();
+		final GridLayout layout = new GridLayout();
 		layout.marginHeight = layout.marginWidth = 0;
 		setLayout(layout);
-		GridData data = new GridData(GridData.FILL_BOTH);
+		final GridData data = new GridData(GridData.FILL_BOTH);
 		setLayoutData(data);
 
 		createFilterText();
@@ -136,11 +134,12 @@ public class ValueSelectionComposite extends Composite {
 	 */
 	private void createFilterText() {
 		final Text filterText = new Text(this, SWT.BORDER);
-		GridData data = new GridData(GridData.FILL_HORIZONTAL);
+		final GridData data = new GridData(GridData.FILL_HORIZONTAL);
 		filterText.setLayoutData(data);
 
 		filterText.addModifyListener(new ModifyListener() {
 
+			@Override
 			public void modifyText(ModifyEvent e) {
 				setFilter(filterText.getText());
 			}
@@ -158,12 +157,13 @@ public class ValueSelectionComposite extends Composite {
 
 		filterText.addTraverseListener(new TraverseListener() {
 
+			@Override
 			public void keyTraversed(TraverseEvent e) {
 				if (e.detail == SWT.TRAVERSE_RETURN) {
 					e.doit = false;
 					filteredViewer.getControl().setFocus();
 					filteredViewer.setSelection(new StructuredSelection(
-							getFirstMatchingElement()));
+						getFirstMatchingElement()));
 				}
 			}
 		});
@@ -173,24 +173,24 @@ public class ValueSelectionComposite extends Composite {
 	 * Set the filter pattern
 	 */
 	private void setFilter(String pattern) {
-		StringBuffer escaped = new StringBuffer();
+		final StringBuffer escaped = new StringBuffer();
 
-		String[] starSplit = pattern.split("\\*");
+		final String[] starSplit = pattern.split("\\*"); //$NON-NLS-1$
 		for (int i = 0, n = starSplit.length; i < n; i++) {
 			if (i > 0) {
-				escaped.append(".*");
+				escaped.append(".*"); //$NON-NLS-1$
 			}
-			String star = starSplit[i];
-			String[] questionSplit = star.split("\\?");
-			for (String question : questionSplit) {
+			final String star = starSplit[i];
+			final String[] questionSplit = star.split("\\?"); //$NON-NLS-1$
+			for (final String question : questionSplit) {
 				if (i > 0) {
-					escaped.append(".?");
+					escaped.append(".?"); //$NON-NLS-1$
 				}
 				escaped.append(Pattern.quote(question));
 			}
 		}
 
-		escaped.append(".*");
+		escaped.append(".*"); //$NON-NLS-1$
 
 		filter = Pattern.compile(escaped.toString(), Pattern.CASE_INSENSITIVE);
 		refreshFilteredViewer();
@@ -203,8 +203,8 @@ public class ValueSelectionComposite extends Composite {
 		filteredViewer.getControl().setRedraw(false);
 		filteredViewer.refresh(true);
 		filteredViewer.expandAll();
-		ISelection oldSelection = filteredViewer.getSelection();
-		Object firstValue = valueArea.iterator().next();
+		final ISelection oldSelection = filteredViewer.getSelection();
+		final Object firstValue = valueArea.iterator().next();
 		filteredViewer.setSelection(new StructuredSelection(firstValue), true);
 		filteredViewer.setSelection(oldSelection);
 		filteredViewer.getControl().setRedraw(true);
@@ -220,33 +220,32 @@ public class ValueSelectionComposite extends Composite {
 		}
 
 		filteredViewer = new TreeViewer(this, style);
-		GridData data = new GridData(GridData.FILL_BOTH);
+		final GridData data = new GridData(GridData.FILL_BOTH);
 		data.widthHint = 400;
 		data.heightHint = 400;
 		filteredViewer.getControl().setLayoutData(data);
 
 		filteredViewer.setContentProvider(new AdapterFactoryContentProvider(
-				labelProvider.getAdapterFactory()) {
-			@SuppressWarnings("unchecked")
+			labelProvider.getAdapterFactory()) {
 			@Override
 			public Object[] getElements(Object object) {
-				Collection objects = (Collection) object;
+				final Collection objects = (Collection) object;
 				return objects.toArray();
 			}
 		});
 		filteredViewer.setLabelProvider(new DecoratingLabelProvider(
-				labelProvider, new Decorator()));
+			labelProvider, new Decorator()));
 
 		filteredViewer.addFilter(new ViewerFilter() {
 
 			@Override
 			public boolean select(Viewer viewer, Object parentElement,
-					Object element) {
+				Object element) {
 				if (select(element)) {
 					return true;
 				}
-				for (Object child : ((ITreeContentProvider) filteredViewer
-						.getContentProvider()).getChildren(element)) {
+				for (final Object child : ((ITreeContentProvider) filteredViewer
+					.getContentProvider()).getChildren(element)) {
 					if (select(viewer, element, child)) {
 						return true;
 					}
@@ -269,11 +268,11 @@ public class ValueSelectionComposite extends Composite {
 	 * Checks whether the selection contains only valid values
 	 */
 	public boolean validSelection() {
-		List<Object> elements = getSelectedElements();
+		final List<Object> elements = getSelectedElements();
 		if (elements.size() == 0) {
 			return false;
 		}
-		for (Object element : elements) {
+		for (final Object element : elements) {
 			if (!validator.isPossibleValue(element)) {
 				return false;
 			}
@@ -290,7 +289,7 @@ public class ValueSelectionComposite extends Composite {
 			if (multi) {
 				if (value instanceof Collection) {
 					filteredViewer.setSelection(new StructuredSelection(
-							new ArrayList((Collection) value)));
+						new ArrayList((Collection) value)));
 				}
 			} else {
 				filteredViewer.setSelection(new StructuredSelection(value));
@@ -302,8 +301,8 @@ public class ValueSelectionComposite extends Composite {
 	 * Return the first matching element
 	 */
 	private EObject getFirstMatchingElement() {
-		TreeItem item = getFirstMatchingItem(filteredViewer.getTree()
-				.getItems());
+		final TreeItem item = getFirstMatchingItem(filteredViewer.getTree()
+			.getItems());
 		if (item != null) {
 			return (EObject) item.getData();
 		}
@@ -332,7 +331,7 @@ public class ValueSelectionComposite extends Composite {
 	 */
 	public List<Object> getSelectedElements() {
 		return SelectionUtils
-				.getSelectedElements(filteredViewer.getSelection());
+			.getSelectedElements(filteredViewer.getSelection());
 	}
 
 	/**
@@ -346,7 +345,7 @@ public class ValueSelectionComposite extends Composite {
 	 * Remove a listener to listen to changes of the selection.
 	 */
 	public void removeSelectionChangedListener(
-			ISelectionChangedListener listener) {
+		ISelectionChangedListener listener) {
 		filteredViewer.removeSelectionChangedListener(listener);
 	}
 
@@ -369,8 +368,8 @@ public class ValueSelectionComposite extends Composite {
 	 */
 	private boolean isSelectable(Object element) {
 		if (validator.isPossibleValue(element)) {
-			String label = labelProvider.getText(element);
-			Matcher matcher = filter.matcher(label);
+			final String label = labelProvider.getText(element);
+			final Matcher matcher = filter.matcher(label);
 			return matcher.matches();
 		}
 		return false;
@@ -382,40 +381,47 @@ public class ValueSelectionComposite extends Composite {
 	private class Decorator implements ILabelDecorator, IFontDecorator {
 
 		/** {@inheritDoc} */
+		@Override
 		public Image decorateImage(Image image, Object element) {
 			return null;
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public String decorateText(String text, Object element) {
 			return null;
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public void addListener(ILabelProviderListener listener) {
 			// not required
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public void dispose() {
 			// not required
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public boolean isLabelProperty(Object element, String property) {
 			return false;
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public void removeListener(ILabelProviderListener listener) {
 			// not required
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public Font decorateFont(Object element) {
 			if (isSelectable(element)) {
 				return JFaceResources.getFontRegistry().getBold(
-						JFaceResources.DIALOG_FONT);
+					JFaceResources.DIALOG_FONT);
 			}
 			return null;
 		}

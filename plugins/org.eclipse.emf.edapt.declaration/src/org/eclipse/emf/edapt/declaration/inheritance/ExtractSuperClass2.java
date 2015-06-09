@@ -7,18 +7,18 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -54,7 +54,7 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "superSuperClasses", description = "The sub classes must have the super classes as common super classes")
 	public boolean checkSuperSuperClasses(EClass superSuperClass) {
-		for (EClass subClass : subClasses) {
+		for (final EClass subClass : subClasses) {
 			if (!subClass.getESuperTypes().contains(superSuperClass)) {
 				return false;
 			}
@@ -67,9 +67,9 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	public boolean checkReferencesOpposite() {
 		if (toExtract.size() > 1) {
 			return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-					|| hasValue(toExtract,
-							EcorePackage.eINSTANCE.getEReference_EOpposite(),
-							null);
+				|| hasValue(toExtract,
+					EcorePackage.eINSTANCE.getEReference_EOpposite(),
+					null);
 		}
 		return true;
 	}
@@ -78,8 +78,8 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	@EdaptConstraint(description = "The features have to be all containment references or not")
 	public boolean checkSameContainment() {
 		return !isOfType(toExtract, EcorePackage.eINSTANCE.getEReference())
-				|| hasSameValue(toExtract,
-						EcorePackage.eINSTANCE.getEReference_Containment());
+			|| hasSameValue(toExtract,
+				EcorePackage.eINSTANCE.getEReference_Containment());
 	}
 
 	/** {@description} */
@@ -91,16 +91,16 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The features' multiplicities have to be the same")
 	public boolean checkSameMultiplicity() {
-		EcorePackage mmm = EcorePackage.eINSTANCE;
+		final EcorePackage mmm = EcorePackage.eINSTANCE;
 		return hasSameValue(toExtract, mmm.getETypedElement_LowerBound())
-				&& hasSameValue(toExtract, mmm.getETypedElement_UpperBound());
+			&& hasSameValue(toExtract, mmm.getETypedElement_UpperBound());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The features' types have to be the same")
 	public boolean checkSameType() {
 		return hasSameValue(toExtract,
-				EcorePackage.eINSTANCE.getETypedElement_EType());
+			EcorePackage.eINSTANCE.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */
@@ -114,17 +114,17 @@ public class ExtractSuperClass2 extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model)
-			throws MigrationException {
+		throws MigrationException {
 		// metamodel adaptation
-		EClass superClass = MetamodelFactory.newEClass(ePackage,
-				superClassName, superSuperClasses, abstr);
-		for (EClass subClass : subClasses) {
+		final EClass superClass = MetamodelFactory.newEClass(ePackage,
+			superClassName, superSuperClasses, abstr);
+		for (final EClass subClass : subClasses) {
 			subClass.getESuperTypes().add(superClass);
 			subClass.getESuperTypes().removeAll(superSuperClasses);
 		}
 
 		if (!toExtract.isEmpty()) {
-			PullFeature operation = new PullFeature();
+			final PullFeature operation = new PullFeature();
 			operation.features = toExtract;
 			operation.targetClass = superClass;
 			operation.checkAndExecute(metamodel, model);

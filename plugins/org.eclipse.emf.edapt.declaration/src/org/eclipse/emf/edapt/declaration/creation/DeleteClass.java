@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,7 +28,7 @@ public class DeleteClass extends OperationImplementation {
 	@EdaptConstraint(restricts = "eClass", description = "The class must not be the target of a reference")
 	public boolean checkEClass(EClass eClass, Metamodel metamodel) {
 		return metamodel.getInverse(eClass,
-				EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
+			EcorePackage.eINSTANCE.getETypedElement_EType()).isEmpty();
 	}
 
 	/** {@description} */

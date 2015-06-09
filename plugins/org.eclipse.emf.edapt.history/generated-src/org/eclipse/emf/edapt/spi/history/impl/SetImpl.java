@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.Set;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Set</b></em>'.
@@ -32,9 +31,9 @@ import org.eclipse.emf.edapt.spi.history.Set;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldDataValue <em>Old Data Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldReferenceValue <em>Old Reference Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldValue <em>Old Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldDataValue <em>Old Data Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldReferenceValue <em>Old Reference Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl#getOldValue <em>Old Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -45,6 +44,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	 * The default value of the '{@link #getOldDataValue() <em>Old Data Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getOldDataValue()
 	 * @generated
 	 * @ordered
@@ -54,6 +54,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	 * The cached value of the '{@link #getOldDataValue() <em>Old Data Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getOldDataValue()
 	 * @generated
 	 * @ordered
@@ -63,6 +64,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	 * The cached value of the '{@link #getOldReferenceValue() <em>Old Reference Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getOldReferenceValue()
 	 * @generated
 	 * @ordered
@@ -72,6 +74,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	 * The default value of the '{@link #getOldValue() <em>Old Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getOldValue()
 	 * @generated
 	 * @ordered
@@ -81,6 +84,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected SetImpl() {
@@ -90,6 +94,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -100,8 +105,10 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getOldDataValue() {
 		return oldDataValue;
 	}
@@ -109,27 +116,35 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setOldDataValue(String newOldDataValue) {
-		String oldOldDataValue = oldDataValue;
+		final String oldOldDataValue = oldDataValue;
 		oldDataValue = newOldDataValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.SET__OLD_DATA_VALUE, oldOldDataValue, oldDataValue));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.SET__OLD_DATA_VALUE, oldOldDataValue,
+				oldDataValue));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getOldReferenceValue() {
 		if (oldReferenceValue != null && oldReferenceValue.eIsProxy()) {
-			InternalEObject oldOldReferenceValue = (InternalEObject)oldReferenceValue;
+			final InternalEObject oldOldReferenceValue = (InternalEObject) oldReferenceValue;
 			oldReferenceValue = eResolveProxy(oldOldReferenceValue);
 			if (oldReferenceValue != oldOldReferenceValue) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.SET__OLD_REFERENCE_VALUE, oldOldReferenceValue, oldReferenceValue));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, HistoryPackage.SET__OLD_REFERENCE_VALUE,
+						oldOldReferenceValue, oldReferenceValue));
+				}
 			}
 		}
 		return oldReferenceValue;
@@ -138,6 +153,7 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EObject basicGetOldReferenceValue() {
@@ -147,62 +163,73 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setOldReferenceValue(EObject newOldReferenceValue) {
-		EObject oldOldReferenceValue = oldReferenceValue;
+		final EObject oldOldReferenceValue = oldReferenceValue;
 		oldReferenceValue = newOldReferenceValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.SET__OLD_REFERENCE_VALUE, oldOldReferenceValue, oldReferenceValue));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public Object getOldValue() {
-		EStructuralFeature feature = this.getFeature();
-		if(feature instanceof EReference) {
-			return this.getOldReferenceValue();
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.SET__OLD_REFERENCE_VALUE,
+				oldOldReferenceValue, oldReferenceValue));
 		}
-		EAttribute attribute = (EAttribute) feature;
-		EDataType type = attribute.getEAttributeType();
-		return EcoreUtil.createFromString(type, this.getOldDataValue());
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
+	public Object getOldValue() {
+		final EStructuralFeature feature = getFeature();
+		if (feature instanceof EReference) {
+			return getOldReferenceValue();
+		}
+		final EAttribute attribute = (EAttribute) feature;
+		final EDataType type = attribute.getEAttributeType();
+		return EcoreUtil.createFromString(type, getOldDataValue());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
 	public void setOldValue(Object newOldValue) {
-		EStructuralFeature feature = this.getFeature();
-		if(feature instanceof EReference) {
-			this.setOldReferenceValue((EObject) newOldValue);
+		final EStructuralFeature feature = getFeature();
+		if (feature instanceof EReference) {
+			setOldReferenceValue((EObject) newOldValue);
 		}
 		else {
-			EAttribute attribute = (EAttribute) feature;
-			EDataType type = attribute.getEAttributeType();
-			this.setOldDataValue(EcoreUtil.convertToString(type, newOldValue));
-		} 
+			final EAttribute attribute = (EAttribute) feature;
+			final EDataType type = attribute.getEAttributeType();
+			setOldDataValue(EcoreUtil.convertToString(type, newOldValue));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.SET__OLD_DATA_VALUE:
-				return getOldDataValue();
-			case HistoryPackage.SET__OLD_REFERENCE_VALUE:
-				if (resolve) return getOldReferenceValue();
-				return basicGetOldReferenceValue();
-			case HistoryPackage.SET__OLD_VALUE:
-				return getOldValue();
+		case HistoryPackage.SET__OLD_DATA_VALUE:
+			return getOldDataValue();
+		case HistoryPackage.SET__OLD_REFERENCE_VALUE:
+			if (resolve) {
+				return getOldReferenceValue();
+			}
+			return basicGetOldReferenceValue();
+		case HistoryPackage.SET__OLD_VALUE:
+			return getOldValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -210,20 +237,21 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.SET__OLD_DATA_VALUE:
-				setOldDataValue((String)newValue);
-				return;
-			case HistoryPackage.SET__OLD_REFERENCE_VALUE:
-				setOldReferenceValue((EObject)newValue);
-				return;
-			case HistoryPackage.SET__OLD_VALUE:
-				setOldValue(newValue);
-				return;
+		case HistoryPackage.SET__OLD_DATA_VALUE:
+			setOldDataValue((String) newValue);
+			return;
+		case HistoryPackage.SET__OLD_REFERENCE_VALUE:
+			setOldReferenceValue((EObject) newValue);
+			return;
+		case HistoryPackage.SET__OLD_VALUE:
+			setOldValue(newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -231,20 +259,21 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.SET__OLD_DATA_VALUE:
-				setOldDataValue(OLD_DATA_VALUE_EDEFAULT);
-				return;
-			case HistoryPackage.SET__OLD_REFERENCE_VALUE:
-				setOldReferenceValue((EObject)null);
-				return;
-			case HistoryPackage.SET__OLD_VALUE:
-				setOldValue(OLD_VALUE_EDEFAULT);
-				return;
+		case HistoryPackage.SET__OLD_DATA_VALUE:
+			setOldDataValue(OLD_DATA_VALUE_EDEFAULT);
+			return;
+		case HistoryPackage.SET__OLD_REFERENCE_VALUE:
+			setOldReferenceValue((EObject) null);
+			return;
+		case HistoryPackage.SET__OLD_VALUE:
+			setOldValue(OLD_VALUE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -252,17 +281,19 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.SET__OLD_DATA_VALUE:
-				return OLD_DATA_VALUE_EDEFAULT == null ? oldDataValue != null : !OLD_DATA_VALUE_EDEFAULT.equals(oldDataValue);
-			case HistoryPackage.SET__OLD_REFERENCE_VALUE:
-				return oldReferenceValue != null;
-			case HistoryPackage.SET__OLD_VALUE:
-				return OLD_VALUE_EDEFAULT == null ? getOldValue() != null : !OLD_VALUE_EDEFAULT.equals(getOldValue());
+		case HistoryPackage.SET__OLD_DATA_VALUE:
+			return OLD_DATA_VALUE_EDEFAULT == null ? oldDataValue != null : !OLD_DATA_VALUE_EDEFAULT
+				.equals(oldDataValue);
+		case HistoryPackage.SET__OLD_REFERENCE_VALUE:
+			return oldReferenceValue != null;
+		case HistoryPackage.SET__OLD_VALUE:
+			return OLD_VALUE_EDEFAULT == null ? getOldValue() != null : !OLD_VALUE_EDEFAULT.equals(getOldValue());
 		}
 		return super.eIsSet(featureID);
 	}
@@ -270,17 +301,20 @@ public class SetImpl extends ValueChangeImpl implements Set {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (oldDataValue: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (oldDataValue: "); //$NON-NLS-1$
 		result.append(oldDataValue);
 		result.append(')');
 		return result.toString();
 	}
 
-} //SetImpl
+} // SetImpl

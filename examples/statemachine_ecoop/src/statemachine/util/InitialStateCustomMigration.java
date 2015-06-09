@@ -1,5 +1,5 @@
 package statemachine.util;
-import org.eclipse.emf.edapt.internal.migration.MigrationUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.MigrationUtils;
 import org.eclipse.emf.edapt.migration.CustomMigration;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.migration.Instance;

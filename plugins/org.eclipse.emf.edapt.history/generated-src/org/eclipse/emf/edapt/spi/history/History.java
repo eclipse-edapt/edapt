@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EPackage;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.History#getReleases <em>Releases</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.History#getReleases <em>Releases</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,12 +39,14 @@ public interface History extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Releases</b></em>' containment reference list.
 	 * The list contents are of type {@link org.eclipse.emf.edapt.spi.history.Release}.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory
+	 * <em>History</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * A sequence of metamodel versions
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Releases</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getHistory_Releases()
 	 * @see org.eclipse.emf.edapt.spi.history.Release#getHistory
@@ -56,13 +58,14 @@ public interface History extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>First Release</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>First Release</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the first release of the history
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -71,13 +74,14 @@ public interface History extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Last Release</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Last Release</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the last release of the history
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -89,6 +93,7 @@ public interface History extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the root packages created by the history
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -97,6 +102,7 @@ public interface History extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */

@@ -1,19 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>edapt</groupId>
-  <artifactId>features</artifactId>
-  <packaging>pom</packaging>
-  <parent>
-    <groupId>edapt</groupId>
-    <artifactId>root</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
-    <relativePath>../builds/org.eclipse.emf.edapt.releng</relativePath>  
-  </parent>
-  <modules>
-    <module>org.eclipse.emf.edapt.runtime.feature</module>
-    <module>org.eclipse.emf.edapt.runtime.cdo.feature</module>
-    <module>org.eclipse.emf.edapt.recorder.feature</module>
-  </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edapt</groupId>
+	<artifactId>features</artifactId>
+	<packaging>pom</packaging>
+
+	<parent>
+		<groupId>edapt</groupId>
+		<artifactId>root</artifactId>
+		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>../builds/org.eclipse.emf.edapt.releng</relativePath>  
+	</parent>
+
+	<modules>
+		<module>org.eclipse.emf.edapt.runtime.feature</module>
+		<module>org.eclipse.emf.edapt.runtime.cdo.feature</module>
+		<module>org.eclipse.emf.edapt.recorder.feature</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<!-- Enable source features -->
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-source-feature-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>generate-source-feature</id>
+						<goals>
+							<goal>source-feature</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- make sure there is p2 metadata for source features, too -->
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-p2-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<executions>
+					<execution>
+						<id>default-p2-metadata-default</id>
+						<configuration>
+							<attachP2Metadata>false</attachP2Metadata>
+						</configuration>
+					</execution>
+					<execution>
+						<id>attach-p2-metadata</id>
+						<phase>package</phase>
+						<goals>
+							<goal>p2-metadata</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<!-- code signing -->
+		<profile>
+			<id>build-server</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.cbi.maven.plugins</groupId>
+						<artifactId>eclipse-jarsigner-plugin</artifactId>
+						<version>${eclipse-jarsigner-version}</version>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.eclipse.tycho</groupId>
+						<artifactId>tycho-p2-plugin</artifactId>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>

@@ -2,17 +2,17 @@ package org.eclipse.emf.edapt.declaration.generalization;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,15 +28,15 @@ public class SpecializeReferenceType extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "reference", description = "The old type of the reference must be abstract")
 	public boolean checkReference(EReference reference) {
-		EClass oldType = reference.getEReferenceType();
+		final EClass oldType = reference.getEReferenceType();
 		return !MetamodelUtils.isConcrete(oldType);
 	}
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "reference", description = "The old type must not have any other subclass")
 	public boolean checkOldTypeSingleSubType(EReference reference,
-			Metamodel metamodel) {
-		EClass oldType = reference.getEReferenceType();
+		Metamodel metamodel) {
+		final EClass oldType = reference.getEReferenceType();
 		return metamodel.getESubTypes(oldType).size() == 1;
 	}
 
@@ -47,7 +47,7 @@ public class SpecializeReferenceType extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "type", description = "The new type of the reference must be a subclass of its old type")
 	public boolean checkType(EClass type) {
-		EClass oldType = reference.getEReferenceType();
+		final EClass oldType = reference.getEReferenceType();
 		return type.getESuperTypes().contains(oldType);
 	}
 

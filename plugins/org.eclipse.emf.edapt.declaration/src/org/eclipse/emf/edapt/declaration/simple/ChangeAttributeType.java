@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -38,35 +38,35 @@ public class ChangeAttributeType extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EClass eClass = attribute.getEContainingClass();
-
-		// metamodel adaptation
-		attribute.setEType(type);
+		final EClass eClass = attribute.getEContainingClass();
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
 			if (instance.isSet(attribute)) {
-				Object value = instance.get(attribute);
+				final Object value = instance.get(attribute);
 				if (attribute.isMany()) {
-					List newValue = new ArrayList();
-					for (Object v : (List) value) {
-						Object nv = convert(v);
+					final List newValue = new ArrayList();
+					for (final Object v : (List) value) {
+						final Object nv = convert(v);
 						newValue.add(nv);
 					}
 					instance.set(attribute, newValue);
 				} else {
-					Object newValue = convert(value);
+					final Object newValue = convert(value);
 					instance.set(attribute, newValue);
 				}
 			}
 		}
+
+		// metamodel adaptation
+		attribute.setEType(type);
 	}
 
 	/** Convert a value from the old to the new type of the attribute. */
 	private Object convert(Object v) {
-		EDataType oldType = attribute.getEAttributeType();
-		String stringValue = EcoreUtil.convertToString(oldType, v);
-		Object nv = EcoreUtil.createFromString(type, stringValue);
+		final EDataType oldType = attribute.getEAttributeType();
+		final String stringValue = EcoreUtil.convertToString(oldType, v);
+		final Object nv = EcoreUtil.createFromString(type, stringValue);
 		return nv;
 	}
 }

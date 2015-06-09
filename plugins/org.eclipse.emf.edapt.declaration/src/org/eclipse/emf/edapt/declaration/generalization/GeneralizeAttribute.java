@@ -7,7 +7,7 @@ import org.eclipse.emf.edapt.declaration.EdaptParameter;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$

@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -41,7 +41,7 @@ public class Merge extends OperationImplementation {
 	@EdaptConstraint(description = "The types of the references must be compatible")
 	public boolean checkReferenceTypesCompatible() {
 		return mergeTo.getEReferenceType().isSuperTypeOf(
-				toMerge.getEReferenceType());
+			toMerge.getEReferenceType());
 	}
 
 	/** {@description} */
@@ -53,7 +53,7 @@ public class Merge extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(description = "The reference to merge to must be available in the context class")
 	public boolean checkMergeToAvailableInContextClass() {
-		EClass contextClass = toMerge.getEContainingClass();
+		final EClass contextClass = toMerge.getEContainingClass();
 		return contextClass.getEAllStructuralFeatures().contains(mergeTo);
 	}
 
@@ -61,12 +61,12 @@ public class Merge extends OperationImplementation {
 	@SuppressWarnings("unchecked")
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass contextClass = toMerge.getEContainingClass();
+		final EClass contextClass = toMerge.getEContainingClass();
 
 		// model migration
-		for (Instance instance : model.getAllInstances(contextClass)) {
-			Object toMergeValue = instance.unset(toMerge);
-			List mergeToValue = (List) instance.get(mergeTo);
+		for (final Instance instance : model.getAllInstances(contextClass)) {
+			final Object toMergeValue = instance.unset(toMerge);
+			final List mergeToValue = (List) instance.get(mergeTo);
 			if (toMerge.isMany()) {
 				mergeToValue.addAll((List) toMergeValue);
 			} else {

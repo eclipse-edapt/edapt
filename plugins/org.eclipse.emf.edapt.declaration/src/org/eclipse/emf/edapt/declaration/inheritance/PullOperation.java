@@ -14,7 +14,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -34,9 +34,9 @@ public class PullOperation extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "targetClass", description = "The operations' classes must have a common super type")
 	public boolean checkTargetClass(EClass targetClass) {
-		for (EOperation operation : operations) {
+		for (final EOperation operation : operations) {
 			if (!operation.getEContainingClass().getESuperTypes().contains(
-					targetClass)) {
+				targetClass)) {
 				return false;
 			}
 		}
@@ -47,24 +47,24 @@ public class PullOperation extends OperationImplementation {
 	@EdaptConstraint(description = "The operations' multiplicities have to be the same")
 	public boolean checkOperationsSameMultiplicity() {
 		return hasSameValue(operations, EcorePackage.eINSTANCE
-				.getETypedElement_LowerBound())
-				&& hasSameValue(operations, EcorePackage.eINSTANCE
-						.getETypedElement_UpperBound());
+			.getETypedElement_LowerBound())
+			&& hasSameValue(operations, EcorePackage.eINSTANCE
+				.getETypedElement_UpperBound());
 	}
 
 	/** {@description} */
 	@EdaptConstraint(description = "The operations' types have to be the same")
 	public boolean checkOperationsSameType() {
 		return hasSameValue(operations, EcorePackage.eINSTANCE
-				.getETypedElement_EType());
+			.getETypedElement_EType());
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void initialize(Metamodel metamodel) {
 		if (targetClass == null) {
-			List<EClass> superTypes = operations.get(0).getEContainingClass()
-					.getESuperTypes();
+			final List<EClass> superTypes = operations.get(0).getEContainingClass()
+				.getESuperTypes();
 			if (!superTypes.isEmpty()) {
 				targetClass = superTypes.get(0);
 			}
@@ -75,11 +75,11 @@ public class PullOperation extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// variables
-		EOperation mainOperation = operations.get(0);
+		final EOperation mainOperation = operations.get(0);
 
 		// metamodel adaptation
 		targetClass.getEOperations().add(mainOperation);
-		for (EOperation operation : operations) {
+		for (final EOperation operation : operations) {
 			if (operation != mainOperation) {
 				metamodel.delete(operation);
 			}

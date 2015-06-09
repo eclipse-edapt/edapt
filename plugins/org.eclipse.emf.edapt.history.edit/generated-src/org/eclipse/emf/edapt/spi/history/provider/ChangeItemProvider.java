@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -34,25 +33,26 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Change} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class ChangeItemProvider
 	extends ItemProviderAdapter
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public ChangeItemProvider(AdapterFactory adapterFactory) {
@@ -63,6 +63,7 @@ public class ChangeItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -80,58 +81,61 @@ public class ChangeItemProvider
 	 * This adds a property descriptor for the Breaking feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addBreakingPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Change_breaking_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Change_breaking_feature", "_UI_Change_type"),
-				 HistoryPackage.Literals.CHANGE__BREAKING,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Change_breaking_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Change_breaking_feature", "_UI_Change_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.CHANGE__BREAKING,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Description feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Change_description_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Change_description_feature", "_UI_Change_type"),
-				 HistoryPackage.Literals.CHANGE__DESCRIPTION,
-				 true,
-				 true,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Change_description_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Change_description_feature", "_UI_Change_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				HistoryPackage.Literals.CHANGE__DESCRIPTION,
+				true,
+				true,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = crop(((Change)object).getDescription());
+		final String label = crop(((Change) object).getDescription());
 		return label == null || label.length() == 0 ?
-			getString("_UI_Change_type") :
-			getString("_UI_Change_type") + " " + label;
+			getString("_UI_Change_type") : //$NON-NLS-1$
+			getString("_UI_Change_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -139,6 +143,7 @@ public class ChangeItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -146,10 +151,10 @@ public class ChangeItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Change.class)) {
-			case HistoryPackage.CHANGE__BREAKING:
-			case HistoryPackage.CHANGE__DESCRIPTION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
+		case HistoryPackage.CHANGE__BREAKING:
+		case HistoryPackage.CHANGE__DESCRIPTION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -159,6 +164,7 @@ public class ChangeItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -170,6 +176,7 @@ public class ChangeItemProvider
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -179,10 +186,10 @@ public class ChangeItemProvider
 
 	@Override
 	protected Command createDragAndDropCommand(EditingDomain domain,
-			Object owner, float location, int operations, int operation,
-			Collection<?> collection) {
+		Object owner, float location, int operations, int operation,
+		Collection<?> collection) {
 		return new RestrictingDragAndDropCommand(domain, owner, location,
-				operations, operation, collection);
+			operations, operation, collection);
 	}
 
 }

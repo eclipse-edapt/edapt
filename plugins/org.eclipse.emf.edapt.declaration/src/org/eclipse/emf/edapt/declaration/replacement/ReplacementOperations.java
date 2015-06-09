@@ -5,15 +5,15 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: EE232451B9D42D697448390198CD6531
  */
 @EdaptLibrary(label = "Replacement Operations", description = "Replacement " +
-		"operations replace one metamodeling construct by another, equivalent " +
-		"construct.")
+	"operations replace one metamodeling construct by another, equivalent " +
+	"construct.")
 public class ReplacementOperations extends LibraryImplementation {
 
 	/** Constructor. */

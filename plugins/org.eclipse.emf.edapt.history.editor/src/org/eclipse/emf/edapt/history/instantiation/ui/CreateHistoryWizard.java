@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -22,10 +22,10 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
 import org.eclipse.emf.edapt.history.recorder.ui.CreateHistoryCommand;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.CheckboxTableViewer;
@@ -37,10 +37,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
-
 /**
  * Wizard to create a history for a set of metamodel resources.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -61,7 +60,7 @@ public class CreateHistoryWizard extends Wizard {
 	public CreateHistoryWizard(EcoreEditor editor) {
 		this.editor = editor;
 
-		setWindowTitle("Create History");
+		setWindowTitle("Create History"); //$NON-NLS-1$
 	}
 
 	/** {@inheritDoc} */
@@ -71,7 +70,7 @@ public class CreateHistoryWizard extends Wizard {
 		addPage(newFileCreationPage);
 
 		metamodelsResourceSelectionPage = new MetamodelResourceSelectionWizardPage(
-				editor);
+			editor);
 		if (metamodelsResourceSelectionPage.isRequired()) {
 			addPage(metamodelsResourceSelectionPage);
 		}
@@ -80,36 +79,36 @@ public class CreateHistoryWizard extends Wizard {
 	/** {@inheritDoc} */
 	@Override
 	public boolean performFinish() {
-		List<Resource> metamodelResources = metamodelsResourceSelectionPage
-				.getMetamodelResources();
-		URI historyURI = URIUtils.getURI(newFileCreationPage.getHistoryFile());
-		Command command = new CreateHistoryCommand(editor, metamodelResources,
-				historyURI);
+		final List<Resource> metamodelResources = metamodelsResourceSelectionPage
+			.getMetamodelResources();
+		final URI historyURI = URIUtils.getURI(newFileCreationPage.getHistoryFile());
+		final Command command = new CreateHistoryCommand(editor, metamodelResources,
+			historyURI);
 		editor.getEditingDomain().getCommandStack().execute(command);
 		return true;
 	}
 
 	/** Page to set the location and name of the history file. */
 	private static class HistoryWizardNewFileCreationPage extends
-			WizardNewFileCreationPage {
+		WizardNewFileCreationPage {
 
 		/** Constructor. */
 		public HistoryWizardNewFileCreationPage(EcoreEditor editor) {
-			super("NewHistoryFile", new StructuredSelection(getFile(editor)
-					.getParent()));
+			super("NewHistoryFile", new StructuredSelection(getFile(editor) //$NON-NLS-1$
+				.getParent()));
 
 			setFileExtension(HistoryUtils.HISTORY_FILE_EXTENSION);
 			setFileName(getFile(editor).getLocation().removeFileExtension()
-					.addFileExtension(HistoryUtils.HISTORY_FILE_EXTENSION)
-					.lastSegment());
-			setTitle("File");
-			setDescription("Choose the location and name of the history file.");
+				.addFileExtension(HistoryUtils.HISTORY_FILE_EXTENSION)
+				.lastSegment());
+			setTitle("File"); //$NON-NLS-1$
+			setDescription("Choose the location and name of the history file."); //$NON-NLS-1$
 		}
 
 		/** Get the history file. */
 		public IFile getHistoryFile() {
 			return ResourcesPlugin.getWorkspace().getRoot().getFile(
-					getContainerFullPath().append(getFileName()));
+				getContainerFullPath().append(getFileName()));
 		}
 
 		/** Get the file that is the input of the metamodel editor. */
@@ -120,7 +119,7 @@ public class CreateHistoryWizard extends Wizard {
 
 	/** Page to select the metamodel resources to be recorded. */
 	private static class MetamodelResourceSelectionWizardPage extends
-			WizardPage {
+		WizardPage {
 
 		/** The primary metamodel resource that needs to be recorded. */
 		private Resource mainMetamodelResource;
@@ -139,18 +138,19 @@ public class CreateHistoryWizard extends Wizard {
 
 		/** Constructor. */
 		public MetamodelResourceSelectionWizardPage(EcoreEditor editor) {
-			super("SelectMetamodelResources");
+			super("SelectMetamodelResources"); //$NON-NLS-1$
 			this.editor = editor;
 
-			setTitle("Metamodel Resources");
-			setDescription("Choose the other metamodel resources that should be recorded.");
+			setTitle("Metamodel Resources"); //$NON-NLS-1$
+			setDescription("Choose the other metamodel resources that should be recorded."); //$NON-NLS-1$
 		}
 
 		/** {@inheritDoc} */
+		@Override
 		public void createControl(Composite parent) {
 			tableViewer = CheckboxTableViewer.newCheckList(parent, SWT.BORDER);
 			labelProvider = new AdapterFactoryLabelProvider(editor
-					.getAdapterFactory());
+				.getAdapterFactory());
 			tableViewer.setLabelProvider(labelProvider);
 			tableViewer.setContentProvider(new ArrayContentProvider());
 			tableViewer.setInput(otherMetamodelResources);
@@ -165,13 +165,13 @@ public class CreateHistoryWizard extends Wizard {
 		public boolean isRequired() {
 			EcoreUtil.resolveAll(editor.getEditingDomain().getResourceSet());
 			otherMetamodelResources = new ArrayList<Resource>();
-			for (Resource resource : editor.getEditingDomain().getResourceSet()
-					.getResources()) {
+			for (final Resource resource : editor.getEditingDomain().getResourceSet()
+				.getResources()) {
 				if (MetamodelUtils.isMetamodelResource(resource)) {
 					if (mainMetamodelResource == null) {
 						mainMetamodelResource = resource;
 					} else {
-					otherMetamodelResources.add(resource);
+						otherMetamodelResources.add(resource);
 					}
 				}
 			}
@@ -183,10 +183,10 @@ public class CreateHistoryWizard extends Wizard {
 			if (tableViewer == null) {
 				return Collections.singletonList(mainMetamodelResource);
 			}
-			Object[] results = tableViewer.getCheckedElements();
-			List<Resource> metamodelResources = new ArrayList<Resource>();
+			final Object[] results = tableViewer.getCheckedElements();
+			final List<Resource> metamodelResources = new ArrayList<Resource>();
 			metamodelResources.add(mainMetamodelResource);
-			for (Object result : results) {
+			for (final Object result : results) {
 				if (result instanceof Resource) {
 					metamodelResources.add((Resource) result);
 				}

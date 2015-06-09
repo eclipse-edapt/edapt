@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -25,7 +25,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
  * Helper methods to support command handlers.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -40,30 +40,30 @@ public final class HandlerUtils {
 
 	/** Get the selected element of type V. */
 	public static <V> V getSelectedElement(ExecutionEvent event) {
-		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		final ISelection selection = HandlerUtil.getCurrentSelection(event);
 		return SelectionUtils.getSelectedElement(selection);
 	}
 
 	/** Get a list of selected elements of type V. */
 	public static <V> List<V> getSelectedElements(ExecutionEvent event) {
-		ISelection selection = HandlerUtil.getCurrentSelection(event);
+		final ISelection selection = HandlerUtil.getCurrentSelection(event);
 		return SelectionUtils.getSelectedElements(selection);
 	}
 
 	/** Get the active page from within a handler. */
 	public static IWorkbenchPage getActivePage(ExecutionEvent event) {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
+		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
 		return window.getActivePage();
 	}
 
 	/** Open an editor from within a handler. */
 	@SuppressWarnings("unchecked")
 	public static <E extends IEditorPart> E openEditor(ExecutionEvent event,
-			String editorId, IEditorInput editorInput) throws PartInitException {
+		String editorId, IEditorInput editorInput) throws PartInitException {
 		try {
-			IWorkbenchPage page = getActivePage(event);
+			final IWorkbenchPage page = getActivePage(event);
 			return (E) page.openEditor(editorInput, editorId);
-		} catch (ClassCastException e) {
+		} catch (final ClassCastException e) {
 			return null;
 		}
 	}
@@ -71,11 +71,11 @@ public final class HandlerUtils {
 	/** Show a view from within a handler. */
 	@SuppressWarnings("unchecked")
 	public static <V extends IViewPart> V showView(ExecutionEvent event,
-			String viewId) throws PartInitException {
+		String viewId) throws PartInitException {
 		try {
-			IWorkbenchPage page = getActivePage(event);
+			final IWorkbenchPage page = getActivePage(event);
 			return (V) page.showView(viewId);
-		} catch (ClassCastException e) {
+		} catch (final ClassCastException e) {
 			return null;
 		}
 	}

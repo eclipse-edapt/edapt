@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
@@ -16,17 +16,16 @@ import java.util.List;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.common.ui.HandlerUtils;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.ui.PartInitException;
 
-
 /**
  * Action to compare metamodel versions.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -35,21 +34,22 @@ import org.eclipse.ui.PartInitException;
 public class CompareHandler extends AbstractHandler {
 
 	/** {@inheritDoc} */
+	@Override
 	public Object execute(ExecutionEvent event) {
-		List<EObject> selectedElements = HandlerUtils
-				.getSelectedElements(event);
+		final List<EObject> selectedElements = HandlerUtils
+			.getSelectedElements(event);
 		if (!selectedElements.isEmpty()) {
-			EObject from = selectedElements.get(0);
-			EObject to = selectedElements.get(selectedElements.size() - 1);
+			final EObject from = selectedElements.get(0);
+			final EObject to = selectedElements.get(selectedElements.size() - 1);
 			try {
-				ComparisonView view = HandlerUtils.showView(event,
-						ComparisonView.ID);
+				final ComparisonView view = HandlerUtils.showView(event,
+					ComparisonView.ID);
 				if (from instanceof Change) {
 					view.setChange((Change) from, (Change) to);
 				} else {
 					view.setRelease((Release) from, (Release) to);
 				}
-			} catch (PartInitException e) {
+			} catch (final PartInitException e) {
 				LoggingUtils.logError(HistoryEditorPlugin.getPlugin(), e);
 			}
 		}

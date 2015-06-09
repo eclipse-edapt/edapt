@@ -24,9 +24,8 @@ public class CDOTestUtil {
 
 	public static final String SOURCE_PORT = "2036";
 	public static final String TARGET_PORT = "2037";
-	
+
 	public static final String CONNECTOR_TYPE = "tcp";
-	
 
 	@SuppressWarnings("unused")
 	private IJVMAcceptor acceptor;
@@ -34,17 +33,18 @@ public class CDOTestUtil {
 
 	protected static final String HOST = "127.0.0.1";
 
-	private ExceptionHandler exceptionHandler = new ExceptionHandler() {
+	private final ExceptionHandler exceptionHandler = new ExceptionHandler() {
 
+		@Override
 		public void handleException(CDOSession session, int attempt,
-				Exception exception) throws Exception {
+			Exception exception) throws Exception {
 			System.out.println("CDO Exception: " + exception);
 		}
 	};
 
 	public CDONet4jSession openSession() {
-		CDONet4jSessionConfiguration sessionConfig = getSessionConfig();
-		CDONet4jSession openNet4jSession = sessionConfig.openNet4jSession();
+		final CDONet4jSessionConfiguration sessionConfig = getSessionConfig();
+		final CDONet4jSession openNet4jSession = sessionConfig.openNet4jSession();
 		return openNet4jSession;
 	}
 
@@ -64,12 +64,12 @@ public class CDOTestUtil {
 
 		// Create configuration
 		final CDONet4jSessionConfiguration sessionConfiguration = CDONet4jUtil
-				.createNet4jSessionConfiguration();
+			.createNet4jSessionConfiguration();
 
 		// acceptor = JVMUtil.getAcceptor(container, "default");
-		
-		// Use a factory to produce a Connect and parse the connector description (See TCPCOnnectorFactory). 
-		
+
+		// Use a factory to produce a Connect and parse the connector description (See TCPCOnnectorFactory).
+
 		connector = TCPUtil.getConnector(container, HOST + ":" + SOURCE_PORT);
 
 		sessionConfiguration.setConnector(connector);

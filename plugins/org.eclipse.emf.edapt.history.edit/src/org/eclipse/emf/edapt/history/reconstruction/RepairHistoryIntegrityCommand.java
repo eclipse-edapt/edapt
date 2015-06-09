@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.change.ChangeDescription;
 /**
  * Command to adapt the current metamodel version to the version reconstructed
  * from the history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -26,14 +26,13 @@ import org.eclipse.emf.ecore.change.ChangeDescription;
 public class RepairHistoryIntegrityCommand extends AbstractCommand {
 
 	/**
-	 * Change description to be applied to undo changes of the
-	 * {@link RepairMetamodelIntegrityCommand}.
+	 * Change description to be applied to undo changes of the {@link RepairMetamodelIntegrityCommand}.
 	 */
 	private final ChangeDescription changeDescription;
 
 	/** Constructor. */
 	public RepairHistoryIntegrityCommand(RepairMetamodelIntegrityCommand command) {
-		this.changeDescription = command.getChangeDescription();
+		changeDescription = command.getChangeDescription();
 	}
 
 	/** {@inheritDoc} */
@@ -43,6 +42,7 @@ public class RepairHistoryIntegrityCommand extends AbstractCommand {
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void execute() {
 		changeDescription.applyAndReverse();
 	}
@@ -54,6 +54,7 @@ public class RepairHistoryIntegrityCommand extends AbstractCommand {
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void redo() {
 		execute();
 	}

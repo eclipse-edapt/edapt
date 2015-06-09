@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -18,7 +18,7 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Action to create an initial history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -33,9 +33,9 @@ public class CreateHistoryHandler extends OperationBrowserHandlerBase {
 		if (editor == null) {
 			return null;
 		}
-		CreateHistoryWizard wizard = new CreateHistoryWizard(editor);
-		WizardDialog dialog = new WizardDialog(Display.getDefault()
-				.getActiveShell(), wizard);
+		final CreateHistoryWizard wizard = new CreateHistoryWizard(editor);
+		final WizardDialog dialog = new WizardDialog(Display.getDefault()
+			.getActiveShell(), wizard);
 		dialog.open();
 		return null;
 	}

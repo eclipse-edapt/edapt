@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.util;
 
@@ -20,23 +20,21 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.util.HistoryValidator;
 
-
 /**
  * An extended validator for a history that takes breaking changes into account
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ExtendedHistoryValidator extends HistoryValidator {
-	
+
 	/**
 	 * Instance of validator
 	 */
-	@SuppressWarnings("hiding")
 	public static final ExtendedHistoryValidator INSTANCE = new ExtendedHistoryValidator();
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -48,11 +46,12 @@ public class ExtendedHistoryValidator extends HistoryValidator {
 			if (diagnostics != null) {
 				diagnostics.add
 					(new BasicDiagnostic
-						(Diagnostic.ERROR,
-						 DIAGNOSTIC_SOURCE,
-						 0,
-						 EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "Breaking", getObjectLabel(change, context) }),
-						 new Object[] { change }));
+					(Diagnostic.ERROR,
+						DIAGNOSTIC_SOURCE,
+						0,
+						EcorePlugin.INSTANCE.getString("_UI_GenericConstraint_diagnostic", new Object[] { "Breaking", //$NON-NLS-1$ //$NON-NLS-2$
+							getObjectLabel(change, context) }),
+						new Object[] { change }));
 			}
 			return false;
 		}

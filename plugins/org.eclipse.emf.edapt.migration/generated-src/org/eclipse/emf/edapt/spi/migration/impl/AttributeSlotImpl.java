@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.impl;
 
@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.edapt.spi.migration.AttributeSlot;
 import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Attribute Slot</b></em>'.
@@ -31,8 +30,8 @@ import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl#getEAttribute <em>EAttribute</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl#getValues <em>Values</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl#getEAttribute <em>EAttribute</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,6 +42,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	 * The cached value of the '{@link #getEAttribute() <em>EAttribute</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getEAttribute()
 	 * @generated
 	 * @ordered
@@ -53,6 +53,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	 * The cached value of the '{@link #getValues() <em>Values</em>}' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getValues()
 	 * @generated
 	 * @ordered
@@ -62,6 +63,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected AttributeSlotImpl() {
@@ -71,6 +73,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -81,15 +84,19 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EAttribute getEAttribute() {
 		if (eAttribute != null && eAttribute.eIsProxy()) {
-			InternalEObject oldEAttribute = (InternalEObject)eAttribute;
-			eAttribute = (EAttribute)eResolveProxy(oldEAttribute);
+			final InternalEObject oldEAttribute = (InternalEObject) eAttribute;
+			eAttribute = (EAttribute) eResolveProxy(oldEAttribute);
 			if (eAttribute != oldEAttribute) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE, oldEAttribute, eAttribute));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE, oldEAttribute, eAttribute));
+				}
 			}
 		}
 		return eAttribute;
@@ -98,6 +105,7 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EAttribute basicGetEAttribute() {
@@ -107,18 +115,23 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setEAttribute(EAttribute newEAttribute) {
-		EAttribute oldEAttribute = eAttribute;
+		final EAttribute oldEAttribute = eAttribute;
 		eAttribute = newEAttribute;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE, oldEAttribute, eAttribute));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE,
+				oldEAttribute, eAttribute));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -132,16 +145,19 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
-				if (resolve) return getEAttribute();
-				return basicGetEAttribute();
-			case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
-				return getValues();
+		case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
+			if (resolve) {
+				return getEAttribute();
+			}
+			return basicGetEAttribute();
+		case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
+			return getValues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -149,19 +165,20 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
-				setEAttribute((EAttribute)newValue);
-				return;
-			case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
-				getValues().clear();
-				getValues().addAll((Collection<? extends Object>)newValue);
-				return;
+		case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
+			setEAttribute((EAttribute) newValue);
+			return;
+		case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
+			getValues().clear();
+			getValues().addAll((Collection<? extends Object>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -169,17 +186,18 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
-				setEAttribute((EAttribute)null);
-				return;
-			case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
-				getValues().clear();
-				return;
+		case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
+			setEAttribute((EAttribute) null);
+			return;
+		case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
+			getValues().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -187,15 +205,16 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
-				return eAttribute != null;
-			case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
-				return values != null && !values.isEmpty();
+		case MigrationPackage.ATTRIBUTE_SLOT__EATTRIBUTE:
+			return eAttribute != null;
+		case MigrationPackage.ATTRIBUTE_SLOT__VALUES:
+			return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -203,20 +222,23 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer();
+		final StringBuffer result = new StringBuffer();
 		result.append(getEAttribute().getName());
-		result.append(" = ");
+		result.append(" = "); //$NON-NLS-1$
 		result.append('[');
 		boolean first = true;
-		for(Object value : getValues()) {
-			if(!first) {
-				result.append(", ");
+		for (final Object value : getValues()) {
+			if (!first) {
+				result.append(", "); //$NON-NLS-1$
 			}
 			result.append(value.toString());
 			first = false;
@@ -225,4 +247,4 @@ public class AttributeSlotImpl extends SlotImpl implements AttributeSlot {
 		return result.toString();
 	}
 
-} //AttributeSlotImpl
+} // AttributeSlotImpl

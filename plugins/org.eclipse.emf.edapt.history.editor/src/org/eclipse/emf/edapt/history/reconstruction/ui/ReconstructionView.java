@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction.ui;
 
@@ -41,10 +41,9 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 
-
 /**
  * View showing a reconstructed metamodel.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -66,27 +65,28 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 	protected void createContents(Composite parent) {
 		sash = new ModelSash(parent, SWT.NULL);
 		sash.getStructureViewer().addDoubleClickListener(
-				new IDoubleClickListener() {
+			new IDoubleClickListener() {
 
-					public void doubleClick(DoubleClickEvent event) {
-						Object element = SelectionUtils
-								.getSelectedElement(event.getSelection());
-						if (element != null) {
-							Object source = reconstructor.getMapping()
-									.resolveSource(element);
-							getEditor().setSelectionToViewer(
-									Collections.singletonList(source));
-						}
+				@Override
+				public void doubleClick(DoubleClickEvent event) {
+					final Object element = SelectionUtils
+						.getSelectedElement(event.getSelection());
+					if (element != null) {
+						final Object source = reconstructor.getMapping()
+							.resolveSource(element);
+						getEditor().setSelectionToViewer(
+							Collections.singletonList(source));
 					}
+				}
 
-				});
+			});
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void selectionChanged(IStructuredSelection structuredSelection) {
 		if (structuredSelection.size() == 1) {
-			Object firstElement = structuredSelection.getFirstElement();
+			final Object firstElement = structuredSelection.getFirstElement();
 			if (firstElement instanceof Change) {
 				setChange((Change) firstElement);
 			} else if (firstElement instanceof Release) {
@@ -99,7 +99,7 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 	public void setRelease(Release release) {
 		reconstructor = createReconstructor(release);
 		reconstructor.reconstruct(release, false);
-		StructureTreeViewer structureViewer = sash.getStructureViewer();
+		final StructureTreeViewer structureViewer = sash.getStructureViewer();
 		structureViewer.setInput(reconstructor.getResourceSet());
 		structureViewer.expandToLevel(3);
 	}
@@ -108,7 +108,7 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 	public void setChange(Change change) {
 		reconstructor = createReconstructor(change.getRelease());
 		reconstructor.reconstruct(change, false);
-		StructureTreeViewer structureViewer = sash.getStructureViewer();
+		final StructureTreeViewer structureViewer = sash.getStructureViewer();
 		structureViewer.setInput(reconstructor.getResourceSet());
 		structureViewer.expandToLevel(3);
 
@@ -116,46 +116,45 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 	}
 
 	/** Show the elements affected by a change. */
-	@SuppressWarnings("unchecked")
 	private void showAffectedElements(Change change) {
-		StructureTreeViewer structureViewer = sash.getStructureViewer();
+		final StructureTreeViewer structureViewer = sash.getStructureViewer();
 		if (change instanceof PrimitiveChange) {
 			if (change instanceof ContentChange) {
 				if (change instanceof Delete) {
-					Delete delete = (Delete) change;
-					EObject target = reconstructor.getMapping().resolveTarget(
-							delete.getTarget());
+					final Delete delete = (Delete) change;
+					final EObject target = reconstructor.getMapping().resolveTarget(
+						delete.getTarget());
 					structureViewer.setSelection(
-							new StructuredSelection(target), true);
+						new StructuredSelection(target), true);
 				} else if (change instanceof NonDelete) {
-					NonDelete nonDelete = (NonDelete) change;
-					EObject element = reconstructor.getMapping().resolveTarget(
-							nonDelete.getElement());
+					final NonDelete nonDelete = (NonDelete) change;
+					final EObject element = reconstructor.getMapping().resolveTarget(
+						nonDelete.getElement());
 					structureViewer.setSelection(new StructuredSelection(
-							element), true);
+						element), true);
 				}
 			} else if (change instanceof ValueChange) {
-				ValueChange valueChange = (ValueChange) change;
-				EObject element = reconstructor.getMapping().resolveTarget(
-						valueChange.getElement());
+				final ValueChange valueChange = (ValueChange) change;
+				final EObject element = reconstructor.getMapping().resolveTarget(
+					valueChange.getElement());
 				structureViewer.setSelection(new StructuredSelection(element),
-						true);
+					true);
 			}
 		} else if (change instanceof OperationChange) {
-			OperationChange operationChange = (OperationChange) change;
-			OperationInstance operationInstance = operationChange
-					.getOperation();
-			Parameter mainParameter = operationInstance.getOperation()
-					.getMainParameter();
-			Object value = operationInstance.getParameterValue(mainParameter
-					.getName());
-			Object resolved = reconstructor.getMapping().resolveTarget(value);
+			final OperationChange operationChange = (OperationChange) change;
+			final OperationInstance operationInstance = operationChange
+				.getOperation();
+			final Parameter mainParameter = operationInstance.getOperation()
+				.getMainParameter();
+			final Object value = operationInstance.getParameterValue(mainParameter
+				.getName());
+			final Object resolved = reconstructor.getMapping().resolveTarget(value);
 			if (mainParameter.isMany()) {
 				structureViewer.setSelection(new StructuredSelection(
-						(List) resolved), true);
+					(List) resolved), true);
 			} else {
 				structureViewer.setSelection(new StructuredSelection(resolved),
-						true);
+					true);
 			}
 		}
 	}
@@ -165,9 +164,9 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 	 * proximity to the end or begin of history
 	 */
 	private CompositeReconstructorBase createReconstructor(Release release) {
-		URI uri = URI.createURI("recons");
-		List<Release> releases = release.getHistory().getReleases();
-		int index = releases.indexOf(release);
+		final URI uri = URI.createURI("recons"); //$NON-NLS-1$
+		final List<Release> releases = release.getHistory().getReleases();
+		final int index = releases.indexOf(release);
 		if (index >= releases.size() - 2) {
 			return new EcoreBackwardReconstructor(uri);
 		}

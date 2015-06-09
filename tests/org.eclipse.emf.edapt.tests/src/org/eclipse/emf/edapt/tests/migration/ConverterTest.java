@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.tests.migration;
 
@@ -25,13 +25,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
-import org.eclipse.emf.edapt.common.ResourceUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.internal.migration.BackwardConverter;
-import org.eclipse.emf.edapt.internal.migration.ForwardConverter;
-import org.eclipse.emf.edapt.internal.migration.Persistency;
-import org.eclipse.emf.edapt.internal.migration.BackupUtils.URIMapper;
+import org.eclipse.emf.edapt.internal.common.ResourceSetFactoryImpl;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.BackupUtils.URIMapper;
+import org.eclipse.emf.edapt.internal.migration.internal.BackwardConverter;
+import org.eclipse.emf.edapt.internal.migration.internal.ForwardConverter;
+import org.eclipse.emf.edapt.internal.migration.internal.Persistency;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
@@ -39,12 +39,13 @@ import org.eclipse.emf.edapt.spi.migration.ModelResource;
 
 /**
  * Tests for {@link ForwardConverter} and {@link BackwardConverter}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
+@SuppressWarnings({ "deprecation", "restriction" })
 public class ConverterTest extends TestCase {
 
 	/**
@@ -58,42 +59,43 @@ public class ConverterTest extends TestCase {
 	 */
 	public void testOrder() throws IOException, MigrationException {
 
-		URI contextURI = URIUtils.getURI("data/node");
-		URI metamodelURI = contextURI.appendSegment("node.ecore");
-		URI model1URI = contextURI.appendSegment("split.xmi");
-		URI model2URI = contextURI.appendSegment("split_2.xmi");
+		final URI contextURI = URIUtils.getURI("data/node"); //$NON-NLS-1$
+		final URI metamodelURI = contextURI.appendSegment("node.ecore"); //$NON-NLS-1$
+		final URI model1URI = contextURI.appendSegment("split.xmi"); //$NON-NLS-1$
+		final URI model2URI = contextURI.appendSegment("split_2.xmi"); //$NON-NLS-1$
 
-		Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
-		Model model = Persistency.loadModel(model1URI, metamodel,
-				new ResourceSetFactoryImpl());
+		final Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
+		final Model model = Persistency.loadModel(model1URI, metamodel,
+			new ResourceSetFactoryImpl());
 		model.validate();
 
-		URIMapper mapper = new URIMapper() {
+		final URIMapper mapper = new URIMapper() {
 
+			@Override
 			public URI map(URI uri) {
-				String name = uri.trimFileExtension().lastSegment() + "_2";
-				String extension = uri.fileExtension();
+				final String name = uri.trimFileExtension().lastSegment() + "_2"; //$NON-NLS-1$
+				final String extension = uri.fileExtension();
 				return uri.trimSegments(1).appendSegment(name)
-						.appendFileExtension(extension);
+					.appendFileExtension(extension);
 			}
 
 		};
 
-		for (ModelResource resource : model.getResources()) {
+		for (final ModelResource resource : model.getResources()) {
 			resource.setUri(mapper.map(resource.getUri()));
 		}
 
-		Persistency.saveModel(model);
+		Persistency.saveModel(model, null);
 
-		Resource model1 = ResourceUtils
-				.loadResourceSet(model1URI, metamodel.getEPackages())
-				.getResources().get(0);
-		Resource model2 = ResourceUtils
-				.loadResourceSet(model2URI, metamodel.getEPackages())
-				.getResources().get(0);
+		final Resource model1 = ResourceUtils
+			.loadResourceSet(model1URI, metamodel.getEPackages())
+			.getResources().get(0);
+		final Resource model2 = ResourceUtils
+			.loadResourceSet(model2URI, metamodel.getEPackages())
+			.getResources().get(0);
 
-		EObject root1 = model1.getContents().get(0);
-		EObject root2 = model2.getContents().get(0);
+		final EObject root1 = model1.getContents().get(0);
+		final EObject root2 = model2.getContents().get(0);
 
 		checkOrder(root1, root2);
 	}
@@ -115,33 +117,33 @@ public class ConverterTest extends TestCase {
 
 		Assert.assertNotSame(element1, element2);
 
-		EClass type = element1.eClass();
+		final EClass type = element1.eClass();
 
-		EStructuralFeature feature = type.getEStructuralFeature("name");
+		final EStructuralFeature feature = type.getEStructuralFeature("name"); //$NON-NLS-1$
 		Assert.assertEquals(element1.eGet(feature), element2.eGet(feature));
 
 		Assert.assertNull(mapping.put(element1, element2));
 
-		for (EReference containment : type.getEAllContainments()) {
+		for (final EReference containment : type.getEAllContainments()) {
 			if (containment.isMany()) {
-				List<EObject> list1 = ((List<EObject>) element1
-						.eGet(containment));
-				List<EObject> list2 = ((List<EObject>) element2
-						.eGet(containment));
+				final List<EObject> list1 = (List<EObject>) element1
+					.eGet(containment);
+				final List<EObject> list2 = (List<EObject>) element2
+					.eGet(containment);
 
 				Assert.assertEquals(list1.size(), list2.size());
 
 				for (int i = 0, n = list1.size(); i < n; i++) {
-					EObject child1 = list1.get(i);
-					EObject child2 = list2.get(i);
+					final EObject child1 = list1.get(i);
+					final EObject child2 = list2.get(i);
 					checkContainment(child1, child2);
 				}
 			} else {
-				EObject child1 = (EObject) element1.eGet(containment);
-				EObject child2 = (EObject) element2.eGet(containment);
+				final EObject child1 = (EObject) element1.eGet(containment);
+				final EObject child2 = (EObject) element2.eGet(containment);
 
 				Assert.assertTrue(child1 != null && child2 != null
-						|| child1 == null && child2 == null);
+					|| child1 == null && child2 == null);
 
 				if (child1 != null) {
 					checkContainment(child1, child2);
@@ -155,37 +157,37 @@ public class ConverterTest extends TestCase {
 	 */
 	@SuppressWarnings("unchecked")
 	private void checkCrossReference(EObject element1) {
-		EObject element2 = mapping.get(element1);
+		final EObject element2 = mapping.get(element1);
 
-		EClass type = element1.eClass();
-		EStructuralFeature feature = type.getEStructuralFeature("name");
+		final EClass type = element1.eClass();
+		final EStructuralFeature feature = type.getEStructuralFeature("name"); //$NON-NLS-1$
 		Assert.assertEquals(element1.eGet(feature), element2.eGet(feature));
 
-		for (EReference reference : type.getEAllReferences()) {
+		for (final EReference reference : type.getEAllReferences()) {
 			if (reference.isContainment()) {
 				continue;
 			}
 
 			if (reference.isMany()) {
-				List<EObject> list1 = ((List<EObject>) element1.eGet(reference));
-				List<EObject> list2 = ((List<EObject>) element2.eGet(reference));
+				final List<EObject> list1 = (List<EObject>) element1.eGet(reference);
+				final List<EObject> list2 = (List<EObject>) element2.eGet(reference);
 
 				Assert.assertEquals(list1.size(), list2.size());
 
 				for (int i = 0, n = list1.size(); i < n; i++) {
-					EObject target1 = list1.get(i);
-					EObject target2 = list2.get(i);
+					final EObject target1 = list1.get(i);
+					final EObject target2 = list2.get(i);
 					Assert.assertSame(mapping.get(target1), target2);
 				}
 			} else {
-				EObject target1 = (EObject) element1.eGet(reference);
-				EObject target2 = (EObject) element2.eGet(reference);
+				final EObject target1 = (EObject) element1.eGet(reference);
+				final EObject target2 = (EObject) element2.eGet(reference);
 
 				Assert.assertSame(mapping.get(target1), target2);
 			}
 		}
 
-		for (EObject child1 : element1.eContents()) {
+		for (final EObject child1 : element1.eContents()) {
 			checkCrossReference(child1);
 		}
 	}

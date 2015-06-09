@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration <em>Migration</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration <em>Migration</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getChanges <em>Changes</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,6 +42,7 @@ public interface MigrationChange extends Change {
 	 * <!-- begin-model-doc -->
 	 * The code snippet overwriting the identity transformation
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Migration</em>' attribute.
 	 * @see #setMigration(String)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getMigrationChange_Migration()
@@ -51,9 +52,11 @@ public interface MigrationChange extends Change {
 	String getMigration();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration <em>Migration</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration <em>Migration</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Migration</em>' attribute.
 	 * @see #getMigration()
 	 * @generated
@@ -68,6 +71,7 @@ public interface MigrationChange extends Change {
 	 * <!-- begin-model-doc -->
 	 * A sequence of primitive changes
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Changes</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getMigrationChange_Changes()
 	 * @model containment="true"

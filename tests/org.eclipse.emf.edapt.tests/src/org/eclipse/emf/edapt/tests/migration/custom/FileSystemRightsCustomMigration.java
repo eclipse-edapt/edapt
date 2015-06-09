@@ -12,46 +12,46 @@ public class FileSystemRightsCustomMigration extends CustomMigration {
 	private EAttribute rightsAttribute;
 
 	public int getDigit(int value, int digit) {
-		int n = Integer.toString(value).length();
+		final int n = Integer.toString(value).length();
 		int i = n - 1 - digit;
 		while (i > 0) {
-			value = (value / 10);
+			value = value / 10;
 			i--;
 		}
 		return value % 10;
 	}
 
 	public Instance toRights(int rights, Model model) {
-		Instance instance = model.newInstance("filesystem.Rights");
+		final Instance instance = model.newInstance("filesystem.Rights"); //$NON-NLS-1$
 
-		instance.set("canExecute", rights % 2 > 0);
-		rights = (rights / 2);
-		instance.set("canWrite", rights % 2 > 0);
-		rights = (rights / 2);
-		instance.set("canRead", rights % 2 > 0);
-		rights = (rights / 2);
+		instance.set("canExecute", rights % 2 > 0); //$NON-NLS-1$
+		rights = rights / 2;
+		instance.set("canWrite", rights % 2 > 0); //$NON-NLS-1$
+		rights = rights / 2;
+		instance.set("canRead", rights % 2 > 0); //$NON-NLS-1$
+		rights = rights / 2;
 
 		return instance;
 	}
 
 	@Override
 	public void migrateBefore(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 		rightsAttribute = metamodel
-				.getEAttribute("filesystem.FileSystemElement.rights");
+			.getEAttribute("filesystem.FileSystemElement.rights"); //$NON-NLS-1$
 	}
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
+		throws MigrationException {
 
-		for (Instance element : model
-				.getAllInstances("filesystem.FileSystemElement")) {
-			Integer rights = element.get(rightsAttribute);
+		for (final Instance element : model
+			.getAllInstances("filesystem.FileSystemElement")) { //$NON-NLS-1$
+			final Integer rights = element.get(rightsAttribute);
 
-			element.set("userRights", toRights(getDigit(rights, 0), model));
-			element.set("groupRights", toRights(getDigit(rights, 1), model));
-			element.set("otherRights", toRights(getDigit(rights, 2), model));
+			element.set("userRights", toRights(getDigit(rights, 0), model)); //$NON-NLS-1$
+			element.set("groupRights", toRights(getDigit(rights, 1), model)); //$NON-NLS-1$
+			element.set("otherRights", toRights(getDigit(rights, 2), model)); //$NON-NLS-1$
 			element.unset(rightsAttribute);
 		}
 

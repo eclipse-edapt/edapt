@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.declaration.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -31,25 +30,26 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.declaration.Operation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class OperationItemProvider
 	extends IdentifiedElementItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public OperationItemProvider(AdapterFactory adapterFactory) {
@@ -60,6 +60,7 @@ public class OperationItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -80,109 +81,117 @@ public class OperationItemProvider
 	 * This adds a property descriptor for the Label feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addLabelPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_label_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_label_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__LABEL,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_label_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Operation_label_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				DeclarationPackage.Literals.OPERATION__LABEL,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
+
 	/**
 	 * This adds a property descriptor for the Deprecated feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addDeprecatedPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_deprecated_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_deprecated_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__DEPRECATED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_deprecated_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Operation_deprecated_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Operation_type"), //$NON-NLS-1$
+				DeclarationPackage.Literals.OPERATION__DEPRECATED,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Before feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addBeforePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_before_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_before_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__BEFORE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_before_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Operation_before_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				DeclarationPackage.Literals.OPERATION__BEFORE,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the After feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addAfterPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_after_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_after_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__AFTER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_after_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Operation_after_feature", "_UI_Operation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+				DeclarationPackage.Literals.OPERATION__AFTER,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
 	 * This adds a property descriptor for the Implementation feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Operation_implementation_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Operation_implementation_feature", "_UI_Operation_type"),
-				 DeclarationPackage.Literals.OPERATION__IMPLEMENTATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_Operation_implementation_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_Operation_implementation_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_Operation_type"), //$NON-NLS-1$
+				DeclarationPackage.Literals.OPERATION__IMPLEMENTATION,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -191,6 +200,7 @@ public class OperationItemProvider
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -206,6 +216,7 @@ public class OperationItemProvider
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -220,25 +231,27 @@ public class OperationItemProvider
 	 * This returns Operation.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Operation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Operation")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((Operation)object).getName();
+		final String label = ((Operation) object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_Operation_type") :
-			getString("_UI_Operation_type") + " " + label;
+			getString("_UI_Operation_type") : //$NON-NLS-1$
+			getString("_UI_Operation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -246,6 +259,7 @@ public class OperationItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -253,17 +267,17 @@ public class OperationItemProvider
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(Operation.class)) {
-			case DeclarationPackage.OPERATION__DEPRECATED:
-			case DeclarationPackage.OPERATION__BEFORE:
-			case DeclarationPackage.OPERATION__AFTER:
-			case DeclarationPackage.OPERATION__IMPLEMENTATION:
-			case DeclarationPackage.OPERATION__LABEL:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case DeclarationPackage.OPERATION__PARAMETERS:
-			case DeclarationPackage.OPERATION__CONSTRAINTS:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case DeclarationPackage.OPERATION__DEPRECATED:
+		case DeclarationPackage.OPERATION__BEFORE:
+		case DeclarationPackage.OPERATION__AFTER:
+		case DeclarationPackage.OPERATION__IMPLEMENTATION:
+		case DeclarationPackage.OPERATION__LABEL:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case DeclarationPackage.OPERATION__PARAMETERS:
+		case DeclarationPackage.OPERATION__CONSTRAINTS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -273,6 +287,7 @@ public class OperationItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -281,13 +296,13 @@ public class OperationItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DeclarationPackage.Literals.OPERATION__PARAMETERS,
-				 DeclarationFactory.eINSTANCE.createParameter()));
+			(DeclarationPackage.Literals.OPERATION__PARAMETERS,
+				DeclarationFactory.eINSTANCE.createParameter()));
 
 		newChildDescriptors.add
 			(createChildParameter
-				(DeclarationPackage.Literals.OPERATION__CONSTRAINTS,
-				 DeclarationFactory.eINSTANCE.createConstraint()));
+			(DeclarationPackage.Literals.OPERATION__CONSTRAINTS,
+				DeclarationFactory.eINSTANCE.createConstraint()));
 	}
 
 }

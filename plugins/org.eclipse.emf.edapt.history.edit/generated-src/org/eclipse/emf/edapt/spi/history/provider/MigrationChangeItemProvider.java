@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
 
@@ -30,19 +30,18 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a
- * {@link org.eclipse.emf.edapt.spi.history.MigrationChange} object. <!--
+ * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.MigrationChange} object. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 public class MigrationChangeItemProvider extends ChangeItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+	IEditingDomainItemProvider, IStructuredItemContentProvider,
+	ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public MigrationChangeItemProvider(AdapterFactory adapterFactory) {
@@ -52,7 +51,7 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	/**
 	 * This returns the property descriptors for the adapted class. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -68,23 +67,24 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	/**
 	 * This adds a property descriptor for the Migration feature. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	protected void addMigrationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_MigrationChange_migration_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_MigrationChange_migration_feature", "_UI_MigrationChange_type"),
-				 HistoryPackage.Literals.MIGRATION_CHANGE__MIGRATION,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
+			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+				getResourceLocator(),
+				getString("_UI_MigrationChange_migration_feature"), //$NON-NLS-1$
+				getString("_UI_PropertyDescriptor_description", "_UI_MigrationChange_migration_feature", //$NON-NLS-1$ //$NON-NLS-2$
+					"_UI_MigrationChange_type"), //$NON-NLS-1$
+				HistoryPackage.Literals.MIGRATION_CHANGE__MIGRATION,
+				true,
+				false,
+				false,
+				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				null,
+				null));
 	}
 
 	/**
@@ -92,11 +92,12 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+		Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(HistoryPackage.Literals.MIGRATION_CHANGE__CHANGES);
@@ -106,6 +107,7 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -120,24 +122,25 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	 * This returns MigrationChange.gif.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/MigrationChange"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/MigrationChange")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		MigrationChange migrationChange = (MigrationChange) object;
-		return "Custom Migration \"" + migrationChange.getMigration()
-				+ "\" has been attached";
+		final MigrationChange migrationChange = (MigrationChange) object;
+		return "Custom Migration \"" + migrationChange.getMigration() //$NON-NLS-1$
+			+ "\" has been attached"; //$NON-NLS-1$
 	}
 
 	/**
@@ -145,6 +148,7 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -152,12 +156,12 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MigrationChange.class)) {
-			case HistoryPackage.MIGRATION_CHANGE__MIGRATION:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case HistoryPackage.MIGRATION_CHANGE__CHANGES:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-				return;
+		case HistoryPackage.MIGRATION_CHANGE__MIGRATION:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+			return;
+		case HistoryPackage.MIGRATION_CHANGE__CHANGES:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			return;
 		}
 		super.notifyChanged(notification);
 	}
@@ -166,12 +170,12 @@ public class MigrationChangeItemProvider extends ChangeItemProvider implements
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s
 	 * describing the children that can be created under this object. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+		Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 }

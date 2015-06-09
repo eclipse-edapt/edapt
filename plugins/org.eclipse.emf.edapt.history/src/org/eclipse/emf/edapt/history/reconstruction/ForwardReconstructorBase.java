@@ -6,13 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.History;
@@ -21,10 +21,9 @@ import org.eclipse.emf.edapt.spi.history.MigrationChange;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 
-
 /**
  * Reconstructor visiting the history in forward direction
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -50,76 +49,75 @@ public abstract class ForwardReconstructorBase extends CompositeReconstructorBas
 		init(mapping = new Mapping(), extent = new MetamodelExtent());
 		this.target = target;
 		this.before = before;
-		
+
 		startHistory(originalHistory);
-		
+
 		try {
-			for(Release release : originalHistory.getReleases()) {
+			for (final Release release : originalHistory.getReleases()) {
 				doReconstruct(release);
 			}
-		}
-		catch(FinishedException e) {
+		} catch (final FinishedException e) {
 			// reconstruction is finished
 		}
-		
+
 		endHistory(originalHistory);
 	}
-	
+
 	/**
 	 * Perform reconstruction of a release
 	 */
 	private void doReconstruct(Release originalRelease) {
-		
-		if(before && originalRelease == target) {
+
+		if (before && originalRelease == target) {
 			throw new FinishedException();
 		}
-		
+
 		startRelease(originalRelease);
-		
-		for(Change change : originalRelease.getChanges()) {
+
+		for (final Change change : originalRelease.getChanges()) {
 			doReconstruct(change);
 		}
-		
+
 		endRelease(originalRelease);
-		
-		if(!before && originalRelease == target) {
+
+		if (!before && originalRelease == target) {
 			throw new FinishedException();
 		}
 	}
-	
+
 	/**
 	 * Perform reconstruction of a change
 	 */
 	private void doReconstruct(Change originalChange) {
-		
-		if(before && originalChange == target) {
+
+		if (before && originalChange == target) {
 			throw new FinishedException();
 		}
-		
+
 		startChange(originalChange);
-		
-		if(originalChange instanceof CompositeChange) {
-			CompositeChange compositeChange = (CompositeChange) originalChange;
-			for(Change change : compositeChange.getChanges()) {
+
+		if (originalChange instanceof CompositeChange) {
+			final CompositeChange compositeChange = (CompositeChange) originalChange;
+			for (final Change change : compositeChange.getChanges()) {
 				doReconstruct(change);
 			}
 		}
-		else if(originalChange instanceof MigrationChange) {
-			MigrationChange migrationChange = (MigrationChange) originalChange;
-			for(Change change : migrationChange.getChanges()) {
+		else if (originalChange instanceof MigrationChange) {
+			final MigrationChange migrationChange = (MigrationChange) originalChange;
+			for (final Change change : migrationChange.getChanges()) {
 				doReconstruct(change);
 			}
 		}
-		else if(originalChange instanceof InitializerChange) {
-			InitializerChange createChild = (InitializerChange) originalChange;
-			for(ValueChange change : createChild.getChanges()) {
+		else if (originalChange instanceof InitializerChange) {
+			final InitializerChange createChild = (InitializerChange) originalChange;
+			for (final ValueChange change : createChild.getChanges()) {
 				doReconstruct(change);
 			}
 		}
-		
+
 		endChange(originalChange);
-		
-		if(!before && originalChange == target) {
+
+		if (!before && originalChange == target) {
 			throw new FinishedException();
 		}
 	}

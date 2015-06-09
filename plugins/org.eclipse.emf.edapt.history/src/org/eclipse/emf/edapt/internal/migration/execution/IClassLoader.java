@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.migration.execution;
 
@@ -15,11 +15,12 @@ import org.eclipse.emf.edapt.migration.CustomMigration;
 
 /**
  * Interface for a classloader for {@link CustomMigration}s.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
+ * @since 1.1
  */
 public interface IClassLoader {
 

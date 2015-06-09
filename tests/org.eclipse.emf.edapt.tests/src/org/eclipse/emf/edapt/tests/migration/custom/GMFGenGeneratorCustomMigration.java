@@ -10,18 +10,18 @@ public class GMFGenGeneratorCustomMigration extends CustomMigration {
 
 	@Override
 	public void migrateAfter(Model model, Metamodel metamodel)
-			throws MigrationException {
-		for (Instance container : model
-				.getInstances("gmfgen.GenAuditContainer")) {
-			if (container.get("parentContainer") == null) {
-				Instance generator = container.getContainer();
+		throws MigrationException {
+		for (final Instance container : model
+			.getInstances("gmfgen.GenAuditContainer")) { //$NON-NLS-1$
+			if (container.get("parentContainer") == null) { //$NON-NLS-1$
+				final Instance generator = container.getContainer();
 
 				if (generator == null) {
-					Instance root = model.newInstance("gmfgen.GenAuditRoot");
+					final Instance root = model.newInstance("gmfgen.GenAuditRoot"); //$NON-NLS-1$
 					container.getResource().getRootInstances().add(root);
 					container.getResource().getRootInstances()
-							.remove(container);
-					root.set("audits", container);
+						.remove(container);
+					root.set("audits", container); //$NON-NLS-1$
 				}
 			}
 		}

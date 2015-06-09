@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.impl;
 
@@ -49,7 +49,6 @@ import org.eclipse.emf.edapt.spi.migration.Repository;
 import org.eclipse.emf.edapt.spi.migration.Slot;
 import org.eclipse.emf.edapt.spi.migration.Type;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Model</b></em>'.
@@ -57,11 +56,11 @@ import org.eclipse.emf.edapt.spi.migration.Type;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getMetamodel <em>Metamodel</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getTypes <em>Types</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#isReflection <em>Reflection</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getMetamodel <em>Metamodel</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getTypes <em>Types</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#isReflection <em>Reflection</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getResources <em>Resources</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
  *
@@ -72,6 +71,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * The cached value of the '{@link #getMetamodel() <em>Metamodel</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getMetamodel()
 	 * @generated
 	 * @ordered
@@ -82,6 +82,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * The cached value of the '{@link #getTypes() <em>Types</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getTypes()
 	 * @generated
 	 * @ordered
@@ -92,6 +93,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * The default value of the '{@link #isReflection() <em>Reflection</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #isReflection()
 	 * @generated
 	 * @ordered
@@ -102,6 +104,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * The cached value of the '{@link #isReflection() <em>Reflection</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #isReflection()
 	 * @generated
 	 * @ordered
@@ -112,6 +115,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getResources()
 	 * @generated
 	 * @ordered
@@ -121,6 +125,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ModelImpl() {
@@ -130,6 +135,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -140,15 +146,19 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Metamodel getMetamodel() {
-		if (metamodel != null && ((EObject)metamodel).eIsProxy()) {
-			InternalEObject oldMetamodel = (InternalEObject)metamodel;
-			metamodel = (Metamodel)eResolveProxy(oldMetamodel);
+		if (metamodel != null && ((EObject) metamodel).eIsProxy()) {
+			final InternalEObject oldMetamodel = (InternalEObject) metamodel;
+			metamodel = (Metamodel) eResolveProxy(oldMetamodel);
 			if (metamodel != oldMetamodel) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationPackage.MODEL__METAMODEL, oldMetamodel, metamodel));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationPackage.MODEL__METAMODEL,
+						oldMetamodel, metamodel));
+				}
 			}
 		}
 		return metamodel;
@@ -157,6 +167,7 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public Metamodel basicGetMetamodel() {
@@ -166,23 +177,30 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setMetamodel(Metamodel newMetamodel) {
-		Metamodel oldMetamodel = metamodel;
+		final Metamodel oldMetamodel = metamodel;
 		metamodel = newMetamodel;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__METAMODEL, oldMetamodel, metamodel));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__METAMODEL, oldMetamodel,
+				metamodel));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<Type> getTypes() {
 		if (types == null) {
-			types = new EObjectContainmentWithInverseEList<Type>(Type.class, this, MigrationPackage.MODEL__TYPES, MigrationPackage.TYPE__MODEL);
+			types = new EObjectContainmentWithInverseEList<Type>(Type.class, this, MigrationPackage.MODEL__TYPES,
+				MigrationPackage.TYPE__MODEL);
 		}
 		return types;
 	}
@@ -190,8 +208,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public boolean isReflection() {
 		return reflection;
 	}
@@ -199,23 +219,30 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setReflection(boolean newReflection) {
-		boolean oldReflection = reflection;
+		final boolean oldReflection = reflection;
 		reflection = newReflection;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__REFLECTION, oldReflection, reflection));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__REFLECTION, oldReflection,
+				reflection));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EList<ModelResource> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentWithInverseEList<ModelResource>(ModelResource.class, this, MigrationPackage.MODEL__RESOURCES, MigrationPackage.MODEL_RESOURCE__MODEL);
+			resources = new EObjectContainmentWithInverseEList<ModelResource>(ModelResource.class, this,
+				MigrationPackage.MODEL__RESOURCES, MigrationPackage.MODEL_RESOURCE__MODEL);
 		}
 		return resources;
 	}
@@ -223,72 +250,91 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public Repository getRepository() {
-		if (eContainerFeatureID() != MigrationPackage.MODEL__REPOSITORY) return null;
-		return (Repository)eContainer();
+		if (eContainerFeatureID() != MigrationPackage.MODEL__REPOSITORY) {
+			return null;
+		}
+		return (Repository) eContainer();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newRepository, MigrationPackage.MODEL__REPOSITORY, msgs);
+		msgs = eBasicSetContainer((InternalEObject) newRepository, MigrationPackage.MODEL__REPOSITORY, msgs);
 		return msgs;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setRepository(Repository newRepository) {
-		if (newRepository != eInternalContainer() || (eContainerFeatureID() != MigrationPackage.MODEL__REPOSITORY && newRepository != null)) {
-			if (EcoreUtil.isAncestor(this, (EObject)newRepository))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+		if (newRepository != eInternalContainer()
+			|| eContainerFeatureID() != MigrationPackage.MODEL__REPOSITORY && newRepository != null) {
+			if (EcoreUtil.isAncestor(this, (EObject) newRepository)) {
+				throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+			}
 			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
+			if (eInternalContainer() != null) {
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newRepository != null)
-				msgs = ((InternalEObject)newRepository).eInverseAdd(this, MigrationPackage.REPOSITORY__MODEL, Repository.class, msgs);
+			}
+			if (newRepository != null) {
+				msgs = ((InternalEObject) newRepository).eInverseAdd(this, MigrationPackage.REPOSITORY__MODEL,
+					Repository.class, msgs);
+			}
 			msgs = basicSetRepository(newRepository, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__REPOSITORY, newRepository, newRepository));
+		else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.MODEL__REPOSITORY, newRepository,
+				newRepository));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Instance> getAllInstances(EClass eClass) {
-		EList<Instance> instances = new UniqueEList<Instance>();
-		
-		for(Type type : this.getTypes()) {
-			if(eClass.isSuperTypeOf(type.getEClass())) {
+		final EList<Instance> instances = new UniqueEList<Instance>();
+
+		for (final Type type : getTypes()) {
+			if (eClass.isSuperTypeOf(type.getEClass())) {
 				instances.addAll(type.getInstances());
 			}
 		}
-		
+
 		return instances;
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Instance> getInstances(EClass eClass) {
 		try {
-			Type type = this.getType(eClass);
+			final Type type = getType(eClass);
 			return new UniqueEList<Instance>(type.getInstances());
-		}
-		catch(NullPointerException e) {
+		} catch (final NullPointerException e) {
 			return new UniqueEList<Instance>();
 		}
 	}
@@ -296,11 +342,13 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Type getType(EClass eClass) {
-		for(Type type : this.getTypes()) {
-			if(type.getEClass() == eClass) {
+		for (final Type type : getTypes()) {
+			if (type.getEClass() == eClass) {
 				return type;
 			}
 		}
@@ -310,8 +358,10 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Map<EClass, Set<Instance>> createExtentMap() {
 		return new LazyExtentMap(this);
 	}
@@ -319,175 +369,188 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Instance newInstance(EClass eClass) {
-		Type type = this.getCreateType(eClass);
+		final Type type = getCreateType(eClass);
 		return type.newInstance();
 	}
 
 	/**
 	 * Get or create an instance container
-	 * 
+	 *
 	 * @param eClass
 	 * @return Instance container
 	 */
 	Type getCreateType(EClass eClass) {
-		Type type = this.getType(eClass);
-		if(type == null) {
+		Type type = getType(eClass);
+		if (type == null) {
 			type = MigrationFactory.eINSTANCE.createType();
 			type.setEClass(eClass);
-			this.getTypes().add(type);
+			getTypes().add(type);
 		}
 		return type;
 	}
-	
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void delete(Instance instance) {
-		for (EReference reference : instance.getEClass().getEAllReferences()) {
+		for (final EReference reference : instance.getEClass().getEAllReferences()) {
 			if (reference.isContainment()) {
-	    	if(reference.isMany()) {
-		    	List<Instance> children = instance.get(reference);
-		    	for(Instance child : children) {
-		    		this.delete(child);
-		    	}
-	    	}
-	    	else {
-	    		Instance child = instance.get(reference);
-	    		if(child != null) {
-	    			this.delete(child);
-	    		}
-	    	}
+				if (reference.isMany()) {
+					final List<Instance> children = instance.get(reference);
+					for (final Instance child : children) {
+						delete(child);
+					}
+				}
+				else {
+					final Instance child = instance.get(reference);
+					if (child != null) {
+						delete(child);
+					}
+				}
 			}
-	    }
-	    this.remove(instance);
+		}
+		remove(instance);
 	}
 
-	
 	/**
 	 * Remove an instance from the model
-	 * 
+	 *
 	 * @param instance
 	 */
 	private void remove(Instance instance) {
-		Type type = instance.getType();
-		for(Slot slot : new ArrayList<Slot>(instance.getSlots())) {
+		final Type type = instance.getType();
+		for (final Slot slot : new ArrayList<Slot>(instance.getSlots())) {
 			instance.unset(slot.getEFeature());
 		}
-		for(ReferenceSlot slot : new ArrayList<ReferenceSlot>(instance.getReferences())) {
+		for (final ReferenceSlot slot : new ArrayList<ReferenceSlot>(instance.getReferences())) {
 			slot.getInstance().remove(slot.getEReference(), instance);
 		}
-		this.removeDeleteType(type, instance);
+		removeDeleteType(type, instance);
 	}
 
 	/**
 	 * Remove an instance from a container
 	 * (delete the instance container if empty afterwards)
-	 * 
+	 *
 	 * @param type
 	 * @param instance
 	 */
-	void removeDeleteType(Type type, Instance instance) {		
+	void removeDeleteType(Type type, Instance instance) {
 		type.getInstances().remove(instance);
-		if(type.getInstances().isEmpty()) {
-			this.getTypes().remove(type);
-		}
-	}
-	
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	public void validate() throws MigrationException {
-		BasicDiagnostic chain = new BasicDiagnostic();
-		for(ModelResource modelResource : this.getResources()) {
-			for(Instance root : modelResource.getRootInstances()) {
-				root.validate(chain);
-			}
-		}
-		if(chain.getSeverity() != Diagnostic.OK) {
-			throw new MigrationException(new DiagnosticException("Model not valid", chain));
+		if (type.getInstances().isEmpty()) {
+			getTypes().remove(type);
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
+	public void validate() throws MigrationException {
+		final BasicDiagnostic chain = new BasicDiagnostic();
+		for (final ModelResource modelResource : getResources()) {
+			for (final Instance root : modelResource.getRootInstances()) {
+				root.validate(chain);
+			}
+		}
+		if (chain.getSeverity() != Diagnostic.OK) {
+			throw new MigrationException(new DiagnosticException("Model not valid", chain)); //$NON-NLS-1$
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated NOT
+	 */
+	@Override
 	public void checkConformance() throws MigrationException {
-		Diagnostician diagnostician = new Diagnostician() {
+		final Diagnostician diagnostician = new Diagnostician() {
 			@Override
 			public String getObjectLabel(EObject object) {
 				if (object instanceof Instance) {
-					Instance instance = (Instance) object;
-					return "Instance of type \""
-							+ instance.getEClass().getName() + "\"";
+					final Instance instance = (Instance) object;
+					return "Instance of type \"" //$NON-NLS-1$
+						+ instance.getEClass().getName() + "\""; //$NON-NLS-1$
 				} else if (object instanceof ReferenceSlot) {
-					ReferenceSlot referenceSlot = (ReferenceSlot) object;
-					return "Reference \""
-							+ referenceSlot.getEReference().getName()
-							+ "\" of "
-							+ getObjectLabel((EObject) referenceSlot
-									.getInstance());
+					final ReferenceSlot referenceSlot = (ReferenceSlot) object;
+					return "Reference \"" //$NON-NLS-1$
+						+ referenceSlot.getEReference().getName()
+						+ "\" of " //$NON-NLS-1$
+						+ getObjectLabel((EObject) referenceSlot
+							.getInstance());
 				} else if (object instanceof AttributeSlot) {
-					AttributeSlot referenceSlot = (AttributeSlot) object;
-					return "Attribute \""
-							+ referenceSlot.getEAttribute().getName()
-							+ "\" of "
-							+ getObjectLabel((EObject) referenceSlot
-									.getInstance());
+					final AttributeSlot referenceSlot = (AttributeSlot) object;
+					return "Attribute \"" //$NON-NLS-1$
+						+ referenceSlot.getEAttribute().getName()
+						+ "\" of " //$NON-NLS-1$
+						+ getObjectLabel((EObject) referenceSlot
+							.getInstance());
 				}
 				return super.getObjectLabel(object);
 			}
 		};
-		Diagnostic diagnostic = diagnostician.validate(this);
+		final Diagnostic diagnostic = diagnostician.validate(this);
 		if (diagnostic.getSeverity() != Diagnostic.OK) {
-			throw new MigrationException(new DiagnosticException("Model inconsistent", diagnostic));
+			throw new MigrationException(new DiagnosticException("Model inconsistent", diagnostic)); //$NON-NLS-1$
 		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public void commit() throws MigrationException {
-		this.getMetamodel().validate();
-		this.checkConformance();
-		this.validate();
+		getMetamodel().validate();
+		checkConformance();
+		validate();
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Instance> getAllInstances(String className) {
-		EClass eClass = checkAndGetClass(className);
+		final EClass eClass = checkAndGetClass(className);
 		return getAllInstances(eClass);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Instance> getInstances(String className) {
-		EClass eClass = checkAndGetClass(className);
+		final EClass eClass = checkAndGetClass(className);
 		return getInstances(eClass);
 	}
 
 	private EClass checkAndGetClass(String className) {
-		EClass eClass = getMetamodel().getEClass(className);
+		final EClass eClass = getMetamodel().getEClass(className);
 		if (eClass == null) {
-			throw new IllegalArgumentException("Class " + className
-					+ " not found.");
+			throw new IllegalArgumentException("Class " + className //$NON-NLS-1$
+				+ " not found."); //$NON-NLS-1$
 		}
 		return eClass;
 	}
@@ -495,21 +558,25 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public Instance newInstance(String className) {
-		EClass eClass = checkAndGetClass(className);
+		final EClass eClass = checkAndGetClass(className);
 		return newInstance(eClass);
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
+	@Override
 	public ModelResource newResource(URI uri) {
-		ModelResource resource = MigrationFactory.eINSTANCE
-				.createModelResource();
+		final ModelResource resource = MigrationFactory.eINSTANCE
+			.createModelResource();
 		resource.setUri(uri);
 		getResources().add(resource);
 		return resource;
@@ -518,20 +585,22 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__TYPES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getTypes()).basicAdd(otherEnd, msgs);
-			case MigrationPackage.MODEL__RESOURCES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getResources()).basicAdd(otherEnd, msgs);
-			case MigrationPackage.MODEL__REPOSITORY:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetRepository((Repository)otherEnd, msgs);
+		case MigrationPackage.MODEL__TYPES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getTypes()).basicAdd(otherEnd, msgs);
+		case MigrationPackage.MODEL__RESOURCES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getResources()).basicAdd(otherEnd, msgs);
+		case MigrationPackage.MODEL__REPOSITORY:
+			if (eInternalContainer() != null) {
+				msgs = eBasicRemoveFromContainer(msgs);
+			}
+			return basicSetRepository((Repository) otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -539,17 +608,18 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__TYPES:
-				return ((InternalEList<?>)getTypes()).basicRemove(otherEnd, msgs);
-			case MigrationPackage.MODEL__RESOURCES:
-				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
-			case MigrationPackage.MODEL__REPOSITORY:
-				return basicSetRepository(null, msgs);
+		case MigrationPackage.MODEL__TYPES:
+			return ((InternalEList<?>) getTypes()).basicRemove(otherEnd, msgs);
+		case MigrationPackage.MODEL__RESOURCES:
+			return ((InternalEList<?>) getResources()).basicRemove(otherEnd, msgs);
+		case MigrationPackage.MODEL__REPOSITORY:
+			return basicSetRepository(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -557,13 +627,15 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case MigrationPackage.MODEL__REPOSITORY:
-				return eInternalContainer().eInverseRemove(this, MigrationPackage.REPOSITORY__MODEL, Repository.class, msgs);
+		case MigrationPackage.MODEL__REPOSITORY:
+			return eInternalContainer()
+				.eInverseRemove(this, MigrationPackage.REPOSITORY__MODEL, Repository.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
@@ -571,22 +643,25 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__METAMODEL:
-				if (resolve) return getMetamodel();
-				return basicGetMetamodel();
-			case MigrationPackage.MODEL__TYPES:
-				return getTypes();
-			case MigrationPackage.MODEL__REFLECTION:
-				return isReflection();
-			case MigrationPackage.MODEL__RESOURCES:
-				return getResources();
-			case MigrationPackage.MODEL__REPOSITORY:
-				return getRepository();
+		case MigrationPackage.MODEL__METAMODEL:
+			if (resolve) {
+				return getMetamodel();
+			}
+			return basicGetMetamodel();
+		case MigrationPackage.MODEL__TYPES:
+			return getTypes();
+		case MigrationPackage.MODEL__REFLECTION:
+			return isReflection();
+		case MigrationPackage.MODEL__RESOURCES:
+			return getResources();
+		case MigrationPackage.MODEL__REPOSITORY:
+			return getRepository();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -594,29 +669,30 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__METAMODEL:
-				setMetamodel((Metamodel)newValue);
-				return;
-			case MigrationPackage.MODEL__TYPES:
-				getTypes().clear();
-				getTypes().addAll((Collection<? extends Type>)newValue);
-				return;
-			case MigrationPackage.MODEL__REFLECTION:
-				setReflection((Boolean)newValue);
-				return;
-			case MigrationPackage.MODEL__RESOURCES:
-				getResources().clear();
-				getResources().addAll((Collection<? extends ModelResource>)newValue);
-				return;
-			case MigrationPackage.MODEL__REPOSITORY:
-				setRepository((Repository)newValue);
-				return;
+		case MigrationPackage.MODEL__METAMODEL:
+			setMetamodel((Metamodel) newValue);
+			return;
+		case MigrationPackage.MODEL__TYPES:
+			getTypes().clear();
+			getTypes().addAll((Collection<? extends Type>) newValue);
+			return;
+		case MigrationPackage.MODEL__REFLECTION:
+			setReflection((Boolean) newValue);
+			return;
+		case MigrationPackage.MODEL__RESOURCES:
+			getResources().clear();
+			getResources().addAll((Collection<? extends ModelResource>) newValue);
+			return;
+		case MigrationPackage.MODEL__REPOSITORY:
+			setRepository((Repository) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -624,26 +700,27 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__METAMODEL:
-				setMetamodel((Metamodel)null);
-				return;
-			case MigrationPackage.MODEL__TYPES:
-				getTypes().clear();
-				return;
-			case MigrationPackage.MODEL__REFLECTION:
-				setReflection(REFLECTION_EDEFAULT);
-				return;
-			case MigrationPackage.MODEL__RESOURCES:
-				getResources().clear();
-				return;
-			case MigrationPackage.MODEL__REPOSITORY:
-				setRepository((Repository)null);
-				return;
+		case MigrationPackage.MODEL__METAMODEL:
+			setMetamodel((Metamodel) null);
+			return;
+		case MigrationPackage.MODEL__TYPES:
+			getTypes().clear();
+			return;
+		case MigrationPackage.MODEL__REFLECTION:
+			setReflection(REFLECTION_EDEFAULT);
+			return;
+		case MigrationPackage.MODEL__RESOURCES:
+			getResources().clear();
+			return;
+		case MigrationPackage.MODEL__REPOSITORY:
+			setRepository((Repository) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -651,21 +728,22 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.MODEL__METAMODEL:
-				return metamodel != null;
-			case MigrationPackage.MODEL__TYPES:
-				return types != null && !types.isEmpty();
-			case MigrationPackage.MODEL__REFLECTION:
-				return reflection != REFLECTION_EDEFAULT;
-			case MigrationPackage.MODEL__RESOURCES:
-				return resources != null && !resources.isEmpty();
-			case MigrationPackage.MODEL__REPOSITORY:
-				return getRepository() != null;
+		case MigrationPackage.MODEL__METAMODEL:
+			return metamodel != null;
+		case MigrationPackage.MODEL__TYPES:
+			return types != null && !types.isEmpty();
+		case MigrationPackage.MODEL__REFLECTION:
+			return reflection != REFLECTION_EDEFAULT;
+		case MigrationPackage.MODEL__RESOURCES:
+			return resources != null && !resources.isEmpty();
+		case MigrationPackage.MODEL__REPOSITORY:
+			return getRepository() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -673,17 +751,20 @@ public class ModelImpl extends EObjectImpl implements Model {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (reflection: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (reflection: "); //$NON-NLS-1$
 		result.append(reflection);
 		result.append(')');
 		return result.toString();
 	}
 
-} //ModelImpl
+} // ModelImpl

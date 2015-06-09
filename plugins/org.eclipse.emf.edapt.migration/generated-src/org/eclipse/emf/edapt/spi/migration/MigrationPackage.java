@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -22,15 +22,16 @@ import org.eclipse.emf.ecore.EReference;
  * The <b>Package</b> for the model.
  * It contains accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Metamodel to represent models during migration
  * <!-- end-model-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.migration.MigrationFactory
  * @model kind="package"
  * @generated
@@ -40,30 +41,34 @@ public interface MigrationPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNAME = "migration";
+	String eNAME = "migration"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/migration/0.3"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_PREFIX = "migration";
+	String eNS_PREFIX = "migration"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	MigrationPackage eINSTANCE = org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl.init();
@@ -72,6 +77,7 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl <em>Model</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.ModelImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getModel()
 	 * @generated
@@ -79,9 +85,11 @@ public interface MigrationPackage extends EPackage {
 	int MODEL = 1;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl <em>Metamodel</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl <em>Metamodel</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMetamodel()
 	 * @generated
@@ -92,6 +100,7 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.TypeImpl <em>Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.TypeImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getType()
 	 * @generated
@@ -99,9 +108,11 @@ public interface MigrationPackage extends EPackage {
 	int TYPE = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl <em>Instance</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl <em>Instance</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getInstance()
 	 * @generated
@@ -112,6 +123,7 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.SlotImpl <em>Slot</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.SlotImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getSlot()
 	 * @generated
@@ -119,9 +131,11 @@ public interface MigrationPackage extends EPackage {
 	int SLOT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl <em>Attribute Slot</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl
+	 * <em>Attribute Slot</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getAttributeSlot()
 	 * @generated
@@ -129,9 +143,11 @@ public interface MigrationPackage extends EPackage {
 	int ATTRIBUTE_SLOT = 6;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl <em>Reference Slot</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl
+	 * <em>Reference Slot</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getReferenceSlot()
 	 * @generated
@@ -139,9 +155,11 @@ public interface MigrationPackage extends EPackage {
 	int REFERENCE_SLOT = 7;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl <em>Repository</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl <em>Repository</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getRepository()
 	 * @generated
@@ -152,6 +170,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Model</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -161,6 +180,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Metamodel</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -170,6 +190,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Repository</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -179,6 +200,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Metamodel</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -188,6 +210,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Types</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -197,6 +220,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Reflection</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -206,6 +230,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -215,6 +240,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -224,15 +250,18 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Model</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int MODEL_FEATURE_COUNT = 5;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl <em>Abstract Resource</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl
+	 * <em>Abstract Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getAbstractResource()
 	 * @generated
@@ -243,6 +272,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -252,6 +282,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -261,15 +292,18 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Abstract Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int ABSTRACT_RESOURCE_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl <em>Model Resource</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl
+	 * <em>Model Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getModelResource()
 	 * @generated
@@ -280,6 +314,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -289,6 +324,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -298,6 +334,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Root Instances</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -307,6 +344,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Model</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -316,6 +354,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Model Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -325,6 +364,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>EClass</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -334,6 +374,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Instances</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -343,6 +384,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Model</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -352,6 +394,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -361,6 +404,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Slots</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -370,6 +414,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Type</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -379,6 +424,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>References</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -388,6 +434,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -397,6 +444,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Uuid</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -406,6 +454,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -415,6 +464,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Instance</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -424,6 +474,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Slot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -433,6 +484,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Instance</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -442,6 +494,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>EAttribute</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -451,6 +504,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Values</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -460,6 +514,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Attribute Slot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -469,6 +524,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Instance</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -478,6 +534,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>EReference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -487,6 +544,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Values</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -496,6 +554,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Reference Slot</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -505,6 +564,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -514,6 +574,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Repository</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -523,6 +584,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Default Package</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -532,15 +594,18 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Metamodel</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int METAMODEL_FEATURE_COUNT = 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl <em>Metamodel Resource</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl
+	 * <em>Metamodel Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMetamodelResource()
 	 * @generated
@@ -551,6 +616,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -560,6 +626,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -569,6 +636,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Root Packages</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -578,6 +646,7 @@ public interface MigrationPackage extends EPackage {
 	 * The feature id for the '<em><b>Metamodel</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -587,6 +656,7 @@ public interface MigrationPackage extends EPackage {
 	 * The number of structural features of the '<em>Metamodel Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -596,6 +666,7 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '<em>Set</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see java.util.Set
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getSet()
 	 * @generated
@@ -606,50 +677,51 @@ public interface MigrationPackage extends EPackage {
 	 * The meta object id for the '<em>Diagnostic Chain</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.common.util.DiagnosticChain
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getDiagnosticChain()
 	 * @generated
 	 */
 	int DIAGNOSTIC_CHAIN = 12;
 
-
 	/**
 	 * The meta object id for the '<em>URI</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.common.util.URI
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getURI()
 	 * @generated
 	 */
 	int URI = 13;
 
-
 	/**
 	 * The meta object id for the '<em>Diagnostic Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.internal.migration.DiagnosticException
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getDiagnosticException()
 	 * @generated
 	 */
 	int DIAGNOSTIC_EXCEPTION = 14;
 
-
 	/**
 	 * The meta object id for the '<em>Exception</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.migration.MigrationException
 	 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMigrationException()
 	 * @generated
 	 */
 	int MIGRATION_EXCEPTION = 15;
 
-
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Model <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Model</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model
 	 * @generated
@@ -657,9 +729,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getModel();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.Model#getMetamodel <em>Metamodel</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.Model#getMetamodel
+	 * <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Metamodel</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model#getMetamodel()
 	 * @see #getModel()
@@ -668,9 +742,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getModel_Metamodel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.migration.Model#getTypes <em>Types</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Model#getTypes <em>Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Types</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model#getTypes()
 	 * @see #getModel()
@@ -679,9 +755,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getModel_Types();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Model#isReflection <em>Reflection</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Model#isReflection
+	 * <em>Reflection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Reflection</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model#isReflection()
 	 * @see #getModel()
@@ -690,9 +768,11 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getModel_Reflection();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.migration.Model#getResources <em>Resources</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Model#getResources <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Resources</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model#getResources()
 	 * @see #getModel()
@@ -701,9 +781,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getModel_Resources();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Model#getRepository <em>Repository</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Model#getRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Repository</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model#getRepository()
 	 * @see #getModel()
@@ -715,6 +797,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Metamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Metamodel</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Metamodel
 	 * @generated
@@ -722,9 +805,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getMetamodel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources <em>Resources</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Metamodel#getResources <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Resources</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Metamodel#getResources()
 	 * @see #getMetamodel()
@@ -733,9 +818,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getMetamodel_Resources();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Repository</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Metamodel#getRepository()
 	 * @see #getMetamodel()
@@ -744,9 +831,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getMetamodel_Repository();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage <em>Default Package</em>}'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage <em>Default Package</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Default Package</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Metamodel#getDefaultPackage()
 	 * @see #getMetamodel()
@@ -758,6 +847,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Type</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Type
 	 * @generated
@@ -765,9 +855,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getType();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.Type#getEClass <em>EClass</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.Type#getEClass
+	 * <em>EClass</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>EClass</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Type#getEClass()
 	 * @see #getType()
@@ -776,9 +868,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getType_EClass();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.migration.Type#getInstances <em>Instances</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Type#getInstances <em>Instances</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Instances</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Type#getInstances()
 	 * @see #getType()
@@ -787,9 +881,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getType_Instances();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Type#getModel <em>Model</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Type#getModel
+	 * <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Model</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Type#getModel()
 	 * @see #getType()
@@ -801,6 +897,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Instance <em>Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Instance</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance
 	 * @generated
@@ -808,9 +905,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getInstance();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots <em>Slots</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Instance#getSlots <em>Slots</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Slots</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getSlots()
 	 * @see #getInstance()
@@ -819,9 +918,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getInstance_Slots();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Instance#getType <em>Type</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Instance#getType
+	 * <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Type</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getType()
 	 * @see #getInstance()
@@ -830,9 +931,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getInstance_Type();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences <em>References</em>}'.
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Instance#getReferences <em>References</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference list '<em>References</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getReferences()
 	 * @see #getInstance()
@@ -841,9 +944,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getInstance_References();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUri <em>Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUri
+	 * <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Uri</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getUri()
 	 * @see #getInstance()
@@ -852,9 +957,11 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getInstance_Uri();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUuid <em>Uuid</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.Instance#getUuid
+	 * <em>Uuid</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Uuid</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance#getUuid()
 	 * @see #getInstance()
@@ -866,6 +973,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Slot <em>Slot</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Slot</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Slot
 	 * @generated
@@ -873,9 +981,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getSlot();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance <em>Instance</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.Slot#getInstance
+	 * <em>Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Instance</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Slot#getInstance()
 	 * @see #getSlot()
@@ -884,9 +994,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getSlot_Instance();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot <em>Attribute Slot</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot
+	 * <em>Attribute Slot</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Attribute Slot</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AttributeSlot
 	 * @generated
@@ -894,9 +1006,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getAttributeSlot();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute <em>EAttribute</em>}'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute <em>EAttribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>EAttribute</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AttributeSlot#getEAttribute()
 	 * @see #getAttributeSlot()
@@ -905,9 +1019,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getAttributeSlot_EAttribute();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getValues <em>Values</em>}'.
+	 * Returns the meta object for the attribute list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.AttributeSlot#getValues <em>Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute list '<em>Values</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AttributeSlot#getValues()
 	 * @see #getAttributeSlot()
@@ -916,9 +1032,11 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getAttributeSlot_Values();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot <em>Reference Slot</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot
+	 * <em>Reference Slot</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Reference Slot</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ReferenceSlot
 	 * @generated
@@ -926,9 +1044,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getReferenceSlot();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference <em>EReference</em>}'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference <em>EReference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>EReference</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getEReference()
 	 * @see #getReferenceSlot()
@@ -937,9 +1057,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getReferenceSlot_EReference();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues <em>Values</em>}'.
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues <em>Values</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference list '<em>Values</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ReferenceSlot#getValues()
 	 * @see #getReferenceSlot()
@@ -951,6 +1073,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.Repository <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Repository</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Repository
 	 * @generated
@@ -958,9 +1081,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getRepository();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.edapt.spi.migration.Repository#getModel <em>Model</em>}'.
+	 * Returns the meta object for the containment reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Repository#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference '<em>Model</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Repository#getModel()
 	 * @see #getRepository()
@@ -969,9 +1094,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getRepository_Model();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.edapt.spi.migration.Repository#getMetamodel <em>Metamodel</em>}'.
+	 * Returns the meta object for the containment reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.Repository#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference '<em>Metamodel</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.Repository#getMetamodel()
 	 * @see #getRepository()
@@ -980,9 +1107,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getRepository_Metamodel();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.ModelResource <em>Model Resource</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.ModelResource
+	 * <em>Model Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Model Resource</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ModelResource
 	 * @generated
@@ -990,9 +1119,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getModelResource();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getRootInstances <em>Root Instances</em>}'.
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.ModelResource#getRootInstances <em>Root Instances</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference list '<em>Root Instances</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ModelResource#getRootInstances()
 	 * @see #getModelResource()
@@ -1001,9 +1132,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getModelResource_RootInstances();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.ModelResource#getModel <em>Model</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Model</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.ModelResource#getModel()
 	 * @see #getModelResource()
@@ -1012,9 +1145,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getModelResource_Model();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource <em>Abstract Resource</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource
+	 * <em>Abstract Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Abstract Resource</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AbstractResource
 	 * @generated
@@ -1022,9 +1157,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getAbstractResource();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri <em>Uri</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri
+	 * <em>Uri</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Uri</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri()
 	 * @see #getAbstractResource()
@@ -1033,9 +1170,11 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getAbstractResource_Uri();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Encoding</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding()
 	 * @see #getAbstractResource()
@@ -1044,9 +1183,11 @@ public interface MigrationPackage extends EPackage {
 	EAttribute getAbstractResource_Encoding();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource <em>Metamodel Resource</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource
+	 * <em>Metamodel Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Metamodel Resource</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.MetamodelResource
 	 * @generated
@@ -1054,9 +1195,11 @@ public interface MigrationPackage extends EPackage {
 	EClass getMetamodelResource();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getRootPackages <em>Root Packages</em>}'.
+	 * Returns the meta object for the reference list '
+	 * {@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getRootPackages <em>Root Packages</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference list '<em>Root Packages</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.MetamodelResource#getRootPackages()
 	 * @see #getMetamodelResource()
@@ -1065,9 +1208,11 @@ public interface MigrationPackage extends EPackage {
 	EReference getMetamodelResource_RootPackages();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
+	 * Returns the meta object for the container reference '
+	 * {@link org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>Metamodel</em>'.
 	 * @see org.eclipse.emf.edapt.spi.migration.MetamodelResource#getMetamodel()
 	 * @see #getMetamodelResource()
@@ -1079,6 +1224,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for data type '{@link java.util.Set <em>Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for data type '<em>Set</em>'.
 	 * @see java.util.Set
 	 * @model instanceClass="java.util.Set" serializeable="false" typeParameters="E"
@@ -1087,9 +1233,11 @@ public interface MigrationPackage extends EPackage {
 	EDataType getSet();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.DiagnosticChain <em>Diagnostic Chain</em>}'.
+	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.DiagnosticChain
+	 * <em>Diagnostic Chain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for data type '<em>Diagnostic Chain</em>'.
 	 * @see org.eclipse.emf.common.util.DiagnosticChain
 	 * @model instanceClass="org.eclipse.emf.common.util.DiagnosticChain"
@@ -1101,6 +1249,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the meta object for data type '{@link org.eclipse.emf.common.util.URI <em>URI</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for data type '<em>URI</em>'.
 	 * @see org.eclipse.emf.common.util.URI
 	 * @model instanceClass="org.eclipse.emf.common.util.URI"
@@ -1109,9 +1258,11 @@ public interface MigrationPackage extends EPackage {
 	EDataType getURI();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.internal.migration.DiagnosticException <em>Diagnostic Exception</em>}'.
+	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.internal.migration.DiagnosticException
+	 * <em>Diagnostic Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for data type '<em>Diagnostic Exception</em>'.
 	 * @see org.eclipse.emf.edapt.internal.migration.DiagnosticException
 	 * @model instanceClass="org.eclipse.emf.edapt.migration.DiagnosticException"
@@ -1120,9 +1271,11 @@ public interface MigrationPackage extends EPackage {
 	EDataType getDiagnosticException();
 
 	/**
-	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.migration.MigrationException <em>Exception</em>}'.
+	 * Returns the meta object for data type '{@link org.eclipse.emf.edapt.migration.MigrationException
+	 * <em>Exception</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for data type '<em>Exception</em>'.
 	 * @see org.eclipse.emf.edapt.migration.MigrationException
 	 * @model instanceClass="org.eclipse.emf.edapt.migration.MigrationException" serializeable="false"
@@ -1134,6 +1287,7 @@ public interface MigrationPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -1143,19 +1297,22 @@ public interface MigrationPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * Defines literals for the meta objects that represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl <em>Model</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelImpl <em>Model</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.ModelImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getModel()
 		 * @generated
@@ -1166,6 +1323,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Metamodel</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL__METAMODEL = eINSTANCE.getModel_Metamodel();
@@ -1174,6 +1332,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Types</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL__TYPES = eINSTANCE.getModel_Types();
@@ -1182,6 +1341,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reflection</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute MODEL__REFLECTION = eINSTANCE.getModel_Reflection();
@@ -1190,6 +1350,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL__RESOURCES = eINSTANCE.getModel_Resources();
@@ -1198,14 +1359,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Repository</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL__REPOSITORY = eINSTANCE.getModel_Repository();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl <em>Metamodel</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl
+		 * <em>Metamodel</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MetamodelImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMetamodel()
 		 * @generated
@@ -1216,6 +1380,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference METAMODEL__RESOURCES = eINSTANCE.getMetamodel_Resources();
@@ -1224,6 +1389,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Repository</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference METAMODEL__REPOSITORY = eINSTANCE.getMetamodel_Repository();
@@ -1232,14 +1398,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Default Package</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference METAMODEL__DEFAULT_PACKAGE = eINSTANCE.getMetamodel_DefaultPackage();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.TypeImpl <em>Type</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.TypeImpl <em>Type</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.TypeImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getType()
 		 * @generated
@@ -1250,6 +1419,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>EClass</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference TYPE__ECLASS = eINSTANCE.getType_EClass();
@@ -1258,6 +1428,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Instances</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference TYPE__INSTANCES = eINSTANCE.getType_Instances();
@@ -1266,14 +1437,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference TYPE__MODEL = eINSTANCE.getType_Model();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl <em>Instance</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl
+		 * <em>Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.InstanceImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getInstance()
 		 * @generated
@@ -1284,6 +1458,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Slots</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference INSTANCE__SLOTS = eINSTANCE.getInstance_Slots();
@@ -1292,6 +1467,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Type</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference INSTANCE__TYPE = eINSTANCE.getInstance_Type();
@@ -1300,6 +1476,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>References</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference INSTANCE__REFERENCES = eINSTANCE.getInstance_References();
@@ -1308,6 +1485,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute INSTANCE__URI = eINSTANCE.getInstance_Uri();
@@ -1316,14 +1494,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Uuid</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute INSTANCE__UUID = eINSTANCE.getInstance_Uuid();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.SlotImpl <em>Slot</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.SlotImpl <em>Slot</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.SlotImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getSlot()
 		 * @generated
@@ -1334,14 +1515,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Instance</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference SLOT__INSTANCE = eINSTANCE.getSlot_Instance();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl <em>Attribute Slot</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl
+		 * <em>Attribute Slot</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.AttributeSlotImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getAttributeSlot()
 		 * @generated
@@ -1352,6 +1536,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>EAttribute</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference ATTRIBUTE_SLOT__EATTRIBUTE = eINSTANCE.getAttributeSlot_EAttribute();
@@ -1360,14 +1545,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute ATTRIBUTE_SLOT__VALUES = eINSTANCE.getAttributeSlot_Values();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl <em>Reference Slot</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl
+		 * <em>Reference Slot</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getReferenceSlot()
 		 * @generated
@@ -1378,6 +1566,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>EReference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference REFERENCE_SLOT__EREFERENCE = eINSTANCE.getReferenceSlot_EReference();
@@ -1386,14 +1575,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Values</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference REFERENCE_SLOT__VALUES = eINSTANCE.getReferenceSlot_Values();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl <em>Repository</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl
+		 * <em>Repository</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.RepositoryImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getRepository()
 		 * @generated
@@ -1404,6 +1596,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Model</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference REPOSITORY__MODEL = eINSTANCE.getRepository_Model();
@@ -1412,14 +1605,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Metamodel</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference REPOSITORY__METAMODEL = eINSTANCE.getRepository_Metamodel();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl <em>Model Resource</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl
+		 * <em>Model Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.ModelResourceImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getModelResource()
 		 * @generated
@@ -1430,6 +1626,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Root Instances</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL_RESOURCE__ROOT_INSTANCES = eINSTANCE.getModelResource_RootInstances();
@@ -1438,14 +1635,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Model</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL_RESOURCE__MODEL = eINSTANCE.getModelResource_Model();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl <em>Abstract Resource</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl
+		 * <em>Abstract Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getAbstractResource()
 		 * @generated
@@ -1456,6 +1656,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Uri</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute ABSTRACT_RESOURCE__URI = eINSTANCE.getAbstractResource_Uri();
@@ -1464,14 +1665,17 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Encoding</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute ABSTRACT_RESOURCE__ENCODING = eINSTANCE.getAbstractResource_Encoding();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl <em>Metamodel Resource</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl
+		 * <em>Metamodel Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MetamodelResourceImpl
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMetamodelResource()
 		 * @generated
@@ -1482,6 +1686,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Root Packages</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference METAMODEL_RESOURCE__ROOT_PACKAGES = eINSTANCE.getMetamodelResource_RootPackages();
@@ -1490,6 +1695,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Metamodel</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference METAMODEL_RESOURCE__METAMODEL = eINSTANCE.getMetamodelResource_Metamodel();
@@ -1498,6 +1704,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>Set</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see java.util.Set
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getSet()
 		 * @generated
@@ -1508,6 +1715,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>Diagnostic Chain</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.common.util.DiagnosticChain
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getDiagnosticChain()
 		 * @generated
@@ -1518,6 +1726,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>URI</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.common.util.URI
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getURI()
 		 * @generated
@@ -1528,6 +1737,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>Diagnostic Exception</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.internal.migration.DiagnosticException
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getDiagnosticException()
 		 * @generated
@@ -1538,6 +1748,7 @@ public interface MigrationPackage extends EPackage {
 		 * The meta object literal for the '<em>Exception</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.migration.MigrationException
 		 * @see org.eclipse.emf.edapt.spi.migration.impl.MigrationPackageImpl#getMigrationException()
 		 * @generated
@@ -1546,4 +1757,4 @@ public interface MigrationPackage extends EPackage {
 
 	}
 
-} //MigrationPackage
+} // MigrationPackage

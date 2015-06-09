@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -23,7 +23,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 /**
  * Base class for command handlers that are attached to a view.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -32,13 +32,14 @@ import org.eclipse.ui.handlers.HandlerUtil;
 public abstract class OperationBrowserHandlerBase extends AbstractHandler {
 
 	/** {@inheritDoc} */
+	@Override
 	public final Object execute(ExecutionEvent event) throws ExecutionException {
-		OperationBrowser browser = getOperationBrowser(event);
+		final OperationBrowser browser = getOperationBrowser(event);
 		Assert.isNotNull(browser);
 		if (browser.getEditor() == null) {
 			MessageDialog.openError(Display.getDefault().getActiveShell(),
-					"Metamodel not found",
-					"No metamodel found. Please open one.");
+				"Metamodel not found", //$NON-NLS-1$
+				"No metamodel found. Please open one."); //$NON-NLS-1$
 			return null;
 		}
 		return execute(browser, event);
@@ -46,9 +47,9 @@ public abstract class OperationBrowserHandlerBase extends AbstractHandler {
 
 	/** Get the operation browser. */
 	private OperationBrowser getOperationBrowser(ExecutionEvent event) {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
-		for (IViewReference reference : window.getActivePage()
-				.getViewReferences()) {
+		final IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindow(event);
+		for (final IViewReference reference : window.getActivePage()
+			.getViewReferences()) {
 			if (OperationBrowser.ID.equals(reference.getId())) {
 				return (OperationBrowser) reference.getView(true);
 			}
@@ -58,6 +59,6 @@ public abstract class OperationBrowserHandlerBase extends AbstractHandler {
 
 	/** Execute the command using the operation browser. */
 	protected abstract Object execute(OperationBrowser browser,
-			ExecutionEvent event) throws ExecutionException;
+		ExecutionEvent event) throws ExecutionException;
 
 }

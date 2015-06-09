@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.util;
 
@@ -15,19 +15,42 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.spi.history.*;
-
+import org.eclipse.emf.edapt.spi.history.Add;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.ContentChange;
+import org.eclipse.emf.edapt.spi.history.Create;
+import org.eclipse.emf.edapt.spi.history.Delete;
+import org.eclipse.emf.edapt.spi.history.History;
+import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edapt.spi.history.InitializerChange;
+import org.eclipse.emf.edapt.spi.history.MigrateableChange;
+import org.eclipse.emf.edapt.spi.history.MigrationChange;
+import org.eclipse.emf.edapt.spi.history.ModelReference;
+import org.eclipse.emf.edapt.spi.history.Move;
+import org.eclipse.emf.edapt.spi.history.NamedElement;
+import org.eclipse.emf.edapt.spi.history.NoChange;
+import org.eclipse.emf.edapt.spi.history.NonDelete;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
+import org.eclipse.emf.edapt.spi.history.OperationInstance;
+import org.eclipse.emf.edapt.spi.history.ParameterInstance;
+import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
+import org.eclipse.emf.edapt.spi.history.Release;
+import org.eclipse.emf.edapt.spi.history.Remove;
+import org.eclipse.emf.edapt.spi.history.Set;
+import org.eclipse.emf.edapt.spi.history.ValueChange;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
- * It supports the call {@link #doSwitch(EObject) doSwitch(object)}
- * to invoke the <code>caseXXX</code> method for each class of the model,
+ * It supports the call {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each
+ * class of the model,
  * starting with the actual class of the object
  * and proceeding up the inheritance hierarchy
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.history.HistoryPackage
  * @generated
  */
@@ -36,6 +59,7 @@ public class HistorySwitch<T> {
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected static HistoryPackage modelPackage;
@@ -44,6 +68,7 @@ public class HistorySwitch<T> {
 	 * Creates an instance of the switch.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public HistorySwitch() {
@@ -53,9 +78,11 @@ public class HistorySwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -64,9 +91,11 @@ public class HistorySwitch<T> {
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
@@ -74,219 +103,378 @@ public class HistorySwitch<T> {
 		if (theEClass.eContainer() == modelPackage) {
 			return doSwitch(theEClass.getClassifierID(), theEObject);
 		}
-		else {
-			List<EClass> eSuperTypes = theEClass.getESuperTypes();
-			return
-				eSuperTypes.isEmpty() ?
-					defaultCase(theEObject) :
-					doSwitch(eSuperTypes.get(0), theEObject);
-		}
+		final List<EClass> eSuperTypes = theEClass.getESuperTypes();
+		return eSuperTypes.isEmpty() ?
+			defaultCase(theEObject) :
+			doSwitch(eSuperTypes.get(0), theEObject);
+
 	}
 
 	/**
-	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that
+	 * result.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the first non-null result returned by a <code>caseXXX</code> call.
 	 * @generated
 	 */
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case HistoryPackage.HISTORY: {
-				History history = (History)theEObject;
-				T result = caseHistory(history);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+		case HistoryPackage.HISTORY: {
+			final History history = (History) theEObject;
+			T result = caseHistory(history);
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.RELEASE: {
-				Release release = (Release)theEObject;
-				T result = caseRelease(release);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.RELEASE: {
+			final Release release = (Release) theEObject;
+			T result = caseRelease(release);
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.CHANGE: {
-				Change change = (Change)theEObject;
-				T result = caseChange(change);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.CHANGE: {
+			final Change change = (Change) theEObject;
+			T result = caseChange(change);
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.PRIMITIVE_CHANGE: {
-				PrimitiveChange primitiveChange = (PrimitiveChange)theEObject;
-				T result = casePrimitiveChange(primitiveChange);
-				if (result == null) result = caseMigrateableChange(primitiveChange);
-				if (result == null) result = caseChange(primitiveChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.PRIMITIVE_CHANGE: {
+			final PrimitiveChange primitiveChange = (PrimitiveChange) theEObject;
+			T result = casePrimitiveChange(primitiveChange);
+			if (result == null) {
+				result = caseMigrateableChange(primitiveChange);
 			}
-			case HistoryPackage.NO_CHANGE: {
-				NoChange noChange = (NoChange)theEObject;
-				T result = caseNoChange(noChange);
-				if (result == null) result = casePrimitiveChange(noChange);
-				if (result == null) result = caseMigrateableChange(noChange);
-				if (result == null) result = caseChange(noChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseChange(primitiveChange);
 			}
-			case HistoryPackage.CONTENT_CHANGE: {
-				ContentChange contentChange = (ContentChange)theEObject;
-				T result = caseContentChange(contentChange);
-				if (result == null) result = casePrimitiveChange(contentChange);
-				if (result == null) result = caseMigrateableChange(contentChange);
-				if (result == null) result = caseChange(contentChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.NON_DELETE: {
-				NonDelete nonDelete = (NonDelete)theEObject;
-				T result = caseNonDelete(nonDelete);
-				if (result == null) result = caseContentChange(nonDelete);
-				if (result == null) result = casePrimitiveChange(nonDelete);
-				if (result == null) result = caseMigrateableChange(nonDelete);
-				if (result == null) result = caseChange(nonDelete);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.NO_CHANGE: {
+			final NoChange noChange = (NoChange) theEObject;
+			T result = caseNoChange(noChange);
+			if (result == null) {
+				result = casePrimitiveChange(noChange);
 			}
-			case HistoryPackage.CREATE: {
-				Create create = (Create)theEObject;
-				T result = caseCreate(create);
-				if (result == null) result = caseNonDelete(create);
-				if (result == null) result = caseInitializerChange(create);
-				if (result == null) result = caseContentChange(create);
-				if (result == null) result = casePrimitiveChange(create);
-				if (result == null) result = caseMigrateableChange(create);
-				if (result == null) result = caseChange(create);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseMigrateableChange(noChange);
 			}
-			case HistoryPackage.MOVE: {
-				Move move = (Move)theEObject;
-				T result = caseMove(move);
-				if (result == null) result = caseNonDelete(move);
-				if (result == null) result = caseContentChange(move);
-				if (result == null) result = casePrimitiveChange(move);
-				if (result == null) result = caseMigrateableChange(move);
-				if (result == null) result = caseChange(move);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseChange(noChange);
 			}
-			case HistoryPackage.DELETE: {
-				Delete delete = (Delete)theEObject;
-				T result = caseDelete(delete);
-				if (result == null) result = caseInitializerChange(delete);
-				if (result == null) result = caseContentChange(delete);
-				if (result == null) result = casePrimitiveChange(delete);
-				if (result == null) result = caseMigrateableChange(delete);
-				if (result == null) result = caseChange(delete);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.VALUE_CHANGE: {
-				ValueChange valueChange = (ValueChange)theEObject;
-				T result = caseValueChange(valueChange);
-				if (result == null) result = casePrimitiveChange(valueChange);
-				if (result == null) result = caseMigrateableChange(valueChange);
-				if (result == null) result = caseChange(valueChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.CONTENT_CHANGE: {
+			final ContentChange contentChange = (ContentChange) theEObject;
+			T result = caseContentChange(contentChange);
+			if (result == null) {
+				result = casePrimitiveChange(contentChange);
 			}
-			case HistoryPackage.SET: {
-				Set set = (Set)theEObject;
-				T result = caseSet(set);
-				if (result == null) result = caseValueChange(set);
-				if (result == null) result = casePrimitiveChange(set);
-				if (result == null) result = caseMigrateableChange(set);
-				if (result == null) result = caseChange(set);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseMigrateableChange(contentChange);
 			}
-			case HistoryPackage.ADD: {
-				Add add = (Add)theEObject;
-				T result = caseAdd(add);
-				if (result == null) result = caseValueChange(add);
-				if (result == null) result = casePrimitiveChange(add);
-				if (result == null) result = caseMigrateableChange(add);
-				if (result == null) result = caseChange(add);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseChange(contentChange);
 			}
-			case HistoryPackage.REMOVE: {
-				Remove remove = (Remove)theEObject;
-				T result = caseRemove(remove);
-				if (result == null) result = caseValueChange(remove);
-				if (result == null) result = casePrimitiveChange(remove);
-				if (result == null) result = caseMigrateableChange(remove);
-				if (result == null) result = caseChange(remove);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.COMPOSITE_CHANGE: {
-				CompositeChange compositeChange = (CompositeChange)theEObject;
-				T result = caseCompositeChange(compositeChange);
-				if (result == null) result = caseMigrateableChange(compositeChange);
-				if (result == null) result = caseChange(compositeChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.NON_DELETE: {
+			final NonDelete nonDelete = (NonDelete) theEObject;
+			T result = caseNonDelete(nonDelete);
+			if (result == null) {
+				result = caseContentChange(nonDelete);
 			}
-			case HistoryPackage.OPERATION_CHANGE: {
-				OperationChange operationChange = (OperationChange)theEObject;
-				T result = caseOperationChange(operationChange);
-				if (result == null) result = caseCompositeChange(operationChange);
-				if (result == null) result = caseMigrateableChange(operationChange);
-				if (result == null) result = caseChange(operationChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = casePrimitiveChange(nonDelete);
 			}
-			case HistoryPackage.OPERATION_INSTANCE: {
-				OperationInstance operationInstance = (OperationInstance)theEObject;
-				T result = caseOperationInstance(operationInstance);
-				if (result == null) result = caseNamedElement(operationInstance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseMigrateableChange(nonDelete);
 			}
-			case HistoryPackage.PARAMETER_INSTANCE: {
-				ParameterInstance parameterInstance = (ParameterInstance)theEObject;
-				T result = caseParameterInstance(parameterInstance);
-				if (result == null) result = caseNamedElement(parameterInstance);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseChange(nonDelete);
 			}
-			case HistoryPackage.MODEL_REFERENCE: {
-				ModelReference modelReference = (ModelReference)theEObject;
-				T result = caseModelReference(modelReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = defaultCase(theEObject);
 			}
-			case HistoryPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			return result;
+		}
+		case HistoryPackage.CREATE: {
+			final Create create = (Create) theEObject;
+			T result = caseCreate(create);
+			if (result == null) {
+				result = caseNonDelete(create);
 			}
-			case HistoryPackage.MIGRATEABLE_CHANGE: {
-				MigrateableChange migrateableChange = (MigrateableChange)theEObject;
-				T result = caseMigrateableChange(migrateableChange);
-				if (result == null) result = caseChange(migrateableChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseInitializerChange(create);
 			}
-			case HistoryPackage.MIGRATION_CHANGE: {
-				MigrationChange migrationChange = (MigrationChange)theEObject;
-				T result = caseMigrationChange(migrationChange);
-				if (result == null) result = caseChange(migrationChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = caseContentChange(create);
 			}
-			case HistoryPackage.INITIALIZER_CHANGE: {
-				InitializerChange initializerChange = (InitializerChange)theEObject;
-				T result = caseInitializerChange(initializerChange);
-				if (result == null) result = caseContentChange(initializerChange);
-				if (result == null) result = casePrimitiveChange(initializerChange);
-				if (result == null) result = caseMigrateableChange(initializerChange);
-				if (result == null) result = caseChange(initializerChange);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
+			if (result == null) {
+				result = casePrimitiveChange(create);
 			}
-			default: return defaultCase(theEObject);
+			if (result == null) {
+				result = caseMigrateableChange(create);
+			}
+			if (result == null) {
+				result = caseChange(create);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.MOVE: {
+			final Move move = (Move) theEObject;
+			T result = caseMove(move);
+			if (result == null) {
+				result = caseNonDelete(move);
+			}
+			if (result == null) {
+				result = caseContentChange(move);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(move);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(move);
+			}
+			if (result == null) {
+				result = caseChange(move);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.DELETE: {
+			final Delete delete = (Delete) theEObject;
+			T result = caseDelete(delete);
+			if (result == null) {
+				result = caseInitializerChange(delete);
+			}
+			if (result == null) {
+				result = caseContentChange(delete);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(delete);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(delete);
+			}
+			if (result == null) {
+				result = caseChange(delete);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.VALUE_CHANGE: {
+			final ValueChange valueChange = (ValueChange) theEObject;
+			T result = caseValueChange(valueChange);
+			if (result == null) {
+				result = casePrimitiveChange(valueChange);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(valueChange);
+			}
+			if (result == null) {
+				result = caseChange(valueChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.SET: {
+			final Set set = (Set) theEObject;
+			T result = caseSet(set);
+			if (result == null) {
+				result = caseValueChange(set);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(set);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(set);
+			}
+			if (result == null) {
+				result = caseChange(set);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.ADD: {
+			final Add add = (Add) theEObject;
+			T result = caseAdd(add);
+			if (result == null) {
+				result = caseValueChange(add);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(add);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(add);
+			}
+			if (result == null) {
+				result = caseChange(add);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.REMOVE: {
+			final Remove remove = (Remove) theEObject;
+			T result = caseRemove(remove);
+			if (result == null) {
+				result = caseValueChange(remove);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(remove);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(remove);
+			}
+			if (result == null) {
+				result = caseChange(remove);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.COMPOSITE_CHANGE: {
+			final CompositeChange compositeChange = (CompositeChange) theEObject;
+			T result = caseCompositeChange(compositeChange);
+			if (result == null) {
+				result = caseMigrateableChange(compositeChange);
+			}
+			if (result == null) {
+				result = caseChange(compositeChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.OPERATION_CHANGE: {
+			final OperationChange operationChange = (OperationChange) theEObject;
+			T result = caseOperationChange(operationChange);
+			if (result == null) {
+				result = caseCompositeChange(operationChange);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(operationChange);
+			}
+			if (result == null) {
+				result = caseChange(operationChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.OPERATION_INSTANCE: {
+			final OperationInstance operationInstance = (OperationInstance) theEObject;
+			T result = caseOperationInstance(operationInstance);
+			if (result == null) {
+				result = caseNamedElement(operationInstance);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.PARAMETER_INSTANCE: {
+			final ParameterInstance parameterInstance = (ParameterInstance) theEObject;
+			T result = caseParameterInstance(parameterInstance);
+			if (result == null) {
+				result = caseNamedElement(parameterInstance);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.MODEL_REFERENCE: {
+			final ModelReference modelReference = (ModelReference) theEObject;
+			T result = caseModelReference(modelReference);
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.NAMED_ELEMENT: {
+			final NamedElement namedElement = (NamedElement) theEObject;
+			T result = caseNamedElement(namedElement);
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.MIGRATEABLE_CHANGE: {
+			final MigrateableChange migrateableChange = (MigrateableChange) theEObject;
+			T result = caseMigrateableChange(migrateableChange);
+			if (result == null) {
+				result = caseChange(migrateableChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.MIGRATION_CHANGE: {
+			final MigrationChange migrationChange = (MigrationChange) theEObject;
+			T result = caseMigrationChange(migrationChange);
+			if (result == null) {
+				result = caseChange(migrationChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		case HistoryPackage.INITIALIZER_CHANGE: {
+			final InitializerChange initializerChange = (InitializerChange) theEObject;
+			T result = caseInitializerChange(initializerChange);
+			if (result == null) {
+				result = caseContentChange(initializerChange);
+			}
+			if (result == null) {
+				result = casePrimitiveChange(initializerChange);
+			}
+			if (result == null) {
+				result = caseMigrateableChange(initializerChange);
+			}
+			if (result == null) {
+				result = caseChange(initializerChange);
+			}
+			if (result == null) {
+				result = defaultCase(theEObject);
+			}
+			return result;
+		}
+		default:
+			return defaultCase(theEObject);
 		}
 	}
 
@@ -296,6 +484,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>History</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -311,6 +500,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Release</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -326,6 +516,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -341,6 +532,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Primitive Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -356,6 +548,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>No Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -371,6 +564,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Content Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -386,6 +580,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Non Delete</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -401,6 +596,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Create</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -416,6 +612,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Move</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -431,6 +628,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Delete</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -446,6 +644,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Value Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -461,6 +660,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Set</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -476,6 +676,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Add</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -491,6 +692,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Remove</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -506,6 +708,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Composite Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -521,6 +724,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Operation Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -536,6 +740,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Operation Instance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -551,6 +756,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Parameter Instance</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -566,6 +772,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Model Reference</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -581,6 +788,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -596,6 +804,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Migrateable Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -611,6 +820,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Migration Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -626,6 +836,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>Initializer Change</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
@@ -641,6 +852,7 @@ public class HistorySwitch<T> {
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch, but this is the last case anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @param object the target of the switch.
 	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
@@ -650,4 +862,4 @@ public class HistorySwitch<T> {
 		return null;
 	}
 
-} //HistorySwitch
+} // HistorySwitch

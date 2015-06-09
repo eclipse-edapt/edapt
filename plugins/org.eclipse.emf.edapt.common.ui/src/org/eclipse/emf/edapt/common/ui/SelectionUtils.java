@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -20,7 +20,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 /**
  * Helper class for selection.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -41,11 +41,11 @@ public final class SelectionUtils {
 	@SuppressWarnings("unchecked")
 	public static <V> V getSelectedElement(ISelection selection) {
 		if (selection != null && selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (!structuredSelection.isEmpty()) {
 				try {
 					return (V) structuredSelection.getFirstElement();
-				} catch (ClassCastException e) {
+				} catch (final ClassCastException e) {
 					return null;
 				}
 			}
@@ -58,13 +58,13 @@ public final class SelectionUtils {
 	 */
 	@SuppressWarnings("unchecked")
 	public static <V> List<V> getSelectedElements(ISelection selection) {
-		List<V> elements = new ArrayList<V>();
+		final List<V> elements = new ArrayList<V>();
 		if (selection != null && selection instanceof IStructuredSelection) {
-			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
-			for (Iterator i = structuredSelection.iterator(); i.hasNext();) {
+			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
+			for (final Iterator i = structuredSelection.iterator(); i.hasNext();) {
 				try {
 					elements.add((V) i.next());
-				} catch (ClassCastException e) {
+				} catch (final ClassCastException e) {
 					// ignore
 				}
 			}

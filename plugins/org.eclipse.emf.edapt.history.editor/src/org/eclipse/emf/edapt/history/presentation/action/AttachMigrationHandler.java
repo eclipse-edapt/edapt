@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.presentation.action;
 
@@ -27,29 +27,29 @@ import org.eclipse.swt.widgets.Display;
 
 /**
  * Action to combine a sequence of primitives changes into a composite one.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class AttachMigrationHandler extends
-		SubsequentChangesHandler<MigrateableChange> {
+	SubsequentChangesHandler<MigrateableChange> {
 
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(Release release, List<MigrateableChange> changes,
-			EditingDomain domain, ExecutionEvent event) {
+		EditingDomain domain, ExecutionEvent event) {
 		final MigrateableChange sourceChange = changes.get(0);
-		MigrateableChange targetChange = changes.get(changes.size() - 1);
+		final MigrateableChange targetChange = changes.get(changes.size() - 1);
 
 		final MigrationChangeReconstructor reconstructor = reconstruct(
-				sourceChange, targetChange);
+			sourceChange, targetChange);
 		if (isConsistent(reconstructor)) {
-			IType element = JavaUIUtils.createCustomMigration(release);
+			final IType element = JavaUIUtils.createCustomMigration(release);
 			if (element != null) {
 				attachMigration(changes, element.getFullyQualifiedName(),
-						domain);
+					domain);
 			}
 		}
 		return null;
@@ -57,11 +57,11 @@ public class AttachMigrationHandler extends
 
 	/** Perform reconstruction to assemble code for metamodel adaptation. */
 	private MigrationChangeReconstructor reconstruct(
-			final MigrateableChange sourceChange, MigrateableChange targetChange) {
-		EcoreForwardReconstructor ecoreReconstructor = new EcoreForwardReconstructor(
-				sourceChange.eResource().getURI());
+		final MigrateableChange sourceChange, MigrateableChange targetChange) {
+		final EcoreForwardReconstructor ecoreReconstructor = new EcoreForwardReconstructor(
+			sourceChange.eResource().getURI());
 		final MigrationChangeReconstructor migrationReconstructor = new MigrationChangeReconstructor(
-				sourceChange, targetChange);
+			sourceChange, targetChange);
 		ecoreReconstructor.addReconstructor(migrationReconstructor);
 
 		ecoreReconstructor.reconstruct(targetChange, false);
@@ -73,13 +73,13 @@ public class AttachMigrationHandler extends
 	 * which a custom migration is attached.
 	 */
 	private boolean isConsistent(
-			final MigrationChangeReconstructor migrationReconstructor) {
+		final MigrationChangeReconstructor migrationReconstructor) {
 		if (!migrationReconstructor.isConsistent()) {
 			return MessageDialog
-					.openConfirm(
-							Display.getDefault().getActiveShell(),
-							"Metamodel inconsistent",
-							"The metamodel is inconsistent before or after the changes. Do you really want to attach a migration to them?");
+				.openConfirm(
+					Display.getDefault().getActiveShell(),
+					"Metamodel inconsistent", //$NON-NLS-1$
+					"The metamodel is inconsistent before or after the changes. Do you really want to attach a migration to them?"); //$NON-NLS-1$
 		}
 
 		return true;
@@ -87,9 +87,9 @@ public class AttachMigrationHandler extends
 
 	/** Attach a custom migration to the changes. */
 	private MigrationChange attachMigration(List<MigrateableChange> changes,
-			String migration, EditingDomain domain) {
-		AttachMigrationCommand command = new AttachMigrationCommand(changes,
-				migration);
+		String migration, EditingDomain domain) {
+		final AttachMigrationCommand command = new AttachMigrationCommand(changes,
+			migration);
 		domain.getCommandStack().execute(command);
 		return command.getMigrationChange();
 	}

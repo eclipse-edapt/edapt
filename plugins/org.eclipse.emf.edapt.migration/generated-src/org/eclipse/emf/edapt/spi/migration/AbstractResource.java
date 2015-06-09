@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration;
 
@@ -25,8 +25,8 @@ import org.eclipse.emf.common.util.URI;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri <em>Uri</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri <em>Uri</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,13 +39,13 @@ public interface AbstractResource {
 	 * Returns the value of the '<em><b>Uri</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Uri</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Uri</em>' attribute isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Uniform Resource Identifier (URI) of this resource
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Uri</em>' attribute.
 	 * @see #setUri(URI)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getAbstractResource_Uri()
@@ -55,9 +55,11 @@ public interface AbstractResource {
 	URI getUri();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri <em>Uri</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getUri <em>Uri</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Uri</em>' attribute.
 	 * @see #getUri()
 	 * @generated
@@ -68,10 +70,11 @@ public interface AbstractResource {
 	 * Returns the value of the '<em><b>Encoding</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the value of the '<em>Encoding</em>' attribute.
 	 * @see #setEncoding(String)
 	 * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage#getAbstractResource_Encoding()
@@ -81,9 +84,11 @@ public interface AbstractResource {
 	String getEncoding();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource#getEncoding <em>Encoding</em>}
+	 * ' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Encoding</em>' attribute.
 	 * @see #getEncoding()
 	 * @generated

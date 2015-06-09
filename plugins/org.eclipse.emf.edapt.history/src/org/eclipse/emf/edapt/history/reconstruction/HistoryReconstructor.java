@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.Create;
@@ -33,7 +33,7 @@ import org.eclipse.emf.edapt.spi.history.Release;
 
 /**
  * Reconstructor to reproduce the history.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -60,7 +60,7 @@ public class HistoryReconstructor extends ReconstructorBase {
 	@Override
 	public void startHistory(History originalHistory) {
 		reproducedHistory = (History) mapping.copyResolveTarget(
-				originalHistory, false);
+			originalHistory, false);
 		mapping.map(originalHistory, reproducedHistory);
 	}
 
@@ -80,7 +80,7 @@ public class HistoryReconstructor extends ReconstructorBase {
 			if (mapping.getTarget(originalChange) != null) {
 				return;
 			}
-			Change reproducedChange = (Change) copy(originalChange);
+			final Change reproducedChange = (Change) copy(originalChange);
 
 			createHistoryResource(reproducedChange);
 		}
@@ -92,8 +92,8 @@ public class HistoryReconstructor extends ReconstructorBase {
 		if (isCompositeChange(originalChange)) {
 			// do nothing
 		} else if (!(originalChange instanceof Create)
-				|| ((Create) originalChange).getChanges().isEmpty()) {
-			Change reproducedChange = (Change) copy(originalChange);
+			|| ((Create) originalChange).getChanges().isEmpty()) {
+			final Change reproducedChange = (Change) copy(originalChange);
 
 			createHistoryResource(reproducedChange);
 		}
@@ -102,20 +102,20 @@ public class HistoryReconstructor extends ReconstructorBase {
 	/** Determine whether a change is composite. */
 	private boolean isCompositeChange(Change change) {
 		return change instanceof CompositeChange
-				|| change instanceof MigrationChange;
+			|| change instanceof MigrationChange;
 	}
 
 	/** Reproduce a history element. */
 	private EObject copy(EObject original) {
-		EObject reproduced = mapping.copyResolveTarget(original, false);
+		final EObject reproduced = mapping.copyResolveTarget(original, false);
 		if (original instanceof Delete) {
-			Delete delete = (Delete) original;
-			EObject target = mapping.getTarget(delete.getElement());
+			final Delete delete = (Delete) original;
+			final EObject target = mapping.getTarget(delete.getElement());
 			((Delete) reproduced).setElement(target);
 		} else if (original instanceof OperationChange) {
-			OperationChange operationChange = (OperationChange) original;
-			OperationInstance target = (OperationInstance) mapping
-					.copyResolveTarget(operationChange.getOperation());
+			final OperationChange operationChange = (OperationChange) original;
+			final OperationInstance target = (OperationInstance) mapping
+				.copyResolveTarget(operationChange.getOperation());
 			((OperationChange) reproduced).setOperation(target);
 		}
 		mapping.map(original, reproduced);
@@ -126,9 +126,9 @@ public class HistoryReconstructor extends ReconstructorBase {
 	/** Attach a reproduced history element to its parent. */
 	@SuppressWarnings("unchecked")
 	private void attach(EObject original, EObject reproduced) {
-		EReference reference = original.eContainmentFeature();
-		EObject reproducedContainer = mapping.resolveTarget(original
-				.eContainer());
+		final EReference reference = original.eContainmentFeature();
+		final EObject reproducedContainer = mapping.resolveTarget(original
+			.eContainer());
 		if (reference.isMany()) {
 			((List) reproducedContainer.eGet(reference)).add(reproduced);
 		} else {
@@ -139,13 +139,13 @@ public class HistoryReconstructor extends ReconstructorBase {
 	/** Create the resource containing the reproduced history. */
 	private void createHistoryResource(Change reproducedChange) {
 		if (reproducedChange instanceof Create) {
-			Create createChild = (Create) reproducedChange;
+			final Create createChild = (Create) reproducedChange;
 			if (createChild.getElement() instanceof EPackage
-					&& createChild.getTarget() == null) {
+				&& createChild.getTarget() == null) {
 				if (historyResource == null) {
-					EPackage reproducedPackage = (EPackage) createChild
-							.getElement();
-					Resource modelResource = reproducedPackage.eResource();
+					final EPackage reproducedPackage = (EPackage) createChild
+						.getElement();
+					final Resource modelResource = reproducedPackage.eResource();
 					historyResource = createHistoryResource(modelResource);
 					historyResource.getContents().add(reproducedHistory);
 				}
@@ -155,13 +155,13 @@ public class HistoryReconstructor extends ReconstructorBase {
 
 	/** Create the resource containing the reproduced history. */
 	private Resource createHistoryResource(Resource modelResource) {
-		URI modelURI = modelResource.getURI();
-		String name = modelURI.trimFileExtension().lastSegment();
-		URI folder = modelURI.trimSegments(1);
-		ResourceSet resourceSet = modelResource.getResourceSet();
-		Resource historyResource = resourceSet.createResource(folder
-				.appendSegment(name).appendFileExtension(
-						HistoryUtils.HISTORY_FILE_EXTENSION));
+		final URI modelURI = modelResource.getURI();
+		final String name = modelURI.trimFileExtension().lastSegment();
+		final URI folder = modelURI.trimSegments(1);
+		final ResourceSet resourceSet = modelResource.getResourceSet();
+		final Resource historyResource = resourceSet.createResource(folder
+			.appendSegment(name).appendFileExtension(
+				HistoryUtils.HISTORY_FILE_EXTENSION));
 		resourceSet.getResources().add(historyResource);
 		return historyResource;
 	}

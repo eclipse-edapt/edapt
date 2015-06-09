@@ -6,14 +6,13 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edapt.declaration.Operation;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +26,7 @@ import org.eclipse.emf.edapt.declaration.Operation;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.OperationInstance#getParameters <em>Parameters</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.OperationInstance#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +43,7 @@ public interface OperationInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * List of instances of parameters
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Parameters</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getOperationInstance_Parameters()
 	 * @model containment="true"
@@ -57,6 +57,7 @@ public interface OperationInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the instantiated operation
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -65,6 +66,7 @@ public interface OperationInstance extends NamedElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */
@@ -76,8 +78,10 @@ public interface OperationInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the instantiated parameter with a certain name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='return OperationInstance_static.getParameter(this, name);'"
+	 *        annotation=
+	 *        "http://www.eclipse.org/emf/2002/GenModel body='return OperationInstance_static.getParameter(this, name);'"
 	 * @generated
 	 */
 	ParameterInstance getParameter(String name);
@@ -88,6 +92,7 @@ public interface OperationInstance extends NamedElement {
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the value of a parameter with a certain name
 	 * <!-- end-model-doc -->
+	 *
 	 * @model nameRequired="true"
 	 * @generated
 	 */

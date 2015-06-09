@@ -25,10 +25,10 @@ public class HistoryComparer2 {
 	private final EcoreForwardReconstructor targetReconstructor;
 
 	public HistoryComparer2(EcoreForwardReconstructor source,
-			EcoreForwardReconstructor target) {
+		EcoreForwardReconstructor target) {
 
-		this.sourceReconstructor = source;
-		this.targetReconstructor = target;
+		sourceReconstructor = source;
+		targetReconstructor = target;
 	}
 
 	/**
@@ -48,22 +48,22 @@ public class HistoryComparer2 {
 	public Comparison compare() {
 
 		// Configure EMF Compare
-		IEObjectMatcher matcher = DefaultMatchEngine
-				.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
-		IComparisonFactory comparisonFactory = new DefaultComparisonFactory(
-				new DefaultEqualityHelperFactory());
-		IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(
-				matcher, comparisonFactory);
+		final IEObjectMatcher matcher = DefaultMatchEngine
+			.createDefaultEObjectMatcher(UseIdentifiers.NEVER);
+		final IComparisonFactory comparisonFactory = new DefaultComparisonFactory(
+			new DefaultEqualityHelperFactory());
+		final IMatchEngine.Factory matchEngineFactory = new MatchEngineFactoryImpl(
+			matcher, comparisonFactory);
 		matchEngineFactory.setRanking(20);
-		IMatchEngine.Factory.Registry matchEngineRegistry = new MatchEngineFactoryRegistryImpl();
+		final IMatchEngine.Factory.Registry matchEngineRegistry = new MatchEngineFactoryRegistryImpl();
 		matchEngineRegistry.add(matchEngineFactory);
-		EMFCompare comparator = EMFCompare.builder()
-				.setMatchEngineFactoryRegistry(matchEngineRegistry).build();
+		final EMFCompare comparator = EMFCompare.builder()
+			.setMatchEngineFactoryRegistry(matchEngineRegistry).build();
 
 		// Compare the two models
-		IComparisonScope scope = EMFCompare.createDefaultScope(
-				sourceReconstructor.getResourceSet(),
-				targetReconstructor.getResourceSet());
+		final IComparisonScope scope = EMFCompare.createDefaultScope(
+			sourceReconstructor.getResourceSet(),
+			targetReconstructor.getResourceSet());
 		return comparator.compare(scope);
 	}
 }

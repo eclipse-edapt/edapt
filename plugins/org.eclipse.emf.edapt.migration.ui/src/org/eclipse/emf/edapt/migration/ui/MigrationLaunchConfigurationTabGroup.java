@@ -11,19 +11,20 @@ import org.eclipse.jdt.debug.ui.launchConfigurations.JavaJRETab;
 /**
  * Tab group for editing a migration launch configuration. Specifies the
  * different tabs that are necessary to edit the migration configuration.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: D4994C7719CB1540B6E598C74CBC3920
  */
 public class MigrationLaunchConfigurationTabGroup extends
-		AbstractLaunchConfigurationTabGroup {
+	AbstractLaunchConfigurationTabGroup {
 
 	/** {@inheritDoc} */
+	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		setTabs(new ILaunchConfigurationTab[] {
-				new MigrationLaunchConfigurationMainTab(), new JavaJRETab(),
-				new JavaClasspathTab(), new RefreshTab(), new CommonTab() });
+			new MigrationLaunchConfigurationMainTab(), new JavaJRETab(),
+			new JavaClasspathTab(), new RefreshTab(), new CommonTab() });
 	}
 }

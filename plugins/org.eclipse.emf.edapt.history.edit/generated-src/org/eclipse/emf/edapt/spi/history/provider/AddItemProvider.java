@@ -6,11 +6,10 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
-
 
 import java.util.Collection;
 import java.util.List;
@@ -27,25 +26,26 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-
 /**
  * This is the item provider adapter for a {@link org.eclipse.emf.edapt.spi.history.Add} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public class AddItemProvider
 	extends ValueChangeItemProvider
-	implements	
-		IEditingDomainItemProvider,	
-		IStructuredItemContentProvider,	
-		ITreeItemContentProvider,	
-		IItemLabelProvider,	
-		IItemPropertySource {
+	implements
+	IEditingDomainItemProvider,
+	IStructuredItemContentProvider,
+	ITreeItemContentProvider,
+	IItemLabelProvider,
+	IItemPropertySource {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public AddItemProvider(AdapterFactory adapterFactory) {
@@ -56,6 +56,7 @@ public class AddItemProvider
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,38 +68,39 @@ public class AddItemProvider
 		return itemPropertyDescriptors;
 	}
 
-
 	/**
 	 * This returns Add.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/Add"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Add")); //$NON-NLS-1$
 	}
 
 	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated NOT
 	 */
 	@Override
 	public String getText(Object object) {
-		Add element = (Add) object;
-		String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
-		String featureLabel = HistoryUIUtils.getLabel(element.getFeature());
+		final Add element = (Add) object;
+		final String elementLabel = HistoryUIUtils.getBracedLabel(element.getElement());
+		final String featureLabel = HistoryUIUtils.getLabel(element.getFeature());
 		String valueLabel = null;
 		if (element.getFeature() instanceof EReference) {
 			valueLabel = HistoryUIUtils.getBracedLabel(element.getValue());
 		} else {
 			valueLabel = HistoryUIUtils.getLabel(element.getValue());
 		}
-		
-		return valueLabel + " has been added to " + featureLabel + " of "
-				+ elementLabel;
+
+		return valueLabel + " has been added to " + featureLabel + " of " //$NON-NLS-1$ //$NON-NLS-2$
+			+ elementLabel;
 	}
 
 	/**
@@ -106,6 +108,7 @@ public class AddItemProvider
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -119,6 +122,7 @@ public class AddItemProvider
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override

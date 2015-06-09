@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.edapt.spi.history.Delete;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Delete</b></em>'.
@@ -28,7 +27,7 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.DeleteImpl#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.DeleteImpl#getElement <em>Element</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +38,7 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	 * The cached value of the '{@link #getElement() <em>Element</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getElement()
 	 * @generated
 	 * @ordered
@@ -48,6 +48,7 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected DeleteImpl() {
@@ -57,6 +58,7 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,8 +69,10 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EObject getElement() {
 		return element;
 	}
@@ -76,14 +80,20 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetElement(EObject newElement, NotificationChain msgs) {
-		EObject oldElement = element;
+		final EObject oldElement = element;
 		element = newElement;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HistoryPackage.DELETE__ELEMENT, oldElement, newElement);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+				HistoryPackage.DELETE__ELEMENT, oldElement, newElement);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -91,32 +101,43 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setElement(EObject newElement) {
 		if (newElement != element) {
 			NotificationChain msgs = null;
-			if (element != null)
-				msgs = ((InternalEObject)element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HistoryPackage.DELETE__ELEMENT, null, msgs);
-			if (newElement != null)
-				msgs = ((InternalEObject)newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HistoryPackage.DELETE__ELEMENT, null, msgs);
+			if (element != null) {
+				msgs = ((InternalEObject) element).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+					- HistoryPackage.DELETE__ELEMENT, null, msgs);
+			}
+			if (newElement != null) {
+				msgs = ((InternalEObject) newElement).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+					- HistoryPackage.DELETE__ELEMENT, null, msgs);
+			}
 			msgs = basicSetElement(newElement, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.DELETE__ELEMENT, newElement, newElement));
+		else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.DELETE__ELEMENT, newElement,
+				newElement));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.DELETE__ELEMENT:
-				return basicSetElement(null, msgs);
+		case HistoryPackage.DELETE__ELEMENT:
+			return basicSetElement(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,13 +145,14 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.DELETE__ELEMENT:
-				return getElement();
+		case HistoryPackage.DELETE__ELEMENT:
+			return getElement();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -138,15 +160,15 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.DELETE__ELEMENT:
-				setElement((EObject)newValue);
-				return;
+		case HistoryPackage.DELETE__ELEMENT:
+			setElement((EObject) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -154,14 +176,15 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.DELETE__ELEMENT:
-				setElement((EObject)null);
-				return;
+		case HistoryPackage.DELETE__ELEMENT:
+			setElement((EObject) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -169,15 +192,16 @@ public class DeleteImpl extends InitializerChangeImpl implements Delete {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.DELETE__ELEMENT:
-				return element != null;
+		case HistoryPackage.DELETE__ELEMENT:
+			return element != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DeleteImpl
+} // DeleteImpl

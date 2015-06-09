@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -28,13 +28,13 @@ public class DeleteFeature extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass eClass = feature.getEContainingClass();
+		final EClass eClass = feature.getEContainingClass();
 
 		// metamodel adaptation
 		metamodel.delete(feature);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
 			deleteFeatureValue(instance, feature);
 		}
 	}

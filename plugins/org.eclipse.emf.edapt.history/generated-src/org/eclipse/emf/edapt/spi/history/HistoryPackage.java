@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -21,15 +21,16 @@ import org.eclipse.emf.ecore.EReference;
  * The <b>Package</b> for the model.
  * It contains accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Metamodel to specify the history of a metamodel
  * <!-- end-model-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.history.HistoryFactory
  * @model kind="package"
  * @generated
@@ -39,30 +40,34 @@ public interface HistoryPackage extends EPackage {
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNAME = "history";
+	String eNAME = "history"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace URI.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_URI = "http://www.eclipse.org/emf/edapt/history/0.3";
+	String eNS_URI = "http://www.eclipse.org/emf/edapt/history/0.3"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
-	String eNS_PREFIX = "history";
+	String eNS_PREFIX = "history"; //$NON-NLS-1$
 
 	/**
 	 * The singleton instance of the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	HistoryPackage eINSTANCE = org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl.init();
@@ -71,6 +76,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.HistoryImpl <em>History</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getHistory()
 	 * @generated
@@ -81,6 +87,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Releases</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -90,6 +97,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>History</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -99,6 +107,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ReleaseImpl <em>Release</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ReleaseImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getRelease()
 	 * @generated
@@ -109,6 +118,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Date</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -118,6 +128,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -127,6 +138,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>History</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -136,6 +148,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -145,6 +158,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Release</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -154,6 +168,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ChangeImpl <em>Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getChange()
 	 * @generated
@@ -164,6 +179,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -173,6 +189,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -182,15 +199,18 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int CHANGE_FEATURE_COUNT = 2;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl <em>Migrateable Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl
+	 * <em>Migrateable Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMigrateableChange()
 	 * @generated
@@ -201,6 +221,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -210,6 +231,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -219,15 +241,18 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Migrateable Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int MIGRATEABLE_CHANGE_FEATURE_COUNT = CHANGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl <em>Primitive Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl
+	 * <em>Primitive Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getPrimitiveChange()
 	 * @generated
@@ -238,6 +263,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -247,6 +273,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -256,15 +283,18 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Primitive Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int PRIMITIVE_CHANGE_FEATURE_COUNT = MIGRATEABLE_CHANGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl <em>No Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl <em>No Change</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNoChange()
 	 * @generated
@@ -275,6 +305,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -284,6 +315,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -293,15 +325,18 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>No Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int NO_CHANGE_FEATURE_COUNT = PRIMITIVE_CHANGE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl <em>Content Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl
+	 * <em>Content Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getContentChange()
 	 * @generated
@@ -312,6 +347,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -321,6 +357,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -330,6 +367,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -339,6 +377,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -348,6 +387,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -357,15 +397,18 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Content Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
 	int CONTENT_CHANGE_FEATURE_COUNT = PRIMITIVE_CHANGE_FEATURE_COUNT + 3;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl <em>Non Delete</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl <em>Non Delete</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNonDelete()
 	 * @generated
@@ -376,6 +419,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -385,6 +429,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -394,6 +439,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -403,6 +449,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -412,6 +459,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -421,6 +469,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -430,6 +479,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Non Delete</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -439,6 +489,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.CreateImpl <em>Create</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.CreateImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getCreate()
 	 * @generated
@@ -449,6 +500,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -458,6 +510,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -467,6 +520,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -476,6 +530,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -485,6 +540,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -494,6 +550,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -503,6 +560,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -512,6 +570,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Create</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -521,6 +580,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.MoveImpl <em>Move</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.MoveImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMove()
 	 * @generated
@@ -531,6 +591,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -540,6 +601,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -549,6 +611,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -558,6 +621,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -567,6 +631,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -576,6 +641,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -585,6 +651,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Source</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -594,6 +661,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Move</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -603,6 +671,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.DeleteImpl <em>Delete</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.DeleteImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getDelete()
 	 * @generated
@@ -610,9 +679,11 @@ public interface HistoryPackage extends EPackage {
 	int DELETE = 9;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl <em>Value Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl <em>Value Change</em>}'
+	 * class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getValueChange()
 	 * @generated
@@ -623,6 +694,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl <em>Set</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.SetImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getSet()
 	 * @generated
@@ -633,6 +705,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.AddImpl <em>Add</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.AddImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getAdd()
 	 * @generated
@@ -643,6 +716,7 @@ public interface HistoryPackage extends EPackage {
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.RemoveImpl <em>Remove</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.RemoveImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getRemove()
 	 * @generated
@@ -650,9 +724,11 @@ public interface HistoryPackage extends EPackage {
 	int REMOVE = 13;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl <em>Composite Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl
+	 * <em>Composite Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getCompositeChange()
 	 * @generated
@@ -660,9 +736,11 @@ public interface HistoryPackage extends EPackage {
 	int COMPOSITE_CHANGE = 14;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl <em>Operation Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl
+	 * <em>Operation Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getOperationChange()
 	 * @generated
@@ -670,9 +748,11 @@ public interface HistoryPackage extends EPackage {
 	int OPERATION_CHANGE = 15;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl
+	 * <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNamedElement()
 	 * @generated
@@ -680,9 +760,11 @@ public interface HistoryPackage extends EPackage {
 	int NAMED_ELEMENT = 19;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl <em>Operation Instance</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl
+	 * <em>Operation Instance</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getOperationInstance()
 	 * @generated
@@ -690,9 +772,11 @@ public interface HistoryPackage extends EPackage {
 	int OPERATION_INSTANCE = 16;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl <em>Parameter Instance</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl
+	 * <em>Parameter Instance</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getParameterInstance()
 	 * @generated
@@ -700,9 +784,11 @@ public interface HistoryPackage extends EPackage {
 	int PARAMETER_INSTANCE = 17;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl <em>Model Reference</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl
+	 * <em>Model Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getModelReference()
 	 * @generated
@@ -710,9 +796,11 @@ public interface HistoryPackage extends EPackage {
 	int MODEL_REFERENCE = 18;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl <em>Migration Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl
+	 * <em>Migration Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMigrationChange()
 	 * @generated
@@ -720,9 +808,11 @@ public interface HistoryPackage extends EPackage {
 	int MIGRATION_CHANGE = 21;
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl <em>Initializer Change</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl
+	 * <em>Initializer Change</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl
 	 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getInitializerChange()
 	 * @generated
@@ -733,6 +823,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -742,6 +833,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -751,6 +843,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -760,6 +853,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -769,6 +863,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -778,6 +873,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -787,6 +883,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Initializer Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -796,6 +893,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -805,6 +903,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -814,6 +913,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -823,6 +923,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -832,6 +933,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -841,6 +943,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -850,6 +953,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -859,6 +963,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Delete</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -868,6 +973,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -877,6 +983,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -886,6 +993,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -895,6 +1003,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -904,6 +1013,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -913,6 +1023,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -922,6 +1033,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -931,6 +1043,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -940,6 +1053,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Value Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -949,6 +1063,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -958,6 +1073,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -967,6 +1083,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -976,6 +1093,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -985,6 +1103,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -994,6 +1113,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1003,6 +1123,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1012,6 +1133,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1021,6 +1143,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Old Data Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1030,6 +1153,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Old Reference Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1039,6 +1163,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Old Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1048,6 +1173,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Set</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1057,6 +1183,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1066,6 +1193,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1075,6 +1203,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1084,6 +1213,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1093,6 +1223,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1102,6 +1233,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1111,6 +1243,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1120,6 +1253,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1129,6 +1263,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Add</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1138,6 +1273,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1147,6 +1283,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1156,6 +1293,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1165,6 +1303,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1174,6 +1313,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Feature Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1183,6 +1323,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1192,6 +1333,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Value</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1201,6 +1343,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1210,6 +1353,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Remove</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1219,6 +1363,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1228,6 +1373,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1237,6 +1383,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1246,6 +1393,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Composite Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1255,6 +1403,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1264,6 +1413,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1273,6 +1423,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1282,6 +1433,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Operation</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1291,6 +1443,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Operation Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1300,6 +1453,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1309,6 +1463,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1318,6 +1473,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1327,6 +1483,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1336,6 +1493,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Operation Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1345,6 +1503,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1354,6 +1513,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1363,6 +1523,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Data Value</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1372,6 +1533,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Reference Value</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1381,6 +1543,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Parameter Instance</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1390,6 +1553,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Element</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1399,6 +1563,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Model Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1408,6 +1573,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1417,6 +1583,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1426,6 +1593,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Migration</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1435,6 +1603,7 @@ public interface HistoryPackage extends EPackage {
 	 * The feature id for the '<em><b>Changes</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1444,6 +1613,7 @@ public interface HistoryPackage extends EPackage {
 	 * The number of structural features of the '<em>Migration Change</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 * @ordered
 	 */
@@ -1453,6 +1623,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.History <em>History</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>History</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.History
 	 * @generated
@@ -1460,9 +1631,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getHistory();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.History#getReleases <em>Releases</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.History#getReleases <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Releases</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.History#getReleases()
 	 * @see #getHistory()
@@ -1474,6 +1647,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Release <em>Release</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Release</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Release
 	 * @generated
@@ -1481,9 +1655,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getRelease();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Release#getDate <em>Date</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Release#getDate
+	 * <em>Date</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Date</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Release#getDate()
 	 * @see #getRelease()
@@ -1492,9 +1668,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getRelease_Date();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.Release#getChanges <em>Changes</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.Release#getChanges <em>Changes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Changes</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Release#getChanges()
 	 * @see #getRelease()
@@ -1503,9 +1681,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getRelease_Changes();
 
 	/**
-	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}'.
+	 * Returns the meta object for the container reference '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory
+	 * <em>History</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the container reference '<em>History</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Release#getHistory()
 	 * @see #getRelease()
@@ -1514,9 +1694,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getRelease_History();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Release#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Release#getLabel
+	 * <em>Label</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Label</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Release#getLabel()
 	 * @see #getRelease()
@@ -1528,6 +1710,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Change <em>Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Change
 	 * @generated
@@ -1535,9 +1718,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getChange();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Change#isBreaking <em>Breaking</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Change#isBreaking
+	 * <em>Breaking</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Breaking</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Change#isBreaking()
 	 * @see #getChange()
@@ -1546,9 +1731,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getChange_Breaking();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Change#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Change#getDescription
+	 * <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Description</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Change#getDescription()
 	 * @see #getChange()
@@ -1557,9 +1744,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getChange_Description();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.PrimitiveChange <em>Primitive Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.PrimitiveChange
+	 * <em>Primitive Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Primitive Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.PrimitiveChange
 	 * @generated
@@ -1570,6 +1759,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.NoChange <em>No Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>No Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.NoChange
 	 * @generated
@@ -1577,9 +1767,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getNoChange();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ContentChange <em>Content Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ContentChange
+	 * <em>Content Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Content Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ContentChange
 	 * @generated
@@ -1587,9 +1779,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getContentChange();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getTarget
+	 * <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Target</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ContentChange#getTarget()
 	 * @see #getContentChange()
@@ -1598,9 +1792,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getContentChange_Target();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference <em>Reference</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReference
+	 * <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Reference</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ContentChange#getReference()
 	 * @see #getContentChange()
@@ -1609,9 +1805,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getContentChange_Reference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName <em>Reference Name</em>}'.
+	 * Returns the meta object for the attribute '
+	 * {@link org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName <em>Reference Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Reference Name</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ContentChange#getReferenceName()
 	 * @see #getContentChange()
@@ -1623,6 +1821,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.NonDelete <em>Non Delete</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Non Delete</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.NonDelete
 	 * @generated
@@ -1630,9 +1829,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getNonDelete();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.NonDelete#getElement <em>Element</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.NonDelete#getElement
+	 * <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Element</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.NonDelete#getElement()
 	 * @see #getNonDelete()
@@ -1644,6 +1845,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Create <em>Create</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Create</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Create
 	 * @generated
@@ -1654,6 +1856,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Move <em>Move</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Move</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Move
 	 * @generated
@@ -1661,9 +1864,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getMove();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.Move#getSource <em>Source</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.Move#getSource
+	 * <em>Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Source</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Move#getSource()
 	 * @see #getMove()
@@ -1675,6 +1880,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Delete <em>Delete</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Delete</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Delete
 	 * @generated
@@ -1682,9 +1888,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getDelete();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}'.
+	 * Returns the meta object for the containment reference '
+	 * {@link org.eclipse.emf.edapt.spi.history.Delete#getElement <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference '<em>Element</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Delete#getElement()
 	 * @see #getDelete()
@@ -1696,6 +1904,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ValueChange <em>Value Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Value Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange
 	 * @generated
@@ -1703,9 +1912,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getValueChange();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement <em>Element</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement
+	 * <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Element</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getElement()
 	 * @see #getValueChange()
@@ -1714,9 +1925,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getValueChange_Element();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature <em>Feature</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature
+	 * <em>Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Feature</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getFeature()
 	 * @see #getValueChange()
@@ -1725,9 +1938,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getValueChange_Feature();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName <em>Feature Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName
+	 * <em>Feature Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Feature Name</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName()
 	 * @see #getValueChange()
@@ -1736,9 +1951,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getValueChange_FeatureName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue <em>Data Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue
+	 * <em>Data Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Data Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue()
 	 * @see #getValueChange()
@@ -1747,9 +1964,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getValueChange_DataValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue <em>Reference Value</em>}'.
+	 * Returns the meta object for the reference '
+	 * {@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue <em>Reference Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Reference Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue()
 	 * @see #getValueChange()
@@ -1758,9 +1977,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getValueChange_ReferenceValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getValue
+	 * <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ValueChange#getValue()
 	 * @see #getValueChange()
@@ -1772,6 +1993,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Set <em>Set</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Set</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Set
 	 * @generated
@@ -1779,9 +2001,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getSet();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Set#getOldDataValue <em>Old Data Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Set#getOldDataValue
+	 * <em>Old Data Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Old Data Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Set#getOldDataValue()
 	 * @see #getSet()
@@ -1790,9 +2014,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getSet_OldDataValue();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.Set#getOldReferenceValue <em>Old Reference Value</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.Set#getOldReferenceValue
+	 * <em>Old Reference Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Old Reference Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Set#getOldReferenceValue()
 	 * @see #getSet()
@@ -1801,9 +2027,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getSet_OldReferenceValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Set#getOldValue <em>Old Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.Set#getOldValue
+	 * <em>Old Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Old Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Set#getOldValue()
 	 * @see #getSet()
@@ -1815,6 +2043,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Add <em>Add</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Add</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Add
 	 * @generated
@@ -1825,6 +2054,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.Remove <em>Remove</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Remove</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.Remove
 	 * @generated
@@ -1832,9 +2062,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getRemove();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.CompositeChange <em>Composite Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.CompositeChange
+	 * <em>Composite Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Composite Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.CompositeChange
 	 * @generated
@@ -1842,9 +2074,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getCompositeChange();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.CompositeChange#getChanges <em>Changes</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.CompositeChange#getChanges <em>Changes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Changes</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.CompositeChange#getChanges()
 	 * @see #getCompositeChange()
@@ -1853,9 +2087,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getCompositeChange_Changes();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.OperationChange <em>Operation Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.OperationChange
+	 * <em>Operation Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Operation Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.OperationChange
 	 * @generated
@@ -1863,9 +2099,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getOperationChange();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.emf.edapt.spi.history.OperationChange#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the containment reference '
+	 * {@link org.eclipse.emf.edapt.spi.history.OperationChange#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference '<em>Operation</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.OperationChange#getOperation()
 	 * @see #getOperationChange()
@@ -1874,9 +2112,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getOperationChange_Operation();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.OperationInstance <em>Operation Instance</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.OperationInstance
+	 * <em>Operation Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Operation Instance</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.OperationInstance
 	 * @generated
@@ -1884,9 +2124,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getOperationInstance();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.OperationInstance#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.OperationInstance#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.OperationInstance#getParameters()
 	 * @see #getOperationInstance()
@@ -1895,9 +2137,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getOperationInstance_Parameters();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance <em>Parameter Instance</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance
+	 * <em>Parameter Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Parameter Instance</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ParameterInstance
 	 * @generated
@@ -1905,9 +2149,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getParameterInstance();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue <em>Value</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue
+	 * <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ParameterInstance#getValue()
 	 * @see #getParameterInstance()
@@ -1916,9 +2162,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getParameterInstance_Value();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getDataValue <em>Data Value</em>}'.
+	 * Returns the meta object for the attribute list '
+	 * {@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getDataValue <em>Data Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute list '<em>Data Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ParameterInstance#getDataValue()
 	 * @see #getParameterInstance()
@@ -1927,9 +2175,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getParameterInstance_DataValue();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getReferenceValue <em>Reference Value</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.ParameterInstance#getReferenceValue <em>Reference Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Reference Value</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ParameterInstance#getReferenceValue()
 	 * @see #getParameterInstance()
@@ -1938,9 +2188,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getParameterInstance_ReferenceValue();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ModelReference <em>Model Reference</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.ModelReference
+	 * <em>Model Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Model Reference</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ModelReference
 	 * @generated
@@ -1948,9 +2200,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getModelReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement <em>Element</em>}'.
+	 * Returns the meta object for the reference '{@link org.eclipse.emf.edapt.spi.history.ModelReference#getElement
+	 * <em>Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the reference '<em>Element</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.ModelReference#getElement()
 	 * @see #getModelReference()
@@ -1959,9 +2213,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getModelReference_Element();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.NamedElement <em>Named Element</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.NamedElement <em>Named Element</em>}
+	 * '.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Named Element</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.NamedElement
 	 * @generated
@@ -1969,9 +2225,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.NamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.NamedElement#getName
+	 * <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Name</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.NamedElement#getName()
 	 * @see #getNamedElement()
@@ -1980,9 +2238,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getNamedElement_Name();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.MigrateableChange <em>Migrateable Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.MigrateableChange
+	 * <em>Migrateable Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Migrateable Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.MigrateableChange
 	 * @generated
@@ -1990,9 +2250,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getMigrateableChange();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.MigrationChange <em>Migration Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.MigrationChange
+	 * <em>Migration Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Migration Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.MigrationChange
 	 * @generated
@@ -2000,9 +2262,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getMigrationChange();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration <em>Migration</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration
+	 * <em>Migration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the attribute '<em>Migration</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.MigrationChange#getMigration()
 	 * @see #getMigrationChange()
@@ -2011,9 +2275,11 @@ public interface HistoryPackage extends EPackage {
 	EAttribute getMigrationChange_Migration();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.MigrationChange#getChanges <em>Changes</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.MigrationChange#getChanges <em>Changes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Changes</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.MigrationChange#getChanges()
 	 * @see #getMigrationChange()
@@ -2022,9 +2288,11 @@ public interface HistoryPackage extends EPackage {
 	EReference getMigrationChange_Changes();
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.InitializerChange <em>Initializer Change</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.spi.history.InitializerChange
+	 * <em>Initializer Change</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for class '<em>Initializer Change</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.InitializerChange
 	 * @generated
@@ -2032,9 +2300,11 @@ public interface HistoryPackage extends EPackage {
 	EClass getInitializerChange();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.eclipse.emf.edapt.spi.history.InitializerChange#getChanges <em>Changes</em>}'.
+	 * Returns the meta object for the containment reference list '
+	 * {@link org.eclipse.emf.edapt.spi.history.InitializerChange#getChanges <em>Changes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the meta object for the containment reference list '<em>Changes</em>'.
 	 * @see org.eclipse.emf.edapt.spi.history.InitializerChange#getChanges()
 	 * @see #getInitializerChange()
@@ -2046,6 +2316,7 @@ public interface HistoryPackage extends EPackage {
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
@@ -2055,19 +2326,22 @@ public interface HistoryPackage extends EPackage {
 	 * <!-- begin-user-doc -->
 	 * Defines literals for the meta objects that represent
 	 * <ul>
-	 *   <li>each class,</li>
-	 *   <li>each feature of each class,</li>
-	 *   <li>each enum,</li>
-	 *   <li>and each data type</li>
+	 * <li>each class,</li>
+	 * <li>each feature of each class,</li>
+	 * <li>each enum,</li>
+	 * <li>and each data type</li>
 	 * </ul>
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.HistoryImpl <em>History</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.HistoryImpl <em>History</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getHistory()
 		 * @generated
@@ -2078,14 +2352,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Releases</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference HISTORY__RELEASES = eINSTANCE.getHistory_Releases();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ReleaseImpl <em>Release</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ReleaseImpl <em>Release</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ReleaseImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getRelease()
 		 * @generated
@@ -2096,6 +2373,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute RELEASE__DATE = eINSTANCE.getRelease_Date();
@@ -2104,6 +2382,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Changes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference RELEASE__CHANGES = eINSTANCE.getRelease_Changes();
@@ -2112,6 +2391,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>History</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference RELEASE__HISTORY = eINSTANCE.getRelease_History();
@@ -2120,14 +2400,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute RELEASE__LABEL = eINSTANCE.getRelease_Label();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ChangeImpl <em>Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ChangeImpl <em>Change</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getChange()
 		 * @generated
@@ -2138,6 +2421,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Breaking</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute CHANGE__BREAKING = eINSTANCE.getChange_Breaking();
@@ -2146,14 +2430,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute CHANGE__DESCRIPTION = eINSTANCE.getChange_Description();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl <em>Primitive Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl
+		 * <em>Primitive Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.PrimitiveChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getPrimitiveChange()
 		 * @generated
@@ -2161,9 +2448,11 @@ public interface HistoryPackage extends EPackage {
 		EClass PRIMITIVE_CHANGE = eINSTANCE.getPrimitiveChange();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl <em>No Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl
+		 * <em>No Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.NoChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNoChange()
 		 * @generated
@@ -2171,9 +2460,11 @@ public interface HistoryPackage extends EPackage {
 		EClass NO_CHANGE = eINSTANCE.getNoChange();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl <em>Content Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl
+		 * <em>Content Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ContentChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getContentChange()
 		 * @generated
@@ -2184,6 +2475,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference CONTENT_CHANGE__TARGET = eINSTANCE.getContentChange_Target();
@@ -2192,6 +2484,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reference</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference CONTENT_CHANGE__REFERENCE = eINSTANCE.getContentChange_Reference();
@@ -2200,14 +2493,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reference Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute CONTENT_CHANGE__REFERENCE_NAME = eINSTANCE.getContentChange_ReferenceName();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl <em>Non Delete</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl
+		 * <em>Non Delete</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.NonDeleteImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNonDelete()
 		 * @generated
@@ -2218,14 +2514,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference NON_DELETE__ELEMENT = eINSTANCE.getNonDelete_Element();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.CreateImpl <em>Create</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.CreateImpl <em>Create</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.CreateImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getCreate()
 		 * @generated
@@ -2233,9 +2532,11 @@ public interface HistoryPackage extends EPackage {
 		EClass CREATE = eINSTANCE.getCreate();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MoveImpl <em>Move</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MoveImpl <em>Move</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.MoveImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMove()
 		 * @generated
@@ -2246,14 +2547,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Source</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MOVE__SOURCE = eINSTANCE.getMove_Source();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.DeleteImpl <em>Delete</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.DeleteImpl <em>Delete</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.DeleteImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getDelete()
 		 * @generated
@@ -2264,14 +2568,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference DELETE__ELEMENT = eINSTANCE.getDelete_Element();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl <em>Value Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl
+		 * <em>Value Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ValueChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getValueChange()
 		 * @generated
@@ -2282,6 +2589,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference VALUE_CHANGE__ELEMENT = eINSTANCE.getValueChange_Element();
@@ -2290,6 +2598,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Feature</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference VALUE_CHANGE__FEATURE = eINSTANCE.getValueChange_Feature();
@@ -2298,6 +2607,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Feature Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute VALUE_CHANGE__FEATURE_NAME = eINSTANCE.getValueChange_FeatureName();
@@ -2306,6 +2616,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Data Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute VALUE_CHANGE__DATA_VALUE = eINSTANCE.getValueChange_DataValue();
@@ -2314,6 +2625,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reference Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference VALUE_CHANGE__REFERENCE_VALUE = eINSTANCE.getValueChange_ReferenceValue();
@@ -2322,6 +2634,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute VALUE_CHANGE__VALUE = eINSTANCE.getValueChange_Value();
@@ -2330,6 +2643,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.SetImpl <em>Set</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.SetImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getSet()
 		 * @generated
@@ -2340,6 +2654,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Old Data Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute SET__OLD_DATA_VALUE = eINSTANCE.getSet_OldDataValue();
@@ -2348,6 +2663,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Old Reference Value</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference SET__OLD_REFERENCE_VALUE = eINSTANCE.getSet_OldReferenceValue();
@@ -2356,6 +2672,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Old Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute SET__OLD_VALUE = eINSTANCE.getSet_OldValue();
@@ -2364,6 +2681,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.AddImpl <em>Add</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.AddImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getAdd()
 		 * @generated
@@ -2371,9 +2689,11 @@ public interface HistoryPackage extends EPackage {
 		EClass ADD = eINSTANCE.getAdd();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.RemoveImpl <em>Remove</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.RemoveImpl <em>Remove</em>}'
+		 * class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.RemoveImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getRemove()
 		 * @generated
@@ -2381,9 +2701,11 @@ public interface HistoryPackage extends EPackage {
 		EClass REMOVE = eINSTANCE.getRemove();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl <em>Composite Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl
+		 * <em>Composite Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.CompositeChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getCompositeChange()
 		 * @generated
@@ -2394,14 +2716,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Changes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference COMPOSITE_CHANGE__CHANGES = eINSTANCE.getCompositeChange_Changes();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl <em>Operation Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl
+		 * <em>Operation Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getOperationChange()
 		 * @generated
@@ -2412,14 +2737,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Operation</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference OPERATION_CHANGE__OPERATION = eINSTANCE.getOperationChange_Operation();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl <em>Operation Instance</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl
+		 * <em>Operation Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.OperationInstanceImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getOperationInstance()
 		 * @generated
@@ -2430,14 +2758,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference OPERATION_INSTANCE__PARAMETERS = eINSTANCE.getOperationInstance_Parameters();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl <em>Parameter Instance</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl
+		 * <em>Parameter Instance</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ParameterInstanceImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getParameterInstance()
 		 * @generated
@@ -2448,6 +2779,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER_INSTANCE__VALUE = eINSTANCE.getParameterInstance_Value();
@@ -2456,6 +2788,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Data Value</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute PARAMETER_INSTANCE__DATA_VALUE = eINSTANCE.getParameterInstance_DataValue();
@@ -2464,14 +2797,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Reference Value</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference PARAMETER_INSTANCE__REFERENCE_VALUE = eINSTANCE.getParameterInstance_ReferenceValue();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl <em>Model Reference</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl
+		 * <em>Model Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.ModelReferenceImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getModelReference()
 		 * @generated
@@ -2482,14 +2818,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Element</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MODEL_REFERENCE__ELEMENT = eINSTANCE.getModelReference_Element();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl
+		 * <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.NamedElementImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getNamedElement()
 		 * @generated
@@ -2500,14 +2839,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl <em>Migrateable Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl
+		 * <em>Migrateable Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.MigrateableChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMigrateableChange()
 		 * @generated
@@ -2515,9 +2857,11 @@ public interface HistoryPackage extends EPackage {
 		EClass MIGRATEABLE_CHANGE = eINSTANCE.getMigrateableChange();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl <em>Migration Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl
+		 * <em>Migration Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.MigrationChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getMigrationChange()
 		 * @generated
@@ -2528,6 +2872,7 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Migration</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EAttribute MIGRATION_CHANGE__MIGRATION = eINSTANCE.getMigrationChange_Migration();
@@ -2536,14 +2881,17 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Changes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference MIGRATION_CHANGE__CHANGES = eINSTANCE.getMigrationChange_Changes();
 
 		/**
-		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl <em>Initializer Change</em>}' class.
+		 * The meta object literal for the '{@link org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl
+		 * <em>Initializer Change</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @see org.eclipse.emf.edapt.spi.history.impl.InitializerChangeImpl
 		 * @see org.eclipse.emf.edapt.spi.history.impl.HistoryPackageImpl#getInitializerChange()
 		 * @generated
@@ -2554,10 +2902,11 @@ public interface HistoryPackage extends EPackage {
 		 * The meta object literal for the '<em><b>Changes</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		EReference INITIALIZER_CHANGE__CHANGES = eINSTANCE.getInitializerChange_Changes();
 
 	}
 
-} //HistoryPackage
+} // HistoryPackage

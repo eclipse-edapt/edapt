@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.migration.ui;
 
@@ -20,10 +20,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.edapt.common.FileUtils;
-import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.URIUtils;
-import org.eclipse.emf.edapt.internal.migration.BackupUtils;
+import org.eclipse.emf.edapt.internal.common.FileUtils;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.BackupUtils;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.spi.history.Release;
@@ -40,7 +40,7 @@ import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * Action to migrate a model based on the registered or selected migrators.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -51,23 +51,24 @@ public class MigrateHandler extends MigratorHandlerBase {
 	/** Perform the migration. */
 	@Override
 	protected void run(final List<URI> modelURIs, final Migrator migrator,
-			Release release) {
+		Release release) {
 		try {
 			final Metamodel metamodel = migrator.getMetamodel(release);
 			final List<URI> backupURIs = BackupUtils.backup(modelURIs,
-					metamodel);
+				metamodel);
 			final Release sourceRelease = release;
 
-			IRunnableWithProgress runnable = new IRunnableWithProgress() {
+			final IRunnableWithProgress runnable = new IRunnableWithProgress() {
 
 				/** {@inheritDoc} */
+				@Override
 				public void run(IProgressMonitor monitor) {
 					try {
 						migrator.migrateAndSave(modelURIs, sourceRelease, null,
-								monitor);
-					} catch (MigrationException e) {
+							monitor);
+					} catch (final MigrationException e) {
 						LoggingUtils.logError(
-								MigrationUIActivator.getDefault(), e);
+							MigrationUIActivator.getDefault(), e);
 						restoreBackup(metamodel, backupURIs);
 						showException(e);
 					}
@@ -77,25 +78,25 @@ public class MigrateHandler extends MigratorHandlerBase {
 			};
 
 			new ProgressMonitorDialog(Display.getCurrent().getActiveShell())
-					.run(false, false, runnable);
-		} catch (InvocationTargetException e) {
+				.run(false, false, runnable);
+		} catch (final InvocationTargetException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
-		} catch (InterruptedException e) {
+		} catch (final InterruptedException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
-		} catch (IOException e) {
+		} catch (final IOException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
 		}
 	}
 
 	/** Restore the backed up models. */
 	private void restoreBackup(final Metamodel metamodel,
-			final List<URI> backupURIs) {
+		final List<URI> backupURIs) {
 		try {
 			BackupUtils.restore(backupURIs, metamodel);
-			for (URI backupURI : backupURIs) {
+			for (final URI backupURI : backupURIs) {
 				FileUtils.delete(backupURI);
 			}
-		} catch (IOException e1) {
+		} catch (final IOException e1) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e1);
 		}
 	}
@@ -103,8 +104,8 @@ public class MigrateHandler extends MigratorHandlerBase {
 	/** Show an exception. */
 	private void showException(MigrationException e) {
 		MessageDialog.openError(Display.getDefault().getActiveShell(),
-				"Error during migration", e.getMessage());
-		URI location = e.getLocation();
+			"Error during migration", e.getMessage()); //$NON-NLS-1$
+		final URI location = e.getLocation();
 		if (location != null) {
 			showLocation(location);
 		}
@@ -113,18 +114,18 @@ public class MigrateHandler extends MigratorHandlerBase {
 	/** Show an exception location. */
 	private void showLocation(URI location) {
 		try {
-			IFile file = URIUtils.getFile(location);
+			final IFile file = URIUtils.getFile(location);
 			if (file != null && file.exists()) {
-				String fileString = file.getLocation().toPortableString();
-				IEditorDescriptor descriptor = PlatformUI.getWorkbench()
-						.getEditorRegistry().getDefaultEditor(fileString);
+				final String fileString = file.getLocation().toPortableString();
+				final IEditorDescriptor descriptor = PlatformUI.getWorkbench()
+					.getEditorRegistry().getDefaultEditor(fileString);
 
-				IWorkbenchPage activePage = PlatformUI.getWorkbench()
-						.getActiveWorkbenchWindow().getActivePage();
+				final IWorkbenchPage activePage = PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage();
 				activePage.openEditor(new FileEditorInput(file),
-						descriptor.getId());
+					descriptor.getId());
 			}
-		} catch (PartInitException e) {
+		} catch (final PartInitException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
 		}
 	}
@@ -132,11 +133,11 @@ public class MigrateHandler extends MigratorHandlerBase {
 	/** Refresh the models. */
 	private void refreshModels() {
 		try {
-			for (IFile modelFile : getSelectedFiles()) {
+			for (final IFile modelFile : getSelectedFiles()) {
 				modelFile.getParent()
-						.refreshLocal(1, new NullProgressMonitor());
+					.refreshLocal(1, new NullProgressMonitor());
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			LoggingUtils.logError(MigrationUIActivator.getDefault(), e);
 		}
 	}

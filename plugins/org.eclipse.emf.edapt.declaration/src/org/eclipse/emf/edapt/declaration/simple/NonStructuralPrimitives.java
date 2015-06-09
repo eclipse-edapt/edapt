@@ -5,15 +5,15 @@ import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 379538381D25D78091CB00E42F964D91
  */
 @EdaptLibrary(label = "Non-structural Primitives", description = "Non-structural " +
-		"primitive operations modify a single, existing metamodel element, i.e. " +
-		"change properties of a metamodel element.")
+	"primitive operations modify a single, existing metamodel element, i.e. " +
+	"change properties of a metamodel element.")
 public class NonStructuralPrimitives extends LibraryImplementation {
 
 	/** Constructor. */

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -26,12 +26,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement <em>Element</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature <em>Feature</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName <em>Feature Name</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue <em>Data Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue <em>Reference Value</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getValue <em>Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement <em>Element</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature <em>Feature</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName <em>Feature Name</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue <em>Data Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue <em>Reference Value</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.ValueChange#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,6 +47,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * The element whose attribute or cross reference will be changed
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Element</em>' reference.
 	 * @see #setElement(EObject)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_Element()
@@ -56,9 +57,11 @@ public interface ValueChange extends PrimitiveChange {
 	EObject getElement();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement <em>Element</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getElement <em>Element</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Element</em>' reference.
 	 * @see #getElement()
 	 * @generated
@@ -72,6 +75,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * A sequence of metamodel versions
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Feature</em>' reference.
 	 * @see #setFeature(EStructuralFeature)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_Feature()
@@ -81,9 +85,11 @@ public interface ValueChange extends PrimitiveChange {
 	EStructuralFeature getFeature();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature <em>Feature</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeature <em>Feature</em>}'
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Feature</em>' reference.
 	 * @see #getFeature()
 	 * @generated
@@ -97,6 +103,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * A reference to the meta-metamodel feature which is derived from the featureName attribute
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Feature Name</em>' attribute.
 	 * @see #setFeatureName(String)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_FeatureName()
@@ -106,9 +113,11 @@ public interface ValueChange extends PrimitiveChange {
 	String getFeatureName();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName <em>Feature Name</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getFeatureName <em>Feature Name</em>}
+	 * ' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Feature Name</em>' attribute.
 	 * @see #getFeatureName()
 	 * @generated
@@ -122,6 +131,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * Serialized value of a primitive type to be set in, added to or removed from an attribute
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Data Value</em>' attribute.
 	 * @see #setDataValue(String)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_DataValue()
@@ -131,9 +141,11 @@ public interface ValueChange extends PrimitiveChange {
 	String getDataValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue <em>Data Value</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getDataValue <em>Data Value</em>}'
+	 * attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Data Value</em>' attribute.
 	 * @see #getDataValue()
 	 * @generated
@@ -147,6 +159,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-model-doc -->
 	 * Value of an object type to be set in, added to or removed from an reference
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Reference Value</em>' reference.
 	 * @see #setReferenceValue(EObject)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_ReferenceValue()
@@ -156,9 +169,11 @@ public interface ValueChange extends PrimitiveChange {
 	EObject getReferenceValue();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue <em>Reference Value</em>}' reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getReferenceValue
+	 * <em>Reference Value</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Reference Value</em>' reference.
 	 * @see #getReferenceValue()
 	 * @generated
@@ -170,8 +185,10 @@ public interface ValueChange extends PrimitiveChange {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * Derived attribute that provides either dataValue or referenceValue depending on the type of the feature (attribute or reference respectively)
+	 * Derived attribute that provides either dataValue or referenceValue depending on the type of the feature
+	 * (attribute or reference respectively)
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(Object)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getValueChange_Value()
@@ -184,6 +201,7 @@ public interface ValueChange extends PrimitiveChange {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.ValueChange#getValue <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Value</em>' attribute.
 	 * @see #getValue()
 	 * @generated

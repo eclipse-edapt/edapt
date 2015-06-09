@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.impl;
 
@@ -20,7 +20,6 @@ import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.spi.history.OperationChange;
 import org.eclipse.emf.edapt.spi.history.OperationInstance;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Operation Change</b></em>'.
@@ -28,7 +27,7 @@ import org.eclipse.emf.edapt.spi.history.OperationInstance;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl#getOperation <em>Operation</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.impl.OperationChangeImpl#getOperation <em>Operation</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +38,7 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	 * The cached value of the '{@link #getOperation() <em>Operation</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getOperation()
 	 * @generated
 	 * @ordered
@@ -48,6 +48,7 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected OperationChangeImpl() {
@@ -57,6 +58,7 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -67,8 +69,10 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public OperationInstance getOperation() {
 		return operation;
 	}
@@ -76,14 +80,20 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public NotificationChain basicSetOperation(OperationInstance newOperation, NotificationChain msgs) {
-		OperationInstance oldOperation = operation;
+		final OperationInstance oldOperation = operation;
 		operation = newOperation;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, HistoryPackage.OPERATION_CHANGE__OPERATION, oldOperation, newOperation);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
+			final ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+				HistoryPackage.OPERATION_CHANGE__OPERATION, oldOperation, newOperation);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -91,32 +101,43 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setOperation(OperationInstance newOperation) {
 		if (newOperation != operation) {
 			NotificationChain msgs = null;
-			if (operation != null)
-				msgs = ((InternalEObject)operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - HistoryPackage.OPERATION_CHANGE__OPERATION, null, msgs);
-			if (newOperation != null)
-				msgs = ((InternalEObject)newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - HistoryPackage.OPERATION_CHANGE__OPERATION, null, msgs);
+			if (operation != null) {
+				msgs = ((InternalEObject) operation).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+					- HistoryPackage.OPERATION_CHANGE__OPERATION, null, msgs);
+			}
+			if (newOperation != null) {
+				msgs = ((InternalEObject) newOperation).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+					- HistoryPackage.OPERATION_CHANGE__OPERATION, null, msgs);
+			}
 			msgs = basicSetOperation(newOperation, msgs);
-			if (msgs != null) msgs.dispatch();
+			if (msgs != null) {
+				msgs.dispatch();
+			}
 		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.OPERATION_CHANGE__OPERATION, newOperation, newOperation));
+		else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, HistoryPackage.OPERATION_CHANGE__OPERATION,
+				newOperation, newOperation));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				return basicSetOperation(null, msgs);
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			return basicSetOperation(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -124,13 +145,14 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				return getOperation();
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			return getOperation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -138,14 +160,15 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				setOperation((OperationInstance)newValue);
-				return;
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			setOperation((OperationInstance) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -153,14 +176,15 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				setOperation((OperationInstance)null);
-				return;
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			setOperation((OperationInstance) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -168,15 +192,16 @@ public class OperationChangeImpl extends CompositeChangeImpl implements Operatio
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case HistoryPackage.OPERATION_CHANGE__OPERATION:
-				return operation != null;
+		case HistoryPackage.OPERATION_CHANGE__OPERATION:
+			return operation != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //OperationChangeImpl
+} // OperationChangeImpl

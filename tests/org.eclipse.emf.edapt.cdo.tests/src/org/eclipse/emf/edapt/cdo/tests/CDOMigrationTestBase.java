@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.cdo.tests;
 
@@ -30,12 +30,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.cdo.migration.execution.CDOMigrator;
-import org.eclipse.emf.edapt.common.ResourceSetFactoryImpl;
-import org.eclipse.emf.edapt.common.ResourceUtils;
 import org.eclipse.emf.edapt.history.util.HistoryUtils;
-import org.eclipse.emf.edapt.internal.migration.BackupUtils;
-import org.eclipse.emf.edapt.internal.migration.PrintStreamProgressMonitor;
+import org.eclipse.emf.edapt.internal.common.ResourceSetFactoryImpl;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
+import org.eclipse.emf.edapt.internal.migration.internal.BackupUtils;
+import org.eclipse.emf.edapt.internal.migration.internal.PrintStreamProgressMonitor;
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
@@ -43,20 +43,21 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * A class for test cases to validate a model migration.
- * 
+ *
  * @author herrmama
  * @author Christophe Bouhier
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 028BD5369E87644723FF537FB5E55E4D
  */
+@SuppressWarnings("restriction")
 public abstract class CDOMigrationTestBase extends TestCase {
 
 	private CDONet4jSession testSession;
 
 	/**
 	 * Test a model migration.
-	 * 
+	 *
 	 * @param migratorURI
 	 *            URI of the migrator
 	 * @param modelURI
@@ -67,17 +68,17 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 *            URI of the target metamodel of the migration
 	 */
 	public void testMigration(URI migratorURI, URI modelURI,
-			URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
-			IClassLoader loader) throws MigrationException, IOException {
+		URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
+		IClassLoader loader) throws MigrationException, IOException {
 
-		CDOMigrator migrator = new CDOMigrator(migratorURI, loader);
+		final CDOMigrator migrator = new CDOMigrator(migratorURI, loader);
 		testMigration(migrator, modelURI, expectedTargetModelURI,
-				expectedTargetMetamodelURI);
+			expectedTargetMetamodelURI);
 	}
 
 	/**
 	 * Test a model migration.
-	 * 
+	 *
 	 * @param migrator
 	 *            Migrator
 	 * @param modelURI
@@ -88,10 +89,10 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 *            URI of the target metamodel of the migration
 	 */
 	public void testMigration(CDOMigrator migrator, URI modelURI,
-			URI expectedTargetModelURI, URI expectedTargetMetamodelURI)
-			throws MigrationException, IOException {
+		URI expectedTargetModelURI, URI expectedTargetMetamodelURI)
+		throws MigrationException, IOException {
 		testMigration(migrator, modelURI, expectedTargetModelURI,
-				expectedTargetMetamodelURI, 0);
+			expectedTargetMetamodelURI, 0);
 	}
 
 	/**
@@ -100,7 +101,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 * and push the result to a target repository. The result resource URI is
 	 * specified by the argument <code>expectedTargetModelURI</code> in CDO URI
 	 * format as specified by {@link CDOURIData}
-	 * 
+	 *
 	 * @param migrator
 	 *            Migrator
 	 * @param modelURI
@@ -113,49 +114,49 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 *            Expected number of differences
 	 */
 	public void testMigration(CDOMigrator migrator, URI modelURI,
-			URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
-			int expectedNumber) throws MigrationException, IOException {
+		URI expectedTargetModelURI, URI expectedTargetMetamodelURI,
+		int expectedNumber) throws MigrationException, IOException {
 
 		// Get the release for source model URI.
 		// FIXME, get release is not CDO Compatible (yet).
-		Set<Release> releases = migrator.getRelease(modelURI);
+		final Set<Release> releases = migrator.getRelease(modelURI);
 		assertTrue(releases.size() >= 1);
 
-		Release release = HistoryUtils.getMinimumRelease(releases);
+		final Release release = HistoryUtils.getMinimumRelease(releases);
 
 		// Get a metamodel to construct to load the resource with the
 		// matching EPackage.
-		Metamodel metamodel = migrator.getMetamodel(release);
+		final Metamodel metamodel = migrator.getMetamodel(release);
 
 		// Rename in case we want a URI for a regular resource...
 		// URI targetModelURI = rename(metamodel, modelURI, release);
 		// List<URI> cdoTargetURIs = Collections.singletonList(targetModelURI);
 
-		List<URI> modelURIs = Collections.singletonList(modelURI);
+		final List<URI> modelURIs = Collections.singletonList(modelURI);
 
 		// Get the source and target CDO URIs
-		List<URI> cdoSourceURIs = cdoSourceURIs(modelURIs);
-		List<URI> cdoTargetURIs = cdoTargetURIs(modelURIs);
+		final List<URI> cdoSourceURIs = cdoSourceURIs(modelURIs);
+		final List<URI> cdoTargetURIs = cdoTargetURIs(modelURIs);
 
 		// Load the source set for the model URI(s).
-		ResourceSet sourceSet = ResourceUtils.loadResourceSet(modelURIs,
-				metamodel.getEPackages());
+		final ResourceSet sourceSet = ResourceUtils.loadResourceSet(modelURIs,
+			metamodel.getEPackages());
 
 		migrator.clearCDORepositories(CDOTestUtil.HOST,
-				CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
+			CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
 
 		migrator.clearCDORepositories(CDOTestUtil.HOST,
-				CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
+			CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
 
 		// Copy the source set to the CDO source repo, let our CDOView provider
 		// do all the CDO stuff
 		// like creating a container, connector, session and transaction. See
 		// EDaptCDOViewProvider
 		CDOMigrator.copy(metamodel, sourceSet, cdoSourceURIs,
-				new ResourceSetFactoryImpl());
+			new ResourceSetFactoryImpl());
 
 		migrator.migrateAndCopy(cdoSourceURIs, release, null,
-				new PrintStreamProgressMonitor(System.out), cdoTargetURIs);
+			new PrintStreamProgressMonitor(System.out), cdoTargetURIs);
 
 		// Test Comparision is metamodel based.
 		// TODO, FIX THE Result ASSERT.
@@ -177,11 +178,11 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	}
 
 	public void testMigration(CDOURIData sourceURIData,
-			CDOURIData targetURIData, CDOMigrator migrator, int expectedNumber)
-			throws MigrationException, IOException {
+		CDOURIData targetURIData, CDOMigrator migrator, int expectedNumber)
+		throws MigrationException, IOException {
 
 		migrator.migrateAndCopy(sourceURIData, targetURIData,
-				new PrintStreamProgressMonitor(System.out));
+			new PrintStreamProgressMonitor(System.out));
 
 		// Test Comparision is metamodel based.
 		// TODO, FIX THE Result ASSERT.
@@ -204,8 +205,8 @@ public abstract class CDOMigrationTestBase extends TestCase {
 
 	/**
 	 * Copies a the resources
-	 * 
-	 * 
+	 *
+	 *
 	 * @param modelURI
 	 * @param t
 	 * @param metamodel
@@ -214,11 +215,11 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 */
 	@SuppressWarnings("unused")
 	private URI copyToCDORepo(URI modelURI, CDOTransaction t,
-			Metamodel metamodel, ResourceSet model) {
+		Metamodel metamodel, ResourceSet model) {
 		// Register the packages with this CDO Session.
-		for (EPackage ePack : metamodel.getEPackages()) {
-			EPackage ePackage = testSession.getPackageRegistry().getEPackage(
-					ePack.getNsURI());
+		for (final EPackage ePack : metamodel.getEPackages()) {
+			final EPackage ePackage = testSession.getPackageRegistry().getEPackage(
+				ePack.getNsURI());
 			if (ePackage == null) {
 				testSession.getPackageRegistry().putEPackage(ePack);
 			}
@@ -227,21 +228,21 @@ public abstract class CDOMigrationTestBase extends TestCase {
 		// Do we have a resource with this name.
 		CDOResource cdoResource = null;
 
-		for (Resource resource : model.getResources()) {
+		for (final Resource resource : model.getResources()) {
 
 			if (resource.getURI() == null
-					|| resource.getURI().isPlatformPlugin()) {
+				|| resource.getURI().isPlatformPlugin()) {
 				continue;
 			}
-			String fileName = modelURI.lastSegment();
-			String resourceName = fileName.substring(0,
-					fileName.lastIndexOf("."));
+			final String fileName = modelURI.lastSegment();
+			final String resourceName = fileName.substring(0,
+				fileName.lastIndexOf("."));
 
 			if (t.hasResource(resourceName)) {
 				cdoResource = t.getResource(resourceName);
 			} else {
 
-				EObject loadElement = resource.getContents().get(0);
+				final EObject loadElement = resource.getContents().get(0);
 
 				// The resource without the extension.
 				cdoResource = t.createResource(resourceName);
@@ -250,7 +251,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 				// referenced,
 				// .ecore in the serialization, which is already upgraded.
 
-				EObject copy = EcoreUtil.copy(loadElement);
+				final EObject copy = EcoreUtil.copy(loadElement);
 				cdoResource.getContents().add(copy);
 			}
 		}
@@ -267,7 +268,7 @@ public abstract class CDOMigrationTestBase extends TestCase {
 			throw new IllegalStateException("CDO Resource not created");
 		}
 		// Change the modelURI to deal with CDO.
-		URI cdoModelURI = cdoResource.getURI();
+		final URI cdoModelURI = cdoResource.getURI();
 		return cdoModelURI;
 	}
 
@@ -275,15 +276,15 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 * Obtain CDO {@link CDOURIData Connection Aware URI} from a collection of
 	 * 'file' based URI's. The connection details are taken from the target
 	 * repository settings.
-	 * 
+	 *
 	 * @param modelURIs
-	 * @return
+	 * @return the uris
 	 */
 	public List<URI> cdoTargetURIs(List<URI> modelURIs) {
 
-		List<URI> arrayList = new ArrayList<URI>();
-		for (URI uri : modelURIs) {
-			URI cdoTargetConnectionAwareURI = cdoTargetConnectionAwareURI(uri);
+		final List<URI> arrayList = new ArrayList<URI>();
+		for (final URI uri : modelURIs) {
+			final URI cdoTargetConnectionAwareURI = cdoTargetConnectionAwareURI(uri);
 			arrayList.add(cdoTargetConnectionAwareURI);
 		}
 
@@ -293,9 +294,9 @@ public abstract class CDOMigrationTestBase extends TestCase {
 
 	public List<URI> cdoSourceURIs(List<URI> modelURIs) {
 
-		List<URI> arrayList = new ArrayList<URI>();
-		for (URI uri : modelURIs) {
-			URI cdoTargetConnectionAwareURI = cdoSourceConnectionAwareURI(uri);
+		final List<URI> arrayList = new ArrayList<URI>();
+		for (final URI uri : modelURIs) {
+			final URI cdoTargetConnectionAwareURI = cdoSourceConnectionAwareURI(uri);
 			arrayList.add(cdoTargetConnectionAwareURI);
 		}
 
@@ -305,17 +306,17 @@ public abstract class CDOMigrationTestBase extends TestCase {
 
 	private URI cdoSourceConnectionAwareURI(URI sourceURI) {
 		return CDOMigrator.cdoConnectionAwareURI(sourceURI, CDOTestUtil.HOST,
-				CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
+			CDOTestUtil.SOURCE_PORT, CDOTestUtil.REPO_SOURCE);
 	}
 
 	private URI cdoTargetConnectionAwareURI(URI sourceURI) {
 		return CDOMigrator.cdoConnectionAwareURI(sourceURI, CDOTestUtil.HOST,
-				CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
+			CDOTestUtil.TARGET_PORT, CDOTestUtil.REPO_TARGET);
 	}
 
 	/**
 	 * Rename a model.
-	 * 
+	 *
 	 * @param metamodel
 	 *            Migrator (required to be able to open the model)
 	 * @param modelURI
@@ -324,10 +325,10 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 */
 	@SuppressWarnings("unused")
 	private URI rename(Metamodel metamodel, URI modelURI, Release release)
-			throws IOException {
+		throws IOException {
 
-		List<URI> modelURIs = Collections.singletonList(modelURI);
-		List<URI> backupURIs = rename(modelURIs, metamodel);
+		final List<URI> modelURIs = Collections.singletonList(modelURI);
+		final List<URI> backupURIs = rename(modelURIs, metamodel);
 		return backupURIs.get(0);
 	}
 
@@ -335,23 +336,24 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 * Rename a model.
 	 */
 	protected List<URI> rename(List<URI> modelURIs, Metamodel metamodel)
-			throws IOException {
-		List<URI> backupURIs = BackupUtils.copy(modelURIs, metamodel,
-				new BackupUtils.URIMapper() {
+		throws IOException {
+		final List<URI> backupURIs = BackupUtils.copy(modelURIs, metamodel,
+			new BackupUtils.URIMapper() {
 
-					public URI map(URI uri) {
-						String name = uri.lastSegment().replace(".",
-								"_migrated.");
-						return uri.trimSegments(1).appendSegment(name);
-					}
+				@Override
+				public URI map(URI uri) {
+					final String name = uri.lastSegment().replace(".",
+						"_migrated.");
+					return uri.trimSegments(1).appendSegment(name);
+				}
 
-				});
+			});
 		return backupURIs;
 	}
 
 	/**
 	 * Test a model migration.
-	 * 
+	 *
 	 * @param modelURI
 	 *            URI of the model to be migrated
 	 * @param expectedTargetModelURI
@@ -360,8 +362,8 @@ public abstract class CDOMigrationTestBase extends TestCase {
 	 *            URI of the target metamodel of the migration
 	 */
 	public void testMigration(URI modelURI, URI expectedTargetModelURI,
-			URI expectedTargetMetamodelURI, int expectedDifferences)
-			throws MigrationException, IOException {
+		URI expectedTargetMetamodelURI, int expectedDifferences)
+		throws MigrationException, IOException {
 
 		// CB TODO, Fix the Migrator Registry, define IMigrator to support
 		// various implementations....

@@ -7,17 +7,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -59,7 +59,7 @@ public class ExtractSuperClass extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "superSuperClasses", description = "The super classes to be "
-			+ "extracted must be a containsAll of the subclass's super types")
+		+ "extracted must be a containsAll of the subclass's super types")
 	public boolean checkSuperSuperClasses(EClass superSuperClasses) {
 		return subClass.getESuperTypes().contains(superSuperClasses);
 	}
@@ -75,7 +75,7 @@ public class ExtractSuperClass extends OperationImplementation {
 	public void execute(Metamodel metamodel, Model model) {
 
 		// metamodel adaptation
-		EClass superClass = MetamodelFactory.newEClass(ePackage, superClassName);
+		final EClass superClass = MetamodelFactory.newEClass(ePackage, superClassName);
 		superClass.setAbstract(abstr);
 		superClass.getEStructuralFeatures().addAll(toExtract);
 		superClass.getESuperTypes().addAll(superSuperClasses);
@@ -83,9 +83,9 @@ public class ExtractSuperClass extends OperationImplementation {
 		subClass.getESuperTypes().add(superClass);
 		subClass.getESuperTypes().removeAll(superSuperClasses);
 
-		for (EStructuralFeature feature : toExtract) {
+		for (final EStructuralFeature feature : toExtract) {
 			if (feature instanceof EReference) {
-				EReference reference = (EReference) feature;
+				final EReference reference = (EReference) feature;
 				if (reference.getEOpposite() != null) {
 					reference.getEOpposite().setEType(superClass);
 				}

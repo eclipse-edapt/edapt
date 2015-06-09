@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -51,9 +51,9 @@ public class GeneralizeSuperType extends OperationImplementation {
 		eClass.getESuperTypes().addAll(superType.getESuperTypes());
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
-			for (EStructuralFeature feature : superType
-					.getEStructuralFeatures()) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
+			for (final EStructuralFeature feature : superType
+				.getEStructuralFeatures()) {
 				deleteFeatureValue(instance, feature);
 			}
 		}

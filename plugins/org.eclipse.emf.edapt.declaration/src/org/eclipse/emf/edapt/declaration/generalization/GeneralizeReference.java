@@ -11,7 +11,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -27,7 +27,7 @@ public class GeneralizeReference extends GeneralizeTypedElement {
 	/** {@description} */
 	@EdaptParameter(description = "The new type of the reference")
 	public EClass type;
-	
+
 	/** {@inheritDoc} */
 	@Override
 	protected EStructuralFeature getTypedElement() {
@@ -37,7 +37,7 @@ public class GeneralizeReference extends GeneralizeTypedElement {
 	/** {@description} */
 	@EdaptConstraint(restricts = "type", description = "The type must be the same or more general")
 	public boolean checkType(EClass type) {
-		EClass referenceType = reference.getEReferenceType();
+		final EClass referenceType = reference.getEReferenceType();
 		return type.isSuperTypeOf(referenceType);
 	}
 

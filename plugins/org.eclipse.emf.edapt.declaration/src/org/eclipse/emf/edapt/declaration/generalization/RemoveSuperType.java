@@ -12,7 +12,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -50,9 +50,9 @@ public class RemoveSuperType extends OperationImplementation {
 		eClass.getESuperTypes().remove(superType);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(eClass)) {
-			for (EStructuralFeature feature : superType
-					.getEAllStructuralFeatures()) {
+		for (final Instance instance : model.getAllInstances(eClass)) {
+			for (final EStructuralFeature feature : superType
+				.getEAllStructuralFeatures()) {
 				deleteFeatureValue(instance, feature);
 			}
 		}

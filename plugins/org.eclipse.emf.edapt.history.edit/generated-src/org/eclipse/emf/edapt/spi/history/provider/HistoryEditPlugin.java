@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history.provider;
 
@@ -16,11 +16,11 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 import org.eclipse.emf.edapt.declaration.provider.DeclarationEditPlugin;
 
-
 /**
  * This is the central singleton for the History edit plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ *
  * @generated
  */
 public final class HistoryEditPlugin extends EMFPlugin {
@@ -28,6 +28,7 @@ public final class HistoryEditPlugin extends EMFPlugin {
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static final HistoryEditPlugin INSTANCE = new HistoryEditPlugin();
@@ -36,6 +37,7 @@ public final class HistoryEditPlugin extends EMFPlugin {
 	 * Keep track of the singleton.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	private static Implementation plugin;
@@ -44,20 +46,21 @@ public final class HistoryEditPlugin extends EMFPlugin {
 	 * Create the instance.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public HistoryEditPlugin() {
-		super
-		  (new ResourceLocator [] {
-		     DeclarationEditPlugin.INSTANCE,
-		     EcoreEditPlugin.INSTANCE,
-		   });
+		super(new ResourceLocator[] {
+			DeclarationEditPlugin.INSTANCE,
+			EcoreEditPlugin.INSTANCE,
+		});
 	}
 
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -70,6 +73,7 @@ public final class HistoryEditPlugin extends EMFPlugin {
 	 * Returns the singleton instance of the Eclipse plugin.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -81,6 +85,7 @@ public final class HistoryEditPlugin extends EMFPlugin {
 	 * The actual implementation of the Eclipse <b>Plugin</b>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public static class Implementation extends EclipsePlugin {
@@ -88,6 +93,7 @@ public final class HistoryEditPlugin extends EMFPlugin {
 		 * Creates an instance.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 *
 		 * @generated
 		 */
 		public Implementation() {

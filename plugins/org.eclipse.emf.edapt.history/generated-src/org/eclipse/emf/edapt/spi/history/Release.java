@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.history;
 
@@ -28,10 +28,10 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.Release#getDate <em>Date</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.Release#getChanges <em>Changes</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.history.Release#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.Release#getDate <em>Date</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.Release#getChanges <em>Changes</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.history.Release#getLabel <em>Label</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,6 +46,7 @@ public interface Release extends EObject {
 	 * <!-- begin-model-doc -->
 	 * Helper method to get the number of the release
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -54,6 +55,7 @@ public interface Release extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -66,6 +68,7 @@ public interface Release extends EObject {
 	 * <!-- begin-model-doc -->
 	 * The date when the version is released
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Date</em>' attribute.
 	 * @see #setDate(Date)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getRelease_Date()
@@ -78,6 +81,7 @@ public interface Release extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Release#getDate <em>Date</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Date</em>' attribute.
 	 * @see #getDate()
 	 * @generated
@@ -92,6 +96,7 @@ public interface Release extends EObject {
 	 * <!-- begin-model-doc -->
 	 * The sequence of changes which lead to a release
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Changes</em>' containment reference list.
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getRelease_Changes()
 	 * @model containment="true"
@@ -101,16 +106,18 @@ public interface Release extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>History</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.history.History#getReleases <em>Releases</em>}'.
+	 * It is bidirectional and its opposite is '{@link org.eclipse.emf.edapt.spi.history.History#getReleases
+	 * <em>Releases</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>History</em>' container reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>History</em>' container reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * History to which the release belongs
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>History</em>' container reference.
 	 * @see #setHistory(History)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getRelease_History()
@@ -121,9 +128,11 @@ public interface Release extends EObject {
 	History getHistory();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}' container reference.
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Release#getHistory <em>History</em>}' container
+	 * reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>History</em>' container reference.
 	 * @see #getHistory()
 	 * @generated
@@ -134,13 +143,14 @@ public interface Release extends EObject {
 	 * Returns the value of the '<em><b>Label</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Label</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Label</em>' attribute isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Label to tag the release
 	 * <!-- end-model-doc -->
+	 *
 	 * @return the value of the '<em>Label</em>' attribute.
 	 * @see #setLabel(String)
 	 * @see org.eclipse.emf.edapt.spi.history.HistoryPackage#getRelease_Label()
@@ -153,6 +163,7 @@ public interface Release extends EObject {
 	 * Sets the value of the '{@link org.eclipse.emf.edapt.spi.history.Release#getLabel <em>Label</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param value the new value of the '<em>Label</em>' attribute.
 	 * @see #getLabel()
 	 * @generated
@@ -162,13 +173,14 @@ public interface Release extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Next Release</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Next Release</em>' reference isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the release which succeeds this release
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -177,13 +189,14 @@ public interface Release extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Previous Release</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Previous Release</em>' reference isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine the release that preceeds this release
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation"
 	 * @generated
 	 */
@@ -192,13 +205,14 @@ public interface Release extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>First Release</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>First Release</em>' attribute isn't clear, there really should be more of a
+	 * description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine whether the release is the first one in the history
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */
@@ -207,13 +221,14 @@ public interface Release extends EObject {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Last Release</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Last Release</em>' attribute isn't clear, there really should be more of a description
+	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Helper method to determine whether the release is the last one in the history
 	 * <!-- end-model-doc -->
+	 *
 	 * @model kind="operation" required="true"
 	 * @generated
 	 */

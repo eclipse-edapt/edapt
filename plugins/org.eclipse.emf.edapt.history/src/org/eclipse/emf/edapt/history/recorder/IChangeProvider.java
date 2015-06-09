@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -16,10 +16,9 @@ import java.util.List;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 
-
 /**
  * To indicate that a command is able to assemble a representation of the change it causes
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -29,7 +28,7 @@ public interface IChangeProvider {
 
 	/**
 	 * Provide a representation of the change it causes
-	 * 
+	 *
 	 * @param changes The primitive changes which were recorded
 	 * @return Change representation
 	 */

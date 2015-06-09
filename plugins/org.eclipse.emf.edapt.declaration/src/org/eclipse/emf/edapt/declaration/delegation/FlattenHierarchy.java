@@ -4,18 +4,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.edapt.common.MetamodelFactory;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelFactory;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -31,7 +31,7 @@ public class FlattenHierarchy extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "rootReference", description = "The root reference must be a single-valued containment reference.")
 	public boolean checkRootReferenceSingleValueContainment(
-			EReference rootReference) {
+		EReference rootReference) {
 		return !rootReference.isMany() && rootReference.isContainment();
 	}
 
@@ -42,14 +42,14 @@ public class FlattenHierarchy extends OperationImplementation {
 	/** {@description} */
 	@EdaptConstraint(restricts = "childrenReference", description = "The children reference must be defined by the node class.")
 	public boolean checkChildrenReferenceInNodeClass(EReference reference) {
-		EClass nodeClass = rootReference.getEReferenceType();
+		final EClass nodeClass = rootReference.getEReferenceType();
 		return nodeClass.getEStructuralFeatures().contains(reference);
 	}
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "childrenReference", description = "The children reference must be a multi-valued containment reference.")
 	public boolean checkChildrenReferenceManyValuedContainment(
-			EReference childrenReference) {
+		EReference childrenReference) {
 		return childrenReference.isMany() && childrenReference.isContainment();
 	}
 
@@ -61,24 +61,24 @@ public class FlattenHierarchy extends OperationImplementation {
 	@EdaptConstraint(description = "The type of the children reference must be the node class.")
 	public boolean checkChildrenReferenceType() {
 		return childrenReference.getEType() == rootReference
-				.getEReferenceType();
+			.getEReferenceType();
 	}
 
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass rootClass = rootReference.getEContainingClass();
-		EClass nodeClass = rootReference.getEReferenceType();
+		final EClass rootClass = rootReference.getEContainingClass();
+		final EClass nodeClass = rootReference.getEReferenceType();
 
 		// metamodel adaptation
 		metamodel.delete(rootReference);
 		metamodel.delete(childrenReference);
-		EReference containerReference = MetamodelFactory.newEReference(rootClass,
-				referenceName, nodeClass, 0, -1, true);
+		final EReference containerReference = MetamodelFactory.newEReference(rootClass,
+			referenceName, nodeClass, 0, -1, true);
 
 		// model migration
-		for (Instance root : model.getAllInstances(rootClass)) {
-			Instance node = root.unset(rootReference);
+		for (final Instance root : model.getAllInstances(rootClass)) {
+			final Instance node = root.unset(rootReference);
 			if (node != null) {
 				root.add(containerReference, node);
 				visitNode(root, containerReference, node);
@@ -88,10 +88,10 @@ public class FlattenHierarchy extends OperationImplementation {
 
 	/** Flatten one level in the hierarchy. */
 	private void visitNode(Instance root, EReference containerReference,
-			Instance node) {
-		List<Instance> children = node.unset(childrenReference);
+		Instance node) {
+		final List<Instance> children = node.unset(childrenReference);
 		root.<List<Instance>> get(containerReference).addAll(children);
-		for (Instance child : children) {
+		for (final Instance child : children) {
 			visitNode(root, containerReference, child);
 		}
 	}

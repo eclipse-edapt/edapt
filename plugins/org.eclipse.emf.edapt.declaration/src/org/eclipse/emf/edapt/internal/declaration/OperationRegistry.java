@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Markus Herrmannsdoerfer - initial API and implementation
+ * Markus Herrmannsdoerfer - initial API and implementation
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.declaration;
 
@@ -21,18 +21,18 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.edapt.common.LoggingUtils;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
 import org.eclipse.emf.edapt.declaration.Library;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.emf.edapt.spi.migration.MigrationPlugin;
 
 /**
  * Registry for all operations (singleton). A set of operations is registered as
  * a Eclipse extension.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -63,13 +63,13 @@ public class OperationRegistry {
 
 	/** Initialize the dependencies between the operations. */
 	private void initDependencies() {
-		for (Operation operation : getOperations()) {
+		for (final Operation operation : getOperations()) {
 			if (operation.getBefore() != null) {
-				Operation before = getOperation(operation.getBefore());
+				final Operation before = getOperation(operation.getBefore());
 				addBefore(operation, before);
 			}
 			if (operation.getAfter() != null) {
-				Operation after = getOperation(operation.getAfter());
+				final Operation after = getOperation(operation.getAfter());
 				addAfter(operation, after);
 			}
 		}
@@ -77,7 +77,7 @@ public class OperationRegistry {
 
 	/** Get the operations that need to be performed before an operation. */
 	public List<Operation> getBefore(Operation operation) {
-		List<Operation> operations = beforeOperations.get(operation);
+		final List<Operation> operations = beforeOperations.get(operation);
 		if (operations == null) {
 			return Collections.emptyList();
 		}
@@ -99,7 +99,7 @@ public class OperationRegistry {
 
 	/** Get the operations that need to be performed after an operation. */
 	public List<Operation> getAfter(Operation operation) {
-		List<Operation> operations = afterOperations.get(operation);
+		final List<Operation> operations = afterOperations.get(operation);
 		if (operations == null) {
 			return Collections.emptyList();
 		}
@@ -125,18 +125,18 @@ public class OperationRegistry {
 		beforeOperations = new HashMap<Operation, List<Operation>>();
 		afterOperations = new HashMap<Operation, List<Operation>>();
 		rootLibrary = DeclarationFactory.eINSTANCE.createLibrary();
-		rootLibrary.setName("root");
-		rootLibrary.setLabel("Root library");
-		rootLibrary.setDescription("Root library of the operation registry");
+		rootLibrary.setName("root"); //$NON-NLS-1$
+		rootLibrary.setLabel("Root library"); //$NON-NLS-1$
+		rootLibrary.setDescription("Root library of the operation registry"); //$NON-NLS-1$
 
 		if (Platform.isRunning()) {
-			IExtensionRegistry extensionRegistry = Platform
-					.getExtensionRegistry();
-			IConfigurationElement[] configurationElements = extensionRegistry
-					.getConfigurationElementsFor("org.eclipse.emf.edapt.operations");
+			final IExtensionRegistry extensionRegistry = Platform
+				.getExtensionRegistry();
+			final IConfigurationElement[] configurationElements = extensionRegistry
+				.getConfigurationElementsFor("org.eclipse.emf.edapt.operations"); //$NON-NLS-1$
 
 			for (int i = 0, n = configurationElements.length; i < n; i++) {
-				IConfigurationElement configurationElement = configurationElements[i];
+				final IConfigurationElement configurationElement = configurationElements[i];
 				register(configurationElement);
 			}
 		} else {
@@ -148,21 +148,21 @@ public class OperationRegistry {
 	@SuppressWarnings("unchecked")
 	private void register(IConfigurationElement configurationElement) {
 		try {
-			Class c = configurationElement.createExecutableExtension("class")
-					.getClass();
-			if ("operation".equals(configurationElement.getName())) {
+			final Class c = configurationElement.createExecutableExtension("class") //$NON-NLS-1$
+				.getClass();
+			if ("operation".equals(configurationElement.getName())) { //$NON-NLS-1$
 				registerOperation(c);
-			} else if ("library".equals(configurationElement.getName())) {
+			} else if ("library".equals(configurationElement.getName())) { //$NON-NLS-1$
 				registerLibrary(c);
 			}
-		} catch (CoreException e) {
+		} catch (final CoreException e) {
 			// do not register operations that are declared erroneously.
 		}
 	}
 
 	/** Register the implementation of an operation. */
 	public void registerOperation(Class<? extends OperationImplementation> c) {
-		Operation operation = new OperationExtractor().extractOperation(c);
+		final Operation operation = new OperationExtractor().extractOperation(c);
 		if (operation != null) {
 			initOperation(operation);
 			rootLibrary.getOperations().add(operation);
@@ -174,17 +174,17 @@ public class OperationRegistry {
 	 * operation).
 	 */
 	private void initOperation(Operation operation) {
-		String name = operation.getName();
+		final String name = operation.getName();
 		if (operations.get(name) != null) {
 			LoggingUtils.logError(MigrationPlugin.getPlugin(),
-					"Duplicate operation name: " + name);
+				"Duplicate operation name: " + name); //$NON-NLS-1$
 		}
 		operations.put(name, operation);
 	}
 
 	/** Register the implementation of a library. */
 	public void registerLibrary(Class<? extends LibraryImplementation> c) {
-		Library library = new LibraryExtractor().extractLibrary(c);
+		final Library library = new LibraryExtractor().extractLibrary(c);
 		if (library != null) {
 			initLibrary(library);
 			rootLibrary.getLibraries().add(library);
@@ -193,10 +193,10 @@ public class OperationRegistry {
 
 	/** Register the operations provided by a library. */
 	private void initLibrary(Library library) {
-		for (Operation operation : library.getOperations()) {
+		for (final Operation operation : library.getOperations()) {
 			initOperation(operation);
 		}
-		for (Library subLibrary : library.getLibraries()) {
+		for (final Library subLibrary : library.getLibraries()) {
 			initLibrary(subLibrary);
 		}
 	}

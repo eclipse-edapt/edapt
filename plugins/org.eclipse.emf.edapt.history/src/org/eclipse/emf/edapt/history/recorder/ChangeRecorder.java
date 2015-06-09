@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -41,10 +41,9 @@ import org.eclipse.emf.edapt.spi.history.Remove;
 import org.eclipse.emf.edapt.spi.history.Set;
 import org.eclipse.emf.edapt.spi.history.ValueChange;
 
-
 /**
  * Facility to record changes on a model
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -121,7 +120,7 @@ public class ChangeRecorder extends GeneratorBase {
 		if (!isRecording()) {
 			doBeginRecording();
 		} else {
-			throw new IllegalStateException("Recorder is already started");
+			throw new IllegalStateException("Recorder is already started"); //$NON-NLS-1$
 		}
 	}
 
@@ -132,7 +131,7 @@ public class ChangeRecorder extends GeneratorBase {
 		changeContainer = HistoryFactory.eINSTANCE.createCompositeChange();
 		deleteCache = new IdentityHashMap<EObject, List<PrimitiveChange>>();
 
-		for (EObject element : elements) {
+		for (final EObject element : elements) {
 			element.eAdapters().add(adapter);
 		}
 
@@ -147,7 +146,7 @@ public class ChangeRecorder extends GeneratorBase {
 		if (isRecording()) {
 			doEndRecording();
 		} else {
-			throw new IllegalStateException("Recorder is already stopped");
+			throw new IllegalStateException("Recorder is already stopped"); //$NON-NLS-1$
 		}
 	}
 
@@ -170,7 +169,7 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Stop the recorder (can be overwritten by subclasses)
 	 */
 	protected void doEndRecording() {
-		for (EObject element : elements) {
+		for (final EObject element : elements) {
 			element.eAdapters().remove(adapter);
 		}
 
@@ -187,10 +186,10 @@ public class ChangeRecorder extends GeneratorBase {
 	 */
 	@SuppressWarnings("unchecked")
 	private void inferDeletes() {
-		for (Entry<EObject, List<PrimitiveChange>> entry : deleteCache
-				.entrySet()) {
-			List<PrimitiveChange> list = entry.getValue();
-			Delete delete = (Delete) list.remove(0);
+		for (final Entry<EObject, List<PrimitiveChange>> entry : deleteCache
+			.entrySet()) {
+			final List<PrimitiveChange> list = entry.getValue();
+			final Delete delete = (Delete) list.remove(0);
 			delete.setElement(entry.getKey());
 			delete.getChanges().addAll((List) list);
 		}
@@ -201,15 +200,15 @@ public class ChangeRecorder extends GeneratorBase {
 	 */
 	private void inferCreateInitializers() {
 		Create create = null;
-		for (PrimitiveChange change : new ArrayList<PrimitiveChange>(
-				changeContainer.getChanges())) {
+		for (final PrimitiveChange change : new ArrayList<PrimitiveChange>(
+			changeContainer.getChanges())) {
 			if (change instanceof Create) {
 				create = (Create) change;
 			} else if (change instanceof ValueChange) {
 				if (create == null) {
 					continue;
 				}
-				ValueChange valueChange = (ValueChange) change;
+				final ValueChange valueChange = (ValueChange) change;
 				if (create.getElement() == valueChange.getElement()) {
 					create.getChanges().add(valueChange);
 				} else {
@@ -224,8 +223,7 @@ public class ChangeRecorder extends GeneratorBase {
 	/**
 	 * Handle MOVE notification
 	 */
-	private void handleMove(
-			@SuppressWarnings("unused") Notification notification) {
+	private void handleMove(Notification notification) {
 		// ignore
 	}
 
@@ -234,24 +232,24 @@ public class ChangeRecorder extends GeneratorBase {
 	 */
 	@SuppressWarnings("unchecked")
 	private void handleRemoveMany(Notification notification) {
-		EStructuralFeature feature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature feature = (EStructuralFeature) notification
+			.getFeature();
 		if (skipFeature(feature)) {
 			return;
 		}
 
-		EObject element = (EObject) notification.getNotifier();
+		final EObject element = (EObject) notification.getNotifier();
 
 		// containment
 		if (feature instanceof EReference
-				&& ((EReference) feature).isContainment()) {
-			for (EObject oldValue : (List<EObject>) notification.getOldValue()) {
+			&& ((EReference) feature).isContainment()) {
+			for (final EObject oldValue : (List<EObject>) notification.getOldValue()) {
 				handleSingleDelete(element, (EReference) feature, oldValue);
 			}
 		}
 		// cross reference and attribute
 		else {
-			for (Object oldValue : (List) notification.getOldValue()) {
+			for (final Object oldValue : (List) notification.getOldValue()) {
 				handleSingleRemove(element, feature, oldValue);
 			}
 		}
@@ -261,23 +259,23 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle REMOVE notification
 	 */
 	private void handleRemove(Notification notification) {
-		EStructuralFeature feature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature feature = (EStructuralFeature) notification
+			.getFeature();
 		if (skipFeature(feature)) {
 			return;
 		}
 
-		EObject element = (EObject) notification.getNotifier();
+		final EObject element = (EObject) notification.getNotifier();
 
 		// containment
 		if (feature instanceof EReference
-				&& ((EReference) feature).isContainment()) {
-			EObject oldValue = (EObject) notification.getOldValue();
+			&& ((EReference) feature).isContainment()) {
+			final EObject oldValue = (EObject) notification.getOldValue();
 			handleSingleDelete(element, (EReference) feature, oldValue);
 		}
 		// cross reference and attribute
 		else {
-			Object oldValue = notification.getOldValue();
+			final Object oldValue = notification.getOldValue();
 			handleSingleRemove(element, feature, oldValue);
 		}
 	}
@@ -286,10 +284,10 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle a remove of a single element from a containment reference
 	 */
 	private void handleSingleDelete(EObject element, EReference reference,
-			EObject value) {
-		Delete delete = delete(null, reference, element);
+		EObject value) {
+		final Delete delete = delete(null, reference, element);
 		append(delete);
-		ArrayList<PrimitiveChange> list = new ArrayList<PrimitiveChange>();
+		final ArrayList<PrimitiveChange> list = new ArrayList<PrimitiveChange>();
 		list.add(delete);
 		deleteCache.put(value, list);
 	}
@@ -298,12 +296,12 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle a remove of a single element from a cross reference or attribute
 	 */
 	private void handleSingleRemove(EObject element,
-			EStructuralFeature feature, Object value) {
-		Remove remove = remove(element, feature, value);
+		EStructuralFeature feature, Object value) {
+		final Remove remove = remove(element, feature, value);
 		append(remove);
 
 		if (feature instanceof EReference) {
-			EObject deleted = getDeleted((EObject) value);
+			final EObject deleted = getDeleted((EObject) value);
 			if (deleted != null) {
 				deleteCache.get(deleted).add(remove);
 			}
@@ -315,24 +313,24 @@ public class ChangeRecorder extends GeneratorBase {
 	 */
 	@SuppressWarnings("unchecked")
 	private void handleAddMany(Notification notification) {
-		EStructuralFeature feature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature feature = (EStructuralFeature) notification
+			.getFeature();
 		if (skipFeature(feature)) {
 			return;
 		}
 
-		EObject element = (EObject) notification.getNotifier();
+		final EObject element = (EObject) notification.getNotifier();
 
 		// containment
 		if (feature instanceof EReference
-				&& ((EReference) feature).isContainment()) {
-			for (EObject value : (List<EObject>) notification.getNewValue()) {
+			&& ((EReference) feature).isContainment()) {
+			for (final EObject value : (List<EObject>) notification.getNewValue()) {
 				handleSingleCreate(feature, element, value);
 			}
 		}
 		// cross reference and attribute
 		else {
-			for (Object value : (List) notification.getNewValue()) {
+			for (final Object value : (List) notification.getNewValue()) {
 				handleSingleAdd(feature, element, value);
 			}
 		}
@@ -342,23 +340,23 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle ADD notification
 	 */
 	private void handleAdd(Notification notification) {
-		EStructuralFeature feature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature feature = (EStructuralFeature) notification
+			.getFeature();
 		if (skipFeature(feature)) {
 			return;
 		}
 
-		EObject element = (EObject) notification.getNotifier();
+		final EObject element = (EObject) notification.getNotifier();
 
 		// containment
 		if (feature instanceof EReference
-				&& ((EReference) feature).isContainment()) {
-			EObject newValue = (EObject) notification.getNewValue();
+			&& ((EReference) feature).isContainment()) {
+			final EObject newValue = (EObject) notification.getNewValue();
 			handleSingleCreate(feature, element, newValue);
 		}
 		// cross reference and attribute
 		else {
-			Object newValue = notification.getNewValue();
+			final Object newValue = notification.getNewValue();
 			handleSingleAdd(feature, element, newValue);
 		}
 	}
@@ -367,8 +365,8 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle an addition of a single element to a cross reference or attribute
 	 */
 	private void handleSingleAdd(EStructuralFeature feature, EObject element,
-			Object value) {
-		Add add = add(element, feature, value);
+		Object value) {
+		final Add add = add(element, feature, value);
 		append(add);
 	}
 
@@ -376,11 +374,11 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle an addition of a single element to a containment reference
 	 */
 	private void handleSingleCreate(EStructuralFeature feature,
-			EObject element, EObject value) {
+		EObject element, EObject value) {
 		if (deleteCache.containsKey(value)) {
-			Delete delete = (Delete) deleteCache.remove(value).get(0);
-			Move move = move(value, delete.getTarget(), (EReference) feature,
-					element);
+			final Delete delete = (Delete) deleteCache.remove(value).get(0);
+			final Move move = move(value, delete.getTarget(), (EReference) feature,
+				element);
 
 			replace(delete, move);
 		} else {
@@ -392,15 +390,15 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Handle SET notification
 	 */
 	private void handleSet(Notification notification) {
-		EStructuralFeature feature = (EStructuralFeature) notification
-				.getFeature();
+		final EStructuralFeature feature = (EStructuralFeature) notification
+			.getFeature();
 		if (skipFeature(feature)) {
 			return;
 		}
 
 		// containment
 		if (feature instanceof EReference
-				&& ((EReference) feature).isContainment()) {
+			&& ((EReference) feature).isContainment()) {
 			return;
 		}
 
@@ -410,14 +408,14 @@ public class ChangeRecorder extends GeneratorBase {
 			return;
 		}
 
-		EObject element = (EObject) notification.getNotifier();
-		Object newValue = notification.getNewValue();
-		Set set = set(element, notification.getOldValue(), feature, newValue);
+		final EObject element = (EObject) notification.getNotifier();
+		final Object newValue = notification.getNewValue();
+		final Set set = set(element, notification.getOldValue(), feature, newValue);
 		append(set);
 
 		if (feature instanceof EReference) {
-			EObject oldValue = (EObject) notification.getOldValue();
-			EObject deleted = getDeleted(oldValue);
+			final EObject oldValue = (EObject) notification.getOldValue();
+			final EObject deleted = getDeleted(oldValue);
 			if (deleted != null) {
 				deleteCache.get(deleted).add(set);
 			}
@@ -428,8 +426,8 @@ public class ChangeRecorder extends GeneratorBase {
 	 * Replace a primitive change by another one in the changes
 	 */
 	protected void replace(PrimitiveChange toReplace, PrimitiveChange replaceBy) {
-		List<PrimitiveChange> changes = changeContainer.getChanges();
-		int index = changes.indexOf(toReplace);
+		final List<PrimitiveChange> changes = changeContainer.getChanges();
+		final int index = changes.indexOf(toReplace);
 		changes.set(index, replaceBy);
 	}
 

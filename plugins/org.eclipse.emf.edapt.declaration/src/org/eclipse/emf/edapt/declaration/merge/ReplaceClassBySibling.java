@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -39,10 +39,10 @@ public class ReplaceClassBySibling extends OperationImplementation {
 
 	/** {@description} */
 	@EdaptConstraint(restricts = "replaceBy", description = "The super classes of "
-			+ "replaced and replacing class must be the same")
+		+ "replaced and replacing class must be the same")
 	public boolean checkSameSuperClasses(EClass replaceBy) {
 		return toReplace.getESuperTypes().get(0) == replaceBy.getESuperTypes()
-				.get(0);
+			.get(0);
 	}
 
 	/** {@description} */
@@ -61,14 +61,14 @@ public class ReplaceClassBySibling extends OperationImplementation {
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
 		// metamodel adaptation
-		for (EReference reference : metamodel.<EReference> getInverse(
-				toReplace, EcorePackage.Literals.EREFERENCE__EREFERENCE_TYPE)) {
+		for (final EReference reference : metamodel.<EReference> getInverse(
+			toReplace, EcorePackage.Literals.EREFERENCE__EREFERENCE_TYPE)) {
 			reference.setEType(replaceBy);
 		}
 		metamodel.delete(toReplace);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(toReplace)) {
+		for (final Instance instance : model.getAllInstances(toReplace)) {
 			instance.migrate(replaceBy);
 		}
 	}

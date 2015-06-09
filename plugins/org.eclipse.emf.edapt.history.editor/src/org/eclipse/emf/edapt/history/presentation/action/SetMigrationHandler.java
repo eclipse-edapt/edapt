@@ -12,7 +12,7 @@ import org.eclipse.jdt.core.IType;
 
 /**
  * Action to set the custom migration for a migration change.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -23,12 +23,12 @@ public class SetMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		MigrationChange change = HandlerUtils.getSelectedElement(event);
-		IType javaType = JavaUIUtils.selectCustomMigration(change);
+		final MigrationChange change = HandlerUtils.getSelectedElement(event);
+		final IType javaType = JavaUIUtils.selectCustomMigration(change);
 		if (javaType != null) {
-			Command command = SetCommand.create(domain, change,
-					HistoryPackage.eINSTANCE.getMigrationChange_Migration(),
-					javaType.getFullyQualifiedName());
+			final Command command = SetCommand.create(domain, change,
+				HistoryPackage.eINSTANCE.getMigrationChange_Migration(),
+				javaType.getFullyQualifiedName());
 			domain.getCommandStack().execute(command);
 		}
 		return null;

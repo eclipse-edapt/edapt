@@ -6,31 +6,30 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation;
 
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.emf.edit.command.ChangeCommand;
 
-
 /**
  * Command to release the current version and create a new version
  * (cannot be undone)
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class ReleaseCommand extends ChangeCommand {
-	
+
 	/**
 	 * Listener attached to Ecore editor
 	 */
 	private final EditingDomainListener listener;
-	
+
 	/**
 	 * Label for the current version
 	 */
@@ -38,26 +37,26 @@ public class ReleaseCommand extends ChangeCommand {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param listener Listener
-	 * @param label 
+	 * @param label
 	 */
 	public ReleaseCommand(EditingDomainListener listener, String label) {
 		super(listener.getHistory());
-		
+
 		this.listener = listener;
 		this.label = label;
 	}
-	
+
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param listener Listener
 	 */
 	public ReleaseCommand(EditingDomainListener listener) {
 		this(listener, null);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

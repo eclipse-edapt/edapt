@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
 import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Reference Slot</b></em>'.
@@ -34,8 +33,8 @@ import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl#getEReference <em>EReference</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl#getValues <em>Values</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl#getEReference <em>EReference</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.ReferenceSlotImpl#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,6 +45,7 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	 * The cached value of the '{@link #getEReference() <em>EReference</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getEReference()
 	 * @generated
 	 * @ordered
@@ -56,6 +56,7 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	 * The cached value of the '{@link #getValues() <em>Values</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getValues()
 	 * @generated
 	 * @ordered
@@ -65,6 +66,7 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected ReferenceSlotImpl() {
@@ -74,6 +76,7 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -84,15 +87,19 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public EReference getEReference() {
 		if (eReference != null && eReference.eIsProxy()) {
-			InternalEObject oldEReference = (InternalEObject)eReference;
-			eReference = (EReference)eResolveProxy(oldEReference);
+			final InternalEObject oldEReference = (InternalEObject) eReference;
+			eReference = (EReference) eResolveProxy(oldEReference);
 			if (eReference != oldEReference) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, MigrationPackage.REFERENCE_SLOT__EREFERENCE, oldEReference, eReference));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						MigrationPackage.REFERENCE_SLOT__EREFERENCE, oldEReference, eReference));
+				}
 			}
 		}
 		return eReference;
@@ -101,6 +108,7 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public EReference basicGetEReference() {
@@ -110,24 +118,30 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setEReference(EReference newEReference) {
-		EReference oldEReference = eReference;
+		final EReference oldEReference = eReference;
 		eReference = newEReference;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.REFERENCE_SLOT__EREFERENCE, oldEReference, eReference));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.REFERENCE_SLOT__EREFERENCE,
+				oldEReference, eReference));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public EList<Instance> getValues() {
 		if (values == null) {
-			values = new EObjectWithInverseResolvingEList.ManyInverse<Instance>(Instance.class, this, MigrationPackage.REFERENCE_SLOT__VALUES, MigrationPackage.INSTANCE__REFERENCES);
+			values = new EObjectWithInverseResolvingEList.ManyInverse<Instance>(Instance.class, this,
+				MigrationPackage.REFERENCE_SLOT__VALUES, MigrationPackage.INSTANCE__REFERENCES);
 		}
 		return values;
 	}
@@ -135,14 +149,15 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getValues()).basicAdd(otherEnd, msgs);
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getValues()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -150,13 +165,14 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				return ((InternalEList<?>)getValues()).basicRemove(otherEnd, msgs);
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			return ((InternalEList<?>) getValues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -164,16 +180,19 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
-				if (resolve) return getEReference();
-				return basicGetEReference();
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				return getValues();
+		case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
+			if (resolve) {
+				return getEReference();
+			}
+			return basicGetEReference();
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			return getValues();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -181,19 +200,20 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
-				setEReference((EReference)newValue);
-				return;
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				getValues().clear();
-				getValues().addAll((Collection<? extends Instance>)newValue);
-				return;
+		case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
+			setEReference((EReference) newValue);
+			return;
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			getValues().clear();
+			getValues().addAll((Collection<? extends Instance>) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -201,17 +221,18 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
-				setEReference((EReference)null);
-				return;
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				getValues().clear();
-				return;
+		case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
+			setEReference((EReference) null);
+			return;
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			getValues().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -219,15 +240,16 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
-				return eReference != null;
-			case MigrationPackage.REFERENCE_SLOT__VALUES:
-				return values != null && !values.isEmpty();
+		case MigrationPackage.REFERENCE_SLOT__EREFERENCE:
+			return eReference != null;
+		case MigrationPackage.REFERENCE_SLOT__VALUES:
+			return values != null && !values.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -235,16 +257,18 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 	/** {@inheritDoc} */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer();
+		final StringBuffer result = new StringBuffer();
 		result.append(getEReference().getName());
-		result.append(" = ");
+		result.append(" = "); //$NON-NLS-1$
 		result.append('[');
 		boolean first = true;
-		for(Instance value : getValues()) {
-			if(!first) {
-				result.append(", ");
+		for (final Instance value : getValues()) {
+			if (!first) {
+				result.append(", "); //$NON-NLS-1$
 			}
 			result.append(value.toString());
 			first = false;
@@ -253,4 +277,4 @@ public class ReferenceSlotImpl extends SlotImpl implements ReferenceSlot {
 		return result.toString();
 
 	}
-} //ReferenceSlotImpl
+} // ReferenceSlotImpl

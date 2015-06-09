@@ -1,18 +1,18 @@
 package org.eclipse.emf.edapt.declaration.inheritance;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
 import org.eclipse.emf.edapt.declaration.EdaptConstraint;
 import org.eclipse.emf.edapt.declaration.EdaptOperation;
 import org.eclipse.emf.edapt.declaration.EdaptParameter;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.migration.Instance;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 
 /**
  * {@description}
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
@@ -52,13 +52,13 @@ public class InlineSubClass extends OperationImplementation {
 	/** {@inheritDoc} */
 	@Override
 	public void execute(Metamodel metamodel, Model model) {
-		EClass superClass = subClass.getESuperTypes().get(0);
+		final EClass superClass = subClass.getESuperTypes().get(0);
 
 		// metamodel adaptation
 		metamodel.delete(subClass);
 
 		// model migration
-		for (Instance instance : model.getAllInstances(subClass)) {
+		for (final Instance instance : model.getAllInstances(subClass)) {
 			instance.migrate(superClass);
 		}
 	}

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder;
 
@@ -21,29 +21,25 @@ import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edapt.common.LoggingUtils;
-import org.eclipse.emf.edapt.common.MetamodelExtent;
-import org.eclipse.emf.edapt.common.MetamodelUtils;
-import org.eclipse.emf.edapt.history.recorder.ChangeRecorder;
-import org.eclipse.emf.edapt.history.recorder.HistoryChangeRecorder;
-import org.eclipse.emf.edapt.history.recorder.IChangeProvider;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
+import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
+import org.eclipse.emf.edapt.internal.common.MetamodelUtils;
 import org.eclipse.emf.edapt.spi.history.Change;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.provider.HistoryEditPlugin;
 
-
 /**
  * Listens to command stack of an Ecore editor and collects changes to current
  * metamodel release.
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class CommandStackListener implements
-		org.eclipse.emf.common.command.CommandStackListener {
+	org.eclipse.emf.common.command.CommandStackListener {
 
 	/** Command stack of Ecore editor. */
 	private final CommandStack commandStack;
@@ -78,7 +74,7 @@ public class CommandStackListener implements
 
 	/** Constructor. */
 	public CommandStackListener(CommandStack commandStack,
-			Resource historyResource) {
+		Resource historyResource) {
 		this.commandStack = commandStack;
 		numberChanges = new Stack<Integer>();
 		listening = false;
@@ -90,14 +86,14 @@ public class CommandStackListener implements
 		if (!isListening()) {
 			commandStack.addCommandStackListener(this);
 			extent = new MetamodelExtent(MetamodelUtils
-					.getAllRootPackages(historyResource.getResourceSet()));
+				.getAllRootPackages(historyResource.getResourceSet()));
 
 			metamodelRecorder = new ChangeRecorder(getHistoryRootPackages());
 			historyRecorder = new HistoryChangeRecorder(getHistory());
 
 			listening = true;
 		} else {
-			throw new IllegalStateException("Listener already activated");
+			throw new IllegalStateException("Listener already activated"); //$NON-NLS-1$
 		}
 	}
 
@@ -114,7 +110,7 @@ public class CommandStackListener implements
 
 			listening = false;
 		} else {
-			throw new IllegalStateException("Listener already deactivated");
+			throw new IllegalStateException("Listener already deactivated"); //$NON-NLS-1$
 		}
 	}
 
@@ -134,10 +130,10 @@ public class CommandStackListener implements
 			historyRecorder = new HistoryChangeRecorder(getHistory());
 
 			extent.setRootPackages(MetamodelUtils
-					.getAllRootPackages(historyResource.getResourceSet()));
+				.getAllRootPackages(historyResource.getResourceSet()));
 
 			LoggingUtils.logInfo(HistoryEditPlugin.getPlugin(),
-					"Recorder got out of sync and was safely restarted.");
+				"Recorder got out of sync and was safely restarted."); //$NON-NLS-1$
 		}
 	}
 
@@ -150,8 +146,9 @@ public class CommandStackListener implements
 	}
 
 	/** {@inheritDoc} */
+	@Override
 	public void commandStackChanged(EventObject event) {
-		Command command = commandStack.getMostRecentCommand();
+		final Command command = commandStack.getMostRecentCommand();
 		process(command);
 		extent.clearExtentMap();
 	}
@@ -165,7 +162,7 @@ public class CommandStackListener implements
 
 		if (!checkRecorder()) {
 			LoggingUtils.logError(HistoryEditPlugin.getPlugin(),
-					"Recorder no longer working");
+				"Recorder no longer working"); //$NON-NLS-1$
 		}
 
 		if (command != null) {
@@ -173,13 +170,13 @@ public class CommandStackListener implements
 			if (isUndo(command)) {
 				pop();
 			} else {
-				CompositeChange changeContainer = metamodelRecorder
-						.getChanges();
+				final CompositeChange changeContainer = metamodelRecorder
+					.getChanges();
 				// command able to provide a representation of the change
 				if (command instanceof IChangeProvider) {
-					IChangeProvider changeProvider = (IChangeProvider) command;
-					List<Change> changes = changeProvider
-							.getChanges(changeContainer.getChanges());
+					final IChangeProvider changeProvider = (IChangeProvider) command;
+					final List<Change> changes = changeProvider
+						.getChanges(changeContainer.getChanges());
 					push(changes);
 				}
 				// command not able to provide a representation of the
@@ -201,13 +198,13 @@ public class CommandStackListener implements
 
 	/** Remove last sequence of changes in order to cope with an undone command. */
 	private void pop() {
-		int number = numberChanges.pop();
+		final int number = numberChanges.pop();
 		if (number == 0) {
 			return;
 		}
-		List<Change> changes = getHistory().getLastRelease().getChanges();
-		List<Change> changesToRemove = new ArrayList<Change>();
-		int size = changes.size();
+		final List<Change> changes = getHistory().getLastRelease().getChanges();
+		final List<Change> changesToRemove = new ArrayList<Change>();
+		final int size = changes.size();
 		for (int i = size - number; i < size; i++) {
 			changesToRemove.add(changes.get(i));
 		}
@@ -222,7 +219,7 @@ public class CommandStackListener implements
 
 	/** Get the history that is listened to. */
 	public History getHistory() {
-		History history = (History) historyResource.getContents().get(0);
+		final History history = (History) historyResource.getContents().get(0);
 		return history;
 	}
 

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.reconstruction;
 
@@ -15,24 +15,24 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * Composition of two mappings into a transitive mapping
- * 
+ *
  * @author herrmama
  * @author $Author$
  * @version $Rev$
  * @levd.rating RED Rev:
  */
 public class CompositeMapping extends MappingBase {
-	
+
 	/**
 	 * Mapping to source metamodel version
 	 */
 	private final MappingBase sourceMapping;
-	
+
 	/**
 	 * Mapping to target metamodel version
 	 */
 	private final MappingBase targetMapping;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -46,11 +46,11 @@ public class CompositeMapping extends MappingBase {
 	 */
 	@Override
 	public EObject getSource(EObject target) {
-		EObject element = targetMapping.getSource(target);
-		if(element == null) {
+		final EObject element = targetMapping.getSource(target);
+		if (element == null) {
 			return null;
 		}
-		EObject source = sourceMapping.getTarget(element);
+		final EObject source = sourceMapping.getTarget(element);
 		return source;
 	}
 
@@ -59,11 +59,11 @@ public class CompositeMapping extends MappingBase {
 	 */
 	@Override
 	public EObject getTarget(EObject source) {
-		EObject element = sourceMapping.getSource(source);
-		if(element == null) {
+		final EObject element = sourceMapping.getSource(source);
+		if (element == null) {
 			return null;
 		}
-		EObject target = targetMapping.getTarget(element);
+		final EObject target = targetMapping.getTarget(element);
 		return target;
 	}
 }

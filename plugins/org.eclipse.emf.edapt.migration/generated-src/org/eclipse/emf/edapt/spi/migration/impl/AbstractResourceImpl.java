@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.impl;
 
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.edapt.spi.migration.AbstractResource;
 import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
 
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Abstract Resource</b></em>'.
@@ -27,8 +26,8 @@ import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl#getUri <em>Uri</em>}</li>
- *   <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl#getEncoding <em>Encoding</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl#getUri <em>Uri</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.spi.migration.impl.AbstractResourceImpl#getEncoding <em>Encoding</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +38,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	 * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getUri()
 	 * @generated
 	 * @ordered
@@ -49,6 +49,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	 * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getUri()
 	 * @generated
 	 * @ordered
@@ -59,6 +60,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	 * The default value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -69,6 +71,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	 * The cached value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -78,6 +81,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected AbstractResourceImpl() {
@@ -87,6 +91,7 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
@@ -97,8 +102,10 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public URI getUri() {
 		return uri;
 	}
@@ -106,20 +113,25 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setUri(URI newUri) {
-		URI oldUri = uri;
+		final URI oldUri = uri;
 		uri = newUri;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.ABSTRACT_RESOURCE__URI, oldUri, uri));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public String getEncoding() {
 		return encoding;
 	}
@@ -127,27 +139,32 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
+	@Override
 	public void setEncoding(String newEncoding) {
-		String oldEncoding = encoding;
+		final String oldEncoding = encoding;
 		encoding = newEncoding;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.ABSTRACT_RESOURCE__ENCODING, oldEncoding, encoding));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.ABSTRACT_RESOURCE__ENCODING,
+				oldEncoding, encoding));
+		}
 	}
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case MigrationPackage.ABSTRACT_RESOURCE__URI:
-				return getUri();
-			case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
-				return getEncoding();
+		case MigrationPackage.ABSTRACT_RESOURCE__URI:
+			return getUri();
+		case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
+			return getEncoding();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -155,17 +172,18 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case MigrationPackage.ABSTRACT_RESOURCE__URI:
-				setUri((URI)newValue);
-				return;
-			case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
-				setEncoding((String)newValue);
-				return;
+		case MigrationPackage.ABSTRACT_RESOURCE__URI:
+			setUri((URI) newValue);
+			return;
+		case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
+			setEncoding((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -173,17 +191,18 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.ABSTRACT_RESOURCE__URI:
-				setUri(URI_EDEFAULT);
-				return;
-			case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
-				setEncoding(ENCODING_EDEFAULT);
-				return;
+		case MigrationPackage.ABSTRACT_RESOURCE__URI:
+			setUri(URI_EDEFAULT);
+			return;
+		case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
+			setEncoding(ENCODING_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -191,15 +210,16 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case MigrationPackage.ABSTRACT_RESOURCE__URI:
-				return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
-			case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
-				return ENCODING_EDEFAULT == null ? encoding != null : !ENCODING_EDEFAULT.equals(encoding);
+		case MigrationPackage.ABSTRACT_RESOURCE__URI:
+			return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
+		case MigrationPackage.ABSTRACT_RESOURCE__ENCODING:
+			return ENCODING_EDEFAULT == null ? encoding != null : !ENCODING_EDEFAULT.equals(encoding);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -207,19 +227,22 @@ public abstract class AbstractResourceImpl extends EObjectImpl implements Abstra
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+		if (eIsProxy()) {
+			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (uri: ");
+		final StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (uri: "); //$NON-NLS-1$
 		result.append(uri);
-		result.append(", encoding: ");
+		result.append(", encoding: "); //$NON-NLS-1$
 		result.append(encoding);
 		result.append(')');
 		return result.toString();
 	}
 
-} //AbstractResourceImpl
+} // AbstractResourceImpl

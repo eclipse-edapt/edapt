@@ -9,8 +9,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
 import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
-import org.eclipse.emf.edapt.internal.migration.execution.MigrationReconstructor;
 import org.eclipse.emf.edapt.internal.migration.execution.ValidationLevel;
+import org.eclipse.emf.edapt.internal.migration.execution.internal.MigrationReconstructor;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.MigrationFactory;
@@ -19,26 +19,27 @@ import org.eclipse.emf.edapt.spi.migration.Model;
 public class CDOMigrationReconstructor extends MigrationReconstructor {
 
 	public CDOMigrationReconstructor(List<URI> modelURIs,
-			Release sourceRelease, Release targetRelease,
-			IProgressMonitor monitor, IClassLoader classLoader,
-			ValidationLevel level, IResourceSetFactory resourceSetFactory) {
+		Release sourceRelease, Release targetRelease,
+		IProgressMonitor monitor, IClassLoader classLoader,
+		ValidationLevel level, IResourceSetFactory resourceSetFactory) {
 		super(modelURIs, sourceRelease, targetRelease, monitor, classLoader,
-				level, resourceSetFactory);
+			level, resourceSetFactory);
 	}
 
 	/** Load the model before migration. */
+	@Override
 	protected void loadRepository() {
-		Metamodel metamodel = loadMetamodel();
+		final Metamodel metamodel = loadMetamodel();
 		metamodel.refreshCaches();
 		try {
-			ResourceSet set = resourceSetFactory.createResourceSet();
-			Model model = CDOPersistency.loadModel(modelURIs, metamodel, set);
+			final ResourceSet set = resourceSetFactory.createResourceSet();
+			final Model model = CDOPersistency.loadModel(modelURIs, metamodel, set);
 			repository = MigrationFactory.eINSTANCE.createRepository();
 			repository.setMetamodel(metamodel);
 			repository.setModel(model);
 			checkConformanceIfMoreThan(ValidationLevel.HISTORY);
-		} catch (IOException e) {
-			throwWrappedMigrationException("Model could not be loaded", e);
+		} catch (final IOException e) {
+			throwWrappedMigrationException("Model could not be loaded", e); //$NON-NLS-1$
 		}
 	}
 

@@ -6,8 +6,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     BMW Car IT - Initial API and implementation
- *     Technische Universitaet Muenchen - Major refactoring and extension
+ * BMW Car IT - Initial API and implementation
+ * Technische Universitaet Muenchen - Major refactoring and extension
  *******************************************************************************/
 package org.eclipse.emf.edapt.spi.migration.util;
 
@@ -15,14 +15,25 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edapt.spi.migration.*;
-
+import org.eclipse.emf.edapt.spi.migration.AbstractResource;
+import org.eclipse.emf.edapt.spi.migration.AttributeSlot;
+import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.Metamodel;
+import org.eclipse.emf.edapt.spi.migration.MetamodelResource;
+import org.eclipse.emf.edapt.spi.migration.MigrationPackage;
+import org.eclipse.emf.edapt.spi.migration.Model;
+import org.eclipse.emf.edapt.spi.migration.ModelResource;
+import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
+import org.eclipse.emf.edapt.spi.migration.Repository;
+import org.eclipse.emf.edapt.spi.migration.Slot;
+import org.eclipse.emf.edapt.spi.migration.Type;
 
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
+ *
  * @see org.eclipse.emf.edapt.spi.migration.MigrationPackage
  * @generated
  */
@@ -31,6 +42,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected static MigrationPackage modelPackage;
@@ -39,6 +51,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * Creates an instance of the adapter factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	public MigrationAdapterFactory() {
@@ -50,8 +63,10 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * Returns whether this factory is applicable for the type of the object.
 	 * <!-- begin-user-doc -->
-	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
+	 * This implementation returns <code>true</code> if the object is either the model's package or is an instance
+	 * object of the model.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return whether this factory is applicable for the type of the object.
 	 * @generated
 	 */
@@ -61,7 +76,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 			return true;
 		}
 		if (object instanceof EObject) {
-			return ((EObject)object).eClass().getEPackage() == modelPackage;
+			return ((EObject) object).eClass().getEPackage() == modelPackage;
 		}
 		return false;
 	}
@@ -70,6 +85,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * The switch that delegates to the <code>createXXX</code> methods.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	protected MigrationSwitch<Adapter> modelSwitch =
@@ -78,46 +94,57 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 			public Adapter caseRepository(Repository object) {
 				return createRepositoryAdapter();
 			}
+
 			@Override
 			public Adapter caseModel(Model object) {
 				return createModelAdapter();
 			}
+
 			@Override
 			public Adapter caseModelResource(ModelResource object) {
 				return createModelResourceAdapter();
 			}
+
 			@Override
 			public Adapter caseType(Type object) {
 				return createTypeAdapter();
 			}
+
 			@Override
 			public Adapter caseInstance(Instance object) {
 				return createInstanceAdapter();
 			}
+
 			@Override
 			public Adapter caseSlot(Slot object) {
 				return createSlotAdapter();
 			}
+
 			@Override
 			public Adapter caseAttributeSlot(AttributeSlot object) {
 				return createAttributeSlotAdapter();
 			}
+
 			@Override
 			public Adapter caseReferenceSlot(ReferenceSlot object) {
 				return createReferenceSlotAdapter();
 			}
+
 			@Override
 			public Adapter caseMetamodel(Metamodel object) {
 				return createMetamodelAdapter();
 			}
+
 			@Override
 			public Adapter caseMetamodelResource(MetamodelResource object) {
 				return createMetamodelResourceAdapter();
 			}
+
 			@Override
 			public Adapter caseAbstractResource(AbstractResource object) {
 				return createAbstractResourceAdapter();
 			}
+
 			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
@@ -128,15 +155,15 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * Creates an adapter for the <code>target</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 *
 	 * @param target the object to adapt.
 	 * @return the adapter for the <code>target</code>.
 	 * @generated
 	 */
 	@Override
 	public Adapter createAdapter(Notifier target) {
-		return modelSwitch.doSwitch((EObject)target);
+		return modelSwitch.doSwitch((EObject) target);
 	}
-
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Model <em>Model</em>}'.
@@ -144,6 +171,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Model
 	 * @generated
@@ -153,11 +181,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Metamodel <em>Metamodel</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Metamodel
+	 * <em>Metamodel</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Metamodel
 	 * @generated
@@ -172,6 +202,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Type
 	 * @generated
@@ -181,11 +212,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Instance <em>Instance</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Instance
+	 * <em>Instance</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Instance
 	 * @generated
@@ -200,6 +233,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Slot
 	 * @generated
@@ -209,11 +243,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot <em>Attribute Slot</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.AttributeSlot
+	 * <em>Attribute Slot</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.AttributeSlot
 	 * @generated
@@ -223,11 +259,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot <em>Reference Slot</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.ReferenceSlot
+	 * <em>Reference Slot</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.ReferenceSlot
 	 * @generated
@@ -237,11 +275,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Repository <em>Repository</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.Repository
+	 * <em>Repository</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.Repository
 	 * @generated
@@ -251,11 +291,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.ModelResource <em>Model Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.ModelResource
+	 * <em>Model Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.ModelResource
 	 * @generated
@@ -265,11 +307,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource <em>Abstract Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.AbstractResource
+	 * <em>Abstract Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.AbstractResource
 	 * @generated
@@ -279,11 +323,13 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource <em>Metamodel Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.eclipse.emf.edapt.spi.migration.MetamodelResource
+	 * <em>Metamodel Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @see org.eclipse.emf.edapt.spi.migration.MetamodelResource
 	 * @generated
@@ -297,6 +343,7 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null.
 	 * <!-- end-user-doc -->
+	 *
 	 * @return the new adapter.
 	 * @generated
 	 */
@@ -304,4 +351,4 @@ public class MigrationAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //MigrationAdapterFactory
+} // MigrationAdapterFactory
