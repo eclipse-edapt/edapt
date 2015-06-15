@@ -93,12 +93,11 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	}
 
 	/** Get the model files from the launch configuration. */
-	@SuppressWarnings("unchecked")
 	private List<IFile> getModelFiles(ILaunchConfiguration configuration)
 		throws CoreException {
 		final List<IFile> files = new ArrayList<IFile>();
 		final List<String> modelURIs = configuration.getAttribute(MODELS.id(),
-			Collections.emptyList());
+			Collections.<String> emptyList());
 		for (final String modelURI : modelURIs) {
 			final IFile file = FileUtils.getFile(modelURI);
 			files.add(file);
@@ -110,7 +109,7 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	@Override
 	public void launch(final ILaunchConfiguration configuration, String mode,
 		final ILaunch launch, final IProgressMonitor monitor)
-		throws CoreException {
+			throws CoreException {
 		final ILaunchManager launchManager = DebugPlugin.getDefault()
 			.getLaunchManager();
 		launchManager.addLaunchListener(new LaunchTerminationListener(

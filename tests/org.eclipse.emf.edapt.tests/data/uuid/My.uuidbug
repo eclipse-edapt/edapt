@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uuidBug:X xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:uuidBug="http://uuidBug.org/1.0" xmi:id="_PpP9sA6KEeWf8PYBnrK7MA">
+  <a xmi:id="_PpQkwA6KEeWf8PYBnrK7MA" name="a1"/>
+  <b xmi:id="_PpQkwQ6KEeWf8PYBnrK7MA" name="b1">
+    <a xmi:id="_PpQkwg6KEeWf8PYBnrK7MA" name="a2"/>
+  </b>
+</uuidBug:X>
