@@ -72,7 +72,7 @@ public class MigrationTestSuite extends TestSuite {
 
 	/**
 	 * Creates a {@link Test} which will be passed to {@link #addTest(Test)}.
-	 * 
+	 *
 	 * @param caseDefinition the {@link TestCaseDefinition}
 	 * @return the test to add
 	 */
@@ -112,7 +112,7 @@ public class MigrationTestSuite extends TestSuite {
 	}
 
 	/** Load the migrator from the history model. */
-	private Migrator loadMigrator() throws IOException {
+	protected Migrator loadMigrator() throws IOException {
 		final History history = loadHistory();
 		final Migrator migrator = new Migrator(history, loader);
 		return migrator;

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
+  <releases date="2015-06-09T11:32:42.587+0200">
+    <changes xsi:type="history:CompositeChange">
+      <changes xsi:type="history:Create" element="uuidBug.ecore#/">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#/" featureName="name"
+            dataValue="uuidBug"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#/" featureName="nsURI"
+            dataValue="http://uuidBug.org/1.0"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#/" featureName="nsPrefix"
+            dataValue="uuidBug"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#/" referenceName="eClassifiers"
+          element="uuidBug.ecore#//X">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X" featureName="name"
+            dataValue="X"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#/" referenceName="eClassifiers"
+          element="uuidBug.ecore#//A">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//A" featureName="name"
+            dataValue="A"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#//X" referenceName="eStructuralFeatures"
+          element="uuidBug.ecore#//X/a">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/a" featureName="name"
+            dataValue="a"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/a" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/a" featureName="eType"
+            referenceValue="uuidBug.ecore#//A"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#//A" referenceName="eStructuralFeatures"
+          element="uuidBug.ecore#//A/name">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//A/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//A/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#/" referenceName="eClassifiers"
+          element="uuidBug.ecore#//B">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B" featureName="name"
+            dataValue="B"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#//X" referenceName="eStructuralFeatures"
+          element="uuidBug.ecore#//X/b">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/b" featureName="name"
+            dataValue="b"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/b" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//X/b" featureName="eType"
+            referenceValue="uuidBug.ecore#//B"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#//B" referenceName="eStructuralFeatures"
+          element="uuidBug.ecore#//B/name">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B/name" featureName="name"
+            dataValue="name"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B/name" featureName="eType"
+            referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Create" target="uuidBug.ecore#//B" referenceName="eStructuralFeatures"
+          element="uuidBug.ecore#//B/a">
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B/a" featureName="name"
+            dataValue="a"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B/a" featureName="containment"
+            dataValue="true" oldDataValue="false"/>
+        <changes xsi:type="history:Set" element="uuidBug.ecore#//B/a" featureName="eType"
+            referenceValue="uuidBug.ecore#//A"/>
+      </changes>
+    </changes>
+  </releases>
+  <releases date="2015-06-09T11:32:48.575+0200" label="2.0">
+    <changes xsi:type="history:Set" element="uuidBug.ecore#/" featureName="nsURI"
+        dataValue="http://uuidBug.org/2.0" oldDataValue="http://uuidBug.org/1.0"/>
+  </releases>
+  <releases/>
+</history:History>

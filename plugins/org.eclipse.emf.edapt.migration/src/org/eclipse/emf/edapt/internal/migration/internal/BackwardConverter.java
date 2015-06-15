@@ -59,6 +59,7 @@ public class BackwardConverter {
 		initObjects(model);
 		final ResourceSet resourceSet = initResources(model);
 		initProperties(model);
+		adjustUUIDs(model);
 
 		return resourceSet;
 	}
@@ -114,11 +115,6 @@ public class BackwardConverter {
 		for (final Type type : model.getTypes()) {
 			for (final Instance instance : type.getInstances()) {
 				initProperties(instance);
-				final String uuid = instance.getUuid();
-				if (uuid != null) {
-					final EObject eObject = resolve(instance);
-					EcoreUtils.setUUID(eObject, uuid);
-				}
 			}
 		}
 	}
@@ -171,6 +167,23 @@ public class BackwardConverter {
 						eObject.eSet(targetFeature, resolve(referenceSlot
 							.getValues().get(0)));
 					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Adjust UUIDs in EMF model.
+	 * Needs to be done after containment hierarchy in EMF model is established
+	 * (done in {@link #initProperties(Model)}).
+	 */
+	protected void adjustUUIDs(Model model) {
+		for (Type type : model.getTypes()) {
+			for (Instance instance : type.getInstances()) {
+				String uuid = instance.getUuid();
+				if (uuid != null) {
+					EObject eObject = resolve(instance);
+					EcoreUtils.setUUID(eObject, uuid);
 				}
 			}
 		}
