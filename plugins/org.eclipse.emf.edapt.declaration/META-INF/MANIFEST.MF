@@ -2,27 +2,23 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.declaration;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.1.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.edapt.declaration;version="1.1.0",
- org.eclipse.emf.edapt.declaration.common;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.creation;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.delegation;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.generalization;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.impl;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.inheritance;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.merge;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.replacement;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.simple;version="1.1.0";x-internal:=true,
- org.eclipse.emf.edapt.declaration.util;version="1.1.0";x-friends:="org.eclipse.emf.edapt.declaration.edit",
- org.eclipse.emf.edapt.internal.declaration;version="1.1.0";
-  x-friends:="org.eclipse.emf.edapt.history,
-   org.eclipse.emf.edapt.history.cdo,
-   org.eclipse.emf.edapt.history.edit,
-   org.eclipse.emf.edapt.migration.ui"
+Export-Package: org.eclipse.emf.edapt.declaration;version="1.1.1",
+ org.eclipse.emf.edapt.declaration.common;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.creation;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.delegation;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.generalization;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.impl;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.inheritance;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.merge;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.replacement;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.simple;version="1.1.1";x-internal:="true",
+ org.eclipse.emf.edapt.declaration.util;version="1.1.1";x-friends:="org.eclipse.emf.edapt.declaration.edit",
+ org.eclipse.emf.edapt.internal.declaration;version="1.1.1";x-friends:="org.eclipse.emf.edapt.history,  org.eclipse.emf.edapt.history.cdo,  org.eclipse.emf.edapt.history.edit,  org.eclipse.emf.edapt.migration.ui"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
  org.eclipse.emf.edapt.common;bundle-version="[1.0.0,2.0.0)",
