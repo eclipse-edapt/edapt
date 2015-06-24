@@ -14,14 +14,22 @@ package org.eclipse.emf.edapt.tests.migration;
 import java.io.File;
 import java.io.IOException;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
+import org.eclipse.emf.edapt.common.IResourceSetFactory;
 import org.eclipse.emf.edapt.internal.common.FileUtils;
 import org.eclipse.emf.edapt.internal.common.URIUtils;
+import org.eclipse.emf.edapt.internal.migration.execution.IClassLoader;
 import org.eclipse.emf.edapt.internal.migration.execution.internal.ClassLoaderFacade;
+import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.migration.test.MigrationTestSuite;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
  * Test of model migrations defined by test models.
@@ -53,9 +61,9 @@ public class MigrationTest extends TestSuite {
 				if (extension != null && "test".equals(extension)) { //$NON-NLS-1$
 					final URI uri = URIUtils.getURI(file);
 					try {
-						suite.addTest(new MigrationTestSuite(uri,
-							new ClassLoaderFacade(MigrationTest.class
-								.getClassLoader())));
+						final MigrationTestSuite migrationTestSuite = new UUIDMigrationTestSuite(
+							uri, new ClassLoaderFacade(MigrationTest.class.getClassLoader()));
+						suite.addTest(migrationTestSuite);
 					} catch (final IOException e) {
 						e.printStackTrace();
 					}
@@ -63,4 +71,39 @@ public class MigrationTest extends TestSuite {
 			}
 		}
 	}
+
+	private static final class UUIDMigrationTestSuite extends MigrationTestSuite {
+		private UUIDMigrationTestSuite(URI definitionURI, IClassLoader loader) throws IOException {
+			super(definitionURI, loader);
+		}
+
+		@Override
+		protected org.eclipse.emf.edapt.migration.execution.Migrator loadMigrator()
+			throws IOException {
+			final Migrator loadedMigrator = super.loadMigrator();
+			loadedMigrator.setResourceSetFactory(new IResourceSetFactory() {
+				@Override
+				public ResourceSet createResourceSet() {
+					final ResourceSetImpl resourceSet = new ResourceSetImpl();
+					resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(
+						Resource.Factory.Registry.DEFAULT_EXTENSION, new UuidResourceFactory());
+					return resourceSet;
+				}
+			});
+			return loadedMigrator;
+		}
+
+		private static class UuidResourceFactory extends XMIResourceFactoryImpl {
+			@Override
+			public Resource createResource(URI uri) {
+				return new XMIResourceImpl(uri) {
+					@Override
+					protected boolean useUUIDs() {
+						return true;
+					}
+				};
+			}
+		}
+	}
+
 }
