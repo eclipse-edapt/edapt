@@ -43,7 +43,7 @@
 					<aut>
 						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-linux-gtk-x86_64.tar.gz</explicit>
 						<!--explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-win32-x86_64.zip</explicit-->
-						<injections>
+						<!--injections>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
@@ -51,7 +51,7 @@
 									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
 								</features>      
 							</injection>
-						</injections>
+						</injections-->
 					</aut>
 					<!--testOptions>
 						<execTimeout>30min</execTimeout>
