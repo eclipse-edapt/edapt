@@ -53,10 +53,10 @@
 							</injection>
 						</injections>
 					</aut>
-					<testOptions>
+					<!--testOptions>
 						<execTimeout>30min</execTimeout>
 						<testExecTimeout>5min</testExecTimeout>
-					</testOptions>
+					</testOptions-->
 				</configuration>
 			</plugin>
 		</plugins>
