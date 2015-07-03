@@ -7,7 +7,7 @@
 	<packaging>rcpttTest</packaging>
 
 	<properties>
-		<rcptt-maven-version>2.0.0-SNAPSHOT</rcptt-maven-version>
+		<rcptt-maven-version>2.0.1</rcptt-maven-version>
 		<rcptt-runner-version>2.0.0-SNAPSHOT</rcptt-runner-version>
 	</properties> 
 
@@ -17,14 +17,14 @@
 			<name>RCPTT Maven repository</name>
 			<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
 		</pluginRepository>
-		<pluginRepository>
+		<!--pluginRepository>
 			<id>rcptt-snapshots</id>
 			<name>RCPTT Maven Snapshots repository</name>
 			<snapshots>
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 			<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
-		</pluginRepository>
+		</pluginRepository-->
 	</pluginRepositories> 
 
 
@@ -42,6 +42,7 @@
 					<!-- The main configuration section goes here --> 
 					<aut>
 						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-linux-gtk-x86_64.tar.gz</explicit>
+						<!--explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-win32-x86_64.zip</explicit-->
 						<injections>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
