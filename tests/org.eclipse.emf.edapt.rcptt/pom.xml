@@ -8,7 +8,7 @@
 
 	<properties>
 		<rcptt-maven-version>2.0.1</rcptt-maven-version>
-		<rcptt-runner-version>2.0.0-SNAPSHOT</rcptt-runner-version>
+		<rcptt-runner-version>2.0.0</rcptt-runner-version>
 	</properties> 
 
 	<pluginRepositories>
