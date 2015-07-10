@@ -56,6 +56,9 @@
 							<arg>-nosplash</arg>
 							<arg>-consoleLog</arg>
 						</args>
+						<vmArgs>
+							<vmArg>-Dorg.eclipse.swt.browser.DefaultType=mozilla</vmArg>
+						</vmArgs>
 					</aut>
 				</configuration>
 			</plugin>
