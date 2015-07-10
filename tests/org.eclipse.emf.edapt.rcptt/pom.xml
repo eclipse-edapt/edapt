@@ -30,6 +30,9 @@
 				<configuration>
 					<runner>
 						<version>${rcptt-runner-version}</version>
+						<vmArgs>
+							<vmArg>-Dorg.eclipse.swt.browser.DefaultType=mozilla</vmArg>
+						</vmArgs>
 					</runner>
 					<!-- The main configuration section goes here --> 
 					<aut>
