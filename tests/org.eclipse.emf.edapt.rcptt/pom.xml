@@ -17,14 +17,6 @@
 			<name>RCPTT Maven repository</name>
 			<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
 		</pluginRepository>
-		<!--pluginRepository>
-			<id>rcptt-snapshots</id>
-			<name>RCPTT Maven Snapshots repository</name>
-			<snapshots>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-			<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
-		</pluginRepository-->
 	</pluginRepositories> 
 
 
@@ -41,9 +33,8 @@
 					</runner>
 					<!-- The main configuration section goes here --> 
 					<aut>
-						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-linux-gtk-x86_64.tar.gz</explicit>
-						<!--explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-modeling-mars-R-win32-x86_64.zip</explicit-->
-						<!--injections>
+						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-rcp-mars-R-linux-gtk-x86_64.tar.gz</explicit>
+						<injections>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
@@ -51,12 +42,18 @@
 									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
 								</features>      
 							</injection>
-						</injections-->
+							<injection>
+								<site>http://download.eclipse.org/ecp/releases/releases_16/</site>
+								<features>
+									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
+								</features>      
+							</injection>
+						</injections>
+						<args>
+							<arg>-nosplash</arg>
+							<arg>-consoleLog</arg>
+						</args>
 					</aut>
-					<!--testOptions>
-						<execTimeout>30min</execTimeout>
-						<testExecTimeout>5min</testExecTimeout>
-					</testOptions-->
 				</configuration>
 			</plugin>
 		</plugins>
