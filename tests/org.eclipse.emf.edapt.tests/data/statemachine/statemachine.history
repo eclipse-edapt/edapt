@@ -1,284 +1,419 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<history:History xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3">
-  <releases date="2008-10-20T12:25:37.500+0200">
-    <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Create" element="statemachine.ecore#/"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#/" featureName="name"
-          dataValue="statemachine"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#/" featureName="nsURI"
-          dataValue="http://statemachine/r0"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#/" featureName="nsPrefix"
-          dataValue="statemachine"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-          element="statemachine.ecore#//StateMachine"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine"
-          featureName="name" dataValue="StateMachine"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//StateMachine"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//StateMachine/root"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/root"
-          featureName="name" dataValue="root"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/root"
-          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/root"
-          featureName="containment" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-          element="statemachine.ecore#//State"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State" featureName="name"
-          dataValue="State"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//State" referenceName="eStructuralFeatures"
-          element="statemachine.ecore#//State/outgoing"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/outgoing"
-          featureName="name" dataValue="outgoing"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/outgoing"
-          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/outgoing"
-          featureName="containment" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//State" referenceName="eStructuralFeatures"
-          element="statemachine.ecore#//State/incoming"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/incoming"
-          featureName="name" dataValue="incoming"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/incoming"
-          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//State" referenceName="eStructuralFeatures"
-          element="statemachine.ecore#//State/name"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/name" featureName="name"
-          dataValue="name"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/name" featureName="lowerBound"
-          dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-          element="statemachine.ecore#//Transition"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition" featureName="name"
-          dataValue="Transition"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//Transition"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//Transition/source"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/source"
-          featureName="name" dataValue="source"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/source"
-          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//Transition"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//Transition/target"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/target"
-          featureName="name" dataValue="target"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/target"
-          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//Transition"
-          referenceName="eStructuralFeatures" element="#//@releases.1/@changes.0/@changes.3/@element"/>
-      <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.3/@element"
-          featureName="name" dataValue="trigger"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//Transition"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//Transition/effect"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/effect"
-          featureName="name" dataValue="effect"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-          element="statemachine.ecore#//CompositeState"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState"
-          featureName="name" dataValue="CompositeState"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#//CompositeState"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//Region/state"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region/state"
-          featureName="name" dataValue="state"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region/state"
-          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region/state"
-          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region/state"
-          featureName="containment" dataValue="true" oldDataValue="false"/>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3" xmi:id="_8oCeQF20EeW8Hc22XT4C7A">
+  <releases xmi:id="_8tm6wF20EeW8Hc22XT4C7A" date="2008-10-20T05:25:37.500-0500">
+    <changes xsi:type="history:CompositeChange" xmi:id="_8t09MF20EeW8Hc22XT4C7A">
+      <changes xsi:type="history:Create" xmi:id="_8uS3QF20EeW8Hc22XT4C7A">
+        <element href="statemachine.ecore#/"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vCeIF20EeW8Hc22XT4C7A" featureName="name" dataValue="statemachine">
+        <element href="statemachine.ecore#/"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vCeIV20EeW8Hc22XT4C7A" featureName="nsURI" dataValue="http://statemachine/r0">
+        <element href="statemachine.ecore#/"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vCeIl20EeW8Hc22XT4C7A" featureName="nsPrefix" dataValue="statemachine">
+        <element href="statemachine.ecore#/"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vDFMF20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+        <target href="statemachine.ecore#/"/>
+        <element href="statemachine.ecore#//StateMachine"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vDFMV20EeW8Hc22XT4C7A" featureName="name" dataValue="StateMachine">
+        <element href="statemachine.ecore#//StateMachine"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vDFMl20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//StateMachine"/>
+        <element href="statemachine.ecore#//StateMachine/root"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vDFM120EeW8Hc22XT4C7A" featureName="name" dataValue="root">
+        <element href="statemachine.ecore#//StateMachine/root"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vDsQF20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//StateMachine/root"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vDsQV20EeW8Hc22XT4C7A" featureName="containment" dataValue="true" oldDataValue="false">
+        <element href="statemachine.ecore#//StateMachine/root"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vETUF20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+        <target href="statemachine.ecore#/"/>
+        <element href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vETUV20EeW8Hc22XT4C7A" featureName="name" dataValue="State">
+        <element href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vETUl20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//State"/>
+        <element href="statemachine.ecore#//State/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vETU120EeW8Hc22XT4C7A" featureName="name" dataValue="outgoing">
+        <element href="statemachine.ecore#//State/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vE6YF20EeW8Hc22XT4C7A" featureName="upperBound" dataValue="-1" oldDataValue="1">
+        <element href="statemachine.ecore#//State/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vE6YV20EeW8Hc22XT4C7A" featureName="containment" dataValue="true" oldDataValue="false">
+        <element href="statemachine.ecore#//State/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vE6Yl20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//State"/>
+        <element href="statemachine.ecore#//State/incoming"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vFhcF20EeW8Hc22XT4C7A" featureName="name" dataValue="incoming">
+        <element href="statemachine.ecore#//State/incoming"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vFhcV20EeW8Hc22XT4C7A" featureName="upperBound" dataValue="-1" oldDataValue="1">
+        <element href="statemachine.ecore#//State/incoming"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vFhcl20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//State"/>
+        <element href="statemachine.ecore#//State/name"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vFhc120EeW8Hc22XT4C7A" featureName="name" dataValue="name">
+        <element href="statemachine.ecore#//State/name"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vGIgF20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//State/name"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vGIgV20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+        <target href="statemachine.ecore#/"/>
+        <element href="statemachine.ecore#//Transition"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vGIgl20EeW8Hc22XT4C7A" featureName="name" dataValue="Transition">
+        <element href="statemachine.ecore#//Transition"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vGvkF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//Transition"/>
+        <element href="statemachine.ecore#//Transition/source"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vGvkV20EeW8Hc22XT4C7A" featureName="name" dataValue="source">
+        <element href="statemachine.ecore#//Transition/source"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vGvkl20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//Transition/source"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vHWoF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//Transition"/>
+        <element href="statemachine.ecore#//Transition/target"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vHWoV20EeW8Hc22XT4C7A" featureName="name" dataValue="target">
+        <element href="statemachine.ecore#//Transition/target"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vHWol20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//Transition/target"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vIkwF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures" element="_8wWswF20EeW8Hc22XT4C7A">
+        <target href="statemachine.ecore#//Transition"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vJL0F20EeW8Hc22XT4C7A" element="_8wWswF20EeW8Hc22XT4C7A" featureName="name" dataValue="trigger"/>
+      <changes xsi:type="history:Create" xmi:id="_8vJy4F20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//Transition"/>
+        <element href="statemachine.ecore#//Transition/effect"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vJy4V20EeW8Hc22XT4C7A" featureName="name" dataValue="effect">
+        <element href="statemachine.ecore#//Transition/effect"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vKZ8F20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+        <target href="statemachine.ecore#/"/>
+        <element href="statemachine.ecore#//CompositeState"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vKZ8V20EeW8Hc22XT4C7A" featureName="name" dataValue="CompositeState">
+        <element href="statemachine.ecore#//CompositeState"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8vKZ8l20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//CompositeState"/>
+        <element href="statemachine.ecore#//Region/state"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vLBAF20EeW8Hc22XT4C7A" featureName="name" dataValue="state">
+        <element href="statemachine.ecore#//Region/state"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vLBAV20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//Region/state"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vLBAl20EeW8Hc22XT4C7A" featureName="upperBound" dataValue="-1" oldDataValue="1">
+        <element href="statemachine.ecore#//Region/state"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vLBA120EeW8Hc22XT4C7A" featureName="containment" dataValue="true" oldDataValue="false">
+        <element href="statemachine.ecore#//Region/state"/>
+      </changes>
     </changes>
-    <changes xsi:type="history:CompositeChange">
-      <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/root"
-          featureName="eType" referenceValue="statemachine.ecore#//State"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/outgoing"
-          featureName="eType" referenceValue="statemachine.ecore#//Transition"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/outgoing"
-          featureName="eOpposite" referenceValue="statemachine.ecore#//Transition/source"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/incoming"
-          featureName="eType" referenceValue="statemachine.ecore#//Transition"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//State/name" featureName="eType"
-          referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/source"
-          featureName="eType" referenceValue="statemachine.ecore#//State"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/source"
-          featureName="eOpposite" referenceValue="statemachine.ecore#//State/outgoing"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/target"
-          featureName="eType" referenceValue="statemachine.ecore#//State"/>
-      <changes xsi:type="history:Set" element="#//@releases.1/@changes.0/@changes.3/@element"
-          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/effect"
-          featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <changes xsi:type="history:Add" element="statemachine.ecore#//CompositeState"
-          featureName="eSuperTypes" referenceValue="statemachine.ecore#//State"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region/state"
-          featureName="eType" referenceValue="statemachine.ecore#//State"/>
+    <changes xsi:type="history:CompositeChange" xmi:id="_8vLoEF20EeW8Hc22XT4C7A">
+      <changes xsi:type="history:Set" xmi:id="_8vLoEV20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//StateMachine/root"/>
+        <referenceValue href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vLoEl20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//State/outgoing"/>
+        <referenceValue href="statemachine.ecore#//Transition"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vMPIF20EeW8Hc22XT4C7A" featureName="eOpposite">
+        <element href="statemachine.ecore#//State/outgoing"/>
+        <referenceValue href="statemachine.ecore#//Transition/source"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vM2MF20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//State/incoming"/>
+        <referenceValue href="statemachine.ecore#//Transition"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vM2MV20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//State/name"/>
+        <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vM2Ml20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//Transition/source"/>
+        <referenceValue href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vNdQF20EeW8Hc22XT4C7A" featureName="eOpposite">
+        <element href="statemachine.ecore#//Transition/source"/>
+        <referenceValue href="statemachine.ecore#//State/outgoing"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vNdQV20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//Transition/target"/>
+        <referenceValue href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vOEUF20EeW8Hc22XT4C7A" element="_8wWswF20EeW8Hc22XT4C7A" featureName="eType">
+        <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vOEUV20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//Transition/effect"/>
+        <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      </changes>
+      <changes xsi:type="history:Add" xmi:id="_8vysEF20EeW8Hc22XT4C7A" featureName="eSuperTypes">
+        <element href="statemachine.ecore#//CompositeState"/>
+        <referenceValue href="statemachine.ecore#//State"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8vzTIF20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//Region/state"/>
+        <referenceValue href="statemachine.ecore#//State"/>
+      </changes>
     </changes>
   </releases>
-  <releases date="2008-11-23T23:00:44.812+0100">
-    <changes xsi:type="history:MigrationChange" migration="org.eclipse.emf.edapt.tests.migration.custom.StateMachineEventCustomMigration">
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-            element="statemachine.ecore#//Event"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Event" featureName="name"
-            dataValue="Event"/>
-        <operation name="newClass">
-          <parameters name="ePackage">
-            <referenceValue element="statemachine.ecore#/"/>
+  <releases xmi:id="_8vzTIV20EeW8Hc22XT4C7A" date="2008-11-23T16:00:44.812-0600">
+    <changes xsi:type="history:MigrationChange" xmi:id="_8v4ysF20EeW8Hc22XT4C7A" migration="org.eclipse.emf.edapt.tests.migration.custom.StateMachineEventCustomMigration">
+      <changes xsi:type="history:OperationChange" xmi:id="_8v5ZwF20EeW8Hc22XT4C7A">
+        <changes xsi:type="history:Create" xmi:id="_8v5ZwV20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+          <target href="statemachine.ecore#/"/>
+          <element href="statemachine.ecore#//Event"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8v6A0F20EeW8Hc22XT4C7A" featureName="name" dataValue="Event">
+          <element href="statemachine.ecore#//Event"/>
+        </changes>
+        <operation xmi:id="_8wJ4cF20EeW8Hc22XT4C7A" name="newClass">
+          <parameters xmi:id="_8wKfgF20EeW8Hc22XT4C7A" name="ePackage">
+            <referenceValue xmi:id="_8wOJ4F20EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#/"/>
+            </referenceValue>
           </parameters>
-          <parameters name="name">
+          <parameters xmi:id="_8wOJ4V20EeW8Hc22XT4C7A" name="name">
             <dataValue>Event</dataValue>
           </parameters>
-          <parameters name="superClasses"/>
+          <parameters xmi:id="_8wPYAF20EeW8Hc22XT4C7A" name="superClasses"/>
         </operation>
       </changes>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" target="statemachine.ecore#//Event" referenceName="eStructuralFeatures"
-            element="statemachine.ecore#//Event/name"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Event/name"
-            featureName="name" dataValue="name"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Event/name"
-            featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Event/name"
-            featureName="eType" referenceValue="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-        <operation name="newAttribute">
-          <parameters name="eClass">
-            <referenceValue element="statemachine.ecore#//Event"/>
+      <changes xsi:type="history:OperationChange" xmi:id="_8wPYAV20EeW8Hc22XT4C7A">
+        <changes xsi:type="history:Create" xmi:id="_8wP_EF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+          <target href="statemachine.ecore#//Event"/>
+          <element href="statemachine.ecore#//Event/name"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wP_EV20EeW8Hc22XT4C7A" featureName="name" dataValue="name">
+          <element href="statemachine.ecore#//Event/name"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wP_El20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+          <element href="statemachine.ecore#//Event/name"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wQmIF20EeW8Hc22XT4C7A" featureName="eType">
+          <element href="statemachine.ecore#//Event/name"/>
+          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </changes>
+        <operation xmi:id="_8wQmIV20EeW8Hc22XT4C7A" name="newAttribute">
+          <parameters xmi:id="_8wQmIl20EeW8Hc22XT4C7A" name="eClass">
+            <referenceValue xmi:id="_8wQmI120EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#//Event"/>
+            </referenceValue>
           </parameters>
-          <parameters name="name">
+          <parameters xmi:id="_8wQmJF20EeW8Hc22XT4C7A" name="name">
             <dataValue>name</dataValue>
           </parameters>
-          <parameters name="type">
-            <referenceValue element="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          <parameters xmi:id="_8wQmJV20EeW8Hc22XT4C7A" name="type">
+            <referenceValue xmi:id="_8wRNMF20EeW8Hc22XT4C7A">
+              <element href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+            </referenceValue>
           </parameters>
-          <parameters name="lowerBound">
+          <parameters xmi:id="_8wRNMV20EeW8Hc22XT4C7A" name="lowerBound">
             <dataValue>1</dataValue>
           </parameters>
-          <parameters name="upperBound">
+          <parameters xmi:id="_8wRNMl20EeW8Hc22XT4C7A" name="upperBound">
             <dataValue>1</dataValue>
           </parameters>
         </operation>
       </changes>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" target="statemachine.ecore#//StateMachine"
-            referenceName="eStructuralFeatures" element="statemachine.ecore#//StateMachine/event"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/event"
-            featureName="name" dataValue="event"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/event"
-            featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/event"
-            featureName="containment" dataValue="true" oldDataValue="false"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//StateMachine/event"
-            featureName="eType" referenceValue="statemachine.ecore#//Event"/>
-        <operation name="newReference">
-          <parameters name="eClass">
-            <referenceValue element="statemachine.ecore#//StateMachine"/>
+      <changes xsi:type="history:OperationChange" xmi:id="_8wRNM120EeW8Hc22XT4C7A">
+        <changes xsi:type="history:Create" xmi:id="_8wRNNF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+          <target href="statemachine.ecore#//StateMachine"/>
+          <element href="statemachine.ecore#//StateMachine/event"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wR0QF20EeW8Hc22XT4C7A" featureName="name" dataValue="event">
+          <element href="statemachine.ecore#//StateMachine/event"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wR0QV20EeW8Hc22XT4C7A" featureName="upperBound" dataValue="-1" oldDataValue="1">
+          <element href="statemachine.ecore#//StateMachine/event"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wR0Ql20EeW8Hc22XT4C7A" featureName="containment" dataValue="true" oldDataValue="false">
+          <element href="statemachine.ecore#//StateMachine/event"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wR0Q120EeW8Hc22XT4C7A" featureName="eType">
+          <element href="statemachine.ecore#//StateMachine/event"/>
+          <referenceValue href="statemachine.ecore#//Event"/>
+        </changes>
+        <operation xmi:id="_8wSbUF20EeW8Hc22XT4C7A" name="newReference">
+          <parameters xmi:id="_8wSbUV20EeW8Hc22XT4C7A" name="eClass">
+            <referenceValue xmi:id="_8wSbUl20EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#//StateMachine"/>
+            </referenceValue>
           </parameters>
-          <parameters name="name">
+          <parameters xmi:id="_8wSbU120EeW8Hc22XT4C7A" name="name">
             <dataValue>event</dataValue>
           </parameters>
-          <parameters name="type">
-            <referenceValue element="statemachine.ecore#//Event"/>
+          <parameters xmi:id="_8wSbVF20EeW8Hc22XT4C7A" name="type">
+            <referenceValue xmi:id="_8wSbVV20EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#//Event"/>
+            </referenceValue>
           </parameters>
-          <parameters name="lowerBound">
+          <parameters xmi:id="_8wSbVl20EeW8Hc22XT4C7A" name="lowerBound">
             <dataValue>0</dataValue>
           </parameters>
-          <parameters name="upperBound">
+          <parameters xmi:id="_8wTCYF20EeW8Hc22XT4C7A" name="upperBound">
             <dataValue>-1</dataValue>
           </parameters>
-          <parameters name="containment">
+          <parameters xmi:id="_8wTCYV20EeW8Hc22XT4C7A" name="containment">
             <dataValue>true</dataValue>
           </parameters>
-          <parameters name="opposite"/>
+          <parameters xmi:id="_8wTCYl20EeW8Hc22XT4C7A" name="opposite"/>
         </operation>
       </changes>
-      <changes xsi:type="history:Delete" target="statemachine.ecore#//Transition"
-          referenceName="eStructuralFeatures">
-        <element xsi:type="ecore:EAttribute" name="trigger" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <changes xsi:type="history:Delete" xmi:id="_8wWFsF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//Transition"/>
+        <element xsi:type="ecore:EAttribute" xmi:id="_8wWswF20EeW8Hc22XT4C7A" name="trigger">
+          <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        </element>
       </changes>
-      <changes xsi:type="history:OperationChange">
-        <changes xsi:type="history:Create" target="statemachine.ecore#//Transition"
-            referenceName="eStructuralFeatures" element="statemachine.ecore#//Transition/trigger"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/trigger"
-            featureName="name" dataValue="trigger"/>
-        <changes xsi:type="history:Set" element="statemachine.ecore#//Transition/trigger"
-            featureName="eType" referenceValue="statemachine.ecore#//Event"/>
-        <operation name="newReference">
-          <parameters name="eClass">
-            <referenceValue element="statemachine.ecore#//Transition"/>
+      <changes xsi:type="history:OperationChange" xmi:id="_8wXT0V20EeW8Hc22XT4C7A">
+        <changes xsi:type="history:Create" xmi:id="_8wXT0l20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+          <target href="statemachine.ecore#//Transition"/>
+          <element href="statemachine.ecore#//Transition/trigger"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wX64F20EeW8Hc22XT4C7A" featureName="name" dataValue="trigger">
+          <element href="statemachine.ecore#//Transition/trigger"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_8wX64V20EeW8Hc22XT4C7A" featureName="eType">
+          <element href="statemachine.ecore#//Transition/trigger"/>
+          <referenceValue href="statemachine.ecore#//Event"/>
+        </changes>
+        <operation xmi:id="_8wX64l20EeW8Hc22XT4C7A" name="newReference">
+          <parameters xmi:id="_8wX64120EeW8Hc22XT4C7A" name="eClass">
+            <referenceValue xmi:id="_8wX65F20EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#//Transition"/>
+            </referenceValue>
           </parameters>
-          <parameters name="name">
+          <parameters xmi:id="_8wX65V20EeW8Hc22XT4C7A" name="name">
             <dataValue>trigger</dataValue>
           </parameters>
-          <parameters name="type">
-            <referenceValue element="statemachine.ecore#//Event"/>
+          <parameters xmi:id="_8wYh8F20EeW8Hc22XT4C7A" name="type">
+            <referenceValue xmi:id="_8wYh8V20EeW8Hc22XT4C7A">
+              <element href="statemachine.ecore#//Event"/>
+            </referenceValue>
           </parameters>
-          <parameters name="lowerBound">
+          <parameters xmi:id="_8wYh8l20EeW8Hc22XT4C7A" name="lowerBound">
             <dataValue>0</dataValue>
           </parameters>
-          <parameters name="upperBound">
+          <parameters xmi:id="_8wYh8120EeW8Hc22XT4C7A" name="upperBound">
             <dataValue>1</dataValue>
           </parameters>
-          <parameters name="containment">
+          <parameters xmi:id="_8wYh9F20EeW8Hc22XT4C7A" name="containment">
             <dataValue>false</dataValue>
           </parameters>
-          <parameters name="opposite"/>
+          <parameters xmi:id="_8wYh9V20EeW8Hc22XT4C7A" name="opposite"/>
         </operation>
       </changes>
     </changes>
-    <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Create" target="statemachine.ecore#//CompositeState"
-          referenceName="eStructuralFeatures" element="statemachine.ecore#//CompositeState/region"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState/region"
-          featureName="name" dataValue="region"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState/region"
-          featureName="lowerBound" dataValue="1" oldDataValue="0"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState/region"
-          featureName="containment" dataValue="true" oldDataValue="false"/>
-      <changes xsi:type="history:Create" target="statemachine.ecore#/" referenceName="eClassifiers"
-          element="statemachine.ecore#//Region"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//Region" featureName="name"
-          dataValue="Region"/>
-      <changes xsi:type="history:Move" target="statemachine.ecore#//Region" referenceName="eStructuralFeatures"
-          element="statemachine.ecore#//Region/state" source="statemachine.ecore#//CompositeState"/>
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState/region"
-          featureName="eType" referenceValue="statemachine.ecore#//Region"/>
-      <operation name="extractClass">
-        <parameters name="contextClass">
-          <referenceValue element="statemachine.ecore#//CompositeState"/>
+    <changes xsi:type="history:OperationChange" xmi:id="_8wYh9l20EeW8Hc22XT4C7A">
+      <changes xsi:type="history:Create" xmi:id="_8wZJAF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//CompositeState"/>
+        <element href="statemachine.ecore#//CompositeState/region"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8wZJAV20EeW8Hc22XT4C7A" featureName="name" dataValue="region">
+        <element href="statemachine.ecore#//CompositeState/region"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8wZJAl20EeW8Hc22XT4C7A" featureName="lowerBound" dataValue="1" oldDataValue="0">
+        <element href="statemachine.ecore#//CompositeState/region"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8wZwEF20EeW8Hc22XT4C7A" featureName="containment" dataValue="true" oldDataValue="false">
+        <element href="statemachine.ecore#//CompositeState/region"/>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_8wZwEV20EeW8Hc22XT4C7A" referenceName="eClassifiers">
+        <target href="statemachine.ecore#/"/>
+        <element href="statemachine.ecore#//Region"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8wZwEl20EeW8Hc22XT4C7A" featureName="name" dataValue="Region">
+        <element href="statemachine.ecore#//Region"/>
+      </changes>
+      <changes xsi:type="history:Move" xmi:id="_8wblQF20EeW8Hc22XT4C7A" referenceName="eStructuralFeatures">
+        <target href="statemachine.ecore#//Region"/>
+        <element href="statemachine.ecore#//Region/state"/>
+        <source href="statemachine.ecore#//CompositeState"/>
+      </changes>
+      <changes xsi:type="history:Set" xmi:id="_8wblQV20EeW8Hc22XT4C7A" featureName="eType">
+        <element href="statemachine.ecore#//CompositeState/region"/>
+        <referenceValue href="statemachine.ecore#//Region"/>
+      </changes>
+      <operation xmi:id="_8wblQl20EeW8Hc22XT4C7A" name="extractClass">
+        <parameters xmi:id="_8wblQ120EeW8Hc22XT4C7A" name="contextClass">
+          <referenceValue xmi:id="_8wcMUF20EeW8Hc22XT4C7A">
+            <element href="statemachine.ecore#//CompositeState"/>
+          </referenceValue>
         </parameters>
-        <parameters name="features">
-          <referenceValue element="statemachine.ecore#//Region/state"/>
+        <parameters xmi:id="_8wcMUV20EeW8Hc22XT4C7A" name="features">
+          <referenceValue xmi:id="_8wcMUl20EeW8Hc22XT4C7A">
+            <element href="statemachine.ecore#//Region/state"/>
+          </referenceValue>
         </parameters>
-        <parameters name="ePackage">
-          <referenceValue element="statemachine.ecore#/"/>
+        <parameters xmi:id="_8wcMU120EeW8Hc22XT4C7A" name="ePackage">
+          <referenceValue xmi:id="_8wcMVF20EeW8Hc22XT4C7A">
+            <element href="statemachine.ecore#/"/>
+          </referenceValue>
         </parameters>
-        <parameters name="className">
+        <parameters xmi:id="_8wcMVV20EeW8Hc22XT4C7A" name="className">
           <dataValue>Region</dataValue>
         </parameters>
-        <parameters name="referenceName">
+        <parameters xmi:id="_8wczYF20EeW8Hc22XT4C7A" name="referenceName">
           <dataValue>region</dataValue>
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:OperationChange">
-      <changes xsi:type="history:Set" element="statemachine.ecore#//CompositeState/region"
-          featureName="upperBound" dataValue="-1" oldDataValue="1"/>
-      <operation name="generalizeReference">
-        <parameters name="reference">
-          <referenceValue element="statemachine.ecore#//CompositeState/region"/>
+    <changes xsi:type="history:OperationChange" xmi:id="_8wczYV20EeW8Hc22XT4C7A">
+      <changes xsi:type="history:Set" xmi:id="_8wczYl20EeW8Hc22XT4C7A" featureName="upperBound" dataValue="-1" oldDataValue="1">
+        <element href="statemachine.ecore#//CompositeState/region"/>
+      </changes>
+      <operation xmi:id="_8wczY120EeW8Hc22XT4C7A" name="generalizeReference">
+        <parameters xmi:id="_8wczZF20EeW8Hc22XT4C7A" name="reference">
+          <referenceValue xmi:id="_8wczZV20EeW8Hc22XT4C7A">
+            <element href="statemachine.ecore#//CompositeState/region"/>
+          </referenceValue>
         </parameters>
-        <parameters name="type">
-          <referenceValue element="statemachine.ecore#//Region"/>
+        <parameters xmi:id="_8wczZl20EeW8Hc22XT4C7A" name="type">
+          <referenceValue xmi:id="_8wdacF20EeW8Hc22XT4C7A">
+            <element href="statemachine.ecore#//Region"/>
+          </referenceValue>
         </parameters>
-        <parameters name="lowerBound">
+        <parameters xmi:id="_8wdacV20EeW8Hc22XT4C7A" name="lowerBound">
           <dataValue>1</dataValue>
         </parameters>
-        <parameters name="upperBound">
+        <parameters xmi:id="_8wdacl20EeW8Hc22XT4C7A" name="upperBound">
           <dataValue>-1</dataValue>
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:Set" element="statemachine.ecore#/" featureName="nsURI"
-        dataValue="http://statemachine/r1" oldDataValue="http://statemachine/r0"/>
+    <changes xsi:type="history:Set" xmi:id="_8wdac120EeW8Hc22XT4C7A" featureName="nsURI" dataValue="http://statemachine/r1" oldDataValue="http://statemachine/r0">
+      <element href="statemachine.ecore#/"/>
+    </changes>
   </releases>
-  <releases/>
+  <releases xmi:id="_8wdadF20EeW8Hc22XT4C7A"/>
 </history:History>
