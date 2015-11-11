@@ -55,6 +55,7 @@
 		<module>../../features</module>
 		<module>../org.eclipse.emf.edapt.releng.p2</module>
 		<module>../../tests/org.eclipse.emf.edapt.tests</module>
+		<module>../../tests/org.eclipse.emf.edapt.common.tests</module>
 	</modules>
 
 	<build>

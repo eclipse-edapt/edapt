@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 import org.eclipse.core.resources.IFile;
@@ -24,10 +25,13 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
+import org.osgi.framework.Bundle;
 
 /**
  * Helper methods for conversions between different types of resource
@@ -163,12 +167,30 @@ public final class URIUtils {
 	 * @return Java file
 	 */
 	public static File getJavaFile(URI uri) {
-		if (uri.isPlatform()) {
-			final IFile file = getFile(uri);
-			final IPath location = file.getLocation();
-			return location.toFile();
+		try {
+			if (uri.isPlatformPlugin()) {
+				final Bundle bundle = Platform.getBundle(uri.segment(1));
+				final StringBuilder builder = new StringBuilder();
+				for (int i = 2; i < uri.segmentCount(); i++) {
+					if (builder.length() != 0) {
+						builder.append("/"); //$NON-NLS-1$
+					}
+					builder.append(uri.segment(i));
+				}
+				final URL entry = bundle.getEntry(builder.toString());
+				return new File(FileLocator.resolve(entry).toURI());
+			}
+			if (uri.isPlatform()) {
+				final IFile file = getFile(uri);
+				final IPath location = file.getLocation();
+				return location.toFile();
+			}
+			return new File(uri.toFileString());
+		} catch (final URISyntaxException ex) {
+			return null;
+		} catch (final IOException ex) {
+			return null;
 		}
-		return new File(uri.toFileString());
 	}
 
 	/**
