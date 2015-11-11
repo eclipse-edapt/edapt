@@ -162,8 +162,11 @@ public class ValueSelectionComposite extends Composite {
 				if (e.detail == SWT.TRAVERSE_RETURN) {
 					e.doit = false;
 					filteredViewer.getControl().setFocus();
-					filteredViewer.setSelection(new StructuredSelection(
-						getFirstMatchingElement()));
+					final EObject matchingElement = getFirstMatchingElement();
+					if (matchingElement != null) {
+						/* set selection */
+						filteredViewer.setSelection(new StructuredSelection(matchingElement));
+					}
 				}
 			}
 		});
