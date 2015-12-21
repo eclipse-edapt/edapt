@@ -55,6 +55,8 @@
 						<args>
 							<arg>-nosplash</arg>
 							<arg>-consoleLog</arg>
+							<arg>--launcher.GTK_version</arg>
+							<arg>2</arg>
 						</args>
 						<vmArgs>
 							<vmArg>-Dorg.eclipse.swt.browser.DefaultType=mozilla</vmArg>
