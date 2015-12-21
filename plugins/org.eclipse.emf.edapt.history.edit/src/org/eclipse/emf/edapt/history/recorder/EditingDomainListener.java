@@ -144,9 +144,13 @@ public class EditingDomainListener {
 
 	/** Check whether the history is already recorded for a metamodel. */
 	public boolean isRecorded(Resource metamodel) {
+		final History history = getHistory();
+		if (history == null) {
+			return false;
+		}
 		final List<EPackage> rootPackages = ResourceUtils.getRootElements(metamodel,
 			EPackage.class);
-		final List<EPackage> historyRootPackages = getHistory().getRootPackages();
+		final List<EPackage> historyRootPackages = history.getRootPackages();
 		for (final EPackage rootPackage : rootPackages) {
 			if (historyRootPackages.contains(rootPackage)) {
 				return true;
@@ -203,8 +207,15 @@ public class EditingDomainListener {
 		}
 	}
 
-	/** Get the history that is listened to. */
+	/**
+	 * Get the history that is listened to.
+	 *
+	 * @return the history. may be <code>null</code> if it cannot be loaded
+	 */
 	public History getHistory() {
+		if (historyResource.getContents().size() < 1) {
+			return null;
+		}
 		final History history = (History) historyResource.getContents().get(0);
 		return history;
 	}
