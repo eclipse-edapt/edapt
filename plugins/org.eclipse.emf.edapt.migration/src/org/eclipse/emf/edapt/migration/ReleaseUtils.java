@@ -14,8 +14,11 @@ package org.eclipse.emf.edapt.migration;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,9 +41,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
  * Helper methods for extraction of namespace URI and version from a model file.
  *
  * @author herrmama
- * @author $Author$
- * @version $Rev$
- * @levd.rating YELLOW Hash: 680A9E3F1CAE7963EB55E8E8749FF9E6
+ * @authot Johannes Faltermeier
  */
 public final class ReleaseUtils {
 
@@ -52,6 +53,29 @@ public final class ReleaseUtils {
 	/** Extract the namespace URI from a model. */
 	public static String getNamespaceURI(URI uri) {
 		return getNamespaceURI_SAX(URIUtils.getInputStream(uri));
+	}
+
+	/**
+	 * Extract all namespace URIs from a model.
+	 *
+	 * @since 1.2
+	 */
+	public static Set<String> getAllNamespaceURIsFromPrefixes(URI uri) {
+		final InputStream inputStream = URIUtils.getInputStream(uri);
+		if (inputStream == null) {
+			return Collections.emptySet();
+		}
+		try {
+			final XMLReader reader = XMLReaderFactory.createXMLReader();
+			final NameSpaceURIsHandler contentHandler = new NameSpaceURIsHandler();
+			reader.setContentHandler(contentHandler);
+			reader.parse(new InputSource(inputStream));
+			return contentHandler.getNsURIs();
+		} catch (final SAXException ex) {
+			return Collections.emptySet();
+		} catch (final IOException ex) {
+			return Collections.emptySet();
+		}
 	}
 
 	/** Extract the namespace URI from a model file using SAX. */
@@ -129,6 +153,33 @@ public final class ReleaseUtils {
 		/** Returns the namespace URI. */
 		public String getNsURI() {
 			return nsURI;
+		}
+	}
+
+	/**
+	 * Handler for getting all namespace uris.
+	 * 
+	 * @author Johannes Faltermeier
+	 *
+	 */
+	private static class NameSpaceURIsHandler extends DefaultHandler {
+
+		private final Set<String> namespaceURIs = new LinkedHashSet<String>();
+
+		@Override
+		public void startPrefixMapping(String prefix, String uri) throws SAXException {
+			super.startPrefixMapping(prefix, uri);
+			if (!uri.equals(ExtendedMetaData.XMI_URI) && !uri.equals(ExtendedMetaData.XML_SCHEMA_URI)
+				&& !uri.equals(ExtendedMetaData.XSI_URI)) {
+				namespaceURIs.add(uri);
+			}
+		}
+
+		/**
+		 * @return the namespace URIs.
+		 */
+		public Set<String> getNsURIs() {
+			return namespaceURIs;
 		}
 	}
 

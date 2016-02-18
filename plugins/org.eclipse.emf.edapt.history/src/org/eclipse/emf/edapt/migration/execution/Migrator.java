@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -296,6 +297,27 @@ public class Migrator {
 		final String nsURI = ReleaseUtils.getNamespaceURI(modelURI);
 		return releaseMap.containsKey(nsURI) ? releaseMap.get(nsURI)
 			: Collections.<Release> emptySet();
+	}
+
+	/**
+	 * Get the release of a model based on a set of namespace URIs.
+	 *
+	 * @since 1.2
+	 */
+	public Set<Release> getRelease(Set<String> nsURIs) {
+		final Set<Release> releases = new LinkedHashSet<Release>();
+		for (final String nsURI : nsURIs) {
+			final Set<Release> set = getReleaseMap().get(nsURI);
+			if (set == null || set.isEmpty()) {
+				continue;
+			}
+			if (releases.isEmpty()) {
+				releases.addAll(set);
+			} else {
+				releases.retainAll(set);
+			}
+		}
+		return releases;
 	}
 
 	/** Get the release map from NS-URI to releases */
