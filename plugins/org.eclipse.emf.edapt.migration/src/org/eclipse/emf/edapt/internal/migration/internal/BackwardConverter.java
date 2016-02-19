@@ -11,6 +11,8 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.migration.internal;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
@@ -135,13 +137,12 @@ public class BackwardConverter {
 					if (sourceFeature.isMany()) {
 						final EList values = (EList) eObject.eGet(targetFeature);
 						for (final Object value : attributeSlot.getValues()) {
-							values.add(resolveLiteral((EEnumLiteral) value));
+							values.add(resolveLiteral(value));
 						}
 					} else {
 						if (!attributeSlot.getValues().isEmpty()) {
 							eObject.eSet(targetFeature,
-								resolveLiteral((EEnumLiteral) attributeSlot
-									.getValues().get(0)));
+								resolveLiteral(attributeSlot.getValues().get(0)));
 						}
 					}
 				} else {
@@ -178,11 +179,11 @@ public class BackwardConverter {
 	 * (done in {@link #initProperties(Model)}).
 	 */
 	protected void adjustUUIDs(Model model) {
-		for (Type type : model.getTypes()) {
-			for (Instance instance : type.getInstances()) {
-				String uuid = instance.getUuid();
+		for (final Type type : model.getTypes()) {
+			for (final Instance instance : type.getInstances()) {
+				final String uuid = instance.getUuid();
 				if (uuid != null) {
-					EObject eObject = resolve(instance);
+					final EObject eObject = resolve(instance);
 					EcoreUtils.setUUID(eObject, uuid);
 				}
 			}
@@ -195,8 +196,14 @@ public class BackwardConverter {
 	}
 
 	/** Resolve the literal value of an enumeration. */
-	protected Enumerator resolveLiteral(EEnumLiteral literal) {
-		return literal;
+	protected Enumerator resolveLiteral(Object literal) {
+		if (EEnumLiteral.class.isInstance(literal)) {
+			return EEnumLiteral.class.cast(literal);
+		} else if (Enumerator.class.isInstance(literal)) {
+			return Enumerator.class.cast(literal);
+		}
+		throw new IllegalArgumentException(MessageFormat.format(
+			"Unexpected literal {0} of type {1} cannot be converted to an Enumerator", literal, literal.getClass())); //$NON-NLS-1$
 	}
 
 	/**

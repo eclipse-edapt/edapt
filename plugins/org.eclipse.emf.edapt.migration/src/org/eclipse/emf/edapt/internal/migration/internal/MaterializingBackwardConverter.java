@@ -1,5 +1,7 @@
 package org.eclipse.emf.edapt.internal.migration.internal;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -44,12 +46,18 @@ public class MaterializingBackwardConverter extends BackwardConverter {
 
 	/** {@inheritDoc} */
 	@Override
-	protected Enumerator resolveLiteral(EEnumLiteral literal) {
-		final EEnum sourceEnum = literal.getEEnum();
-		final String value = sourceEnum.getEPackage().getEFactoryInstance()
-			.convertToString(sourceEnum, literal);
-		final EEnum targetEnum = (EEnum) resolveEClassifier(sourceEnum);
-		return (Enumerator) targetEnum.getEPackage().getEFactoryInstance()
-			.createFromString(targetEnum, value);
+	protected Enumerator resolveLiteral(Object literal) {
+		if (EEnumLiteral.class.isInstance(literal)) {
+			final EEnum sourceEnum = EEnumLiteral.class.cast(literal).getEEnum();
+			final String value = sourceEnum.getEPackage().getEFactoryInstance()
+				.convertToString(sourceEnum, literal);
+			final EEnum targetEnum = (EEnum) resolveEClassifier(sourceEnum);
+			return (Enumerator) targetEnum.getEPackage().getEFactoryInstance()
+				.createFromString(targetEnum, value);
+		} else if (Enumerator.class.isInstance(literal)) {
+			return Enumerator.class.cast(literal);
+		}
+		throw new IllegalArgumentException(MessageFormat.format(
+			"Unexpected literal {0} of type {1} cannot be converted to an Enumerator", literal, literal.getClass())); //$NON-NLS-1$
 	}
 }
