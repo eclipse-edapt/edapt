@@ -39,16 +39,16 @@
 						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/2/eclipse-dsl-mars-2-linux-gtk-x86_64.tar.gz</explicit>
 						<injections>
 							<injection>
-								<site>http://download.eclipse.org/edapt/p2/nightly</site>
-								<features>
-									<feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature>
-									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
-								</features>      
-							</injection>
-							<injection>
 								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
 								<features>
 									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
+								</features>      
+							</injection>
+							<injection>
+								<site>http://download.eclipse.org/edapt/p2/nightly</site>
+								<features>
+									<!--feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature-->
+									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
 								</features>      
 							</injection>
 						</injections>
