@@ -59,6 +59,7 @@
 							<arg>2</arg>
 						</args>
 						<vmArgs>
+							<vmArg>-Xmx2g</vmArg>
 							<vmArg>-Dorg.eclipse.swt.browser.DefaultType=mozilla</vmArg>
 						</vmArgs>
 					</aut>
