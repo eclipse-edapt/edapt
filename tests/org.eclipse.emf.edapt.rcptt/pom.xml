@@ -48,6 +48,7 @@
 								<site>http://download.eclipse.org/releases/mars</site>
 								<features>
 									<feature>org.eclipse.ocl.all.sdk.feature.group</feature>
+									<feature>org.eclipse.emf.compare.ide.ui.feature.group</feature>
 								</features>      
 							</injection>
 							<injection>
