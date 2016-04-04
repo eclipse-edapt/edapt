@@ -36,7 +36,7 @@
 					</runner>
 					<!-- The main configuration section goes here --> 
 					<aut>
-						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/R/eclipse-rcp-mars-R-linux-gtk-x86_64.tar.gz</explicit>
+						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/2/eclipse-dsl-mars-2-linux-gtk.tar.gz</explicit>
 						<injections>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
@@ -46,7 +46,7 @@
 								</features>      
 							</injection>
 							<injection>
-								<site>http://download.eclipse.org/ecp/releases/releases_16/</site>
+								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
 								<features>
 									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
 								</features>      
