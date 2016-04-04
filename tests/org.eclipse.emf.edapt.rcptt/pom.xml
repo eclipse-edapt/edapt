@@ -45,9 +45,15 @@
 								</features>      
 							</injection>
 							<injection>
+								<site>http://download.eclipse.org/releases/mars</site>
+								<features>
+									<feature>org.eclipse.ocl.all.sdk.feature.group</feature>
+								</features>      
+							</injection>
+							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
-									<!--feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature-->
+									<feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature>
 									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
 								</features>      
 							</injection>
