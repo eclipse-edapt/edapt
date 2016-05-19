@@ -66,6 +66,14 @@
                </appInfo>
             </annotation>
          </attribute>
+         <attribute name="useWildcards" type="boolean" use="default" value="false">
+            <annotation>
+               <documentation>
+                  Defines whether wildcards in the nsURI should be considered. When this option is set to true, any URIs that match the value declared in the nsURI field will be taken into account. WIldcards should be specified using the &lt;b&gt;*&lt;/b&gt; character. 
+&lt;p&gt;Example: http://www.example.com/sampleuri*
+               </documentation>
+            </annotation>
+         </attribute>
       </complexType>
    </element>
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.edapt.factories">
+      <factory
+            class="org.eclipse.emf.edapt.tests.migration.FactoryHelperTestEFactory1"
+            nsURI="org.eclipse.emf.edapt.tests.factory1*"
+            useWildcards="true">
+      </factory>
+      <factory
+            class="org.eclipse.emf.edapt.tests.migration.FactoryHelperTestEFactory2"
+            nsURI="org.eclipse.emf.edapt.tests.factory1"
+            useWildcards="false">
+      </factory>
+   </extension>
+
+</plugin>

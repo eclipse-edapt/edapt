@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>edapt</groupId>
 	<artifactId>org.eclipse.emf.edapt.tests</artifactId>
-	<packaging>eclipse-plugin</packaging>
+	<packaging>eclipse-test-plugin</packaging>
 
 	<build>
 		<plugins>
@@ -27,6 +27,7 @@
 							<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 							<excludes>
 								<exclude>**/GMFLifecycleTest.java</exclude>
+								<exclude>**/FactoryHelperTest.java</exclude>
 							</excludes>
 						</configuration>
 						<goals>
@@ -34,6 +35,18 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
+					<includes>
+						<include>**/FactoryHelperTest.java</include>
+					</includes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
