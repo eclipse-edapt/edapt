@@ -6,12 +6,6 @@
    <feature id="org.eclipse.emf.edapt.recorder.feature" version="0.0.0">
       <category name="org.eclipse.emf.edapt.category.base"/>
    </feature>
-   <feature id="org.eclipse.emf.edapt.runtime.cdo.feature" version="0.0.0">
-      <category name="org.eclipse.emf.edapt.category.cdo"/>
-   </feature>
-   <feature id="org.eclipse.emf.edapt.runtime.cdo.feature.source" version="0.0.0">
-      <category name="org.eclipse.emf.edapt.category.cdo"/>
-   </feature>
    <feature id="org.eclipse.emf.edapt.recorder.feature.source" version="0.0.0">
       <category name="org.eclipse.emf.edapt.category.dev"/>
    </feature>
@@ -19,7 +13,6 @@
       <category name="org.eclipse.emf.edapt.category.dev"/>
    </feature>
    <category-def name="org.eclipse.emf.edapt.category.base" label="Edapt base (Install all to get started)"/>
-   <category-def name="org.eclipse.emf.edapt.category.cdo" label="Edapt CDO (Experimental)"/>
    <category-def name="org.eclipse.emf.edapt.category.dev" label="Edapt Developer Resources">
       <description>
          The base features including sources
