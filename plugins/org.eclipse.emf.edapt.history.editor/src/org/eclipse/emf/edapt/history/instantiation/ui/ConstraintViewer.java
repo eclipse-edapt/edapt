@@ -59,8 +59,11 @@ public class ConstraintViewer extends TableViewer {
 			| SWT.FULL_SELECTION);
 
 		// icon taken from IDE Workbench plugin
-		final ImageDescriptor imageDescriptor = IDEWorkbenchPlugin
-			.getIDEImageDescriptor("obj16/error_tsk.gif"); //$NON-NLS-1$
+		ImageDescriptor imageDescriptor = IDEWorkbenchPlugin.getIDEImageDescriptor("obj16/error_tsk.png"); //$NON-NLS-1$
+		if (imageDescriptor == null) {
+			/* fall back for pre neon IDEs */
+			imageDescriptor = IDEWorkbenchPlugin.getIDEImageDescriptor("obj16/error_tsk.gif"); //$NON-NLS-1$
+		}
 		constraintImage = imageDescriptor.createImage();
 
 		init();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2007, 2016 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
 package org.eclipse.emf.edapt.internal.migration.internal;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -37,12 +38,15 @@ public final class FactoryHelper {
 
 	private static final String CLASS = "class"; //$NON-NLS-1$
 	private static final String NS_URI = "nsURI"; //$NON-NLS-1$
+	private static final String USE_WILDCARDS = "useWildcards"; //$NON-NLS-1$
 	private static final String POINT_ID = "org.eclipse.emf.edapt.factories"; //$NON-NLS-1$
 
 	private final Map<String, Class<? extends EFactory>> nsURIToFactoryMap;
+	private final Map<String, Boolean> wildcardsUsageMap;
 
 	private FactoryHelper() {
 		nsURIToFactoryMap = new LinkedHashMap<String, Class<? extends EFactory>>();
+		wildcardsUsageMap = new HashMap<String, Boolean>();
 		readExtensionPoint();
 	}
 
@@ -68,7 +72,9 @@ public final class FactoryHelper {
 			if (nsURI == null || clazz == null) {
 				return;
 			}
+			final boolean useWildcards = Boolean.parseBoolean(configurationElement.getAttribute(USE_WILDCARDS));
 			nsURIToFactoryMap.put(nsURI, clazz);
+			wildcardsUsageMap.put(nsURI, useWildcards);
 		} catch (final ClassNotFoundException e) {
 			MigrationPlugin.INSTANCE.log(e);
 		}
@@ -93,11 +99,10 @@ public final class FactoryHelper {
 	 */
 	public void overrideFactory(EPackage ePackage) {
 		try {
-			if (!nsURIToFactoryMap.containsKey(ePackage.getNsURI())) {
+			final Class<? extends EFactory> clazz = getEFactoryFromMap(ePackage.getNsURI());
+			if (clazz == null) {
 				return;
 			}
-			final Class<? extends EFactory> clazz = nsURIToFactoryMap.get(ePackage
-				.getNsURI());
 			final EFactory eFactory = clazz.getConstructor().newInstance();
 			ePackage.setEFactoryInstance(eFactory);
 		} catch (final InstantiationException e) {
@@ -113,5 +118,34 @@ public final class FactoryHelper {
 		} catch (final SecurityException e) {
 			MigrationPlugin.INSTANCE.log(e);
 		}
+	}
+
+	/**
+	 * Returns the {@link EFactory} registered for the given nsURI, taking wildcards into account, if such a factory
+	 * exists.
+	 *
+	 * @param nsURI
+	 * @return if there exists a factory registered for a matching nsURI, without any wildcards, it will be returned
+	 *         first. Otherwise, the method will return the first factory that it can match (using wildcards) to the
+	 *         given nsURI
+	 *         May return null.
+	 */
+	private Class<? extends EFactory> getEFactoryFromMap(String nsURI) {
+		if (nsURI == null) {
+			return null;
+		}
+		// if we have an exact match, that doesn't use wildcards, return the value from the factory map
+		if (wildcardsUsageMap.get(nsURI) != null && !wildcardsUsageMap.get(nsURI)) {
+			return nsURIToFactoryMap.get(nsURI);
+		}
+		// else, search if we can find a match using wildcards
+		// if multiple matches exist, the first one will be returned
+		for (final String uri : wildcardsUsageMap.keySet()) {
+			if (wildcardsUsageMap.get(uri) && nsURI.matches(uri.replace("*", ".*"))) { //$NON-NLS-1$ //$NON-NLS-2$
+				return nsURIToFactoryMap.get(uri);
+			}
+		}
+		// fallback to factory map
+		return nsURIToFactoryMap.get(nsURI);
 	}
 }

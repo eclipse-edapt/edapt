@@ -59,6 +59,9 @@ public class Persistency {
 				if (element instanceof EPackage) {
 					final EPackage ePackage = (EPackage) element;
 					FactoryHelper.INSTANCE.overrideFactory(ePackage);
+					for (final EPackage sub : ePackage.getESubpackages()) {
+						FactoryHelper.INSTANCE.overrideFactory(sub);
+					}
 					metamodelResource.getRootPackages().add(ePackage);
 				}
 			}

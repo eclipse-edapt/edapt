@@ -30,11 +30,13 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.EContentAdapter;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.emf.edapt.spi.history.Add;
 import org.eclipse.emf.edapt.spi.history.CompositeChange;
 import org.eclipse.emf.edapt.spi.history.Create;
 import org.eclipse.emf.edapt.spi.history.Delete;
 import org.eclipse.emf.edapt.spi.history.HistoryFactory;
+import org.eclipse.emf.edapt.spi.history.HistoryPlugin;
 import org.eclipse.emf.edapt.spi.history.Move;
 import org.eclipse.emf.edapt.spi.history.PrimitiveChange;
 import org.eclipse.emf.edapt.spi.history.Remove;
@@ -120,7 +122,7 @@ public class ChangeRecorder extends GeneratorBase {
 		if (!isRecording()) {
 			doBeginRecording();
 		} else {
-			throw new IllegalStateException("Recorder is already started"); //$NON-NLS-1$
+			LoggingUtils.logInfo(HistoryPlugin.getPlugin(), "ChangeRecorder is already started"); //$NON-NLS-1$
 		}
 	}
 

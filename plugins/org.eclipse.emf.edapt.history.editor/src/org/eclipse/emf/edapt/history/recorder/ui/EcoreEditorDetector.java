@@ -11,10 +11,12 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
@@ -22,13 +24,17 @@ import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edapt.common.ui.EcoreUIUtils;
 import org.eclipse.emf.edapt.common.ui.PartAdapter;
+import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.history.recorder.AddResourceCommand;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.emf.edapt.history.recorder.IResourceLoadListener;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -85,15 +91,28 @@ public class EcoreEditorDetector extends PartAdapter implements
 	/**
 	 * Attach an {@link EditingDomainListener} to an {@link EcoreEditor}.
 	 */
-	public void addEditor(EcoreEditor editor) {
-		EditingDomainListener listener = getListener(editor);
+	public void addEditor(final EcoreEditor editor) {
+		final IRunnableWithProgress attachRunnable = new IRunnableWithProgress() {
+			@Override
+			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				EditingDomainListener listener = getListener(editor);
 
-		if (listener == null) {
-			listener = new EditingDomainListener(editor.getEditingDomain());
+				if (listener == null) {
+					listener = new EditingDomainListener(editor.getEditingDomain());
+				}
+				if (listener.loadHistory()) {
+					validateListener(editor, listener);
+				}
+			}
+		};
+		try {
+			new ProgressMonitorDialog(editor.getSite().getShell()).run(true, false, attachRunnable);
+		} catch (final InvocationTargetException ex) {
+			LoggingUtils.logError(HistoryEditorPlugin.getPlugin(), ex);
+		} catch (final InterruptedException ex) {
+			LoggingUtils.logError(HistoryEditorPlugin.getPlugin(), ex);
 		}
-		if (listener.loadHistory()) {
-			validateListener(editor, listener);
-		}
+
 	}
 
 	/**
