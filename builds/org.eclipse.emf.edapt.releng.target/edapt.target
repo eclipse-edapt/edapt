@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?>
-
-<target name="Edapt target" sequenceNumber="67">
+<?pde version="3.8"?><target name="Edapt target" sequenceNumber="67">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="slicer" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.0.201306250935"/>

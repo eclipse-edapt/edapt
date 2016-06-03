@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Edapt.Common Tests
 Bundle-SymbolicName: org.eclipse.emf.edapt.common.tests
-Bundle-Version: 1.2.0.qualifier
-Fragment-Host: org.eclipse.emf.edapt.common;bundle-version="[1.2.0,2.0.0)"
+Bundle-Version: 1.3.0.qualifier
+Fragment-Host: org.eclipse.emf.edapt.common;bundle-version="[1.3.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)"
-Export-Package: org.eclipse.emf.edapt.internal.common;version="1.2.0";x-internal:=true
+Export-Package: org.eclipse.emf.edapt.internal.common;version="1.3.0";x-internal:="true"

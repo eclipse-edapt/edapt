@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.emf.edapt.runtime.feature"
       label="Edapt Runtime Feature"
-      version="1.2.0.qualifier"
+      version="1.3.0.qualifier"
       provider-name="Eclipse Modeling Project">
 
    <description url="http://www.eclipse.org/edapt">
