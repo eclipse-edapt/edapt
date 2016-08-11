@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<common:Parent xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:common="http://common-package/1.2" name="ChildName" type="201">
+</common:Parent>
