@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3" xmi:id="_gvlMcF3HEeaZGcy6AoJ0Mg">
-  <releases xmi:id="_gvlMcV3HEeaZGcy6AoJ0Mg" date="2016-08-08T19:23:43.195-0500">
+  <releases xmi:id="_gvlMcV3HEeaZGcy6AoJ0Mg" date="2016-08-09T02:23:43.195+0200">
     <changes xsi:type="history:CompositeChange" xmi:id="_gvlMcl3HEeaZGcy6AoJ0Mg">
       <changes xsi:type="history:Create" xmi:id="_gvlMc13HEeaZGcy6AoJ0Mg">
         <element href="deleteClass.ecore#/"/>
@@ -52,7 +52,7 @@
       </changes>
     </changes>
   </releases>
-  <releases xmi:id="_h1gSsF3HEeaZGcy6AoJ0Mg" date="2016-08-08T19:39:07.036-0500">
+  <releases xmi:id="_h1gSsF3HEeaZGcy6AoJ0Mg" date="2016-08-09T02:39:07.036+0200">
     <changes xsi:type="history:OperationChange" xmi:id="_Jq_kkF3JEeaZGcy6AoJ0Mg">
       <changes xsi:type="history:Move" xmi:id="_Jq_kkV3JEeaZGcy6AoJ0Mg" referenceName="eStructuralFeatures" source="_FaJlA13KEeaZGcy6AoJ0Mg">
         <target href="deleteClass.ecore#//Parent"/>
@@ -85,36 +85,32 @@
         </parameters>
       </operation>
     </changes>
-    <changes xsi:type="history:MigrationChange" xmi:id="_oJcQgF54Eea757Ko81z90g" migration="org.eclipse.emf.edapt.tests.migration.custom.RemoveReferencedInstance">
-      <changes xsi:type="history:OperationChange" xmi:id="_qJugwF3JEeaZGcy6AoJ0Mg">
-        <changes xsi:type="history:Delete" xmi:id="_qJugwV3JEeaZGcy6AoJ0Mg" referenceName="eStructuralFeatures">
-          <target href="deleteClass.ecore#//Parent"/>
-          <element xsi:type="ecore:EReference" xmi:id="_qJugwl3JEeaZGcy6AoJ0Mg" name="reference" eType="_FaJlA13KEeaZGcy6AoJ0Mg"/>
-        </changes>
-        <operation xmi:id="_qJugxF3JEeaZGcy6AoJ0Mg" name="deleteFeature2">
-          <parameters xmi:id="_qJugxV3JEeaZGcy6AoJ0Mg" name="feature">
-            <referenceValue xmi:id="_qJugxl3JEeaZGcy6AoJ0Mg" element="_qJugwl3JEeaZGcy6AoJ0Mg"/>
-          </parameters>
-        </operation>
+    <changes xsi:type="history:OperationChange" xmi:id="_qJugwF3JEeaZGcy6AoJ0Mg">
+      <changes xsi:type="history:Delete" xmi:id="_qJugwV3JEeaZGcy6AoJ0Mg" referenceName="eStructuralFeatures">
+        <target href="deleteClass.ecore#//Parent"/>
+        <element xsi:type="ecore:EReference" xmi:id="_qJugwl3JEeaZGcy6AoJ0Mg" name="reference" eType="_FaJlA13KEeaZGcy6AoJ0Mg"/>
       </changes>
+      <operation xmi:id="_qJugxF3JEeaZGcy6AoJ0Mg" name="deleteFeature2">
+        <parameters xmi:id="_qJugxV3JEeaZGcy6AoJ0Mg" name="feature">
+          <referenceValue xmi:id="_qJugxl3JEeaZGcy6AoJ0Mg" element="_qJugwl3JEeaZGcy6AoJ0Mg"/>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:Set" xmi:id="_rf8FwF3JEeaZGcy6AoJ0Mg" featureName="nsURI" dataValue="http://common-package/1.1" oldDataValue="http://common-package/1.0">
       <element href="deleteClass.ecore#/"/>
     </changes>
   </releases>
-  <releases xmi:id="_rf8s0F3JEeaZGcy6AoJ0Mg" date="2016-08-08T19:42:14.703-0500">
-    <changes xsi:type="history:MigrationChange" xmi:id="_apHwAF6BEea757Ko81z90g" migration="org.eclipse.emf.edapt.tests.migration.custom.DeleteInstanceAndResource">
-      <changes xsi:type="history:OperationChange" xmi:id="_FaJlAV3KEeaZGcy6AoJ0Mg">
-        <changes xsi:type="history:Delete" xmi:id="_FaJlAl3KEeaZGcy6AoJ0Mg" referenceName="eClassifiers">
-          <target href="deleteClass.ecore#/"/>
-          <element xsi:type="ecore:EClass" xmi:id="_FaJlA13KEeaZGcy6AoJ0Mg" name="Child"/>
-        </changes>
-        <operation xmi:id="_FaJlBF3KEeaZGcy6AoJ0Mg" name="deleteClass">
-          <parameters xmi:id="_FaJlBV3KEeaZGcy6AoJ0Mg" name="eClass">
-            <referenceValue xmi:id="_FaJlBl3KEeaZGcy6AoJ0Mg" element="_FaJlA13KEeaZGcy6AoJ0Mg"/>
-          </parameters>
-        </operation>
+  <releases xmi:id="_rf8s0F3JEeaZGcy6AoJ0Mg" date="2016-08-09T02:42:14.703+0200">
+    <changes xsi:type="history:OperationChange" xmi:id="_FaJlAV3KEeaZGcy6AoJ0Mg">
+      <changes xsi:type="history:Delete" xmi:id="_FaJlAl3KEeaZGcy6AoJ0Mg" referenceName="eClassifiers">
+        <target href="deleteClass.ecore#/"/>
+        <element xsi:type="ecore:EClass" xmi:id="_FaJlA13KEeaZGcy6AoJ0Mg" name="Child"/>
       </changes>
+      <operation xmi:id="_FaJlBF3KEeaZGcy6AoJ0Mg" name="deleteClass">
+        <parameters xmi:id="_FaJlBV3KEeaZGcy6AoJ0Mg" name="eClass">
+          <referenceValue xmi:id="_FaJlBl3KEeaZGcy6AoJ0Mg" element="_FaJlA13KEeaZGcy6AoJ0Mg"/>
+        </parameters>
+      </operation>
     </changes>
     <changes xsi:type="history:Set" xmi:id="_Hdq78F3KEeaZGcy6AoJ0Mg" featureName="nsURI" dataValue="http://common-package/1.2" oldDataValue="http://common-package/1.1">
       <element href="deleteClass.ecore#/"/>
