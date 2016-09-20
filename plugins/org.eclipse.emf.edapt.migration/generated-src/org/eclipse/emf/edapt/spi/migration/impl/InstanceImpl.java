@@ -377,7 +377,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 				throw new IllegalArgumentException("Single value expected, but list found"); //$NON-NLS-1$
 			}
 			final Object oldValue = this.get(feature);
-			if (oldValue != newValue) {
+			if (oldValue != newValue || feature.isUnsettable()) {
 				if (isSet(feature) && oldValue != null) {
 					this.remove(feature, oldValue);
 				}
