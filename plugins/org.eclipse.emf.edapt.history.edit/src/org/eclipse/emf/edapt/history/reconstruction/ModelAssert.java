@@ -20,6 +20,9 @@ package org.eclipse.emf.edapt.history.reconstruction;
 // import org.eclipse.emf.compare.match.metamodel.MatchModel;
 // import org.eclipse.emf.compare.match.service.MatchService;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import junit.framework.AssertionFailedError;
 
 /**
  * Assertions for dealing with models.
@@ -80,22 +83,13 @@ public class ModelAssert {
 	 */
 	public static void assertDifference(EObject expected, EObject actual,
 		int expectedNumber, String message) {
+		if (expectedNumber != 0) {
+			throw new AssertionFailedError("Not implemented"); //$NON-NLS-1$
 
-		// CB Migrate.
-		System.out.println("Model Assert: Assert differences"); //$NON-NLS-1$
-
-		// DiffModel diff = diff(expected, actual);
-		// int actualNumber = numberOfChanges(diff);
-		// boolean same = actualNumber == expectedNumber;
-		// if (!same) {
-		// if (message == null) {
-		// message = expectedNumber + " differences expected, but "
-		// + actualNumber + " encountered";
-		// }
-		// saveDiffModel(expected, diff);
-		// throw new AssertionFailedError(message);
-		// }
-
+		}
+		if (!EcoreUtil.equals(expected, actual)) {
+			throw new AssertionFailedError(message);
+		}
 	}
 
 	/**
