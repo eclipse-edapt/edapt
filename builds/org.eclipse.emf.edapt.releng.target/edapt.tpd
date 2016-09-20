@@ -1,5 +1,7 @@
 target "Edapt Target"
 
+with source 	
+
 location "http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1" {
 org.eclipse.emf.compare.ide.ui.source.feature.group
 org.eclipse.emf.compare.ide.ui.feature.group
