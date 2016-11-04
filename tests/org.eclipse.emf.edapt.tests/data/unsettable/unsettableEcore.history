@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ASCII"?>
+<history:History xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:history="http://www.eclipse.org/emf/edapt/history/0.3" xmi:id="_pAglQH9PEeadT8Z35Ezmzg">
+  <releases xmi:id="_pAglQX9PEeadT8Z35Ezmzg" date="2016-09-20T18:31:24.383+0200">
+    <changes xsi:type="history:CompositeChange" xmi:id="_pAglQn9PEeadT8Z35Ezmzg">
+      <changes xsi:type="history:Create" xmi:id="_pAglQ39PEeadT8Z35Ezmzg">
+        <element href="unsettableEcore.ecore#/"/>
+        <changes xsi:type="history:Set" xmi:id="_pAglRH9PEeadT8Z35Ezmzg" featureName="name" dataValue="unsettable">
+          <element href="unsettableEcore.ecore#/"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglRX9PEeadT8Z35Ezmzg" featureName="nsURI" dataValue="http://unsettable/1">
+          <element href="unsettableEcore.ecore#/"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglRn9PEeadT8Z35Ezmzg" featureName="nsPrefix" dataValue="unsettable">
+          <element href="unsettableEcore.ecore#/"/>
+        </changes>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_pAglR39PEeadT8Z35Ezmzg" referenceName="eClassifiers">
+        <target href="unsettableEcore.ecore#/"/>
+        <element href="unsettableEcore.ecore#//Container"/>
+        <changes xsi:type="history:Set" xmi:id="_pAglSH9PEeadT8Z35Ezmzg" featureName="name" dataValue="Container">
+          <element href="unsettableEcore.ecore#//Container"/>
+        </changes>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_pAglSX9PEeadT8Z35Ezmzg" referenceName="eClassifiers">
+        <target href="unsettableEcore.ecore#/"/>
+        <element href="unsettableEcore.ecore#//Child"/>
+        <changes xsi:type="history:Set" xmi:id="_pAglSn9PEeadT8Z35Ezmzg" featureName="name" dataValue="Chidl">
+          <element href="unsettableEcore.ecore#//Child"/>
+        </changes>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_pAglS39PEeadT8Z35Ezmzg" referenceName="eStructuralFeatures">
+        <target href="unsettableEcore.ecore#//Container"/>
+        <element href="unsettableEcore.ecore#//Container/children"/>
+        <changes xsi:type="history:Set" xmi:id="_pAglTH9PEeadT8Z35Ezmzg" featureName="name" dataValue="children">
+          <element href="unsettableEcore.ecore#//Container/children"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglTX9PEeadT8Z35Ezmzg" featureName="upperBound" dataValue="-1" oldDataValue="1">
+          <element href="unsettableEcore.ecore#//Container/children"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglTn9PEeadT8Z35Ezmzg" featureName="containment" dataValue="true" oldDataValue="false">
+          <element href="unsettableEcore.ecore#//Container/children"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglT39PEeadT8Z35Ezmzg" featureName="eType">
+          <element href="unsettableEcore.ecore#//Container/children"/>
+          <referenceValue href="unsettableEcore.ecore#//Child"/>
+        </changes>
+      </changes>
+      <changes xsi:type="history:Create" xmi:id="_pAglUH9PEeadT8Z35Ezmzg" referenceName="eStructuralFeatures">
+        <target href="unsettableEcore.ecore#//Child"/>
+        <element href="unsettableEcore.ecore#//Child/unsettableAttribute"/>
+        <changes xsi:type="history:Set" xmi:id="_pAglUX9PEeadT8Z35Ezmzg" featureName="name" dataValue="unsettableAttribute">
+          <element href="unsettableEcore.ecore#//Child/unsettableAttribute"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglUn9PEeadT8Z35Ezmzg" featureName="defaultValueLiteral" dataValue="0">
+          <element href="unsettableEcore.ecore#//Child/unsettableAttribute"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglU39PEeadT8Z35Ezmzg" featureName="unsettable" dataValue="true" oldDataValue="false">
+          <element href="unsettableEcore.ecore#//Child/unsettableAttribute"/>
+        </changes>
+        <changes xsi:type="history:Set" xmi:id="_pAglVH9PEeadT8Z35Ezmzg" featureName="eType">
+          <element href="unsettableEcore.ecore#//Child/unsettableAttribute"/>
+          <referenceValue href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+        </changes>
+      </changes>
+    </changes>
+  </releases>
+  <releases xmi:id="_q9vG8H9PEeadT8Z35Ezmzg" date="2016-09-20T18:31:59.223+0200">
+    <changes xsi:type="history:OperationChange" xmi:id="_u4ynQH9PEeadT8Z35Ezmzg">
+      <changes xsi:type="history:Set" xmi:id="_u4ynQX9PEeadT8Z35Ezmzg" featureName="name" dataValue="Child" oldDataValue="Chidl">
+        <element href="unsettableEcore.ecore#//Child"/>
+      </changes>
+      <operation xmi:id="_u4ynQn9PEeadT8Z35Ezmzg" name="rename">
+        <parameters xmi:id="_u4ynQ39PEeadT8Z35Ezmzg" name="element">
+          <referenceValue xmi:id="_u4ynRH9PEeadT8Z35Ezmzg">
+            <element href="unsettableEcore.ecore#//Child"/>
+          </referenceValue>
+        </parameters>
+        <parameters xmi:id="_u4ynRX9PEeadT8Z35Ezmzg" name="name">
+          <dataValue>Child</dataValue>
+        </parameters>
+      </operation>
+    </changes>
+    <changes xsi:type="history:Set" xmi:id="_wJ_wcH9PEeadT8Z35Ezmzg" featureName="nsURI" dataValue="http://unsettable/2" oldDataValue="http://unsettable/1">
+      <element href="unsettableEcore.ecore#/"/>
+    </changes>
+  </releases>
+  <releases xmi:id="_wKAXgH9PEeadT8Z35Ezmzg"/>
+</history:History>

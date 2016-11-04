@@ -49,4 +49,11 @@ public class SimpleExamplesLifecycleTest extends LifecycleTestBase {
 		testLifecycle("statemachine"); //$NON-NLS-1$
 	}
 
+	/**
+	 * Test full lifecycle of the deleteClass example
+	 */
+	public void testDeleteClassLifecycle() throws Exception {
+		testLifecycle("deleteClass"); //$NON-NLS-1$
+	}
+
 }
