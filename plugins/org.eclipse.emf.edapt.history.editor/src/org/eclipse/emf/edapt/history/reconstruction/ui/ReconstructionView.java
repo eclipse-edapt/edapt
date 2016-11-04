@@ -137,8 +137,13 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 				final ValueChange valueChange = (ValueChange) change;
 				final EObject element = reconstructor.getMapping().resolveTarget(
 					valueChange.getElement());
-				structureViewer.setSelection(new StructuredSelection(element),
-					true);
+				if (element != null) {
+					/*
+					 * don't try to select an element in case we couldn't resolve the target.
+					 * Otherwise we will get a NPE.
+					 */
+					structureViewer.setSelection(new StructuredSelection(element), true);
+				}
 			}
 		} else if (change instanceof OperationChange) {
 			final OperationChange operationChange = (OperationChange) change;
