@@ -331,18 +331,26 @@
                  style="push">
               <visibleWhen
                     checkEnabled="false">
-                 <with
-                       variable="selection">
-                    <count
-                          value="1">
-                    </count>
-                    <iterate
-                          ifEmpty="false">
+                 <and>
+                    <with
+                          variable="selection">
+                       <count
+                             value="1">
+                       </count>
+                       <iterate
+                             ifEmpty="false">
+                          <instanceof
+                                value="org.eclipse.emf.ecore.resource.Resource">
+                          </instanceof>
+                       </iterate>
+                    </with>
+                    <with
+                          variable="activeEditor">
                        <instanceof
-                             value="org.eclipse.emf.ecore.resource.Resource">
+                             value="org.eclipse.emf.ecore.presentation.EcoreEditor">
                        </instanceof>
-                    </iterate>
-                 </with>
+                    </with>
+                 </and>
               </visibleWhen>
            </command>
         </menu>
