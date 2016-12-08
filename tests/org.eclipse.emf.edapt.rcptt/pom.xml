@@ -45,7 +45,7 @@
 					</runner>
 					<!-- The main configuration section goes here -->
 					<aut>
-						<explicit>https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2.RC3/eclipse-committers-neon-2-RC3-linux-gtk-x86_64.tar.gz&amp;mirror_id=1</explicit>
+						<explicit>/home/data/httpd/download.eclipse.org/edapt/aut/aut.tar.gz</explicit>
 						<injections>
 							<injection>
 								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
