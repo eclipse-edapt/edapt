@@ -45,9 +45,9 @@
 					</runner>
 					<!-- The main configuration section goes here -->
 					<aut>
-						<explicit>https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/1a/eclipse-modeling-neon-1a-linux-gtk-x86_64.tar.gz</explicit>
+						<explicit>https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/neon/2.RC3/eclipse-committers-neon-2-RC3-linux-gtk-x86_64.tar.gz&mirror_id=1</explicit>
 						<injections>
-							<!--  injection>
+							<injection>
 								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
 								<features>
 									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
@@ -58,8 +58,9 @@
 								<features>
 									<feature>org.eclipse.ocl.all.sdk.feature.group</feature>
 									<feature>org.eclipse.emf.compare.ide.ui.feature.group</feature>
+									<feature>org.eclipse.emf.compare.feature.group</feature>
 								</features>
-							</injection-->
+							</injection>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
