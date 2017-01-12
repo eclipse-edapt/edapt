@@ -10,6 +10,7 @@
 	<properties>
 		<rcptt-maven-version>2.1.0</rcptt-maven-version>
 		<rcptt-runner-version>2.1.0</rcptt-runner-version>
+		<toolchains-version>1.1</toolchains-version>
 	</properties>
 
 	<pluginRepositories>
@@ -31,6 +32,25 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>${toolchains-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<toolchains>
+						<jdk>
+							<id>JavaSE-1.8</id>
+						</jdk>
+					</toolchains>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.rcptt</groupId>
 				<artifactId>rcptt-maven-plugin</artifactId>
