@@ -81,6 +81,12 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 	/** Get the migrator for a model. */
 	protected Migrator getMigrator(final List<URI> modelURIs) {
 
+		if (modelURIs.isEmpty()) {
+			MessageDialog.openError(Display.getDefault().getActiveShell(),
+				"Namespace", "Not a valid model"); //$NON-NLS-1$ //$NON-NLS-2$
+			return null;
+		}
+
 		MigratorOptions.getInstance().setOracle(new InteractiveOracle());
 		MigratorOptions.getInstance().setDebugger(new InteractiveDebugger());
 
@@ -152,7 +158,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 
 	/** Update the selection. */
 	private void updateSelection(ISelection selection) {
-		selectedFiles = SelectionUtils.getSelectedElements(selection);
+		selectedFiles = SelectionUtils.getSelectedElements(selection, IFile.class);
 	}
 
 	/** Get the selected files. */

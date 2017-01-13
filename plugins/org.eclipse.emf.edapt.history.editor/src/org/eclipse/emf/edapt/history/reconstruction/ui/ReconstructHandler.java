@@ -40,13 +40,14 @@ public class ReconstructHandler extends AbstractHandler {
 	/** {@inheritDoc} */
 	@Override
 	public Object execute(ExecutionEvent event) {
-		final EObject target = HandlerUtils.getSelectedElement(event);
+		final EObject target = HandlerUtils.getSelectedElement(event, EObject.class);
 
 		final EditorPart editor = (EditorPart) HandlerUtil.getActiveEditor(event);
 		final FileEditorInput editorInput = (FileEditorInput) editor.getEditorInput();
 		final ContainerSelectionDialog dialog = new ContainerSelectionDialog(Display
 			.getCurrent().getActiveShell(), editorInput.getFile()
-			.getParent(), false, ""); //$NON-NLS-1$
+				.getParent(),
+			false, ""); //$NON-NLS-1$
 
 		if (dialog.open() == IDialogConstants.OK_ID) {
 			final IPath path = (IPath) dialog.getResult()[0];

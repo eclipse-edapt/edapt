@@ -70,7 +70,7 @@ public class ReconstructionView extends SyncedMetamodelEditorViewBase {
 				@Override
 				public void doubleClick(DoubleClickEvent event) {
 					final Object element = SelectionUtils
-						.getSelectedElement(event.getSelection());
+						.getSelectedElement(event.getSelection(), Object.class);
 					if (element != null) {
 						final Object source = reconstructor.getMapping()
 							.resolveSource(element);

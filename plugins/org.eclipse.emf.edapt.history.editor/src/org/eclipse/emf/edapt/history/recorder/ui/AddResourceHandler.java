@@ -51,7 +51,7 @@ public class AddResourceHandler extends AbstractHandler {
 		} else {
 
 			final ISelection selection = HandlerUtil.getCurrentSelection(event);
-			final Resource resource = SelectionUtils.getSelectedElement(selection);
+			final Resource resource = SelectionUtils.getSelectedElement(selection, Resource.class);
 
 			final AddResourceCommand command = new AddResourceCommand(listener,
 				resource);

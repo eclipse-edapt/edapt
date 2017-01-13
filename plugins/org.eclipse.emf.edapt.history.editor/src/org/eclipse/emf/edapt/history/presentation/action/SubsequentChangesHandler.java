@@ -36,7 +36,8 @@ public abstract class SubsequentChangesHandler<C extends Change> extends
 	@Override
 	protected final Object execute(EditingDomain domain, ExecutionEvent event)
 		throws ExecutionException {
-		final List<C> changes = HandlerUtils.getSelectedElements(event);
+		@SuppressWarnings("unchecked")
+		final List<C> changes = (List<C>) HandlerUtils.getSelectedElements(event, Change.class);
 		final Release release = SubsequentChangesPropertyTester.sort(changes);
 		return execute(release, changes, domain, event);
 	}
@@ -44,5 +45,5 @@ public abstract class SubsequentChangesHandler<C extends Change> extends
 	/** Convenience method to execute this command. */
 	protected abstract Object execute(Release release, List<C> changes,
 		EditingDomain domain, ExecutionEvent event)
-		throws ExecutionException;
+			throws ExecutionException;
 }

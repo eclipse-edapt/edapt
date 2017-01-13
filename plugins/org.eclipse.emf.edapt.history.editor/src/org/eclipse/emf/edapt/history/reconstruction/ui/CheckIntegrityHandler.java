@@ -37,7 +37,7 @@ public class CheckIntegrityHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) {
 		final History history = SelectionUtils.getSelectedElement(HandlerUtil
-			.getCurrentSelection(event));
+			.getCurrentSelection(event), History.class);
 		@SuppressWarnings("unused")
 		final IEditingDomainProvider editor = (IEditingDomainProvider) HandlerUtil
 			.getActiveEditor(event);

@@ -38,7 +38,7 @@ public class FlattenMigrationHandler extends EditingDomainHandlerBase {
 
 		final ISelection selection = HandlerUtil.getCurrentSelection(event);
 		final MigrationChange change = SelectionUtils
-			.getSelectedElement(selection);
+			.getSelectedElement(selection, MigrationChange.class);
 
 		final Release release = (Release) change.eContainer();
 		final Command command = new ChangeCommand(release) {

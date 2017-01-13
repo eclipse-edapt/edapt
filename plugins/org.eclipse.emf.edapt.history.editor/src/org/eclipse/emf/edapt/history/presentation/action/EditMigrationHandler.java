@@ -30,7 +30,7 @@ public class EditMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		final MigrationChange change = HandlerUtils.getSelectedElement(event);
+		final MigrationChange change = HandlerUtils.getSelectedElement(event, MigrationChange.class);
 		JavaUIUtils.showCustomMigration(change);
 		return null;
 	}
