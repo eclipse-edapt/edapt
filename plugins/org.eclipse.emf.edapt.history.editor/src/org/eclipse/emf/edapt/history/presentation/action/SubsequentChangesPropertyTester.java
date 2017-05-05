@@ -37,7 +37,7 @@ public class SubsequentChangesPropertyTester extends PropertyTester {
 		Object expectedValue) {
 
 		final ISelection selection = (ISelection) receiver;
-		final List<Change> changes = SelectionUtils.getSelectedElements(selection);
+		final List<Change> changes = SelectionUtils.getSelectedElements(selection, Change.class);
 
 		return isValid(changes);
 	}

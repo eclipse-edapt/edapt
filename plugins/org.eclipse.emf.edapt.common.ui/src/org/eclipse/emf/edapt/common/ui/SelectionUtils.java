@@ -8,6 +8,7 @@
  * Contributors:
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
+ * Johannes Faltermeier - Add explicit type parameters
  *******************************************************************************/
 package org.eclipse.emf.edapt.common.ui;
 
@@ -38,16 +39,15 @@ public final class SelectionUtils {
 	/**
 	 * Get the selected element of type V.
 	 */
-	@SuppressWarnings("unchecked")
-	public static <V> V getSelectedElement(ISelection selection) {
+	public static <V> V getSelectedElement(ISelection selection, Class<V> type) {
 		if (selection != null && selection instanceof IStructuredSelection) {
 			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			if (!structuredSelection.isEmpty()) {
-				try {
-					return (V) structuredSelection.getFirstElement();
-				} catch (final ClassCastException e) {
+				final Object firstElement = structuredSelection.getFirstElement();
+				if (!type.isInstance(firstElement)) {
 					return null;
 				}
+				return type.cast(firstElement);
 			}
 		}
 		return null;
@@ -56,17 +56,16 @@ public final class SelectionUtils {
 	/**
 	 * Get a list of selected elements of type V.
 	 */
-	@SuppressWarnings("unchecked")
-	public static <V> List<V> getSelectedElements(ISelection selection) {
+	public static <V> List<V> getSelectedElements(ISelection selection, Class<V> type) {
 		final List<V> elements = new ArrayList<V>();
 		if (selection != null && selection instanceof IStructuredSelection) {
 			final IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			for (final Iterator i = structuredSelection.iterator(); i.hasNext();) {
-				try {
-					elements.add((V) i.next());
-				} catch (final ClassCastException e) {
-					// ignore
+				final Object next = i.next();
+				if (!type.isInstance(next)) {
+					continue;
 				}
+				elements.add(type.cast(next));
 			}
 		}
 		return elements;

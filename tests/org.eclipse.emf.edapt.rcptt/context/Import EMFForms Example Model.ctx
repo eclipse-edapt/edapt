@@ -14,7 +14,7 @@ Entry-Name: .ecl.context
 
 get-menu "File/New/Example..." | click
 with [get-window "New Example"] {
-    get-tree | select "EMF Forms/Make it happen: example model"
+    get-tree | select "Make it happen: example model"
     get-button Finish | click
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

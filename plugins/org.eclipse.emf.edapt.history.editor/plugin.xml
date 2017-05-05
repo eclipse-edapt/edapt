@@ -331,18 +331,26 @@
                  style="push">
               <visibleWhen
                     checkEnabled="false">
-                 <with
-                       variable="selection">
-                    <count
-                          value="1">
-                    </count>
-                    <iterate
-                          ifEmpty="false">
+                 <and>
+                    <with
+                          variable="selection">
+                       <count
+                             value="1">
+                       </count>
+                       <iterate
+                             ifEmpty="false">
+                          <instanceof
+                                value="org.eclipse.emf.ecore.resource.Resource">
+                          </instanceof>
+                       </iterate>
+                    </with>
+                    <with
+                          variable="activeEditor">
                        <instanceof
-                             value="org.eclipse.emf.ecore.resource.Resource">
+                             value="org.eclipse.emf.ecore.presentation.EcoreEditor">
                        </instanceof>
-                    </iterate>
-                 </with>
+                    </with>
+                 </and>
               </visibleWhen>
            </command>
         </menu>
@@ -531,22 +539,30 @@
                  style="push">
               <visibleWhen
                     checkEnabled="false">
-                 <with
-                       variable="selection">
-                    <count
-                          value="+">
-                    </count>
-                    <iterate
-                          ifEmpty="false">
+                 <and>
+                    <with
+                          variable="selection">
+                       <count
+                             value="+">
+                       </count>
+                       <iterate
+                             ifEmpty="false">
+                          <instanceof
+                                value="org.eclipse.emf.edapt.spi.history.Change">
+                          </instanceof>
+                       </iterate>
+                       <test
+                             forcePluginActivation="true"
+                             property="org.eclipse.emf.edapt.history.editor.subsequentChanges">
+                       </test>
+                    </with>
+                    <with
+                          variable="activeEditor">
                        <instanceof
-                             value="org.eclipse.emf.edapt.spi.history.Change">
+                             value="org.eclipse.emf.ecore.presentation.EcoreEditor">
                        </instanceof>
-                    </iterate>
-                    <test
-                          forcePluginActivation="true"
-                          property="org.eclipse.emf.edapt.history.editor.subsequentChanges">
-                    </test>
-                 </with>
+                    </with>
+                 </and>
               </visibleWhen>
            </command>
         </menu>

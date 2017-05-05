@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.emf.edapt</groupId>
 	<artifactId>org.eclipse.emf.edapt.rcptt</artifactId>
@@ -7,9 +8,10 @@
 	<packaging>rcpttTest</packaging>
 
 	<properties>
-		<rcptt-maven-version>2.0.1</rcptt-maven-version>
-		<rcptt-runner-version>2.0.0</rcptt-runner-version>
-	</properties> 
+		<rcptt-maven-version>2.1.0</rcptt-maven-version>
+		<rcptt-runner-version>2.1.0</rcptt-runner-version>
+		<toolchains-version>1.1</toolchains-version>
+	</properties>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -17,11 +19,38 @@
 			<name>RCPTT Maven repository</name>
 			<url>https://repo.eclipse.org/content/repositories/rcptt-releases/</url>
 		</pluginRepository>
-	</pluginRepositories> 
+		<pluginRepository>
+			<id>rcptt-snapshots</id>
+			<name>RCPTT Maven Snapshots repository</name>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-toolchains-plugin</artifactId>
+				<version>${toolchains-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>toolchain</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<toolchains>
+						<jdk>
+							<id>JavaSE-1.8</id>
+						</jdk>
+					</toolchains>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.rcptt</groupId>
 				<artifactId>rcptt-maven-plugin</artifactId>
@@ -34,29 +63,30 @@
 							<vmArg>-Dorg.eclipse.swt.browser.DefaultType=mozilla</vmArg>
 						</vmArgs>
 					</runner>
-					<!-- The main configuration section goes here --> 
+					<!-- The main configuration section goes here -->
 					<aut>
-						<explicit>http://download.eclipse.org/technology/epp/downloads/release/mars/2/eclipse-dsl-mars-2-linux-gtk-x86_64.tar.gz</explicit>
+						<explicit>/home/data/httpd/download.eclipse.org/edapt/aut/aut.tar.gz</explicit>
 						<injections>
 							<injection>
 								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
 								<features>
 									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
-								</features>      
+								</features>
 							</injection>
 							<injection>
 								<site>http://download.eclipse.org/releases/mars</site>
 								<features>
 									<feature>org.eclipse.ocl.all.sdk.feature.group</feature>
 									<feature>org.eclipse.emf.compare.ide.ui.feature.group</feature>
-								</features>      
+									<feature>org.eclipse.emf.compare.feature.group</feature>
+								</features>
 							</injection>
 							<injection>
 								<site>http://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
 									<feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature>
 									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
-								</features>      
+								</features>
 							</injection>
 						</injections>
 						<args>

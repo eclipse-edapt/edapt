@@ -97,7 +97,7 @@ public class ReleaseDialog extends TitleMessageDialogBase {
 	 */
 	@Override
 	protected void okPressed() {
-		release = SelectionUtils.getSelectedElement(releaseCombo.getSelection());
+		release = SelectionUtils.getSelectedElement(releaseCombo.getSelection(), Release.class);
 		super.okPressed();
 	}
 

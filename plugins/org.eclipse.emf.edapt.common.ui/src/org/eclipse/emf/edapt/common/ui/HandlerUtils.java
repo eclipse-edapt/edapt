@@ -39,15 +39,15 @@ public final class HandlerUtils {
 	}
 
 	/** Get the selected element of type V. */
-	public static <V> V getSelectedElement(ExecutionEvent event) {
+	public static <V> V getSelectedElement(ExecutionEvent event, Class<V> type) {
 		final ISelection selection = HandlerUtil.getCurrentSelection(event);
-		return SelectionUtils.getSelectedElement(selection);
+		return SelectionUtils.getSelectedElement(selection, type);
 	}
 
 	/** Get a list of selected elements of type V. */
-	public static <V> List<V> getSelectedElements(ExecutionEvent event) {
+	public static <V> List<V> getSelectedElements(ExecutionEvent event, Class<V> type) {
 		final ISelection selection = HandlerUtil.getCurrentSelection(event);
-		return SelectionUtils.getSelectedElements(selection);
+		return SelectionUtils.getSelectedElements(selection, type);
 	}
 
 	/** Get the active page from within a handler. */

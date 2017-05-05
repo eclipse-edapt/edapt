@@ -30,7 +30,7 @@ public class CreateMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		final EObject element = HandlerUtils.getSelectedElement(event);
+		final EObject element = HandlerUtils.getSelectedElement(event, EObject.class);
 		final IType javaType = JavaUIUtils.createCustomMigration(element);
 		if (javaType != null) {
 			createMigration(element, javaType.getFullyQualifiedName(), domain);

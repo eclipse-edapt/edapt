@@ -23,7 +23,7 @@ public class SetMigrationHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		final MigrationChange change = HandlerUtils.getSelectedElement(event);
+		final MigrationChange change = HandlerUtils.getSelectedElement(event, MigrationChange.class);
 		final IType javaType = JavaUIUtils.selectCustomMigration(change);
 		if (javaType != null) {
 			final Command command = SetCommand.create(domain, change,
