@@ -334,7 +334,7 @@ public class ValueSelectionComposite extends Composite {
 	 */
 	public List<Object> getSelectedElements() {
 		return SelectionUtils
-			.getSelectedElements(filteredViewer.getSelection());
+			.getSelectedElements(filteredViewer.getSelection(), Object.class);
 	}
 
 	/**

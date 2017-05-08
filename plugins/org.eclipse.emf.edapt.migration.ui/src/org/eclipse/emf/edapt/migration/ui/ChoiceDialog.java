@@ -225,7 +225,7 @@ public class ChoiceDialog extends ResizeableDialogBase {
 			@Override
 			public void doubleClick(DoubleClickEvent event) {
 				final Object element = SelectionUtils.getSelectedElement(event
-					.getSelection());
+					.getSelection(), Object.class);
 				modelViewer.setSelection(new StructuredSelection(element));
 			}
 
@@ -241,7 +241,7 @@ public class ChoiceDialog extends ResizeableDialogBase {
 	@Override
 	protected void okPressed() {
 		selectedElement = SelectionUtils.getSelectedElement(choiceViewer
-			.getSelection());
+			.getSelection(), Object.class);
 		super.okPressed();
 	}
 

@@ -17,6 +17,7 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -51,7 +52,13 @@ public abstract class OperationBrowserHandlerBase extends AbstractHandler {
 		for (final IViewReference reference : window.getActivePage()
 			.getViewReferences()) {
 			if (OperationBrowser.ID.equals(reference.getId())) {
-				return (OperationBrowser) reference.getView(true);
+				final IViewPart view = reference.getView(true);
+				/*
+				 * check the instance since due to problems with the workspace, etc. the view might be an ErrorViewPart
+				 */
+				if (view instanceof OperationBrowser) {
+					return (OperationBrowser) view;
+				}
 			}
 		}
 		return null;

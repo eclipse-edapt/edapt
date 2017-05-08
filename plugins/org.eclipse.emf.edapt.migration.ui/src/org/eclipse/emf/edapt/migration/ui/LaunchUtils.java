@@ -39,7 +39,6 @@ public final class LaunchUtils {
 	 * Get the value of an attribute of type List of Strings from a launch
 	 * configuration.
 	 */
-	@SuppressWarnings("unchecked")
 	public static List<String> getAttribute(ILaunchConfiguration configuration,
 		String attributeName, List<String> defaultValue) {
 		try {

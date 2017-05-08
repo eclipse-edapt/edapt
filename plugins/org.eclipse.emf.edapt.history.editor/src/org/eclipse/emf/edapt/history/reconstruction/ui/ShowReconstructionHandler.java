@@ -34,7 +34,7 @@ public class ShowReconstructionHandler extends AbstractHandler {
 	/** {@inheritDoc} */
 	@Override
 	public Object execute(ExecutionEvent event) {
-		final EObject element = HandlerUtils.getSelectedElement(event);
+		final EObject element = HandlerUtils.getSelectedElement(event, EObject.class);
 		try {
 			final ReconstructionView view = (ReconstructionView) HandlerUtils
 				.showView(event, ReconstructionView.ID);

@@ -37,7 +37,7 @@ public class CompareHandler extends AbstractHandler {
 	@Override
 	public Object execute(ExecutionEvent event) {
 		final List<EObject> selectedElements = HandlerUtils
-			.getSelectedElements(event);
+			.getSelectedElements(event, EObject.class);
 		if (!selectedElements.isEmpty()) {
 			final EObject from = selectedElements.get(0);
 			final EObject to = selectedElements.get(selectedElements.size() - 1);

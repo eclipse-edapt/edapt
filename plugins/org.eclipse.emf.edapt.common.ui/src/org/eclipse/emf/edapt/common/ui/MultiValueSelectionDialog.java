@@ -238,7 +238,7 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	@SuppressWarnings("unchecked")
 	protected void downSelectedValues() {
 		final List<Object> selectedValues = SelectionUtils
-			.getSelectedElements(valuesViewer.getSelection());
+			.getSelectedElements(valuesViewer.getSelection(), Object.class);
 		sortSelectedValues(selectedValues);
 		Collections.reverse(selectedValues);
 		for (final Object element : selectedValues) {
@@ -258,7 +258,7 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	@SuppressWarnings("unchecked")
 	protected void upSelectedValues() {
 		final List<Object> selectedValues = SelectionUtils
-			.getSelectedElements(valuesViewer.getSelection());
+			.getSelectedElements(valuesViewer.getSelection(), Object.class);
 		sortSelectedValues(selectedValues);
 		for (final Object element : selectedValues) {
 			final int index = values.indexOf(element);
@@ -290,7 +290,7 @@ public class MultiValueSelectionDialog extends SelectionStatusDialog {
 	@SuppressWarnings("unchecked")
 	protected void removeSelectedValues() {
 		final List<Object> selectedValues = SelectionUtils
-			.getSelectedElements(valuesViewer.getSelection());
+			.getSelectedElements(valuesViewer.getSelection(), Object.class);
 		values.removeAll(selectedValues);
 		valuesViewer.refresh();
 	}

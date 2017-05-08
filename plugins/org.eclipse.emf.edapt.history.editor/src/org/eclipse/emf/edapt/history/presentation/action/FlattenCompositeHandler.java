@@ -33,7 +33,7 @@ public class FlattenCompositeHandler extends EditingDomainHandlerBase {
 	/** {@inheritDoc} */
 	@Override
 	protected Object execute(EditingDomain domain, ExecutionEvent event) {
-		final CompositeChange change = HandlerUtils.getSelectedElement(event);
+		final CompositeChange change = HandlerUtils.getSelectedElement(event, CompositeChange.class);
 		final Release release = (Release) change.eContainer();
 		final Command command = new ChangeCommand(release) {
 

@@ -38,7 +38,7 @@ public class RegisterMetamodelHandler extends AbstractHandler {
 	/** {@inheritDoc} */
 	@Override
 	public Object execute(ExecutionEvent event) {
-		final IFile file = HandlerUtils.getSelectedElement(event);
+		final IFile file = HandlerUtils.getSelectedElement(event, IFile.class);
 		final URI uri = URIUtils.getURI(file);
 		try {
 			final ResourceSet resourceSet = ResourceUtils.loadResourceSet(uri);

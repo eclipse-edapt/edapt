@@ -431,7 +431,7 @@ class MigrationLaunchConfigurationMainTab extends
 
 		// validation
 		final ValidationLevel level = SelectionUtils
-			.getSelectedElement(validationCombo.getSelection());
+			.getSelectedElement(validationCombo.getSelection(), ValidationLevel.class);
 		configuration.setAttribute(VALIDATION_LEVEL.id(), level.toString());
 
 		// backup
@@ -451,7 +451,7 @@ class MigrationLaunchConfigurationMainTab extends
 			configuration.setAttribute(option.id(), -1);
 		} else {
 			final Release release = SelectionUtils.getSelectedElement(combo
-				.getSelection());
+				.getSelection(), Release.class);
 			if (release != null) {
 				configuration.setAttribute(option.id(), release.getNumber());
 			}
@@ -510,7 +510,7 @@ class MigrationLaunchConfigurationMainTab extends
 	private boolean isValidRelease(Button check, ComboViewer combo,
 		MigratorCommandLineOption option) {
 		if (!check.getSelection()
-			&& SelectionUtils.getSelectedElement(combo.getSelection()) == null) {
+			&& SelectionUtils.getSelectedElement(combo.getSelection(), Object.class) == null) {
 			setErrorMessage(StringUtils.upperCamelCaseToText(option.name())
 				+ " must be set"); //$NON-NLS-1$
 			return false;
@@ -634,7 +634,7 @@ class MigrationLaunchConfigurationMainTab extends
 		@Override
 		public void widgetSelected(SelectionEvent e) {
 			final List<String> elements = SelectionUtils
-				.getSelectedElements(modelViewer.getSelection());
+				.getSelectedElements(modelViewer.getSelection(), String.class);
 			final String modelURI = modelURIs.get(0);
 			modelURIs.removeAll(elements);
 			modelViewer.refresh();

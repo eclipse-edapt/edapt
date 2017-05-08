@@ -135,6 +135,12 @@ public class EditingDomainListener {
 		try {
 			historyResource.load(null);
 			EcoreUtil.resolveAll(historyResource);
+			if (historyResource.getContents().isEmpty()) {
+				return false;
+			}
+			if (!History.class.isInstance(historyResource.getContents().get(0))) {
+				return false;
+			}
 			return true;
 		} catch (final IOException e) {
 			resourceSet.getResources().remove(historyResource);

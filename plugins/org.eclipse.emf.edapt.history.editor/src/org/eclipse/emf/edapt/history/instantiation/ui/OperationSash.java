@@ -88,7 +88,7 @@ public class OperationSash extends SashForm {
 				@Override
 				public void selectionChanged(SelectionChangedEvent event) {
 					final OperationInstance operationInstance = SelectionUtils
-						.getSelectedElement(event.getSelection());
+						.getSelectedElement(event.getSelection(), OperationInstance.class);
 					if (operationInstance != null) {
 						parameterViewer.setInput(operationInstance);
 						updateConstraints(operationInstance);
@@ -167,7 +167,7 @@ public class OperationSash extends SashForm {
 	 */
 	public OperationInstance getSelectedOperation() {
 		final OperationInstance operationInstance = SelectionUtils
-			.getSelectedElement(operationViewer.getSelection());
+			.getSelectedElement(operationViewer.getSelection(), OperationInstance.class);
 		return operationInstance;
 
 	}
