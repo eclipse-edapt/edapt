@@ -94,3 +94,6 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2013082706493
 org.junit
 }
 
+location "http://build.eclipse.org/rt/rap/base-platforms/3.1/extra-dependencies/" {
+org.mockito.mockito-core-hamcrest-modified
+}

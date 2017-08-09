@@ -1,4 +1,4 @@
-target "Edapt Neon Target"
+target "Edapt Oxygen Target"
 
 location "http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1" {
 org.eclipse.emf.compare.source.feature.group
@@ -7,7 +7,7 @@ org.eclipse.emf.compare.rcp.ui.source.feature.group
 org.eclipse.emf.compare.rcp.ui.feature.group
 }
 
-location "http://download.eclipse.org/eclipse/updates/4.6milestones" {
+location "http://download.eclipse.org/eclipse/updates/4.7" {
 org.eclipse.rcp.source.feature.group
 org.eclipse.pde.api.tools.ee.feature.feature.group
 org.eclipse.releng.tools.feature.group
@@ -88,3 +88,6 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/R2013082706493
 org.junit
 }
 
+location "http://build.eclipse.org/rt/rap/base-platforms/3.1/extra-dependencies/" {
+org.mockito.mockito-core-hamcrest-modified
+}

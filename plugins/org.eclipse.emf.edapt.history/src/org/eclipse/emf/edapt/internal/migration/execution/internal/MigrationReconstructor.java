@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
+import org.eclipse.emf.edapt.common.IResourceSetProcessor;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreReconstructorSwitchBase;
 import org.eclipse.emf.edapt.history.reconstruction.FinishedException;
@@ -112,11 +113,13 @@ public class MigrationReconstructor extends ReconstructorBase {
 	/** Factory to create {@link ResourceSet}s for custom serialization. */
 	protected IResourceSetFactory resourceSetFactory;
 
+	private final IResourceSetProcessor postLoadProcessor;
+
 	/** Constructor. */
 	public MigrationReconstructor(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor,
 		IClassLoader classLoader, ValidationLevel level,
-		IResourceSetFactory resourceSetFactory) {
+		IResourceSetFactory resourceSetFactory, IResourceSetProcessor postLoadProcessor) {
 		this.modelURIs = modelURIs;
 		this.sourceRelease = sourceRelease;
 		this.targetRelease = targetRelease;
@@ -124,6 +127,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		this.classLoader = classLoader;
 		this.level = level;
 		this.resourceSetFactory = resourceSetFactory;
+		this.postLoadProcessor = postLoadProcessor;
 	}
 
 	/** {@inheritDoc} */
@@ -183,7 +187,7 @@ public class MigrationReconstructor extends ReconstructorBase {
 		metamodel.refreshCaches();
 		try {
 			final Model model = Persistency.loadModel(modelURIs, metamodel,
-				resourceSetFactory);
+				resourceSetFactory, postLoadProcessor);
 			repository = MigrationFactory.eINSTANCE.createRepository();
 			repository.setMetamodel(metamodel);
 			repository.setModel(model);

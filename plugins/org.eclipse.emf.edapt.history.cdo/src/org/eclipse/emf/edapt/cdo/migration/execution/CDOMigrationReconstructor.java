@@ -23,7 +23,7 @@ public class CDOMigrationReconstructor extends MigrationReconstructor {
 		IProgressMonitor monitor, IClassLoader classLoader,
 		ValidationLevel level, IResourceSetFactory resourceSetFactory) {
 		super(modelURIs, sourceRelease, targetRelease, monitor, classLoader,
-			level, resourceSetFactory);
+			level, resourceSetFactory, null);
 	}
 
 	/** Load the model before migration. */
