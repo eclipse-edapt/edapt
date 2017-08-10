@@ -10,7 +10,7 @@
 
 	<properties>
 		<tycho-version>1.0.0</tycho-version>
-		<eclipse-jarsigner-version>1.1.0</eclipse-jarsigner-version>
+		<eclipse-jarsigner-version>1.1.4</eclipse-jarsigner-version>
 		<maven-surefire-version>2.18.1</maven-surefire-version>
 		<junit-version>4.12</junit-version>
 		<javadoc-version>2.10.3</javadoc-version>
