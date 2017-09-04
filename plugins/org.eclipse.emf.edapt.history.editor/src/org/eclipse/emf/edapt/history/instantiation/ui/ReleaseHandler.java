@@ -11,22 +11,27 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.edapt.history.instantiation.ReleaseCommand;
 import org.eclipse.emf.edapt.history.instantiation.UpdatePackageNamespaceCommand;
+import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
+import org.eclipse.emf.edapt.internal.common.LoggingUtils;
 import org.eclipse.emf.edapt.internal.common.MetamodelExtent;
 import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
@@ -65,25 +70,37 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 
 	/** Release the metamodel. */
 	private void release(MetamodelExtent extent, EditingDomainListener listener) {
-		final EditingDomain domain = listener.getEditingDomain();
-		if (!isNsURIChanged(extent, listener.getHistory().getLastRelease())) {
-			final History history = listener.getHistory();
-			final List<EPackage> rootPackages = history.getRootPackages();
-			final ReleaseWizard releaseWizard = new ReleaseWizard(rootPackages);
-			final WizardDialog dialog = new WizardDialog(Display.getDefault().getActiveShell(), releaseWizard);
-			if (dialog.open() == Window.OK) {
-				for (final EPackage ePackage : rootPackages) {
-					if (!releaseWizard.updatePackage(ePackage)) {
-						continue;
+		try {
+			final EditingDomain domain = listener.getEditingDomain();
+			if (!isNsURIChanged(extent, listener.getHistory().getLastRelease())) {
+				final History history = listener.getHistory();
+				final List<EPackage> rootPackages = history.getRootPackages();
+				final ReleaseWizard releaseWizard = new ReleaseWizard(rootPackages);
+				final WizardDialog dialog = new WizardDialog(Display.getDefault().getActiveShell(), releaseWizard);
+				if (dialog.open() == Window.OK) {
+					for (final EPackage ePackage : rootPackages) {
+						if (!releaseWizard.updatePackage(ePackage)) {
+							continue;
+						}
+						final String source = releaseWizard.getSource(ePackage);
+						final String target = releaseWizard.getTarget(ePackage);
+						updateNamespaceURI(domain, Collections.singletonList(ePackage), source, target);
 					}
-					final String source = releaseWizard.getSource(ePackage);
-					final String target = releaseWizard.getTarget(ePackage);
-					updateNamespaceURI(domain, Collections.singletonList(ePackage), source, target);
+					addRelease(domain, listener, null);
 				}
+			} else {
 				addRelease(domain, listener, null);
 			}
-		} else {
-			addRelease(domain, listener, null);
+		} catch (final InvocationTargetException ex) {
+			ErrorDialog.openError(
+				Display.getDefault().getActiveShell(),
+				"Error during release", //$NON-NLS-1$
+				"An error occurred during the release. Did you record all changes?", //$NON-NLS-1$
+				LoggingUtils.createMultiStatus(
+					HistoryEditorPlugin.getPlugin(),
+					IStatus.ERROR,
+					"Exception during reconstruction...", //$NON-NLS-1$
+					ex.getTargetException()));
 		}
 	}
 
@@ -105,11 +122,17 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 	/**
 	 * Check whether all namespace URIs have changed w.r.t. to a certain
 	 * release.
+	 *
+	 * @throws InvocationTargetException in case the reconstructor throws any exception
 	 */
-	private boolean isNsURIChanged(MetamodelExtent extent, Release release) {
+	private boolean isNsURIChanged(MetamodelExtent extent, Release release) throws InvocationTargetException {
 		final EcoreForwardReconstructor reconstructor = new EcoreForwardReconstructor(
 			URI.createURI("before")); //$NON-NLS-1$
-		reconstructor.reconstruct(release, true);
+		try {
+			reconstructor.reconstruct(release, true);
+		} catch (final RuntimeException ex) {
+			throw new InvocationTargetException(ex);
+		}
 		return isNsURIChanged(extent.getRootPackages(), reconstructor);
 	}
 
