@@ -12,6 +12,7 @@
 package org.eclipse.emf.edapt.spi.history.provider;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +23,11 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edapt.history.provider.util.RestrictingDragAndDropCommand;
+import org.eclipse.emf.edapt.spi.history.Change;
+import org.eclipse.emf.edapt.spi.history.CompositeChange;
+import org.eclipse.emf.edapt.spi.history.Create;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edapt.spi.history.OperationChange;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
@@ -88,9 +93,8 @@ public class ReleaseItemProvider
 	 * @generated
 	 */
 	protected void addDatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Release_date_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Release_date_feature", "_UI_Release_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -111,9 +115,8 @@ public class ReleaseItemProvider
 	 * @generated
 	 */
 	protected void addLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Release_label_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Release_label_feature", "_UI_Release_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -158,15 +161,49 @@ public class ReleaseItemProvider
 		return super.getChildFeature(object, child);
 	}
 
+	private boolean shouldBeReleased(Release release) {
+		if (release == null) {
+			return false;
+		}
+		final Date date = release.getDate();
+		if (date != null) {
+			return false;
+		}
+		return checkForPotentialBreakingChanges(release.getChanges());
+	}
+
+	private boolean checkForPotentialBreakingChanges(List<Change> changes) {
+		for (final Change change : changes) {
+			if (OperationChange.class.isInstance(change)) {
+				if (OperationChange.class.cast(change).getOperation().getOperation().isBreaking()) {
+					return true;
+				}
+			} else if (CompositeChange.class.isInstance(change)) {
+				if (checkForPotentialBreakingChanges(
+					new ArrayList<Change>(CompositeChange.class.cast(change).getChanges()))) {
+					return true;
+				}
+			} else if (Create.class.isInstance(change)) {
+				continue;
+			} else {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	/**
 	 * This returns Release.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
+		if (shouldBeReleased((Release) object)) {
+			return overlayImage(object, getResourceLocator().getImage("full/obj16/ReleaseBreaking")); //$NON-NLS-1$
+		}
 		return overlayImage(object, getResourceLocator().getImage("full/obj16/Release")); //$NON-NLS-1$
 	}
 
@@ -184,6 +221,7 @@ public class ReleaseItemProvider
 		final Date date = element.getDate();
 		final String dateSegment = " (" //$NON-NLS-1$
 			+ (date != null ? formatter.format(date) : "not yet released") //$NON-NLS-1$
+			+ (shouldBeReleased(element) ? " and potentially contains breaking changes" : "") //$NON-NLS-1$//$NON-NLS-2$
 			+ ")"; //$NON-NLS-1$
 		final String labelSegment = element.getLabel() != null ? " " + element //$NON-NLS-1$
 			.getLabel() : ""; //$NON-NLS-1$
@@ -197,7 +235,7 @@ public class ReleaseItemProvider
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public void notifyChanged(Notification notification) {
@@ -209,7 +247,7 @@ public class ReleaseItemProvider
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case HistoryPackage.RELEASE__CHANGES:
-			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, true));
 			return;
 		}
 		super.notifyChanged(notification);
