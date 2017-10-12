@@ -201,8 +201,7 @@ public class ParameterImpl extends IdentifiedElementImpl implements Parameter {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.PARAMETER__OPERATION,
 				newOperation, newOperation));
 		}
@@ -507,8 +506,9 @@ public class ParameterImpl extends IdentifiedElementImpl implements Parameter {
 		case DeclarationPackage.PARAMETER__CLASSIFIER:
 			return basicGetClassifier() != null;
 		case DeclarationPackage.PARAMETER__CLASSIFIER_NAME:
-			return CLASSIFIER_NAME_EDEFAULT == null ? classifierName != null : !CLASSIFIER_NAME_EDEFAULT
-				.equals(classifierName);
+			return CLASSIFIER_NAME_EDEFAULT == null ? classifierName != null
+				: !CLASSIFIER_NAME_EDEFAULT
+					.equals(classifierName);
 		}
 		return super.eIsSet(featureID);
 	}

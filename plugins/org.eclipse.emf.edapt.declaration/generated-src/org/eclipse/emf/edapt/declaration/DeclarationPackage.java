@@ -26,6 +26,9 @@ import org.eclipse.emf.ecore.EReference;
  * <li>each enum,</li>
  * <li>and each data type</li>
  * </ul>
+ * @noimplement This interface is not intended to be implemented by clients.
+ * @noextend This interface is not intended to be extended by clients.
+ * @noreference This interface and its members are not intended to be referenced by clients.
  * <!-- end-user-doc -->
  * <!-- begin-model-doc -->
  * Metamodel for the declaration of operations
@@ -73,8 +76,8 @@ public interface DeclarationPackage extends EPackage {
 	DeclarationPackage eINSTANCE = org.eclipse.emf.edapt.declaration.impl.DeclarationPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl
-	 * <em>Identified Element</em>}' class.
+	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.IdentifiedElementImpl <em>Identified
+	 * Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -308,6 +311,18 @@ public interface DeclarationPackage extends EPackage {
 	int OPERATION__LABEL = IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Breaking</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *
+	 * @since 1.3
+	 *        <!-- end-user-doc -->
+	 *
+	 * @generated
+	 * @ordered
+	 */
+	int OPERATION__BREAKING = IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The number of structural features of the '<em>Operation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -315,7 +330,7 @@ public interface DeclarationPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
+	int OPERATION_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl <em>Parameter</em>}'
@@ -482,8 +497,8 @@ public interface DeclarationPackage extends EPackage {
 	int CONSTRAINT_FEATURE_COUNT = IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement
-	 * <em>Identified Element</em>}'.
+	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement <em>Identified
+	 * Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -507,8 +522,8 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getIdentifiedElement_Name();
 
 	/**
-	 * Returns the meta object for the attribute '
-	 * {@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}'.
+	 * Returns the meta object for the attribute
+	 * '{@link org.eclipse.emf.edapt.declaration.IdentifiedElement#getDescription <em>Description</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -531,8 +546,8 @@ public interface DeclarationPackage extends EPackage {
 	EClass getLibrary();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}'.
+	 * Returns the meta object for the containment reference list
+	 * '{@link org.eclipse.emf.edapt.declaration.Library#getOperations <em>Operations</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -570,8 +585,8 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getLibrary_Label();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}'.
+	 * Returns the meta object for the containment reference list
+	 * '{@link org.eclipse.emf.edapt.declaration.Library#getLibraries <em>Libraries</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -594,8 +609,8 @@ public interface DeclarationPackage extends EPackage {
 	EClass getOperation();
 
 	/**
-	 * Returns the meta object for the container reference '
-	 * {@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}'.
+	 * Returns the meta object for the container reference
+	 * '{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -607,8 +622,8 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Library();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
+	 * Returns the meta object for the containment reference list
+	 * '{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -620,8 +635,8 @@ public interface DeclarationPackage extends EPackage {
 	EReference getOperation_Parameters();
 
 	/**
-	 * Returns the meta object for the containment reference list '
-	 * {@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}'.
+	 * Returns the meta object for the containment reference list
+	 * '{@link org.eclipse.emf.edapt.declaration.Operation#getConstraints <em>Constraints</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -698,6 +713,21 @@ public interface DeclarationPackage extends EPackage {
 	EAttribute getOperation_Label();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.emf.edapt.declaration.Operation#isBreaking
+	 * <em>Breaking</em>}'.
+	 * <!-- begin-user-doc -->
+	 *
+	 * @since 1.3
+	 *        <!-- end-user-doc -->
+	 *
+	 * @return the meta object for the attribute '<em>Breaking</em>'.
+	 * @see org.eclipse.emf.edapt.declaration.Operation#isBreaking()
+	 * @see #getOperation()
+	 * @generated
+	 */
+	EAttribute getOperation_Breaking();
+
+	/**
 	 * Returns the meta object for class '{@link org.eclipse.emf.edapt.declaration.Parameter <em>Parameter</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -709,8 +739,8 @@ public interface DeclarationPackage extends EPackage {
 	EClass getParameter();
 
 	/**
-	 * Returns the meta object for the container reference '
-	 * {@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the container reference
+	 * '{@link org.eclipse.emf.edapt.declaration.Parameter#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -798,8 +828,8 @@ public interface DeclarationPackage extends EPackage {
 	EClass getConstraint();
 
 	/**
-	 * Returns the meta object for the container reference '
-	 * {@link org.eclipse.emf.edapt.declaration.Constraint#getOperation <em>Operation</em>}'.
+	 * Returns the meta object for the container reference
+	 * '{@link org.eclipse.emf.edapt.declaration.Constraint#getOperation <em>Operation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -842,6 +872,8 @@ public interface DeclarationPackage extends EPackage {
 	 * <li>each enum,</li>
 	 * <li>and each data type</li>
 	 * </ul>
+	 * @noimplement This interface is not intended to be implemented by clients.
+	 * @noextend This interface is not intended to be extended by clients.
 	 * <!-- end-user-doc -->
 	 *
 	 * @generated
@@ -1008,6 +1040,17 @@ public interface DeclarationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute OPERATION__LABEL = eINSTANCE.getOperation_Label();
+
+		/**
+		 * The meta object literal for the '<em><b>Breaking</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * 
+		 * @since 1.3
+		 *        <!-- end-user-doc -->
+		 *
+		 * @generated
+		 */
+		EAttribute OPERATION__BREAKING = eINSTANCE.getOperation_Breaking();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.emf.edapt.declaration.impl.ParameterImpl

@@ -82,9 +82,8 @@ public class LibraryItemProvider
 	 * @generated
 	 */
 	protected void addImplementationPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Library_implementation_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Library_implementation_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -106,9 +105,8 @@ public class LibraryItemProvider
 	 * @generated
 	 */
 	protected void addLabelPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Library_label_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Library_label_feature", "_UI_Library_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -176,8 +174,7 @@ public class LibraryItemProvider
 	@Override
 	public String getText(Object object) {
 		final String label = ((Library) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Library_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_Library_type") : //$NON-NLS-1$
 			getString("_UI_Library_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
@@ -218,15 +215,11 @@ public class LibraryItemProvider
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add
-			(createChildParameter
-			(DeclarationPackage.Literals.LIBRARY__OPERATIONS,
-				DeclarationFactory.eINSTANCE.createOperation()));
+		newChildDescriptors.add(createChildParameter(DeclarationPackage.Literals.LIBRARY__OPERATIONS,
+			DeclarationFactory.eINSTANCE.createOperation()));
 
-		newChildDescriptors.add
-			(createChildParameter
-			(DeclarationPackage.Literals.LIBRARY__LIBRARIES,
-				DeclarationFactory.eINSTANCE.createLibrary()));
+		newChildDescriptors.add(createChildParameter(DeclarationPackage.Literals.LIBRARY__LIBRARIES,
+			DeclarationFactory.eINSTANCE.createLibrary()));
 	}
 
 }

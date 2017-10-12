@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Operation</b></em>'.
+ * @noimplement This interface is not intended to be implemented by clients.
  * <!-- end-user-doc -->
  *
  * <!-- begin-model-doc -->
@@ -24,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.edapt.declaration.Operation#getLibrary <em>Library</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.Operation#getParameters <em>Parameters</em>}</li>
@@ -33,8 +35,8 @@ import org.eclipse.emf.common.util.EList;
  * <li>{@link org.eclipse.emf.edapt.declaration.Operation#getAfter <em>After</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.Operation#getImplementation <em>Implementation</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.Operation#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.Operation#isBreaking <em>Breaking</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation()
  * @model
@@ -258,6 +260,38 @@ public interface Operation extends IdentifiedElement {
 	 * @generated
 	 */
 	void setLabel(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Breaking</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 *
+	 * @since 1.3
+	 *        <!-- end-user-doc -->
+	 *        <!-- begin-model-doc -->
+	 *        Whether this operation may cause existing models to need migration.
+	 *        <!-- end-model-doc -->
+	 *
+	 * @return the value of the '<em>Breaking</em>' attribute.
+	 * @see #setBreaking(boolean)
+	 * @see org.eclipse.emf.edapt.declaration.DeclarationPackage#getOperation_Breaking()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isBreaking();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.emf.edapt.declaration.Operation#isBreaking <em>Breaking</em>}'
+	 * attribute.
+	 * <!-- begin-user-doc -->
+	 * 
+	 * @since 1.3
+	 *        <!-- end-user-doc -->
+	 *
+	 * @param value the new value of the '<em>Breaking</em>' attribute.
+	 * @see #isBreaking()
+	 * @generated
+	 */
+	void setBreaking(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

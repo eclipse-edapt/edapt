@@ -34,6 +34,7 @@ import org.eclipse.emf.edapt.declaration.Parameter;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getLibrary <em>Library</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getParameters <em>Parameters</em>}</li>
@@ -43,8 +44,8 @@ import org.eclipse.emf.edapt.declaration.Parameter;
  * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getAfter <em>After</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getImplementation <em>Implementation</em>}</li>
  * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#getLabel <em>Label</em>}</li>
+ * <li>{@link org.eclipse.emf.edapt.declaration.impl.OperationImpl#isBreaking <em>Breaking</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -171,6 +172,28 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 	protected String label = LABEL_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isBreaking() <em>Breaking</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @see #isBreaking()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean BREAKING_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isBreaking() <em>Breaking</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @see #isBreaking()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean breaking = BREAKING_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 *
@@ -213,7 +236,35 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		final String oldLabel = label;
 		label = newLabel;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__LABEL, oldLabel, label));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__LABEL, oldLabel, label));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public boolean isBreaking() {
+		return breaking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
+	public void setBreaking(boolean newBreaking) {
+		final boolean oldBreaking = breaking;
+		breaking = newBreaking;
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__BREAKING, oldBreaking,
+				breaking));
 		}
 	}
 
@@ -228,7 +279,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		if (eContainerFeatureID() != DeclarationPackage.OPERATION__LIBRARY) {
 			return null;
 		}
-		return (Library) eContainer();
+		return (Library) eInternalContainer();
 	}
 
 	/**
@@ -267,8 +318,7 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__LIBRARY, newLibrary,
 				newLibrary));
 		}
@@ -353,8 +403,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		final String oldBefore = before;
 		before = newBefore;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__BEFORE, oldBefore,
-				before));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__BEFORE, oldBefore, before));
 		}
 	}
 
@@ -380,7 +430,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		final String oldAfter = after;
 		after = newAfter;
 		if (eNotificationRequired()) {
-			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__AFTER, oldAfter, after));
+			eNotify(
+				new ENotificationImpl(this, Notification.SET, DeclarationPackage.OPERATION__AFTER, oldAfter, after));
 		}
 	}
 
@@ -552,6 +603,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 			return getImplementation();
 		case DeclarationPackage.OPERATION__LABEL:
 			return getLabel();
+		case DeclarationPackage.OPERATION__BREAKING:
+			return isBreaking();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -592,6 +645,9 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		case DeclarationPackage.OPERATION__LABEL:
 			setLabel((String) newValue);
 			return;
+		case DeclarationPackage.OPERATION__BREAKING:
+			setBreaking((Boolean) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -629,6 +685,9 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		case DeclarationPackage.OPERATION__LABEL:
 			setLabel(LABEL_EDEFAULT);
 			return;
+		case DeclarationPackage.OPERATION__BREAKING:
+			setBreaking(BREAKING_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -658,6 +717,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 			return implementation != null;
 		case DeclarationPackage.OPERATION__LABEL:
 			return LABEL_EDEFAULT == null ? label != null : !LABEL_EDEFAULT.equals(label);
+		case DeclarationPackage.OPERATION__BREAKING:
+			return breaking != BREAKING_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -685,6 +746,8 @@ public class OperationImpl extends IdentifiedElementImpl implements Operation {
 		result.append(implementation);
 		result.append(", label: "); //$NON-NLS-1$
 		result.append(label);
+		result.append(", breaking: "); //$NON-NLS-1$
+		result.append(breaking);
 		result.append(')');
 		return result.toString();
 	}
