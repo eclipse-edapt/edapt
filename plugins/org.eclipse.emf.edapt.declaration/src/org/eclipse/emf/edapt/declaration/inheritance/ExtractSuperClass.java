@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @levd.rating YELLOW Hash: 68BC1516474ED2F7B4140879BE5EB8E8
  */
 @Deprecated
-@EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.")
+@EdaptOperation(identifier = "extractSuperClass", label = "Extract Super Class", description = "In the metamodel, a number of features of a class are extracted to a new super class. In the model, nothing is changed.", breaking = true)
 public class ExtractSuperClass extends OperationImplementation {
 
 	/** {@description} */

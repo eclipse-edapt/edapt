@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: EBBFFC0379B87F347211CB5AF166D379
  */
-@EdaptOperation(identifier = "flattenHierarchy", label = "Flatten Containment Hierarchy", description = "In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly.")
+@EdaptOperation(identifier = "flattenHierarchy", label = "Flatten Containment Hierarchy", description = "In the metamodel, a containment hierarchy is flattened. More specifically, the reference to denote the root as well as the reference to denote the children are replaced by a containment reference. In the model, the corresponding hierarchies are flattened accordingly.", breaking = true)
 public class FlattenHierarchy extends OperationImplementation {
 
 	/** {@description} */

@@ -13,7 +13,7 @@ import org.eclipse.emf.edapt.declaration.EdaptParameter;
  * @version $Rev$
  * @levd.rating YELLOW Hash: BE376951F5BCF49B25FBC6E1177AB68A
  */
-@EdaptOperation(identifier = "generalizeAttribute", label = "Generalize Attribute", description = "In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed.")
+@EdaptOperation(identifier = "generalizeAttribute", label = "Generalize Attribute", description = "In the metamodel, the multiplicity of an attribute is generalized. In the model, nothing is changed.", breaking = true)
 public class GeneralizeAttribute extends GeneralizeTypedElement {
 
 	/** {@description} */

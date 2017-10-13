@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: E13181E607AED01BF2E3F4FE062F569B
  */
-@EdaptOperation(identifier = "rename", label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.")
+@EdaptOperation(identifier = "rename", label = "Rename", description = "In the metamodel, an element is renamed. In the model, nothing is changed.", breaking = true)
 public class Rename extends OperationImplementation {
 
 	/** {@description} */

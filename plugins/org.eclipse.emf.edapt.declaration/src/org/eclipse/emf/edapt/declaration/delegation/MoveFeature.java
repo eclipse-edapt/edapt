@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 261303FAD548FEF5FC9F79DCC0B88F27
  */
-@EdaptOperation(identifier = "moveFeature", label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.")
+@EdaptOperation(identifier = "moveFeature", label = "Move Feature along Reference", description = "In the metamodel, a feature is moved along a single-valued reference. In the model, values are moved accordingly.", breaking = true)
 public class MoveFeature extends OperationImplementation {
 
 	/** {@description} */

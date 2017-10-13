@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 5547A4335432A8EF326CE624209E3E1A
  */
-@EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.")
+@EdaptOperation(identifier = "newAttribute", label = "Create Attribute", description = "In the metamodel, a new attribute is created. Nothing is changed in the model.", breaking = false)
 public class NewAttribute extends OperationImplementation {
 
 	/** {@description} */

@@ -23,8 +23,11 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 2C836E834EA6BBBA7A6F87C202441642
+ *
+ *              This is a breaking operation as it may be applied to features of the same type with a different name. So
+ *              it could lead to a rename of a feature.
  */
-@EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.")
+@EdaptOperation(identifier = "extractSuperClass2", label = "Extract Super Class", description = "In the metamodel, a super class is extracted from a number of sub classes. In the model, nothing is changed.", breaking = true)
 public class ExtractSuperClass2 extends OperationImplementation {
 
 	/** {@description} */

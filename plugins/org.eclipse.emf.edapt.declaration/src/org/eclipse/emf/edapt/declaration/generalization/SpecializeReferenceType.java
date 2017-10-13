@@ -17,8 +17,10 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: DA2C6BD1E7C516C51B2901404CB9485E
+ *
+ *              not breaking because abstract and only one subclass -> existing models are conform already
  */
-@EdaptOperation(identifier = "specializeReferenceType", label = "Specialize Reference Type", description = "In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed.")
+@EdaptOperation(identifier = "specializeReferenceType", label = "Specialize Reference Type", description = "In the metamodel, the type of a reference can be specialized to its subclass, in case it is abstract and has only one subclass. In the model, nothing is changed.", breaking = false)
 public class SpecializeReferenceType extends OperationImplementation {
 
 	/** {@description} */

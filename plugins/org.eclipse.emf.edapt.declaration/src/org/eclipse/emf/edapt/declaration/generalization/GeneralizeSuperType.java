@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 46DEE928672A2762CB56899D0FE31BD0
  */
-@EdaptOperation(identifier = "generalizeSuperType", label = "Generalize Super Type", description = "In the metamodel, the super type of a class is replaced by its super types. In the model, the values of the features that the class inherits from that super type (excluding its super types) are deleted.")
+@EdaptOperation(identifier = "generalizeSuperType", label = "Generalize Super Type", description = "In the metamodel, the super type of a class is replaced by its super types. In the model, the values of the features that the class inherits from that super type (excluding its super types) are deleted.", breaking = true)
 public class GeneralizeSuperType extends OperationImplementation {
 
 	/** {@description} */

@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 1FBCEE4F43204F11DDB5E245EFF79FC7
  */
-@EdaptOperation(identifier = "pushFeature", label = "Push down Feature", description = "In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly.")
+@EdaptOperation(identifier = "pushFeature", label = "Push down Feature", description = "In the metamodel, a feature is pushed down to its sub classes. In the model, values are changed accordingly.", breaking = false)
 public class PushFeature extends OperationImplementation {
 
 	/** {@description} */

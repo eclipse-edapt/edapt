@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 9CD50DCE313F4E9FC232ACDD74C6918B
  */
-@EdaptOperation(identifier = "newReference", label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.")
+@EdaptOperation(identifier = "newReference", label = "Create Reference", description = "In the metamodel, a new reference is created. Nothing is changed in the model.", breaking = false)
 public class NewReference extends OperationImplementation {
 
 	/** {@description} */

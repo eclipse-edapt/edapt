@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: BF27B6965D9A89E8000263BF9AC8CB88
  */
-@EdaptOperation(identifier = "operationToVolatile", label = "Operation to Volatile Feature", description = "In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done.")
+@EdaptOperation(identifier = "operationToVolatile", label = "Operation to Volatile Feature", description = "In the metamodel, an operation is transformed into a volatile feature. In the model, nothing needs to be done.", breaking = false)
 public class OperationToVolatile extends OperationImplementation {
 
 	/** {@description} */

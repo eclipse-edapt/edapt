@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: C5E03012DB3475DF44B1E9D967EC97FE
  */
-@EdaptOperation(label = "Class to Association", description = "")
+@EdaptOperation(label = "Class to Association", description = "", breaking = true)
 public class ClassToAssociation extends OperationImplementation {
 
 	/** {@description} */

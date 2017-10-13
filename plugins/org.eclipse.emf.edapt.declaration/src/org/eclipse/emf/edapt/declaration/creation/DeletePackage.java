@@ -15,8 +15,10 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 1E286482FFD6C9B2B02E613C8AC1E472
+ *
+ *              not breaking because only empty package may be deleted
  */
-@EdaptOperation(identifier = "deletePackage", label = "Delete Package", description = "In the metamodel, an empty package is deleted.")
+@EdaptOperation(identifier = "deletePackage", label = "Delete Package", description = "In the metamodel, an empty package is deleted.", breaking = false)
 public class DeletePackage extends OperationImplementation {
 
 	/** {@description} */

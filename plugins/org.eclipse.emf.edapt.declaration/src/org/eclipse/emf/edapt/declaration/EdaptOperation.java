@@ -40,4 +40,11 @@ public @interface EdaptOperation {
 	 * operation.
 	 */
 	String identifier() default "";
+
+	/**
+	 * Whether this operation breaks existing models in a way that migration is inevitable.
+	 *
+	 * @since 1.3
+	 */
+	boolean breaking() default false;
 }

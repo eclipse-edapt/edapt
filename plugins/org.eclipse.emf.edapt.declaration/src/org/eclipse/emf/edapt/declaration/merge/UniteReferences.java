@@ -24,7 +24,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: F7479C6CE1ED48B166FD63B9297C2359
  */
-@EdaptOperation(identifier = "uniteReferences", label = "Unite References", description = "In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly.")
+@EdaptOperation(identifier = "uniteReferences", label = "Unite References", description = "In the metamodel, a number of references are united into a single reference which obtains their common super type as type. In the model, their values have to be moved accordingly.", breaking = true)
 public class UniteReferences extends OperationImplementation {
 
 	/** {@description} */

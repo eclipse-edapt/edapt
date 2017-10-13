@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @levd.rating YELLOW Hash: 1B0F9E96639F314E70F6EEFF7437E475
  */
 @Deprecated
-@EdaptOperation(identifier = "replaceFeature", label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.")
+@EdaptOperation(identifier = "replaceFeature", label = "Replace Feature", description = "In the metamodel, a feature is replace by another one. In the model, the values are moved accordingly.", breaking = true)
 public class ReplaceFeature extends OperationImplementation {
 
 	/** {@description} */
