@@ -165,6 +165,10 @@ public class ReleaseItemProvider
 		if (release == null) {
 			return false;
 		}
+		if (release.getNumber() == 0) {
+			/* initial release */
+			return false;
+		}
 		final Date date = release.getDate();
 		if (date != null) {
 			return false;
