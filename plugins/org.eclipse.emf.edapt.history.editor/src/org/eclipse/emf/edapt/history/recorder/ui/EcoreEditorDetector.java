@@ -95,18 +95,27 @@ public class EcoreEditorDetector extends PartAdapter implements
 		final IRunnableWithProgress attachRunnable = new IRunnableWithProgress() {
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+				ensureUIResponsive();
 				EditingDomainListener listener = getListener(editor);
-
+				ensureUIResponsive();
 				if (listener == null) {
 					listener = new EditingDomainListener(editor.getEditingDomain());
+					ensureUIResponsive();
 				}
 				if (listener.loadHistory()) {
+					ensureUIResponsive();
 					validateListener(editor, listener);
+					ensureUIResponsive();
+				}
+			}
+
+			private void ensureUIResponsive() {
+				while (editor.getSite().getShell().getDisplay().readAndDispatch()) {
 				}
 			}
 		};
 		try {
-			new ProgressMonitorDialog(editor.getSite().getShell()).run(true, false, attachRunnable);
+			new ProgressMonitorDialog(editor.getSite().getShell()).run(false, false, attachRunnable);
 		} catch (final InvocationTargetException ex) {
 			LoggingUtils.logError(HistoryEditorPlugin.getPlugin(), ex);
 		} catch (final InterruptedException ex) {
