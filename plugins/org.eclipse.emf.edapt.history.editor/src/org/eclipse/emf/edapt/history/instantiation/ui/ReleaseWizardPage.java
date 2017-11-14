@@ -11,15 +11,23 @@
  ******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.jface.layout.GridDataFactory;
+import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
@@ -33,11 +41,13 @@ import org.eclipse.swt.widgets.Text;
  */
 public class ReleaseWizardPage extends WizardPage {
 
-	private final String source;
+	private final Map<EPackage, String> packageToInferedSource = new LinkedHashMap<EPackage, String>();
 
-	private Text sourceText;
-	private Text targetText;
-	private Button updateButton;
+	private final Map<EPackage, Text> packageToSourceText = new LinkedHashMap<EPackage, Text>();
+	private final Map<EPackage, Text> packageToTargetText = new LinkedHashMap<EPackage, Text>();
+	private final Map<EPackage, Button> packageToUpdateButton = new LinkedHashMap<EPackage, Button>();
+
+	private final List<EPackage> packages;
 
 	/**
 	 * Constructs a new {@link ReleaseWizardPage}.
@@ -45,60 +55,106 @@ public class ReleaseWizardPage extends WizardPage {
 	 * @param pageName
 	 * @param description
 	 * @param titleImage
-	 * @param source the releases label to replace
+	 * @param packages the packages
 	 */
-	protected ReleaseWizardPage(String pageName, String description, ImageDescriptor titleImage, String source) {
+	protected ReleaseWizardPage(String pageName, String description, ImageDescriptor titleImage,
+		List<EPackage> packages) {
 		super(pageName, pageName, titleImage);
 		setDescription(description);
-		this.source = source;
+		this.packages = packages;
+		for (final EPackage ePackage : packages) {
+			packageToInferedSource.put(ePackage, inferSource(ePackage));
+		}
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
-	 */
+	/** Infer the label to be replaced from the package. */
+	private String inferSource(EPackage ePackage) {
+		try {
+			final String nsURI = ePackage.getNsURI();
+			final int index = nsURI.lastIndexOf('/');
+			return nsURI.substring(index + 1);
+		} catch (final RuntimeException e) {
+			return ""; //$NON-NLS-1$
+		}
+	}
+
 	@Override
 	public void createControl(Composite parent) {
-		final Composite composite = new Composite(parent, SWT.None);
-		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
-		final GridLayout layout = new GridLayout(2, false);
-		composite.setLayout(layout);
+		final Composite mainComposite = new Composite(parent, SWT.NONE);
+		GridLayoutFactory.fillDefaults().numColumns(1).applyTo(mainComposite);
 
-		final Label sourceLabel = new Label(composite, SWT.None);
-		sourceLabel.setText("Label to match:"); //$NON-NLS-1$
+		final ScrolledComposite scrolledComposite = new ScrolledComposite(mainComposite, SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		scrolledComposite.setShowFocusedControl(true);
+		GridLayoutFactory.fillDefaults().numColumns(1).applyTo(scrolledComposite);
+		GridDataFactory.fillDefaults().align(SWT.FILL, SWT.FILL).grab(true, true).applyTo(scrolledComposite);
 
-		sourceText = new Text(composite, SWT.BORDER);
-		sourceText.setText(source);
-		sourceText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		initSourceText(sourceText);
+		final Composite composite = new Composite(scrolledComposite, SWT.None);
+		GridLayoutFactory.fillDefaults().numColumns(5).applyTo(composite);
+		GridDataFactory.fillDefaults().grab(true, true).align(SWT.BEGINNING, SWT.BEGINNING).applyTo(composite);
+		composite.setBackground(composite.getDisplay().getSystemColor(SWT.COLOR_WHITE));
+		composite.setBackgroundMode(SWT.INHERIT_FORCE);
 
-		final Label targetLabel = new Label(composite, SWT.None);
-		targetLabel.setText("Label to replace with:"); //$NON-NLS-1$
+		createLabel(composite, "#", SWT.COLOR_DARK_BLUE); //$NON-NLS-1$
+		createLabel(composite, "Package", SWT.COLOR_DARK_BLUE); //$NON-NLS-1$
+		GridDataFactory.fillDefaults().hint(250, SWT.DEFAULT)
+			.applyTo(createLabel(composite, "Label to match", SWT.COLOR_DARK_BLUE)); //$NON-NLS-1$
+		GridDataFactory.fillDefaults().hint(250, SWT.DEFAULT)
+			.applyTo(createLabel(composite, "Label to replace with", SWT.COLOR_DARK_BLUE)); //$NON-NLS-1$
+		createLabel(composite, "Update?", SWT.COLOR_DARK_BLUE) //$NON-NLS-1$
+			.setToolTipText("Whether to update the NS-URI at all."); //$NON-NLS-1$
 
-		targetText = new Text(composite, SWT.BORDER);
-		targetText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		initTargetText(targetText);
+		for (int i = 0; i < packages.size(); i++) {
+			final EPackage ePackage = packages.get(i);
 
-		final Label updateLabel = new Label(composite, SWT.None);
-		updateLabel.setText("Update namespace URI:"); //$NON-NLS-1$
+			createLabel(composite, i + 1 + "."); //$NON-NLS-1$
 
-		updateButton = new Button(composite, SWT.CHECK);
-		updateButton.setSelection(true);
-		initUpdateButton(updateButton);
+			createLabel(composite, ePackage.getNsURI());
 
-		setControl(composite);
+			final Text sourceText = new Text(composite, SWT.BORDER);
+			packageToSourceText.put(ePackage, sourceText);
+			sourceText.setText(packageToInferedSource.get(ePackage));
+			sourceText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			initSourceText(sourceText);
+
+			final Text targetText = new Text(composite, SWT.BORDER);
+			packageToTargetText.put(ePackage, targetText);
+			targetText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+			initTargetText(targetText);
+
+			final Button updateButton = new Button(composite, SWT.CHECK);
+			updateButton.setToolTipText("Whether to update the NS-URI at all."); //$NON-NLS-1$
+			packageToUpdateButton.put(ePackage, updateButton);
+			updateButton.setSelection(true);
+			initUpdateButton(updateButton, ePackage);
+
+		}
+
+		scrolledComposite.setContent(composite);
+		composite.layout();
+		final Point point = composite.computeSize(SWT.DEFAULT, SWT.DEFAULT);
+		scrolledComposite.setMinSize(point);
+
+		setControl(mainComposite);
 
 		checkIfPageComplete();
 	}
 
+	private Label createLabel(Composite composite, String string) {
+		final Label label = new Label(composite, SWT.NONE);
+		label.setText(string);
+		return label;
+	}
+
+	private Label createLabel(Composite composite, String string, int color) {
+		final Label label = createLabel(composite, string);
+		label.setForeground(label.getDisplay().getSystemColor(color));
+		return label;
+	}
+
 	private void initSourceText(Text sourceText) {
 		sourceText.addKeyListener(new KeyAdapter() {
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.KeyAdapter#keyReleased(org.eclipse.swt.events.KeyEvent)
-			 */
 			@Override
 			public void keyReleased(KeyEvent e) {
 				checkIfPageComplete();
@@ -108,11 +164,6 @@ public class ReleaseWizardPage extends WizardPage {
 
 	private void initTargetText(Text targetText) {
 		targetText.addKeyListener(new KeyAdapter() {
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.KeyAdapter#keyReleased(org.eclipse.swt.events.KeyEvent)
-			 */
 			@Override
 			public void keyReleased(KeyEvent e) {
 				checkIfPageComplete();
@@ -120,78 +171,85 @@ public class ReleaseWizardPage extends WizardPage {
 		});
 	}
 
-	private void initUpdateButton(Button updateButton) {
+	private void initUpdateButton(final Button updateButton, final EPackage ePackage) {
 		updateButton.addSelectionListener(new SelectionAdapter() {
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 */
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				packageToSourceText.get(ePackage).setEnabled(updateButton.getSelection());
+				packageToTargetText.get(ePackage).setEnabled(updateButton.getSelection());
 				checkIfPageComplete();
 			}
 		});
 	}
 
 	private void checkIfPageComplete() {
-		if (!updateButton.getSelection()) {
-			setErrorMessage(null);
-			setPageComplete(true);
-			return;
+		for (int i = 0; i < packages.size(); i++) {
+			final EPackage ePackage = packages.get(i);
+
+			final Button updateButton = packageToUpdateButton.get(ePackage);
+			final Text sourceText = packageToSourceText.get(ePackage);
+			final Text targetText = packageToTargetText.get(ePackage);
+
+			if (!updateButton.getSelection()) {
+				continue;
+			}
+			if (sourceText.getText().isEmpty()) {
+				setErrorMessage("Package at index " + (i + 1) + ":\n Label to match may not be empty"); //$NON-NLS-1$ //$NON-NLS-2$
+				setPageComplete(false);
+				return;
+			}
+			if (targetText.getText().isEmpty()) {
+				setErrorMessage("Package at index " + (i + 1) + ":\n Label to replace may not be empty"); //$NON-NLS-1$ //$NON-NLS-2$
+				setPageComplete(false);
+				return;
+			}
+			if (sourceText.getText().equals(targetText.getText())) {
+				setErrorMessage("Package at index " + (i + 1) + ":\n Source and target label may not be equal"); //$NON-NLS-1$ //$NON-NLS-2$
+				setPageComplete(false);
+				return;
+			}
 		}
-		if (sourceText.getText().isEmpty()) {
-			setErrorMessage("Label to match may not be empty"); //$NON-NLS-1$
-			setPageComplete(false);
-			return;
-		}
-		if (targetText.getText().isEmpty()) {
-			setErrorMessage("Label to replace may not be empty"); //$NON-NLS-1$
-			setPageComplete(false);
-			return;
-		}
-		if (sourceText.getText().equals(targetText.getText())) {
-			setErrorMessage("Source and target label may not be equal"); //$NON-NLS-1$
-			setPageComplete(false);
-			return;
-		}
+
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
 
-	/** Returns source label. */
-	public String getSource() {
-		return sourceText.getText();
-	}
-
-	/** Returns target label. */
-	public String getTarget() {
-		return targetText.getText();
-	}
-
-	/** Returns update flag. */
-	public boolean isUpdate() {
-		return updateButton.getSelection();
+	/**
+	 * Returns source label.
+	 *
+	 * @param ePackage
+	 */
+	public String getSource(EPackage ePackage) {
+		return packageToSourceText.get(ePackage).getText();
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Returns target label.
 	 *
-	 * @see org.eclipse.jface.dialogs.DialogPage#setVisible(boolean)
+	 * @param ePackage
 	 */
+	public String getTarget(EPackage ePackage) {
+		return packageToTargetText.get(ePackage).getText();
+	}
+
+	/** Returns update flag. */
+	public boolean isUpdate(EPackage ePackage) {
+		return packageToUpdateButton.get(ePackage).getSelection();
+	}
+
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(visible);
 		if (visible) {
-			targetText.setFocus();
+			packageToTargetText.get(packages.get(0)).setFocus();
 		}
 	}
 
 	/**
 	 * Allows to set the target text that is visible.
 	 */
-	public void setTarget(String target) {
-		targetText.setText(target);
+	public void setTarget(EPackage ePackage, String target) {
+		packageToTargetText.get(ePackage).setText(target);
 		checkIfPageComplete();
 	}
 

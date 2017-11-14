@@ -11,13 +11,12 @@
  ******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 
 /**
@@ -28,19 +27,13 @@ import org.eclipse.jface.wizard.Wizard;
  */
 public class ReleaseWizard extends Wizard {
 
-	private final Map<EPackage, ReleaseWizardPage> pages = new LinkedHashMap<EPackage, ReleaseWizardPage>();
-
 	private final Map<EPackage, Boolean> updateMap = new LinkedHashMap<EPackage, Boolean>();
 	private final Map<EPackage, String> sourceMap = new LinkedHashMap<EPackage, String>();
 	private final Map<EPackage, String> targetMap = new LinkedHashMap<EPackage, String>();
 
-	/**
-	 * This map holds values entered by the user for the given key. Used to set a default string in a target textbox by
-	 * default.
-	 */
-	private final Map<String, String> sourceToTargetMap = new LinkedHashMap<String, String>();
-
 	private final List<EPackage> rootPackages;
+
+	private ReleaseWizardPage releaseWizardPage;
 
 	public ReleaseWizard(List<EPackage> rootPackages) {
 		if (rootPackages == null || rootPackages.isEmpty()) {
@@ -49,45 +42,19 @@ public class ReleaseWizard extends Wizard {
 		this.rootPackages = rootPackages;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.wizard.Wizard#getWindowTitle()
-	 */
 	@Override
 	public String getWindowTitle() {
 		return "Create Release"; //$NON-NLS-1$
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.wizard.Wizard#addPages()
-	 */
 	@Override
 	public void addPages() {
-		for (final EPackage ePackage : rootPackages) {
-			final String source = inferSource(ePackage);
-			pages
-				.put(
-					ePackage,
-					new ReleaseWizardPage("Update namespace URI of package " + ePackage.getNsURI(), //$NON-NLS-1$
-						"Enter the label to replace and the target label or deselect the update button", //$NON-NLS-1$
-						null,
-						source));
-			addPage(pages.get(ePackage));
-		}
-	}
-
-	/** Infer the label to be replaced from the package. */
-	private String inferSource(EPackage ePackage) {
-		try {
-			final String nsURI = ePackage.getNsURI();
-			final int index = nsURI.lastIndexOf('/');
-			return nsURI.substring(index + 1);
-		} catch (final RuntimeException e) {
-			return ""; //$NON-NLS-1$
-		}
+		final List<EPackage> sources = new ArrayList<EPackage>(rootPackages);
+		releaseWizardPage = new ReleaseWizardPage("Update namespace URI of package(s)", //$NON-NLS-1$
+			"Enter the label(s) to replace and the target label or deselect the update button", //$NON-NLS-1$
+			null,
+			sources);
+		addPage(releaseWizardPage);
 	}
 
 	/**
@@ -114,45 +81,18 @@ public class ReleaseWizard extends Wizard {
 		return targetMap.get(ePackage);
 	}
 
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.wizard.Wizard#getNextPage(org.eclipse.jface.wizard.IWizardPage)
-	 */
-	@Override
-	public IWizardPage getNextPage(IWizardPage page) {
-		final ReleaseWizardPage next = ReleaseWizardPage.class.cast(super.getNextPage(page));
-		if (next == null) {
-			return next;
-		}
-		final ReleaseWizardPage current = ReleaseWizardPage.class.cast(page);
-		if (!current.isUpdate()) {
-			return next;
-		}
-		sourceToTargetMap.put(current.getSource(), current.getTarget());
-		if (!sourceToTargetMap.containsKey(next.getSource())) {
-			return next;
-		}
-		next.setTarget(sourceToTargetMap.get(next.getSource()));
-		return next;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * @see org.eclipse.jface.wizard.Wizard#performFinish()
-	 */
 	@Override
 	public boolean performFinish() {
-		for (final Entry<EPackage, ReleaseWizardPage> entry : pages.entrySet()) {
-			updateMap.put(entry.getKey(), entry.getValue().isUpdate());
-			if (!entry.getValue().isUpdate()) {
+		for (final EPackage ePackage : rootPackages) {
+			final boolean isUpdate = releaseWizardPage.isUpdate(ePackage);
+			updateMap.put(ePackage, isUpdate);
+			if (!isUpdate) {
 				continue;
 			}
-			sourceMap.put(entry.getKey(), entry.getValue().getSource());
-			targetMap.put(entry.getKey(), entry.getValue().getTarget());
+			sourceMap.put(ePackage, releaseWizardPage.getSource(ePackage));
+			targetMap.put(ePackage, releaseWizardPage.getTarget(ePackage));
 		}
-		pages.clear();
+		releaseWizardPage = null;
 		return true;
 	}
 
