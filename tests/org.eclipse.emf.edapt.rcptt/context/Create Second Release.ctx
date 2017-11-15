@@ -5,8 +5,8 @@ Element-Name: Create Second Release
 Element-Type: context
 Element-Version: 2.0
 Id: _JZ4xUAkMEeWg38ag0nnchw
-Runtime-Version: 1.5.5.201503020312
-Save-Time: 6/2/15 11:49 AM
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 11/15/17 2:02 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -48,7 +48,7 @@ get-view "Operation Browser - task.ecore" | get-button Execute | click
 get-editor "task.ecore" | get-tree | key-type "M1+s"
 get-view "Operation Browser - task.ecore" | get-button Release | click
 with [get-window "Create Release"] {
-    get-editbox -after [get-label "Label to replace with:"] | type-text "task/2"
+    get-editbox -after [get-label "http://eclipse/org/emf/ecp/makeithappen/model/task"] -index 1 | type-text "task/2"
     get-button Finish | click
 }
 get-editor "task.ecore" | get-tree | key-type "M1+s"
