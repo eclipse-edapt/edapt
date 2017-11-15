@@ -14,6 +14,7 @@ package org.eclipse.emf.edapt.history.instantiation.ui;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -48,6 +49,7 @@ public class ReleaseWizardPage extends WizardPage {
 	private final Map<EPackage, Button> packageToUpdateButton = new LinkedHashMap<EPackage, Button>();
 
 	private final List<EPackage> packages;
+	private final Set<EPackage> changedPackages;
 
 	/**
 	 * Constructs a new {@link ReleaseWizardPage}.
@@ -56,15 +58,17 @@ public class ReleaseWizardPage extends WizardPage {
 	 * @param description
 	 * @param titleImage
 	 * @param packages the packages
+	 * @param changedPackages the changed packages
 	 */
 	protected ReleaseWizardPage(String pageName, String description, ImageDescriptor titleImage,
-		List<EPackage> packages) {
+		List<EPackage> packages, Set<EPackage> changedPackages) {
 		super(pageName, pageName, titleImage);
 		setDescription(description);
 		this.packages = packages;
 		for (final EPackage ePackage : packages) {
 			packageToInferedSource.put(ePackage, inferSource(ePackage));
 		}
+		this.changedPackages = changedPackages;
 	}
 
 	/** Infer the label to be replaced from the package. */
@@ -126,8 +130,9 @@ public class ReleaseWizardPage extends WizardPage {
 			final Button updateButton = new Button(composite, SWT.CHECK);
 			updateButton.setToolTipText("Whether to update the NS-URI at all."); //$NON-NLS-1$
 			packageToUpdateButton.put(ePackage, updateButton);
-			updateButton.setSelection(true);
+			updateButton.setSelection(changedPackages.contains(ePackage));
 			initUpdateButton(updateButton, ePackage);
+			setTextEnablement(updateButton, ePackage);
 
 		}
 
@@ -175,11 +180,15 @@ public class ReleaseWizardPage extends WizardPage {
 		updateButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				packageToSourceText.get(ePackage).setEnabled(updateButton.getSelection());
-				packageToTargetText.get(ePackage).setEnabled(updateButton.getSelection());
+				setTextEnablement(updateButton, ePackage);
 				checkIfPageComplete();
 			}
 		});
+	}
+
+	private void setTextEnablement(final Button updateButton, final EPackage ePackage) {
+		packageToSourceText.get(ePackage).setEnabled(updateButton.getSelection());
+		packageToTargetText.get(ePackage).setEnabled(updateButton.getSelection());
 	}
 
 	private void checkIfPageComplete() {

@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.jface.wizard.Wizard;
@@ -32,14 +33,16 @@ public class ReleaseWizard extends Wizard {
 	private final Map<EPackage, String> targetMap = new LinkedHashMap<EPackage, String>();
 
 	private final List<EPackage> rootPackages;
+	private final Set<EPackage> changedPackages;
 
 	private ReleaseWizardPage releaseWizardPage;
 
-	public ReleaseWizard(List<EPackage> rootPackages) {
+	public ReleaseWizard(List<EPackage> rootPackages, Set<EPackage> changedPackages) {
 		if (rootPackages == null || rootPackages.isEmpty()) {
 			throw new IllegalArgumentException("There must be at least one root package."); //$NON-NLS-1$
 		}
 		this.rootPackages = rootPackages;
+		this.changedPackages = changedPackages;
 	}
 
 	@Override
@@ -53,7 +56,8 @@ public class ReleaseWizard extends Wizard {
 		releaseWizardPage = new ReleaseWizardPage("Update namespace URI of package(s)", //$NON-NLS-1$
 			"Enter the label(s) to replace and the target label or deselect the update button", //$NON-NLS-1$
 			null,
-			sources);
+			sources,
+			changedPackages);
 		addPage(releaseWizardPage);
 	}
 
