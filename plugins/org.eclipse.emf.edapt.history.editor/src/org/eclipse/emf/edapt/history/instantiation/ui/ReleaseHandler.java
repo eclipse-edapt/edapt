@@ -131,8 +131,15 @@ public class ReleaseHandler extends EditingDomainListenerHandlerBase {
 			} else if (ValueChange.class.isInstance(change)) {
 				target = ValueChange.class.cast(change).getElement();
 			}
-			if (target != null && EPackage.class.isInstance(target.eContainer())) {
-				packages.add((EPackage) target.eContainer());
+			if (target != null) {
+				EObject eP = target.eContainer();
+				while (eP != null) {
+					if (EPackage.class.isInstance(eP)) {
+						packages.add((EPackage) eP);
+						break;
+					}
+					eP = eP.eContainer();
+				}
 			}
 			if (CompositeChange.class.isInstance(change)) {
 				final List<Change> childChanges = new ArrayList<Change>(
