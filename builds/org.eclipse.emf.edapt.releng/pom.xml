@@ -114,6 +114,7 @@
 					<show>protected</show>
 					<show>public</show>
 					<nohelp>true</nohelp>
+					<failOnError>false</failOnError>
 					<excludePackageNames>*.test.*:*.tests.*:*.library.*:*.statemachine.*</excludePackageNames>
 				</configuration>
 			</plugin>
