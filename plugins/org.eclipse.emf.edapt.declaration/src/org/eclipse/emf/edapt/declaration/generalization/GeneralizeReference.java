@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 42FA2FA593134BCDC8FFE0DCCAFC3BC2
  */
-@EdaptOperation(identifier = "generalizeReference", label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.")
+@EdaptOperation(identifier = "generalizeReference", label = "Generalize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is generalized. In the model, nothing is changed.", breaking = true)
 public class GeneralizeReference extends GeneralizeTypedElement {
 
 	/** {@description} */

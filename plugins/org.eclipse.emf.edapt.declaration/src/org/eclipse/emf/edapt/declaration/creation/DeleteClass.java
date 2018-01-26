@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.ModelResource;
  * @version $Rev$
  * @levd.rating YELLOW Hash: B6554315B875D79FD055CEB104DAEE02
  */
-@EdaptOperation(identifier = "deleteClass", label = "Delete Class", description = "In the metamodel, a class that is no longer used is deleted. In the model, nothing is changed.")
+@EdaptOperation(identifier = "deleteClass", label = "Delete Class", description = "In the metamodel, a class that is no longer used is deleted. In the model, nothing is changed.", breaking = true)
 public class DeleteClass extends OperationImplementation {
 
 	/** {@description} */

@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
  * @version $Rev$
  * @levd.rating YELLOW Hash: D7F34E82CD011CB2D815D0AC50B31E10
  */
-@EdaptOperation(identifier = "replaceInheritanceByDelegation", label = "Inheritance to Delegation", description = "In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class.")
+@EdaptOperation(identifier = "replaceInheritanceByDelegation", label = "Inheritance to Delegation", description = "In the metamodel, inheritance from a super class is replaced by delegation to this class. More specifically, the super class is removed and a containment reference to this class is created. In the model, the contents associated to the super class are extracted to a separate instance of the super class.", breaking = true)
 public class ReplaceInheritanceByDelegation extends OperationImplementation {
 
 	/** {@description} */

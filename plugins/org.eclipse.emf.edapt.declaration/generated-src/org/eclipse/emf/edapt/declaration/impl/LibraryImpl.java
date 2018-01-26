@@ -196,7 +196,8 @@ public class LibraryImpl extends IdentifiedElementImpl implements Library {
 	@Override
 	public EList<Library> getLibraries() {
 		if (libraries == null) {
-			libraries = new EObjectContainmentEList<Library>(Library.class, this, DeclarationPackage.LIBRARY__LIBRARIES);
+			libraries = new EObjectContainmentEList<Library>(Library.class, this,
+				DeclarationPackage.LIBRARY__LIBRARIES);
 		}
 		return libraries;
 	}

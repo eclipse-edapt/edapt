@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 0F0C0760E0177F6ADE11C5D0605AC876
  */
-@EdaptOperation(identifier = "replaceLiteral", label = "Replace Literal", description = "In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly.")
+@EdaptOperation(identifier = "replaceLiteral", label = "Replace Literal", description = "In the metamodel, an enum literal is removed and replaced by another one. In the model, the enum's values are replaced accordingly.", breaking = true)
 public class ReplaceLiteral extends OperationImplementation {
 
 	/** {@description} */

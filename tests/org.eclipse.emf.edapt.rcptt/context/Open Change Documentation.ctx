@@ -5,8 +5,8 @@ Element-Name: Open Change Documentation
 Element-Type: context
 Element-Version: 2.0
 Id: _FJl6cAkEEeWg38ag0nnchw
-Runtime-Version: 1.5.5.201503020312
-Save-Time: 6/2/15 10:49 AM
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 8/16/17 4:53 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -15,6 +15,6 @@ Entry-Name: .ecl.context
 get-menu "Window/Show View/Other..." | click
 with [get-window "Show View"] {
     get-tree | select "Edapt/Change Documentation"
-    get-button OK | click
+    get-button Open | click
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

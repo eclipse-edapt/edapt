@@ -84,9 +84,7 @@ public class ParameterItemProvider
 	 */
 	protected void addRequiredPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-			.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Parameter_required_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Parameter_required_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -107,9 +105,8 @@ public class ParameterItemProvider
 	 * @generated
 	 */
 	protected void addMainPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Parameter_main_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Parameter_main_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -130,9 +127,8 @@ public class ParameterItemProvider
 	 * @generated
 	 */
 	protected void addManyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Parameter_many_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Parameter_many_feature", "_UI_Parameter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
@@ -153,9 +149,8 @@ public class ParameterItemProvider
 	 * @generated
 	 */
 	protected void addClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Parameter_classifier_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Parameter_classifier_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -177,9 +172,8 @@ public class ParameterItemProvider
 	 * @generated
 	 */
 	protected void addClassifierNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_Parameter_classifierName_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_Parameter_classifierName_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -215,8 +209,7 @@ public class ParameterItemProvider
 	@Override
 	public String getText(Object object) {
 		final String label = ((Parameter) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_Parameter_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_Parameter_type") : //$NON-NLS-1$
 			getString("_UI_Parameter_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

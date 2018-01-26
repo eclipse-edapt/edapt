@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: F68EFAD9047D85BBB05F8215A441EA75
  */
-@EdaptOperation(identifier = "inlineSubClass", label = "Inline Sub Class", description = "In the metamodel, the sub class is deleted. In the model, all instances of this sub class are migrated to its super class.")
+@EdaptOperation(identifier = "inlineSubClass", label = "Inline Sub Class", description = "In the metamodel, the sub class is deleted. In the model, all instances of this sub class are migrated to its super class.", breaking = true)
 public class InlineSubClass extends OperationImplementation {
 
 	/** {@description} */

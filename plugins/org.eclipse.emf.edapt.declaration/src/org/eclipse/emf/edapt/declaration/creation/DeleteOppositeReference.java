@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 7490FAC2D52FC78E48BF71C49B597222
  */
-@EdaptOperation(identifier = "deleteOppositeReference", label = "Delete Opposite Reference", description = "In the metamodel, the opposite of a reference is deleted. In the model, its values are deleted, too.")
+@EdaptOperation(identifier = "deleteOppositeReference", label = "Delete Opposite Reference", description = "In the metamodel, the opposite of a reference is deleted. In the model, its values are deleted, too.", breaking = true)
 public class DeleteOppositeReference extends OperationImplementation {
 
 	/** {@description} */

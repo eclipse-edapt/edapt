@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: ADB8637E3A95FC42136E39A8C7780D05
  */
-@EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.")
+@EdaptOperation(identifier = "createEnumeration", label = "Create Enumeration", description = "In the metamodel, an enumeration is created. In the model, nothing needs to be changed.", breaking = false)
 public class CreateEnumeration extends OperationImplementation {
 
 	/** {@description} */

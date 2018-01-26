@@ -11,7 +11,13 @@
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.common;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 
@@ -24,6 +30,8 @@ import org.eclipse.core.runtime.Status;
  * @levd.rating RED Rev:
  */
 public final class LoggingUtils {
+
+	private static final String LINE_SEPARATOR = "line.separator"; //$NON-NLS-1$
 
 	/** Constructor. */
 	private LoggingUtils() {
@@ -73,5 +81,30 @@ public final class LoggingUtils {
 		}
 		final String pluginId = plugin.getBundle().getSymbolicName();
 		return new Status(severity, pluginId, code, message, exception);
+	}
+
+	/** Creates a multi status. */
+	public static IStatus createMultiStatus(Plugin plugin, int severity, String message, Throwable exception) {
+		if (plugin == null) {
+			return null;
+		}
+		final String pluginId = plugin.getBundle().getSymbolicName();
+
+		final StringWriter stringWriter = new StringWriter();
+		final PrintWriter printWriter = new PrintWriter(stringWriter);
+		exception.printStackTrace(printWriter);
+		final String trace = stringWriter.toString();
+
+		final List<IStatus> childStatuses = new ArrayList<IStatus>();
+		for (final String line : trace.split(System.getProperty(LINE_SEPARATOR))) {
+			childStatuses.add(new Status(severity, pluginId, line));
+		}
+
+		return new MultiStatus(
+			pluginId,
+			IStatus.ERROR,
+			childStatuses.toArray(new IStatus[childStatuses.size()]),
+			message,
+			exception);
 	}
 }

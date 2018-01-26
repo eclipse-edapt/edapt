@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 9D04AFEEB1C0A0AB745DDC056898F00E
  */
-@EdaptOperation(identifier = "dropContainment", label = "Drop Containment", description = "In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class.")
+@EdaptOperation(identifier = "dropContainment", label = "Drop Containment", description = "In the metamodel, the containment of a reference is dropped. At the same time, a new container reference is created in a container class. In the model, elements previously contained by the first reference have to be contained by the new container reference. It is assumed that these elements are indirectly contained in an instance of the container class.", breaking = true)
 public class DropContainment extends OperationImplementation {
 
 	/** {@description} */
@@ -52,7 +52,8 @@ public class DropContainment extends OperationImplementation {
 		reference.setContainment(false);
 		final EReference containerReference = MetamodelFactory.newEReference(
 			containerClass, containerReferenceName, reference
-				.getEReferenceType(), 0, -1, true);
+				.getEReferenceType(),
+			0, -1, true);
 
 		// model migration
 		for (final Instance contextElement : model.getAllInstances(contextClass)) {

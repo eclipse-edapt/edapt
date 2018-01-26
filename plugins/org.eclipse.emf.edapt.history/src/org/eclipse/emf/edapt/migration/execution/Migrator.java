@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.edapt.common.IResourceSetFactory;
+import org.eclipse.emf.edapt.common.IResourceSetProcessor;
 import org.eclipse.emf.edapt.declaration.LibraryImplementation;
 import org.eclipse.emf.edapt.declaration.OperationImplementation;
 import org.eclipse.emf.edapt.history.reconstruction.EcoreForwardReconstructor;
@@ -83,6 +84,8 @@ public class Migrator {
 
 	/** Validation level. */
 	private ValidationLevel level = ValidationLevel.CUSTOM_MIGRATION;
+
+	private IResourceSetProcessor postLoadProcessor;
 
 	/** Constructor. */
 	public Migrator(URI historyURI, IClassLoader classLoader)
@@ -165,7 +168,7 @@ public class Migrator {
 	 */
 	public void migrateAndSave(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor)
-			throws MigrationException {
+		throws MigrationException {
 		this.migrateAndSave(modelURIs, sourceRelease, targetRelease, monitor, null);
 	}
 
@@ -186,7 +189,7 @@ public class Migrator {
 	 */
 	public void migrateAndSave(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor, Map<String, Object> options)
-			throws MigrationException {
+		throws MigrationException {
 		final Model model = migrate(modelURIs, sourceRelease, targetRelease, monitor);
 		if (model == null) {
 			throw new MigrationException("Model is up-to-date", null); //$NON-NLS-1$
@@ -245,7 +248,7 @@ public class Migrator {
 	 */
 	private Model migrate(List<URI> modelURIs, Release sourceRelease,
 		Release targetRelease, IProgressMonitor monitor)
-			throws MigrationException {
+		throws MigrationException {
 		try {
 			if (targetRelease == null) {
 				targetRelease = getLatestRelease();
@@ -260,7 +263,7 @@ public class Migrator {
 				URI.createFileURI("test")); //$NON-NLS-1$
 			final MigrationReconstructor migrationReconstructor = new MigrationReconstructor(
 				modelURIs, sourceRelease, targetRelease, monitor,
-				classLoader, level, resourceSetFactory);
+				classLoader, level, resourceSetFactory, postLoadProcessor);
 			reconstructor.addReconstructor(migrationReconstructor);
 
 			reconstructor.reconstruct(targetRelease, false);
@@ -428,5 +431,25 @@ public class Migrator {
 	/** Get the factory to create {@link ResourceSet}s for custom serialization. */
 	public IResourceSetFactory getResourceSetFactory() {
 		return resourceSetFactory;
+	}
+
+	/**
+	 * The given processor will be called after the outdated model was loaded. It will be called before Edapt translates
+	 * the dynamic EMF model into its internal representation required for the migration. Hence this processor may be
+	 * used to modify the to be migrated model before the actual migrations starts.
+	 *
+	 * @since 1.3
+	 */
+	public void setPostLoadModelProcessor(IResourceSetProcessor postLoadProcessor) {
+		this.postLoadProcessor = postLoadProcessor;
+	}
+
+	/**
+	 * The post load model processor.
+	 * 
+	 * @since 1.3
+	 */
+	public IResourceSetProcessor getPostLoadModelProcessor() {
+		return postLoadProcessor;
 	}
 }

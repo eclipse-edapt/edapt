@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 6E0986D7D8C26B699E457A7061DBD88A
  */
-@EdaptOperation(identifier = "dropOpposite", label = "Drop Opposite Relationship", description = "In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done.")
+@EdaptOperation(identifier = "dropOpposite", label = "Drop Opposite Relationship", description = "In the metamodel, the opposite relationship between to references is dropped. In the model, nothing needs to be done.", breaking = false)
 public class DropOpposite extends OperationImplementation {
 
 	/** {@description} */

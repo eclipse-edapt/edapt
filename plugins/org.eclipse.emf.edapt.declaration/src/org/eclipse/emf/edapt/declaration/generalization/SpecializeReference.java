@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 06CD6AB4B386554B62F64EF5019B7203
  */
-@EdaptOperation(identifier = "specializeReference", label = "Specialize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed.")
+@EdaptOperation(identifier = "specializeReference", label = "Specialize Reference", description = "In the metamodel, either the type or the multiplicity of a reference is specialized. In the model, values no longer conforming to the new type or multiplicity are removed.", breaking = true)
 public class SpecializeReference extends OperationImplementation {
 
 	/** {@description} */

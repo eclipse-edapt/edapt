@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 1DD5D7BD6B9280DF56B69120623A2E4E
  */
-@EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.")
+@EdaptOperation(identifier = "useSuperClass", label = "Fold Super Class", description = "In the metamodel, a number of features are replaced by features of a new super class. In the model, the values are moved to these features based on a mapping.", breaking = true)
 public class UseSuperClass extends OperationImplementation {
 
 	/** {@description} */

@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: ABABAC799DC45386B834F56E7B1760F7
  */
-@EdaptOperation(identifier = "removeSuperType", label = "Remove Super Type", description = "In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted.")
+@EdaptOperation(identifier = "removeSuperType", label = "Remove Super Type", description = "In the metamodel, a super type is removed from a class. In the model, the values of the features inherited from that super type (including its super types) are deleted.", breaking = true)
 public class RemoveSuperType extends OperationImplementation {
 
 	/** {@description} */

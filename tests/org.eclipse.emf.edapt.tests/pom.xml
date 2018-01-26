@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>edapt</groupId>
 		<artifactId>root</artifactId>
-		<version>1.2.2-SNAPSHOT</version>
+		<version>1.3.0-SNAPSHOT</version>
 		<relativePath>../../builds/org.eclipse.emf.edapt.releng</relativePath>  
 	</parent>
 	<groupId>edapt</groupId>
@@ -28,6 +28,7 @@
 							<excludes>
 								<exclude>**/GMFLifecycleTest.java</exclude>
 								<exclude>**/FactoryHelperTest.java</exclude>
+								<exclude>**/PersistencyTest.java</exclude>
 							</excludes>
 						</configuration>
 						<goals>
@@ -45,6 +46,7 @@
 					<useUIThread>false</useUIThread>
 					<includes>
 						<include>**/FactoryHelperTest.java</include>
+						<include>**/PersistencyTest.java</include>
 					</includes>
 				</configuration>
 			</plugin>

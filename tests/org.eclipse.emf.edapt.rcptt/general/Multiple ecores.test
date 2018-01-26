@@ -1,0 +1,67 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_NFFKUAkEEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw,_rv0HYAkGEeWg38ag0nnchw
+Element-Name: Multiple ecores
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ExiWUMoSEeeVv4pPxMNi2w
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 11/15/17 3:43 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Package Explorer" | get-tree | select "org.eclipse.emf.ecp.makeithappen.model/model" | get-menu 
+    -path "New/Other..." | click
+with [get-window New] {
+    get-tree | select "Eclipse Modeling Framework/Ecore Model"
+    with [get-button "Next >"] {
+        click
+        click
+    }
+    get-button Finish | click
+}
+get-editor "My.ecore" | get-tree 
+    | select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/My.ecore/" | double-click
+with [get-view Properties | get-tree] {
+    select "Ns URI" | activate-cell-edit -column 1
+    get-editbox | set-text a
+    apply-cell-edit
+    select Name | activate-cell-edit -column 1
+    get-editbox | set-text a
+    apply-cell-edit
+    select "Ns Prefix" | activate-cell-edit -column 1
+    get-editbox | set-text a
+    apply-cell-edit
+}
+get-editor "My.ecore" | get-tree | key-type "M1+s"
+with [get-editor "task.ecore"] {
+    click
+    get-tree | select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore" | get-menu 
+        -path "Load Resource..." | click
+}
+with [get-window "Load Resource"] {
+    get-button "Browse Workspace..." | click
+    with [get-window "File Selection"] {
+        get-tree | select "org.eclipse.emf.ecp.makeithappen.model/model/My.ecore"
+        get-button OK | click
+    }
+    get-button OK | click
+    get-window "Resource loaded" | get-button Yes | click
+}
+get-view "Operation Browser - task.ecore" | click
+get-view "Operation Browser - task.ecore" | get-button Release | click
+get-view "Operation Browser - task.ecore" | get-table | key-type "M1+s"
+get-view "Operation Browser - task.ecore" | get-button Release | click
+with [get-window "Create Release"] {
+    get-label "http://eclipse/org/emf/ecp/makeithappen/model/task" | get-property caption 
+        | equals "http://eclipse/org/emf/ecp/makeithappen/model/task" | verify-true
+    get-editbox -after [get-label "http://eclipse/org/emf/ecp/makeithappen/model/task"] | get-property text 
+        | equals task | verify-true
+    get-label a | get-property caption | equals a | verify-true
+    get-editbox -after [get-label a] | get-property text | equals a | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

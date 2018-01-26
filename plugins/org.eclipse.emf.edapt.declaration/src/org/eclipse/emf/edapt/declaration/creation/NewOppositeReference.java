@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: C643742FE6A451C96426FB8DC2696DCC
  */
-@EdaptOperation(identifier = "newOppositeReference", label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.")
+@EdaptOperation(identifier = "newOppositeReference", label = "Create Opposite Reference", description = "In the metamodel, an opposite is created for a reference. In the model, the opposite direction needs to be set.", breaking = true)
 public class NewOppositeReference extends OperationImplementation {
 
 	/** {@description} */

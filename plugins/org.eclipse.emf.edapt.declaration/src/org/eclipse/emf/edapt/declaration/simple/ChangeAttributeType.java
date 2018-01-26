@@ -22,7 +22,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 88A6544EDA567D96171E55FD979B1C64
  */
-@EdaptOperation(identifier = "changeAttributeType", label = "Change Attribute Type", description = "In the metamodel, the type of an attribute is changed. In the model, the values are migrated based on EMF's default serialization.")
+@EdaptOperation(identifier = "changeAttributeType", label = "Change Attribute Type", description = "In the metamodel, the type of an attribute is changed. In the model, the values are migrated based on EMF's default serialization.", breaking = true)
 public class ChangeAttributeType extends OperationImplementation {
 
 	/** {@description} */

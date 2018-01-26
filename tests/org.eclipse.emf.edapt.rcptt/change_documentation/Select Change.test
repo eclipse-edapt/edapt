@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _eBMMgAkMEeWg38ag0nnchw
-Runtime-Version: 1.5.5.201503020312
-Save-Time: 6/2/15 12:10 PM
+Runtime-Version: 2.2.0.201706152316
+Save-Time: 10/18/17 4:52 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -50,7 +50,7 @@ with [get-editor "task.ecore" | get-tree] {
     get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.ecore/task/TaskDescription2/name2 : EString" 
         | click
     key-type "M1+s"
-    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/Operation \"Rename\" has been executed \\(element = {TaskDescription2}, name = \"TaskDescription2\"\\)" 
+    get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released and potentially contains breaking changes\\)/Operation \"Rename\" has been executed \\(element = {TaskDescription2}, name = \"TaskDescription2\"\\)" 
         | click
 }
 get-view "Change Documentation" | get-canvas | get-property text | equals "Operation \"Rename\"\r\n"
@@ -58,7 +58,7 @@ get-view "Change Documentation" | get-canvas | get-property text | equals "Opera
     + "element: The metamodel element to be renamed\r\n"
     + "name: The new name\r\n" | verify-true
 get-editor "task.ecore" | get-tree 
-    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released\\)/name of {name2} has been changed from \"name\" to \"name2\"" 
+    | get-item "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/task.history/History/Release \\(not yet released and potentially contains breaking changes\\)/name of {name2} has been changed from \"name\" to \"name2\"" 
     | click
 get-view "Change Documentation" | get-canvas | get-property text | equals "Primitive \"Set\"\r\n"
     + "In the metamodel, the value of an element's feature is changed. This primitive only applies to single-valued features which are either attribute or cross reference.\r\n"

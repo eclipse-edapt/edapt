@@ -21,7 +21,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 766953CF44F346E6C4F5F9ADA04736F5
  */
-@EdaptOperation(identifier = "collectFeature", label = "Collect Feature over Reference", description = "In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly.")
+@EdaptOperation(identifier = "collectFeature", label = "Collect Feature over Reference", description = "In the metamodel, a feature is moved opposite to a multi-valued reference. In the model, the values of the feature are aggregated accordingly.", breaking = true)
 public class CollectFeature extends OperationImplementation {
 
 	/** {@description} */

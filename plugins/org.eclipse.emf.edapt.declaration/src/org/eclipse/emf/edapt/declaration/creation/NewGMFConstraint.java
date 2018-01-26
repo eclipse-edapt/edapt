@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: D3D3B72BCE45BCA4EDE3D09DA3E2894C
  */
-@EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.")
+@EdaptOperation(identifier = "newGMFConstraint", label = "Create GMF Constraint", description = "In the metamodel, a new constraint is introduced. Nothing is changed in the model.", breaking = false)
 public class NewGMFConstraint extends AnnotateModelElement {
 
 	/** {@description} */

@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 688AD53AE7A43304C0A691E7DB8D79B3
  */
-@EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.")
+@EdaptOperation(identifier = "replaceClass", label = "Replace Class", description = "In the metamodel, a class is deleted. In the model, instances of this class are migrated to another class based on a mapping of features.", breaking = true)
 public class ReplaceClass extends OperationImplementation {
 
 	/** {@description} */

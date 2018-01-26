@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 9817C7692F6D9C48627C869E0F05ACD1
  */
-@EdaptOperation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.")
+@EdaptOperation(identifier = "moveClassifier", label = "Move Classifier", description = "In the metamodel, a classifier is moved to a different package. In the model, nothing is changed.", breaking = true)
 public class MoveClassifier extends OperationImplementation {
 
 	/** {@description} */

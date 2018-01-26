@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 88F24A76D1FB6FF020F1346C7D5B20A4
  */
-@EdaptOperation(identifier = "partitionComposite", label = "Introduce Composite Pattern", description = "In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not.")
+@EdaptOperation(identifier = "partitionComposite", label = "Introduce Composite Pattern", description = "In the metamodel, the composite design pattern is introduced. More specifically, a class is refined by two sub classes - one for composite and one for leaf elements, and a reference is moved to the composite class. In addition, the class is made abstract. In the model, instances of that class are migrated based on whether the reference is populated or not.", breaking = true)
 public class PartitionComposite extends OperationImplementation {
 
 	/** {@description} */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="org.eclipse.emf.edapt.declaration" version="2">
+    <resource path="generated-src/org/eclipse/emf/edapt/declaration/DeclarationPackage.java" type="org.eclipse.emf.edapt.declaration.DeclarationPackage$Literals">
+        <filter comment="Invalid error. It seems that inner interfaces do not honor @noimplement and @noextend" id="403767336">
+            <message_arguments>
+                <message_argument value="org.eclipse.emf.edapt.declaration.DeclarationPackage.Literals"/>
+                <message_argument value="OPERATION__BREAKING"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

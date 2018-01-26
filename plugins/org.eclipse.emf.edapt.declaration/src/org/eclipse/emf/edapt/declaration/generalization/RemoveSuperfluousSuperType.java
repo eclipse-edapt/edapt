@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 4F7EA37ADF9D83B621B5F11CB0B82016
  */
-@EdaptOperation(identifier = "removeSuperfluousSuperType", label = "Remove Superfluous Super Type", description = "In the metamodel, a super type is removed from a class that is already inherited from another super class. In the model, nothing is changed, as this super type is superfluous.")
+@EdaptOperation(identifier = "removeSuperfluousSuperType", label = "Remove Superfluous Super Type", description = "In the metamodel, a super type is removed from a class that is already inherited from another super class. In the model, nothing is changed, as this super type is superfluous.", breaking = false)
 public class RemoveSuperfluousSuperType extends OperationImplementation {
 
 	/** {@description} */

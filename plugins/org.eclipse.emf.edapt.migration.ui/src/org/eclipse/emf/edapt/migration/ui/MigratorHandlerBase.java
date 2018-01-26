@@ -127,7 +127,7 @@ public abstract class MigratorHandlerBase extends AbstractHandler {
 				final Metamodel metamodel = migrator.getMetamodel(r);
 				try {
 					final Model model = Persistency.loadModel(modelURIs, metamodel,
-						migrator.getResourceSetFactory());
+						migrator.getResourceSetFactory(), migrator.getPostLoadModelProcessor());
 					model.checkConformance();
 				} catch (final Exception e) {
 					i.remove();

@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: B4ECD85FB33C65D8EBD5CF185592C12F
  */
-@EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.")
+@EdaptOperation(identifier = "newClass", label = "Create Class", description = "In the metamodel, a new class is created. Nothing is changed in the model.", breaking = false)
 public class NewClass extends OperationImplementation {
 
 	/** {@description} */

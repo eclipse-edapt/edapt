@@ -82,9 +82,8 @@ public class IdentifiedElementItemProvider
 	 * @generated
 	 */
 	protected void addNamePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_IdentifiedElement_name_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_name_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -106,9 +105,8 @@ public class IdentifiedElementItemProvider
 	 * @generated
 	 */
 	protected void addDescriptionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-			(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+		itemPropertyDescriptors
+			.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
 				getResourceLocator(),
 				getString("_UI_IdentifiedElement_description_feature"), //$NON-NLS-1$
 				getString("_UI_PropertyDescriptor_description", "_UI_IdentifiedElement_description_feature", //$NON-NLS-1$ //$NON-NLS-2$
@@ -132,8 +130,7 @@ public class IdentifiedElementItemProvider
 	@Override
 	public String getText(Object object) {
 		final String label = ((IdentifiedElement) object).getName();
-		return label == null || label.length() == 0 ?
-			getString("_UI_IdentifiedElement_type") : //$NON-NLS-1$
+		return label == null || label.length() == 0 ? getString("_UI_IdentifiedElement_type") : //$NON-NLS-1$
 			getString("_UI_IdentifiedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
 	}
 

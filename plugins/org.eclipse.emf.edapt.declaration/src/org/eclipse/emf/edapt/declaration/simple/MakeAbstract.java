@@ -17,7 +17,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: F1B800B5BE3D5AD4D920562EFA551982
  */
-@EdaptOperation(identifier = "makeAbstract", label = "Make Class Abstract", description = "In the metamodel, a class is made abstract. In a model, instances of this class are migrated to a chosen subclass.")
+@EdaptOperation(identifier = "makeAbstract", label = "Make Class Abstract", description = "In the metamodel, a class is made abstract. In a model, instances of this class are migrated to a chosen subclass.", breaking = true)
 public class MakeAbstract extends OperationImplementation {
 
 	/** {@description} */

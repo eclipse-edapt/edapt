@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 431444D5692052D25F8B50E6DD96D147
  */
-@EdaptOperation(identifier = "copyFeature", label = "Copy Feature", description = "In the metamodel, a feature is copied, giving it a new name. In the model, the values are copied, accordingly.")
+@EdaptOperation(identifier = "copyFeature", label = "Copy Feature", description = "In the metamodel, a feature is copied, giving it a new name. In the model, the values are copied, accordingly.", breaking = false)
 public class CopyFeature extends OperationImplementation {
 
 	/** {@description} */

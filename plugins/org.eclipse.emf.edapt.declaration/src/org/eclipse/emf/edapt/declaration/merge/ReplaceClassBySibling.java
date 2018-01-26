@@ -20,7 +20,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @levd.rating YELLOW Hash: E22D36550F17066C79E826C7AF3E2E53
  */
 @Deprecated
-@EdaptOperation(identifier = "replaceClassBySibling", label = "Replace Class by Sibling", description = "In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class.")
+@EdaptOperation(identifier = "replaceClassBySibling", label = "Replace Class by Sibling", description = "In the metamodel, a class is deleted. In the model, its instances are migrated to a class sharing the same super class.", breaking = true)
 public class ReplaceClassBySibling extends OperationImplementation {
 
 	/** {@description} */

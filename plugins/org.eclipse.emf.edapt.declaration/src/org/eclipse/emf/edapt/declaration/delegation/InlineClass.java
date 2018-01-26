@@ -25,7 +25,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 7F5E5E3ACDF093A538D59014F969B364
  */
-@EdaptOperation(identifier = "inlineClass", label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.")
+@EdaptOperation(identifier = "inlineClass", label = "Inline Class", description = "In the metamodel, a class reachable through a single-valued containment reference is inlined. More specifically, its features are moved to the source class of the reference. In the model, the values of these features are moved accordingly.", breaking = true)
 public class InlineClass extends OperationImplementation {
 
 	/** {@description} */

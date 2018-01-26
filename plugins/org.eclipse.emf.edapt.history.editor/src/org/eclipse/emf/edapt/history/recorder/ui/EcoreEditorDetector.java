@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2007, 2018 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,6 +8,7 @@
  * Contributors:
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
+ * Christian W. Damus - bug 529599
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
@@ -133,7 +134,10 @@ public class EcoreEditorDetector extends PartAdapter implements
 	/**
 	 * Validate and start the listener.
 	 */
-	private void validateListener(EcoreEditor editor,
+	// This must be package-visible at least to avoid compiler generating a synthetic
+	// method for access from an inner class resulting in deadlock on the class
+	// monitor during class initialization at start-up. cf. http://eclip.se/529599
+	/* package */ void validateListener(EcoreEditor editor,
 		final EditingDomainListener listener) {
 		mapping.put(editor, listener);
 		editor.addPropertyListener(this);

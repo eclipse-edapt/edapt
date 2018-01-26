@@ -17,11 +17,4 @@
 #
 # SSH Authentication: 
 # 		Add -o IdentityFile=/Users/Christophe/.ssh/id_rsa
-
-# Copy to the staging area. 
-cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /home/data/httpd/download-staging.priv/modeling/edapt
-
-# Other paths...
-# /home/data/httpd/download.eclipse.org/edapt
-# /home/data/httpd/download-staging.priv/modeling/edapt
-# /opt/public/download-staging.priv/modeling/edapt/
+cp  -r builds/org.eclipse.emf.edapt.releng.p2/target/repository /opt/public//download-staging.priv/modeling/edapt/repository

@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 92A023B7F2C535962246670FFB2B5BCF
  */
-@EdaptOperation(identifier = "extractAndGroupAttribute", label = "Extract and Group Attribute", description = "In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute.")
+@EdaptOperation(identifier = "extractAndGroupAttribute", label = "Extract and Group Attribute", description = "In the metamodel, an attribute is extracted into a new class. This extracted class is contained by an existing container class and referenced from the context class. In the model, an instance of the extracted class is created for each different value of the extracted attribute.", breaking = true)
 public class ExtractAndGroupAttribute extends OperationImplementation {
 
 	/** {@description} */

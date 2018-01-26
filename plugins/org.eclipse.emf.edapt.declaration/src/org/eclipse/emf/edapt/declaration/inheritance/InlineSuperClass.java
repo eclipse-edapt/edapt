@@ -21,8 +21,10 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @author $Author$
  * @version $Rev$
  * @levd.rating YELLOW Hash: 4BC927F0EC381FE31F91728A6AD62908
+ *
+ *              Breaking because inlined super class may not be abstract.
  */
-@EdaptOperation(identifier = "inlineSuperClass", label = "Inline Super Class", description = "In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly.")
+@EdaptOperation(identifier = "inlineSuperClass", label = "Inline Super Class", description = "In the metamodel, a super class is inlined into its sub classes. More specifically, its features are propagated to the sub classes. In the model, the values of these features have to be adapted accordingly.", breaking = true)
 public class InlineSuperClass extends OperationImplementation {
 
 	/** {@description} */

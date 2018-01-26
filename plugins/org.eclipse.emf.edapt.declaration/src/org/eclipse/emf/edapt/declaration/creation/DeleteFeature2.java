@@ -18,7 +18,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: EC9969F8F3F4191DB05869AB26EA6796
  */
-@EdaptOperation(identifier = "deleteFeature2", label = "Delete Feature", description = "In the metamodel, a feature is deleted. In the model, its values are deleted, too.")
+@EdaptOperation(identifier = "deleteFeature2", label = "Delete Feature", description = "In the metamodel, a feature is deleted. In the model, its values are deleted, too.", breaking = true)
 public class DeleteFeature2 extends OperationImplementation {
 
 	/** {@description} */

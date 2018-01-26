@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 294397E02180B9715AEEFB4A82A48B5A
  */
-@EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.")
+@EdaptOperation(identifier = "pullFeature", label = "Pull up Feature", description = "In the metamodel, a number of features are pulled up into a common super class. In the model, values are changed accordingly.", breaking = false)
 public class PullFeature extends OperationImplementation {
 
 	/** {@description} */

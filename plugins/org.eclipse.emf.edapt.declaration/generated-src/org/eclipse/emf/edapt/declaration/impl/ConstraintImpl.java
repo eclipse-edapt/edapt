@@ -119,8 +119,7 @@ public class ConstraintImpl extends IdentifiedElementImpl implements Constraint 
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, DeclarationPackage.CONSTRAINT__OPERATION,
 				newOperation, newOperation));
 		}

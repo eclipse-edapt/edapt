@@ -121,7 +121,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		// Obtain or create and register package
 		final DeclarationPackageImpl theDeclarationPackage = (DeclarationPackageImpl) (EPackage.Registry.INSTANCE
 			.get(eNS_URI) instanceof DeclarationPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI)
-			: new DeclarationPackageImpl());
+				: new DeclarationPackageImpl());
 
 		isInited = true;
 
@@ -336,6 +336,17 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 	 * @generated
 	 */
 	@Override
+	public EAttribute getOperation_Breaking() {
+		return (EAttribute) operationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Override
 	public EClass getParameter() {
 		return parameterEClass;
 	}
@@ -492,6 +503,7 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 		createEAttribute(operationEClass, OPERATION__AFTER);
 		createEAttribute(operationEClass, OPERATION__IMPLEMENTATION);
 		createEAttribute(operationEClass, OPERATION__LABEL);
+		createEAttribute(operationEClass, OPERATION__BREAKING);
 
 		parameterEClass = createEClass(PARAMETER);
 		createEReference(parameterEClass, PARAMETER__OPERATION);
@@ -554,14 +566,14 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 			!IS_DERIVED, IS_ORDERED);
 
 		initEClass(libraryEClass, Library.class, "Library", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-		initEReference(getLibrary_Operations(), getOperation(), getOperation_Library(), "operations", null, //$NON-NLS-1$
-			0, -1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+		initEReference(getLibrary_Operations(), getOperation(), getOperation_Library(), "operations", null, 0, //$NON-NLS-1$
+			-1, Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getLibrary_Implementation(), ecorePackage.getEJavaClass(), "implementation", null, 1, 1, //$NON-NLS-1$
 			Library.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
-		initEAttribute(getLibrary_Label(), ecorePackage.getEString(), "label", null, 1, 1, Library.class, //$NON-NLS-1$
-			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getLibrary_Label(), ecorePackage.getEString(), "label", null, 1, 1, Library.class, !IS_TRANSIENT, //$NON-NLS-1$
+			!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getLibrary_Libraries(), getLibrary(), null, "libraries", null, 0, -1, Library.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 			!IS_DERIVED, IS_ORDERED);
@@ -575,14 +587,14 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 			Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_Parameters(), getParameter(), getParameter_Operation(), "parameters", //$NON-NLS-1$
-			null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+			null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getOperation_Constraints(), getConstraint(), getConstraint_Operation(), "constraints", //$NON-NLS-1$
-			null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
-			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+			null, 0, -1, Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_Deprecated(), ecorePackage.getEBoolean(), "deprecated", "false", 0, 1, //$NON-NLS-1$ //$NON-NLS-2$
-			Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+			Operation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 		initEAttribute(getOperation_Before(), ecorePackage.getEString(), "before", null, 0, 1, Operation.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOperation_After(), ecorePackage.getEString(), "after", null, 0, 1, Operation.class, //$NON-NLS-1$
@@ -591,6 +603,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 			Operation.class, IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 			IS_ORDERED);
 		initEAttribute(getOperation_Label(), ecorePackage.getEString(), "label", null, 1, 1, Operation.class, //$NON-NLS-1$
+			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOperation_Breaking(), ecorePackage.getEBoolean(), "breaking", null, 1, 1, Operation.class, //$NON-NLS-1$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		op = addEOperation(operationEClass, getParameter(), "getParameter", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -605,9 +619,9 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 
 		initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 			IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getParameter_Operation(), getOperation(), getOperation_Parameters(), "operation", //$NON-NLS-1$
-			null, 1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE,
-			!IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getParameter_Operation(), getOperation(), getOperation_Parameters(), "operation", null, //$NON-NLS-1$
+			1, 1, Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES,
+			!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Required(), ecorePackage.getEBoolean(), "required", "true", 0, 1, Parameter.class, //$NON-NLS-1$ //$NON-NLS-2$
 			!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_Main(), ecorePackage.getEBoolean(), "main", null, 0, 1, Parameter.class, //$NON-NLS-1$
@@ -618,8 +632,8 @@ public class DeclarationPackageImpl extends EPackageImpl implements DeclarationP
 			Parameter.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 			!IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getParameter_ClassifierName(), ecorePackage.getEString(), "classifierName", null, 1, 1, //$NON-NLS-1$
-			Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-			!IS_DERIVED, IS_ORDERED);
+			Parameter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+			IS_ORDERED);
 
 		initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, //$NON-NLS-1$
 			IS_GENERATED_INSTANCE_CLASS);

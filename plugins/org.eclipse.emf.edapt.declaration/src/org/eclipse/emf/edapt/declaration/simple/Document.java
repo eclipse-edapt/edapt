@@ -15,7 +15,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 389B8023C8F3F266FE252ED6C191B339
  */
-@EdaptOperation(identifier = "document", label = "Document Metamodel Element", description = "In the metamodel, a metamodel element is documented. Nothing is changed in the model.")
+@EdaptOperation(identifier = "document", label = "Document Metamodel Element", description = "In the metamodel, a metamodel element is documented. Nothing is changed in the model.", breaking = false)
 public class Document extends AnnotateModelElement {
 
 	/** Source for the documentation. */

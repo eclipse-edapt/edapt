@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: C73857ED78F90A15BAB6BB5EEE65FA26
  */
-@EdaptOperation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.")
+@EdaptOperation(identifier = "specializeSuperType", label = "Specialize Super Type", description = "In the metamodel, the super type of a class is replaced by one of its sub classes. In the model, nothing is modified.", breaking = false)
 public class SpecializeSuperType extends OperationImplementation {
 
 	/** {@description} */

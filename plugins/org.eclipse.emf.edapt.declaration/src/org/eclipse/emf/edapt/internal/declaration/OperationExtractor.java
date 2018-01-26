@@ -59,6 +59,7 @@ public class OperationExtractor {
 			}
 			operation.setLabel(operationAnnotation.label());
 			operation.setDescription(operationAnnotation.description());
+			operation.setBreaking(operationAnnotation.breaking());
 			if (c.getAnnotation(Deprecated.class) != null) {
 				operation.setDeprecated(true);
 			}

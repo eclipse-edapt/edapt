@@ -19,7 +19,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: CBF0265BD4DA4AD17DAE8E4798A4A969
  */
-@EdaptOperation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.")
+@EdaptOperation(identifier = "makeFeatureVolatile", label = "Make Feature Volatile", description = "In the metamodel, a feature is made volatile. In the model, its values have to be deleted.", breaking = true)
 public class MakeFeatureVolatile extends OperationImplementation {
 
 	/** {@description} */

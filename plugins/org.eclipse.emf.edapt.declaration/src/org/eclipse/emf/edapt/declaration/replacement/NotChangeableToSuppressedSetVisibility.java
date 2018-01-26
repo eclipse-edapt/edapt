@@ -16,7 +16,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 8351FA5E2EF80E5543BE9089A274ECFC
  */
-@EdaptOperation(identifier = "notChangeableToSuppressedSetVisibility", label = "Not Changeable to Suppressed Set Visibility", description = "In the metamodel, a reference is made changeable, and at the same time its setter is suppressed. Nothing is changed in the model.")
+@EdaptOperation(identifier = "notChangeableToSuppressedSetVisibility", label = "Not Changeable to Suppressed Set Visibility", description = "In the metamodel, a reference is made changeable, and at the same time its setter is suppressed. Nothing is changed in the model.", breaking = false)
 public class NotChangeableToSuppressedSetVisibility extends OperationImplementation {
 
 	/** {@description} */

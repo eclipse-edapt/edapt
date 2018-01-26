@@ -82,38 +82,37 @@ public class DeclarationAdapterFactory extends AdapterFactoryImpl {
 	 *
 	 * @generated
 	 */
-	protected DeclarationSwitch<Adapter> modelSwitch =
-		new DeclarationSwitch<Adapter>() {
-			@Override
-			public Adapter caseIdentifiedElement(IdentifiedElement object) {
-				return createIdentifiedElementAdapter();
-			}
+	protected DeclarationSwitch<Adapter> modelSwitch = new DeclarationSwitch<Adapter>() {
+		@Override
+		public Adapter caseIdentifiedElement(IdentifiedElement object) {
+			return createIdentifiedElementAdapter();
+		}
 
-			@Override
-			public Adapter caseLibrary(Library object) {
-				return createLibraryAdapter();
-			}
+		@Override
+		public Adapter caseLibrary(Library object) {
+			return createLibraryAdapter();
+		}
 
-			@Override
-			public Adapter caseOperation(Operation object) {
-				return createOperationAdapter();
-			}
+		@Override
+		public Adapter caseOperation(Operation object) {
+			return createOperationAdapter();
+		}
 
-			@Override
-			public Adapter caseParameter(Parameter object) {
-				return createParameterAdapter();
-			}
+		@Override
+		public Adapter caseParameter(Parameter object) {
+			return createParameterAdapter();
+		}
 
-			@Override
-			public Adapter caseConstraint(Constraint object) {
-				return createConstraintAdapter();
-			}
+		@Override
+		public Adapter caseConstraint(Constraint object) {
+			return createConstraintAdapter();
+		}
 
-			@Override
-			public Adapter defaultCase(EObject object) {
-				return createEObjectAdapter();
-			}
-		};
+		@Override
+		public Adapter defaultCase(EObject object) {
+			return createEObjectAdapter();
+		}
+	};
 
 	/**
 	 * Creates an adapter for the <code>target</code>.

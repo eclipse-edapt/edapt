@@ -23,7 +23,7 @@ import org.eclipse.emf.edapt.spi.migration.Model;
  * @version $Rev$
  * @levd.rating YELLOW Hash: 71EF4E6C3C56A7C17068FE58DCA3D8F0
  */
-@EdaptOperation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.")
+@EdaptOperation(identifier = "replaceIdentifierByReference", label = "Identifier to Reference", description = "In the metamodel, an attribute that references elements by identifier is replaced by a reference. In the model, its values are replaced by references to that element.", breaking = true)
 public class ReplaceIdentifierByReference extends OperationImplementation {
 
 	/** {@description} */

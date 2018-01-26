@@ -16,9 +16,6 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -36,6 +33,9 @@ import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
 import org.eclipse.emf.edapt.spi.migration.ModelResource;
+
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
 /**
  * Tests for {@link ForwardConverter} and {@link BackwardConverter}
@@ -66,7 +66,7 @@ public class ConverterTest extends TestCase {
 
 		final Metamodel metamodel = Persistency.loadMetamodel(metamodelURI);
 		final Model model = Persistency.loadModel(model1URI, metamodel,
-			new ResourceSetFactoryImpl());
+			new ResourceSetFactoryImpl(), null);
 		model.validate();
 
 		final URIMapper mapper = new URIMapper() {
