@@ -47,8 +47,12 @@ public class MoveChecker {
 	 * change or release
 	 */
 	public static boolean canBeMoved(List<Change> changes, EObject target) {
-		final List<Change> children = getChanges(getChildren(target));
-		return canBeMoved(changes, target, children.size());
+		try {
+			final List<Change> children = getChanges(getChildren(target));
+			return canBeMoved(changes, target, children.size());
+		} catch (final IllegalStateException ex) {
+			return false;
+		}
 	}
 
 	/**
@@ -57,33 +61,37 @@ public class MoveChecker {
 	 */
 	public static boolean canBeMoved(List<Change> changes, EObject target,
 		int targetIndex) {
-		if (!allowedTarget(changes, target)) {
-			return false;
-		}
-		for (final Change change : changes) {
-			final EObject source = change.eContainer();
-			final int sourceIndex = getIndex(change);
+		try {
+			if (!allowedTarget(changes, target)) {
+				return false;
+			}
+			for (final Change change : changes) {
+				final EObject source = change.eContainer();
+				final int sourceIndex = getIndex(change);
 
-			if (source == target && sourceIndex == targetIndex) {
-				// nothing has to be done
-			} else if (before(source, sourceIndex, target, targetIndex)) {
-				final List<Change> difference = getDifference(source,
-					sourceIndex + 1, target, targetIndex);
-				difference.removeAll(changes);
-				if (DependencyChecker.depends(difference, Collections
-					.singletonList(change))) {
-					return false;
-				}
-			} else {
-				final List<Change> difference = getDifference(target, targetIndex,
-					source, sourceIndex - 1);
-				difference.removeAll(changes);
-				if (DependencyChecker.depends(change, difference)) {
-					return false;
+				if (source == target && sourceIndex == targetIndex) {
+					// nothing has to be done
+				} else if (before(source, sourceIndex, target, targetIndex)) {
+					final List<Change> difference = getDifference(source,
+						sourceIndex + 1, target, targetIndex);
+					difference.removeAll(changes);
+					if (DependencyChecker.depends(difference, Collections
+						.singletonList(change))) {
+						return false;
+					}
+				} else {
+					final List<Change> difference = getDifference(target, targetIndex,
+						source, sourceIndex - 1);
+					difference.removeAll(changes);
+					if (DependencyChecker.depends(change, difference)) {
+						return false;
+					}
 				}
 			}
+			return true;
+		} catch (final IllegalStateException ex) {
+			return false;
 		}
-		return true;
 	}
 
 	/**
@@ -152,7 +160,8 @@ public class MoveChecker {
 			difference.addAll(changes);
 			difference.addAll(getDifference(source.eContainer(),
 				source instanceof Delete ? getIndex(source)
-					: getIndex(source) + 1, target, targetIndex));
+					: getIndex(source) + 1,
+				target, targetIndex));
 		}
 		return difference;
 	}
@@ -186,6 +195,9 @@ public class MoveChecker {
 	 * Get the index of an element within its container element
 	 */
 	private static int getIndex(EObject element) {
+		if (element == null || element.eContainer() == null || element.eContainmentFeature() == null) {
+			throw new IllegalStateException();
+		}
 		return ((List) element.eContainer().eGet(element.eContainmentFeature()))
 			.indexOf(element);
 	}
