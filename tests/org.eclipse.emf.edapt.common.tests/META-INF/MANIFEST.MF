@@ -8,3 +8,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: Eclipse Modeling Project
 Require-Bundle: org.junit;bundle-version="[4.0.0,5.0.0)"
 Export-Package: org.eclipse.emf.edapt.internal.common;version="1.4.0";x-internal:=true
+Automatic-Module-Name: org.eclipse.emf.edapt.common.tests
