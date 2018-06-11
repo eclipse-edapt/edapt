@@ -1,0 +1,53 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _bma0MAkBEeWg38ag0nnchw,_CqPtsAkFEeWg38ag0nnchw,_NFFKUAkEEeWg38ag0nnchw,_3TFIgAkBEeWg38ag0nnchw,_rv0HYAkGEeWg38ag0nnchw,_qYMXsAkHEeWg38ag0nnchw
+Element-Name: Extension Points
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _wXzbsG1lEeiv5_IJNNSbGg
+Runtime-Version: 2.3.0.201804052311
+Save-Time: 6/11/18 12:58 PM
+Testcase-Type: ecl
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Package Explorer" | get-tree | select "org.eclipse.emf.ecp.makeithappen.model/META-INF/MANIFEST.MF" 
+    | double-click
+with [get-editor "org.eclipse.emf.ecp.makeithappen.model"] {
+    get-tab-folder | get-tab-item Extensions | click
+    get-section "All Extensions" | get-button "Add..." | click
+}
+with [get-window "New Extension"] {
+    with [get-editbox -after [get-label "Extension Point filter:"]] {
+        set-text edapt
+        key-type Left -times 17
+        set-text "*edapt"
+    }
+    get-button "Show only extension points from the required plug-ins" | uncheck
+    get-table | select "org.eclipse.emf.edapt.migrators"
+    get-button Finish | click
+    get-window "New plug-in dependency" | get-button No | click
+}
+get-editor "org.eclipse.emf.ecp.makeithappen.model" | get-section "Extension Element Details" | get-button "Browse..." 
+    | click
+with [get-window "Resource Attribute Value"] {
+    get-tree | select "org.eclipse.emf.ecp.makeithappen.model/model/task.history"
+    get-button OK | click
+}
+get-editor "org.eclipse.emf.ecp.makeithappen.model" | get-section "All Extensions" | get-button "Add..." | click
+with [get-window "New Extension"] {
+    get-editbox -after [get-label "Extension Point filter:"] | set-text "*edapt"
+    get-button "Show only extension points from the required plug-ins" | uncheck
+    get-table | select "org.eclipse.emf.edapt.factories"
+    get-button Finish | click
+    get-window "New plug-in dependency" | get-button No | click
+}
+with [get-editor "org.eclipse.emf.ecp.makeithappen.model" | get-section "Extension Element Details"] {
+    get-label "nsURI*:" | get-property caption | equals "nsURI*:" | verify-true
+    get-link "class*:" | get-property caption | equals "class*:" | verify-true
+    get-label "useWildcards:" | get-property caption | equals "useWildcards:" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
