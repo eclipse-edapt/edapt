@@ -4,8 +4,8 @@ Element-Name: AllTests
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _D99h4AkREeWg38ag0nnchw
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 11/15/17 3:35 PM
+Runtime-Version: 2.3.0.201804052311
+Save-Time: 6/11/18 12:59 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -20,5 +20,6 @@ _x1puIAkPEeWg38ag0nnchw	// kind: 'test' name: 'Select EElement' path: 'element_c
 _spU9wAkQEeWg38ag0nnchw	// kind: 'test' name: 'Select Change' path: 'reconstruction_view/Select Change.test'
 _aedIALQUEee_6uXiZb2DRg	// kind: 'test' name: 'Breaking change indication' path: 'general/Breaking change indication.test'
 _ExiWUMoSEeeVv4pPxMNi2w	// kind: 'test' name: 'Multiple ecores' path: 'general/Multiple ecores.test'
+_wXzbsG1lEeiv5_IJNNSbGg	// kind: 'test' name: 'Extension Points' path: 'general/Extension Points.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
