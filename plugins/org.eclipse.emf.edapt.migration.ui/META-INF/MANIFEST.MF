@@ -2,20 +2,20 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.migration.ui;singleton:=true
-Bundle-Version: 1.3.0.qualifier
+Bundle-Version: 1.3.1.qualifier
 Bundle-Activator: org.eclipse.emf.edapt.migration.ui.MigrationUIActivator
 Require-Bundle: org.eclipse.ui;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
- org.eclipse.emf.edapt.common;bundle-version="[1.3.0,2.0.0)",
- org.eclipse.emf.edapt.common.ui;bundle-version="[1.3.0,2.0.0)",
+ org.eclipse.emf.edapt.common;bundle-version="[1.3.1,2.0.0)",
+ org.eclipse.emf.edapt.common.ui;bundle-version="[1.3.1,2.0.0)",
  org.eclipse.core.expressions;bundle-version="[3.4.0,4.0.0)",
- org.eclipse.emf.edapt.history;bundle-version="[1.3.0,2.0.0)",
+ org.eclipse.emf.edapt.history;bundle-version="[1.3.1,2.0.0)",
  org.eclipse.debug.core;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.jdt.launching;bundle-version="[3.6.0,4.0.0)",
  org.eclipse.debug.ui;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.jdt.debug.ui;bundle-version="[3.6.0,4.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.edapt.migration.ui;version="1.3.0";x-internal:="true"
+Export-Package: org.eclipse.emf.edapt.migration.ui;version="1.3.1";x-internal:=true
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
