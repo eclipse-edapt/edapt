@@ -8,8 +8,8 @@
 	<packaging>rcpttTest</packaging>
 
 	<properties>
-		<rcptt-maven-version>2.4.0</rcptt-maven-version>
-		<rcptt-runner-version>2.4.0</rcptt-runner-version>
+		<rcptt-maven-version>2.4.0-SNAPSHOT</rcptt-maven-version>
+		<rcptt-runner-version>2.4.0-SNAPSHOT</rcptt-runner-version>
 		<toolchains-version>1.1</toolchains-version>
 	</properties>
 
