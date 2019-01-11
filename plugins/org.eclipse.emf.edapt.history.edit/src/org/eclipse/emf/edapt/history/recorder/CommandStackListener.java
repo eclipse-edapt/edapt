@@ -142,6 +142,9 @@ public class CommandStackListener implements
 	 * not detached due to the save mechanism which reloads the metamodel.
 	 */
 	private boolean checkRecorder() {
+		if (metamodelRecorder == null || metamodelRecorder.getElements().isEmpty()) {
+			return false;
+		}
 		return !metamodelRecorder.getElements().get(0).eIsProxy();
 	}
 

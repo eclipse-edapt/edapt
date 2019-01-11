@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.edapt.history;bundle-version="0.3.0"
 Eclipse-LazyStart: true
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: statemachine_ecoop

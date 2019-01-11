@@ -249,48 +249,45 @@ public class HistoryEditor
 	 *
 	 * @generated
 	 */
-	protected IPartListener partListener =
-		new IPartListener() {
-			@Override
-			public void partActivated(IWorkbenchPart p) {
-				if (p instanceof ContentOutline) {
-					if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
-						getActionBarContributor().setActiveEditor(HistoryEditor.this);
+	protected IPartListener partListener = new IPartListener() {
+		@Override
+		public void partActivated(IWorkbenchPart p) {
+			if (p instanceof ContentOutline) {
+				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
+					getActionBarContributor().setActiveEditor(HistoryEditor.this);
 
-						setCurrentViewer(contentOutlineViewer);
-					}
+					setCurrentViewer(contentOutlineViewer);
 				}
-				else if (p instanceof PropertySheet) {
-					if (((PropertySheet) p).getCurrentPage() == propertySheetPage) {
-						getActionBarContributor().setActiveEditor(HistoryEditor.this);
-						handleActivate();
-					}
-				}
-				else if (p == HistoryEditor.this) {
+			} else if (p instanceof PropertySheet) {
+				if (((PropertySheet) p).getCurrentPage() == propertySheetPage) {
+					getActionBarContributor().setActiveEditor(HistoryEditor.this);
 					handleActivate();
 				}
+			} else if (p == HistoryEditor.this) {
+				handleActivate();
 			}
+		}
 
-			@Override
-			public void partBroughtToTop(IWorkbenchPart p) {
-				// Ignore.
-			}
+		@Override
+		public void partBroughtToTop(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			@Override
-			public void partClosed(IWorkbenchPart p) {
-				// Ignore.
-			}
+		@Override
+		public void partClosed(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			@Override
-			public void partDeactivated(IWorkbenchPart p) {
-				// Ignore.
-			}
+		@Override
+		public void partDeactivated(IWorkbenchPart p) {
+			// Ignore.
+		}
 
-			@Override
-			public void partOpened(IWorkbenchPart p) {
-				// Ignore.
-			}
-		};
+		@Override
+		public void partOpened(IWorkbenchPart p) {
+			// Ignore.
+		}
+	};
 
 	/**
 	 * Resources that have been removed since last activation.
@@ -344,52 +341,48 @@ public class HistoryEditor
 	 *
 	 * @generated
 	 */
-	protected EContentAdapter problemIndicationAdapter =
-		new EContentAdapter() {
-			@Override
-			public void notifyChanged(Notification notification) {
-				if (notification.getNotifier() instanceof Resource) {
-					switch (notification.getFeatureID(Resource.class)) {
-					case Resource.RESOURCE__IS_LOADED:
-					case Resource.RESOURCE__ERRORS:
-					case Resource.RESOURCE__WARNINGS: {
-						final Resource resource = (Resource) notification.getNotifier();
-						final Diagnostic diagnostic = analyzeResourceProblems(resource, null);
-						if (diagnostic.getSeverity() != Diagnostic.OK) {
-							resourceToDiagnosticMap.put(resource, diagnostic);
-						}
-						else {
-							resourceToDiagnosticMap.remove(resource);
-						}
-
-						if (updateProblemIndication) {
-							getSite().getShell().getDisplay().asyncExec
-								(new Runnable() {
-									@Override
-									public void run() {
-										updateProblemIndication();
-									}
-								});
-						}
-						break;
+	protected EContentAdapter problemIndicationAdapter = new EContentAdapter() {
+		@Override
+		public void notifyChanged(Notification notification) {
+			if (notification.getNotifier() instanceof Resource) {
+				switch (notification.getFeatureID(Resource.class)) {
+				case Resource.RESOURCE__IS_LOADED:
+				case Resource.RESOURCE__ERRORS:
+				case Resource.RESOURCE__WARNINGS: {
+					final Resource resource = (Resource) notification.getNotifier();
+					final Diagnostic diagnostic = analyzeResourceProblems(resource, null);
+					if (diagnostic.getSeverity() != Diagnostic.OK) {
+						resourceToDiagnosticMap.put(resource, diagnostic);
+					} else {
+						resourceToDiagnosticMap.remove(resource);
 					}
+
+					if (updateProblemIndication) {
+						getSite().getShell().getDisplay().asyncExec(new Runnable() {
+							@Override
+							public void run() {
+								updateProblemIndication();
+							}
+						});
 					}
+					break;
 				}
-				else {
-					super.notifyChanged(notification);
 				}
+			} else {
+				super.notifyChanged(notification);
 			}
+		}
 
-			@Override
-			protected void setTarget(Resource target) {
-				basicSetTarget(target);
-			}
+		@Override
+		protected void setTarget(Resource target) {
+			basicSetTarget(target);
+		}
 
-			@Override
-			protected void unsetTarget(Resource target) {
-				basicUnsetTarget(target);
-			}
-		};
+		@Override
+		protected void unsetTarget(Resource target) {
+			basicUnsetTarget(target);
+		}
+	};
 
 	/**
 	 * This listens for workspace changes.
@@ -398,82 +391,77 @@ public class HistoryEditor
 	 *
 	 * @generated
 	 */
-	protected IResourceChangeListener resourceChangeListener =
-		new IResourceChangeListener() {
-			@Override
-			public void resourceChanged(IResourceChangeEvent event) {
-				final IResourceDelta delta = event.getDelta();
-				try {
-					class ResourceDeltaVisitor implements IResourceDeltaVisitor {
-						protected ResourceSet resourceSet = editingDomain.getResourceSet();
-						protected Collection<Resource> changedResources = new ArrayList<Resource>();
-						protected Collection<Resource> removedResources = new ArrayList<Resource>();
+	protected IResourceChangeListener resourceChangeListener = new IResourceChangeListener() {
+		@Override
+		public void resourceChanged(IResourceChangeEvent event) {
+			final IResourceDelta delta = event.getDelta();
+			try {
+				class ResourceDeltaVisitor implements IResourceDeltaVisitor {
+					protected ResourceSet resourceSet = editingDomain.getResourceSet();
+					protected Collection<Resource> changedResources = new ArrayList<Resource>();
+					protected Collection<Resource> removedResources = new ArrayList<Resource>();
 
-						@Override
-						public boolean visit(IResourceDelta delta) {
-							if (delta.getResource().getType() == IResource.FILE) {
-								if (delta.getKind() == IResourceDelta.REMOVED ||
-									delta.getKind() == IResourceDelta.CHANGED
+					@Override
+					public boolean visit(IResourceDelta delta) {
+						if (delta.getResource().getType() == IResource.FILE) {
+							if (delta.getKind() == IResourceDelta.REMOVED ||
+								delta.getKind() == IResourceDelta.CHANGED
 									&& delta.getFlags() != IResourceDelta.MARKERS) {
-									final Resource resource = resourceSet.getResource(
-										URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
-									if (resource != null) {
-										if (delta.getKind() == IResourceDelta.REMOVED) {
-											removedResources.add(resource);
-										}
-										else if (!savedResources.remove(resource)) {
-											changedResources.add(resource);
-										}
+								final Resource resource = resourceSet.getResource(
+									URI.createPlatformResourceURI(delta.getFullPath().toString(), true), false);
+								if (resource != null) {
+									if (delta.getKind() == IResourceDelta.REMOVED) {
+										removedResources.add(resource);
+									} else if (!savedResources.remove(resource)) {
+										changedResources.add(resource);
 									}
 								}
 							}
-
-							return true;
 						}
 
-						public Collection<Resource> getChangedResources() {
-							return changedResources;
-						}
-
-						public Collection<Resource> getRemovedResources() {
-							return removedResources;
-						}
+						return true;
 					}
 
-					final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
-					delta.accept(visitor);
-
-					if (!visitor.getRemovedResources().isEmpty()) {
-						getSite().getShell().getDisplay().asyncExec
-							(new Runnable() {
-								@Override
-								public void run() {
-									removedResources.addAll(visitor.getRemovedResources());
-									if (!isDirty()) {
-										getSite().getPage().closeEditor(HistoryEditor.this, false);
-									}
-								}
-							});
+					public Collection<Resource> getChangedResources() {
+						return changedResources;
 					}
 
-					if (!visitor.getChangedResources().isEmpty()) {
-						getSite().getShell().getDisplay().asyncExec
-							(new Runnable() {
-								@Override
-								public void run() {
-									changedResources.addAll(visitor.getChangedResources());
-									if (getSite().getPage().getActiveEditor() == HistoryEditor.this) {
-										handleActivate();
-									}
-								}
-							});
+					public Collection<Resource> getRemovedResources() {
+						return removedResources;
 					}
 				}
-				catch (final CoreException exception) {
-					HistoryEditorPlugin.INSTANCE.log(exception);
+
+				final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor();
+				delta.accept(visitor);
+
+				if (!visitor.getRemovedResources().isEmpty()) {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							removedResources.addAll(visitor.getRemovedResources());
+							if (!isDirty()) {
+								getSite().getPage().closeEditor(HistoryEditor.this, false);
+							}
+						}
+					});
 				}
+
+				if (!visitor.getChangedResources().isEmpty()) {
+					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
+						public void run() {
+							changedResources.addAll(visitor.getChangedResources());
+							if (getSite().getPage().getActiveEditor() == HistoryEditor.this) {
+								handleActivate();
+							}
+						}
+					});
+				}
+			} catch (final CoreException exception) {
+				HistoryEditorPlugin.INSTANCE.log(exception);
 			}
-		};
+		}
+	};
 
 	/**
 	 * Handles activation of the editor or it's associated views.
@@ -496,14 +484,12 @@ public class HistoryEditor
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
 				getSite().getPage().closeEditor(HistoryEditor.this, false);
-			}
-			else {
+			} else {
 				removedResources.clear();
 				changedResources.clear();
 				savedResources.clear();
 			}
-		}
-		else if (!changedResources.isEmpty()) {
+		} else if (!changedResources.isEmpty()) {
 			changedResources.removeAll(savedResources);
 			handleChangedResources();
 			changedResources.clear();
@@ -557,12 +543,11 @@ public class HistoryEditor
 	 */
 	protected void updateProblemIndication() {
 		if (updateProblemIndication) {
-			final BasicDiagnostic diagnostic =
-				new BasicDiagnostic
-				(Diagnostic.OK, "org.eclipse.emf.edapt.history.editor", //$NON-NLS-1$
-					0,
-					null,
-					new Object[] { editingDomain.getResourceSet() });
+			final BasicDiagnostic diagnostic = new BasicDiagnostic(Diagnostic.OK,
+				"org.eclipse.emf.edapt.history.editor", //$NON-NLS-1$
+				0,
+				null,
+				new Object[] { editingDomain.getResourceSet() });
 			for (final Diagnostic childDiagnostic : resourceToDiagnosticMap.values()) {
 				if (childDiagnostic.getSeverity() != Diagnostic.OK) {
 					diagnostic.add(childDiagnostic);
@@ -575,8 +560,7 @@ public class HistoryEditor
 				if (diagnostic.getSeverity() != Diagnostic.OK) {
 					setActivePage(lastEditorPage);
 				}
-			}
-			else if (diagnostic.getSeverity() != Diagnostic.OK) {
+			} else if (diagnostic.getSeverity() != Diagnostic.OK) {
 				final ProblemEditorPart problemEditorPart = new ProblemEditorPart();
 				problemEditorPart.setDiagnostic(diagnostic);
 				problemEditorPart.setMarkerHelper(markerHelper);
@@ -611,10 +595,9 @@ public class HistoryEditor
 	 * @generated
 	 */
 	protected boolean handleDirtyConflict() {
-		return MessageDialog.openQuestion
-			(getSite().getShell(),
-				getString("_UI_FileConflict_label"), //$NON-NLS-1$
-				getString("_WARN_FileConflict")); //$NON-NLS-1$
+		return MessageDialog.openQuestion(getSite().getShell(),
+			getString("_UI_FileConflict_label"), //$NON-NLS-1$
+			getString("_WARN_FileConflict")); //$NON-NLS-1$
 	}
 
 	/**
@@ -654,30 +637,28 @@ public class HistoryEditor
 		// Add a listener to set the most recent command's affected objects to be the selection of the viewer with
 		// focus.
 		//
-		commandStack.addCommandStackListener
-			(new CommandStackListener() {
-				@Override
-				public void commandStackChanged(final EventObject event) {
-					getContainer().getDisplay().asyncExec
-						(new Runnable() {
-							@Override
-							public void run() {
-								firePropertyChange(IEditorPart.PROP_DIRTY);
+		commandStack.addCommandStackListener(new CommandStackListener() {
+			@Override
+			public void commandStackChanged(final EventObject event) {
+				getContainer().getDisplay().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						firePropertyChange(IEditorPart.PROP_DIRTY);
 
-								// Try to select the affected objects.
-								//
-								final Command mostRecentCommand = ((CommandStack) event.getSource())
-									.getMostRecentCommand();
-								if (mostRecentCommand != null) {
-									setSelectionToViewer(mostRecentCommand.getAffectedObjects());
-								}
-								if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
-									propertySheetPage.refresh();
-								}
-							}
-						});
-				}
-			});
+						// Try to select the affected objects.
+						//
+						final Command mostRecentCommand = ((CommandStack) event.getSource())
+							.getMostRecentCommand();
+						if (mostRecentCommand != null) {
+							setSelectionToViewer(mostRecentCommand.getAffectedObjects());
+						}
+						if (propertySheetPage != null && !propertySheetPage.getControl().isDisposed()) {
+							propertySheetPage.refresh();
+						}
+					}
+				});
+			}
+		});
 
 		// Create the editing domain with a special command stack.
 		//
@@ -708,17 +689,16 @@ public class HistoryEditor
 		// Make sure it's okay.
 		//
 		if (theSelection != null && !theSelection.isEmpty()) {
-			final Runnable runnable =
-				new Runnable() {
-					@Override
-					public void run() {
-						// Try to select the items in the current content viewer of the editor.
-						//
-						if (currentViewer != null) {
-							currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
-						}
+			final Runnable runnable = new Runnable() {
+				@Override
+				public void run() {
+					// Try to select the items in the current content viewer of the editor.
+					//
+					if (currentViewer != null) {
+						currentViewer.setSelection(new StructuredSelection(theSelection.toArray()), true);
 					}
-				};
+				}
+			};
 			getSite().getShell().getDisplay().asyncExec(runnable);
 		}
 	}
@@ -817,15 +797,14 @@ public class HistoryEditor
 			if (selectionChangedListener == null) {
 				// Create the listener on demand.
 				//
-				selectionChangedListener =
-					new ISelectionChangedListener() {
-						// This just notifies those things that are affected by the section.
-						//
-						@Override
-						public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
-							setSelection(selectionChangedEvent.getSelection());
-						}
-					};
+				selectionChangedListener = new ISelectionChangedListener() {
+					// This just notifies those things that are affected by the section.
+					//
+					@Override
+					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
+						setSelection(selectionChangedEvent.getSelection());
+					}
+				};
 			}
 
 			// Stop listening to the old one.
@@ -921,22 +900,19 @@ public class HistoryEditor
 	 */
 	public Diagnostic analyzeResourceProblems(Resource resource, Exception exception) {
 		if (!resource.getErrors().isEmpty() || !resource.getWarnings().isEmpty()) {
-			final BasicDiagnostic basicDiagnostic =
-				new BasicDiagnostic
-				(Diagnostic.ERROR, "org.eclipse.emf.edapt.history.editor", //$NON-NLS-1$
-					0,
-					getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
-					new Object[] { exception == null ? (Object) resource : exception });
+			final BasicDiagnostic basicDiagnostic = new BasicDiagnostic(Diagnostic.ERROR,
+				"org.eclipse.emf.edapt.history.editor", //$NON-NLS-1$
+				0,
+				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
+				new Object[] { exception == null ? (Object) resource : exception });
 			basicDiagnostic.merge(EcoreUtil.computeDiagnostic(resource, true));
 			return basicDiagnostic;
-		}
-		else if (exception != null) {
+		} else if (exception != null) {
 			return new BasicDiagnostic(Diagnostic.ERROR, "org.eclipse.emf.edapt.history.editor", //$NON-NLS-1$
 				0,
 				getString("_UI_CreateModelError_message", resource.getURI()), //$NON-NLS-1$
 				new Object[] { exception });
-		}
-		else {
+		} else {
 			return Diagnostic.OK_INSTANCE;
 		}
 	}
@@ -975,39 +951,38 @@ public class HistoryEditor
 			final int pageIndex = addPage(tree);
 			setPageText(pageIndex, getString("_UI_SelectionPage_label")); //$NON-NLS-1$
 
-			getSite().getShell().getDisplay().asyncExec
-				(new Runnable() {
-					@Override
-					public void run() {
+			getSite().getShell().getDisplay().asyncExec(new Runnable() {
+				@Override
+				public void run() {
+					if (getPageCount() > 0) {
 						setActivePage(0);
 					}
-				});
+				}
+			});
 		}
 
 		// Ensures that this editor will only display the page's tab
 		// area if there are more than one page
 		//
-		getContainer().addControlListener
-			(new ControlAdapter() {
-				boolean guard = false;
+		getContainer().addControlListener(new ControlAdapter() {
+			boolean guard = false;
 
-				@Override
-				public void controlResized(ControlEvent event) {
-					if (!guard) {
-						guard = true;
-						hideTabs();
-						guard = false;
-					}
+			@Override
+			public void controlResized(ControlEvent event) {
+				if (!guard) {
+					guard = true;
+					hideTabs();
+					guard = false;
 				}
-			});
+			}
+		});
 
-		getSite().getShell().getDisplay().asyncExec
-			(new Runnable() {
-				@Override
-				public void run() {
-					updateProblemIndication();
-				}
-			});
+		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			@Override
+			public void run() {
+				updateProblemIndication();
+			}
+		});
 	}
 
 	/**
@@ -1075,14 +1050,11 @@ public class HistoryEditor
 	public Object getAdapter(Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView() ? getContentOutlinePage() : null;
-		}
-		else if (key.equals(IPropertySheetPage.class)) {
+		} else if (key.equals(IPropertySheetPage.class)) {
 			return getPropertySheetPage();
-		}
-		else if (key.equals(IGotoMarker.class)) {
+		} else if (key.equals(IGotoMarker.class)) {
 			return this;
-		}
-		else {
+		} else {
 			return super.getAdapter(key);
 		}
 	}
@@ -1141,15 +1113,14 @@ public class HistoryEditor
 
 			// Listen to selection so that we can handle it is a special way.
 			//
-			contentOutlinePage.addSelectionChangedListener
-				(new ISelectionChangedListener() {
-					// This ensures that we handle selections correctly.
-					//
-					@Override
-					public void selectionChanged(SelectionChangedEvent event) {
-						handleContentOutlineSelection(event.getSelection());
-					}
-				});
+			contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
+				// This ensures that we handle selections correctly.
+				//
+				@Override
+				public void selectionChanged(SelectionChangedEvent event) {
+					handleContentOutlineSelection(event.getSelection());
+				}
+			});
 		}
 
 		return contentOutlinePage;
@@ -1164,20 +1135,19 @@ public class HistoryEditor
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
-			propertySheetPage =
-				new ExtendedPropertySheetPage(editingDomain) {
-					@Override
-					public void setSelectionToViewer(List<?> selection) {
-						HistoryEditor.this.setSelectionToViewer(selection);
-						HistoryEditor.this.setFocus();
-					}
+			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+				@Override
+				public void setSelectionToViewer(List<?> selection) {
+					HistoryEditor.this.setSelectionToViewer(selection);
+					HistoryEditor.this.setFocus();
+				}
 
-					@Override
-					public void setActionBars(IActionBars actionBars) {
-						super.setActionBars(actionBars);
-						getActionBarContributor().shareGlobalActions(this, actionBars);
-					}
-				};
+				@Override
+				public void setActionBars(IActionBars actionBars) {
+					super.setActionBars(actionBars);
+					getActionBarContributor().shareGlobalActions(this, actionBars);
+				}
+			};
 			propertySheetPage.setPropertySourceProvider(new AdapterFactoryContentProvider(adapterFactory));
 		}
 
@@ -1240,33 +1210,31 @@ public class HistoryEditor
 
 		// Do the work within an operation because this is a long running activity that modifies the workbench.
 		//
-		final WorkspaceModifyOperation operation =
-			new WorkspaceModifyOperation() {
-				// This is the method that gets invoked when the operation runs.
+		final WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
+			// This is the method that gets invoked when the operation runs.
+			//
+			@Override
+			public void execute(IProgressMonitor monitor) {
+				// Save the resources to the file system.
 				//
-				@Override
-				public void execute(IProgressMonitor monitor) {
-					// Save the resources to the file system.
-					//
-					boolean first = true;
-					for (final Resource resource : editingDomain.getResourceSet().getResources()) {
-						if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
-							&& !editingDomain.isReadOnly(resource)) {
-							try {
-								final long timeStamp = resource.getTimeStamp();
-								resource.save(saveOptions);
-								if (resource.getTimeStamp() != timeStamp) {
-									savedResources.add(resource);
-								}
+				boolean first = true;
+				for (final Resource resource : editingDomain.getResourceSet().getResources()) {
+					if ((first || !resource.getContents().isEmpty() || isPersisted(resource))
+						&& !editingDomain.isReadOnly(resource)) {
+						try {
+							final long timeStamp = resource.getTimeStamp();
+							resource.save(saveOptions);
+							if (resource.getTimeStamp() != timeStamp) {
+								savedResources.add(resource);
 							}
-							catch (final Exception exception) {
-								resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
-							}
-							first = false;
+						} catch (final Exception exception) {
+							resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 						}
+						first = false;
 					}
 				}
-			};
+			}
+		};
 
 		updateProblemIndication = false;
 		try {
@@ -1352,10 +1320,9 @@ public class HistoryEditor
 		editingDomain.getResourceSet().getResources().get(0).setURI(uri);
 		setInputWithNotify(editorInput);
 		setPartName(editorInput.getName());
-		final IProgressMonitor progressMonitor =
-			getActionBars().getStatusLineManager() != null ?
-				getActionBars().getStatusLineManager().getProgressMonitor() :
-				new NullProgressMonitor();
+		final IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null
+			? getActionBars().getStatusLineManager().getProgressMonitor()
+			: new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
 
@@ -1473,8 +1440,9 @@ public class HistoryEditor
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		final IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ?
-			contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
+		final IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer
+			? contentOutlineStatusLineManager
+			: getActionBars().getStatusLineManager();
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
@@ -1496,8 +1464,7 @@ public class HistoryEditor
 					break;
 				}
 				}
-			}
-			else {
+			} else {
 				statusLineManager.setMessage(""); //$NON-NLS-1$
 			}
 		}

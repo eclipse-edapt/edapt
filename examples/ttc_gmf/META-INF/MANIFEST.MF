@@ -5,3 +5,4 @@ Bundle-SymbolicName: ttc_gmf;singleton:=true
 Bundle-Version: 0.1.0
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.emf.edapt.history;bundle-version="0.3.0"
+Automatic-Module-Name: ttc_gmf

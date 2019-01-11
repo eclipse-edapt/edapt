@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.edapt.history;bundle-version="0.3.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: library
