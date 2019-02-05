@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2007, 2019 BMW Car IT, Technische Universitaet Muenchen, Christian W. Damus, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
  * Johannes Faltermeier - Extension
+ * Christian W. Damus - bug 544147
  *******************************************************************************/
 package org.eclipse.emf.edapt.internal.common;
 
@@ -16,9 +17,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.math.BigInteger;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -43,6 +47,9 @@ import org.osgi.framework.Bundle;
  * @levd.rating RED Rev:
  */
 public final class URIUtils {
+
+	// Pattern matching a version number embedded in an URI segment
+	private static final Pattern VERSION_NUMBER_PATTERN = Pattern.compile("(?<=\\bv?|[-_])\\d+\\b"); //$NON-NLS-1$
 
 	/**
 	 * Constructor
@@ -223,4 +230,32 @@ public final class URIUtils {
 	public static URI getRelativePath(URI uri, URI relativeTo) {
 		return uri.deresolve(relativeTo, true, true, true);
 	}
+
+	/**
+	 * Increment the first part of a version number in a URI segment, as might
+	 * be in a package namespace URI, if it appears to contain a version number.
+	 *
+	 * @param segment an URI segment
+	 * @return the incremented {@code segment}, or just the {@code segment} as is
+	 *         if it does not appear to be or to contain a discrete a version number
+	 */
+	public static String incrementVersionSegment(String segment) {
+		String result = segment;
+
+		final Matcher m = VERSION_NUMBER_PATTERN.matcher(segment);
+		if (m.find()) {
+			final StringBuffer newSegment = new StringBuffer();
+
+			// Who knows how many digits there may be? Handle them all
+			final BigInteger version = new BigInteger(m.group());
+			final BigInteger newVersion = version.add(BigInteger.ONE);
+
+			m.appendReplacement(newSegment, newVersion.toString());
+			m.appendTail(newSegment);
+			result = newSegment.toString();
+		}
+
+		return result;
+	}
+
 }

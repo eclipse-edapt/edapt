@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2015 BMW Car IT, TUM, EclipseSource Muenchen GmbH, and others.
+ * Copyright (c) 2007-2019 BMW Car IT, TUM, EclipseSource Muenchen GmbH, Christian W. Damus, and others.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -8,6 +8,7 @@
  *
  * Contributors:
  * Johannes Faltermeier - initial API and implementation
+ * Christian W. Damus - bug 544147
  ******************************************************************************/
 package org.eclipse.emf.edapt.history.instantiation.ui;
 
@@ -17,6 +18,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.edapt.internal.common.URIUtils;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -28,6 +30,7 @@ import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -141,6 +144,15 @@ public class ReleaseWizardPage extends WizardPage {
 		final Point point = composite.computeSize(SWT.DEFAULT, SWT.DEFAULT);
 		scrolledComposite.setMinSize(point);
 
+		if (packages.size() > 1) {
+			// Create convenience buttons to select/deselect all packages
+			final Composite buttonsComposite = new Composite(mainComposite, SWT.NONE);
+			GridDataFactory.swtDefaults().align(SWT.END, SWT.BEGINNING).applyTo(buttonsComposite);
+			buttonsComposite.setLayout(new FillLayout(SWT.HORIZONTAL));
+			createSelectAllButton(buttonsComposite, "Select &All", true); //$NON-NLS-1$
+			createSelectAllButton(buttonsComposite, "&Deselect All", false); //$NON-NLS-1$
+		}
+
 		setControl(mainComposite);
 
 		checkIfPageComplete();
@@ -186,9 +198,49 @@ public class ReleaseWizardPage extends WizardPage {
 		});
 	}
 
+	private Button createSelectAllButton(Composite parent, final String label, final boolean select) {
+		final Button result = new Button(parent, SWT.PUSH);
+		result.setText(label);
+		result.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				selectAll(select);
+			}
+		});
+		return result;
+	}
+
+	private void selectAll(boolean select) {
+		for (final Map.Entry<EPackage, Button> next : packageToUpdateButton.entrySet()) {
+			final EPackage ePackage = next.getKey();
+			final Button checkbox = next.getValue();
+
+			if (checkbox.getSelection() != select) {
+				checkbox.setSelection(select);
+				setTextEnablement(checkbox, ePackage);
+			}
+		}
+
+		checkIfPageComplete();
+	}
+
 	private void setTextEnablement(final Button updateButton, final EPackage ePackage) {
-		packageToSourceText.get(ePackage).setEnabled(updateButton.getSelection());
-		packageToTargetText.get(ePackage).setEnabled(updateButton.getSelection());
+		final boolean selected = updateButton.getSelection();
+		final Text sourceText = packageToSourceText.get(ePackage);
+		final Text targetText = packageToTargetText.get(ePackage);
+
+		sourceText.setEnabled(selected);
+		targetText.setEnabled(selected);
+
+		// Can we pre-populate the target text?
+		final String target = targetText.getText().trim();
+		if (selected && target.isEmpty()) {
+			final String source = sourceText.getText().trim();
+			final String newTarget = URIUtils.incrementVersionSegment(source);
+			if (!source.equals(newTarget)) {
+				targetText.setText(newTarget);
+			}
+		}
 	}
 
 	private void checkIfPageComplete() {
