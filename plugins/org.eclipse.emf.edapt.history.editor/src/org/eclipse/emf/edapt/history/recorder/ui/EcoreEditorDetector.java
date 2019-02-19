@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 BMW Car IT, Technische Universitaet Muenchen, and others.
+ * Copyright (c) 2007, 2019 BMW Car IT, Technische Universitaet Muenchen, Christian W. Damus, and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  * BMW Car IT - Initial API and implementation
  * Technische Universitaet Muenchen - Major refactoring and extension
- * Christian W. Damus - bug 529599
+ * Christian W. Damus - bugs 529599, 544155
  *******************************************************************************/
 package org.eclipse.emf.edapt.history.recorder.ui;
 
@@ -21,21 +21,30 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.presentation.EcoreEditor;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edapt.common.ui.EcoreUIUtils;
 import org.eclipse.emf.edapt.common.ui.PartAdapter;
+import org.eclipse.emf.edapt.history.preferences.ui.PromptKind;
+import org.eclipse.emf.edapt.history.preferences.ui.ResourcePreferences;
 import org.eclipse.emf.edapt.history.presentation.HistoryEditorPlugin;
 import org.eclipse.emf.edapt.history.recorder.AddResourceCommand;
 import org.eclipse.emf.edapt.history.recorder.EditingDomainListener;
 import org.eclipse.emf.edapt.history.recorder.IResourceLoadListener;
 import org.eclipse.emf.edapt.internal.common.LoggingUtils;
+import org.eclipse.emf.edapt.internal.common.ResourceUtils;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
+import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialogWithToggle;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -157,17 +166,89 @@ public class EcoreEditorDetector extends PartAdapter implements
 	}
 
 	/** Ask the user whether a resource should be added to the history. */
-	private void addHistory(final EditingDomainListener listener,
-		Resource resource) {
-		final boolean addHistory = MessageDialog.openQuestion(Display.getDefault()
-			.getActiveShell(), "Resource loaded", //$NON-NLS-1$
-			"A resource has been loaded. " //$NON-NLS-1$
-				+ "Do you want to add it to the history?"); //$NON-NLS-1$
+	private void addHistory(final EditingDomainListener listener, Resource resource) {
+		final List<EPackage> rootPackages = ResourceUtils.getRootElements(resource, EPackage.class);
+		if (rootPackages.isEmpty()) {
+			return; // Nothing to worry about
+		}
+
+		final boolean addHistory = shouldAddHistory(listener, resource, rootPackages);
 		if (addHistory) {
 			final CommandStack commandStack = listener.getEditingDomain()
 				.getCommandStack();
 			commandStack.execute(new AddResourceCommand(listener, resource));
 		}
+	}
+
+	/**
+	 * Query whether we should add the given packages for a {@code resource} to the history, prompting the user
+	 * if necessary.
+	 *
+	 * @param listener the editing-domain listener in the context of a history
+	 * @param resource a resource that was loaded in the editing domain and contains Ecore packages
+	 * @param rootPackages the Ecore packages contained by the {@code resource}
+	 * @return whether to add the packages to the history
+	 */
+	private boolean shouldAddHistory(final EditingDomainListener listener, Resource resource,
+		final List<EPackage> rootPackages) {
+
+		final EditingDomain domain = listener.getEditingDomain();
+		final IPreferenceStore store = ResourcePreferences.getPreferences(domain);
+		final String resourceKey = "ignore." //$NON-NLS-1$
+			+ domain.getResourceSet().getURIConverter().normalize(resource.getURI()).toString();
+		store.setDefault(resourceKey, MessageDialogWithToggle.PROMPT);
+
+		final boolean result;
+		final PromptKind ignore = PromptKind.get(store, resourceKey);
+		switch (ignore) {
+		case ALWAYS:
+			// Don't need to prompt: user previously answered yes
+			result = true;
+			break;
+		case NEVER:
+			// Don't need to prompt: user previously answered no
+			result = false;
+			break;
+		default: // case PROMPT:
+			// Need to prompt: haven't remembered a previous answer
+			String title;
+			String message;
+			if (rootPackages.size() == 1) {
+				title = "Add EPackage to History"; //$NON-NLS-1$
+				message = NLS.bind("An Ecore resource has been loaded. " + //$NON-NLS-1$
+					"Add the EPackage ''{0}'' to the history?", //$NON-NLS-1$
+					getNSURI(rootPackages.get(0)));
+			} else {
+				title = "Add EPackages to History"; //$NON-NLS-1$
+				final StringBuilder nsURIs = new StringBuilder();
+				final String newline = System.getProperty("line.separator"); //$NON-NLS-1$
+				for (final EPackage next : rootPackages) {
+					nsURIs.append(newline);
+					nsURIs.append("  "); //$NON-NLS-1$
+					nsURIs.append(getNSURI(next));
+				}
+				message = NLS.bind("An Ecore resource has been loaded. " + //$NON-NLS-1$
+					"Add these EPackages to the history?{0}", //$NON-NLS-1$
+					nsURIs);
+			}
+
+			final MessageDialogWithToggle dialog = MessageDialogWithToggle.openYesNoQuestion(
+				Display.getDefault().getActiveShell(), title, message,
+				"Remember my decision", false, store, resourceKey); //$NON-NLS-1$
+
+			result = dialog.getReturnCode() == IDialogConstants.YES_ID;
+			break;
+		}
+		return result;
+	}
+
+	private String getNSURI(EPackage ePackage) {
+		String result = ePackage.getNsURI();
+		if (result == null || result.isEmpty()) {
+			// During development, maybe it doesn't have an NS URI, yet
+			result = String.valueOf(EcoreUtil.getURI(ePackage));
+		}
+		return result;
 	}
 
 	/**

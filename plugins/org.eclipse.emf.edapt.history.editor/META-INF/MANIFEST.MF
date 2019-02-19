@@ -9,6 +9,7 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.edapt.history.instantiation.ui;version="1.4.0";x-internal:=true,
+ org.eclipse.emf.edapt.history.preferences.ui;x-internal:=true,
  org.eclipse.emf.edapt.history.presentation;version="1.4.0";x-internal:=true,
  org.eclipse.emf.edapt.history.presentation.action;version="1.4.0";x-internal:=true,
  org.eclipse.emf.edapt.history.reconstruction.ui;version="1.4.0";x-internal:=true,

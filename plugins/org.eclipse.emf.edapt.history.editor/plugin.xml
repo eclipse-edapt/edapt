@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <!--
-    Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
+    Copyright (c) 2007, 2019 BMW Car IT, Technische Universitaet Muenchen, and others.
     All rights reserved. This program and the accompanying materials
     are made available under the terms of the Eclipse Public License v1.0
     which accompanies this distribution, and is available at
@@ -11,6 +11,7 @@
     Contributors:
         BMW Car IT - Initial API and implementation
         Technische Universitaet Muenchen - Major refactoring and extension
+        Christian W. Damus - bug 544155
  -->
 
 <plugin>
@@ -621,5 +622,21 @@
            id="org.eclipse.emf.edapt"
            name="Edapt">
      </category>
+  </extension>
+  <extension
+        point="org.eclipse.ui.keywords">
+     <keyword
+            label="edapt history migration"
+            id="org.eclipse.emf.edapt.history"/>
+  </extension>
+  <extension
+        point="org.eclipse.ui.preferencePages">
+     <page
+           class="org.eclipse.emf.edapt.history.preferences.ui.HistoryPreferencePage"
+           id="org.eclipse.emf.edapt.preferences.history"
+           name="Edapt">
+        <keywordReference
+              id="org.eclipse.emf.edapt.history"/>
+     </page>
   </extension>
 </plugin>

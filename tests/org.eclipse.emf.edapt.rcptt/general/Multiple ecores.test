@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _ExiWUMoSEeeVv4pPxMNi2w
-Runtime-Version: 2.2.0.201706152316
-Save-Time: 11/15/17 3:43 PM
+Runtime-Version: 2.3.0.201806262310
+Save-Time: 2/6/19 9:54 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -28,7 +28,7 @@ get-editor "My.ecore" | get-tree
     | select "platform:\\/resource\\/org.eclipse.emf.ecp.makeithappen.model\\/model\\/My.ecore/" | double-click
 with [get-view Properties | get-tree] {
     select "Ns URI" | activate-cell-edit -column 1
-    get-editbox | set-text a
+    get-editbox | set-text "http://test/a"
     apply-cell-edit
     select Name | activate-cell-edit -column 1
     get-editbox | set-text a
@@ -50,7 +50,11 @@ with [get-window "Load Resource"] {
         get-button OK | click
     }
     get-button OK | click
-    get-window "Resource loaded" | get-button Yes | click
+    with [get-window "Add EPackage to History"] {
+        get-label "An Ecore resource.*" | get-property caption | contains "'http://test/a'" | verify-true
+        get-button "Remember my decision" | click
+        get-button Yes | click
+    }
 }
 get-view "Operation Browser - task.ecore" | click
 get-view "Operation Browser - task.ecore" | get-button Release | click
@@ -61,7 +65,8 @@ with [get-window "Create Release"] {
         | equals "http://eclipse/org/emf/ecp/makeithappen/model/task" | verify-true
     get-editbox -after [get-label "http://eclipse/org/emf/ecp/makeithappen/model/task"] | get-property text 
         | equals task | verify-true
-    get-label a | get-property caption | equals a | verify-true
-    get-editbox -after [get-label a] | get-property text | equals a | verify-true
+    get-label "http://test/a" | get-property caption | equals "http://test/a" | verify-true
+    get-editbox -after [get-label "http://test/a"] | get-property text | equals "a" | verify-true
 }
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
