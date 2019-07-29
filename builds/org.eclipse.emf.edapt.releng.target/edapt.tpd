@@ -24,7 +24,7 @@ org.eclipse.platform.ide
 org.eclipse.rcp.feature.group
 }
 
-location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.1" {
+location "http://archive.eclipse.org/modeling/mdt/ocl/updates/releases/4.0.1/" {
 org.eclipse.ocl.master.feature.group
 org.eclipse.ocl.all.sdk.feature.group
 org.eclipse.ocl.examples.feature.group
