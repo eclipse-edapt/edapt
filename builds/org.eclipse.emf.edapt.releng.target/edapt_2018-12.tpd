@@ -7,7 +7,7 @@ org.eclipse.emf.compare.rcp.ui.source.feature.group
 org.eclipse.emf.compare.rcp.ui.feature.group
 }
 
-location "http://download.eclipse.org/eclipse/updates/4.7" {
+location "http://download.eclipse.org/eclipse/updates/4.10" {
 org.eclipse.rcp.source.feature.group
 org.eclipse.pde.api.tools.ee.feature.feature.group
 org.eclipse.releng.tools.feature.group
