@@ -217,8 +217,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 			if (msgs != null) {
 				msgs.dispatch();
 			}
-		}
-		else if (eNotificationRequired()) {
+		} else if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET, MigrationPackage.INSTANCE__TYPE, newType, newType));
 		}
 	}
@@ -381,7 +380,7 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 				if (isSet(feature) && oldValue != null) {
 					this.remove(feature, oldValue);
 				}
-				if (newValue != null) {
+				if (newValue != null || feature.isUnsettable()) {
 					this.add(feature, newValue);
 				}
 			}
