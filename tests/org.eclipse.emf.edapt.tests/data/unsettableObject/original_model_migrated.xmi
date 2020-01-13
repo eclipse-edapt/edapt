@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unsettableObject:Container xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:unsettableObject="http://unsettableObject/2" xmi:id="__yAnQDXtEeqTGpiS7VQV7w">
+  <children xmi:id="__yAnQTXtEeqTGpiS7VQV7w">
+    <unsettableAttribute xsi:nil="true"/>
+  </children>
+  <children xmi:id="__yAnQjXtEeqTGpiS7VQV7w" unsettableAttribute="2"/>
+</unsettableObject:Container>
