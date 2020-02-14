@@ -1,9 +1,11 @@
 @rem ***************************************************************************
 @rem Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
 @rem All rights reserved. This program and the accompanying materials
-@rem are made available under the terms of the Eclipse Public License v1.0
+@rem are made available under the terms of the Eclipse Public License 2.0
 @rem which accompanies this distribution, and is available at
-@rem http://www.eclipse.org/legal/epl-v10.html
+@rem https://www.eclipse.org/legal/epl-2.0/
+@rem
+@rem SPDX-License-Identifier: EPL-2.0
 @rem
 @rem Contributors:
 @rem     BMW Car IT - Initial API and implementation

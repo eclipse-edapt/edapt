@@ -109,7 +109,7 @@ public class MigrationLaunchConfigurationDelegate extends JavaLaunchDelegate {
 	@Override
 	public void launch(final ILaunchConfiguration configuration, String mode,
 		final ILaunch launch, final IProgressMonitor monitor)
-			throws CoreException {
+		throws CoreException {
 		final ILaunchManager launchManager = DebugPlugin.getDefault()
 			.getLaunchManager();
 		launchManager.addLaunchListener(new LaunchTerminationListener(

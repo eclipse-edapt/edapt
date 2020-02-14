@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -102,8 +104,7 @@ public class ModelSash extends SashForm {
 				if (!structuredSelection.isEmpty() && structuredSelection.getFirstElement() instanceof EObject) {
 					final EObject before = (EObject) structuredSelection.getFirstElement();
 					propertiesViewer.setElement(before);
-				}
-				else {
+				} else {
 					propertiesViewer.setInput(null);
 				}
 			}
@@ -138,8 +139,7 @@ public class ModelSash extends SashForm {
 	protected void propertyValuesSelected(Object value) {
 		if (value instanceof EObject) {
 			structureViewer.setSelection(new StructuredSelection(value), true);
-		}
-		else if (value instanceof List) {
+		} else if (value instanceof List) {
 			structureViewer.setSelection(new StructuredSelection((List) value), true);
 		}
 	}

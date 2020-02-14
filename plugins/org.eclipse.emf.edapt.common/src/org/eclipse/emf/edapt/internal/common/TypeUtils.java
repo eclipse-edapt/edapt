@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -60,11 +62,9 @@ public final class TypeUtils {
 	private static EClass leastCommonAncestorHelper(Collection<EClass> classes) {
 		if (classes.isEmpty()) {
 			return null;
-		}
-		else if (classes.size() == 1) {
+		} else if (classes.size() == 1) {
 			return classes.iterator().next();
-		}
-		else {
+		} else {
 			final Iterator<EClass> i = classes.iterator();
 			EClass lca = i.next();
 			while (i.hasNext()) {
@@ -108,11 +108,9 @@ public final class TypeUtils {
 	static EClass leastCommonAncestorHelper(EClass class1, EClass class2) {
 		if (ancestor(class1, class2)) {
 			return class2;
-		}
-		else if (ancestor(class2, class1)) {
+		} else if (ancestor(class2, class1)) {
 			return class1;
-		}
-		else {
+		} else {
 			EClass ancestor1 = superClass(class1);
 			while (ancestor1 != null) {
 				if (ancestor(class2, ancestor1)) {
@@ -143,17 +141,13 @@ public final class TypeUtils {
 	public static boolean ancestor(EClass class1, EClass class2) {
 		if (class1 == class2) {
 			return true;
-		}
-		else if (class2 == EcorePackage.eINSTANCE.getEObject()) {
+		} else if (class2 == EcorePackage.eINSTANCE.getEObject()) {
 			return true;
-		}
-		else if (class2 == null) {
+		} else if (class2 == null) {
 			return true;
-		}
-		else if (class1 == null) {
+		} else if (class1 == null) {
 			return false;
-		}
-		else {
+		} else {
 			return ancestor(superClass(class1), class2);
 		}
 	}

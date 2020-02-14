@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -13,8 +15,6 @@ package org.eclipse.emf.edapt.tests.history;
 
 import java.io.IOException;
 import java.util.Collections;
-
-import junit.framework.Assert;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,6 +34,8 @@ import org.eclipse.emf.edapt.spi.history.History;
 import org.eclipse.emf.edapt.spi.history.HistoryPackage;
 import org.eclipse.emf.edapt.tests.util.TestUtils;
 import org.eclipse.emf.edit.domain.EditingDomain;
+
+import junit.framework.Assert;
 
 /**
  * Test the full life cycle of coupled evolution: recording, migrator

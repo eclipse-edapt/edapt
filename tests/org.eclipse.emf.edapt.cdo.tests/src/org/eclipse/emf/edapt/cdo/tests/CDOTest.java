@@ -1,7 +1,5 @@
 package org.eclipse.emf.edapt.cdo.tests;
 
-import junit.framework.TestCase;
-
 import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
 import org.eclipse.emf.cdo.common.model.CDOPackageUnit;
 import org.eclipse.emf.cdo.eresource.CDOResource;
@@ -9,6 +7,8 @@ import org.eclipse.emf.cdo.net4j.CDONet4jSession;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.util.ConcurrentAccessException;
+
+import junit.framework.TestCase;
 
 /**
  *

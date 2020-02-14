@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -50,8 +52,7 @@ import org.eclipse.ui.dialogs.AbstractElementListSelectionDialog;
  * @version $Rev$
  * @levd.rating RED Rev:
  */
-public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDialog
-{
+public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDialog {
 	/**
 	 * Table view
 	 */
@@ -78,8 +79,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 */
 	@SuppressWarnings("unchecked")
 	public ExtendedFeatureEditorDialog(Shell parent, ILabelProvider labelProvider, Object object,
-		EClassifier eClassifier, List currentValues, String displayName, Collection choiceOfValues)
-	{
+		EClassifier eClassifier, List currentValues, String displayName, Collection choiceOfValues) {
 		super(parent, labelProvider);
 		listValues = new ArrayList();
 		setShellStyle(getShellStyle() | 0x10 | 0x400);
@@ -105,8 +105,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * @param choiceOfValues
 	 */
 	public ExtendedFeatureEditorDialog(Shell parent, ILabelProvider labelProvider, EObject eObject,
-		EStructuralFeature eStructuralFeature, String displayName, Collection choiceOfValues)
-	{
+		EStructuralFeature eStructuralFeature, String displayName, Collection choiceOfValues) {
 		this(parent, labelProvider, eObject, eStructuralFeature.getEType(), (List) eObject.eGet(eStructuralFeature),
 			displayName, choiceOfValues);
 	}
@@ -115,8 +114,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void computeResult()
-	{
+	protected void computeResult() {
 		setResult(values.getChildren());
 	}
 
@@ -124,8 +122,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void configureShell(Shell shell)
-	{
+	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setText(EMFEditUIPlugin.INSTANCE.getString("_UI_FeatureEditorDialog_title", new Object[] { //$NON-NLS-1$
 			displayName, labelProvider.getText(object)
@@ -137,8 +134,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected Control createDialogArea(Composite parent)
-	{
+	protected Control createDialogArea(Composite parent) {
 		final Composite contents = (Composite) super.createDialogArea(parent);
 		final GridLayout contentsGridLayout = (GridLayout) contents.getLayout();
 		contentsGridLayout.numColumns = 3;
@@ -231,15 +227,13 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 		}
 		upButton.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent event)
-			{
+			public void widgetSelected(SelectionEvent event) {
 				final IStructuredSelection selection = (IStructuredSelection) featureTableViewer.getSelection();
 				int minIndex = 0;
 				Object value;
 				int index;
 				for (final Iterator i = selection.iterator(); i.hasNext(); values.getChildren().move(
-					Math.max(index - 1, minIndex++), value))
-				{
+					Math.max(index - 1, minIndex++), value)) {
 					value = i.next();
 					index = values.getChildren().indexOf(value);
 				}
@@ -248,15 +242,13 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 		});
 		downButton.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent event)
-			{
+			public void widgetSelected(SelectionEvent event) {
 				final IStructuredSelection selection = (IStructuredSelection) featureTableViewer.getSelection();
 				int maxIndex = values.getChildren().size() - selection.size();
 				Object value;
 				int index;
 				for (final Iterator i = selection.iterator(); i.hasNext(); values.getChildren().move(
-					Math.min(index + 1, maxIndex++), value))
-				{
+					Math.min(index + 1, maxIndex++), value)) {
 					value = i.next();
 					index = values.getChildren().indexOf(value);
 				}
@@ -265,15 +257,13 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 		});
 		addButton.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent event)
-			{
+			public void widgetSelected(SelectionEvent event) {
 				addSelectedElements();
 			}
 		});
 		removeButton.addSelectionListener(new SelectionAdapter() {
 			@Override
-			public void widgetSelected(SelectionEvent event)
-			{
+			public void widgetSelected(SelectionEvent event) {
 				removeSelectedElements();
 			}
 
@@ -294,8 +284,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * {@inheritDoc}
 	 */
 	@Override
-	public boolean close()
-	{
+	public boolean close() {
 		contentProvider.dispose();
 		return super.close();
 	}
@@ -304,13 +293,11 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	 * Add the selected elements
 	 */
 	private void addSelectedElements() {
-		if (getSelectedElements() != null)
-		{
+		if (getSelectedElements() != null) {
 			final Object selection[] = getSelectedElements();
 			final Object aobj[] = selection;
 			int i = 0;
-			for (final int j = aobj.length; i < j; i++)
-			{
+			for (final int j = aobj.length; i < j; i++) {
 				final Object item = aobj[i];
 				if (!values.getChildren().contains(item)) {
 					values.getChildren().add(item);
@@ -330,8 +317,7 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 		final IStructuredSelection selection = (IStructuredSelection) featureTableViewer.getSelection();
 		Object firstValue = null;
 		Object value;
-		for (final Iterator i = selection.iterator(); i.hasNext(); values.getChildren().remove(value))
-		{
+		for (final Iterator i = selection.iterator(); i.hasNext(); values.getChildren().remove(value)) {
 			value = i.next();
 			if (firstValue == null) {
 				firstValue = value;
@@ -362,28 +348,28 @@ public class ExtendedFeatureEditorDialog extends AbstractElementListSelectionDia
 	protected IContentProvider contentProvider;
 
 	/**
-     *
-     */
+	 *
+	 */
 	protected Object object;
 
 	/**
-     *
-     */
+	 *
+	 */
 	protected EClassifier eClassifier;
 
 	/**
-     *
-     */
+	 *
+	 */
 	protected String displayName;
 
 	/**
-     *
-     */
+	 *
+	 */
 	protected ItemProvider values;
 
 	/**
-     *
-     */
+	 *
+	 */
 	protected Collection choiceOfValues;
 
 }

@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -14,13 +16,13 @@ package org.eclipse.emf.edapt.cdo.tests;
 import java.io.File;
 import java.io.IOException;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.edapt.internal.common.FileUtils;
 import org.eclipse.emf.edapt.internal.common.URIUtils;
 import org.eclipse.emf.edapt.internal.migration.execution.internal.ClassLoaderFacade;
+
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 /**
  * Test of model migrations defined by test models.

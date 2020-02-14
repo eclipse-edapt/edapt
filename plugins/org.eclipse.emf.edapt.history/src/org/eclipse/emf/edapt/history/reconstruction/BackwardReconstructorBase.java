@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -132,16 +134,14 @@ public class BackwardReconstructorBase extends CompositeReconstructorBase {
 				final Change change = changes.get(i);
 				doReconstruct(change);
 			}
-		}
-		else if (originalChange instanceof MigrationChange) {
+		} else if (originalChange instanceof MigrationChange) {
 			final MigrationChange migrationChange = (MigrationChange) originalChange;
 			final List<MigrateableChange> changes = migrationChange.getChanges();
 			for (int i = changes.size() - 1; i >= 0; i--) {
 				final Change change = changes.get(i);
 				doReconstruct(change);
 			}
-		}
-		else if (originalChange instanceof InitializerChange) {
+		} else if (originalChange instanceof InitializerChange) {
 			final InitializerChange create = (InitializerChange) originalChange;
 			final List<ValueChange> changes = create.getChanges();
 			for (int i = changes.size() - 1; i >= 0; i--) {

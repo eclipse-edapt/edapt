@@ -80,7 +80,7 @@ public class StrategyForwardConverter extends ForwardConverter {
 						if (reference.isUnique()
 							&& ((List) element
 								.get((EStructuralFeature) lookupReference))
-								.contains(valueInstance)) {
+									.contains(valueInstance)) {
 							final ReferenceSlot referenceSlot = (ReferenceSlot) element
 								.getSlot((EStructuralFeature) lookupReference);
 							try {
