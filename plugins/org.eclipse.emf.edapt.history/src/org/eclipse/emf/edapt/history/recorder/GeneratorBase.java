@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -106,8 +108,7 @@ public abstract class GeneratorBase {
 							digraph.addOrder(parent, child);
 						}
 					}
-				}
-				else {
+				} else {
 					final EObject child = (EObject) parent.eGet(reference);
 					if (child != null) {
 						addContents(child, digraph);
@@ -140,8 +141,7 @@ public abstract class GeneratorBase {
 								digraph.addOrder(target, element);
 							}
 						}
-					}
-					else {
+					} else {
 						final EObject target = (EObject) element.eGet(reference);
 						if (target != null) {
 							if (digraph.contains(target)) {
@@ -150,8 +150,7 @@ public abstract class GeneratorBase {
 										digraph.addOrder(target, element);
 										opposite.add((EReference) target);
 									}
-								}
-								else {
+								} else {
 									digraph.addOrder(target, element);
 								}
 							}
@@ -180,8 +179,7 @@ public abstract class GeneratorBase {
 					change.getChanges().add(
 						set(element, attribute.getDefaultValue(), attribute, element.eGet(attribute)));
 				}
-			}
-			else if (!element.eGet(attribute).equals(attribute.getDefaultValue())) {
+			} else if (!element.eGet(attribute).equals(attribute.getDefaultValue())) {
 				change.getChanges().add(set(element, attribute.getDefaultValue(), attribute, element.eGet(attribute)));
 			}
 		}
@@ -194,8 +192,7 @@ public abstract class GeneratorBase {
 					for (final EObject value : (List<EObject>) element.eGet(reference)) {
 						change.getChanges().add(add(element, reference, value));
 					}
-				}
-				else {
+				} else {
 					final EObject value = (EObject) element.eGet(reference);
 					if (value != null) {
 						if (reference == EcorePackage.eINSTANCE.getEReference_EOpposite()) {
@@ -203,8 +200,7 @@ public abstract class GeneratorBase {
 								change.getChanges().add(set(element, null, reference, value));
 								change.getChanges().add(set(value, null, reference, element));
 							}
-						}
-						else {
+						} else {
 							change.getChanges().add(set(element, null, reference, value));
 						}
 					}

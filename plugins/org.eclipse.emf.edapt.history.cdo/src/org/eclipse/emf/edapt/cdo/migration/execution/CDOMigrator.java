@@ -666,7 +666,8 @@ public class CDOMigrator {
 	/**
 	 * Get a {@link CDOURIData connection aware URI} for original canonical URI
 	 * and specified source CDOURIData. (Setting the authority, user name and
-	 * password from this source). </br> The schema is set to TCP.
+	 * password from this source). </br>
+	 * The schema is set to TCP.
 	 *
 	 * @param canonicalURI
 	 * @param data

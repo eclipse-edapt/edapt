@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.edapt.declaration.DeclarationFactory;
@@ -15,6 +12,9 @@ import org.eclipse.emf.edapt.declaration.Operation;
 import org.eclipse.emf.edapt.declaration.Parameter;
 import org.eclipse.emf.edapt.internal.declaration.OperationExtractor;
 import org.eclipse.emf.edapt.internal.declaration.OperationRegistry;
+
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
 /**
  * Tests for the {@link OperationExtractor}.

@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -16,8 +18,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
-
-import junit.framework.TestCase;
 
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.net4j.CDONet4jSession;
@@ -40,6 +40,8 @@ import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.spi.history.Release;
 import org.eclipse.emf.edapt.spi.migration.Metamodel;
 import org.eclipse.emf.edapt.spi.migration.Model;
+
+import junit.framework.TestCase;
 
 /**
  * A class for test cases to validate a model migration.

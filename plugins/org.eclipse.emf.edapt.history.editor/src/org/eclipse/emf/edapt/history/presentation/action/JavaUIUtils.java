@@ -88,8 +88,10 @@ public final class JavaUIUtils {
 			}
 
 			final SelectionDialog dialog = JavaUI.createTypeDialog(Display
-				.getDefault().getActiveShell(), PlatformUI.getWorkbench()
-				.getProgressService(), searchScope,
+				.getDefault().getActiveShell(),
+				PlatformUI.getWorkbench()
+					.getProgressService(),
+				searchScope,
 				IJavaElementSearchConstants.CONSIDER_CLASSES, false, change
 					.getMigration());
 			dialog.setTitle("Select Custom Migration"); //$NON-NLS-1$

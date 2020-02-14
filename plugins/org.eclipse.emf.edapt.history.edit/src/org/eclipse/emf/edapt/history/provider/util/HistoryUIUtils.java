@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -53,14 +55,11 @@ public class HistoryUIUtils {
 	public static String getLabel(Object element) {
 		if (element == null) {
 			return "null"; //$NON-NLS-1$
-		}
-		else if (element instanceof ENamedElement) {
+		} else if (element instanceof ENamedElement) {
 			return ((ENamedElement) element).getName();
-		}
-		else if (element instanceof String) {
+		} else if (element instanceof String) {
 			return "\"" + element + "\""; //$NON-NLS-1$ //$NON-NLS-2$
-		}
-		else {
+		} else {
 			final IItemLabelProvider labelProvider = (IItemLabelProvider) adapterFactory.adapt(element,
 				IItemLabelProvider.class);
 			if (labelProvider == null) {
