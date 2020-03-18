@@ -1,9 +1,11 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2010 BMW Car IT, Technische Universitaet Muenchen, and others.
  * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  * BMW Car IT - Initial API and implementation
@@ -160,16 +162,20 @@ public class DiffSelectionAdapter extends SelectionAdapter {
 	 * Selects an element in the structure viewer of the source metamodel
 	 */
 	public void selectSource(EObject element) {
-		sourceStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(
-			element), true);
+		sourceStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY
+			: new StructuredSelection(
+				element),
+			true);
 	}
 
 	/**
 	 * Selects an element in the structure viewer of the target metamodel
 	 */
 	public void selectTarget(EObject element) {
-		targetStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY : new StructuredSelection(
-			element), true);
+		targetStructureViewer.setSelection(element == null ? StructuredSelection.EMPTY
+			: new StructuredSelection(
+				element),
+			true);
 	}
 
 	/**

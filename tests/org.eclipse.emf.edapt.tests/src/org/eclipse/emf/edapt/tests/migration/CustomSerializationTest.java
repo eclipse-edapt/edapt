@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import junit.framework.Assert;
-import junit.framework.TestCase;
-
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EPackage.Registry;
@@ -18,6 +15,9 @@ import org.eclipse.emf.edapt.internal.migration.internal.PrintStreamProgressMoni
 import org.eclipse.emf.edapt.migration.MigrationException;
 import org.eclipse.emf.edapt.migration.execution.Migrator;
 import org.eclipse.emf.edapt.spi.history.Release;
+
+import junit.framework.Assert;
+import junit.framework.TestCase;
 
 /**
  * Test for ensuring that the configuration of the custom serialization has

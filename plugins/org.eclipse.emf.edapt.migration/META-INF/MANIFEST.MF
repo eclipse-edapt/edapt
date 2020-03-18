@@ -2,27 +2,27 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.migration;singleton:=true
-Bundle-Version: 1.4.0.qualifier
+Bundle-Version: 1.4.1.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Export-Package: org.eclipse.emf.edapt.internal.migration;version="1.4.0",
- org.eclipse.emf.edapt.internal.migration.impl;version="1.4.0";x-internal:=true,
- org.eclipse.emf.edapt.internal.migration.internal;version="1.4.0";
+Export-Package: org.eclipse.emf.edapt.internal.migration;version="1.4.1",
+ org.eclipse.emf.edapt.internal.migration.impl;version="1.4.1";x-internal:=true,
+ org.eclipse.emf.edapt.internal.migration.internal;version="1.4.1";
   x-friends:="org.eclipse.emf.edapt.history,
    org.eclipse.emf.edapt.history.cdo,
    org.eclipse.emf.edapt.migration.test,
    org.eclipse.emf.edapt.migration.ui",
- org.eclipse.emf.edapt.migration;version="1.4.0",
- org.eclipse.emf.edapt.spi.migration;version="1.4.0",
- org.eclipse.emf.edapt.spi.migration.impl;version="1.4.0",
- org.eclipse.emf.edapt.spi.migration.util;version="1.4.0"
+ org.eclipse.emf.edapt.migration;version="1.4.1",
+ org.eclipse.emf.edapt.spi.migration;version="1.4.1",
+ org.eclipse.emf.edapt.spi.migration.impl;version="1.4.1",
+ org.eclipse.emf.edapt.spi.migration.util;version="1.4.1"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)",
  org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)";visibility:=reexport,
  org.eclipse.ocl.ecore;bundle-version="[3.1.0,4.0.0)";visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="[2.7.0,3.0.0)",
- org.eclipse.emf.edapt.common;bundle-version="[1.4.0,2.0.0)"
+ org.eclipse.emf.edapt.common;bundle-version="[1.4.1,2.0.0)"
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.edapt.spi.migration.MigrationPlugin$Implementation
 Automatic-Module-Name: org.eclipse.emf.edapt.migration
