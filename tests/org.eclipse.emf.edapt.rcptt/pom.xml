@@ -65,7 +65,7 @@
 					</runner>
 					<!-- The main configuration section goes here -->
 					<aut>
-						<explicit>/home/data/httpd/download.eclipse.org/edapt/aut/aut.tar.gz</explicit>
+						<explicit>http://download.eclipse.org/edapt/aut/aut.tar.gz</explicit>
 						<injections>
 							<injection>
 								<site>http://download.eclipse.org/ecp/releases/releases_18/</site>
