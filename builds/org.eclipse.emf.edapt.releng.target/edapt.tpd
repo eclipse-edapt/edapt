@@ -24,7 +24,7 @@ org.eclipse.platform.ide
 org.eclipse.rcp.feature.group
 }
 
-location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/6.3.0" {
+location "http://archive.eclipse.org/modeling/mdt/ocl/updates/releases/6.3.0" {
 org.eclipse.ocl.master.feature.group
 org.eclipse.ocl.all.sdk.feature.group
 org.eclipse.ocl.examples.feature.group
@@ -90,11 +90,11 @@ org.eclipse.acceleo.feature.group
 org.eclipse.acceleo.sdk.feature.group
 }
 
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20130827064939/repository/" {
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository/" {
 org.junit
-org.objenesis
+org.objenesis [1.0.0,2.0.0)
 }
 
-location "http://build.eclipse.org/rt/rap/base-platforms/3.1/extra-dependencies/" {
-org.mockito.mockito-core-hamcrest-modified
+location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {
+org.mockito.mockito-core-hamcrest-modified [1.9.5,1.9.5]
 }
