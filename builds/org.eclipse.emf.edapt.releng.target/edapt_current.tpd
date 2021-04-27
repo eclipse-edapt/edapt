@@ -1,0 +1,126 @@
+target "Edapt Current IDE Target"
+
+location "http://download.eclipse.org/modeling/emf/compare/updates/releases/latest" {
+org.eclipse.emf.compare.source.feature.group lazy
+org.eclipse.emf.compare.feature.group lazy
+org.eclipse.emf.compare.rcp.ui.source.feature.group lazy
+org.eclipse.emf.compare.rcp.ui.feature.group lazy
+}
+
+location "http://download.eclipse.org/eclipse/updates/latest" {
+org.eclipse.rcp.source.feature.group lazy
+org.eclipse.pde.api.tools.ee.feature.feature.group lazy
+org.eclipse.releng.tools.feature.group lazy
+org.eclipse.equinox.sdk.feature.group lazy
+org.eclipse.sdk.ide lazy
+org.eclipse.platform.sdk lazy
+org.eclipse.test.feature.group lazy
+org.eclipse.sdk.tests.feature.group lazy
+org.eclipse.platform.ide lazy
+org.eclipse.rcp.feature.group lazy
+}
+
+location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest" {
+org.eclipse.ocl.core.sdk.feature.group lazy
+}
+
+location "https://download.eclipse.org/modeling/emf/emf/builds/release/latest" {
+org.eclipse.emf.ecore.xcore.ui.feature.group lazy
+org.eclipse.emf.databinding.feature.group lazy
+org.eclipse.emf.codegen.ecore.feature.group lazy
+org.eclipse.emf.edit.ui.feature.group lazy
+org.eclipse.emf.mapping.ecore.editor.feature.group lazy
+org.eclipse.emf.gwt.feature.group lazy
+org.eclipse.emf.mapping.ecore.feature.group lazy
+org.eclipse.emf.rap.edit.ui.feature.group lazy
+org.eclipse.emf.oda.ecore.feature.group lazy
+org.eclipse.emf.codegen.ecore.ui.feature.group lazy
+org.eclipse.xsd.sdk.feature.group lazy
+org.eclipse.emf.common.feature.group lazy
+org.eclipse.emf.ecore.edit.feature.group lazy
+org.eclipse.xsd.feature.group lazy
+org.eclipse.emf.ecore.xcore.feature.group lazy
+org.eclipse.emf.codegen.feature.group lazy
+org.eclipse.emf.edit.feature.group lazy
+org.eclipse.emf.ecore.xcore.sdk.feature.group lazy
+org.eclipse.xsd.edit.feature.group lazy
+org.eclipse.emf.all.feature.group lazy
+org.eclipse.emf.oda.ecore.ui.feature.group lazy
+org.eclipse.emf.rap.feature.group lazy
+org.eclipse.emf.ecore.editor.feature.group lazy
+org.eclipse.emf.codegen.ui.feature.group lazy
+org.eclipse.xsd.mapping.editor.feature.group lazy
+org.eclipse.emf.mapping.feature.group lazy
+org.eclipse.xsd.doc.feature.group lazy
+org.eclipse.emf.feature.group lazy
+org.eclipse.emf.doc.feature.group lazy
+org.eclipse.emf.examples.feature.group lazy
+org.eclipse.emf.oda.sdk.feature.group lazy
+org.eclipse.emf.gwt.common.feature.group lazy
+org.eclipse.emf.rap.common.ui.feature.group lazy
+org.eclipse.xsd.editor.feature.group lazy
+org.eclipse.emf.oda.feature.group lazy
+org.eclipse.emf.gwt.edit.ui.feature.group lazy
+org.eclipse.emf.common.ui.feature.group lazy
+org.eclipse.emf.rap.sdk.feature.group lazy
+org.eclipse.emf.ecore.feature.group lazy
+org.eclipse.emf.mapping.ui.feature.group lazy
+org.eclipse.xsd.mapping.feature.group lazy
+org.eclipse.emf.converter.feature.group lazy
+org.eclipse.xsd.ecore.converter.feature.group lazy
+org.eclipse.emf.databinding.edit.feature.group lazy
+org.eclipse.emf.gwt.ecore.feature.group lazy
+org.eclipse.emf.gwt.edit.feature.group lazy
+org.eclipse.emf.gwt.ecore.edit.feature.group lazy
+org.eclipse.emf.sdk.feature.group lazy
+}
+
+location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/" {
+org.eclipse.acceleo.examples.feature.group lazy
+org.eclipse.acceleo.runtime.feature.group lazy
+org.eclipse.acceleo.ui.capabilities.feature.group lazy
+org.eclipse.acceleo.doc.feature.group lazy
+org.eclipse.acceleo.feature.group lazy
+org.eclipse.acceleo.sdk.feature.group lazy
+}
+
+location "https://download.eclipse.org/tools/orbit/downloads/latest-R/" {
+org.junit lazy
+com.google.guava [27.1.0,28.0.0)
+org.apache.log4j [1.2.15,2.0.0)
+}
+
+location "http://build.eclipse.org/rt/rap/base-platforms/3.1/extra-dependencies/" {
+org.mockito.mockito-core-hamcrest-modified
+org.objenesis
+}
+
+location "https://download.eclipse.org/modeling/emf/cdo/updates/releases/latest/" {
+org.eclipse.emf.cdo.compare.feature.group lazy
+org.eclipse.emf.cdo.doc.feature.group lazy
+org.eclipse.emf.cdo.examples.feature.group lazy
+org.eclipse.emf.cdo.feature.group lazy
+org.eclipse.emf.cdo.migrator.feature.group lazy
+org.eclipse.emf.cdo.sdk.feature.group lazy
+org.eclipse.emf.cdo.server.db.feature.group lazy
+org.eclipse.emf.cdo.server.feature.group lazy
+org.eclipse.emf.cdo.server.lissome.feature.group lazy
+org.eclipse.emf.cdo.server.mongodb.feature.group lazy
+org.eclipse.emf.cdo.tests.feature.group lazy
+org.eclipse.net4j.db.derby.feature.group lazy
+org.eclipse.net4j.db.feature.group lazy
+org.eclipse.net4j.db.h2.feature.group lazy
+org.eclipse.net4j.db.hsqldb.feature.group lazy
+org.eclipse.net4j.db.mysql.feature.group lazy
+org.eclipse.net4j.db.oracle.feature.group lazy
+org.eclipse.net4j.db.postgresql.feature.group lazy
+org.eclipse.net4j.doc.feature.group lazy
+org.eclipse.net4j.examples.feature.group lazy
+org.eclipse.net4j.feature.group lazy
+org.eclipse.net4j.sdk.feature.group lazy
+org.eclipse.net4j.tests.feature.group lazy
+org.eclipse.net4j.ui.feature.group lazy
+org.eclipse.net4j.util.feature.group lazy
+org.eclipse.net4j.util.ui.feature.group lazy
+}
+

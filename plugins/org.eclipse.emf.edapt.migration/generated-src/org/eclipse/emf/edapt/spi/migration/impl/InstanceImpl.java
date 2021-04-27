@@ -896,6 +896,12 @@ public class InstanceImpl extends EObjectImpl implements Instance {
 				}
 				return result;
 			}
+
+			@Override
+			protected boolean doValidateContents(EObject eObject, DiagnosticChain diagnostics,
+				Map<Object, Object> context) {
+				return super.doValidateContents(eObject, diagnostics, context);
+			}
 		};
 		enableReflection();
 		final boolean result = diagnostician.validate(this, chain);
