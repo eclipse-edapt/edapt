@@ -10,7 +10,6 @@ org.eclipse.emf.compare.rcp.ui.feature.group lazy
 location "http://download.eclipse.org/eclipse/updates/latest" {
 org.eclipse.rcp.source.feature.group lazy
 org.eclipse.pde.api.tools.ee.feature.feature.group lazy
-org.eclipse.releng.tools.feature.group lazy
 org.eclipse.equinox.sdk.feature.group lazy
 org.eclipse.sdk.ide lazy
 org.eclipse.platform.sdk lazy
