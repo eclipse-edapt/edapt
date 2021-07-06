@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Target" sequenceNumber="1613137430">
+<target name="Edapt Target" sequenceNumber="1626420383">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.2.201310031412"/>
@@ -13,17 +13,17 @@
       <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.rcp.source.feature.group" version="4.3.2.v20140221-1700"/>
-      <unit id="org.eclipse.pde.api.tools.ee.feature.feature.group" version="1.0.0.v20130327-1631"/>
-      <unit id="org.eclipse.releng.tools.feature.group" version="3.5.0.v20140203-1326"/>
-      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.9.0.v20140221-1852"/>
-      <unit id="org.eclipse.sdk.ide" version="4.3.2.M20140221-1700"/>
-      <unit id="org.eclipse.platform.sdk" version="4.3.2.M20140221-1700"/>
-      <unit id="org.eclipse.test.feature.group" version="3.6.0.v20140203-1326"/>
-      <unit id="org.eclipse.sdk.tests.feature.group" version="4.3.0.v20140221-2329"/>
-      <unit id="org.eclipse.platform.ide" version="4.3.2.M20140221-1700"/>
-      <unit id="org.eclipse.rcp.feature.group" version="4.3.2.v20140221-1700"/>
-      <repository location="http://download.eclipse.org/eclipse/updates/4.3"/>
+      <unit id="org.eclipse.rcp.source.feature.group" version="4.8.0.v20180611-0656"/>
+      <unit id="org.eclipse.pde.api.tools.ee.feature.feature.group" version="1.0.300.v20180221-1224"/>
+      <unit id="org.eclipse.releng.tools.feature.group" version="3.10.0.v20180512-1134"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.14.0.v20180518-2029"/>
+      <unit id="org.eclipse.sdk.ide" version="4.8.0.I20180611-0500"/>
+      <unit id="org.eclipse.platform.sdk" version="4.8.0.I20180611-0500"/>
+      <unit id="org.eclipse.test.feature.group" version="3.7.300.v20180524-2246"/>
+      <unit id="org.eclipse.sdk.tests.feature.group" version="4.8.0.v20180611-0500"/>
+      <unit id="org.eclipse.platform.ide" version="4.8.0.I20180611-0500"/>
+      <unit id="org.eclipse.rcp.feature.group" version="4.8.0.v20180611-0656"/>
+      <repository location="http://download.eclipse.org/eclipse/updates/4.8"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.ocl.master.feature.group" version="6.3.0.v20170613-1432"/>
