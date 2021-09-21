@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Current IDE Target" sequenceNumber="1625568898">
+<target name="Edapt Current IDE Target" sequenceNumber="1632216868">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
@@ -95,7 +95,7 @@
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.mockito.mockito-core-hamcrest-modified" version="1.9.5"/>
       <unit id="org.objenesis" version="1.4.0"/>
-      <repository location="http://build.eclipse.org/rt/rap/base-platforms/3.1/extra-dependencies/"/>
+      <repository location="https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.cdo.compare.feature.group" version="0.0.0"/>
