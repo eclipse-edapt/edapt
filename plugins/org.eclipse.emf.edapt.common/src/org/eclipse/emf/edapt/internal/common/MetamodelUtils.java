@@ -16,6 +16,7 @@ package org.eclipse.emf.edapt.internal.common;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
@@ -27,9 +28,12 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceFactoryImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.Copier;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 /**
  * Helper methods for metamodel access.
@@ -188,6 +192,10 @@ public final class MetamodelUtils {
 	public static ResourceSet createIndependentMetamodelCopy(
 		Collection<EPackage> rootPackages, URI metamodelURI) {
 		final ResourceSet resourceSet = new ResourceSetImpl();
+		// Use custom resource factory to have UUIDs
+		final Map<String, Object> map = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
+		map.put(ResourceUtils.ECORE_FILE_EXTENSION, new MetamodelEcoreResourceFactoryImpl());
+
 		final Resource resource = resourceSet.createResource(metamodelURI);
 
 		@SuppressWarnings("serial")
@@ -219,6 +227,26 @@ public final class MetamodelUtils {
 		resource.getContents().addAll(copy);
 		copier.copyReferences();
 		return resourceSet;
+	}
+
+	/**
+	 * Resource factory that creates resources with UUIDs.
+	 * UUIDs allow stable references to meta model elements even if the elements are renamed during the migration.
+	 */
+	static class MetamodelEcoreResourceFactoryImpl extends ResourceFactoryImpl {
+
+		@Override
+		public Resource createResource(URI uri) {
+			final XMLResource result = new XMIResourceImpl(uri) {
+				@Override
+				protected boolean useUUIDs() {
+					return true;
+				}
+			};
+			result.setEncoding("UTF-8"); //$NON-NLS-1$
+
+			return result;
+		}
 	}
 
 }

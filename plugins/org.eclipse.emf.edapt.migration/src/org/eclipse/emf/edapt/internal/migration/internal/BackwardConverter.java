@@ -17,7 +17,9 @@ import java.text.MessageFormat;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
@@ -35,6 +37,7 @@ import org.eclipse.emf.edapt.internal.common.ReversableMap;
 import org.eclipse.emf.edapt.internal.common.TwoWayIdentityHashMap;
 import org.eclipse.emf.edapt.spi.migration.AttributeSlot;
 import org.eclipse.emf.edapt.spi.migration.Instance;
+import org.eclipse.emf.edapt.spi.migration.MetamodelResource;
 import org.eclipse.emf.edapt.spi.migration.Model;
 import org.eclipse.emf.edapt.spi.migration.ModelResource;
 import org.eclipse.emf.edapt.spi.migration.ReferenceSlot;
@@ -53,9 +56,11 @@ public class BackwardConverter {
 
 	/** Mapping from graph nodes to EMF model elements. */
 	protected ReversableMap<Instance, EObject> mapping;
+	protected Model model;
 
 	/** Convert model graph to EMF elements. */
 	public ResourceSet convert(Model model) {
+		this.model = model;
 		model.getMetamodel().refreshCaches();
 
 		mapping = new TwoWayIdentityHashMap<Instance, EObject>();
@@ -82,10 +87,65 @@ public class BackwardConverter {
 		for (final Instance element : type.getInstances()) {
 			final EObject eObject = EcoreUtil.create(targetClass);
 			if (element.isProxy()) {
-				((InternalEObject) eObject).eSetProxyURI(element.getUri());
+				if (isMetamodelProxy(element.getUri())) {
+					final URI resolvedProxyUri = resolveMetamodelProxy(element.getUri());
+					((InternalEObject) eObject).eSetProxyURI(resolvedProxyUri);
+				} else {
+					((InternalEObject) eObject).eSetProxyURI(element.getUri());
+				}
 			}
 			mapping.put(element, eObject);
 		}
+	}
+
+	/**
+	 * @return true if the proxyUri points to a meta element in the migrated metamodel (e.g. an EClass of the migrated
+	 *         model).
+	 */
+	protected boolean isMetamodelProxy(URI proxyUri) {
+		final MetamodelResource metaRes = getMetamodelResource();
+		// Remove fragment and query. The uri proxies to an element in the metamodel if the base URI is the same.
+		final URI baseUri = proxyUri.trimFragment().trimQuery();
+		return metaRes.getUri().equals(baseUri);
+	}
+
+	/**
+	 * Proxy urls to meta elements (e.g. EClasses, EStructuralFeatures) that are part of the migrated metamodel point to
+	 * the virtual URI of the migration metamodel resource. This URI is no longer valid after the migration finished.
+	 * Without additional resolvement this leads to broken proxy URIs in the migrated data.
+	 * Thus, it is resolved to the real URI of the meta element in its migrated version.
+	 */
+	protected URI resolveMetamodelProxy(URI proxyUri) {
+		final MetamodelResource metaRes = getMetamodelResource();
+		final Resource packagesRes = getSourceResource(metaRes);
+		final EObject resolvedMetaObject = packagesRes.getEObject(proxyUri.fragment());
+
+		if (resolvedMetaObject instanceof EClassifier) {
+			final EClassifier classifier = (EClassifier) resolvedMetaObject;
+			return URI.createURI(String.format("%s#//%s", classifier.getEPackage().getNsURI(), classifier.getName())); //$NON-NLS-1$
+		} else if (resolvedMetaObject instanceof EStructuralFeature) {
+			final EStructuralFeature feature = (EStructuralFeature) resolvedMetaObject;
+			final EClass containingClass = feature.getEContainingClass();
+			return URI.createURI(String.format("%s#//%s/%s", containingClass.getEPackage().getNsURI(), //$NON-NLS-1$
+				containingClass.getName(), feature.getName()));
+		}
+
+		// fallback: original proxy uri. will be broken but migration continues
+		return proxyUri;
+	}
+
+	/** @return The {@link MetamodelResource} of the migrated metamodel. */
+	protected MetamodelResource getMetamodelResource() {
+		// The metamodel is always contained in the first resource.
+		return model.getMetamodel().getResources().get(0);
+	}
+
+	/**
+	 * {@link MetamodelResource}s do not actually contain any packages but only reference them. This returns the actual
+	 * {@link Resource} containing this MetamodelResource's packages.
+	 */
+	protected Resource getSourceResource(MetamodelResource metamodelResource) {
+		return metamodelResource.getRootPackages().get(0).eResource();
 	}
 
 	/** Resolve the class to which an instance should be converted. */
