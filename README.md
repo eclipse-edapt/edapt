@@ -21,7 +21,7 @@ mvn clean verify -f builds/org.eclipse.emf.edapt.releng/pom.xml
 mvn clean verify -f builds/org.eclipse.emf.edapt.releng/pom.xml -Dtycho.disableP2Mirrors=true
 ```
 
-The Bundle-RequiredExecutionEnvironment is JavaSE-1.6
+The Bundle-RequiredExecutionEnvironment is JavaSE-1.8
 
 The p2-repository is created at `builds/org.eclipse.emf.edapt.releng.p2/target/repository`
 
