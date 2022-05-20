@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _wXzbsG1lEeiv5_IJNNSbGg
-Runtime-Version: 2.3.0.201804052311
-Save-Time: 6/11/18 12:58 PM
+Runtime-Version: 2.5.3.202205021448
+Save-Time: 6/17/22, 11:22 AM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -19,6 +19,12 @@ get-view "Package Explorer" | get-tree | select "org.eclipse.emf.ecp.makeithappe
 with [get-editor "org.eclipse.emf.ecp.makeithappen.model"] {
     get-tab-folder | get-tab-item Extensions | click
     get-section "All Extensions" | get-button "Add..." | click
+}
+with [get-window "New Extension"] {
+    with [get-tab-folder] {
+        get-tab-item "Extension Points" | click
+        get-tab-item "Extension Points" | click
+    }
 }
 with [get-window "New Extension"] {
     with [get-editbox -after [get-label "Extension Point filter:"]] {
@@ -39,6 +45,12 @@ with [get-window "Resource Attribute Value"] {
 }
 get-editor "org.eclipse.emf.ecp.makeithappen.model" | get-section "All Extensions" | get-button "Add..." | click
 with [get-window "New Extension"] {
+    with [get-tab-folder] {
+        get-tab-item "Extension Points" | click
+        get-tab-item "Extension Points" | click
+    }
+}
+with [get-window "New Extension"] {
     get-editbox -after [get-label "Extension Point filter:"] | set-text "*edapt"
     get-button "Show only extension points from the required plug-ins" | uncheck
     get-table | select "org.eclipse.emf.edapt.factories"
@@ -50,4 +62,5 @@ with [get-editor "org.eclipse.emf.ecp.makeithappen.model" | get-section "Extensi
     get-link "class*:" | get-property caption | equals "class*:" | verify-true
     get-label "useWildcards:" | get-property caption | equals "useWildcards:" | verify-true
 }
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

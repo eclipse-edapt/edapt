@@ -8,8 +8,8 @@
 	<packaging>rcpttTest</packaging>
 
 	<properties>
-		<rcptt-maven-version>2.5.1</rcptt-maven-version>
-		<rcptt-runner-version>2.5.1</rcptt-runner-version>
+		<rcptt-maven-version>2.5.3</rcptt-maven-version>
+		<rcptt-runner-version>2.5.3</rcptt-runner-version>
 		<toolchains-version>1.1</toolchains-version>
 	</properties>
 
@@ -46,7 +46,7 @@
 				<configuration>
 					<toolchains>
 						<jdk>
-							<id>JavaSE-1.8</id>
+							<id>JavaSE-11</id>
 						</jdk>
 					</toolchains>
 				</configuration>
@@ -65,10 +65,10 @@
 					</runner>
 					<!-- The main configuration section goes here -->
 					<aut>
-						<explicit>http://download.eclipse.org/edapt/aut/aut.tar.gz</explicit>
+						<explicit>aut.tar.gz</explicit>
 						<injections>
 							<injection>
-								<site>http://download.eclipse.org/releases/2020-03</site>
+								<site>https://download.eclipse.org/releases/2022-06</site>
 								<features>
 									<feature>org.eclipse.emf.ecp.emfforms.idetooling.feature.source.feature.group</feature>
 									<feature>org.eclipse.ocl.all.sdk.feature.group</feature>
@@ -77,7 +77,7 @@
 								</features>
 							</injection>
 							<injection>
-								<site>http://download.eclipse.org/edapt/p2/nightly</site>
+								<site>https://download.eclipse.org/edapt/p2/nightly</site>
 								<features>
 									<feature>org.eclipse.emf.edapt.runtime.feature.feature.group</feature>
 									<feature>org.eclipse.emf.edapt.recorder.feature.feature.group</feature>
