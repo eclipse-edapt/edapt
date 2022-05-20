@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.emf.edapt.common
-Bundle-Version: 1.5.0.qualifier
+Bundle-Version: 1.6.0.qualifier
 Bundle-Activator: org.eclipse.emf.edapt.internal.common.CommonActivator
 Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)";visibility:=reexport,
  org.eclipse.core.resources;bundle-version="[3.7.0,4.0.0)";visibility:=reexport,
@@ -10,8 +10,8 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.7.0,4.0.0)";visibili
  org.eclipse.emf.ecore;bundle-version="[2.7.0,3.0.0)",
  org.eclipse.emf.ecore.xmi;bundle-version="[2.7.0,3.0.0)";visibility:=reexport
 Bundle-ActivationPolicy: lazy
-Export-Package: org.eclipse.emf.edapt.common;version="1.5.0",
- org.eclipse.emf.edapt.internal.common;version="1.5.0";
+Export-Package: org.eclipse.emf.edapt.common;version="1.6.0",
+ org.eclipse.emf.edapt.internal.common;version="1.6.0";
   x-friends:="org.eclipse.emf.edapt.common.ui,
    org.eclipse.emf.edapt.declaration,
    org.eclipse.emf.edapt.history,
