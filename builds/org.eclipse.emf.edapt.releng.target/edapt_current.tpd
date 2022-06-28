@@ -17,6 +17,8 @@ org.eclipse.test.feature.group lazy
 org.eclipse.sdk.tests.feature.group lazy
 org.eclipse.platform.ide lazy
 org.eclipse.rcp.feature.group lazy
+org.sat4j.pb lazy
+org.sat4j.core lazy
 }
 
 location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest" {
