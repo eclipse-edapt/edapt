@@ -8,8 +8,12 @@ org.eclipse.emf.compare.rcp.ui.feature.group lazy
 }
 
 location "http://download.eclipse.org/eclipse/updates/latest" {
+org.eclipse.e4.ui.progress lazy
+org.eclipse.pde.ui lazy
+org.eclipse.e4.core.tools.feature.source.feature.group lazy
+org.eclipse.e4.rcp.source.feature.group lazy
 org.eclipse.rcp.source.feature.group lazy
-org.eclipse.pde.api.tools.ee.feature.feature.group lazy
+org.eclipse.pde.source.feature.group lazy
 org.eclipse.equinox.sdk.feature.group lazy
 org.eclipse.sdk.ide lazy
 org.eclipse.platform.sdk lazy
@@ -89,6 +93,7 @@ location "https://download.eclipse.org/tools/orbit/downloads/latest-R/" {
 org.junit lazy
 com.google.guava [27.1.0,28.0.0)
 org.apache.log4j [1.2.15,2.0.0)
+org.apache.commons.io lazy
 }
 
 location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {

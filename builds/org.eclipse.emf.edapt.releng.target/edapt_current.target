@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Current IDE Target" sequenceNumber="1656410877">
+<target name="Edapt Current IDE Target" sequenceNumber="1665061718">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
@@ -11,8 +11,12 @@
       <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.e4.ui.progress" version="0.0.0"/>
+      <unit id="org.eclipse.pde.ui" version="0.0.0"/>
+      <unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.e4.rcp.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.rcp.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.pde.api.tools.ee.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.pde.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
@@ -92,6 +96,7 @@
       <unit id="org.junit" version="0.0.0"/>
       <unit id="com.google.guava" version="27.1.0.v20190517-1946"/>
       <unit id="org.apache.log4j" version="1.2.19.v20220208-1728"/>
+      <unit id="org.apache.commons.io" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/latest-R/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
