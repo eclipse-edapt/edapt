@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Current IDE Target" sequenceNumber="1665061718">
+<target name="Edapt Current IDE Target" sequenceNumber="1669993435">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
@@ -94,7 +94,7 @@
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.junit" version="0.0.0"/>
-      <unit id="com.google.guava" version="27.1.0.v20190517-1946"/>
+      <unit id="com.google.guava" version="27.1.0.v20221112-0806"/>
       <unit id="org.apache.log4j" version="1.2.19.v20220208-1728"/>
       <unit id="org.apache.commons.io" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/latest-R/"/>
