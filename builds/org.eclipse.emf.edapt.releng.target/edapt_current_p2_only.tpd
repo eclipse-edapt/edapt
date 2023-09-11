@@ -91,18 +91,18 @@ org.eclipse.acceleo.sdk.feature.group lazy
 
 location "https://download.eclipse.org/tools/orbit/downloads/latest-R/" {
 org.junit lazy
-com.google.guava [27.1.0,28.0.0)
+com.google.guava lazy
 org.apache.log4j [1.2.15,2.0.0)
-org.apache.commons.io lazy
 com.sun.jna lazy
 com.sun.jna.platform lazy
-javax.annotation lazy
-javax.inject lazy
-org.slf4j.api lazy
 }
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
 org.apache.commons.jxpath lazy
+org.apache.commons.io lazy
+javax.annotation lazy
+javax.inject lazy
+org.slf4j.api lazy
 }
 
 location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {
