@@ -1,200 +1,147 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Current IDE Target" sequenceNumber="1688731819">
-	<locations>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.emf.compare.source.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.compare.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.compare.rcp.ui.feature.group"
-				version="0.0.0" />
-			<repository
-				location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.e4.ui.progress" version="0.0.0" />
-			<unit id="org.eclipse.pde.ui" version="0.0.0" />
-			<unit id="org.eclipse.e4.core.tools.feature.source.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.e4.rcp.source.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.rcp.source.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.pde.source.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.sdk.ide" version="0.0.0" />
-			<unit id="org.eclipse.platform.sdk" version="0.0.0" />
-			<unit id="org.eclipse.test.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.sdk.tests.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.platform.ide" version="0.0.0" />
-			<unit id="org.eclipse.rcp.feature.group" version="0.0.0" />
-			<unit id="org.sat4j.pb" version="0.0.0" />
-			<unit id="org.sat4j.core" version="0.0.0" />
-			<repository
-				location="http://download.eclipse.org/eclipse/updates/latest" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0" />
-			<repository
-				location="http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.emf.ecore.xcore.ui.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.databinding.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.codegen.ecore.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.edit.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.mapping.ecore.editor.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.mapping.ecore.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.oda.ecore.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.codegen.ecore.ui.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.xsd.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.common.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.ecore.edit.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.xsd.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.ecore.xcore.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.codegen.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.edit.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.xsd.edit.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.all.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.oda.ecore.ui.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.rap.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.ecore.editor.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.codegen.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.xsd.mapping.editor.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.mapping.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.xsd.doc.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.doc.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.examples.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.oda.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.common.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.rap.common.ui.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.xsd.editor.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.oda.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.edit.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.common.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.mapping.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.xsd.mapping.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.converter.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.xsd.ecore.converter.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.databinding.edit.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.ecore.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.edit.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.gwt.ecore.edit.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0" />
-			<repository
-				location="https://download.eclipse.org/modeling/emf/emf/builds/release/latest" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.acceleo.examples.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.acceleo.runtime.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.acceleo.ui.capabilities.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.acceleo.doc.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.acceleo.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.acceleo.sdk.feature.group" version="0.0.0" />
-			<repository
-				location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.junit" version="0.0.0" />
-			<unit id="com.google.guava" version="27.1.0.v20221112-0806" />
-			<unit id="org.apache.log4j" version="1.2.24.v20221221-2012" />
-			<unit id="org.apache.commons.io" version="0.0.0" />
-			<unit id="com.sun.jna" version="0.0.0" />
-			<unit id="com.sun.jna.platform" version="0.0.0" />
-			<unit id="javax.annotation" version="0.0.0" />
-			<unit id="javax.inject" version="0.0.0" />
-			<unit id="org.slf4j.api" version="0.0.0" />
-			<repository
-				location="https://download.eclipse.org/tools/orbit/downloads/latest-R/" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.apache.commons.jxpath" version="0.0.0" />
-			<repository
-				location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.mockito.mockito-core-hamcrest-modified"
-				version="1.9.5" />
-			<unit id="org.objenesis" version="1.4.0" />
-			<repository
-				location="https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" />
-		</location>
-		<location includeMode="slicer" includeAllPlatforms="false"
-			includeSource="false" includeConfigurePhase="false"
-			type="InstallableUnit">
-			<unit id="org.eclipse.emf.cdo.compare.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.doc.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.examples.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.migrator.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.server.db.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.server.lissome.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.server.mongodb.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.emf.cdo.tests.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.derby.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.h2.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.hsqldb.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.mysql.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.oracle.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.db.postgresql.feature.group"
-				version="0.0.0" />
-			<unit id="org.eclipse.net4j.doc.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.examples.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.sdk.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.tests.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.ui.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.util.feature.group" version="0.0.0" />
-			<unit id="org.eclipse.net4j.util.ui.feature.group" version="0.0.0" />
-			<repository
-				location="https://download.eclipse.org/modeling/emf/cdo/updates/releases/latest/" />
-		</location>
+<target name="Edapt Current IDE Target" sequenceNumber="1694427972">
+  <locations>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/latest"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.e4.ui.progress" version="0.0.0"/>
+      <unit id="org.eclipse.pde.ui" version="0.0.0"/>
+      <unit id="org.eclipse.e4.core.tools.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.e4.rcp.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.rcp.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.pde.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sdk.ide" version="0.0.0"/>
+      <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
+      <unit id="org.eclipse.test.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sdk.tests.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.platform.ide" version="0.0.0"/>
+      <unit id="org.eclipse.rcp.feature.group" version="0.0.0"/>
+      <unit id="org.sat4j.pb" version="0.0.0"/>
+      <unit id="org.sat4j.core" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/eclipse/updates/latest"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.ecore.xcore.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.databinding.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.codegen.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.edit.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mapping.ecore.editor.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.rap.edit.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.oda.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.codegen.ecore.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.xcore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.codegen.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.xcore.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.all.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.oda.ecore.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.rap.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.editor.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.codegen.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.mapping.editor.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mapping.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.doc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.doc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.examples.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.oda.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.common.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.rap.common.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.editor.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.oda.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.edit.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.common.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.rap.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.mapping.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.mapping.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.converter.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.xsd.ecore.converter.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.databinding.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.gwt.ecore.edit.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/modeling/emf/emf/builds/release/latest"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.acceleo.examples.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.runtime.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.doc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.sdk.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.junit" version="0.0.0"/>
+      <unit id="com.google.guava" version="0.0.0"/>
+      <unit id="org.apache.log4j" version="1.2.24.v20221221-2012"/>
+      <unit id="com.sun.jna" version="0.0.0"/>
+      <unit id="com.sun.jna.platform" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/latest-R/"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.apache.commons.jxpath" version="0.0.0"/>
+      <unit id="org.apache.commons.io" version="0.0.0"/>
+      <unit id="javax.annotation" version="0.0.0"/>
+      <unit id="javax.inject" version="0.0.0"/>
+      <unit id="org.slf4j.api" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.mockito.mockito-core-hamcrest-modified" version="1.9.5"/>
+      <unit id="org.objenesis" version="1.4.0"/>
+      <repository location="https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/"/>
+    </location>
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.cdo.compare.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.doc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.examples.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.migrator.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.server.db.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.server.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.server.lissome.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.server.mongodb.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.cdo.tests.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.derby.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.h2.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.hsqldb.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.mysql.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.oracle.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.db.postgresql.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.doc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.examples.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.sdk.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.tests.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.util.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.net4j.util.ui.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/modeling/emf/cdo/updates/releases/latest/"/>
+    </location>
 		<location includeDependencyDepth="none"
 			includeDependencyScopes="compile" includeSource="true" label="BND"
 			missingManifest="error" type="Maven">
