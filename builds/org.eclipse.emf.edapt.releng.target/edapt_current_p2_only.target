@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Current IDE Target" sequenceNumber="1694427972">
+<target name="Edapt Current IDE Target" sequenceNumber="1701256989">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.source.feature.group" version="0.0.0"/>
@@ -94,10 +94,10 @@
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.junit" version="0.0.0"/>
-      <unit id="com.google.guava" version="0.0.0"/>
-      <unit id="org.apache.log4j" version="1.2.24.v20221221-2012"/>
+      <unit id="org.apache.log4j" version="1.2.25"/>
       <unit id="com.sun.jna" version="0.0.0"/>
       <unit id="com.sun.jna.platform" version="0.0.0"/>
+      <unit id="org.hamcrest" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/latest-R/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">
@@ -106,6 +106,7 @@
       <unit id="javax.annotation" version="0.0.0"/>
       <unit id="javax.inject" version="0.0.0"/>
       <unit id="org.slf4j.api" version="0.0.0"/>
+      <unit id="com.google.guava" version="0.0.0"/>
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="false" type="InstallableUnit">

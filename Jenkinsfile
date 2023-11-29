@@ -6,7 +6,7 @@ pipeline {
     }
     tools {
         maven 'apache-maven-3.8.6'
-        jdk 'adoptopenjdk-hotspot-jdk11-latest'
+        jdk 'temurin-jdk17-latest'
     }
     options {
         timeout(time: 30, unit: 'MINUTES')
@@ -18,6 +18,7 @@ pipeline {
                     sh '''
                         cd builds/org.eclipse.emf.edapt.releng
                         mvn clean verify -Dtycho.disableP2Mirrors=true -B
+                        mvn clean verify -Platest-tp -Dtycho.disableP2Mirrors=true -B
                     '''
                 }
             }
