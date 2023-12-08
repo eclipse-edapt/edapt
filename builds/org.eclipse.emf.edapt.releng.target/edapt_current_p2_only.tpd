@@ -16,17 +16,18 @@ org.eclipse.rcp.source.feature.group lazy
 org.eclipse.pde.source.feature.group lazy
 org.eclipse.equinox.sdk.feature.group lazy
 org.eclipse.sdk.ide lazy
-org.eclipse.platform.sdk lazy
+org.eclipse.platform lazy
 org.eclipse.test.feature.group lazy
 org.eclipse.sdk.tests.feature.group lazy
 org.eclipse.platform.ide lazy
 org.eclipse.rcp.feature.group lazy
 org.sat4j.pb lazy
 org.sat4j.core lazy
+org.eclipse.search.core lazy
 }
 
 location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest" {
-org.eclipse.ocl.core.sdk.feature.group lazy
+org.eclipse.ocl.all.sdk.feature.group lazy
 }
 
 location "https://download.eclipse.org/modeling/emf/emf/builds/release/latest" {
@@ -95,15 +96,31 @@ org.apache.log4j [1.2.15,2.0.0)
 com.sun.jna lazy
 com.sun.jna.platform lazy
 org.hamcrest lazy
+com.ibm.icu lazy
+jakarta.annotation-api lazy
+jakarta.inject.jakarta.inject-api lazy
+org.apache.batik.css lazy
+org.apache.batik.i18n lazy
+org.apache.batik.util lazy
+org.apache.batik.constants lazy
+org.apache.xmlgraphics lazy
 }
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
 org.apache.commons.jxpath lazy
-org.apache.commons.io lazy
 javax.annotation lazy
 javax.inject lazy
 org.slf4j.api lazy
 com.google.guava lazy
+org.w3c.dom.svg lazy
+org.w3c.css.sac lazy
+org.w3c.dom.smil lazy
+org.w3c.dom.events lazy
+}
+
+
+location "https://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository" {
+org.apache.commons.io [1.4.0,2.0.0)
 }
 
 location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {
