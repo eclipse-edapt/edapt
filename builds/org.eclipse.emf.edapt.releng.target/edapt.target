@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="Edapt Target" sequenceNumber="1626420383">
+<target name="Edapt Target" sequenceNumber="1702025946">
   <locations>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.2.201310031412"/>
@@ -94,6 +94,7 @@
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.junit" version="4.13.0.v20200204-1500"/>
       <unit id="org.objenesis" version="1.0.0.v201505121915"/>
+      <unit id="com.ibm.icu" version="67.1.0.v20200706-1749"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository/"/>
     </location>
     <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">

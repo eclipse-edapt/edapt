@@ -93,6 +93,7 @@ org.eclipse.acceleo.sdk.feature.group
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository/" {
 org.junit
 org.objenesis [1.0.0,2.0.0)
+com.ibm.icu
 }
 
 location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {

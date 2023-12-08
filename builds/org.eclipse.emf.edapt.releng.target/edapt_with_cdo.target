@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl --><target name="Edapt CDO Target" sequenceNumber="1626420383">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="Edapt Target" sequenceNumber="1702025946">
   <locations>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.ide.ui.source.feature.group" version="2.1.2.201310031412"/>
       <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="2.1.2.201310031412"/>
       <unit id="org.eclipse.emf.compare.source.feature.group" version="2.1.2.201310031412"/>
@@ -11,7 +12,7 @@
       <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="2.1.2.201310031412"/>
       <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/2.1"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.rcp.source.feature.group" version="4.8.0.v20180611-0656"/>
       <unit id="org.eclipse.pde.api.tools.ee.feature.feature.group" version="1.0.300.v20180221-1224"/>
       <unit id="org.eclipse.releng.tools.feature.group" version="3.10.0.v20180512-1134"/>
@@ -24,13 +25,13 @@
       <unit id="org.eclipse.rcp.feature.group" version="4.8.0.v20180611-0656"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.8"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.ocl.master.feature.group" version="6.3.0.v20170613-1432"/>
       <unit id="org.eclipse.ocl.all.sdk.feature.group" version="5.3.0.v20170607-1133"/>
       <unit id="org.eclipse.ocl.examples.feature.group" version="6.3.0.v20170613-1432"/>
       <repository location="http://archive.eclipse.org/modeling/mdt/ocl/updates/releases/6.3.0"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.ecore.xcore.ui.feature.group" version="1.3.0.v20150602-0808"/>
       <unit id="org.eclipse.emf.databinding.feature.group" version="1.4.0.v20150601-0402"/>
       <unit id="org.eclipse.emf.codegen.ecore.feature.group" version="2.11.0.v20150601-0402"/>
@@ -81,7 +82,7 @@
       <unit id="org.eclipse.emf.sdk.feature.group" version="2.11.0.v20150601-0402"/>
       <repository location="http://download.eclipse.org/modeling/emf/emf/updates/releases/"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.acceleo.examples.feature.group" version="3.2.2.v20120807-0831"/>
       <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.2.2.v20120807-0831"/>
       <unit id="org.eclipse.acceleo.ui.capabilities.feature.group" version="3.2.2.v20120807-0831"/>
@@ -90,12 +91,13 @@
       <unit id="org.eclipse.acceleo.sdk.feature.group" version="3.2.2.v20120807-0831"/>
       <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.2"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.junit" version="4.13.0.v20200204-1500"/>
       <unit id="org.objenesis" version="1.0.0.v201505121915"/>
+      <unit id="com.ibm.icu" version="67.1.0.v20200706-1749"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20201130205003/repository/"/>
     </location>
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+    <location includeMode="slicer" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.mockito.mockito-core-hamcrest-modified" version="1.9.5"/>
       <repository location="https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/"/>
     </location>
