@@ -17,7 +17,7 @@ pipeline {
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
                     sh '''
                         cd builds/org.eclipse.emf.edapt.releng
-                        mvn clean verify -Dtycho.disableP2Mirrors=true -B
+                        mvn clean verify -Pbuild-server -Dtycho.disableP2Mirrors=true -B
                         mvn clean verify -Platest-tp -Dtycho.disableP2Mirrors=true -B
                     '''
                 }
