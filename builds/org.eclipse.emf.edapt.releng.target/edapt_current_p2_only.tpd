@@ -99,7 +99,7 @@ org.hamcrest lazy
 com.ibm.icu lazy
 jakarta.annotation-api lazy
 jakarta.inject.jakarta.inject-api lazy
-jakarta.xml.bind-api [4.0.1,5.0.0)
+jakarta.xml.bind-api [4.0.2,5.0.0)
 jakarta.activation-api [2.1.2,3.0.0)
 org.apache.batik.css lazy
 org.apache.batik.i18n lazy
