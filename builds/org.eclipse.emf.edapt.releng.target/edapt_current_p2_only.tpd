@@ -97,7 +97,7 @@ com.sun.jna lazy
 com.sun.jna.platform lazy
 org.hamcrest lazy
 com.ibm.icu lazy
-jakarta.annotation-api lazy
+jakarta.annotation-api [2.1.1,3.0.0)
 jakarta.inject.jakarta.inject-api lazy
 jakarta.xml.bind-api [4.0.2,5.0.0)
 jakarta.activation-api [2.1.2,3.0.0)
