@@ -123,6 +123,7 @@ org.w3c.dom.events lazy
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository" {
 org.apache.commons.io [1.4.0,2.0.0)
+org.tukaani.xz lazy
 }
 
 location "https://download.eclipse.org/rt/rap/base-platforms/3.14/extra-dependencies/" {
