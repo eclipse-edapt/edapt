@@ -106,6 +106,9 @@ org.apache.batik.i18n lazy
 org.apache.batik.util lazy
 org.apache.batik.constants lazy
 org.apache.xmlgraphics lazy
+org.commonmark lazy
+org.commonmark-gfm-tables lazy
+org.hamcrest.core lazy
 }
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
