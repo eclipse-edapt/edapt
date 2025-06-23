@@ -109,9 +109,6 @@ org.apache.xmlgraphics lazy
 org.commonmark lazy
 org.commonmark-gfm-tables lazy
 org.hamcrest.core lazy
-biz.aQute.bndlib lazy
-biz.aQute.bnd.util lazy
-aQute.libg lazy
 }
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
