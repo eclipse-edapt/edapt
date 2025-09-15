@@ -6,18 +6,32 @@ pipeline {
     }
     tools {
         maven 'apache-maven-3.9.5'
-        jdk 'temurin-jdk21-latest'
     }
     options {
         timeout(time: 30, unit: 'MINUTES')
     }
     stages {
-        stage('Build') {
+        stage('Build (JDK 17)') {
+            tools {
+                jdk 'temurin-jdk17-latest'
+            }
             steps {
                 wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
                     sh '''
                         cd builds/org.eclipse.emf.edapt.releng
                         mvn clean verify -Pbuild-server -Dtycho.disableP2Mirrors=true -B
+                    '''
+                }
+            }
+        }
+        stage('Build (JDK 21)') {
+            tools {
+                jdk 'temurin-jdk21-latest'
+            }
+            steps {
+                wrap([$class: 'Xvnc', takeScreenshot: false, useXauthority: true]) {
+                    sh '''
+                        cd builds/org.eclipse.emf.edapt.releng
                         mvn clean verify -Platest-tp -Dtycho.disableP2Mirrors=true -B
                     '''
                 }

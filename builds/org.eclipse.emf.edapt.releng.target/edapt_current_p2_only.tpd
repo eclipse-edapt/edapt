@@ -10,10 +10,10 @@ org.eclipse.emf.compare.rcp.ui.feature.group lazy
 location "http://download.eclipse.org/eclipse/updates/latest" {
 org.eclipse.e4.ui.progress lazy
 org.eclipse.pde.ui lazy
-org.eclipse.e4.core.tools.feature.source.feature.group lazy
-org.eclipse.e4.rcp.source.feature.group lazy
-org.eclipse.rcp.source.feature.group lazy
-org.eclipse.pde.source.feature.group lazy
+org.eclipse.e4.core.tools.feature.feature.group lazy
+org.eclipse.e4.rcp.feature.group lazy
+org.eclipse.rcp lazy
+org.eclipse.pde.feature.group lazy
 org.eclipse.equinox.sdk.feature.group lazy
 org.eclipse.sdk.ide lazy
 org.eclipse.platform lazy
@@ -107,7 +107,7 @@ org.apache.batik.util lazy
 org.apache.batik.constants lazy
 org.apache.xmlgraphics lazy
 org.commonmark lazy
-org.commonmark-gfm-tables lazy
+org.commonmark.ext-gfm-tables lazy
 org.hamcrest.core lazy
 biz.aQute.bndlib lazy
 biz.aQute.bnd.util lazy
