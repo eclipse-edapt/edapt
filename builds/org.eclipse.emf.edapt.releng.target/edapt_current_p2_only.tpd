@@ -99,7 +99,7 @@ org.hamcrest lazy
 com.ibm.icu lazy
 jakarta.annotation-api [2.1.1,3.0.0)
 jakarta.inject.jakarta.inject-api lazy
-jakarta.xml.bind-api [4.0.4,5.0.0)
+jakarta.xml.bind-api [4.0.5,5.0.0)
 jakarta.activation-api [2.1.2,3.0.0)
 org.apache.batik.css lazy
 org.apache.batik.i18n lazy
@@ -112,13 +112,17 @@ org.hamcrest.core lazy
 biz.aQute.bndlib lazy
 biz.aQute.bnd.util lazy
 aQute.libg lazy
+javax.servlet-api lazy
+slf4j.api [2.0.17,3.0.0)
+slf4j.nop [2.0.17,3.0.0)
+slf4j.api [1.7.36,2.0.0)
+slf4j.nop [1.7.36,2.0.0)
 }
 
 location "https://download.eclipse.org/tools/orbit/downloads/drops/R20220302172233/repository" {
 org.apache.commons.jxpath lazy
 javax.annotation lazy
 javax.inject lazy
-org.slf4j.api lazy
 com.google.guava lazy
 org.w3c.dom.svg lazy
 org.w3c.css.sac lazy
