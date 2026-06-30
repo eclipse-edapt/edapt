@@ -18,12 +18,15 @@ org.eclipse.equinox.sdk.feature.group lazy
 org.eclipse.sdk.ide lazy
 org.eclipse.platform lazy
 org.eclipse.test.feature.group lazy
-org.eclipse.sdk.tests.feature.group lazy
 org.eclipse.platform.ide lazy
 org.eclipse.rcp.feature.group lazy
 org.sat4j.pb lazy
 org.sat4j.core lazy
 org.eclipse.search.core lazy
+org.eclipse.equinox.core.feature.feature.group lazy
+org.apache.felix.scr lazy
+com.github.weisj.jsvg lazy
+org.apache.ant lazy
 }
 
 location "http://download.eclipse.org/modeling/mdt/ocl/updates/releases/latest" {
@@ -146,7 +149,7 @@ org.eclipse.emf.cdo.compare.feature.group lazy
 org.eclipse.emf.cdo.doc.feature.group lazy
 org.eclipse.emf.cdo.examples.feature.group lazy
 org.eclipse.emf.cdo.feature.group lazy
-org.eclipse.emf.cdo.migrator.feature.group lazy
+org.eclipse.emf.cdo.all.feature.group lazy
 org.eclipse.emf.cdo.sdk.feature.group lazy
 org.eclipse.emf.cdo.server.db.feature.group lazy
 org.eclipse.emf.cdo.server.feature.group lazy
